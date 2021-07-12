@@ -1,0 +1,5 @@
+# Basic settings
+set preview true # it is true by default, tbh
+set icons true 
+set hidden true # `zh` to toggle
+set color256 true

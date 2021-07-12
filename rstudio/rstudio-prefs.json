@@ -1,0 +1,59 @@
+{
+    "show_margin": false,
+    "default_project_location": "~/OneDrive - Università degli Studi di Milano/dev/r-projects",
+    "document_author": "Luca Baggi",
+    "wrap_tab_navigation": false,
+    "reuse_sessions_for_project_links": true,
+    "terminal_path": "/Users/luca",
+    "initial_working_directory": "~/OneDrive - Università degli Studi di Milano/dev/r-projects/escooters-louisville-r",
+    "remove_history_duplicates": true,
+    "syntax_color_console": true,
+    "global_theme": "alternate",
+    "editor_theme": "Kr Theme",
+    "posix_terminal_shell": "custom",
+    "jobs_tab_visibility": "shown",
+    "custom_shell_command": "/usr/local/bin/zsh",
+    "insert_numbered_latex_sections": true,
+    "spelling_dictionary_language": "en_GB",
+    "panes": {
+        "quadrants": [
+            "Source",
+            "TabSet1",
+            "Console",
+            "TabSet2"
+        ],
+        "tabSet1": [
+            "History",
+            "Connections",
+            "Help",
+            "VCS",
+            "Presentation"
+        ],
+        "tabSet2": [
+            "Environment",
+            "Files",
+            "Plots",
+            "Viewer"
+        ],
+        "hiddenTabSet": [
+            "Packages",
+            "Build",
+            "Tutorial"
+        ],
+        "console_left_on_top": false,
+        "console_right_on_top": true,
+        "additional_source_columns": 0
+    },
+    "rmd_preferred_template_path": "/usr/local/lib/R/4.0/site-library/vitae/rmarkdown/templates/awesomecv",
+    "source_with_echo": true,
+    "show_indent_guides": true,
+    "scroll_past_end_of_document": true,
+    "highlight_r_function_calls": true,
+    "rainbow_parentheses": true,
+    "strip_trailing_whitespace": true,
+    "show_help_tooltip_on_idle": true,
+    "console_double_click_select": true,
+    "visual_markdown_editing_show_doc_outline": false,
+    "rmd_viewer_type": "pane",
+    "use_tinytex": true
+}
