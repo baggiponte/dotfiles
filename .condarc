@@ -1,0 +1,58 @@
+# see the full configs with explanations here:
+# https://conda.io/projects/conda/en/latest/configuration.html
+channels:
+  - conda-forge
+  - defaults
+
+# defaults includes main, r and msys2 (Windows only)
+# see: https://repo.anaconda.com/pkgs/
+# # channel_alias (str)
+# #   The prepended url location to associate with channel names.
+# #
+# #   Whenever you use the -c or --channel flag to give conda a channel name that is not a URL,
+# #   conda prepends the channel_alias to the name that it was given.
+# #   The default channel_alias is https://conda.anaconda.org.
+# #
+# channel_alias: https://conda.anaconda.org
+
+# # default_channels (sequence: primitive)
+# #   env var string delimiter: ','
+# #   The list of channel names and/or urls used for the 'defaults'
+# #   multichannel.
+# #
+# default_channels:
+#   - https://repo.anaconda.com/pkgs/main
+#   - https://repo.anaconda.com/pkgs/r
+
+# # envs_dirs (sequence: primitive)
+# #   aliases: envs_path
+# #   env var string delimiter: ':'
+# #   The list of directories to search for named environments. When
+# #   creating a new named environment, the environment will be placed in
+# #   the first writable location.
+# #
+# # The CONDA_ENVS_PATH environment variable overwrites the envs_dirs setting:
+# # For macOS and Linux: CONDA_ENVS_PATH=~/my-envs:/opt/anaconda/envs
+# # For Windows: set CONDA_ENVS_PATH=C:\Users\joe\envs;C:\Anaconda\envs
+# #
+# envs_dirs: []
+
+# # pkgs_dirs (sequence: primitive)
+# #   env var string delimiter: ','
+# #   The list of directories where locally-available packages are linked
+# #   from at install time. Packages not locally available are downloaded
+# #   and extracted into the first writable directory.
+# #
+# pkgs_dirs: []
+
+# # auto_activate_base (bool)
+# #   Automatically activate the base environment during shell
+# #   initialization.
+# #
+# auto_activate_base: true
+
+# changeps1 (bool)
+#
+#   When using activate, change the command prompt ($PS1) to include the
+#   activated environment.
+changeps1: false
