@@ -7,7 +7,6 @@ conda_envs_backups
 gh
 configstore
 jupyter
-matplotlib
 iterm2/AppSupport
 
 # pointless dirs
@@ -15,6 +14,8 @@ zsh/.zcompcache
 zsh/.zsh_sessions
 zsh/.zcompdump
 zsh/.zsh_history
+
+broot/launcher
 
 # incomplete
 alacritty
