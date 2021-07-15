@@ -9,6 +9,10 @@ configstore
 jupyter
 iterm2/AppSupport
 
+# nvim
+nvim/*
+!nvim/init.vim
+
 # pointless dirs
 zsh/.zcompcache
 zsh/.zsh_sessions

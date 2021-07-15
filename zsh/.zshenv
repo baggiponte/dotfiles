@@ -3,7 +3,7 @@
 #########################
 
 export EDITOR="/usr/local/bin/nvim"
-export PAGER="/usr/local/bin/less"
+export PAGER="/usr/bin/less"
 
 ####################################
 ### environment variables for cd ###
@@ -46,6 +46,10 @@ export DYLD_FALLBACK_LIBRARY_PATH="$HOME/lib:/usr/local/lib:/usr/lib:/lib"
 ####################
 ### config paths ###
 ####################
+
+# nvimi
+# see: https://manpages.debian.org/testing/neovim-runtime/nvim.1.en.html
+export MYVIMRC="$CONFIG/nvim/init.vim"
 
 # jupyter
 export JUPYTER_CONFIG_DIR="$CONFIG/jupyter"
