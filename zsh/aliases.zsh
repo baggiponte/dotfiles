@@ -85,11 +85,12 @@
 
 # git
 
-    alias gst="git status"
-    alias gsti="gst --ignored"
-    alias ga="git add"
-    alias gc="git commit"
-    alias gpom="git push origin main"
+    # dont use these: they will prevent you from learning git the right way
+    # alias gst="git status"
+    # alias gsti="gst --ignored"
+    # alias ga="git add"
+    # alias gc="git commit"
+    # alias gpom="git push origin main"
 
     # I know you will be looking for this:
     # git remote add origin [repo-url]

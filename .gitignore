@@ -1,11 +1,19 @@
 # personal 
 kaggle
 .gitconfig
+gh
+
+# untouched
+alacritty
+bat/*
+bpytop/*
+broot/*
+.emacs
+lsd
+
 
 # not to export
 conda_envs_backups
-gh
-configstore
 jupyter
 iterm2/AppSupport
 
@@ -14,13 +22,7 @@ nvim/*
 !nvim/init.vim
 
 # pointless dirs
-zsh/.zcompcache
-zsh/.zsh_sessions
-zsh/.zcompdump
-zsh/.zsh_history
-
-broot/launcher
-
-# incomplete
-alacritty
-.emacs
+# netlify
+configstore 
+zsh/*
+!zsh/.zsh
