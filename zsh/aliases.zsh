@@ -59,7 +59,7 @@
     alias rstudio="open -a RStudio"
     
     alias n="/usr/local/bin/nvim"
-    alias nrc="n ~/.nvim/init.vim"
+    alias nrc="n ${MYVIMRC}"
 
     alias jn="jupyter-notebook"
     alias jl="jupyter-lab"
