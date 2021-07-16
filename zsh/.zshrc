@@ -1,36 +1,29 @@
 # History settings are in /etc/zshrc file, read at startup.
 
 ##### Source at startup #####
-
 for FILE in $ZDOTDIR/*.zsh; do
     source $FILE
 done
 
+##### broot #####
 source /Users/luca/.config/broot/launcher/bash/br
 
 ##### brew autocompletion #####
-
 # see https://docs.brew.sh/Shell-Completion 
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
 ##### Terminal prompt #####
-
 eval "$(starship init zsh)" # starship is managed in $HOME/.config/starship.toml
 
-#### zoxide | alternative to cd ####
-
+##### zoxide | alternative to cd #####
 eval "$(zoxide init zsh)"
 
 ##### export my scripts to $PATH #####
-
 export PATH="$MYBINS:$PATH"
 
 ##### Conda #####
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('$CONDA_ROOT/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -42,7 +35,6 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
 ##### Pyenv #####
 if command -v pyenv 1>/dev/null 2>&1; then
