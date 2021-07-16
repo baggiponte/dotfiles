@@ -12,12 +12,9 @@ export PAGER="/usr/bin/less"
 export DOC="$HOME/Documents"
 export DEV="$DOC/dev"
 export DESK="$HOME/Desktop"
+
 export CACHE="$HOME/.cache"
-
-# config files
 export CONFIG="$HOME/.config"
-
-# my binaries
 export MYBINS="$HOME/.local/bin"
 
 # coding projects directories
@@ -65,6 +62,12 @@ export BAT_THEME="gruvbox-dark"
 # kaggle
 export KAGGLE_CONFIG_DIR="$CONFIG/kaggle"
 source "$HOME/.secrets/kaggle" # username and key
+
+#############
+### pyenv ###
+#############
+
+# export PYENV_ROOT=""
 
 #############
 ### conda ###
