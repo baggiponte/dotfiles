@@ -7,6 +7,7 @@ font-jetbrains-mono
 font-juliamono
 google-drive
 iterm2
+julia
 karabiner-elements
 logseq
 macdown

@@ -159,6 +159,7 @@ pcre2
 perl
 pixman
 pkg-config
+poetry
 poppler
 popt
 postgresql

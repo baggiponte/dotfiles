@@ -2,3 +2,14 @@
 # to do that, you need to run `conda config --set changeps1 False`
 [conda]
 symbol = "📦 "
+
+[git_branch]
+always_show_remote = true
+
+[python]
+pyenv_version_name = true
+pyenv_prefix = "{pyenv} "
+
+[rlang]
+detect_files = [] # avoid trigger with .RProfile
+detect_folders = [] # avoid trigger with .Rproj.user
