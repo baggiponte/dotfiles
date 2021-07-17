@@ -5,9 +5,6 @@
 
 # utilities
 
-    # open current directory in finder:
-    alias f="open -a Finder ./" 
-
     alias ..="cd .."
     alias ...="cd ../../"
     alias path='echo -e ${PATH//:/\\n}'

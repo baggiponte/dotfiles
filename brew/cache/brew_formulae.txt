@@ -6,6 +6,7 @@ apr
 apr-util
 assimp
 autoconf
+autopep8
 bash
 bat
 bdw-gc
@@ -36,6 +37,7 @@ expat
 fd
 fftw
 figlet
+flake8
 fontconfig
 fortune
 freetype
@@ -66,6 +68,7 @@ icu4c
 imagemagick
 imath
 isl
+isort
 jansson
 jasper
 jbig2dec
@@ -131,6 +134,7 @@ minizip
 mpdecimal
 mpfr
 msgpack
+mypy
 ncdu
 ncurses
 neofetch
@@ -161,6 +165,7 @@ pixman
 pkg-config
 poetry
 poppler
+poppler-qt5
 popt
 postgresql
 procs
@@ -168,6 +173,8 @@ proj
 proj@7
 protobuf
 pwgen
+pyenv
+pylint
 python@3.9
 qt
 qt@5

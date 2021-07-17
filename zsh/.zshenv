@@ -75,13 +75,13 @@ source "$HOME/.secrets/kaggle" # username and key
 ### pyenv ###
 #############
 
-# export PYENV_ROOT=""
+export PYENV_ROOT="$HOME/.pyenv"
 
 #############
 ### conda ###
 #############
 
-export CONDA_ROOT="/usr/local/Caskroom/miniconda/base"
+export CONDA_ROOT="$PYENV_ROOT/versions/miniconda3-latest"
 export CONDA_PKGS_DIR="$CONDA_ROOT/pkgs"
 export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
 
