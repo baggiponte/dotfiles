@@ -2,11 +2,12 @@
 
 ##### Source at startup #####
 for FILE in $ZDOTDIR/*.zsh; do
-    source $FILE
+    # `.` executes the code it reads from a file
+    . $FILE
 done
 
 ##### broot #####
-source /Users/luca/.config/broot/launcher/bash/br
+[ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
 
 ##### brew autocompletion #####
 # see https://docs.brew.sh/Shell-Completion 
@@ -23,6 +24,12 @@ eval "$(zoxide init zsh)"
 ##### export my scripts to $PATH #####
 export PATH="$MYBINS:$PATH"
 
+##### Pyenv #####
+eval "$(pyenv init -)"
+
+##### pyenv-virtualenv #####
+eval "$(pyenv virtualenv-init -)"
+
 ##### Conda #####
 __conda_setup="$('$CONDA_ROOT/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -35,16 +42,6 @@ else
     fi
 fi
 unset __conda_setup
-
-##### Pyenv #####
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)";
-fi
-
-# ##### pyenv-virtualenv #####
-# if command -v pyenv-virtualenv 1>/dev/null 2>&1; then
-#     eval "$(pyenv virtualenv-init -)"
-# fi
 
 ##### Zsh Autocompletion #####
 

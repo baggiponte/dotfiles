@@ -1,14 +1,18 @@
-# This does not suppress conda's own prompt modifier
-# to do that, you need to run `conda config --set changeps1 False`
-[conda]
-symbol = "📦 "
-
 [git_branch]
 always_show_remote = true
 
 [python]
+format = "via [${symbol}${pyenv_prefix}(${version})]($style)"
 pyenv_version_name = true
-pyenv_prefix = "{pyenv} "
+pyenv_prefix = "(pyenv) "
+style = "bold green"
+
+# This does not suppress conda's own prompt modifier
+# to do that, you need to run `conda config --set changeps1 False`
+
+[conda]
+disabled = true
+symbol = "📦 "
 
 [rlang]
 detect_files = [] # avoid trigger with .RProfile
