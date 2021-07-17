@@ -100,25 +100,26 @@
     # so one day I will have to set this up: https://github.com/esc/conda-zsh-completion
     # in the meantime: https://www.anaconda.com/wp-content/uploads/2019/03/2019-Conda-Cheatsheet.pdf
 
-    alias c="conda"
-    alias cca="c clean --all" # clean tarballs
-    alias cer="c env remove" # remove env; -n <env-name>
-    alias cua="c update --all" # update packages; -n <env-name> 
+    # # deactivating because they prevent you from learning the right commands
+    # alias c="conda"
+    # alias cca="c clean --all" # clean tarballs
+    # alias cer="c env remove" # remove env; -n <env-name>
+    # alias cua="c update --all" # update packages; -n <env-name> 
     
-    # activate and deactivate envs
-    alias ca="c activate"
-    alias cda="c deactivate"
+    # # activate and deactivate envs
+    # alias ca="c activate"
+    # alias cda="c deactivate"
     
-    # packages; can always specify `--name/-n ENVNAME` to execute in a specific env
-    alias ci="c install"
-    alias cu="c uninstall"
+    # # packages; can always specify `--name/-n ENVNAME` to execute in a specific env
+    # alias ci="c install"
+    # alias cu="c uninstall"
 
-    # for environments
-    alias cinfo="c info" # info about conda
-    # cie and cel are equivalent
-    alias cel="conda env list" # list environments
-    alias cie="cinfo --envs" # list environments
+    # # for environments
+    # alias cinfo="c info" # info about conda
+    # # cie and cel are equivalent
+    # alias cel="conda env list" # list environments
+    # alias cie="cinfo --envs" # list environments
 
-    # list packages
-    alias cl="c list" # list packages
-    alias cle="cl --export" # list packages as requirements
+    # # list packages
+    # alias cl="c list" # list packages
+    # alias cle="cl --export" # list packages as requirements
