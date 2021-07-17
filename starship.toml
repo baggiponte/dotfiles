@@ -4,7 +4,7 @@ always_show_remote = true
 # this is always the most complicated
 # https://starship.rs/config/#python
 [python]
-format = "via [${symbol}${pyenv_prefix}(${version})]($style)"
+format = "via [${symbol}${pyenv_prefix}(${version}) ]($style)"
 pyenv_version_name = true
 pyenv_prefix = "(pyenv) "
 style = "bold green"
