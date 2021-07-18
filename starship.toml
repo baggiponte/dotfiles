@@ -1,21 +1,34 @@
-[git_branch]
-always_show_remote = true
+# toml reference: https://toml.io/en/
 
+[git_branch]
+
+    always_show_remote = true
+
+
+[python]
 # this is always the most complicated
 # https://starship.rs/config/#python
-[python]
-format = "via [${symbol}${pyenv_prefix}(${version}) ]($style)"
-pyenv_version_name = true
-pyenv_prefix = "(pyenv) "
-style = "bold green"
 
-# This does not suppress conda's own prompt modifier
-# to do that, you need to run `conda config --set changeps1 False`
+    # default is:
+    # format = "via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)"
+    format = "via [${symbol}${pyenv_prefix}]($style)"
+
+    pyenv_version_name = true
+    pyenv_prefix = "(pyenv) "
+    
+    style = "bold yellow"
+
 
 [conda]
-disabled = true
-symbol = "📦 "
+# This does not suppress conda's own prompt modifier
+# to do that, you need to run `conda config --set changeps1 False`
+    
+    # default format: "via [$symbol$environment]($style) "
+    format = "in [$symbol$environment]($style) "
+    disabled = false
+    symbol = "📦 "
 
 [rlang]
-detect_files = [] # avoid trigger with .RProfile
-detect_folders = [] # avoid trigger with .Rproj.user
+    
+    detect_files = [] # avoid trigger with .RProfile
+    detect_folders = [] # avoid trigger with .Rproj.user
