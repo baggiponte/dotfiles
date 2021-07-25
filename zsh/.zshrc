@@ -45,8 +45,15 @@ unset __conda_setup
 
 ##### Zsh Autocompletion #####
 
+# # for pipx
+# autoload -U bashcompinit
+# bashcompinit
+# eval "$(register-python-argcomplete pipx)"
+
 # Basic auto/tab complete:
 autoload -U compinit
+
+
 zstyle ':completion:*' menu select
 
 # Auto complete with case insenstivity
