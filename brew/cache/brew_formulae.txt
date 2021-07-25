@@ -6,12 +6,10 @@ apr
 apr-util
 assimp
 autoconf
-autopep8
 bash
 bat
 bdw-gc
 berkeley-db
-bpytop
 broot
 brotli
 c-ares
@@ -23,7 +21,6 @@ cmake
 cmatrix
 coreutils
 cowsay
-csvkit
 dbus
 docbook
 docbook-xsl
@@ -37,7 +34,6 @@ expat
 fd
 fftw
 figlet
-flake8
 fontconfig
 fortune
 freetype
@@ -128,13 +124,13 @@ luv
 lz4
 lzo
 m4
+macos-term-size
 mas
 mdp
 minizip
 mpdecimal
 mpfr
 msgpack
-mypy
 ncdu
 ncurses
 neofetch
@@ -161,9 +157,9 @@ pandoc-crossref
 pcre
 pcre2
 perl
+pipx
 pixman
 pkg-config
-poetry
 poppler
 poppler-qt5
 popt
@@ -175,7 +171,6 @@ protobuf
 pwgen
 pyenv
 pyenv-virtualenv
-pylint
 python@3.9
 qt
 qt@5

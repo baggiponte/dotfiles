@@ -15,7 +15,7 @@ export DESK="$HOME/Desktop"
 
 export CACHE="$HOME/.cache"
 export CONFIG="$HOME/.config"
-export MYBINS="$HOME/.local/bin"
+export MYBINS="$HOME/.local/scripts"
 
 # see: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 # $XDG_DATA_HOME defines the base directory relative to which user-specific data files should be stored.
@@ -52,7 +52,7 @@ export DYLD_FALLBACK_LIBRARY_PATH="$HOME/lib:/usr/local/lib:/usr/lib:/lib"
 ### config paths ###
 ####################
 
-# nvimi
+# nvim
 # see: https://manpages.debian.org/testing/neovim-runtime/nvim.1.en.html
 export MYVIMRC="$CONFIG/nvim/init.vim"
 
@@ -71,16 +71,14 @@ export BAT_THEME="gruvbox-dark"
 export KAGGLE_CONFIG_DIR="$CONFIG/kaggle"
 source "$HOME/.secrets/kaggle" # username and key
 
-#############
-### pyenv ###
-#############
-
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 
-#############
-### conda ###
-#############
+# pipx
+export PIPX_HOME="$HOME/.local/pipx"
+export PIPX_BIN_DIR="$HOME/.local/bin"
 
+# conda
 export CONDA_ROOT="$PYENV_ROOT/versions/miniconda3-latest"
 export CONDA_PKGS_DIR="$CONDA_ROOT/pkgs"
 export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
