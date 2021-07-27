@@ -10,8 +10,10 @@
 # https://starship.rs/config/#python
 
     # default is:
-    # format = "via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)"
-    format = "via [${symbol}${pyenv_prefix}]($style)"
+    # format = "via [${symbol}${pyenv_prefix}(${version} )(($virtualenv) )]($style)"
+    # custom for pyenv
+    format = "via [${symbol}${pyenv_prefix}(${version} )]($style)"
+    # format = "via [${symbol}${pyenv_prefix}]($style)"
 
     pyenv_version_name = true
     pyenv_prefix = "(pyenv) "
@@ -25,7 +27,7 @@
     
     # default format: "via [$symbol$environment]($style) "
     format = "in [$symbol$environment]($style) "
-    disabled = false
+    disabled = true
     symbol = "📦 "
 
 [rlang]

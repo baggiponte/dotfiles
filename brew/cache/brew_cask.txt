@@ -2,6 +2,7 @@ alt-tab
 appcleaner
 brave-browser
 dozer
+font-dejavu-sans-mono-nerd-font
 font-hack-nerd-font
 font-jetbrains-mono
 font-juliamono
