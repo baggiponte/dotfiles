@@ -20,8 +20,6 @@ rectangle
 rstudio
 slack
 the-unarchiver
-tomighty
-twobird
 visual-studio-code
 xquartz
 zotero
