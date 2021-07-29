@@ -34,9 +34,10 @@ export R="$DEV/r-projects"
 # using parameter substitution is necessary to escape special characters and have it behave as expected
 # ${(q)} is typical to zsh, bash works differently
 export ONEDRIVE="$HOME/OneDrive - Università degli Studi di Milano"
-export GDRIVE="$HOME/Google Drive/My Drive"
+export GDRIVE_UNI="$HOME/lucabaggi.uni@gmail.com - Google Drive"
+export GDRIVE_1997="/Users/luca/lucabaggi1997@gmail.com - Google Drive"
 export UNI="${(q)ONEDRIVE}/uni"
-export COLAB="$GDRIVE/Colab Notebooks"
+export COLAB="$GDRIVE_UNI/My Drive/Colab Notebooks"
 
 #########################
 ### zsh related stuff ###
