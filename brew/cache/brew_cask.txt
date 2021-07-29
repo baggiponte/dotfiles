@@ -8,6 +8,7 @@ font-jetbrains-mono
 font-juliamono
 google-drive
 iterm2
+jetbrains-toolbox
 julia
 karabiner-elements
 logseq
