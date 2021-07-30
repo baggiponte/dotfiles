@@ -1,5 +1,6 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,python,r,sql,vscode,pycharm
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,python,r,sql,vscode,pycharm
+
+# Created by https://www.toptal.com/developers/gitignore/api/macos,python,r,visualstudiocode,pycharm
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,python,r,visualstudiocode,pycharm
 
 ### macOS ###
 # General
@@ -326,9 +327,21 @@ po/*~
 # R package: bookdown caching files
 /*_files/
 
-#!! ERROR: sql is undefined. Use list command to see defined gitignore types !!#
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
 
-#!! ERROR: vscode is undefined. Use list command to see defined gitignore types !!#
+# Local History for Visual Studio Code
+.history/
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,python,r,sql,vscode,pycharm
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/macos,python,r,visualstudiocode,pycharm
 
