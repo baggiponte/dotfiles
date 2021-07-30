@@ -9,20 +9,11 @@ done
 ##### broot #####
 [ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
 
-##### brew autocompletion #####
-# see https://docs.brew.sh/Shell-Completion 
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
 ##### Terminal prompt #####
 eval "$(starship init zsh)" # starship is managed in $HOME/.config/starship.toml
 
 ##### zoxide | alternative to cd #####
 eval "$(zoxide init zsh)"
-
-##### export my scripts to $PATH #####
-export PATH="$MYBINS:$PATH"
 
 ##### Pyenv #####
 eval "$(pyenv init -)"
@@ -43,16 +34,23 @@ else
 fi
 unset __conda_setup
 
+#### export pipx to PATH ####
+export PATH="$PATH:$PIPX_BIN_DIR"
+
+##### export my scripts to $PATH #####
+export PATH="$MYBINS:$PATH"
+
+##### brew autocompletion #####
+# must be BEFORE zsh compinint!
+# see https://docs.brew.sh/Shell-Completion 
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 ##### Zsh Autocompletion #####
 
-# # for pipx
-# autoload -U bashcompinit
-# bashcompinit
-# eval "$(register-python-argcomplete pipx)"
-
 # Basic auto/tab complete:
-autoload -U compinit
-
+autoload -Uz compinit
 
 zstyle ':completion:*' menu select
 
@@ -63,3 +61,7 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
+# for pipx
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"
