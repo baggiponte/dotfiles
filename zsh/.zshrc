@@ -61,7 +61,9 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# for pipx
+# for pipx;
+# this should always go after zsh's compinit
+# see here: https://stackoverflow.com/questions/67136714/how-to-properly-call-compinit-and-bashcompinit-in-zsh
 autoload -U bashcompinit
 bashcompinit
 eval "$(register-python-argcomplete pipx)"
