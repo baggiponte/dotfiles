@@ -22,7 +22,7 @@
     # using parameter substitution is necessary to escape special characters and have it behave as expected
     # ${(q)} is typical to zsh, bash works differently
     alias onedrive="cd ${(q)ONEDRIVE}"
-    alias gdrive="cd ${(q)GDRIVE}"
+    alias gdrive="cd ${(q)GDRIVE_UNI}"
     alias cduni="cd $UNI"
     alias colab="cd ${(q)COLAB}"
     

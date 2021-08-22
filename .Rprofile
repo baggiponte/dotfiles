@@ -1,1 +1,0 @@
-/Users/luca/.config/r/.Rprofile

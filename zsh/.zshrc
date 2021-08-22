@@ -21,6 +21,9 @@ eval "$(pyenv init -)"
 ##### pyenv-virtualenv #####
 eval "$(pyenv virtualenv-init -)"
 
+##### jump for smart cd #####
+eval "$(jump shell zsh)"
+
 ##### Conda #####
 __conda_setup="$('$CONDA_ROOT/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then

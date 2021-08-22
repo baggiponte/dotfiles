@@ -112,3 +112,6 @@ nnoremap <leader>s :so %<CR>
 " quit buffer quicker
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
+" as reference: https://www.youtube.com/watch?v=hSHATqh8svM
+" have Y behave like every other capital letter
+nnoremap Y y$
