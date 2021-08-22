@@ -45,7 +45,6 @@
         "additional_source_columns": 0
     },
     "rmd_preferred_template_path": "/usr/local/lib/R/4.0/site-library/vitae/rmarkdown/templates/awesomecv",
-    "source_with_echo": true,
     "show_indent_guides": true,
     "scroll_past_end_of_document": true,
     "highlight_r_function_calls": true,
@@ -55,5 +54,11 @@
     "console_double_click_select": true,
     "visual_markdown_editing_show_doc_outline": false,
     "rmd_viewer_type": "pane",
-    "use_tinytex": true
+    "use_tinytex": true,
+    "save_workspace": "never",
+    "load_workspace": false,
+    "python_type": "system",
+    "python_version": "3.9.6",
+    "python_path": "~/.pyenv/versions/3.9.6/bin/python",
+    "graphics_backend": "ragg"
 }

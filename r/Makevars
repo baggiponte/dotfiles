@@ -3,8 +3,9 @@
 CC=clang
 
 # C++ compiler; sometimes I need to swap the two
-CXX=clang++ # e.g. used with readxl
-#CXX=/usr/local/opt/gcc/bin/g++-11 # I need to write code to sync the latest version
+# CXX=clang++
+# I need to write code to sync the latest version
+CXX=/usr/local/opt/gcc/bin/g++-11
 
 # fortran compiler: https://stackoverflow.com/q/35999874
 FLIBS=-L/usr/local/opt/gfortran/bin/fortran
