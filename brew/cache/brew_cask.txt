@@ -1,6 +1,7 @@
 alt-tab
 appcleaner
 brave-browser
+discord
 dozer
 font-dejavu-sans-mono-nerd-font
 font-fira-sans
