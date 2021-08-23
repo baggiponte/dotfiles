@@ -59,6 +59,9 @@ export MYVIMRC="$CONFIG/nvim/init.vim"
 
 # jupyter
 export JUPYTER_CONFIG_DIR="$CONFIG/jupyter"
+export JUPYTER_WORKSPACES_DIR="$JUPYTER_CONFIG_DIR/lab/workspaces"
+export JUPYTER_DATA_DIR="$HOME/Library/Jupyter"
+export JUPYTER_KERNEL_DIR="$JUPYTER_DATA_DIR/kernels" # user defined kernels
 
 # matplotlib
 export MPLCONFIGDIR="$CONFIG/matplotlib"
