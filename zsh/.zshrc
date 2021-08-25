@@ -1,10 +1,23 @@
 # History settings are in /etc/zshrc file, read at startup.
 
 ##### Source at startup #####
-for FILE in $ZDOTDIR/*.zsh; do
+for FILE in "$ZDOTDIR"/*.zsh; do
     # `.` executes the code it reads from a file
-    . $FILE
+    . "$FILE"
 done
+
+##### Source plugin manager #####
+source "/usr/local/opt/zinit/zinit.zsh"
+
+# load plugins
+# see here: https://github.com/zdharma/fast-syntax-highlighting/
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
 ##### broot #####
 [ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
@@ -13,7 +26,7 @@ done
 eval "$(starship init zsh)" # starship is managed in $HOME/.config/starship.toml
 
 ##### zoxide | alternative to cd #####
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 
 ##### Pyenv #####
 eval "$(pyenv init -)"

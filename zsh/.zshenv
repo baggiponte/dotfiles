@@ -9,6 +9,8 @@ export PAGER="/usr/bin/less"
 ### environment variables for cd ###
 ####################################
 
+# will likely remove them, or remove the aliases, since I am using jump
+
 export DOC="$HOME/Documents"
 export DEV="$DOC/dev"
 export DESK="$HOME/Desktop"
@@ -38,16 +40,6 @@ export GDRIVE_UNI="$HOME/lucabaggi.uni@gmail.com - Google Drive/My Drive"
 export GDRIVE_1997="/Users/luca/lucabaggi1997@gmail.com - Google Drive/My Drive"
 export UNI="${(q)ONEDRIVE}/uni"
 export COLAB="$GDRIVE_UNI/Colab Notebooks"
-
-#########################
-### zsh related stuff ###
-#########################
-
-# for directory where I install plugins for zsh
-export ZSH_PLUGIN_DIR="/usr/local/share"
-# zsh & zsh plugins | actually suggested by package manager Homebrew
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="/usr/local/share/zsh-syntax-highlighting/highlighters"
-export DYLD_FALLBACK_LIBRARY_PATH="$HOME/lib:/usr/local/lib:/usr/lib:/lib"
 
 ####################
 ### config paths ###
@@ -91,21 +83,17 @@ export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
 # CONDA_PREFIX is the path to the current active environment.
 # https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
 
-#################
-### posgresql ###
-#################
+##################
+### postgresql ###
+##################
 
 export PGDATA="/usr/local/var/postgres"
 
-#######################
-### echo formatting ###
-#######################
+###########
+### zsh ###
+###########
 
 # source color variables to modify format output of commands such as echo.
 source "$ZDOTDIR/colors.zsh"
-
-###########################
-### source icons for lf ###
-###########################
-
+# source colored icons for lf
 source "$CONFIG/lf/.lf-icons"
