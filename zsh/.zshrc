@@ -1,12 +1,16 @@
-# History settings are in /etc/zshrc file, read at startup.
+# +-----------------------+
+# | aliases and functions |
+# +-----------------------+
 
-##### Source at startup #####
 for FILE in "$ZDOTDIR"/*.zsh; do
     # `.` executes the code it reads from a file
     . "$FILE"
 done
 
-##### Source plugin manager #####
+# +---------+
+# | plugins |
+# +---------+
+
 source "/usr/local/opt/zinit/zinit.zsh"
 
 # load plugins
@@ -18,27 +22,21 @@ zinit wait lucid for \
     zsh-users/zsh-completions \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
+
 zinit light ael-code/zsh-colored-man-pages
+zinit light supercrabtree/k
+zinit light b4b4r07/enhancd
 
-##### broot #####
+# +---------------+
+# | init binaries |
+# +---------------+
+
 [ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
-
-##### Terminal prompt #####
 eval "$(starship init zsh)" # starship is managed in $HOME/.config/starship.toml
-
-##### zoxide | alternative to cd #####
-# eval "$(zoxide init zsh)"
-
-##### Pyenv #####
 eval "$(pyenv init -)"
-
-##### pyenv-virtualenv #####
 eval "$(pyenv virtualenv-init -)"
-
-##### jump for smart cd #####
 eval "$(jump shell zsh)"
 
-##### Conda #####
 __conda_setup="$('$CONDA_ROOT/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -51,36 +49,66 @@ else
 fi
 unset __conda_setup
 
-#### export pipx to PATH ####
-export PATH="$PATH:$PIPX_BIN_DIR"
+# +------------------+
+# | brew completions |
+# +------------------+
 
-##### export my scripts to $PATH #####
-export PATH="$MYBINS:$PATH"
-
-##### brew autocompletion #####
-# must be BEFORE zsh compinint!
 # see https://docs.brew.sh/Shell-Completion 
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-##### Zsh Autocompletion #####
+# +-------------+
+# | zsh setopts |
+# +-------------+
 
-# Basic auto/tab complete:
-autoload -Uz compinit
+# references:
+# https://scriptingosx.com/2019/06/moving-to-zsh-part-3-shell-options/
+# https://linux.die.net/man/1/zshoptions
 
-zstyle ':completion:*' menu select
+# cd without writing cd and cd into variables
+setopt autocd cdablevars
+# automatically push into stack; do not push duplicates
+setopt autopushd pushdignoredups
+# don't include duplicates in history, don't add to hist if preceeded by space
+setopt histignoredups histignorespace
+# case insensitive globbing
+setopt nocaseglob
+# lets files beginning with a . be matched without explicitly specifying the dot
+setopt globdots
+# complete from both ends
+setopt completeinword
 
-# Auto complete with case insenstivity
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# +-----------------+
+# | zsh completions |
+# +-----------------+
+
+# reference:
+# https://thevaluable.dev/zsh-completion-guide-examples/
+# https://stackoverflow.com/questions/67136714/how-to-properly-call-compinit-and-bashcompinit-in-zsh
 
 zmodload zsh/complist
-compinit
+
+# enable completion menu
+zstyle ':completion:*' menu select
+
+# use cache for completion
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$ZDOTDIR/.zcompcache"
+
+# descriptors and corrections
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*' group-name ''
+
+# case insensitivity and tab expansion
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# initialise the completion system 
+autoload -Uz compinit; compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# for pipx;
-# this should always go after zsh's compinit
-# see here: https://stackoverflow.com/questions/67136714/how-to-properly-call-compinit-and-bashcompinit-in-zsh
-autoload -U bashcompinit
-bashcompinit
+autoload -U bashcompinit; bashcompinit
 eval "$(register-python-argcomplete pipx)"
