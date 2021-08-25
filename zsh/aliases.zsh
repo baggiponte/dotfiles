@@ -1,11 +1,14 @@
 # Aliases
 
+# list dirs
+    alias d='dirs -v'
+
 # exec $SHELL but faster
     alias e="exec $SHELL"
 
 # utilities
 
-    alias ..="cd .."
+    # alias ..="cd .." # not needed if setopt autocd
     alias ...="cd ../../"
     alias path='echo -e ${PATH//:/\\n}'
 

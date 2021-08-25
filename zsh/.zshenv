@@ -1,13 +1,13 @@
-#########################
-### default variables ###
-#########################
+# +-------------------+
+# | default variables |
+# +-------------------+
 
 export EDITOR="/usr/local/bin/nvim"
 export PAGER="/usr/bin/less"
 
-####################################
-### environment variables for cd ###
-####################################
+# +--------------------------------+
+# | environmental variables for cd | 
+# +--------------------------------+
 
 # will likely remove them, or remove the aliases, since I am using jump
 
@@ -31,7 +31,9 @@ export MYBINS="$HOME/.local/scripts"
 export PY="$DEV/python-projects"
 export R="$DEV/r-projects"
 
-# cloud storage services
+# +------------------------+
+# | cloud storage services |
+# +------------------------+
 
 # using parameter substitution is necessary to escape special characters and have it behave as expected
 # ${(q)} is typical to zsh, bash works differently
@@ -41,10 +43,10 @@ export GDRIVE_1997="/Users/luca/lucabaggi1997@gmail.com - Google Drive/My Drive"
 export UNI="${(q)ONEDRIVE}/uni"
 export COLAB="$GDRIVE_UNI/Colab Notebooks"
 
-####################
-### config paths ###
-####################
-
+# +-------------+
+# | config dirs |
+# +-------------+
+ 
 # nvim
 # see: https://manpages.debian.org/testing/neovim-runtime/nvim.1.en.html
 export MYVIMRC="$CONFIG/nvim/init.vim"
@@ -73,6 +75,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 # pipx
 export PIPX_HOME="$HOME/.local/pipx"
 export PIPX_BIN_DIR="$HOME/.local/bin"
+export PATH="$PATH:$PIPX_BIN_DIR"
 
 # conda
 export CONDA_ROOT="$PYENV_ROOT/versions/miniconda3-latest"
@@ -83,15 +86,19 @@ export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
 # CONDA_PREFIX is the path to the current active environment.
 # https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
 
-##################
-### postgresql ###
-##################
 
+# postgresql
 export PGDATA="/usr/local/var/postgres"
 
-###########
-### zsh ###
-###########
+# +------------------+
+# | personal scripts |
+# +------------------+
+
+export PATH="$MYBINS:$PATH"
+
+# +-----------------+
+# | other zsh stuff |
+# +-----------------+
 
 # source color variables to modify format output of commands such as echo.
 source "$ZDOTDIR/colors.zsh"
