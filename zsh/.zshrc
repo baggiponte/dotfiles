@@ -18,7 +18,7 @@ zinit wait lucid for \
     zsh-users/zsh-completions \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
-zinit ael-code/zsh-colored-man-pages
+zinit light ael-code/zsh-colored-man-pages
 
 ##### broot #####
 [ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
