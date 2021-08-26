@@ -119,7 +119,6 @@ libyaml
 libzip
 little-cms2
 lolcat
-lsd
 lua
 luajit
 luajit-openresty
@@ -218,10 +217,7 @@ xorgproto
 xsv
 xz
 zeromq
+zinit
 zlib
-zoxide
 zsh
-zsh-autosuggestions
-zsh-syntax-highlighting
-zsh-you-should-use
 zstd

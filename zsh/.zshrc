@@ -53,10 +53,11 @@ unset __conda_setup
 # | brew completions |
 # +------------------+
 
-# see https://docs.brew.sh/Shell-Completion 
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
+# this does not seem necessary, the path is already in path
+# # see https://docs.brew.sh/Shell-Completion 
+# if type brew &>/dev/null; then
+#     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+# fi
 
 # +-------------+
 # | zsh setopts |
@@ -107,8 +108,8 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # initialise the completion system 
-autoload -Uz compinit; compinit
+autoload -Uz compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-autoload -U bashcompinit; bashcompinit
+autoload -U bashcompinit && bashcompinit
 eval "$(register-python-argcomplete pipx)"

@@ -14,13 +14,6 @@
 
 # cd laziness
 
-    # fast cd into code projects
-    alias cdev="cd $DEV"
-    alias cdpy="cd $PY"
-    alias cdr="cd $R"
-    alias cdc="cd $CONFIG"
-    alias mybins="cd $MYBINS"
-
     # for cloud storage
     # using parameter substitution is necessary to escape special characters and have it behave as expected
     # ${(q)} is typical to zsh, bash works differently
@@ -28,11 +21,6 @@
     alias gdrive="cd ${(q)GDRIVE_UNI}"
     alias cduni="cd $UNI"
     alias colab="cd ${(q)COLAB}"
-    
-    # other folders
-    alias cdoc="cd ~/Documents"
-    alias cdd="cd ~/Downloads"
-    alias cdesk="cd ~/Desktop"
 
 # homebrew
 
@@ -64,17 +52,12 @@
     alias jn="jupyter-notebook"
     alias jl="jupyter-lab"
 
-# ls deluxe: https://github.com/Peltoche/lsd
+# exa
 
-    # always run "lsd" instead of "ls", plus always displays directories first
-    alias ls="lsd --group-dirs first"
-    alias l=ls
+    alias ls="exa --group-directories-first --icons"
+    alias l="ls --all"
 
-    alias ll="l -l"	# ls with items and directory details
-    alias la="l -a"	# ls all items and directories within cd
-    alias lA="l -A"	# ls all items and directories within cd, EXCEPT "." and ".."
-    alias lla="l -la"   # combines "ls -l" and "ls -a"
-    alias llA="l -lA"   # combines "ls -l" and "ls -A"
+    alias ll="l --long --git"
 
 # postgres 
 
