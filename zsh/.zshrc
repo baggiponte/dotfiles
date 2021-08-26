@@ -7,6 +7,27 @@ for FILE in "$ZDOTDIR"/*.zsh; do
     . "$FILE"
 done
 
+# +---------------+
+# | init binaries |
+# +---------------+
+
+[ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+eval "$(jump shell zsh)"
+
+__conda_setup="$('$CONDA_ROOT/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$CONDA_ROOT/etc/profile.d/conda.sh" ]; then
+        . "$CONDA_ROOT/etc/profile.d/conda.sh" 
+    else
+        export PATH="$CONDA_ROOT/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
 # +---------+
 # | plugins |
 # +---------+
@@ -27,37 +48,16 @@ zinit light ael-code/zsh-colored-man-pages
 zinit light supercrabtree/k
 zinit light b4b4r07/enhancd
 
-# +---------------+
-# | init binaries |
-# +---------------+
+# +--------+
+# | prompt |
+# +--------+
 
-[ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
-eval "$(starship init zsh)" # starship is managed in $HOME/.config/starship.toml
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-eval "$(jump shell zsh)"
+# option A: pure
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
 
-__conda_setup="$('$CONDA_ROOT/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$CONDA_ROOT/etc/profile.d/conda.sh" ]; then
-        . "$CONDA_ROOT/etc/profile.d/conda.sh" 
-    else
-        export PATH="$CONDA_ROOT/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-# +------------------+
-# | brew completions |
-# +------------------+
-
-# this does not seem necessary, the path is already in path
-# # see https://docs.brew.sh/Shell-Completion 
-# if type brew &>/dev/null; then
-#     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-# fi
+# option B: starship
+# eval "$(starship init zsh)" # starship is managed in $HOME/.config/starship.toml
 
 # +-------------+
 # | zsh setopts |
@@ -107,9 +107,13 @@ zstyle ':completion:*' group-name ''
 # case insensitivity and tab expansion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+# load prompt
+autoload -U promptinit; promptinit
+prompt pure
+
 # initialise the completion system 
 autoload -Uz compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-autoload -U bashcompinit && bashcompinit
+autoload -Uz bashcompinit && bashcompinit
 eval "$(register-python-argcomplete pipx)"
