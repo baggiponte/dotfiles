@@ -9,8 +9,9 @@ bat/*
 bpytop/*
 broot/*
 .emacs
-lsd
 
+# not used anymore
+starship.toml
 
 # not to export
 conda_envs_backups
