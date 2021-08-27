@@ -44,20 +44,14 @@ zinit wait lucid for \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
+# prompt
+zplugin ice pick"async.zsh" src"pure.zsh" \
+  atclone"ln -s ./pure.zsh prompt_pure_setup" atload"fpath+=(\$PWD)"
+zplugin light sindresorhus/pure
+
 zinit light ael-code/zsh-colored-man-pages
 zinit light supercrabtree/k
 zinit light b4b4r07/enhancd
-
-# +--------+
-# | prompt |
-# +--------+
-
-# option A: pure
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
-
-# option B: starship
-# eval "$(starship init zsh)" # starship is managed in $HOME/.config/starship.toml
 
 # +-------------+
 # | zsh setopts |
@@ -108,7 +102,7 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # load prompt
-autoload -U promptinit; promptinit
+autoload -Uz promptinit; promptinit
 prompt pure
 
 # initialise the completion system 
