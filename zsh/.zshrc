@@ -15,6 +15,9 @@ done
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(jump shell zsh)"
+# if using starship prompt:
+# eval "$(starship init zsh)"
+
 
 __conda_setup="$('$CONDA_ROOT/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
