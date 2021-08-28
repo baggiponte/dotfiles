@@ -18,18 +18,24 @@ eval "$(jump shell zsh)"
 # if using starship prompt:
 # eval "$(starship init zsh)"
 
-
-__conda_setup="$('$CONDA_ROOT/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/luca/.pyenv/versions/miniconda3-latest/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "$CONDA_ROOT/etc/profile.d/conda.sh" ]; then
-        . "$CONDA_ROOT/etc/profile.d/conda.sh" 
+    if [ -f "/Users/luca/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh" ]; then
+        . "/Users/luca/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"
     else
-        export PATH="$CONDA_ROOT/bin:$PATH"
+        export PATH="/Users/luca/.pyenv/versions/miniconda3-latest/bin:$PATH"
     fi
 fi
 unset __conda_setup
+
+if [ -f "/Users/luca/.pyenv/versions/miniconda3-latest/etc/profile.d/mamba.sh" ]; then
+    . "/Users/luca/.pyenv/versions/miniconda3-latest/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 
 # +---------+
 # | plugins |
@@ -112,5 +118,6 @@ prompt pure
 autoload -Uz compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-autoload -Uz bashcompinit && bashcompinit
+# completions for pipx
+autoload -U bashcompinit && bashcompinit
 eval "$(register-python-argcomplete pipx)"

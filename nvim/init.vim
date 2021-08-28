@@ -76,6 +76,8 @@ call plug#begin('~/.config/nvim/plugged')
 "Syntax
     Plug 'tpope/vim-markdown'
     Plug 'ap/vim-css-color'
+"Python autoformatter
+    Plug 'dense-analysis/ale'
 
 call plug#end()
 
