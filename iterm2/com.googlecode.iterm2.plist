@@ -8227,6 +8227,8 @@
 	<true/>
 	<key>PromptOnQuit</key>
 	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<false/>
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SoundForEsc</key>
