@@ -102,8 +102,6 @@ EOF
 
 let mapleader = " "
 
-" remaps ';' to ':' to write commands faster
-nnoremap ; :
 "n = normal mode, nore = not recursive, map
 nnoremap <leader>u :UndoTreeShow<CR>
 " to save more quickly
