@@ -11,7 +11,7 @@
     "global_theme": "alternate",
     "editor_theme": "Kr Theme",
     "posix_terminal_shell": "custom",
-    "jobs_tab_visibility": "shown",
+    "jobs_tab_visibility": "closed",
     "custom_shell_command": "/usr/local/bin/zsh",
     "insert_numbered_latex_sections": true,
     "spelling_dictionary_language": "en_GB",
@@ -60,5 +60,7 @@
     "python_type": "system",
     "python_version": "3.9.6",
     "python_path": "~/.pyenv/versions/3.9.6/bin/python",
-    "graphics_backend": "ragg"
+    "graphics_backend": "ragg",
+    "new_proj_git_init": true,
+    "source_with_echo": true
 }

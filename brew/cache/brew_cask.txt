@@ -32,4 +32,5 @@ slack
 the-unarchiver
 visual-studio-code
 xquartz
+zoom
 zotero
