@@ -63,6 +63,7 @@ grpc
 guile
 harfbuzz
 hdf5
+hunspell
 hwloc
 icu4c
 imagemagick
