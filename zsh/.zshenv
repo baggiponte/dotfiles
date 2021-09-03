@@ -11,8 +11,7 @@ export PAGER="/usr/bin/less"
 
 # will likely remove them, or remove the aliases, since I am using jump
 
-export DOC="$HOME/Documents"
-export DEV="$DOC/dev"
+export DOCS="$HOME/Documents"
 export DESK="$HOME/Desktop"
 
 export CACHE="$HOME/.cache"
@@ -27,20 +26,23 @@ export MYBINS="$HOME/.local/scripts"
 # $XDG_STATE_HOME defines the base directory relative to which user-specific state files should be stored.
 # If $XDG_STATE_HOME is either not set or empty, a default equal to $HOME/.local/state should be used.
 
-# coding projects directories
-export PY="$DEV/python-projects"
-export R="$DEV/r-projects"
-
 # +------------------------+
 # | cloud storage services |
 # +------------------------+
 
 # using parameter substitution is necessary to escape special characters and have it behave as expected
 # ${(q)} is typical to zsh, bash works differently
-export ONEDRIVE="$HOME/OneDrive - Università degli Studi di Milano"
 export GDRIVE_UNI="$HOME/lucabaggi.uni@gmail.com - Google Drive/My Drive"
-export GDRIVE_1997="/Users/luca/lucabaggi1997@gmail.com - Google Drive/My Drive"
+export GDRIVE_1997="$HOME/lucabaggi1997@gmail.com - Google Drive/My Drive"
+
+# uni
 export UNI="${(q)ONEDRIVE}/uni"
+export ONEDRIVE="$HOME/OneDrive - Università degli Studi di Milano"
+
+# coding directories
+export PY_PROJS="$GDRIVE_UNI/python-projects"
+export R_PROJS="$GDRIVE_UNI/r-projects"
+export JULIA_PROJS="$GDRIVE_UNI/julia-projects"
 export COLAB="$GDRIVE_UNI/Colab Notebooks"
 
 # +-------------+
