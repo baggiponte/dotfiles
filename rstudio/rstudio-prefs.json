@@ -5,7 +5,7 @@
     "wrap_tab_navigation": false,
     "reuse_sessions_for_project_links": true,
     "terminal_path": "/Users/luca",
-    "initial_working_directory": "~/OneDrive - Università degli Studi di Milano/dev/r-projects/escooters-louisville-r",
+    "initial_working_directory": "~/OneDrive - Università degli Studi di Milano/dev/r-projects",
     "remove_history_duplicates": true,
     "syntax_color_console": true,
     "global_theme": "alternate",
@@ -44,7 +44,6 @@
         "console_right_on_top": true,
         "additional_source_columns": 0
     },
-    "rmd_preferred_template_path": "/usr/local/lib/R/4.0/site-library/vitae/rmarkdown/templates/awesomecv",
     "show_indent_guides": true,
     "scroll_past_end_of_document": true,
     "highlight_r_function_calls": true,
