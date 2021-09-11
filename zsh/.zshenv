@@ -88,7 +88,6 @@ export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
 # CONDA_PREFIX is the path to the current active environment.
 # https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
 
-
 # postgresql
 export PGDATA="/usr/local/var/postgres"
 

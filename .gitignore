@@ -4,26 +4,24 @@ kaggle
 gh
 
 # untouched
-alacritty
 bat/*
 bpytop/*
 broot/*
 .emacs
 
-# not used anymore
-starship.toml
-
 # not to export
-conda_envs_backups
 jupyter
 iterm2/AppSupport
+karabiner/*
+!karabiner/karabiner.json
+wip
 
 # nvim
 nvim/*
 !nvim/init.vim
 
 # pointless dirs
-# netlify
-configstore 
 zsh/*
 !zsh/.zsh
+# this is for netlify
+configstore 
