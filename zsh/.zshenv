@@ -96,6 +96,8 @@ export PGDATA="/usr/local/var/postgres"
 # +------------------+
 
 export PATH="$MYBINS:$PATH"
+# add jetbrains path to scripts
+export PATH="$PATH:$HOME/.local/jetbrains"
 
 # +-----------------+
 # | other zsh stuff |

@@ -1,0 +1,9 @@
+
+# 2021-10-11 12:03:26.594421
++FROM bikemi_rentals SELECT COUNT(bikemi_rentals.bici), bikemi_rentals.nome_stazione_prelievo GROUP BY bikemi_rentals.nome_stazione_prelievo; 
+
+# 2021-10-11 12:03:57.322789
++SELECT COUNT(bikemi_rentals.bici), bikemi_rentals.nome_stazione_prelievo FROM bikemi_rentals GROUP BY bikemi_rentals.nome_stazione_prelievo; 
+
+# 2021-10-11 12:04:13.534386
++quit

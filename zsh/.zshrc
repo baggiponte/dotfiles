@@ -15,8 +15,6 @@ done
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(jump shell zsh)"
-# if using starship prompt:
-# eval "$(starship init zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -46,16 +44,16 @@ source "/usr/local/opt/zinit/zinit.zsh"
 # load plugins
 # see here: https://github.com/zdharma/fast-syntax-highlighting/
 zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+        zdharma/fast-syntax-highlighting \
+    blockf \
+        zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
 
 # prompt
 zplugin ice pick"async.zsh" src"pure.zsh" \
-  atclone"ln -s ./pure.zsh prompt_pure_setup" atload"fpath+=(\$PWD)"
+    atclone"ln -s ./pure.zsh prompt_pure_setup" atload"fpath+=(\$PWD)"
 zplugin light sindresorhus/pure
 
 zinit light ael-code/zsh-colored-man-pages
