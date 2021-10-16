@@ -15,6 +15,7 @@ done
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(jump shell zsh)"
+eval "$(thefuck --alias)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
