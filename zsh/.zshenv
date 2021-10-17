@@ -12,6 +12,7 @@ export PAGER="/usr/bin/less"
 # will likely remove them, or remove the aliases, since I am using jump
 
 export DOCS="$HOME/Documents"
+export DEV="$DOCS/dev" 
 export DESK="$HOME/Desktop"
 
 export CACHE="$HOME/.cache"
@@ -40,9 +41,9 @@ export UNI="${(q)ONEDRIVE}/uni"
 export ONEDRIVE="$HOME/OneDrive - Università degli Studi di Milano"
 
 # coding directories
-export PY_PROJS="$GDRIVE_UNI/python-projects"
-export R_PROJS="$GDRIVE_UNI/r-projects"
-export JULIA_PROJS="$GDRIVE_UNI/julia-projects"
+export PY_PROJS="$DEV/python-projects"
+export R_PROJS="$DEV/r-projects"
+export JULIA_PROJS="$DEV/julia-projects"
 export COLAB="$GDRIVE_UNI/Colab Notebooks"
 
 # +-------------+
