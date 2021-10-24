@@ -14,7 +14,10 @@ jupyter
 iterm2/AppSupport
 karabiner/*
 !karabiner/karabiner.json
-wip
+
+# just history
+pgcli/*
+!pgcli/config
 
 # nvim
 nvim/*
@@ -23,5 +26,6 @@ nvim/*
 # pointless dirs
 zsh/*
 !zsh/.zsh
+
 # this is for netlify
 configstore 
