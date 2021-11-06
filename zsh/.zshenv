@@ -49,7 +49,7 @@ export COLAB="$GDRIVE_UNI/Colab Notebooks"
 # +-------------+
 # | config dirs |
 # +-------------+
- 
+
 # nvim
 # see: https://manpages.debian.org/testing/neovim-runtime/nvim.1.en.html
 export MYVIMRC="$CONFIG/nvim/init.vim"
@@ -99,6 +99,17 @@ export PGDATA="/usr/local/var/postgres"
 export PATH="$MYBINS:$PATH"
 # add jetbrains path to scripts
 export PATH="$PATH:$HOME/.local/jetbrains"
+
+# # +----------------+
+# # | R and C++ mess |
+# # +----------------+
+
+# # For compilers to find icu4c you may need to set:
+# export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+# export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+
+# # For pkg-config to find icu4c you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 
 # +-----------------+
 # | other zsh stuff |
