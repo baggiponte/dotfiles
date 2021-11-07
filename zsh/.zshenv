@@ -33,10 +33,6 @@ export MYBINS="$HOME/.local/scripts"
 
 # using parameter substitution is necessary to escape special characters and have it behave as expected
 # ${(q)} is typical to zsh, bash works differently
-export GDRIVE_UNI="$HOME/lucabaggi.uni@gmail.com - Google Drive/My Drive"
-export GDRIVE_1997="$HOME/lucabaggi1997@gmail.com - Google Drive/My Drive"
-
-# uni
 export UNI="${(q)ONEDRIVE}/uni"
 export ONEDRIVE="$HOME/OneDrive - Università degli Studi di Milano"
 
@@ -44,7 +40,6 @@ export ONEDRIVE="$HOME/OneDrive - Università degli Studi di Milano"
 export PY_PROJS="$DEV/python-projects"
 export R_PROJS="$DEV/r-projects"
 export JULIA_PROJS="$DEV/julia-projects"
-export COLAB="$GDRIVE_UNI/Colab Notebooks"
 
 # +-------------+
 # | config dirs |

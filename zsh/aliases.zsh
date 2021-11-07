@@ -12,16 +12,6 @@
     alias ...="cd ../../"
     alias path='echo -e ${PATH//:/\\n}'
 
-# cd laziness
-
-    # for cloud storage
-    # using parameter substitution is necessary to escape special characters and have it behave as expected
-    # ${(q)} is typical to zsh, bash works differently
-    alias onedrive="cd ${(q)ONEDRIVE}"
-    alias gdrive="cd ${(q)GDRIVE_UNI}"
-    alias cduni="cd $UNI"
-    alias colab="cd ${(q)COLAB}"
-
 # homebrew
 
     alias b=brew
@@ -50,9 +40,6 @@
     alias n="/usr/local/bin/nvim"
     alias nrc="n ${MYVIMRC}"
 
-    alias jn="jupyter-notebook"
-    alias jl="jupyter-lab"
-
 # exa
 
     alias ls="exa --group-directories-first --icons"
@@ -63,6 +50,3 @@
 # postgres 
 
     alias pgadmin="open -a pgAdmin\ 4"
-    alias pgstart="pg_ctl start"
-    alias pgstatus="pg_ctl status"
-    alias pgstop="pg_ctl stop"

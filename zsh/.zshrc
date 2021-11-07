@@ -118,5 +118,6 @@ autoload -Uz compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 # completions for pipx
+# currently NOT working
 autoload -U bashcompinit && bashcompinit
 eval "$(register-python-argcomplete pipx)"
