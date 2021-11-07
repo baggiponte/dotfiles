@@ -42,7 +42,7 @@
 
 # exa
 
-    alias ls="exa --group-directories-first --icons"
+    alias ls="exa --group-directories-first --icons --ignore-glob .DS_Store"
     alias l="ls --all"
 
     alias ll="l --long --git"
