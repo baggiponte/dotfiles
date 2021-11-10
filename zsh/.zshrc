@@ -12,29 +12,33 @@ done
 # +---------------+
 
 [ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 eval "$(jump shell zsh)"
 eval "$(thefuck --alias)"
 
+_CONDA_INIT_DIR="$(brew --caskroom)/miniconda/base"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/luca/.pyenv/versions/miniconda3-latest/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$("$_CONDA_INIT_DIR/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/luca/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh" ]; then
-        . "/Users/luca/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"
+    if [ -f "$_CONDA_INIT_DIR/etc/profile.d/conda.sh" ]; then
+        . "$_CONDA_INIT_DIR/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/luca/.pyenv/versions/miniconda3-latest/bin:$PATH"
+        export PATH="$_CONDA_INIT_DIR/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/Users/luca/.pyenv/versions/miniconda3-latest/etc/profile.d/mamba.sh" ]; then
-    . "/Users/luca/.pyenv/versions/miniconda3-latest/etc/profile.d/mamba.sh"
+if [ -f "$_CONDA_INIT_DIR/etc/profile.d/mamba.sh" ]; then
+    . "$_CONDA_INIT_DIR/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
+
+# activate the jupyter environment for jupyterlab
+# never install stuff in the base environment! (just mamba)
+mamba activate jupyter
 
 # +---------+
 # | plugins |

@@ -68,7 +68,7 @@ export KAGGLE_CONFIG_DIR="$CONFIG/kaggle"
 source "$HOME/.secrets/kaggle" # username and key
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
+# export PYENV_ROOT="$HOME/.pyenv"
 
 # pipx
 export PIPX_HOME="$HOME/.local/pipx"
@@ -76,7 +76,7 @@ export PIPX_BIN_DIR="$HOME/.local/bin"
 export PATH="$PATH:$PIPX_BIN_DIR"
 
 # conda
-export CONDA_ROOT="$PYENV_ROOT/versions/miniconda3-latest"
+export CONDA_ROOT="$(brew --caskroom)/miniconda/base"
 export CONDA_PKGS_DIR="$CONDA_ROOT/pkgs"
 export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
 
