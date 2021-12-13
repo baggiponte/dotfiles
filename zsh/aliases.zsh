@@ -11,6 +11,7 @@
     # alias ..="cd .." # not needed if setopt autocd
     alias ...="cd ../../"
     alias path='echo -e ${PATH//:/\\n}'
+    alias fpath='echo ${fpath} | tr " " "\n"'
 
 # homebrew
 

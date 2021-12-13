@@ -91,6 +91,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'vim-pandoc/vim-pandoc-syntax'    " Pandoc syntax
 
 "Language Support
+    Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'         " Markdown support
     Plug 'mzlogin/vim-markdown-toc'        " Markdown TOC builder
     Plug 'cespare/vim-toml'                " TOML support

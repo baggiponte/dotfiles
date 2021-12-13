@@ -15,6 +15,20 @@ done
 eval "$(jump shell zsh)"
 eval "$(thefuck --alias)"
 
+# +--------------+
+# | Python & PDM |
+# +--------------+
+
+if [ -n "$PYTHONPATH" ]; then
+    export PYTHONPATH='/Users/luca/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/pep582':$PYTHONPATH
+else
+    export PYTHONPATH='/Users/luca/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/pep582'
+fi
+
+# +---------------+
+# | Conda & Mamba |
+# +---------------+
+
 _CONDA_INIT_DIR="$(brew --caskroom)/miniconda/base"
 
 # >>> conda initialize >>>
@@ -123,5 +137,5 @@ _comp_options+=(globdots)		# Include hidden files.
 
 # completions for pipx
 # currently NOT working
-autoload -U bashcompinit && bashcompinit
-eval "$(register-python-argcomplete pipx)"
+# autoload -U bashcompinit && bashcompinit
+# eval "$(register-python-argcomplete pipx)"
