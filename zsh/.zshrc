@@ -15,6 +15,9 @@ done
 eval "$(jump shell zsh)"
 eval "$(thefuck --alias)"
 
+# pyenv is used in combination with PDM
+eval "$(pyenv init -)"
+
 # +--------------+
 # | Python & PDM |
 # +--------------+
