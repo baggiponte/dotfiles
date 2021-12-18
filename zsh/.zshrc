@@ -53,10 +53,6 @@ if [ -f "$_CONDA_INIT_DIR/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
-# activate the jupyter environment for jupyterlab
-# never install stuff in the base environment! (just mamba)
-mamba activate jupyter
-
 # +---------+
 # | plugins |
 # +---------+
