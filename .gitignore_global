@@ -1,6 +1,9 @@
-# +--------------+
-# | gitignore.io | 
-# +--------------+ 
+# +----------------+
+# | manually added | 
+# +----------------+ 
+
+# pycharm
+.idea
 
 # jupyterlab-lsp
 .virtual_documents
