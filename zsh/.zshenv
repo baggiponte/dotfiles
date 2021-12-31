@@ -5,18 +5,19 @@
 export EDITOR="/usr/local/bin/nvim"
 export PAGER="/usr/bin/less"
 
+export CACHE="$HOME/.cache"
+export CONFIG="$HOME/.config"
+export MYBINS="$HOME/.local/scripts"
+
 # +--------------------------------+
 # | environmental variables for cd | 
 # +--------------------------------+
 
 # unneded since I am using jump
+
 # export DOCS="$HOME/Documents"
 # export DEV="$DOCS/dev" 
 # export DESK="$HOME/Desktop"
-
-# export CACHE="$HOME/.cache"
-# export CONFIG="$HOME/.config"
-# export MYBINS="$HOME/.local/scripts"
 
 # export PY_PROJS="$DEV/python-projects"
 # export R_PROJS="$DEV/r-projects"
