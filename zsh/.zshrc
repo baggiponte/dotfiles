@@ -101,9 +101,7 @@ setopt completeinword
 # | zsh completions |
 # +-----------------+
 
-# reference:
-# https://thevaluable.dev/zsh-completion-guide-examples/
-
+# see https://thevaluable.dev/zsh-completion-guide-examples/
 zmodload zsh/complist
 
 # enable completion menu
@@ -131,4 +129,5 @@ prompt pure
 autoload -Uz compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
+# autoload -Uz bashcompinit && bashcompinit
 # eval "$(register-python-argcomplete pipx)"
