@@ -1,18 +1,21 @@
 # Aliases
 
-# list dirs
-    alias d='dirs -v'
+# hashes to cd faster into dirs without defining aliases
+# see https://www.arp242.net/zshrc.html
+
+    hash -d julia=$HOME/Documents/dev/julia-projects
+    hash -d python=$HOME/Documents/dev/python-projects
+    hash -d R=$HOME/Documents/dev/r-projects
 
 # exec $SHELL but faster
     alias e="exec $SHELL"
 
 # utilities
 
-    # alias ..="cd .." # not needed if setopt autocd
     alias ...="cd ../../"
     alias path='echo -e ${PATH//:/\\n}'
     alias fpath='echo ${fpath} | tr " " "\n"'
-
+    alias td='echo $(date +%Y-%m-%d)'
 # homebrew
 
     alias b=brew
@@ -22,8 +25,6 @@
     alias bu="b uninstall"
     alias buc="bu --cask"
 
-    alias bug="b upgrade --greedy"
-
     alias bcs="b cleanup -s" # scrub the cache
 
     alias bl="b list"
@@ -31,15 +32,15 @@
     alias blc="bl --cask"
     
     alias bd="b doctor"
-    alias bo="b outdated"
 
 # open programs faster
 
     alias text="open -a TextEdit"
     alias rstudio="open -a RStudio"
+    alias pgadmin="open -a pgAdmin\ 4"
     
     alias n="/usr/local/bin/nvim"
-    alias nrc="n ${MYVIMRC}"
+    alias nrc="n $MYVIMRC"
 
 # exa
 
@@ -47,7 +48,3 @@
     alias l="ls --all"
 
     alias ll="l --long --git"
-
-# postgres 
-
-    alias pgadmin="open -a pgAdmin\ 4"

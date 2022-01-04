@@ -54,14 +54,17 @@ export PIPX_HOME="$HOME/.local/pipx"
 export PIPX_BIN_DIR="$HOME/.local/bin"
 export PATH="$PATH:$PIPX_BIN_DIR"
 
-# # conda
-# export CONDA_ROOT="$(brew --caskroom)/miniconda/base"
-# export CONDA_PKGS_DIR="$CONDA_ROOT/pkgs"
-# export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
-# 
-# # CONDA_ROOT is the path for your `base` conda install.
-# # CONDA_PREFIX is the path to the current active environment.
-# # https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
+#pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+
+# conda
+export CONDA_ROOT="$(brew --caskroom)/miniconda/base"
+export CONDA_PKGS_DIR="$CONDA_ROOT/pkgs"
+export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
+
+# CONDA_ROOT is the path for your `base` conda install.
+# CONDA_PREFIX is the path to the current active environment.
+# https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
 
 # postgresql
 export PGDATA="/usr/local/var/postgres"

@@ -129,7 +129,6 @@ nnoremap <leader>u :UndoTreeShow<CR>
 
 " to save more quickly
 nnoremap <leader>w :w<CR>
-nnoremap <leader>W :wq<CR>
 
 " to source the file more quickly
 nnoremap <leader>s :source %<CR> 
