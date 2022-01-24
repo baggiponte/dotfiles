@@ -6,6 +6,7 @@
     hash -d julia=$HOME/Documents/dev/julia-projects
     hash -d python=$HOME/Documents/dev/python-projects
     hash -d R=$HOME/Documents/dev/r-projects
+    hash -d oai=$HOME/Documents/dev/oai
 
 # exec $SHELL but faster
     alias e="exec $SHELL"
@@ -16,6 +17,7 @@
     alias path='echo -e ${PATH//:/\\n}'
     alias fpath='echo ${fpath} | tr " " "\n"'
     alias td='echo $(date +%Y-%m-%d)'
+
 # homebrew
 
     alias b=brew

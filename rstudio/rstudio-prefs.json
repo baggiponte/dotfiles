@@ -9,7 +9,7 @@
     "remove_history_duplicates": true,
     "syntax_color_console": true,
     "global_theme": "alternate",
-    "editor_theme": "Kr Theme",
+    "editor_theme": "Material",
     "posix_terminal_shell": "custom",
     "jobs_tab_visibility": "shown",
     "custom_shell_command": "/usr/local/bin/zsh",
@@ -56,9 +56,11 @@
     "use_tinytex": true,
     "save_workspace": "never",
     "load_workspace": false,
-    "python_type": "system",
-    "python_version": "3.9.6",
-    "python_path": "~/.pyenv/versions/3.9.6/bin/python",
     "graphics_backend": "ragg",
-    "source_with_echo": true
+    "source_with_echo": true,
+    "auto_detect_indentation": true,
+    "insert_native_pipe_operator": true,
+    "tab_multiline_completion": true,
+    "default_encoding": "UTF-8",
+    "editor_keybindings": "vim"
 }

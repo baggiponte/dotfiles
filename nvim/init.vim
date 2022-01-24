@@ -64,6 +64,8 @@ set linebreak           " Have lines wrap instead of continue off-screen
 "==== PLUGINS ====
 "=================
 
+"using vim-plug: https://github.com/junegunn/vim-plug
+
 call plug#begin('~/.config/nvim/plugged')
 
 " Color scheme
@@ -83,17 +85,16 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'neovim/nvim-lspconfig'
 
 "Syntax
-    Plug 'tpope/vim-surround'             " Surround with parentheses & co
+    Plug 'tpope/vim-surround'              " Surround with parentheses & co
     Plug 'mechatroner/rainbow_csv'         " CSV color coding
     Plug 'ap/vim-css-color'                " CSS colors
-    Plug 'frazrepo/vim-rainbow'                " Rainbow parentheses
+    Plug 'frazrepo/vim-rainbow'            " Rainbow parentheses
     Plug 'vim-pandoc/vim-pandoc'           " Pandoc support
     Plug 'vim-pandoc/vim-pandoc-syntax'    " Pandoc syntax
 
 "Language Support
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'         " Markdown support
-    Plug 'mzlogin/vim-markdown-toc'        " Markdown TOC builder
     Plug 'cespare/vim-toml'                " TOML support
     Plug 'stephpy/vim-yaml'                " YAML support
     Plug 'elzr/vim-json'                   " Better JSON support
@@ -103,14 +104,26 @@ call plug#begin('~/.config/nvim/plugged')
 
 call plug#end()
 
+"==== VIM MARKDOWN CONFIG ====
+
+"enable striketrough
+let g:vim_markdown_strikethrough = 1
+"indent for new list items set to 2 (instead of 4)
+let g:vim_markdown_new_list_item_indent = 2
+
+"do not conceal codeblocks
+let g:vim_markdown_conceal_code_blocks = 0
+"enables dollarmath
+let g:vim_markdown_math = 1
+
+"frontmatters
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_toml_frontmatter = 1 "requires vim-toml
+let g:vim_markdown_json_frontmatter = 1 "requires vim-json
+
 "==== CHANGE COLORSCHEME ====
 
-"let g:gruvbox_contrast_dark = 'hard'
-
 colorscheme gruvbox
-
-"set background=dark 
-" for setting a darker background (different than the terminal's default) 
 
 "==== LSP CONFIG ====
 
@@ -152,9 +165,9 @@ map L $
 " 'Q' in normal mode enters Ex mode. You almost never want this.
 nmap Q <Nop>
 
-" ----------------------
-" Window movements
-" ----------------------
+" ========================
+" === Window movements ===
+" ========================
 
 " open new split panes to right and bottom, which feels more natural
 set splitbelow
