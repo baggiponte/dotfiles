@@ -12,15 +12,16 @@ done
 # +---------------+
 
 [ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
-eval "$(jump shell zsh)"
-eval "$(thefuck --alias)"
 
-# pyenv is used in combination with PDM
-eval "$(pyenv init -)"
+command -v jump > /dev/null && eval "$(jump shell zsh)"
+command -v thefuck > /dev/null && eval "$(thefuck --alias)"
 
 # +--------------+
 # | Python & PDM |
 # +--------------+
+
+command -v pyenv > /dev/null && eval "$(pyenv init -)"
+command -v pyenv-virtualenv > /dev/null && eval "$(pyenv virtualenv-init -)"
 
 if [ -n "$PYTHONPATH" ]; then
     export PYTHONPATH='/Users/luca/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/pep582':$PYTHONPATH

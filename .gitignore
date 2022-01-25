@@ -21,6 +21,7 @@ pgcli/*
 
 # nvim
 nvim/*
+!nvim/UltiSnips
 !nvim/init.vim
 
 # pointless dirs

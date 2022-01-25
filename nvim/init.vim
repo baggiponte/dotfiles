@@ -32,7 +32,7 @@ set noerrorbells
 
 set noswapfile 
 set nobackup
-set undodir=~/.vim/undodir
+set undodir=$CONFIG/nvim/undodir
 set undofile
 
 set clipboard+=unnamedplus
@@ -74,6 +74,7 @@ call plug#begin('~/.config/nvim/plugged')
 "Telescope
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-telescope/telescope.nvim'
     "Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
@@ -105,7 +106,16 @@ call plug#begin('~/.config/nvim/plugged')
 
 "Snippets manager
     Plug 'sirver/ultisnips'
+
 call plug#end()
+
+"==========================
+"==== PYTHON ====
+"==========================
+
+"see :help provider-python
+let g:python3_host_prog = '/Users/luca/.pyenv/versions/3.9.9/envs/py3nvim/bin/python'   "path for python virtualenv with pynvim installed 
+let g:loaded_python_provider = 0                                                        "disable python2    
 
 "==========================
 "==== SNIPPETS CONFIGS ====
@@ -116,18 +126,7 @@ call plug#end()
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-"this needs to be copied to ~/.vim/UltiSnips
-"snippet today "Date"
-"`date +%F`
-"endsnippet
-"
-"snippet box "Box"
-"`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
-"│ $1 │
-"`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
-"$0
-"endsnippet
+let g:UltiSnipsSnippetDirectories=[$CONFIG.'/nvim/UltiSnips']       "this is where snippets will be stored
 
 "=============================
 "==== VIM MARKDOWN CONFIG ====
