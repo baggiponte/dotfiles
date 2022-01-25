@@ -117,16 +117,17 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
-snippet today "Date"
-`date +%F`
-endsnippet
-
-snippet box "Box"
-`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
-│ $1 │
-`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
-$0
-endsnippet
+"this needs to be copied to ~/.vim/UltiSnips
+"snippet today "Date"
+"`date +%F`
+"endsnippet
+"
+"snippet box "Box"
+"`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
+"│ $1 │
+"`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
+"$0
+"endsnippet
 
 "=============================
 "==== VIM MARKDOWN CONFIG ====
