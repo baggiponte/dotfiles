@@ -68,6 +68,9 @@ set linebreak                       "have lines wrap instead of continue off-scr
 
 call plug#begin('~/.config/nvim/plugged')
 
+"git
+    Plug 'tpope/vim-fugitive'
+
 "Color scheme
     Plug 'gruvbox-community/gruvbox'
 
@@ -76,7 +79,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-telescope/telescope.nvim'
-    "Plug 'nvim-telescope/telescope-fzy-native.nvim'
+    Plug 'nvim-telescope/telescope-fzy-native.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 "Icons for some plugins
     Plug 'kyazdani42/nvim-web-devicons'
@@ -90,9 +94,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mechatroner/rainbow_csv'                  "csv color coding
     Plug 'ap/vim-css-color'                         "css colors
     Plug 'frazrepo/vim-rainbow'                     "rainbow parentheses
-    "Plug 'vim-pandoc/vim-pandoc'                    "pandoc support,
-    "conflicts with vim-markdown
-    "Plug 'vim-pandoc/vim-pandoc-syntax'             "pandoc syntax
+
+"Vim Pandoc: conflicts with vim-markdown
+    "Plug 'vim-pandoc/vim-pandoc'    
+    "Plug 'vim-pandoc/vim-pandoc-syntax'
 
 "Language Support
     Plug 'godlygeek/tabular'                        "needed for vim-markdown
@@ -109,13 +114,29 @@ call plug#begin('~/.config/nvim/plugged')
 
 call plug#end()
 
-"==========================
+"================
 "==== PYTHON ====
-"==========================
+"================
 
 "see :help provider-python
 let g:python3_host_prog = '/Users/luca/.pyenv/versions/3.9.9/envs/py3nvim/bin/python'   "path for python virtualenv with pynvim installed 
 let g:loaded_python_provider = 0                                                        "disable python2    
+
+"===================
+"==== TELESCOPE ====
+"===================
+
+"enable fzy telescope extension
+lua << EOF
+-- require('telescope').load_extension('fzf')
+require('telescope').load_extension('fzy_native')
+EOF
+
+"using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "==========================
 "==== SNIPPETS CONFIGS ====
