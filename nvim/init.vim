@@ -82,12 +82,21 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-telescope/telescope-fzy-native.nvim'
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
+"Snippets manager
+    Plug 'sirver/ultisnips'
+
 "Icons for some plugins
     Plug 'kyazdani42/nvim-web-devicons'
 
-"Other tools
+"LSP, autocompletion and other
     Plug 'mbbill/undotree'
     Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 "Syntax
     Plug 'tpope/vim-surround'                       "surround with parentheses & co
@@ -109,10 +118,13 @@ call plug#begin('~/.config/nvim/plugged')
 "Python autoformatter
     Plug 'dense-analysis/ale'
 
-"Snippets manager
-    Plug 'sirver/ultisnips'
-
 call plug#end()
+
+"=====================
+"==== COLORSCHEME ====
+"=====================
+
+colorscheme gruvbox
 
 "================
 "==== PYTHON ====
@@ -121,6 +133,80 @@ call plug#end()
 "see :help provider-python
 let g:python3_host_prog = '/Users/luca/.pyenv/versions/3.9.9/envs/py3nvim/bin/python'   "path for python virtualenv with pynvim installed 
 let g:loaded_python_provider = 0                                                        "disable python2    
+
+"====================
+"==== LSP CONFIG ====
+"====================
+
+lua << EOF
+require'lspconfig'.pyright.setup{}
+EOF
+
+"========================
+"==== AUTOCOMPLETION ====
+"========================
+
+set completeopt=menu,menuone,noselect
+
+lua <<EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      -- { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig')['pyright'].setup {
+    capabilities = capabilities
+  }
+EOF
 
 "===================
 "==== TELESCOPE ====
@@ -157,20 +243,6 @@ set conceallevel=2
 let g:vim_markdown_strikethrough = 1            "enable striketrough
 let g:vim_markdown_new_list_item_indent = 2     "indent for new list items set to 2 (instead of 4)
 let g:vim_markdown_conceal_code_blocks = 0      "do not conceal code blocks' fences
-
-"=====================
-"==== COLORSCHEME ====
-"=====================
-
-colorscheme gruvbox
-
-"====================
-"==== LSP CONFIG ====
-"====================
-
-lua << EOF
-require'lspconfig'.pyright.setup{}
-EOF
 
 "====================
 "==== REMAPPINGS ====
