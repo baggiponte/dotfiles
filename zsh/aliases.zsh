@@ -18,6 +18,9 @@
     alias fpath='echo ${fpath} | tr " " "\n"'
     alias td='echo $(date +%Y-%m-%d)'
 
+# mamba
+    alias mamba='mamba --no-banner' # avoid banner when executing commands
+
 # homebrew
 
     alias b=brew
