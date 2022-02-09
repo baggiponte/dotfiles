@@ -130,5 +130,6 @@ prompt pure
 autoload -Uz compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# autoload -Uz bashcompinit && bashcompinit
-# eval "$(register-python-argcomplete pipx)"
+# completion for pipx
+autoload -U bashcompinit && bashcompinit
+eval "$(register-python-argcomplete pipx)"

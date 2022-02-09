@@ -16,6 +16,27 @@
                 },
                 "rules": [
                     {
+                        "description": "Remap the Right Command key to the Hyper Key (⌃ ⌥ ⇧ ⌘)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_command"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Remap ESC to Option-ESC in Safari only",
                         "manipulators": [
                             {
@@ -28,7 +49,12 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "escape"
+                                    "key_code": "escape",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
                                 },
                                 "to": [
                                     {
