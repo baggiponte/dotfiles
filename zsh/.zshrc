@@ -7,26 +7,13 @@ for FILE in "$ZDOTDIR"/*.zsh; do
     . "$FILE"
 done
 
-# +---------------+
-# | init binaries |
-# +---------------+
-
-[ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
-
-command -v jump > /dev/null && eval "$(jump shell zsh)"
-command -v thefuck > /dev/null && eval "$(thefuck --alias)"
-
 # +--------------+
 # | Python & PDM |
 # +--------------+
-
-command -v pyenv > /dev/null && eval "$(pyenv init -)"
-command -v pyenv-virtualenv > /dev/null && eval "$(pyenv virtualenv-init -)"
-
 if [ -n "$PYTHONPATH" ]; then
-    export PYTHONPATH='/Users/luca/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/pep582':$PYTHONPATH
+    export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582":$PYTHONPATH
 else
-    export PYTHONPATH='/Users/luca/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/pep582'
+    export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582"
 fi
 
 # +---------------+
@@ -133,3 +120,6 @@ _comp_options+=(globdots)		# Include hidden files.
 # completion for pipx
 autoload -U bashcompinit && bashcompinit
 eval "$(register-python-argcomplete pipx)"
+
+# completion for pip
+eval "$(python -m pip completion --zsh)"
