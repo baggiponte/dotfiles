@@ -50,3 +50,6 @@
     alias l="ls --all"
 
     alias ll="l --long --git"
+
+# bat
+    alias bat="bat --plain"
