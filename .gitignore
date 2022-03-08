@@ -1,32 +1,27 @@
-# personal 
-kaggle
-.gitconfig
+.zim
+bat
+bpytop
+broot
+configstore
 gh
-
-# untouched
-bat/*
-bpytop/*
-broot/*
-.emacs
-
-# not to export
-jupyter
+htop
 iterm2/AppSupport
-karabiner/*
+jupyter
+kaggle
+karabiner
 !karabiner/karabiner.json
-
-# just history
-pgcli/*
-!pgcli/config
-
-# nvim
-nvim/*
+lf
+matplotlib
+neofetch
+nvim
 !nvim/UltiSnips
 !nvim/init.vim
-
-# pointless dirs
-zsh/*
-!zsh/.zsh
-
-# this is for netlify
-configstore 
+pgcli
+r
+rstudio
+zsh/.zcomp*
+zsh/.zsh_history
+.emacs
+.gitconfig
+.gitignore_global
+.ideavimrc

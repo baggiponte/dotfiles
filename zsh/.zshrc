@@ -1,28 +1,26 @@
 # +-----------------------+
-# | aliases and functions |
+# | ALIASES AND FUNCTIONS |
 # +-----------------------+
 
-for FILE in "$ZDOTDIR"/*.zsh; do
-    # `.` executes the code it reads from a file
-    . "$FILE"
-done
+source $ZDOTDIR/aliases.zsh
 
-# +--------------+
-# | Python & PDM |
-# +--------------+
-if [ -n "$PYTHONPATH" ]; then
-    export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582":$PYTHONPATH
-else
-    export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582"
-fi
+# # +--------------+
+# # | PYTHON & PDM |
+# # +--------------+
+#
+# if [ -n "$PYTHONPATH" ]; then
+#     export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582":$PYTHONPATH
+# else
+#     export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582"
+# fi
 
 # +---------------+
-# | Conda & Mamba |
+# | CONDA & MAMBA |
 # +---------------+
 
 _CONDA_INIT_DIR="$(brew --caskroom)/miniconda/base"
 
-# !! Contents within this block are managed by 'conda init' !!
+# the following lines are managed by conda: do not edit!
 __conda_setup="$("$_CONDA_INIT_DIR/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -35,65 +33,102 @@ else
 fi
 unset __conda_setup
 
+# setup mamba
 if [ -f "$_CONDA_INIT_DIR/etc/profile.d/mamba.sh" ]; then
     . "$_CONDA_INIT_DIR/etc/profile.d/mamba.sh"
 fi
  
-# +---------+
-# | plugins |
-# +---------+
-
-source "/usr/local/opt/zinit/zinit.zsh"
-
-# load plugins
-# see here: https://github.com/zdharma/fast-syntax-highlighting/
-zinit wait lucid for \
-    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-        zdharma/fast-syntax-highlighting \
-    blockf \
-        zsh-users/zsh-completions \
-    atload"!_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions
-
-# prompt
-zplugin ice pick"async.zsh" src"pure.zsh" \
-    atclone"ln -s ./pure.zsh prompt_pure_setup" atload"fpath+=(\$PWD)"
-zplugin light sindresorhus/pure
-
-zinit light ael-code/zsh-colored-man-pages
-zinit light supercrabtree/k
-zinit light b4b4r07/enhancd
-
 # +-------------+
-# | zsh setopts |
+# | ZSH SETOPTS |
 # +-------------+
 
 # references:
 # https://scriptingosx.com/2019/06/moving-to-zsh-part-3-shell-options/
 # https://linux.die.net/man/1/zshoptions
+# https://github.com/Phantas0s/.dotfiles/blob/master/zsh/zshrc
 
-# cd without writing cd and cd into variables
-setopt autocd cdablevars
-# automatically push into stack; do not push duplicates
-setopt autopushd pushdignoredups
-# don't include duplicates in history, don't add to hist if preceeded by space
-setopt histignoredups histignorespace
-# case insensitive globbing
-setopt nocaseglob
-# lets files beginning with a . be matched without explicitly specifying the dot
-setopt globdots
-# complete from both ends
-setopt completeinword
+setopt correct                  # suggest a possible fix for a typo 
 
-# +-----------------+
-# | zsh completions |
-# +-----------------+
+setopt complete_in_word         # tab completion works from both sides
+setopt extended_glob            # use extended globbing syntax.
+setopt no_case_glob             # case insentive globbing
+setopt glob_dots                # match dotfiles without specifying the dot
+
+setopt auto_cd                  # go to folder path without using cd.
+
+setopt auto_pushd               # push the old directory onto the stack on cd.
+setopt pushd_ignore_dups        # do not store duplicates in the stack.
+setopt pushd_silent             # do not print the directory stack after pushd or popd.
+
+setopt correct                  # spelling correction
+setopt cdable_vars              # change directory to a path stored in a variable.
+
+setopt extended_history         # write the history file in the ':start:elapsed;command' format.
+setopt share_history            # share history between all sessions.
+setopt hist_expire_dups_first   # expire a duplicate event first when trimming history.
+setopt hist_ignore_dups         # do not record an event that was just recorded again.
+setopt hist_ignore_all_dups     # delete an old recorded event if a new event is a duplicate.
+setopt hist_find_no_dups        # do not display a previously found event.
+setopt hist_ignore_space        # do not record an event starting with a space.
+setopt hist_save_no_dups        # do not write a duplicate event to the history file.
+setopt hist_verify              # do not execute immediately upon history expansion.
+setopt hist_reduce_blanks       # remove blank lines
+
+# +-----------+
+# | VI KEYMAP |
+# +-----------+
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# change cursor
+source "$ZDOTDIR/plugin/cursor_mode"
+
+# add vi text-objects for brackets and quotes, i.e. can be used with `a` (around) and `i` (inside)
+autoload -Uz select-bracketed select-quoted
+zle -N select-quoted
+zle -N select-bracketed
+for km in viopp visual; do
+  bindkey -M $km -- '-' vi-up-line-or-history
+  for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}; do
+    bindkey -M $km $c select-quoted
+  done
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $km $c select-bracketed
+  done
+done
+
+# emulation of vim-surround
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+bindkey -M vicmd cs change-surround
+bindkey -M vicmd ds delete-surround
+bindkey -M vicmd ys add-surround
+bindkey -M visual S add-surround
+
+# +---------+
+# | OPTIONS |
+# +---------+
 
 # see https://thevaluable.dev/zsh-completion-guide-examples/
 zmodload zsh/complist
 
+# use vim keys to navigate the menu selection
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+# type of completion, e.g. suggests correction if there's a typo
+zstyle ':completion:*' completer _extensions _complete _approximate
 # enable completion menu
 zstyle ':completion:*' menu select
+
+# syntax highlight for file completion
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # use cache for completion
 zstyle ':completion:*' use-cache on
@@ -109,17 +144,47 @@ zstyle ':completion:*' group-name ''
 # case insensitivity and tab expansion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# load prompt
-autoload -Uz promptinit; promptinit
-prompt pure
+# +------------------+
+# | PLUGINS WITH ZIM |
+# +------------------+
 
-# initialise the completion system 
-autoload -Uz compinit && compinit
-_comp_options+=(globdots)		# Include hidden files.
+# download zimfw plugin manager if missing
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
 
-# completion for pipx
-autoload -U bashcompinit && bashcompinit
-eval "$(register-python-argcomplete pipx)"
+# install missing modules, and update ${zim_home}/init.zsh if missing or outdated
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
 
-# completion for pip
-eval "$(python -m pip completion --zsh)"
+# initialize modules
+source ${ZIM_HOME}/init.zsh
+
+# +----------+
+# | COMPINIT |
+# +----------+
+
+# autoload -Uz promptinit; promptinit
+# prompt pure
+
+# do this as last option, after loading modules with zmodload etc
+# not needed as we are using zim
+# autoload -Uz compinit && compinit
+autoload -Uz bashcompinit && bashcompinit
+
+# +-------------+
+# | COMPLETIONS |
+# +-------------+
+
+[ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
+
+command -v jump > /dev/null && eval "$(jump shell zsh)"                                 # autojump between directories
+command -v thefuck > /dev/null && eval "$(thefuck --alias)"                             # suggests a fix for a command run with a typo
+command -v pyenv > /dev/null && eval "$(pyenv init --path)" && eval "$(pyenv init -)"   # python version manager
+command -v pyenv-virtualenv > /dev/null && eval "$(pyenv virtualenv-init -)"            # python virtualenv manager
+command -v python > /dev/null && eval "$(python -m pip completion --zsh)"               # python package manger
+command -v pipenv > /dev/null && eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"           # python env manager
+command -v pipx > /dev/null && eval "$(register-python-argcomplete pipx)"               # installer for python CLIs
+

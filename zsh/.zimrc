@@ -1,0 +1,5 @@
+zmodule zsh-users/zsh-completions --fpath src
+zmodule completion
+zmodule zdharma-continuum/fast-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+zmodule sindresorhus/pure --source async.zsh --source pure.zsh

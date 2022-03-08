@@ -1,5 +1,5 @@
 # +-------------------+
-# | default variables |
+# | DEFAULT VARIABLES |
 # +-------------------+
 
 export EDITOR="/usr/local/bin/nvim"
@@ -7,14 +7,18 @@ export PAGER="/usr/local/bin/bat --plain"
 
 export CACHE="$HOME/.cache"
 export CONFIG="$HOME/.config"
+export LOCAL_BIN="$HOME/.local/bin"
 export MYBINS="$HOME/.local/scripts"
 
 # +-------------+
-# | config dirs |
+# | CONFIG DIRS |
 # +-------------+
 
 # nvim https://manpages.debian.org/testing/neovim-runtime/nvim.1.en.html
 export MYVIMRC="$CONFIG/nvim/init.vim"
+
+# zsh plugin manager zim: https://github.com/zimfw/zimfw
+export ZIM_HOME="$CONFIG/.zim"
 
 # jupyter
 export JUPYTER_CONFIG_DIR="$CONFIG/jupyter"
@@ -34,13 +38,19 @@ export BAT_THEME="gruvbox-dark"
 export KAGGLE_CONFIG_DIR="$CONFIG/kaggle"
 source "$HOME/.secrets/kaggle.txt" # username and key
 
+# +--------+
+# | PYTHON |
+# +--------+
+
 # pipx
 export PIPX_HOME="$HOME/.local/pipx"
-export PIPX_BIN_DIR="$HOME/.local/bin"
-export PATH="$PATH:$PIPX_BIN_DIR"
+export PIPX_BIN_DIR="$LOCAL_BIN"
 
-#pyenv
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
+
+# pipenv
+export PIPENV_VENV_IN_PROJECT=1
 
 # conda
 export CONDA_ROOT="$(brew --caskroom)/miniconda/base"
@@ -51,19 +61,22 @@ export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
 # CONDA_PREFIX is the path to the current active environment.
 # https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
 
-# postgresql
+# +------------+
+# | POSTGRESQL |
+# +------------+
+
 export PGDATA="/usr/local/var/postgres"
 
-# +------------------+
-# | personal scripts |
-# +------------------+
+# +------+
+# | PATH |
+# +------+
 
-export PATH="$MYBINS:$PATH"
-# add jetbrains path to scripts
 export PATH="$PATH:$HOME/.local/jetbrains"
+export PATH="$LOCAL_BIN:$PATH"
+export PATH="$MYBINS:$PATH"
 
 # # +----------------+
-# # | R and C++ mess |
+# # | R AND C++ MESS |
 # # +----------------+
 
 # # For compilers to find icu4c you may need to set:
@@ -74,7 +87,7 @@ export PATH="$PATH:$HOME/.local/jetbrains"
 # export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 
 # +-----------------+
-# | other zsh stuff |
+# | OTHER ZSH STUFF |
 # +-----------------+
 
 # source colored icons for lf
