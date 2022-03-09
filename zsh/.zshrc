@@ -1,18 +1,25 @@
+# +-------------------------------------------------------------------------+
+# | REFERENCES                                                              |
+# | * https://scriptingosx.com/2019/06/moving-to-zsh-part-3-shell-options/  |
+# | * https://linux.die.net/man/1/zshoptions                                |
+# | * https://thevaluable.dev/zsh-completion-guide-examples/                |
+# +-------------------------------------------------------------------------+
+
 # +-----------------------+
 # | ALIASES AND FUNCTIONS |
 # +-----------------------+
 
 source $ZDOTDIR/aliases.zsh
 
-# # +--------------+
-# # | PYTHON & PDM |
-# # +--------------+
-#
-# if [ -n "$PYTHONPATH" ]; then
-#     export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582":$PYTHONPATH
-# else
-#     export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582"
-# fi
+# +-----+
+# | PDM |
+# +-----+
+
+if [ -n "$PYTHONPATH" ]; then
+    export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582":$PYTHONPATH
+else
+    export PYTHONPATH="$PIPX_HOME/venvs/pdm/lib/python3.10/site-packages/pdm/pep582"
+fi
 
 # +---------------+
 # | CONDA & MAMBA |
@@ -41,11 +48,6 @@ fi
 # +-------------+
 # | ZSH SETOPTS |
 # +-------------+
-
-# references:
-# https://scriptingosx.com/2019/06/moving-to-zsh-part-3-shell-options/
-# https://linux.die.net/man/1/zshoptions
-# https://github.com/Phantas0s/.dotfiles/blob/master/zsh/zshrc
 
 setopt correct                  # suggest a possible fix for a typo 
 
@@ -113,7 +115,6 @@ bindkey -M visual S add-surround
 # | OPTIONS |
 # +---------+
 
-# see https://thevaluable.dev/zsh-completion-guide-examples/
 zmodload zsh/complist
 
 # use vim keys to navigate the menu selection
@@ -166,13 +167,15 @@ source ${ZIM_HOME}/init.zsh
 # | COMPINIT |
 # +----------+
 
-# do this as last option, after loading modules with zmodload etc
+# compinit is to be run last, after loading modules with zmodload etc
 # autoload -Uz compinit && compinit             # not needed as we are using zim
 autoload -Uz bashcompinit && bashcompinit
 
 # +-------------+
 # | COMPLETIONS |
 # +-------------+
+
+# `eval` commands are run **after** compinit
 
 [ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
 

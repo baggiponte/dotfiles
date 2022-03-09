@@ -18,7 +18,7 @@
 
     alias ...="cd ../../"
     alias path='echo -e ${PATH//:/\\n}'
-    alias fpath='echo $fpath | tr " " "\n"'
+    alias fpath='echo ${fpath} | tr " " "\n"'
     alias td='echo $(date +%Y-%m-%d)'
 
 # homebrew
@@ -49,8 +49,9 @@
 
 # exa
 
-    alias ls="exa --group-directories-first --icons --ignore-glob .DS_Store"
+    alias ls="exa --oneline --group-directories-first --icons --ignore-glob .DS_Store"
     alias l="ls --all"
+    alias lig="ls --git-ignore"
 
     alias ll="l --long --git"
 
@@ -79,19 +80,15 @@ f() {
     fi
 }
 
+# pretty print directory tree for git repos
+tree-git() {
+    local level="${1:-"1"}"
+
+    exa --tree --level "$level" --group-directories-first --all --git-ignore --ignore-glob .git
+}
 
 # extract files
 extract() {
-    for file in "$@"
-    do
-        if [ -f $file ]; then
-            ex $file
-        else
-            echo "'$file' is not a valid file"
-        fi
-    done
-}
-
  ex() {
     case $1 in
         *.tar.bz2)  tar xjf $1      ;;
@@ -108,4 +105,15 @@ extract() {
         *.Z)        uncompress $1   ;;
         *)          echo "'$1' cannot be extracted" ;;
     esac
+    }
+
+    for file in "$@"
+    do
+        if [ -f $file ]; then
+            ex $file
+        else
+            echo "'$file' is not a valid file"
+        fi
+    done
 }
+
