@@ -166,12 +166,8 @@ source ${ZIM_HOME}/init.zsh
 # | COMPINIT |
 # +----------+
 
-# autoload -Uz promptinit; promptinit
-# prompt pure
-
 # do this as last option, after loading modules with zmodload etc
-# not needed as we are using zim
-# autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit             # not needed as we are using zim
 autoload -Uz bashcompinit && bashcompinit
 
 # +-------------+
