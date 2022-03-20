@@ -3,7 +3,7 @@
 # +-------------------+
 
 export EDITOR="/usr/local/bin/nvim"
-export PAGER=$EDITOR
+export PAGER="/usr/local/bin/bat --plai"
 
 export CACHE="$HOME/.cache"
 export CONFIG="$HOME/.config"
