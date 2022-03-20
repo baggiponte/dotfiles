@@ -1,0 +1,2 @@
+# see https://cookiecutter.readthedocs.io/en/2.0.2/advanced/user_config.html
+cookiecutters_dir: "$CACHE/cookiecutters/"

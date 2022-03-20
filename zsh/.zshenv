@@ -3,7 +3,7 @@
 # +-------------------+
 
 export EDITOR="/usr/local/bin/nvim"
-export PAGER="/usr/local/bin/bat --plain"
+export PAGER=$EDITOR
 
 export CACHE="$HOME/.cache"
 export CONFIG="$HOME/.config"
@@ -19,6 +19,9 @@ export MYVIMRC="$CONFIG/nvim/init.vim"
 
 # zsh plugin manager zim: https://github.com/zimfw/zimfw
 export ZIM_HOME="$CONFIG/.zim"
+
+# cookiecutter
+export COOKIECUTTER_CONFIG="$CONFIG/.cookiecutterrc.yaml"
 
 # jupyter
 export JUPYTER_CONFIG_DIR="$CONFIG/jupyter"
@@ -49,17 +52,14 @@ export PIPX_BIN_DIR="$LOCAL_BIN"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 
-# pipenv
-export PIPENV_VENV_IN_PROJECT=1
-
-# conda
-export CONDA_ROOT="$(brew --caskroom)/miniconda/base"
-export CONDA_PKGS_DIR="$CONDA_ROOT/pkgs"
-export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
-
-# CONDA_ROOT is the path for your `base` conda install.
-# CONDA_PREFIX is the path to the current active environment.
-# https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
+# # conda
+# export CONDA_ROOT="$(brew --caskroom)/miniconda/base"
+# export CONDA_PKGS_DIR="$CONDA_ROOT/pkgs"
+# export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
+# 
+# # CONDA_ROOT is the path for your `base` conda install.
+# # CONDA_PREFIX is the path to the current active environment.
+# # https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
 
 # +------------+
 # | POSTGRESQL |
@@ -71,9 +71,7 @@ export PGDATA="/usr/local/var/postgres"
 # | PATH |
 # +------+
 
-export PATH="$PATH:$HOME/.local/jetbrains"
-export PATH="$LOCAL_BIN:$PATH"
-export PATH="$MYBINS:$PATH"
+export PATH="$MYBINS:$LOCAL_BIN:$PATH:$HOME/.local/jetbrains"
 
 # # +----------------+
 # # | R AND C++ MESS |
