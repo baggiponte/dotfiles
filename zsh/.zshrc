@@ -177,8 +177,6 @@ autoload -Uz bashcompinit && bashcompinit
 
 # `eval` commands are run **after** compinit
 
-[ -f "$CONFIG/broot/launcher/bash/br" ] && . "$CONFIG/broot/launcher/bash/br"
-
 command -v jump > /dev/null && eval "$(jump shell zsh)"                                 # autojump between directories
 command -v thefuck > /dev/null && eval "$(thefuck --alias)"                             # suggests a fix for a command run with a typo
 command -v pyenv > /dev/null && eval "$(pyenv init --path)" && eval "$(pyenv init -)"   # python version manager
