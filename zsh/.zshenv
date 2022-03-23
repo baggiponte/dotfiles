@@ -21,7 +21,7 @@ export MYVIMRC="$CONFIG/nvim/init.vim"
 export ZIM_HOME="$CONFIG/.zim"
 
 # cookiecutter
-export COOKIECUTTER_CONFIG="$CONFIG/.cookiecutterrc.yaml"
+export COOKIECUTTER_CONFIG="$CONFIG/cookiecutter.yaml"
 
 # jupyter
 export JUPYTER_CONFIG_DIR="$CONFIG/jupyter"
