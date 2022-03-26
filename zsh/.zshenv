@@ -10,6 +10,11 @@ export CONFIG="$HOME/.config"
 export LOCAL_BIN="$HOME/.local/bin"
 export MYBINS="$HOME/.local/scripts"
 
+# export XDG_CONFIG_HOME=$HOME/.config
+# export XDG_CACHE_HOME=$HOME/.cache
+# export XDG_DATA_HOME=$HOME/.local/share
+# export XDG_STATE_HOME=$HOME/.local/state
+
 # +-------------+
 # | CONFIG DIRS |
 # +-------------+
@@ -24,9 +29,13 @@ export ZIM_HOME="$CONFIG/.zim"
 export COOKIECUTTER_CONFIG="$CONFIG/cookiecutter.yaml"
 
 # jupyter
-export JUPYTER_CONFIG_DIR="$CONFIG/jupyter"
-export JUPYTER_WORKSPACES_DIR="$JUPYTER_CONFIG_DIR/lab/workspaces"
-export JUPYTER_DATA_DIR="$HOME/Library/Jupyter"
+# JUPYTER_CONFIG_DIR for config file location
+# JUPYTER_CONFIG_PATH for config file locations
+# JUPYTER_PATH for datafile directory locations
+# JUPYTER_DATA_DIR for data file location
+# JUPYTER_RUNTIME_DIR for runtime file location
+export JUPYTER_CONFIG_DIR="$HOME/.jupyter"
+export JUPYTER_DATA_DIR="$HOME/.local/share/jupyter/"
 export JUPYTER_KERNEL_DIR="$JUPYTER_DATA_DIR/kernels" # user defined kernels
 
 # matplotlib

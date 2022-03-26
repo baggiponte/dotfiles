@@ -1,11 +1,11 @@
 {
     "show_margin": false,
-    "default_project_location": "~/OneDrive - Università degli Studi di Milano/dev/r-projects",
+    "default_project_location": "~/Documents/dev/r-projects",
     "document_author": "Luca Baggi",
     "wrap_tab_navigation": false,
     "reuse_sessions_for_project_links": true,
     "terminal_path": "/Users/luca",
-    "initial_working_directory": "~/OneDrive - Università degli Studi di Milano/dev/r-projects",
+    "initial_working_directory": "~/Documents/dev/r-projects",
     "remove_history_duplicates": true,
     "syntax_color_console": true,
     "global_theme": "alternate",
