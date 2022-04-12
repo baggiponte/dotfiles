@@ -93,9 +93,3 @@ export PATH="$MYBINS:$LOCAL_BIN:$PATH:$HOME/.local/jetbrains"
 # # For pkg-config to find icu4c you may need to set:
 # export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 
-# +-----------------+
-# | OTHER ZSH STUFF |
-# +-----------------+
-
-# source colored icons for lf
-source "$CONFIG/lf/.lf-icons"

@@ -11,6 +11,12 @@
 
 source $ZDOTDIR/aliases.zsh
 
+# +-------+
+# | BROOT |
+# +-------+
+
+source /Users/luca/Library/Application\ Support/org.dystroy.broot/launcher/bash/br
+
 # +-----+
 # | PDM |
 # +-----+
@@ -48,8 +54,6 @@ fi
 # +-------------+
 # | ZSH SETOPTS |
 # +-------------+
-
-setopt correct                  # suggest a possible fix for a typo 
 
 setopt complete_in_word         # tab completion works from both sides
 setopt extended_glob            # use extended globbing syntax.
@@ -185,3 +189,4 @@ command -v python > /dev/null && eval "$(python -m pip completion --zsh)"       
 command -v pipenv > /dev/null && eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"           # python env manager
 command -v pipx > /dev/null && eval "$(register-python-argcomplete pipx)"               # installer for python CLIs
 command -v direnv > /dev/null && eval "$(direnv hook zsh)"                              # load project specific env variables
+
