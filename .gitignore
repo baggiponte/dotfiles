@@ -4,6 +4,7 @@ bpytop
 broot
 configstore
 gh
+github-copilot
 htop
 iterm2/AppSupport
 kaggle
@@ -17,6 +18,7 @@ nvim
 !nvim/init.vim
 pgcli
 r
+raycast
 rstudio
 zsh/.zcomp*
 zsh/.zsh_history

@@ -62,6 +62,20 @@
 # | Functions |
 # +-----------+
 
+# create new kernel for jupyter notebooks
+jupyter-kernel-install () {
+    python -m ipykernel install --user --name "$1" --display-name "$2"
+}
+
+jupyter-kernel-list () {
+    ls $JUPYTER_KERNEL_DIR
+}
+
+jupyter-kernel-rm () {
+    for kernel in "$@":
+        rm "$JUPYTER_KERNEL_DIR/$kernel"
+}
+
 # trash files instead of `rm` them.
 trash () { command mv "$@" ~/.Trash ; }
 
@@ -81,7 +95,7 @@ f() {
 }
 
 # pretty print directory tree for git repos
-tree-git() {
+ls-tree() {
     local level="${1:-"1"}"
 
     exa --tree --level "$level" --group-directories-first --all --git-ignore --ignore-glob .git

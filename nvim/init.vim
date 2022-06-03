@@ -105,8 +105,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'frazrepo/vim-rainbow'                     "rainbow parentheses
 
 "Vim Pandoc: conflicts with vim-markdown
-    "Plug 'vim-pandoc/vim-pandoc'    
+    "Plug 'vim-pandoc/vim-pandoc'
     "Plug 'vim-pandoc/vim-pandoc-syntax'
+    "Plug 'quarto-dev/quarto-vim'
 
 "Language Support
     Plug 'godlygeek/tabular'                        "needed for vim-markdown
@@ -114,6 +115,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'cespare/vim-toml', { 'branch': 'main' }   "TOML support
     Plug 'stephpy/vim-yaml'                         "YAML support
     Plug 'elzr/vim-json'                            "better JSON support
+
+"Zig
+    Plug 'ziglang/zig.vim'
 
 "Python autoformatter
     Plug 'dense-analysis/ale'
@@ -235,8 +239,15 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=[$CONFIG.'/nvim/UltiSnips']       "this is where snippets will be stored
 
+"===================
+"==== vim-pandox ===
+"===================
+
+let g:pandoc#modules#disabled = ["folding", "spell"]
+let g:pandoc#syntax#conceal#use = 0
+
 "=============================
-"==== VIM MARKDOWN CONFIG ====
+"==== vim markdown config ====
 "=============================
 
 set conceallevel=2
