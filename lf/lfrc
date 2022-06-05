@@ -1,0 +1,22 @@
+set shell zsh
+set hidden on
+set icons on
+
+# move current file or selected files to trash folder
+# (also see 'man mv' for backup/overwrite options)
+cmd trash %set -f; mv $fx ~/Bin
+
+# define a custom 'delete' command
+cmd delete ${{
+    set -f
+    printf "$fx\n"
+    printf "delete?[y/n]"
+    read ans
+    [ "$ans" = "y" ] && rm -rf $fx
+}}
+
+# use '<delete>' key for either 'trash' or 'delete' command
+# reminder: <delete> = fn + backspace
+map <delete> trash
+# map <delete> delete
+

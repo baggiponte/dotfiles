@@ -60,13 +60,13 @@ setopt extended_glob            # use extended globbing syntax.
 setopt no_case_glob             # case insentive globbing
 setopt glob_dots                # match dotfiles without specifying the dot
 
-setopt auto_cd                  # go to folder path without using cd.
+# setopt auto_cd                  # go to folder path without using cd.
 
 setopt auto_pushd               # push the old directory onto the stack on cd.
 setopt pushd_ignore_dups        # do not store duplicates in the stack.
 setopt pushd_silent             # do not print the directory stack after pushd or popd.
 
-setopt correct                  # spelling correction
+# setopt correct                  # spelling correction
 setopt cdable_vars              # change directory to a path stored in a variable.
 
 setopt extended_history         # write the history file in the ':start:elapsed;command' format.
