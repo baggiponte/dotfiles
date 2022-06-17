@@ -33,7 +33,8 @@
             "Environment",
             "Files",
             "Plots",
-            "Viewer"
+            "Viewer",
+            "Presentations"
         ],
         "hiddenTabSet": [
             "Packages",

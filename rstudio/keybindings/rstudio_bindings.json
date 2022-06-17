@@ -22,5 +22,5 @@
     "goToNextChunk": "Shift+Cmd+]",
     "goToPrevChunk": "Shift+Cmd+[",
     "insertChunkPython": "Alt+Shift+Cmd+I",
-    "newRNotebook": "Alt+Shift+Cmd+N"
+    "newRNotebook": "Ctrl+Alt+Shift+Cmd+N"
 }
