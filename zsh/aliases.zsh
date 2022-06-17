@@ -14,6 +14,9 @@
 # exec $SHELL but faster
     alias e="exec $SHELL"
 
+# lazygit
+    alias lg=lazygit
+
 # utilities
 
     alias ...="cd ../../"
