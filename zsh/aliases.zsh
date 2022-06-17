@@ -17,6 +17,7 @@
 # utilities
 
     alias ...="cd ../../"
+    alias ..="cd .."
     alias path='echo -e ${PATH//:/\\n}'
     alias fpath='echo ${fpath} | tr " " "\n"'
     alias td='echo $(date +%Y-%m-%d)'
