@@ -17,6 +17,9 @@
 # lazygit
     alias lg=lazygit
 
+# gnu-make
+# the one installed by homebrew is gnumake
+    alias make=gmake
 # utilities
 
     alias ...="cd ../../"
