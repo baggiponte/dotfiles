@@ -28,6 +28,9 @@ export ZIM_HOME="$CONFIG/.zim"
 # cookiecutter
 export COOKIECUTTER_CONFIG="$CONFIG/cookiecutter.yaml"
 
+# brew & brewfiles
+export HOMEBREW_BUNDLE_FILE="$CONFIG/Brewfile"
+
 # jupyter
 # JUPYTER_CONFIG_DIR for config file location
 # JUPYTER_CONFIG_PATH for config file locations
