@@ -171,6 +171,7 @@ source ${ZIM_HOME}/init.zsh
 # | COMPINIT |
 # +----------+
 
+fpath+="~/.zfunc"
 # compinit is to be run last, after loading modules with zmodload etc
 # autoload -Uz compinit && compinit             # not needed as we are using zim
 autoload -Uz bashcompinit && bashcompinit
@@ -186,7 +187,6 @@ command -v thefuck > /dev/null && eval "$(thefuck --alias)"                     
 command -v pyenv > /dev/null && eval "$(pyenv init --path)" && eval "$(pyenv init -)"   # python version manager
 command -v pyenv-virtualenv > /dev/null && eval "$(pyenv virtualenv-init -)"            # python virtualenv manager
 command -v python > /dev/null && eval "$(python -m pip completion --zsh)"               # python package manger
-command -v pipenv > /dev/null && eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"           # python env manager
 command -v pipx > /dev/null && eval "$(register-python-argcomplete pipx)"               # installer for python CLIs
 command -v direnv > /dev/null && eval "$(direnv hook zsh)"                              # load project specific env variables
 
