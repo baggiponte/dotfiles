@@ -82,11 +82,16 @@ export PGDATA="/usr/local/var/postgres"
 
 export PATH="$MYBINS:$LOCAL_BIN:$PATH:$HOME/.local/jetbrains"
 
-# llvm
-# llvm 9 for llvmlite
-export PATH="/usr/local/opt/llvm@9/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/llvm@9/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm@9/include"
+# # llvm
+# # llvm 9 for llvmlite
+# export PATH="/usr/local/opt/llvm@9/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/llvm@9/lib"
+# export CPPFLAGS="-I/usr/local/opt/llvm@9/include"
+
+# # openblas
+# export LDFLAGS="-L/usr/local/opt/openblas/lib"
+# export CPPFLAGS="-I/usr/local/opt/openblas/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig"
 
 # # +----------------+
 # # | R AND C++ MESS |
