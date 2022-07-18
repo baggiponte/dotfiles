@@ -286,8 +286,6 @@ cask "rectangle"
 cask "syntax-highlight"
 # Open-source code editor
 cask "visual-studio-code"
-# Video communication and virtual meeting platform
-cask "webex"
 # Handwriting notetaking software
 cask "xournal-plus-plus"
 # Open-source version of the X.Org X Window System
