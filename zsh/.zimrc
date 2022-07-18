@@ -1,4 +1,6 @@
+zmodule zimfw/asdf
 zmodule zsh-users/zsh-completions --fpath src
+# must be after any module that installs completions
 zmodule completion
 zmodule zdharma-continuum/fast-syntax-highlighting
 zmodule zsh-users/zsh-autosuggestions

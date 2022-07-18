@@ -7,6 +7,7 @@ export PAGER="/usr/local/bin/bat --plain"
 
 export CACHE="$HOME/.cache"
 export CONFIG="$HOME/.config"
+export CONFIG_HOME="$CONFIG"
 export LOCAL_BIN="$HOME/.local/bin"
 export MYBINS="$HOME/.local/scripts"
 

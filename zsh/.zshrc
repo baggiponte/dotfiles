@@ -135,7 +135,7 @@ zstyle ':completion:*' menu select
 # syntax highlight for file completion
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-# use cache for completion
+# use cache for tab completion
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$ZDOTDIR/.zcompcache"
 
@@ -149,9 +149,19 @@ zstyle ':completion:*' group-name ''
 # case insensitivity and tab expansion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+# +----------+
+# | COMPINIT |
+# +----------+
+
+# NOTE: if autocompletion does not work, remove .zcompdump and run compinit
+fpath+=~/.zfunc
+
 # +------------------+
 # | PLUGINS WITH ZIM |
 # +------------------+
+
+# also has completions, see .zimrc and
+# https://github.com/zimfw/completion#completion
 
 # download zimfw plugin manager if missing
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
@@ -167,11 +177,6 @@ fi
 # initialize modules
 source ${ZIM_HOME}/init.zsh
 
-# +----------+
-# | COMPINIT |
-# +----------+
-
-fpath+="~/.zfunc"
 # compinit is to be run last, after loading modules with zmodload etc
 # autoload -Uz compinit && compinit             # not needed as we are using zim
 autoload -Uz bashcompinit && bashcompinit
