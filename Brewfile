@@ -10,24 +10,28 @@ tap "timescale/tap"
 brew "imath"
 # Print a list of paths as a tree of paths 🌳
 brew "as-tree"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# Library for command-line editing
+brew "readline"
+# ODBC 3 connectivity for UNIX
+brew "unixodbc"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
 # New way to see and navigate directory trees
 brew "broot"
 # Software library to render fonts
 brew "freetype"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Library for command-line editing
-brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.9"
 # Emacs dependency management
@@ -46,6 +50,8 @@ brew "cowsay"
 brew "csvtk"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Diff that understands syntax
+brew "difftastic"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Command-line DNS client
@@ -62,6 +68,12 @@ brew "exa"
 brew "exiftool"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Implementation of the Unicode BiDi algorithm
+brew "fribidi"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # GNU compiler collection
 brew "gcc"
 # C routines to compute the Discrete Fourier Transform
@@ -70,8 +82,6 @@ brew "fftw"
 brew "figlet"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
-# Implementation of the Unicode BiDi algorithm
-brew "fribidi"
 # Terminal JSON viewer
 brew "fx"
 # Command-line fuzzy finder written in Go
@@ -84,8 +94,6 @@ brew "geos"
 brew "proj"
 # Optimized BLAS library
 brew "openblas"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
 # Geospatial Data Abstraction Library
 brew "gdal"
 # GitHub command-line tool
@@ -136,8 +144,6 @@ brew "lf"
 brew "libgit2"
 # Conversion library
 brew "libiconv"
-# Next-gen compiler infrastructure
-brew "llvm@9"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Package manager for the Lua programming language
@@ -152,12 +158,10 @@ brew "ncdu"
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Platform built on V8 to build network applications
-brew "node"
-# Netlify command-line tool
-brew "netlify-cli"
 # Tiny, lightning fast, feature-packed file manager
 brew "nnn"
+# Platform built on V8 to build network applications
+brew "node"
 # Outputs current CPU temperature for OSX
 brew "osx-cpu-temp"
 # Swiss-army knife of markup format conversion
@@ -206,8 +210,6 @@ brew "sk"
 brew "sl"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
 # Simplified and community-driven man pages
 brew "tldr"
 # Color-based alternative to figlet (uses libcaca)
@@ -226,8 +228,8 @@ brew "xh"
 brew "xsv"
 # Copy terminal output to clipboard
 brew "yank"
-# Programming language designed for robustness, optimality, and clarity
-brew "zig"
+# Download YouTube videos from the command-line
+brew "youtube-dl"
 # Compression and file packaging/archive utility
 brew "zip"
 # General-purpose lossless data-compression library
@@ -246,8 +248,6 @@ cask "appcleaner"
 cask "docker"
 # Tool to hide status bar icons
 cask "dozer"
-# Client for the Dropbox cloud storage service
-cask "dropbox"
 # Web browser
 cask "firefox"
 cask "font-dejavu-sans-mono-nerd-font"
@@ -282,12 +282,14 @@ cask "monitorcontrol"
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# Data science software focusing on R and Python
-cask "rstudio"
 # Quicklook extension for source files
 cask "syntax-highlight"
 # Open-source code editor
 cask "visual-studio-code"
+# Video communication and virtual meeting platform
+cask "webex"
+# Handwriting notetaking software
+cask "xournal-plus-plus"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 # Video communication and virtual meeting platform
