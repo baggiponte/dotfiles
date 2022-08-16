@@ -1,7 +1,10 @@
 # see https://cookiecutter.readthedocs.io/en/2.0.2/advanced/user_config.html
+default_context:
+    full_name: "Luca Baggi"
+    email: "57922983+baggiponte@users.noreply.github.com"
+    github_username: "baggiponte"
 cookiecutters_dir: "$CACHE/cookiecutters/"
 abbreviations:
     py: https://github.com/baggiponte/cookiecutter-python.git
     # gh (github), bb (bitbucket), and gl (gitlab) abbreviations are actually built in
     gh: https://github.com/{0}.git
-    bb: https://bitbucket.org/{0}
