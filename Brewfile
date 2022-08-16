@@ -36,6 +36,8 @@ brew "sqlite"
 brew "python@3.9"
 # Emacs dependency management
 brew "cask"
+# Insanely fast image printing in your terminal
+brew "catimg"
 # Create and view interactive cheat sheets for *nix commands
 brew "cheat"
 # Human-friendly and fast alternative to cut and (sometimes) awk
@@ -70,6 +72,8 @@ brew "exiftool"
 brew "fd"
 # Implementation of the Unicode BiDi algorithm
 brew "fribidi"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # Play, record, convert, and stream audio and video
@@ -104,8 +108,6 @@ brew "ghostscript"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Quickly rewrite git repository history
 brew "git-filter-repo"
 # Git extension for versioning large files
@@ -278,6 +280,10 @@ cask "keka"
 cask "mimestream"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
+# Tool to create text-based art
+cask "monodraw"
+# Scientific and technical publishing system built on Pandoc
+cask "quarto"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
@@ -290,7 +296,5 @@ cask "visual-studio-code"
 cask "xournal-plus-plus"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
-# Video communication and virtual meeting platform
-cask "zoom"
 # Collect, organize, cite, and share research sources
 cask "zotero"
