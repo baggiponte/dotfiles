@@ -1,0 +1,23 @@
+lastupdatecheck: 0
+recentrepos:
+- /Users/luca/.config
+- /Users/luca/Documents/dev/python-projects/bikemi
+- /Users/luca/Documents/dev/python-projects/cookiecutter-python
+- /Users/luca/Documents/dev/python-projects/escooters
+- /Users/luca/Documents/dev/python-projects/jax
+- /Users/luca/Documents/dev/python-projects/grokking-algorithims
+- /Users/luca/Documents/dev/oai/K2
+- /Users/luca/Documents/dev/oai/k2
+- /Users/luca/Documents/dev/python-projects/xtream/interview-assignment
+- /Users/luca/.local/scripts
+- /Users/luca/Documents/dev/julia-projects/Forecasts
+startuppopupversion: 5
+customcommandshistory:
+- mv setup.cfg .flake8
+- black src
+- pre-commit run --all-files
+- q
+- pre-commit autoupdate
+- cz
+- cz c
+hidecommandlog: false
