@@ -79,6 +79,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 # +------------+
 
 export PGDATA="/usr/local/var/postgres@14"
+export PGDATABASE="postgres"
 
 # +------+
 # | PATH |
