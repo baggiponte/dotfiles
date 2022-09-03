@@ -18,9 +18,9 @@ set relativenumber
 
 "==== searching ====
 
-set nohlsearch          "turns off highlighting after search
-set ignorecase          "ignores cases when searching
-set smartcase           "turns on case-sensitivity when writing a capital letter
+set nohlsearch              "turns off highlighting after search
+set ignorecase              "ignores cases when searching
+set smartcase               "turns on case-sensitivity when writing a capital letter
 
 "==== system/OS stuff ====
 
@@ -30,21 +30,21 @@ set undofile
 
 set clipboard+=unnamedplus
 
-set mouse=a             "mouse in all modes
+set mouse=a                 "mouse in all modes
 
 "==== UI ====
 
-set termguicolors       "256 colors terminal
+set termguicolors           "256 colors terminal
 set cursorline
-set signcolumn=yes      "for linting or git
+set signcolumn=yes          "for linting or git
 
 "==== UI ====
 
-set showmatch           "highlight matching parentheses
-set lazyredraw          "prevents redrawing the buffer, e.g. when doing macros
+set showmatch               "highlight matching parentheses
+set lazyredraw              "prevents redrawing the buffer, e.g. when doing macros
 
-set nojoinspaces        "suppress inserting two spaces between sentences
-set linebreak           "have lines wrap instead of continue off-screen
+set nojoinspaces            "suppress inserting two spaces between sentences
+set linebreak               "have lines wrap instead of continue off-screen
 
 "====================
 "==== KEYMAPS ====
@@ -91,9 +91,9 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'kdheepak/lazygit.nvim'
 
 "appearances & UI
-Plug 'lukas-reineke/indent-blankline.nvim'                  "indent lines
-Plug 'nvim-lualine/lualine.nvim'                            "status line
-Plug 'windwp/nvim-autopairs'                                "autopair brackets
+Plug 'lukas-reineke/indent-blankline.nvim'                          "indent lines
+Plug 'nvim-lualine/lualine.nvim'                                    "status line
+Plug 'windwp/nvim-autopairs'                                        "autopair brackets
 
 "color scheme
 Plug 'gruvbox-community/gruvbox'
@@ -101,6 +101,7 @@ Plug 'gruvbox-community/gruvbox'
 "treesitter (used for syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'p00f/nvim-ts-rainbow'                                         "rainbow parentheses
 
 "telescope
 Plug 'nvim-lua/plenary.nvim'                                        "used by telescope
@@ -113,9 +114,9 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'                     "extension f
 Plug 'kyazdani42/nvim-web-devicons'
 
 "LSP & autocompletion
-Plug 'neovim/nvim-lspconfig'                    "configurations for the builtin LSP client
-Plug 'hrsh7th/nvim-cmp'                         "recommended autocompletion
-Plug 'hrsh7th/cmp-nvim-lsp'                     "LSP source for nvim-cmp
+Plug 'neovim/nvim-lspconfig'                                        "configurations for the builtin LSP client
+Plug 'hrsh7th/nvim-cmp'                                             "recommended autocompletion
+Plug 'hrsh7th/cmp-nvim-lsp'                                         "LSP source for nvim-cmp
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -129,17 +130,17 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'quarto-dev/quarto-nvim'
 
 "language Support
-Plug 'cespare/vim-toml', { 'branch': 'main' }   "TOML support
-Plug 'stephpy/vim-yaml'                         "YAML support
-Plug 'elzr/vim-json'                            "JSON support
-Plug 'godlygeek/tabular'                        "for markdown tables
-Plug 'plasticboy/vim-markdown'                  "markdown support
+Plug 'cespare/vim-toml', { 'branch': 'main' }                       "TOML support
+Plug 'stephpy/vim-yaml'                                             "YAML support
+Plug 'elzr/vim-json'                                                "JSON support
+Plug 'godlygeek/tabular'                                            "for markdown tables
+Plug 'plasticboy/vim-markdown'                                      "markdown support
 
 "syntax
-Plug 'tpope/vim-surround'                       "surround with parentheses & co
-Plug 'mechatroner/rainbow_csv'                  "csv color coding
-Plug 'ap/vim-css-color'                         "css colors
-Plug 'frazrepo/vim-rainbow'                     "rainbow parentheses
+Plug 'tpope/vim-surround'                                           "surround with parentheses & co
+Plug 'mechatroner/rainbow_csv'                                      "csv color coding
+Plug 'ap/vim-css-color'                                             "css colors
+Plug 'frazrepo/vim-rainbow'                                         "rainbow parentheses
 
 call plug#end()
 
@@ -183,7 +184,7 @@ EOF
 lua <<EOF
 
 -- ===================
--- ==== lspconfig ====
+-- ==== LSPCONFIG ====
 -- ===================
 
 local lspconfig = require('lspconfig')
@@ -219,7 +220,7 @@ lspconfig.sumneko_lua.setup({
 })
 
 -- ===================
--- ==== nvim-cmp ====
+-- ==== NVIM-CMP ====
 -- ===================
 
 local cmp = require'cmp'
@@ -283,6 +284,29 @@ cmp.setup.cmdline(':', {
     })
 })
 
+-- =====================
+-- ==== TREE-SITTER ====
+-- =====================
+
+require'nvim-treesitter.configs'.setup({
+    highlight = {
+        enable = true,
+        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        additional_vim_regex_highlighting = false,
+        },
+    rainbow = {
+        enable = false,
+        -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+        max_file_lines = nil, -- Do not enable for files with more than n lines, int
+        -- colors = {}, -- table of hex strings
+        -- termcolors = {} -- table of colour name strings
+        }
+})
+
 EOF
 
 "===================
@@ -309,11 +333,11 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 "  https://castel.dev/post/lecture-notes-1/
 "  https://jdhao.github.io/2019/01/15/markdown_edit_preview_nvim/
 
-" NOTE: g: denotes global variables
+"NOTE: g: denotes global variables
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetDirectories=[$CONFIG.'/nvim/ultisnips']       "this is where snippets will be stored
+let g:UltiSnipsSnippetDirectories=[$CONFIG.'/nvim/ultisnips']                           "this is where snippets will be stored
 
 "===================
 "==== LANGUAGES ====
@@ -327,24 +351,24 @@ let g:loaded_python_provider = 0                                                
 
 "==== markdown ====
 
-let g:vim_markdown_strikethrough = 1            "enable striketrough
-let g:vim_markdown_new_list_item_indent = 2     "indent for new list items set to 2 (instead of 4)
+let g:vim_markdown_strikethrough = 1                                                    "enable striketrough
+let g:vim_markdown_new_list_item_indent = 2                                             "indent for new list items set to 2 (instead of 4)
 
-" disable header folding
+"disable header folding
 let g:vim_markdown_folding_disabled = 1
 
-" do not use conceal feature, the implementation is not so good
+"do not use conceal feature
 let g:vim_markdown_conceal = 0
 
 "do not conceal code blocks' fences
 let g:vim_markdown_conceal_code_blocks = 0
 
-" disable math and tex conceal feature
+"disable math and tex conceal feature
 let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 
-" support front matter of various format
-let g:vim_markdown_frontmatter = 1  " for YAML format
-let g:vim_markdown_toml_frontmatter = 1  " for TOML format
-let g:vim_markdown_json_frontmatter = 1  " for JSON format
+"support front matter of various format
+let g:vim_markdown_frontmatter = 1       "for YAML format
+let g:vim_markdown_toml_frontmatter = 1  "for TOML format
+let g:vim_markdown_json_frontmatter = 1  "for JSON format
 
