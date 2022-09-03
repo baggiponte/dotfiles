@@ -112,8 +112,6 @@ brew "git-delta"
 brew "git-filter-repo"
 # Git extension for versioning large files
 brew "git-lfs"
-# Render markdown on the CLI
-brew "glow"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU implementation of time utility
@@ -148,6 +146,8 @@ brew "libgit2"
 brew "libiconv"
 # Rainbows and unicorns in your console!
 brew "lolcat"
+# Language Server for the Lua language
+brew "lua-language-server"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Utility for directing compilation
@@ -177,13 +177,11 @@ brew "pigz"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Object-relational database system
-brew "postgresql", restart_service: true
+brew "postgresql@14", restart_service: true
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
 # Adds support for geographic objects to PostgreSQL
 brew "postgis"
-# Framework for managing multi-language pre-commit hooks
-brew "pre-commit"
 # Modern replacement for ps written by Rust
 brew "procs"
 # Parse HTML at the command-line
@@ -240,8 +238,6 @@ brew "zlib"
 brew "zsh"
 # Smart and simple CSV processing on the command-line
 brew "sschlesier/csvutils/csvquote"
-# An open-source time-series database optimized for fast ingest and complex queries. Fully compatible with PostgreSQL.
-brew "timescale/tap/timescaledb"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
@@ -292,8 +288,6 @@ cask "rectangle"
 cask "syntax-highlight"
 # Open-source code editor
 cask "visual-studio-code"
-# Handwriting notetaking software
-cask "xournal-plus-plus"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 # Collect, organize, cite, and share research sources
