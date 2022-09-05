@@ -22,8 +22,7 @@
     alias make=gmake
 # utilities
 
-    alias ...="cd ../../"
-    alias ..="cd .."
+    alias ...="../../"
     alias path='echo -e ${PATH//:/\\n}'
     alias fpath='echo ${fpath} | tr " " "\n"'
     alias td='echo $(date +%Y-%m-%d)'
@@ -33,7 +32,7 @@
     alias b=brew
     alias bi="b install"
     alias bic="bi --cask"
-    
+
     alias bu="b uninstall"
     alias buc="bu --cask"
 
@@ -42,7 +41,7 @@
     alias bl="b list"
     alias blf="bl --formula"
     alias blc="bl --cask"
-    
+
     alias bd="b doctor"
 
 # open programs faster
@@ -50,7 +49,7 @@
     alias text="open -a TextEdit"
     alias rstudio="open -a RStudio"
     alias pgadmin="open -a pgAdmin\ 4"
-    
+
     alias n="/usr/local/bin/nvim"
     alias nrc="n $MYVIMRC"
 
@@ -93,10 +92,10 @@ take () { mkdir -p "$1" && cd "$1"; }
 gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
 
 # open in Finder
-f() { 
+f() {
     if [ "$1" = "" ]; then
         open -a Finder ./
-    else 
+    else
         open -a Finder $1
     fi
 }
@@ -137,4 +136,3 @@ extract() {
         fi
     done
 }
-

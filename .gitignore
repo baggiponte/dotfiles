@@ -1,7 +1,7 @@
+*.bak
 .zim
 bat
 bpytop
-Brewfile.bak
 broot
 cheat
 configstore
@@ -14,16 +14,12 @@ karabiner
 matplotlib
 neofetch
 nvim
-!nvim/UltiSnips
-!nvim/init.vim
-pgcli
 r
 raycast
 rstudio
 xournalpp
 zsh/.zcomp*
 zsh/.zsh_history
-.emacs
 .gitconfig
 .gitignore_global
 .ideavimrc

@@ -19,4 +19,3 @@ cmd delete ${{
 # reminder: <delete> = fn + backspace
 map <delete> trash
 # map <delete> delete
-

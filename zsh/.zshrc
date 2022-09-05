@@ -30,9 +30,9 @@ fi
 # # +---------------+
 # # | CONDA & MAMBA |
 # # +---------------+
-# 
+#
 # _CONDA_INIT_DIR="$(brew --caskroom)/miniconda/base"
-# 
+#
 # # the following lines are managed by conda: do not edit!
 # __conda_setup="$("$_CONDA_INIT_DIR/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 # if [ $? -eq 0 ]; then
@@ -45,12 +45,12 @@ fi
 #     fi
 # fi
 # unset __conda_setup
-# 
+#
 # # setup mamba
 # if [ -f "$_CONDA_INIT_DIR/etc/profile.d/mamba.sh" ]; then
 #     . "$_CONDA_INIT_DIR/etc/profile.d/mamba.sh"
 # fi
- 
+
 # +-------------+
 # | ZSH SETOPTS |
 # +-------------+
@@ -60,7 +60,7 @@ setopt extended_glob            # use extended globbing syntax.
 setopt no_case_glob             # case insentive globbing
 setopt glob_dots                # match dotfiles without specifying the dot
 
-# setopt auto_cd                  # go to folder path without using cd.
+setopt auto_cd                  # go to folder path without using cd.
 
 setopt auto_pushd               # push the old directory onto the stack on cd.
 setopt pushd_ignore_dups        # do not store duplicates in the stack.
@@ -194,4 +194,3 @@ command -v pyenv-virtualenv > /dev/null && eval "$(pyenv virtualenv-init -)"    
 command -v python > /dev/null && eval "$(python -m pip completion --zsh)"               # python package manger
 command -v pipx > /dev/null && eval "$(register-python-argcomplete pipx)"               # installer for python CLIs
 command -v direnv > /dev/null && eval "$(direnv hook zsh)"                              # load project specific env variables
-

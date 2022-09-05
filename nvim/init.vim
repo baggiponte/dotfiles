@@ -1,30 +1,17 @@
-"==================
-"==== SETTINGS ====
-"==================
-
-"please read :h nvim-defaults first!
-
-"==== tabs and indentation ====
-
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
+"read :h nvim-defaults first!
 
 "==== numbering ====
-
 set number
 set relativenumber
+set breakindent             "every wrapped line will continue indented
 
 "==== searching ====
-
 set nohlsearch              "turns off highlighting after search
 set ignorecase              "ignores cases when searching
 set smartcase               "turns on case-sensitivity when writing a capital letter
 
 "==== system/OS stuff ====
-
-set noswapfile 
+set noswapfile
 set nobackup
 set undofile
 
@@ -33,12 +20,9 @@ set clipboard+=unnamedplus
 set mouse=a                 "mouse in all modes
 
 "==== UI ====
-
 set termguicolors           "256 colors terminal
 set cursorline
 set signcolumn=yes          "for linting or git
-
-"==== UI ====
 
 set showmatch               "highlight matching parentheses
 set lazyredraw              "prevents redrawing the buffer, e.g. when doing macros
@@ -46,18 +30,20 @@ set lazyredraw              "prevents redrawing the buffer, e.g. when doing macr
 set nojoinspaces            "suppress inserting two spaces between sentences
 set linebreak               "have lines wrap instead of continue off-screen
 
-"====================
+"=================
 "==== KEYMAPS ====
-"====================
+"=================
 
 let mapleader = "\<space>"
 
 "save more quickly
-nnoremap <leader>w :w<CR>
+nnoremap <leader>w <cmd>w<CR>
 
 "quit buffer more quickly
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :q!<CR>
+nnoremap <leader>q <cmd>bd<CR>
+nnoremap <leader>Q <cmd>q<CR>
+
+nnoremap <leader>pv <cmd>Ex<CR>
 
 "jump to start and end of line using the home row keys
 map H ^
@@ -85,30 +71,36 @@ nnoremap <C-l> <C-w>l
 "using vim-plug: https://github.com/junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
+"color scheme
+Plug 'sainnhe/gruvbox-material'
+
 "git
-Plug 'tpope/vim-fugitive'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'kdheepak/lazygit.nvim'
+Plug 'tpope/vim-fugitive'                                           "git
+Plug 'lewis6991/gitsigns.nvim'                                      "sidebar and git status
+Plug 'kdheepak/lazygit.nvim'                                        "open a floating panel with lazygit
 
 "appearances & UI
-Plug 'lukas-reineke/indent-blankline.nvim'                          "indent lines
+Plug 'tpope/vim-sleuth'                                             "auto indentation, hopefully
+Plug 'lukas-reineke/indent-blankline.nvim'                          "mark indent lines
 Plug 'nvim-lualine/lualine.nvim'                                    "status line
 Plug 'windwp/nvim-autopairs'                                        "autopair brackets
+" Plug 'frazrepo/vim-rainbow'                                         "rainbow parentheses
+Plug 'numToStr/Comment.nvim'                                        "commenting
 
-"color scheme
-Plug 'gruvbox-community/gruvbox'
-
-"treesitter (used for syntax highlighting
+"treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'p00f/nvim-ts-rainbow'                                         "rainbow parentheses
+Plug 'kylechui/nvim-surround'
+"Plug 'tpope/vim-surround'                                          "surround with parentheses & co
 
 "telescope
 Plug 'nvim-lua/plenary.nvim'                                        "used by telescope
 Plug 'nvim-lua/popup.nvim'                                          "used by telescope
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'                     "extension for fuzzy matching
-"Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }  "extension for fuzzy matching 
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }  "extension for fuzzy matching
+"Plug 'nvim-telescope/telescope-fzy-native.nvim'                     "extension for fuzzy matching
 
 "icons for some plugins
 Plug 'kyazdani42/nvim-web-devicons'
@@ -117,11 +109,11 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neovim/nvim-lspconfig'                                        "configurations for the builtin LSP client
 Plug 'hrsh7th/nvim-cmp'                                             "recommended autocompletion
 Plug 'hrsh7th/cmp-nvim-lsp'                                         "LSP source for nvim-cmp
-Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-cmdline'                                          "completion for the commandline `:`
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 
-"snippets with UltiSnips
+"snippets
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
@@ -129,18 +121,12 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 "quarto
 Plug 'quarto-dev/quarto-nvim'
 
-"language Support
-Plug 'cespare/vim-toml', { 'branch': 'main' }                       "TOML support
-Plug 'stephpy/vim-yaml'                                             "YAML support
-Plug 'elzr/vim-json'                                                "JSON support
+"language support
+" Plug 'cespare/vim-toml', { 'branch': 'main' }                       "TOML support
+" Plug 'stephpy/vim-yaml'                                             "YAML support
+" Plug 'elzr/vim-json'                                                "JSON support
 Plug 'godlygeek/tabular'                                            "for markdown tables
 Plug 'plasticboy/vim-markdown'                                      "markdown support
-
-"syntax
-Plug 'tpope/vim-surround'                                           "surround with parentheses & co
-Plug 'mechatroner/rainbow_csv'                                      "csv color coding
-Plug 'ap/vim-css-color'                                             "css colors
-Plug 'frazrepo/vim-rainbow'                                         "rainbow parentheses
 
 call plug#end()
 
@@ -149,7 +135,11 @@ call plug#end()
 "=============
 
 lua << EOF
-require('gitsigns').setup()
+require('gitsigns').setup({
+    -- signs = {
+    --     add = { text = '+'}
+    -- }
+})
 EOF
 
 " setup mapping to call :LazyGit
@@ -160,28 +150,24 @@ nnoremap <leader>lg :LazyGit<CR>
 "============
 
 "==== coloscheme ====
-colorscheme gruvbox
+colorscheme gruvbox-material
 
-"==== indentation ====
 lua << EOF
+
+require("nvim-autopairs").setup({})
+
+require('Comment').setup({})
+
+require("nvim-surround").setup({})
+
+require('lualine').setup({options = { theme = 'gruvbox' }})
+
 require("indent_blankline").setup({
     -- for example, context is off by default, use this to turn it on
+    char = '┊',
     show_current_context = true,
     show_current_context_start = true,
-    })
-EOF
-
-"==== statusline ====
-lua << END
-require('lualine').setup({options = { theme = 'gruvbox' }})
-END
-
-"==== autopair brackets ====
-lua << EOF
-require("nvim-autopairs").setup({})
-EOF
-
-lua <<EOF
+})
 
 -- ===================
 -- ==== LSPCONFIG ====
@@ -189,7 +175,7 @@ lua <<EOF
 
 local lspconfig = require('lspconfig')
 
-local servers = { 'pyright', 'julials', 'dockerls', 'r_language_server'} 
+local servers = { 'pyright', 'julials', 'dockerls', 'r_language_server'}
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 for _, lsp in ipairs(servers) do
@@ -291,14 +277,11 @@ cmp.setup.cmdline(':', {
 require'nvim-treesitter.configs'.setup({
     highlight = {
         enable = true,
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
         },
+    indent = { enable = true },
     rainbow = {
-        enable = false,
+        enable = true,
         -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
         extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
         max_file_lines = nil, -- Do not enable for files with more than n lines, int
@@ -307,16 +290,14 @@ require'nvim-treesitter.configs'.setup({
         }
 })
 
-EOF
+-- ===================
+-- ==== TELESCOPE ====
+-- ===================
 
-"===================
-"==== TELESCOPE ====
-"===================
+-- enable fzy telescope extension
+require('telescope').load_extension('fzf')
+--require('telescope').load_extension('fzy_native')
 
-"enable fzy telescope extension
-lua << EOF
--- require('telescope').load_extension('fzf')
-require('telescope').load_extension('fzy_native')
 EOF
 
 "use telescope with leader f*
@@ -346,8 +327,8 @@ let g:UltiSnipsSnippetDirectories=[$CONFIG.'/nvim/ultisnips']                   
 "==== python ====
 
 "see :help provider-python
-let g:python3_host_prog = '/Users/luca/.pyenv/versions/3.9.9/envs/py3nvim/bin/python'   "path for python virtualenv with pynvim installed 
-let g:loaded_python_provider = 0                                                        "disable python2    
+let g:python3_host_prog = '/Users/luca/.pyenv/versions/3.9.9/envs/py3nvim/bin/python'   "path for python virtualenv with pynvim installed
+let g:loaded_python_provider = 0                                                        "disable python2
 
 "==== markdown ====
 
@@ -371,4 +352,3 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1       "for YAML format
 let g:vim_markdown_toml_frontmatter = 1  "for TOML format
 let g:vim_markdown_json_frontmatter = 1  "for JSON format
-

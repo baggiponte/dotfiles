@@ -69,7 +69,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 # export CONDA_ROOT="$(brew --caskroom)/miniconda/base"
 # export CONDA_PKGS_DIR="$CONDA_ROOT/pkgs"
 # export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
-# 
+#
 # # CONDA_ROOT is the path for your `base` conda install.
 # # CONDA_PREFIX is the path to the current active environment.
 # # https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
@@ -108,4 +108,3 @@ export PATH="$MYBINS:$LOCAL_BIN:$PATH:$HOME/.local/jetbrains"
 
 # # For pkg-config to find icu4c you may need to set:
 # export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
-
