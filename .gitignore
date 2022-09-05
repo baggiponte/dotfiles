@@ -9,11 +9,11 @@ gh
 htop
 iterm2/AppSupport
 kaggle
-karabiner
+karabiner/*
 !karabiner/karabiner.json
-matplotlib
+matplotlib/*
 neofetch
-nvim
+nvim/plugin
 r
 raycast
 rstudio
