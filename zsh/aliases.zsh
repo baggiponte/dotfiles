@@ -50,9 +50,6 @@
     alias rstudio="open -a RStudio"
     alias pgadmin="open -a pgAdmin\ 4"
 
-    alias n="/usr/local/bin/nvim"
-    alias nrc="n $MYVIMRC"
-
 # exa
 
     alias ls="exa --oneline --group-directories-first --icons --ignore-glob .DS_Store"
@@ -68,19 +65,16 @@
 # | Functions |
 # +-----------+
 
-# create new kernel for jupyter notebooks
-jupyter-kernel-install () {
-    python -m ipykernel install --user --name "$1" --display-name "$2"
+# open ntrw or nvim
+n () {
+    if [ "$1" = "" ]; then
+        nvim .
+    else
+        nvim "$1"
+    fi
 }
 
-jupyter-kernel-list () {
-    ls $JUPYTER_KERNEL_DIR
-}
-
-jupyter-kernel-rm () {
-    for kernel in "$@":
-        rm "$JUPYTER_KERNEL_DIR/$kernel"
-}
+alias nrc="n $MYVIMRC"
 
 # trash files instead of `rm` them.
 trash () { command mv "$@" ~/.Trash ; }
@@ -89,7 +83,7 @@ trash () { command mv "$@" ~/.Trash ; }
 take () { mkdir -p "$1" && cd "$1"; }
 
 # create a custom function to use gitignore.io to create .gitignore files
-gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
+gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/"$@" ;}
 
 # open in Finder
 f() {
@@ -135,4 +129,18 @@ extract() {
             echo "'$file' is not a valid file"
         fi
     done
+}
+
+# create new kernel for jupyter notebooks
+jupyter-kernel-install () {
+    python -m ipykernel install --user --name "$1" --display-name "$2"
+}
+
+jupyter-kernel-list () {
+    ls $JUPYTER_KERNEL_DIR
+}
+
+jupyter-kernel-rm () {
+    for kernel in "$@":
+        rm "$JUPYTER_KERNEL_DIR/$kernel"
 }
