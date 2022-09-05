@@ -21,7 +21,7 @@ export MYBINS="$HOME/.local/scripts"
 # +-------------+
 
 # nvim https://manpages.debian.org/testing/neovim-runtime/nvim.1.en.html
-export MYVIMRC="$CONFIG/nvim/init.vim"
+export MYVIMRC="$CONFIG/nvim/init.lua"
 
 # zsh plugin manager zim: https://github.com/zimfw/zimfw
 export ZIM_HOME="$CONFIG/.zim"
