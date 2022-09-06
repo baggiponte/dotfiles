@@ -10,6 +10,7 @@
 # +-----------------------+
 
 source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/functions.zsh
 
 # +-------+
 # | BROOT |
