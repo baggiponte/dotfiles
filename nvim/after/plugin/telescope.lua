@@ -16,6 +16,7 @@ telescope.setup({
 	extensions = {
 		file_browser = {
 			hijack_netrw = true,
+			hidden = true,
 		},
 	},
 })
