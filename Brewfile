@@ -34,8 +34,6 @@ brew "freetype"
 brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.9"
-# Emacs dependency management
-brew "cask"
 # Insanely fast image printing in your terminal
 brew "catimg"
 # Create and view interactive cheat sheets for *nix commands
@@ -134,8 +132,6 @@ brew "jid"
 brew "jq"
 # Helps you navigate your file system faster by learning your habits
 brew "jump"
-# Lazier way to manage everything docker
-brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Terminal file manager
@@ -182,6 +178,8 @@ brew "postgresql@14", restart_service: true
 brew "protobuf"
 # Adds support for geographic objects to PostgreSQL
 brew "postgis"
+# Framework for managing multi-language pre-commit hooks
+brew "pre-commit"
 # Modern replacement for ps written by Rust
 brew "procs"
 # Parse HTML at the command-line
@@ -210,6 +208,8 @@ brew "sk"
 brew "sl"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Opinionated Lua code formatter
+brew "stylua"
 # Simplified and community-driven man pages
 brew "tldr"
 # Color-based alternative to figlet (uses libcaca)
@@ -228,8 +228,6 @@ brew "xh"
 brew "xsv"
 # Copy terminal output to clipboard
 brew "yank"
-# Download YouTube videos from the command-line
-brew "youtube-dl"
 # Compression and file packaging/archive utility
 brew "zip"
 # General-purpose lossless data-compression library
@@ -242,8 +240,6 @@ brew "sschlesier/csvutils/csvquote"
 cask "alt-tab"
 # Application uninstaller
 cask "appcleaner"
-# App to build and share containerized applications and microservices
-cask "docker"
 # Tool to hide status bar icons
 cask "dozer"
 # Web browser
