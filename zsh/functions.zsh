@@ -11,7 +11,7 @@ n () {
     fi
 }
 
-alias nrc="n $MYVIMRC"
+alias nrc="n $CONFIG/nvim"
 
 # trash files instead of `rm` them.
 trash () { command mv "$@" ~/.Trash ; }
