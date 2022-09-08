@@ -1,46 +1,46 @@
-local telescope = require("telescope")
-local actions = require("telescope.actions")
+local telescope = require('telescope')
+local actions = require('telescope.actions')
 
 telescope.setup({
-	defaults = {
-		initial_mode = "normal",
-		mappings = {
-			i = {
-				["<C-u>"] = false,
-				["<C-d>"] = false,
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
-			},
-		},
-	},
-	extensions = {
-		file_browser = {
-			hijack_netrw = true,
-			hidden = true,
-		},
-	},
+  defaults = {
+    initial_mode = 'normal',
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+        ['<C-j>'] = actions.move_selection_next,
+        ['<C-k>'] = actions.move_selection_previous,
+      },
+    },
+  },
+  extensions = {
+    file_browser = {
+      hijack_netrw = true,
+      hidden = true,
+    },
+  },
 })
 
 -- [[ Enable extensions ]]
-local extensions = { "fzf", "file_browser", "frecency" }
+local extensions = { 'fzf', 'file_browser', 'frecency' }
 for _, extension in ipairs(extensions) do
-	telescope.load_extension(extension)
+  telescope.load_extension(extension)
 end
 
 -- [[ Set keymaps ]]
 local opts = { silent = true, noremap = true }
 
 -- explore symbols within the document
-vim.keymap.set("n", "<leader>fH", require("telescope.builtin").help_tags, opts)
-vim.keymap.set("n", "<leader>fh", require("telescope.builtin").treesitter, opts)
+vim.keymap.set('n', '<leader>fH', require('telescope.builtin').help_tags, opts)
+vim.keymap.set('n', '<leader>fh', require('telescope.builtin').treesitter, opts)
 
 -- explore files
-vim.keymap.set("n", "<leader>fF", require("telescope.builtin").find_files, opts)
-vim.keymap.set("n", "<leader>ff", require("telescope.builtin").git_files, opts)
-vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, opts)
+vim.keymap.set('n', '<leader>fF', require('telescope.builtin').find_files, opts)
+vim.keymap.set('n', '<leader>ff', require('telescope.builtin').git_files, opts)
+vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, opts)
 
 -- fuzzy find and file browser
-vim.keymap.set("n", "<leader>fz", require("telescope.builtin").current_buffer_fuzzy_find, opts)
-vim.keymap.set("n", "<leader>fZ", require("telescope.builtin").live_grep, opts)
-vim.keymap.set("n", "<leader>fd", telescope.extensions.file_browser.file_browser, opts)
-vim.keymap.set("n", "<leader>fD", telescope.extensions.frecency.frecency, opts)
+vim.keymap.set('n', '<leader>fz', require('telescope.builtin').current_buffer_fuzzy_find, opts)
+vim.keymap.set('n', '<leader>fZ', require('telescope.builtin').live_grep, opts)
+vim.keymap.set('n', '<leader>fd', telescope.extensions.file_browser.file_browser, opts)
+vim.keymap.set('n', '<leader>fD', telescope.extensions.frecency.frecency, opts)
