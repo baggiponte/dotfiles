@@ -1,0 +1,35 @@
+# This is Git per-user configuration file.
+[user]
+  name = baggiponte
+  email = 57922983+baggiponte@users.noreply.github.com
+
+[github]
+  user = baggiponte
+[init]
+  defaultBranch = main
+[push]
+  autoSetupRemote = true
+
+[core]
+  excludesFile = ~/.config/.gitignore.global
+
+[diff]
+  colorMoved = default
+  submodule = log
+
+[lfs "customtransfer.xet"]
+	path = git-xet
+	args = transfer
+	concurrent = true
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[credential]
+	helper = osxkeychain
+
+[include]
+	path = .gitconfig.local
