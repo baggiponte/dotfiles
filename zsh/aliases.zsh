@@ -15,6 +15,10 @@
 # lazygit
     alias lg=lazygit
 
+
+# nnn (file browser)
+    alias nnn"nnn -H"
+
 # gnu-make
 # the one installed by homebrew is gnumake
     alias make=gmake

@@ -187,11 +187,11 @@ autoload -Uz bashcompinit && bashcompinit
 # +-------------+
 
 # `eval` commands are run **after** compinit
-
 command -v jump > /dev/null && eval "$(jump shell zsh)"                                 # autojump between directories
-command -v thefuck > /dev/null && eval "$(thefuck --alias)"                             # suggests a fix for a command run with a typo
+command -v zoxide > /dev/null && eval "$(zoxide init zsh)"                              # another autojump
+# command -v thefuck > /dev/null && eval "$(thefuck --alias)"                             # suggests a fix for a command run with a typo
 command -v pyenv > /dev/null && eval "$(pyenv init --path)" && eval "$(pyenv init -)"   # python version manager
 command -v pyenv-virtualenv > /dev/null && eval "$(pyenv virtualenv-init -)"            # python virtualenv manager
-command -v python > /dev/null && eval "$(python -m pip completion --zsh)"               # python package manger
-command -v pipx > /dev/null && eval "$(register-python-argcomplete pipx)"               # installer for python CLIs
+command -v python > /dev/null && eval "$(python -m pip completion --zsh)"               # autocompletion for pip
+command -v pipx > /dev/null && eval "$(register-python-argcomplete pipx)"               # autocompletion for pipx
 command -v direnv > /dev/null && eval "$(direnv hook zsh)"                              # load project specific env variables

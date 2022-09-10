@@ -54,6 +54,9 @@ export BAT_THEME="gruvbox-dark"
 export KAGGLE_CONFIG_DIR="$CONFIG/kaggle"
 source "$HOME/.secrets/kaggle.txt" # username and key
 
+# zoxide (autojump)
+export _ZO_DATA_DIR="~/.local/share/"
+
 # +--------+
 # | PYTHON |
 # +--------+
