@@ -10,14 +10,6 @@ tap "timescale/tap"
 brew "imath"
 # Print a list of paths as a tree of paths 🌳
 brew "as-tree"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Library for command-line editing
-brew "readline"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -26,10 +18,12 @@ brew "bat"
 brew "xz"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
-# New way to see and navigate directory trees
-brew "broot"
 # Software library to render fonts
 brew "freetype"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# Library for command-line editing
+brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
@@ -46,8 +40,6 @@ brew "cmatrix"
 brew "colordiff"
 # Configurable talking characters in ASCII art
 brew "cowsay"
-# Cross-platform, efficient and practical CSV/TSV toolkit in Golang
-brew "csvtk"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Diff that understands syntax
@@ -68,14 +60,6 @@ brew "exa"
 brew "exiftool"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Implementation of the Unicode BiDi algorithm
-brew "fribidi"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # GNU compiler collection
 brew "gcc"
 # C routines to compute the Discrete Fourier Transform
@@ -84,6 +68,8 @@ brew "fftw"
 brew "figlet"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
+# Implementation of the Unicode BiDi algorithm
+brew "fribidi"
 # Terminal JSON viewer
 brew "fx"
 # Command-line fuzzy finder written in Go
@@ -96,6 +82,10 @@ brew "geos"
 brew "proj"
 # Optimized BLAS library
 brew "openblas"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# ODBC 3 connectivity for UNIX
+brew "unixodbc"
 # Geospatial Data Abstraction Library
 brew "gdal"
 # GitHub command-line tool
@@ -134,8 +124,6 @@ brew "jq"
 brew "jump"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Terminal file manager
-brew "lf"
 # C library of Git core methods that is re-entrant and linkable
 brew "libgit2"
 # Conversion library
@@ -192,8 +180,6 @@ brew "pyenv"
 brew "pyenv-virtualenv"
 # Static type checker for Python
 brew "pyright"
-# Software environment for statistical computing
-brew "r"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
@@ -204,12 +190,12 @@ brew "sd"
 brew "shellcheck"
 # Fuzzy Finder in rust!
 brew "sk"
-# Prints a steam locomotive if you type sl instead of ls
-brew "sl"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Opinionated Lua code formatter
 brew "stylua"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
 # Simplified and community-driven man pages
 brew "tldr"
 # Color-based alternative to figlet (uses libcaca)
@@ -232,6 +218,8 @@ brew "yank"
 brew "zip"
 # General-purpose lossless data-compression library
 brew "zlib"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Smart and simple CSV processing on the command-line
@@ -245,6 +233,7 @@ cask "dozer"
 # Web browser
 cask "firefox"
 cask "font-dejavu-sans-mono-nerd-font"
+# Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font"
 # Typeface made for developers
 cask "font-jetbrains-mono"
@@ -284,7 +273,5 @@ cask "rectangle"
 cask "syntax-highlight"
 # Open-source code editor
 cask "visual-studio-code"
-# Open-source version of the X.Org X Window System
-cask "xquartz"
 # Collect, organize, cite, and share research sources
 cask "zotero"
