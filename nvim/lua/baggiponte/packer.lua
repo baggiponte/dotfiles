@@ -116,12 +116,13 @@ return require('packer').startup(function(use)
   use('rafamadriz/friendly-snippets') -- Crowdsourced snippets
 
   -- [[ Other Languages ]]
+
   use({
-    'quarto-dev/quarto-vim',
+    'quarto-dev/quarto-vim', -- Quarto syntax highting
     requires = {
       { 'vim-pandoc/vim-pandoc-syntax' },
     },
     ft = { 'quarto' },
   })
-  -- use("quarto-dev/quarto-nvim") -- Quarto support
+  use('quarto-dev/quarto-nvim') -- Quarto support
 end)
