@@ -87,7 +87,6 @@ autoload -Uz bashcompinit && bashcompinit
 
 # `eval` commands are run **after** compinit
 command -v jump >/dev/null && eval "$(jump shell zsh)"                               # autojump between directories; it's jump, not autojump!
-command -v zoxide >/dev/null && eval "$(zoxide init zsh)"                            # another autojump
 command -v pyenv >/dev/null && eval "$(pyenv init --path)" && eval "$(pyenv init -)" # python version manager
 command -v pyenv-virtualenv >/dev/null && eval "$(pyenv virtualenv-init -)"          # python virtualenv manager
 command -v python >/dev/null && eval "$(python -m pip completion --zsh)"             # autocompletion for pip

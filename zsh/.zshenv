@@ -17,8 +17,8 @@ export LOCAL_BIN="$HOME/.local/bin"
 export MYBINS="$HOME/.local/scripts"
 
 # brew & brewfiles
-export HOMEBREW_BUNDLE_FILE="$CONFIG/Brewfile"
 eval "$(/usr/local/bin/brew shellenv)"
+export HOMEBREW_BUNDLE_FILE="$CONFIG/Brewfile"
 
 # zsh plugin manager: https://github.com/zimfw/zimfw
 export ZIM_HOME="$XDG_CACHE_HOME/zim"
@@ -48,6 +48,10 @@ if hash pipx 2>/dev/null; then
 	export PIPX_BIN_DIR="$LOCAL_BIN"
 fi
 
+# matplotlib
+export MPLCONFIGDIR="$CONFIG/matplotlib"
+export MATPLOTLIBRC="$MPLCONFIGDIR/matplotlibrc"
+
 # pyenv is a python version manager
 if hash pyenv 2>/dev/null; then
 	export PYENV_ROOT="$HOME/.pyenv"
@@ -68,19 +72,10 @@ if hash cookiecutter 2>/dev/null; then
 	export COOKIECUTTER_CONFIG="$CONFIG/cookiecutter.yaml"
 fi
 
-# matplotlib
-export MPLCONFIGDIR="$CONFIG/matplotlib"
-export MATPLOTLIBRC="$MPLCONFIGDIR/matplotlibrc"
-
 # kaggle
 if hash kaggle 2>/dev/null; then
 	export KAGGLE_CONFIG_DIR="$CONFIG/kaggle"
 	source "$HOME/.secrets/kaggle.txt" # username and key
-fi
-
-# zoxide (autojump)
-if hash zoxide 2>/dev/null; then
-	export _ZO_DATA_DIR="$XDG_DATA_HOME"
 fi
 
 # postgres
