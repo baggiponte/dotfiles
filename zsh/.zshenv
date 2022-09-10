@@ -68,20 +68,6 @@ if hash cookiecutter 2>/dev/null; then
 	export COOKIECUTTER_CONFIG="$CONFIG/cookiecutter.yaml"
 fi
 
-# jupyter
-# JUPYTER_CONFIG_DIR for config file location
-# JUPYTER_CONFIG_PATH for config file locations
-# JUPYTER_PATH for datafile directory locations
-# JUPYTER_DATA_DIR for data file location
-# JUPYTER_RUNTIME_DIR for runtime file location
-if hash jupyter 2>/dev/null; then
-	export JUPYTER_ROOT="$PIPX_HOME/.jupyter"
-	export JUPYTER_CONFIG_DIR="$JUPYTER_ROOT/"
-	export JUPYTER_CONFIG_DIR="$PIPX_HOME/.jupyter/etc/jupyter"
-	export JUPYTER_DATA_DIR="$PIPX_HOME/.jupyter/share/jupyter"
-	export JUPYTER_KERNEL_DIR="$JUPYTER_DATA_DIR/kernels" # user defined kernels
-fi
-
 # matplotlib
 export MPLCONFIGDIR="$CONFIG/matplotlib"
 export MATPLOTLIBRC="$MPLCONFIGDIR/matplotlibrc"

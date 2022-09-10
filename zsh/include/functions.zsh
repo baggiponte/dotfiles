@@ -72,7 +72,3 @@ extract() {
 jupyter-kernel-install () {
     ipython kernel install --user --name "$1" --display-name "$2" --sys-prefix
 }
-
-jupyter-kerneldir-open () {
-    f $JUPYTER_KERNEL_DIR
-}
