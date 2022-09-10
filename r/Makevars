@@ -1,8 +1,0 @@
-CC=clang
-
-# C++ compiler; sometimes I need to swap the two
-CXX=clang++
-# CXX=/usr/local/opt/gcc/bin/g++-11
-
-# fortran compiler: https://stackoverflow.com/q/35999874
-FLIBS=-L/usr/local/opt/gfortran/bin/fortran
