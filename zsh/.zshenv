@@ -38,8 +38,8 @@ export HOMEBREW_BUNDLE_FILE="$CONFIG/Brewfile"
 # JUPYTER_PATH for datafile directory locations
 # JUPYTER_DATA_DIR for data file location
 # JUPYTER_RUNTIME_DIR for runtime file location
-export JUPYTER_CONFIG_DIR="$HOME/.jupyter"
-export JUPYTER_DATA_DIR="$HOME/.local/share/jupyter/"
+export JUPYTER_CONFIG_DIR="$PIPX_HOME/.jupyter/etc/jupyter"
+export JUPYTER_DATA_DIR="$PIPX_HOME/.jupyter/share/jupyter"
 export JUPYTER_KERNEL_DIR="$JUPYTER_DATA_DIR/kernels" # user defined kernels
 
 # matplotlib
