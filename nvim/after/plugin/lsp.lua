@@ -23,7 +23,7 @@ local on_attach = function(_, bufnr)
 end
 
 local lspconfig = require('lspconfig')
-local servers = { 'pyright', 'julials', 'dockerls', 'r_language_server', 'bashls' }
+local servers = { 'pyright', 'julials' }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({ capabilities = capabilities, on_attach = on_attach })
