@@ -30,8 +30,6 @@ brew "sqlite"
 brew "python@3.9"
 # Insanely fast image printing in your terminal
 brew "catimg"
-# Create and view interactive cheat sheets for *nix commands
-brew "cheat"
 # Human-friendly and fast alternative to cut and (sometimes) awk
 brew "choose-rust"
 # Console Matrix
@@ -218,8 +216,6 @@ brew "yank"
 brew "zip"
 # General-purpose lossless data-compression library
 brew "zlib"
-# Shell extension to navigate your filesystem faster
-brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Smart and simple CSV processing on the command-line
@@ -249,8 +245,6 @@ cask "font-roboto-mono"
 cask "font-yanone-kaffeesatz"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
 # Programming language for technical computing
 cask "julia"
 # Keyboard customizer
@@ -271,7 +265,5 @@ cask "raycast"
 cask "rectangle"
 # Quicklook extension for source files
 cask "syntax-highlight"
-# Open-source code editor
-cask "visual-studio-code"
 # Collect, organize, cite, and share research sources
 cask "zotero"
