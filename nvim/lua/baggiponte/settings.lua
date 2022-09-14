@@ -21,7 +21,7 @@ for _, plugin in ipairs(disabled_built_ins) do
 end
 
 -- disable currently unused providers (see :h provider)
-vim.api.nvim_set_var('loaded_python_provider', 0)
+vim.api.nvim_set_var('loaded_python3_provider', 0)
 vim.api.nvim_set_var('loaded_perl_provider', 0)
 vim.api.nvim_set_var('loaded_node_provider', 0)
 vim.api.nvim_set_var('loaded_ruby_provider', 0)
