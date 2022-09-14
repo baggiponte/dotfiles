@@ -72,12 +72,6 @@ if hash cookiecutter 2>/dev/null; then
 	export COOKIECUTTER_CONFIG="$CONFIG/cookiecutter.yaml"
 fi
 
-# kaggle
-if hash kaggle 2>/dev/null; then
-	export KAGGLE_CONFIG_DIR="$CONFIG/kaggle"
-	source "$HOME/.secrets/kaggle.txt" # username and key
-fi
-
 # postgres
 if hash psql 2>/dev/null; then
 	export PGDATA="/usr/local/var/postgres@14"
