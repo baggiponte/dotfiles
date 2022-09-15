@@ -91,7 +91,6 @@ return require('packer').startup(function(use)
 
   -- [[ LSP ]]
   use('neovim/nvim-lspconfig') -- Collection of configurations for built-in LSP client
-  -- use 'williamboman/nvim-lsp-installer'                                       -- Automatically install language servers to stdpath
   use({ -- Completion
     'hrsh7th/nvim-cmp',
     requires = {
@@ -111,18 +110,18 @@ return require('packer').startup(function(use)
 
   use('simrat39/symbols-outline.nvim') -- A tree like view for symbols in Neovim using the Language Server Protocol.
 
+  use('williamboman/mason.nvim') -- Installer for external tooling e.g. LSP servers, linters, formatters...
+  -- use('jose-elias-alvarez/null-ls.nvim') -- setup linters, formatters...
+
   -- [[ Snippets ]]
   use({ 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }) -- Snippet Engine and Snippet Expansion
   use('rafamadriz/friendly-snippets') -- Crowdsourced snippets
 
-  -- [[ Other Languages ]]
-
-  use({
-    'quarto-dev/quarto-vim', -- Quarto syntax highting
-    requires = {
-      { 'vim-pandoc/vim-pandoc-syntax' },
-    },
-    ft = { 'quarto' },
-  })
-  use('quarto-dev/quarto-nvim') -- Quarto support
+  -- [[ Others ]]
+  -- use({
+  --   'quarto-dev/quarto-vim', -- Quarto syntax highting
+  --   requires = {{ 'vim-pandoc/vim-pandoc-syntax' }},
+  --   ft = { 'quarto' },
+  -- })
+  -- use('quarto-dev/quarto-nvim') -- Quarto support
 end)
