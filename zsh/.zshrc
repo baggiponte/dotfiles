@@ -13,7 +13,7 @@
 sources=(
   "aliases"
   "functions"
-  "vim"
+  # "vim"
   "completions"
 )
 
