@@ -53,15 +53,13 @@ vim.keymap.set('n', '<leader>fs', symbols_outline.toggle_outline, opts)
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').git_files, opts)
 vim.keymap.set('n', '<leader>fF', require('telescope.builtin').find_files, opts)
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, opts)
-
--- fuzzy find and file browser
-vim.keymap.set('n', '<leader>fz', require('telescope.builtin').current_buffer_fuzzy_find, opts)
-vim.keymap.set('n', '<leader>fZ', require('telescope.builtin').live_grep, opts)
-vim.keymap.set('n', '<leader>fD', telescope.extensions.file_browser.file_browser, opts)
 vim.keymap.set(
   'n',
   '<leader>fd',
   "<cmd>lua require 'telescope'.extensions.file_browser.file_browser{ path = '%:p:h' }<CR>",
   opts
-) -- open in current buffer directory
+)
+-- fuzzy find and file browser
+vim.keymap.set('n', '<leader>fz', require('telescope.builtin').current_buffer_fuzzy_find, opts)
+vim.keymap.set('n', '<leader>fZ', require('telescope.builtin').live_grep, opts)
 vim.keymap.set('n', '<leader>fr', telescope.extensions.frecency.frecency, opts)
