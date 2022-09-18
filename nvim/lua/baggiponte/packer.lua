@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
   use('nvim-lua/popup.nvim')
   use('nvim-lua/plenary.nvim')
   use('kyazdani42/nvim-web-devicons')
-  use('tami5/sqlite.lua')
+  use('tami5/sqlite.lua') -- for telescope-frecency
 
   -- [[ Git ]]
   use('tpope/vim-fugitive') -- git
@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
   use('kdheepak/lazygit.nvim') -- Open a floating panel with lazygit
 
   -- [[ Indentation ]]
-  use('tpope/vim-sleuth') -- Auto indentation, hopefully
+  use('tpope/vim-sleuth') -- Better auto indentation
   use('lukas-reineke/indent-blankline.nvim') -- Highlight indentation
 
   -- [[ Bracket pairing ]]
@@ -47,8 +47,10 @@ return require('packer').startup(function(use)
     end,
   })
 
-  -- [[ Telescope ]]
+  -- [[ Terminal ]]
+  use({ 'akinsho/toggleterm.nvim', tag = '*' })
 
+  -- [[ Telescope ]]
   use({
     'nvim-telescope/telescope.nvim',
     {
@@ -69,12 +71,14 @@ return require('packer').startup(function(use)
 
   -- [[ Treesitter ]]
   use({
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    requires = {
-      'nvim-treesitter/nvim-treesitter-context',
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      -- 'nvim-treesitter/nvim-treesitter-refactor',
+    {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      requires = {
+        'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        'p00f/nvim-ts-rainbow',
+      },
     },
     {
       'kylechui/nvim-surround',
@@ -83,39 +87,45 @@ return require('packer').startup(function(use)
         require('nvim-surround').setup({})
       end,
     },
-    {
-      'p00f/nvim-ts-rainbow',
-      after = 'nvim-treesitter',
-    },
   })
 
   -- [[ LSP ]]
   use('neovim/nvim-lspconfig') -- Collection of configurations for built-in LSP client
-  use({ -- Completion
+
+  -- Completion sources
+  use({
     'hrsh7th/nvim-cmp',
     requires = {
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      -- 'hrsh7th/cmp-emoji',
-      -- "kdheepak/cmp-latex-symbols",
-      -- "jc-doyle/cmp-pandoc-references"
     },
-    -- -- with cmp-latex-symbols
-    -- sources = {
-    --   { name = "latex_symbols" },
-    -- },
   })
 
-  use('simrat39/symbols-outline.nvim') -- A tree like view for symbols in Neovim using the Language Server Protocol.
-
-  use('williamboman/mason.nvim') -- Installer for external tooling e.g. LSP servers, linters, formatters...
-  -- use('jose-elias-alvarez/null-ls.nvim') -- setup linters, formatters...
+  -- A tree like view for symbols in Neovim using the Language Server Protocol.
+  use({
+    'simrat39/symbols-outline.nvim',
+    config = function()
+      require('symbols-outline').setup({})
+    end,
+  })
 
   -- [[ Snippets ]]
   use({ 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }) -- Snippet Engine and Snippet Expansion
   use('rafamadriz/friendly-snippets') -- Crowdsourced snippets
+
+  -- [[ Other utilities, e.g. install LSP and run formatters ]]
+  -- Installer for external tooling e.g. LSP servers, linters, formatters...
+  -- use({
+  --   'williamboman/mason.nvim',
+  --   config = function()
+  --     require('mason').setup({})
+  --   end
+  -- })
+  -- use('jose-elias-alvarez/null-ls.nvim') -- setup linters, formatters...
 
   -- [[ Others ]]
   -- use({
