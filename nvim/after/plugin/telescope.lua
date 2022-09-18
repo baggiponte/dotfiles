@@ -1,5 +1,6 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
+local symbols_outline = require('symbols-outline')
 
 telescope.setup({
   defaults = {
@@ -30,6 +31,7 @@ telescope.setup({
       hijack_netrw = true,
       hidden = true,
     },
+    file_ignore_patterns = { 'node_modules/.*', 'git/' },
   },
 })
 
@@ -42,9 +44,10 @@ end
 -- [[ Set keymaps ]]
 local opts = { silent = true, noremap = true }
 
--- explore symbols within the document
-vim.keymap.set('n', '<leader>fH', require('telescope.builtin').help_tags, opts)
-vim.keymap.set('n', '<leader>fh', require('telescope.builtin').treesitter, opts)
+-- explore symbols within the document. NOTE: replaced by symbols-outline
+-- vim.keymap.set('n', '<leader>fH', require('telescope.builtin').help_tags, opts)
+-- vim.keymap.set('n', '<leader>fh', require('telescope.builtin').treesitter, opts)
+vim.keymap.set('n', '<leader>fs', symbols_outline.toggle_outline, opts)
 
 -- explore files
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').git_files, opts)
@@ -54,10 +57,10 @@ vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, opts)
 -- fuzzy find and file browser
 vim.keymap.set('n', '<leader>fz', require('telescope.builtin').current_buffer_fuzzy_find, opts)
 vim.keymap.set('n', '<leader>fZ', require('telescope.builtin').live_grep, opts)
-vim.keymap.set('n', '<leader>fd', telescope.extensions.file_browser.file_browser, opts)
+vim.keymap.set('n', '<leader>fD', telescope.extensions.file_browser.file_browser, opts)
 vim.keymap.set(
   'n',
-  '<leader>fD',
+  '<leader>fd',
   "<cmd>lua require 'telescope'.extensions.file_browser.file_browser{ path = '%:p:h' }<CR>",
   opts
 ) -- open in current buffer directory
