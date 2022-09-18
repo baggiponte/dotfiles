@@ -12,7 +12,6 @@ return require('packer').startup(function(use)
   use('nvim-lua/popup.nvim')
   use('nvim-lua/plenary.nvim')
   use('kyazdani42/nvim-web-devicons')
-  use('tami5/sqlite.lua') -- for telescope-frecency
 
   -- [[ Git ]]
   use('tpope/vim-fugitive') -- git
@@ -53,39 +52,35 @@ return require('packer').startup(function(use)
   -- [[ Telescope ]]
   use({
     'nvim-telescope/telescope.nvim',
-    {
+    requires = {
+      'nvim-telescope/telescope-ui-select.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
-      after = 'telescope.nvim',
-    },
-    {
-      'nvim-telescope/telescope-frecency.nvim',
-      after = 'telescope.nvim',
-    },
-    {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      after = 'telescope.nvim',
-      run = 'make',
-      cond = vim.fn.executable('make') == 1,
+      {
+        'nvim-telescope/telescope-frecency.nvim',
+        requires = { 'tami5/sqlite.lua' },
+      },
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make',
+        cond = vim.fn.executable('make') == 1,
+      },
     },
   })
 
   -- [[ Treesitter ]]
   use({
-    {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
-      requires = {
-        'nvim-treesitter/nvim-treesitter-context',
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        'p00f/nvim-ts-rainbow',
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    requires = {
+      'nvim-treesitter/nvim-treesitter-context',
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'p00f/nvim-ts-rainbow',
+      {
+        'kylechui/nvim-surround',
+        config = function()
+          require('nvim-surround').setup({})
+        end,
       },
-    },
-    {
-      'kylechui/nvim-surround',
-      after = 'nvim-treesitter',
-      config = function()
-        require('nvim-surround').setup({})
-      end,
     },
   })
 
