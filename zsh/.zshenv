@@ -84,4 +84,7 @@ fi
 # | PATH |
 # +------+
 
-export PATH="$MYBINS:$LOCAL_BIN:$PATH:$HOME/.local/jetbrains"
+export PATH="$MYBINS:$LOCAL_BIN:$PATH"
+
+# if has jetbrains toolbox:
+# export PATH="$PATH:$HOME/.local/jetbrains"
