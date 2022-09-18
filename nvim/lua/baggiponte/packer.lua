@@ -113,6 +113,9 @@ return require('packer').startup(function(use)
     end,
   })
 
+  -- adds vscode-like pictograms
+  use('onsails/lspkind.nvim')
+
   -- [[ Snippets ]]
   use({ 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }) -- Snippet Engine and Snippet Expansion
   use('rafamadriz/friendly-snippets') -- Crowdsourced snippets
