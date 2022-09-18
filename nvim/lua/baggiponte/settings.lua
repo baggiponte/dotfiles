@@ -21,10 +21,16 @@ for _, plugin in ipairs(disabled_built_ins) do
 end
 
 -- disable currently unused providers (see :h provider)
-vim.api.nvim_set_var('loaded_python3_provider', 0)
-vim.api.nvim_set_var('loaded_perl_provider', 0)
-vim.api.nvim_set_var('loaded_node_provider', 0)
-vim.api.nvim_set_var('loaded_ruby_provider', 0)
+local disabled_providers = {
+  'python3',
+  'perl',
+  'node',
+  'ruby',
+}
+
+for _, lang in ipairs(disabled_providers) do
+  vim.api.nvim_set_var('loaded_' .. lang .. '_provider', 0)
+end
 
 -- Check :h nvim-defaults first!
 -- [[ Sidebar ]]
@@ -32,14 +38,18 @@ vim.opt.number = true -- Make relative line numbers default
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes' -- Side column to display signs, e.g. git added/changed lines
 
+-- [[ Working Directory ]]
+-- vim.opt.autochdir = true -- Always set the current working directory to the same as the open buffer
+
 -- [[ Context ]]
 vim.opt.cursorline = true -- Highlight line where the cursor is
 vim.opt.showmatch = true -- Highlight matching parentheses
-vim.opt.breakindent = true -- Enable break indent.
-vim.opt.linebreak = true
+
+vim.opt.linebreak = true -- Wrap lines
+vim.opt.breakindent = true -- Indent wrapped lines
 
 -- [[ Search ]]
-vim.opt.hlsearch = false -- Set highlight on search. This will remove the highlight after searching for text.
+vim.opt.hlsearch = false -- Highlight all matching patterns
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below the cursor.
