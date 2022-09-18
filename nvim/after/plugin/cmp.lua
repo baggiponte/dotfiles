@@ -5,18 +5,10 @@ require('luasnip.loaders.from_vscode').lazy_load() -- load snippets from rafamad
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 
---[[
-    - Open the suggestion box with ctrl+Space
-    - Enter, Tab and Shift + Tab are used to confirm and select items
---]]
-
 cmp.setup({
   -- REQUIRED - you must specify a snippet engine
   snippet = {
     expand = function(args)
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
       luasnip.lsp_expand(args.body)
     end,
   },
@@ -53,11 +45,12 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
-    { name = 'path' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    -- { name = 'ultisnips' },
     { name = 'buffer' },
+    { name = 'path' },
+    { name = 'luasnip' },
+    { name = 'nvim_lua' },
   }),
 })
 
@@ -66,6 +59,7 @@ cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
     { name = 'cmp_git' }, -- completion from git if you installed cmp_git
     { name = 'buffer' },
+    { name = 'path' },
   }),
 })
 
@@ -74,6 +68,7 @@ cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' },
+    { name = 'cmdline' },
   },
 })
 
