@@ -4,14 +4,23 @@ require('luasnip.loaders.from_vscode').lazy_load() -- load snippets from rafamad
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+local lspkind = require('lspkind')
 
 cmp.setup({
-  -- REQUIRED - you must specify a snippet engine
+  -- configure snippet engine
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
+  -- use lspkind to have icons displayed
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol',
+      maxwidth = 50,
+    }),
+  },
+  -- keymaps
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -21,10 +30,6 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
-    -- if not using luasnip:
-    -- ['<Tab>'] = cmp.mapping.select_next_item(),
-    -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    -- if using luasnip:
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -68,7 +73,6 @@ cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' },
-    { name = 'cmdline' },
   },
 })
 
