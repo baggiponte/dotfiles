@@ -13,18 +13,6 @@ export CACHE="${XDG_CACHE_HOME:-'$HOME/.cache'}"
 export CONFIG="${XDG_CONFIG_HOME:-'$HOME/.config'}"
 export CONFIG_HOME="$CONFIG"
 
-export LOCAL_BIN="$HOME/.local/bin"
-export MYBINS="$HOME/.local/scripts"
-
-# brew & brewfiles
-eval "$(/usr/local/bin/brew shellenv)"
-export HOMEBREW_BUNDLE_FILE="$CONFIG/Brewfile"
-
-# zsh plugin manager: https://github.com/zimfw/zimfw
-export ZIM_HOME="$XDG_CACHE_HOME/zim"
-
-# hash is like command -v
-
 if hash nvim 2>/dev/null; then
 	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v
 	# e.g. zsh will use vim keybindings!
@@ -32,6 +20,27 @@ if hash nvim 2>/dev/null; then
 	export MANPAGER="nvim +Man!"
 	export MYVIMRC="$CONFIG/nvim/init.lua"
 fi
+
+# +------+
+# | PATH |
+# +------+
+
+export LOCAL="$HOME/.local"
+export PATH="$LOCAL/scripts:$LOCAL/bin:$PATH"
+
+# if has jetbrains toolbox:
+# export PATH="$PATH:$HOME/.local/jetbrains"
+
+# brew & brewfiles
+eval "$(/usr/local/bin/brew shellenv)"
+export HOMEBREW_BUNDLE_FILE="$CONFIG/Brewfile"
+
+# +----------------+
+# | PLUGIN MANAGER |
+# +----------------+
+
+# zsh plugin manager: https://github.com/zimfw/zimfw
+export ZIM_HOME="$XDG_CACHE_HOME/zim"
 
 # +-------------+
 # | CONFIG DIRS |
@@ -47,7 +56,7 @@ fi
 # pipx is a python CLIs manager
 if hash pipx 2>/dev/null; then
 	export PIPX_HOME="$HOME/.local/pipx"
-	export PIPX_BIN_DIR="$LOCAL_BIN"
+	export PIPX_BIN_DIR="$LOCAL/bin"
 fi
 
 # matplotlib
@@ -79,12 +88,3 @@ if hash psql 2>/dev/null; then
 	export PGDATA="/usr/local/var/postgres@14"
 	export PGDATABASE="postgres"
 fi
-
-# +------+
-# | PATH |
-# +------+
-
-export PATH="$MYBINS:$LOCAL_BIN:$PATH"
-
-# if has jetbrains toolbox:
-# export PATH="$PATH:$HOME/.local/jetbrains"
