@@ -5,6 +5,7 @@ local symbols_outline = require('symbols-outline')
 telescope.setup({
   defaults = {
     initial_mode = 'normal',
+    file_ignore_patterns = { 'node_modules/.*', 'git/*' },
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -31,7 +32,6 @@ telescope.setup({
       hijack_netrw = true,
       hidden = true,
     },
-    file_ignore_patterns = { 'node_modules/.*', 'git/' },
   },
 })
 
