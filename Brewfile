@@ -43,8 +43,6 @@ brew "gcc"
 brew "openssl@1.1"
 # C routines to compute the Discrete Fourier Transform
 brew "fftw"
-# Banner-like program prints strings as ASCII art
-brew "figlet"
 # Software library to render fonts
 brew "freetype"
 # Infamous electronic fortune-cookie generator
