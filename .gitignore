@@ -5,6 +5,7 @@ jump
 iterm2/AppSupport
 karabiner/*
 !karabiner/karabiner.json
+jump
 lazygit/state.yml
 neofetch
 nvim/plugin
