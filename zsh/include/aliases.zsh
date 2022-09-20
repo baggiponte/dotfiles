@@ -6,8 +6,6 @@
 # see https://www.arp242.net/zshrc.html
 hash -d julia=$HOME/Documents/dev/julia-projects
 hash -d python=$HOME/Documents/dev/python-projects
-hash -d R=$HOME/Documents/dev/r-projects
-hash -d oai=$HOME/Documents/dev/oai
 
 #
 alias e="exec $SHELL" # exec $SHELL but faster
