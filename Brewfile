@@ -5,29 +5,12 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "sschlesier/csvutils"
-tap "timescale/tap"
 # Library of 2D and 3D vector, matrix, and math operations
 brew "imath"
-# Print a list of paths as a tree of paths 🌳
-brew "as-tree"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
-# Software library to render fonts
-brew "freetype"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Insanely fast image printing in your terminal
 brew "catimg"
 # Human-friendly and fast alternative to cut and (sometimes) awk
@@ -38,10 +21,6 @@ brew "cmatrix"
 brew "colordiff"
 # Configurable talking characters in ASCII art
 brew "cowsay"
-# Good-lookin' diffs with diff-highlight and more
-brew "diff-so-fancy"
-# Diff that understands syntax
-brew "difftastic"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Command-line DNS client
@@ -54,16 +33,20 @@ brew "duf"
 brew "dust"
 # Modern replacement for 'ls'
 brew "exa"
-# Perl lib for reading and writing EXIF metadata
-brew "exiftool"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # GNU compiler collection
 brew "gcc"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # C routines to compute the Discrete Fourier Transform
 brew "fftw"
 # Banner-like program prints strings as ASCII art
 brew "figlet"
+# Software library to render fonts
+brew "freetype"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
 # Implementation of the Unicode BiDi algorithm
@@ -72,20 +55,12 @@ brew "fribidi"
 brew "fx"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Library for command-line editing
+brew "readline"
 # GNU awk utility
 brew "gawk"
 # Geometry Engine
 brew "geos"
-# Cartographic Projections Library
-brew "proj"
-# Optimized BLAS library
-brew "openblas"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
-# Geospatial Data Abstraction Library
-brew "gdal"
 # GitHub command-line tool
 brew "gh"
 # Interpreter for PostScript and PDF
@@ -94,10 +69,16 @@ brew "ghostscript"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Command-line interface for SQLite
+brew "sqlite"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Quickly rewrite git repository history
 brew "git-filter-repo"
 # Git extension for versioning large files
 brew "git-lfs"
+# Blazing fast terminal-ui for git written in rust
+brew "gitui"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU implementation of time utility
@@ -110,12 +91,12 @@ brew "gping"
 brew "gzip"
 # Command-line benchmarking tool
 brew "hyperfine"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Serializes the output of command-line tools to structured JSON output
 brew "jc"
-# Json incremental digger
-brew "jid"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Helps you navigate your file system faster by learning your habits
@@ -160,16 +141,12 @@ brew "pigz"
 brew "pipx"
 # Object-relational database system
 brew "postgresql@14", restart_service: true
-# Protocol buffers (Google's data interchange format)
-brew "protobuf"
-# Adds support for geographic objects to PostgreSQL
-brew "postgis"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Modern replacement for ps written by Rust
 brew "procs"
-# Parse HTML at the command-line
-brew "pup"
+# Cartographic Projections Library
+brew "proj"
 # Password generator
 brew "pwgen"
 # Python version management
@@ -198,20 +175,16 @@ brew "tesseract"
 brew "tldr"
 # Color-based alternative to figlet (uses libcaca)
 brew "toilet"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Unidata unit conversion library
 brew "udunits"
-# Provide version control info in shell prompts
-brew "vcprompt"
+# ODBC 3 connectivity for UNIX
+brew "unixodbc"
 # Internet file retriever
 brew "wget"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
 # Fast CSV toolkit written in Rust
 brew "xsv"
-# Copy terminal output to clipboard
-brew "yank"
 # Compression and file packaging/archive utility
 brew "zip"
 # General-purpose lossless data-compression library
@@ -220,6 +193,8 @@ brew "zlib"
 brew "zsh"
 # Smart and simple CSV processing on the command-line
 brew "sschlesier/csvutils/csvquote"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
@@ -228,6 +203,7 @@ cask "appcleaner"
 cask "dozer"
 # Web browser
 cask "firefox"
+# Developer targeted fonts with a high number of glyphs
 cask "font-dejavu-sans-mono-nerd-font"
 # Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font"
@@ -236,7 +212,6 @@ cask "font-jetbrains-mono"
 # Monospaced typeface designed for programming in Julia
 cask "font-juliamono"
 cask "font-lato"
-cask "font-montserrat"
 cask "font-open-sans"
 cask "font-poppins"
 # Elegant sans-serif font family, now 9 weights and italic style
@@ -263,7 +238,5 @@ cask "quarto"
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# Quicklook extension for source files
-cask "syntax-highlight"
 # Collect, organize, cite, and share research sources
 cask "zotero"
