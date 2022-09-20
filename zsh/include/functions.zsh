@@ -2,6 +2,15 @@
 # | Functions |
 # +-----------+
 
+# open in Finder
+f() {
+    if [ "$1" = "" ]; then
+        open -a Finder ./
+    else
+        open -a Finder $1
+    fi
+}
+
 # open ntrw or nvim
 n () {
     if [ "$1" = "" ]; then
@@ -12,6 +21,7 @@ n () {
 }
 
 alias nrc="n $CONFIG/nvim"
+alias nsh="n $ZDOTDIR"
 
 # trash files instead of `rm` them.
 trash () { command mv "$@" ~/.Trash ; }
@@ -21,15 +31,6 @@ take () { mkdir -p "$1" && cd "$1"; }
 
 # create a custom function to use gitignore.io to create .gitignore files
 gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/"$@" ;}
-
-# open in Finder
-f() {
-    if [ "$1" = "" ]; then
-        open -a Finder ./
-    else
-        open -a Finder $1
-    fi
-}
 
 # pretty print directory tree for git repos
 ls-tree() {
