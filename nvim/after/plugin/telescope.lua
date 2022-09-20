@@ -36,7 +36,7 @@ telescope.setup({
 })
 
 -- [[ Enable extensions ]]
-local extensions = { 'fzf', 'file_browser', 'frecency' }
+local extensions = { 'fzf', 'file_browser', 'frecency', 'ui-select' }
 for _, extension in ipairs(extensions) do
   telescope.load_extension(extension)
 end
