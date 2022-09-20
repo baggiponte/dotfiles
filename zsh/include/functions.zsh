@@ -67,9 +67,9 @@ if hash brew 2>/dev/null; then
 
     # update Homebrew
     brew-update () {
-        brew update && brew upgrade 
+        brew update && brew upgrade
     }
-    
+
     # clean homebrew
     brew-cleanup () {
         if [[ ! -v HOMEBREW_BUNDLE_FILE ]]; then
@@ -118,4 +118,3 @@ if hash nvim 2>/dev/null; then
     alias nrc="n $CONFIG/nvim"
     alias nsh="n $ZDOTDIR"
 fi
-
