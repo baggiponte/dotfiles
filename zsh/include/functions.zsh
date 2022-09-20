@@ -77,7 +77,7 @@ if hash brew 2>/dev/null; then
             exit 1
         fi
 
-        echo "Removing unused formulae..." && brew leaves -p | xargs -L 1 brew uninstall
+        echo "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
 
         echo "Removing lockfiles and outdated downloads..." && brew cleanup -s
 
