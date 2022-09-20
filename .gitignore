@@ -1,7 +1,5 @@
 *.bak
-bat
 cheat
-direnv
 gh
 jump
 iterm2/AppSupport
@@ -12,4 +10,3 @@ neofetch
 nvim/plugin
 raycast
 zsh/.zsh_history
-zsh/zsh_sessions/
