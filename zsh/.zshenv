@@ -13,14 +13,6 @@ export CACHE="${XDG_CACHE_HOME:-'$HOME/.cache'}"
 export CONFIG="${XDG_CONFIG_HOME:-'$HOME/.config'}"
 export CONFIG_HOME="$CONFIG"
 
-if hash nvim 2>/dev/null; then
-	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v
-	# e.g. zsh will use vim keybindings!
-	export EDITOR="/usr/local/bin/nvim"
-	export MANPAGER="nvim +Man!"
-	export MYVIMRC="$CONFIG/nvim/init.lua"
-fi
-
 # +------+
 # | PATH |
 # +------+
@@ -28,12 +20,23 @@ fi
 export LOCAL="$HOME/.local"
 export PATH="$LOCAL/scripts:$LOCAL/bin:$PATH"
 
-# if has jetbrains toolbox:
-# export PATH="$PATH:$HOME/.local/jetbrains"
-
 # brew & brewfiles
-eval "$(/usr/local/bin/brew shellenv)"
+if [ "$(sysctl -n machdep.cpu.brand_string)" = "Apple M1" ]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+	eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 export HOMEBREW_BUNDLE_FILE="$CONFIG/Brewfile"
+
+if hash nvim 2>/dev/null; then
+	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v
+	# e.g. zsh will use vim keybindings!
+	export EDITOR="nvim"
+	export MANPAGER="nvim +Man!"
+	export MYVIMRC="$CONFIG/nvim/init.lua"
+fi
+
 
 # +----------------+
 # | PLUGIN MANAGER |
@@ -45,13 +48,6 @@ export ZIM_HOME="$XDG_CACHE_HOME/zim"
 # +-------------+
 # | CONFIG DIRS |
 # +-------------+
-
-# bat
-if hash bat 2>/dev/null; then
-	export BAT_CONFIG_PATH=$CONFIG/bat
-	export BAT_THEME="gruvbox-dark"
-	export PAGER="/usr/local/bin/bat --plain"
-fi
 
 # pipx is a python CLIs manager
 if hash pipx 2>/dev/null; then
