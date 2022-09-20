@@ -2,7 +2,8 @@
 cheat
 gh
 jump
-iterm2/AppSupport
+iterm2
+!iterm2/*.json
 karabiner/*
 !karabiner/karabiner.json
 jump
