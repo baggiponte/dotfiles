@@ -97,7 +97,7 @@ fi
 # +----------------+
 
 # pretty print directory tree for git repos
-if command -v exa 2>/dev/null; then
+if hash exa 2>/dev/null; then
     ls-tree() {
         local level="${1:-"1"}"
 
