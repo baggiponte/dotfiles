@@ -3,12 +3,13 @@ bat
 cheat
 direnv
 gh
+jump
 iterm2/AppSupport
 karabiner/*
 !karabiner/karabiner.json
 lazygit/state.yml
+neofetch
 nvim/plugin
 raycast
 zsh/.zsh_history
-.gitignore_global
-.ideavimrc
+zsh/zsh_sessions/
