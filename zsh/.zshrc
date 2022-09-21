@@ -61,7 +61,7 @@ done
 
 # NOTE: if autocompletion does not work, remove
 # $XDG_CACHE_HOME/zsh/zcompdump and run compinit
-fpath+=$XDG_CACHE_HOME/zsh/zfunc
+fpath=($XDG_CACHE_HOME/zsh/zfunc $fpath)
 
 # download zimfw plugin manager if missing
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
@@ -79,6 +79,12 @@ source ${ZIM_HOME}/init.zsh
 # +-------------+
 # | COMPLETIONS |
 # +-------------+
+
+# Custom completions
+
+if [ -s $XDG_CACHE_HOME/zsh/zfunc/_pdm ]; then
+  pdm completion zsh > $XDG_CACHE_HOME/zsh/zfunc/_pdm
+fi
 
 # compinit is to be run last, after loading modules with zmodload etc
 # https://unix.stackexchange.com/a/391670/402599
