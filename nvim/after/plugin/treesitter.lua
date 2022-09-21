@@ -1,8 +1,19 @@
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
-    'python',
+    'bash',
+    'dockerfile',
+    'gitattributes',
+    'gitignore',
+    'json',
+    'jsonc',
     'julia',
     'lua',
+    'make',
+    'markdown',
+    'python',
+    'sql',
+    'toml',
+    'yaml',
   },
 
   highlight = {
