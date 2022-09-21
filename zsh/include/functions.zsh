@@ -41,6 +41,12 @@ extract() {
     done
 }
 
+generate-pw () {
+    local num_char="${1:-32}"
+
+    openssl rand -base64 "$num_char"
+}
+
 # create new kernel for jupyter notebooks
 jupyter-kernel-install () {
     ipython kernel install --user --name "$1" --display-name "$2" --sys-prefix
