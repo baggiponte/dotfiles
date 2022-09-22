@@ -14,7 +14,9 @@ alias lg=lazygit      # lazygit
 
 # override defaults
 alias nnn"nnn -H"       # nnn (file browser)
-alias bat="bat --plain" # bat
+if hash bat 2>/dev/null; then
+    alias bat="bat --plain" # bat
+fi
 
 # utilities
 alias ...="../../"
