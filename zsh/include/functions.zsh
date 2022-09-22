@@ -73,7 +73,8 @@ if hash brew 2>/dev/null; then
 
     # update Homebrew
     brew-update () {
-        brew update && brew upgrade
+        brew update
+        brew upgrade
     }
 
     # clean homebrew
@@ -112,7 +113,7 @@ if hash exa 2>/dev/null; then
 fi
 
 if hash nvim 2>/dev/null; then
-    # open ntrw or nvim
+    # open telescope in the current folder
     n () {
         if [ "$1" = "" ]; then
             nvim .
@@ -123,4 +124,10 @@ if hash nvim 2>/dev/null; then
 
     alias nrc="n $CONFIG/nvim"
     alias nsh="n $ZDOTDIR"
+
+    nvim-update () {
+        echo "updating nvim plugins..."
+        nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+        echo "done!"
+    }
 fi
