@@ -88,7 +88,7 @@ if hash brew 2>/dev/null; then
 
         echo "Removing lockfiles and outdated downloads..." && brew cleanup -s
 
-        echo "Removing downloads in ~/Library/Caches/Homebrew/downloads..." && rm -r ~/Library/Caches/Homebrew/downloads/*
+        echo "Removing downloads in ~/Library/Caches/Homebrew/downloads..." && rm -f ~/Library/Caches/Homebrew/downloads/*
 
         echo "Dumping formulae and casks to Brewfile..."
 
@@ -129,5 +129,13 @@ if hash nvim 2>/dev/null; then
         echo "updating nvim plugins..."
         nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
         echo "done!"
+    }
+fi
+
+if command -v zimfw &>/dev/null; then
+    zim-update () {
+        zimfw upgrade
+        zimfw uninstall
+        zimfw update
     }
 fi
