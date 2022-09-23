@@ -61,3 +61,15 @@ zstyle ':completion:*' group-name ''
 
 # case insensitivity and tab expansion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# +-------------------+
+# | OTHER COMPLETIONS |
+# +-------------------+
+
+# NOTE: if autocompletion does not work, remove
+# $XDG_CACHE_HOME/zsh/zcompdump and run compinit
+fpath=($XDG_CACHE_HOME/zsh/zfunc $fpath)
+
+if [ -s $XDG_CACHE_HOME/zsh/zfunc/_pdm ]; then
+  pdm completion zsh > $XDG_CACHE_HOME/zsh/zfunc/_pdm
+fi
