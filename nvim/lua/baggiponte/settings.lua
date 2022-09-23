@@ -6,7 +6,7 @@ vim.g.mapleader = ' '
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {
   'gzip',
-  'man',
+  -- 'man',
   'matchit',
   'matchparen',
   'shada_plugin',
