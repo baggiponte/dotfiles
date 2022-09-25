@@ -5,8 +5,6 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "sschlesier/csvutils"
-# Library of 2D and 3D vector, matrix, and math operations
-brew "imath"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Yet another cross-platform graphical process/system monitor
@@ -43,10 +41,10 @@ brew "gcc"
 brew "openssl@1.1"
 # C routines to compute the Discrete Fourier Transform
 brew "fftw"
-# Software library to render fonts
-brew "freetype"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
+# Software library to render fonts
+brew "freetype"
 # Implementation of the Unicode BiDi algorithm
 brew "fribidi"
 # Terminal JSON viewer
@@ -57,12 +55,8 @@ brew "fzf"
 brew "readline"
 # GNU awk utility
 brew "gawk"
-# Geometry Engine
-brew "geos"
 # GitHub command-line tool
 brew "gh"
-# Interpreter for PostScript and PDF
-brew "ghostscript"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -89,14 +83,14 @@ brew "gping"
 brew "gzip"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
-# Serializes the output of command-line tools to structured JSON output
-brew "jc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Interactive jq
+brew "ijq"
+# Library of 2D and 3D vector, matrix, and math operations
+brew "imath"
+# Serializes the output of command-line tools to structured JSON output
+brew "jc"
 # Helps you navigate your file system faster by learning your habits
 brew "jump"
 # Simple terminal UI for git commands
@@ -107,8 +101,6 @@ brew "libgit2"
 brew "libiconv"
 # Rainbows and unicorns in your console!
 brew "lolcat"
-# Language Server for the Lua language
-brew "lua-language-server"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Utility for directing compilation
@@ -143,16 +135,14 @@ brew "postgresql@14", restart_service: true
 brew "pre-commit"
 # Modern replacement for ps written by Rust
 brew "procs"
-# Cartographic Projections Library
-brew "proj"
-# Password generator
-brew "pwgen"
 # Python version management
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
 # Static type checker for Python
 brew "pyright"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
@@ -167,8 +157,6 @@ brew "sk"
 brew "stow"
 # Opinionated Lua code formatter
 brew "stylua"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
 # Simplified and community-driven man pages
 brew "tldr"
 # Color-based alternative to figlet (uses libcaca)
@@ -191,8 +179,6 @@ brew "zlib"
 brew "zsh"
 # Smart and simple CSV processing on the command-line
 brew "sschlesier/csvutils/csvquote"
-# GPU-accelerated terminal emulator
-cask "alacritty"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
@@ -210,11 +196,9 @@ cask "font-jetbrains-mono"
 # Monospaced typeface designed for programming in Julia
 cask "font-juliamono"
 cask "font-lato"
-cask "font-open-sans"
 cask "font-poppins"
 # Elegant sans-serif font family, now 9 weights and italic style
 cask "font-raleway"
-cask "font-roboto-mono"
 cask "font-yanone-kaffeesatz"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
@@ -236,5 +220,7 @@ cask "quarto"
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Quicklook extension for source files
+cask "syntax-highlight"
 # Collect, organize, cite, and share research sources
 cask "zotero"
