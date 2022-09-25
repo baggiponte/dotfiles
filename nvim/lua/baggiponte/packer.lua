@@ -117,6 +117,9 @@ return require('packer').startup(function(use)
     },
   })
 
+  -- hook linters, formatters... into lsp keybindings
+  use('jose-elias-alvarez/null-ls.nvim')
+
   -- A tree like view for symbols in Neovim using the Language Server Protocol.
   use({
     'simrat39/symbols-outline.nvim',
@@ -131,8 +134,6 @@ return require('packer').startup(function(use)
   -- [[ Snippets ]]
   use({ 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }) -- Snippet Engine and Snippet Expansion
   use('rafamadriz/friendly-snippets') -- Crowdsourced snippets
-
-  -- use('jose-elias-alvarez/null-ls.nvim') -- setup linters, formatters...
 
   -- [[ Others ]]
   use({
