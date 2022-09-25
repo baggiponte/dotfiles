@@ -23,7 +23,15 @@ local on_attach = function(_, bufnr)
 end
 
 local lspconfig = require('lspconfig')
-local servers = { 'pyright', 'julials' }
+local servers = {
+  'bashls',
+  'dockerls',
+  'jsonls',
+  'julials',
+  'pyright',
+  'sqlls',
+  'yamlls',
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({ capabilities = capabilities, on_attach = on_attach })
@@ -39,5 +47,23 @@ lspconfig['sumneko_lua'].setup({
       workspace = { library = vim.api.nvim_get_runtime_file('', true) }, -- Make the server aware of Neovim runtime files
       telemetry = { enable = false }, -- Do not send telemetry data containing a randomized but unique identifier
     },
+  },
+})
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    -- lsp
+    'bashls',
+    'dockerls',
+    'jsonls',
+    'pyright',
+    'sqlls',
+    'sumneko_lua',
+    'yamlls',
+    -- linters
+    'black',
+    'flake8',
+    'isort',
   },
 })
