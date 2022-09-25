@@ -9,8 +9,6 @@ tap "sschlesier/csvutils"
 brew "bash"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
-# Insanely fast image printing in your terminal
-brew "catimg"
 # Human-friendly and fast alternative to cut and (sometimes) awk
 brew "choose-rust"
 # Console Matrix
@@ -23,8 +21,6 @@ brew "cowsay"
 brew "direnv"
 # Command-line DNS client
 brew "dog"
-# Lightning-fast linter for .env files written in Rust
-brew "dotenv-linter"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -87,8 +83,6 @@ brew "hyperfine"
 brew "jq"
 # Interactive jq
 brew "ijq"
-# Library of 2D and 3D vector, matrix, and math operations
-brew "imath"
 # Serializes the output of command-line tools to structured JSON output
 brew "jc"
 # Helps you navigate your file system faster by learning your habits
@@ -109,8 +103,6 @@ brew "make"
 brew "mdp"
 # NCurses Disk Usage
 brew "ncdu"
-# Fast, highly customisable system info script
-brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Tiny, lightning fast, feature-packed file manager
@@ -220,7 +212,5 @@ cask "quarto"
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# Quicklook extension for source files
-cask "syntax-highlight"
 # Collect, organize, cite, and share research sources
 cask "zotero"
