@@ -98,6 +98,12 @@ return require('packer').startup(function(use)
   -- [[ LSP ]]
   use('neovim/nvim-lspconfig') -- Collection of configurations for built-in LSP client
 
+  -- Installer for external tooling e.g. LSP servers, linters, formatters...
+  use({
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+  })
+
   -- Completion sources
   use({
     'hrsh7th/nvim-cmp',
@@ -126,14 +132,6 @@ return require('packer').startup(function(use)
   use({ 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }) -- Snippet Engine and Snippet Expansion
   use('rafamadriz/friendly-snippets') -- Crowdsourced snippets
 
-  -- [[ Other utilities, e.g. install LSP and run formatters ]]
-  -- Installer for external tooling e.g. LSP servers, linters, formatters...
-  -- use({
-  --   'williamboman/mason.nvim',
-  --   config = function()
-  --     require('mason').setup({})
-  --   end
-  -- })
   -- use('jose-elias-alvarez/null-ls.nvim') -- setup linters, formatters...
 
   -- [[ Others ]]
