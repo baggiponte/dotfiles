@@ -18,7 +18,7 @@ local on_attach = function(_, bufnr)
   bufmap('n', 'gr', vim.lsp.buf.references) -- Lists all the references
   bufmap('n', '<c-k>', vim.lsp.buf.signature_help) -- Display a function's signature information
   bufmap('n', '<leader>rn', vim.lsp.buf.rename) -- Rename all references of the symbol under the cursor
-  bufmap('n', '<leader>f', vim.lsp.buf.formatting)
+  bufmap('n', 'F', vim.lsp.buf.formatting)
   bufmap('n', '<leader>ca', vim.lsp.buf.code_action) -- Selects a code action
 end
 
@@ -28,6 +28,7 @@ local servers = {
   'dockerls',
   'jsonls',
   'julials',
+  'marksman',
   'pyright',
   'sqlls',
   'yamlls',
@@ -57,13 +58,23 @@ require('mason-lspconfig').setup({
     'bashls',
     'dockerls',
     'jsonls',
+    'marksman',
     'pyright',
     'sqlls',
     'sumneko_lua',
     'yamlls',
     -- linters
-    'black',
     'flake8',
+    'luacheck',
+    'markdownlint',
+    'mypy',
+    'shellcheck',
+    'yamllint',
+    -- formatters
+    'black',
     'isort',
+    'jq',
+    'sql-formatter',
+    'stylua',
   },
 })
