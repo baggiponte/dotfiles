@@ -15,7 +15,9 @@ null_ls.setup({
     null_ls.builtins.formatting.markdownlint,
     -- null_ls.builtins.formatting.markdowntoc, -- not available with Mason
     null_ls.builtins.formatting.stylua,
-    -- null_ls.builtins.formatting.yamlfmt, -- needs go
+    null_ls.builtins.formatting.yamlfmt, -- needs go
+    null_ls.builtins.formatting.shfmt, -- needs go
+    null_ls.builtins.formatting.shellharden, -- needs rust
     -- hover actions
     null_ls.builtins.hover.printenv,
   },
