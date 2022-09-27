@@ -44,8 +44,6 @@ alias bd="b doctor"
 alias text="open -a TextEdit"
 
 # exa
-alias ls="exa --oneline --group-directories-first --icons --ignore-glob .DS_Store"
-alias l="ls --all"
+alias l="exa --all --group-directories-first --icons --oneline --ignore-glob .DS_Store"
 alias lig="ls --git-ignore"
-
 alias ll="l --long --git"
