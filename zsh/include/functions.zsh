@@ -88,7 +88,13 @@ if hash brew 2>/dev/null; then
 
         echo "Removing lockfiles and outdated downloads..." && brew cleanup -s
 
-        echo "Removing downloads in ~/Library/Caches/Homebrew/downloads..." && rm -f ~/Library/Caches/Homebrew/downloads/* 2>/dev/null
+        # get the list of all files
+        local download_dir="$HOME/Library/Caches/Homebrew/downloads"
+        local files=($download_dir/*(N))
+
+        # if the number of files is not 0, then remove them
+        # see: https://unix.stackexchange.com/a/313187/402599
+        (($#files)) && echo "Removing downloads in $download_dir" && rm -- $files || echo "No downloads to remove"
 
         echo "Dumping formulae and casks to Brewfile..."
 
