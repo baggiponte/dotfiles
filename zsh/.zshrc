@@ -31,8 +31,9 @@ sources=(
   "aliases"
   "completions"
   "functions"
-  # "python"
+  "options"
   "vim"
+  # "python"
 )
 
 for s in "${sources[@]}"; do
