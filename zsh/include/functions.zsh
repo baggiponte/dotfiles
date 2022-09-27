@@ -88,7 +88,7 @@ if hash brew 2>/dev/null; then
 
         echo "Removing lockfiles and outdated downloads..." && brew cleanup -s
 
-        echo "Removing downloads in ~/Library/Caches/Homebrew/downloads..." && rm -f ~/Library/Caches/Homebrew/downloads/*
+        echo "Removing downloads in ~/Library/Caches/Homebrew/downloads..." && rm -f ~/Library/Caches/Homebrew/downloads/* 2>/dev/null
 
         echo "Dumping formulae and casks to Brewfile..."
 
