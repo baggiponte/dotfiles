@@ -3,7 +3,10 @@
 ## To do
 
 - [ ] Create an install script
-- [ ] Make `packer.nvim` bootstrap
+- [x] Make `packer.nvim` bootstrap
+- [ ] Make servers and formatters lists dependent on installed languages:
+    - `vim.fn(go)` -> `shfmt` & `yamlfmt`
+    - `vim.fn(cargo)` -> `shellharden`
 
 ## FAQ
 
