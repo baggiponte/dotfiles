@@ -71,6 +71,8 @@ brew "gitui"
 brew "gnu-sed"
 # GNU implementation of time utility
 brew "gnu-time"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 # POSIX-compliant AWK interpreter written in Go
 brew "goawk"
 # Ping, but with a graph
@@ -139,6 +141,8 @@ brew "python@3.9"
 brew "rename"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Safe, concurrent, practical language
+brew "rust"
 # Intuitive find & replace CLI
 brew "sd"
 # Static analysis and lint tool, for (ba)sh scripts
