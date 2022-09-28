@@ -107,8 +107,6 @@ brew "mdp"
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Tiny, lightning fast, feature-packed file manager
-brew "nnn"
 # Platform built on V8 to build network applications
 brew "node"
 # Outputs current CPU temperature for OSX
