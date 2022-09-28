@@ -7,13 +7,14 @@
 hash -d julia=$HOME/Documents/dev/julia-projects
 hash -d python=$HOME/Documents/dev/python-projects
 
-#
 alias e="exec $SHELL" # exec $SHELL but faster
 alias make=gmake      # gnu-make (installed by homebrew)
 alias lg=lazygit      # lazygit
 
-# override defaults
-alias nnn"nnn -H"       # nnn (file browser)
+if hash nnn 2>/dev/null; then
+    alias nnn"nnn -H"       # nnn (file browser)
+fi
+
 if hash bat 2>/dev/null; then
     alias bat="bat --plain" # bat
 fi
