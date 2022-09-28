@@ -1,5 +1,4 @@
 *.bak
-cheat
 gh
 jump
 iterm2
@@ -8,7 +7,6 @@ karabiner/*
 !karabiner/karabiner.json
 jump
 lazygit/state.yml
-neofetch
 nvim/plugin
 raycast
 zsh/.zsh_history
