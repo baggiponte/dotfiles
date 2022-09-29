@@ -1,5 +1,6 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
+local trouble = require('trouble.providers.telescope')
 local symbols_outline = require('symbols-outline')
 
 telescope.setup({
@@ -12,6 +13,10 @@ telescope.setup({
         ['<C-d>'] = false,
         ['<C-j>'] = actions.move_selection_next,
         ['<C-k>'] = actions.move_selection_previous,
+        ['<C-t>'] = trouble.open_with_trouble,
+      },
+      n = {
+        ['<C-t>'] = trouble.open_with_trouble,
       },
     },
   },
