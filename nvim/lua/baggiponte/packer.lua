@@ -131,6 +131,14 @@ return require('packer').startup(function(use)
   -- adds vscode-like pictograms
   use('onsails/lspkind.nvim')
 
+  -- [[ Diagnostics ]]
+  use({
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('trouble').setup({})
+    end,
+  })
   -- [[ Snippets ]]
   use({ 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }) -- Snippet Engine and Snippet Expansion
   use('rafamadriz/friendly-snippets') -- Crowdsourced snippets
