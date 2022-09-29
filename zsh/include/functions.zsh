@@ -102,7 +102,8 @@ if hash brew 2>/dev/null; then
 
         echo "Dumping formulae and casks to Brewfile..."
 
-        pushd "$(dirname $HOMEBREW_BUNDLE_FILE)"
+        # see the comment here: https://unix.stackexchange.com/a/313187/402599
+        pushd "$HOMEBREW_BUNDLE_FILE:h"
         mv Brewfile Brewfile.bak
         brew bundle dump --describe --no-upgrade
         popd
