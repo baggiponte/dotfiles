@@ -9,8 +9,8 @@ vim.keymap.set('n', '<c-k>', '<c-w>k', opts)
 vim.keymap.set('n', '<c-l>', '<c-w>l', opts)
 
 -- [[ Create splits ]]
-vim.keymap.set('n', '<leader>v', '<cmd>vsp .<CR>', opts)
-vim.keymap.set('n', '<leader>V', '<cmd>sp .<CR>', opts)
+vim.keymap.set('n', '<leader>v', '<cmd>vsp %:p:h<CR>', opts)
+vim.keymap.set('n', '<leader>V', '<cmd>sp %:p:h<CR>', opts)
 
 -- [[ Save and exit files ]]
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', opts) -- save file
