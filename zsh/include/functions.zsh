@@ -79,10 +79,6 @@ if hash brew 2>/dev/null; then
 
     # clean homebrew
     brew-cleanup () {
-        if [[ ! -v HOMEBREW_BUNDLE_FILE ]]; then
-            echo "HOMEBREW_BUNDLE_FILE is not defined: exiting script"
-            exit 1
-        fi
 
         echo "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
 
@@ -101,12 +97,8 @@ if hash brew 2>/dev/null; then
         fi
 
         echo "Dumping formulae and casks to Brewfile..."
-
-        # using `:h` zsh modifier (run `info zsh modifiers`)
-        pushd "$HOMEBREW_BUNDLE_FILE:h"
-        mv Brewfile Brewfile.bak
-        brew bundle dump --describe --no-upgrade
-        popd
+        mv "$XDG_CONFIG_HOME/Brewfile" "$XDG_CONFIG_HOME/Brewfile.bak"
+        brew bundle dump --describe --no-upgrade --file="$XDG_CONFIG_HOME/Brewfile"
     }
 fi
 
