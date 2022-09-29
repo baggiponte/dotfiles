@@ -94,7 +94,11 @@ if hash brew 2>/dev/null; then
 
         # if the number of files is not 0, then remove them
         # see: https://unix.stackexchange.com/a/313187/402599
-        (($#files)) && echo "Removing downloads in $download_dir" && rm -- $files || echo "No downloads to remove"
+        if (($#files)); then
+            echo "Removing downloads in $download_dir" && rm -- $files
+        else
+            echo "No downloads to remove"
+        fi
 
         echo "Dumping formulae and casks to Brewfile..."
 
