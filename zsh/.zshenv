@@ -9,8 +9,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 # in case it's not compatible with XDG dirs
-export CACHE="${XDG_CACHE_HOME:-'$HOME/.cache'}"
-export CONFIG="${XDG_CONFIG_HOME:-'$HOME/.config'}"
+export CACHE="${XDG_CACHE_HOME:-"$HOME/.cache"}"
+export CONFIG="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 export CONFIG_HOME="$CONFIG"
 
 # +------+
