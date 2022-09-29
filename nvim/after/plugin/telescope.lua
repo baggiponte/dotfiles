@@ -19,10 +19,10 @@ telescope.setup({
     buffers = {
       mappings = {
         i = {
-          ['<C-d>'] = 'delete_buffer',
+          ['<C-q>'] = 'delete_buffer',
         },
         n = {
-          ['d'] = 'delete_buffer',
+          ['q'] = 'delete_buffer',
         },
       },
     },
