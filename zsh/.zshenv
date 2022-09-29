@@ -33,6 +33,7 @@ if hash nvim 2>/dev/null; then
 	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v
 	# e.g. zsh will use vim keybindings!
 	export EDITOR="nvim"
+	export PAGER="nvim -R"
 	export MANPAGER="nvim +Man!"
 	export MYVIMRC="$CONFIG/nvim/init.lua"
 fi
