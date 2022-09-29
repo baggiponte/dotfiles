@@ -44,7 +44,7 @@ extract() {
 generate-pw () {
     local num_char="${1:-32}"
 
-    openssl rand -base64 "$num_char"
+    openssl rand -base64 "$num_char" | tee /dev/tty | pbcopy
 }
 
 # create new kernel for jupyter notebooks
