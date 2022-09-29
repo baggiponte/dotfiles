@@ -27,8 +27,6 @@ else
 	eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-export HOMEBREW_BUNDLE_FILE="$CONFIG/Brewfile"
-
 if hash nvim 2>/dev/null; then
 	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v
 	# e.g. zsh will use vim keybindings!
