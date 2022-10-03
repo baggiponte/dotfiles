@@ -4,12 +4,16 @@
 
 # hashes to cd faster into dirs without defining aliases
 # see https://www.arp242.net/zshrc.html
-hash -d julia=$HOME/Documents/dev/julia-projects
-hash -d python=$HOME/Documents/dev/python-projects
+hash -d julia="$HOME/Documents/dev/julia-projects"
+hash -d python="$HOME/Documents/dev/python-projects"
 
-alias e="exec $SHELL" # exec $SHELL but faster
+alias e='exec $SHELL' # exec $SHELL but faster
 alias make=gmake      # gnu-make (installed by homebrew)
 alias lg=lazygit      # lazygit
+
+if hash colordiff 2>/dev/null; then
+    alias diff=colordiff
+fi
 
 if hash nnn 2>/dev/null; then
     alias nnn"nnn -H"       # nnn (file browser)
@@ -22,7 +26,7 @@ fi
 # utilities
 alias ...="../../"
 alias path='echo -e ${PATH//:/\\n}'
-alias fpath='echo ${fpath} | tr " " "\n"'
+alias efpath='echo ${fpath} | tr " " "\n"'
 alias td='echo $(date +%Y-%m-%d)'
 
 # homebrew
