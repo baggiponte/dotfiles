@@ -4,7 +4,6 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "sschlesier/csvutils"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Console Matrix
@@ -25,14 +24,6 @@ brew "dust"
 brew "exa"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# GNU compiler collection
-brew "gcc"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# C routines to compute the Discrete Fourier Transform
-brew "fftw"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
 # Software library to render fonts
@@ -43,12 +34,18 @@ brew "fzf"
 brew "readline"
 # GNU awk utility
 brew "gawk"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # Command-line interface for SQLite
 brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
@@ -59,12 +56,8 @@ brew "git-filter-repo"
 brew "git-lfs"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# GNU implementation of time utility
-brew "gnu-time"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# POSIX-compliant AWK interpreter written in Go
-brew "goawk"
 # Popular GNU data compression program
 brew "gzip"
 # Command-line benchmarking tool
@@ -77,10 +70,6 @@ brew "ijq"
 brew "jump"
 # Simple terminal UI for git commands
 brew "lazygit"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2"
-# Conversion library
-brew "libiconv"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Package manager for the Lua programming language
@@ -95,8 +84,6 @@ brew "ncdu"
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
-# Outputs current CPU temperature for OSX
-brew "osx-cpu-temp"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Pandoc filter for numbering and cross-referencing
@@ -111,38 +98,26 @@ brew "pipx"
 brew "postgresql@14", restart_service: true
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
-# Modern replacement for ps written by Rust
-brew "procs"
 # Python version management
 brew "pyenv"
-# Pyenv plugin to manage virtualenv
-brew "pyenv-virtualenv"
-# Static type checker for Python
-brew "pyright"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Safe, concurrent, practical language
-brew "rust"
 # Intuitive find & replace CLI
 brew "sd"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Bash syntax highlighter that encourages/fixes variables quoting
+brew "shellharden"
 # Autoformat shell script source code
 brew "shfmt"
-# Fuzzy Finder in rust!
-brew "sk"
-# Organize software neatly under a single directory tree (e.g. /usr/local)
-brew "stow"
 # Opinionated Lua code formatter
 brew "stylua"
 # Simplified and community-driven man pages
 brew "tldr"
 # Color-based alternative to figlet (uses libcaca)
 brew "toilet"
-# Unidata unit conversion library
-brew "udunits"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
 # Internet file retriever
@@ -151,20 +126,14 @@ brew "wget"
 brew "xh"
 # Fast CSV toolkit written in Rust
 brew "xsv"
-# Compression and file packaging/archive utility
-brew "zip"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Smart and simple CSV processing on the command-line
-brew "sschlesier/csvutils/csvquote"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
 cask "appcleaner"
 # Tool to hide status bar icons
 cask "dozer"
-# Web browser
-cask "firefox"
 # Developer targeted fonts with a high number of glyphs
 cask "font-dejavu-sans-mono-nerd-font"
 # Developer targeted fonts with a high number of glyphs
@@ -178,20 +147,18 @@ cask "font-poppins"
 # Elegant sans-serif font family, now 9 weights and italic style
 cask "font-raleway"
 cask "font-yanone-kaffeesatz"
+# Web browser
+cask "google-chrome"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Programming language for technical computing
 cask "julia"
 # Keyboard customizer
 cask "karabiner-elements"
-# File archiver
-cask "keka"
 # Native app email client for Gmail
 cask "mimestream"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Tool to create text-based art
-cask "monodraw"
 # Scientific and technical publishing system built on Pandoc
 cask "quarto"
 # Control your tools with a few keystrokes
