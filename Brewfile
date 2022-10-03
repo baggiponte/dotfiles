@@ -7,10 +7,6 @@ tap "homebrew/services"
 tap "sschlesier/csvutils"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Yet another cross-platform graphical process/system monitor
-brew "bottom"
-# Human-friendly and fast alternative to cut and (sometimes) awk
-brew "choose-rust"
 # Console Matrix
 brew "cmatrix"
 # Color-highlighted diff(1) output
@@ -41,10 +37,6 @@ brew "fftw"
 brew "fortune"
 # Software library to render fonts
 brew "freetype"
-# Implementation of the Unicode BiDi algorithm
-brew "fribidi"
-# Terminal JSON viewer
-brew "fx"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Library for command-line editing
@@ -65,8 +57,6 @@ brew "python@3.10"
 brew "git-filter-repo"
 # Git extension for versioning large files
 brew "git-lfs"
-# Blazing fast terminal-ui for git written in rust
-brew "gitui"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU implementation of time utility
@@ -75,8 +65,6 @@ brew "gnu-time"
 brew "go"
 # POSIX-compliant AWK interpreter written in Go
 brew "goawk"
-# Ping, but with a graph
-brew "gping"
 # Popular GNU data compression program
 brew "gzip"
 # Command-line benchmarking tool
@@ -85,8 +73,6 @@ brew "hyperfine"
 brew "jq"
 # Interactive jq
 brew "ijq"
-# Serializes the output of command-line tools to structured JSON output
-brew "jc"
 # Helps you navigate your file system faster by learning your habits
 brew "jump"
 # Simple terminal UI for git commands
@@ -133,8 +119,6 @@ brew "pyenv"
 brew "pyenv-virtualenv"
 # Static type checker for Python
 brew "pyright"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
@@ -145,6 +129,8 @@ brew "rust"
 brew "sd"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Autoformat shell script source code
+brew "shfmt"
 # Fuzzy Finder in rust!
 brew "sk"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -167,8 +153,6 @@ brew "xh"
 brew "xsv"
 # Compression and file packaging/archive utility
 brew "zip"
-# General-purpose lossless data-compression library
-brew "zlib"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Smart and simple CSV processing on the command-line
