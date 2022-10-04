@@ -100,6 +100,8 @@ brew "postgresql@14", restart_service: true
 brew "pre-commit"
 # Python version management
 brew "pyenv"
+# Ultra-fast CSV data-wrangling toolkit
+brew "qsv"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
@@ -124,8 +126,6 @@ brew "unixodbc"
 brew "wget"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
-# Fast CSV toolkit written in Rust
-brew "xsv"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Enable Windows-like alt-tab
