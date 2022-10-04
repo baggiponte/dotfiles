@@ -26,6 +26,10 @@ brew "exa"
 brew "fd"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# Brokered message queue optimized for performance
+brew "fq"
 # Software library to render fonts
 brew "freetype"
 # Command-line fuzzy finder written in Go
@@ -34,20 +38,16 @@ brew "fzf"
 brew "readline"
 # GNU awk utility
 brew "gawk"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# GNU compiler collection
-brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
 # Command-line interface for SQLite
 brew "sqlite"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Quickly rewrite git repository history
