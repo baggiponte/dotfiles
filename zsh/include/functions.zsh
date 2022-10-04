@@ -97,8 +97,8 @@ if hash brew 2>/dev/null; then
         fi
 
         echo "Dumping formulae and casks to Brewfile..."
-        mv "$XDG_CONFIG_HOME/Brewfile" "$XDG_CONFIG_HOME/Brewfile.bak"
-        brew bundle dump --describe --no-upgrade --file="$XDG_CONFIG_HOME/Brewfile"
+        mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
+        brew bundle dump --describe
     }
 fi
 

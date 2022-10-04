@@ -21,6 +21,8 @@ export LOCAL="$HOME/.local"
 export PATH="$LOCAL/scripts:$LOCAL/bin:$PATH"
 
 # brew & brewfiles
+export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
+
 if [ "$(sysctl -n machdep.cpu.brand_string)" = "Apple M1" ]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 else
@@ -68,7 +70,8 @@ fi
 # CONDA_PREFIX is the path to the current active environment.
 # https://anaconda-project.readthedocs.io/en/latest/user-guide/tasks/work-with-variables.html
 if hash conda 2>/dev/null; then
-	export CONDA_ROOT="$(brew --caskroom)/miniconda/base"
+	export CONDA_ROOT
+	CONDA_ROOT="$(brew --caskroom)/miniconda/base"
 	export CONDA_PKGS_DIR="$CONDA_ROOT/pkgs"
 	export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
 fi
