@@ -4,8 +4,6 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-# Arduino command-line interface
-brew "arduino-cli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Console Matrix
@@ -36,10 +34,6 @@ brew "fzf"
 brew "readline"
 # GNU awk utility
 brew "gawk"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# GNU compiler collection
-brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -50,6 +44,8 @@ brew "git-delta"
 brew "openssl@1.1"
 # Command-line interface for SQLite
 brew "sqlite"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Quickly rewrite git repository history
@@ -128,8 +124,6 @@ brew "unixodbc"
 brew "wget"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
-# Fast CSV toolkit written in Rust
-brew "xsv"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Enable Windows-like alt-tab
