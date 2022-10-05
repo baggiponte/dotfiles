@@ -21,12 +21,15 @@ export LOCAL="$HOME/.local"
 export PATH="$LOCAL/scripts:$LOCAL/bin:$PATH"
 
 # brew & brewfiles
-export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
+
+export HOMEBREW_BUNDLE_FILE=
 
 if [ "$(sysctl -n machdep.cpu.brand_string)" = "Apple M1" ]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
+	export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile.M1"
 else
 	eval "$(/usr/local/bin/brew shellenv)"
+	export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile.Intel"
 fi
 
 if hash nvim 2>/dev/null; then
