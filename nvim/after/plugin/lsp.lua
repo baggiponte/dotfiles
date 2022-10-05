@@ -18,7 +18,7 @@ local on_attach = function(_, bufnr)
   bufmap('n', 'gr', vim.lsp.buf.references) -- Lists all the references
   bufmap('n', '<c-k>', vim.lsp.buf.signature_help) -- Display a function's signature information
   bufmap('n', '<leader>rn', vim.lsp.buf.rename) -- Rename all references of the symbol under the cursor
-  bufmap('n', 'F', vim.lsp.buf.formatting)
+  bufmap('n', 'F', vim.lsp.buf.format)
   bufmap('n', '<leader>ca', vim.lsp.buf.code_action) -- Selects a code action
 end
 
@@ -66,15 +66,14 @@ require('mason-lspconfig').setup({
     -- linters
     'flake8',
     'luacheck',
-    'markdownlint',
     'mypy',
     'shellcheck',
+    'sqlfluff',
     'yamllint',
     -- formatters
     'black',
     'isort',
     'jq',
-    'sql-formatter',
     'stylua',
   },
 })
