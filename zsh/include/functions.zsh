@@ -96,8 +96,10 @@ if hash brew 2>/dev/null; then
             echo "No downloads to remove"
         fi
 
-        echo "Dumping formulae and casks to Brewfile..."
-        mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
+        echo "Dumping formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
+        if [ -s "$HOMEBREW_BUNDLE_FILE" ]; then
+            mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
+        fi
         brew bundle dump --describe
     }
 fi
