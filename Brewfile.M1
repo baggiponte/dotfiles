@@ -4,6 +4,8 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+# Arduino command-line interface
+brew "arduino-cli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Console Matrix
@@ -26,10 +28,6 @@ brew "exa"
 brew "fd"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Brokered message queue optimized for performance
-brew "fq"
 # Software library to render fonts
 brew "freetype"
 # Command-line fuzzy finder written in Go
@@ -38,16 +36,20 @@ brew "fzf"
 brew "readline"
 # GNU awk utility
 brew "gawk"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # Command-line interface for SQLite
 brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Quickly rewrite git repository history
@@ -66,6 +68,8 @@ brew "hyperfine"
 brew "jq"
 # Interactive jq
 brew "ijq"
+# JSON diff and patch
+brew "jd"
 # Helps you navigate your file system faster by learning your habits
 brew "jump"
 # Simple terminal UI for git commands
@@ -94,8 +98,6 @@ brew "parallel"
 brew "pigz"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Object-relational database system
-brew "postgresql@14", restart_service: true
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Python version management
@@ -126,12 +128,16 @@ brew "unixodbc"
 brew "wget"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
+# Fast CSV toolkit written in Rust
+brew "xsv"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
 cask "appcleaner"
+# Automated testing of webapps for Google Chrome
+cask "chromedriver"
 # Tool to hide status bar icons
 cask "dozer"
 # Developer targeted fonts with a high number of glyphs
