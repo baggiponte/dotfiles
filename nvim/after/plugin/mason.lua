@@ -11,7 +11,6 @@ local servers = {
 
 local linters = {
   'flake8',
-  'mypy',
   'selene',
   'shellcheck',
   'sqlfluff',

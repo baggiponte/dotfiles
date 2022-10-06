@@ -31,8 +31,6 @@ null_ls.setup({
     null_ls.builtins.diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
     null_ls.builtins.formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }), -- requires go
     null_ls.builtins.formatting.shellharden.with({ filetypes = { 'sh', 'bash', 'zsh' } }), -- requires rust
-    -- [[ markdown ]]
-    -- null_ls.builtins.formatting.markdownlint,
     -- [[ other ]]
     null_ls.builtins.hover.printenv,
   },
