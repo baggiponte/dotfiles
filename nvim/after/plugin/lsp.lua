@@ -50,30 +50,3 @@ lspconfig['sumneko_lua'].setup({
     },
   },
 })
-
-require('mason').setup({})
-require('mason-lspconfig').setup({
-  ensure_installed = {
-    -- lsp
-    'bashls',
-    'dockerls',
-    'jsonls',
-    'marksman',
-    'pyright',
-    'sqlls',
-    'sumneko_lua',
-    'yamlls',
-    -- linters
-    'flake8',
-    'luacheck',
-    'mypy',
-    'shellcheck',
-    'sqlfluff',
-    'yamllint',
-    -- formatters
-    'black',
-    'isort',
-    'jq',
-    'stylua',
-  },
-})
