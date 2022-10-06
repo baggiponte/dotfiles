@@ -8,9 +8,11 @@ hash -d julia="$HOME/Documents/dev/julia-projects"
 hash -d python="$HOME/Documents/dev/python-projects"
 
 alias e='exec $SHELL' # exec $SHELL but faster
-alias make=gmake      # gnu-make (installed by homebrew)
-alias sed=gsed        # gnu-sed (installed by homebrew)
 alias lg=lazygit      # lazygit
+
+if hash gsed 2>/dev/null; then
+    alias sed=gsed        # gnu-sed (installed by homebrew)
+fi
 
 if hash colordiff 2>/dev/null; then
     alias diff=colordiff
