@@ -121,7 +121,9 @@ if hash nvim 2>/dev/null; then
     # open telescope in the current folder
     n () {
         if [ "$1" = "" ]; then
-            nvim .
+            nvim -c "Telescope zoxide list"
+        elif [ "$1" = "." ]; then
+            nvim -c "Telescope file_browser"
         else
             nvim "$1"
         fi
