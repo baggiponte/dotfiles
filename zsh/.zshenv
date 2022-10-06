@@ -17,13 +17,9 @@ export CONFIG_HOME="$CONFIG"
 # | PATH |
 # +------+
 
-export LOCAL="$HOME/.local"
-export PATH="$LOCAL/scripts:$LOCAL/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # brew & brewfiles
-
-export HOMEBREW_BUNDLE_FILE=
-
 if [ "$(sysctl -n machdep.cpu.brand_string)" = "Apple M1" ]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 	export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile.M1"
@@ -36,11 +32,9 @@ if hash nvim 2>/dev/null; then
 	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v
 	# e.g. zsh will use vim keybindings!
 	export EDITOR="nvim"
-	export PAGER="nvim -R"
 	export MANPAGER="nvim +Man!"
 	export MYVIMRC="$CONFIG/nvim/init.lua"
 fi
-
 
 # +----------------+
 # | PLUGIN MANAGER |
@@ -56,7 +50,7 @@ export ZIM_HOME="$XDG_CACHE_HOME/zim"
 # pipx is a python CLIs manager
 if hash pipx 2>/dev/null; then
 	export PIPX_HOME="$HOME/.local/pipx"
-	export PIPX_BIN_DIR="$LOCAL/bin"
+	export PIPX_BIN_DIR="$HOME/.local/bin"
 fi
 
 # matplotlib
