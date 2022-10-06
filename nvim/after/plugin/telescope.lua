@@ -37,11 +37,21 @@ telescope.setup({
       hijack_netrw = true,
       hidden = true,
     },
+    zoxide = {
+      mappings = {
+        default = {
+          after_action = function(selection)
+            print('Directory changed to ' .. selection.path)
+            require('telescope').extensions.file_browser.file_browser({ cwd = selection.path })
+          end,
+        },
+      },
+    },
   },
 })
 
 -- [[ Enable extensions ]]
-local extensions = { 'fzf', 'file_browser', 'frecency', 'ui-select' }
+local extensions = { 'fzf', 'file_browser', 'frecency', 'zoxide' }
 for _, extension in ipairs(extensions) do
   telescope.load_extension(extension)
 end
@@ -49,9 +59,7 @@ end
 -- [[ Set keymaps ]]
 local opts = { silent = true, noremap = true }
 
--- explore symbols within the document. NOTE: replaced by symbols-outline
--- vim.keymap.set('n', '<leader>fH', require('telescope.builtin').help_tags, opts)
--- vim.keymap.set('n', '<leader>fh', require('telescope.builtin').treesitter, opts)
+-- explore symbols within the document
 vim.keymap.set('n', '<leader>fs', symbols_outline.toggle_outline, opts)
 
 -- explore files
@@ -67,4 +75,7 @@ vim.keymap.set(
 -- fuzzy find and file browser
 vim.keymap.set('n', '<leader>fz', require('telescope.builtin').current_buffer_fuzzy_find, opts)
 vim.keymap.set('n', '<leader>fZ', require('telescope.builtin').live_grep, opts)
+vim.keymap.set('n', '<leader>cd', require('telescope').extensions.zoxide.list, opts)
+
+-- explore directories
 vim.keymap.set('n', '<leader>fr', telescope.extensions.frecency.frecency, opts)

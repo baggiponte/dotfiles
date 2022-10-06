@@ -64,8 +64,8 @@ return require('packer').startup(function(use)
   use({
     'nvim-telescope/telescope.nvim',
     requires = {
-      'nvim-telescope/telescope-ui-select.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
+      'jvgrootveld/telescope-zoxide',
       {
         'nvim-telescope/telescope-frecency.nvim',
         requires = { 'tami5/sqlite.lua' },
@@ -84,7 +84,9 @@ return require('packer').startup(function(use)
     run = ':TSUpdate',
     requires = {
       'nvim-treesitter/nvim-treesitter-context',
+      'nvim-treesitter/nvim-treesitter-refactor',
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'RRethy/nvim-treesitter-endwise',
       'p00f/nvim-ts-rainbow',
       {
         'kylechui/nvim-surround',
@@ -120,6 +122,9 @@ return require('packer').startup(function(use)
   -- hook linters, formatters... into lsp keybindings
   use('jose-elias-alvarez/null-ls.nvim')
 
+  -- adds vscode-like pictograms
+  use('onsails/lspkind.nvim')
+
   -- A tree like view for symbols in Neovim using the Language Server Protocol.
   use({
     'simrat39/symbols-outline.nvim',
@@ -127,9 +132,6 @@ return require('packer').startup(function(use)
       require('symbols-outline').setup({})
     end,
   })
-
-  -- adds vscode-like pictograms
-  use('onsails/lspkind.nvim')
 
   -- [[ Diagnostics ]]
   use({
