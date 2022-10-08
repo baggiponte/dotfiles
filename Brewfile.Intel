@@ -54,8 +54,6 @@ brew "git-filter-repo"
 brew "git-lfs"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
 # Popular GNU data compression program
 brew "gzip"
 # Command-line benchmarking tool
@@ -64,8 +62,6 @@ brew "hyperfine"
 brew "jq"
 # Interactive jq
 brew "ijq"
-# Helps you navigate your file system faster by learning your habits
-brew "jump"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Rainbows and unicorns in your console!
@@ -106,6 +102,8 @@ brew "rename"
 brew "ripgrep"
 # Intuitive find & replace CLI
 brew "sd"
+# Blazing-fast modern Lua linter
+brew "selene"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Bash syntax highlighter that encourages/fixes variables quoting
@@ -124,6 +122,8 @@ brew "unixodbc"
 brew "wget"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Enable Windows-like alt-tab
