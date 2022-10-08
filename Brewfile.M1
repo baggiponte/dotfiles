@@ -52,6 +52,10 @@ brew "python@3.10"
 brew "git-filter-repo"
 # Git extension for versioning large files
 brew "git-lfs"
+# Platform built on V8 to build network applications
+brew "node"
+# Interactive command-line tool for using emoji in commit messages
+brew "gitmoji"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
@@ -66,8 +70,6 @@ brew "jq"
 brew "ijq"
 # JSON diff and patch
 brew "jd"
-# Helps you navigate your file system faster by learning your habits
-brew "jump"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Rainbows and unicorns in your console!
@@ -76,14 +78,10 @@ brew "lolcat"
 brew "luarocks"
 # Utility for directing compilation
 brew "make"
-# Command-line based markdown presentation tool
-brew "mdp"
 # NCurses Disk Usage
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Platform built on V8 to build network applications
-brew "node"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Pandoc filter for numbering and cross-referencing
@@ -106,6 +104,8 @@ brew "rename"
 brew "ripgrep"
 # Intuitive find & replace CLI
 brew "sd"
+# Blazing-fast modern Lua linter
+brew "selene"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Bash syntax highlighter that encourages/fixes variables quoting
@@ -124,6 +124,8 @@ brew "unixodbc"
 brew "wget"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Enable Windows-like alt-tab
