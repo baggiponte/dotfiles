@@ -8,6 +8,9 @@ trash () { command mv "$@" ~/.Trash ; }
 # make a directory and cd into it
 take () { command mkdir -p "$1" && cd "$1"; }
 
+# create a python package
+mkpkg () { command mkdir "$1" ; touch "$1/__init__.py" ; }
+
 # create a custom function to use gitignore.io to create .gitignore files
 gi() { curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$1" ;}
 
@@ -128,9 +131,8 @@ if hash nvim 2>/dev/null; then
             nvim "$1"
         fi
     }
-
-    alias nrc='n $CONFIG/nvim'
-    alias nsh='n $ZDOTDIR'
+    
+    alias nn='n .'
 
     nvim-update () {
         echo "updating nvim plugins..."
@@ -139,6 +141,7 @@ if hash nvim 2>/dev/null; then
     }
 fi
 
+# has to use command -v as zimfw is actually sourced
 if command -v zimfw &>/dev/null; then
     zim-update () {
         zimfw upgrade
