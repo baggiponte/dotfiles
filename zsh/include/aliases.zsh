@@ -8,34 +8,13 @@ hash -d julia="$HOME/Documents/dev/julia-projects"
 hash -d python="$HOME/Documents/dev/python-projects"
 
 alias e='exec $SHELL' # exec $SHELL but faster
-alias lg=lazygit      # lazygit
-
-if hash gsed 2>/dev/null; then
-    alias sed=gsed        # gnu-sed (installed by homebrew)
-fi
-
-if hash colordiff 2>/dev/null; then
-    alias diff=colordiff
-fi
-
-if hash gawk 2>/dev/null; then
-    alias awk=gawk
-fi
-
-if hash gmake 2>/dev/null; then
-    alias make=gmake      # gnu-make (installed by homebrew)
-fi
-
-if [ -x "$(brew --prefix)/bin/gzip" ]; then
-    alias zip=gzip
-    alias gzip='$(brew --prefix)/bin/gzip'
-fi
 
 # utilities
 alias ...="../../"
 alias path='echo -e ${PATH//:/\\n}'
-alias efpath='echo ${fpath} | tr " " "\n"'
+alias fpath='echo ${fpath} | tr " " "\n"'
 alias td='echo $(date +%Y-%m-%d)'
+alias text="open -a TextEdit"
 
 # homebrew
 alias b=brew
@@ -53,10 +32,42 @@ alias blc="bl --cask"
 
 alias bd="b doctor"
 
-# open programs faster
-alias text="open -a TextEdit"
+# +-----------+
+# | Optionals |
+# +-----------+
 
-# exa
-alias l="exa --all --group-directories-first --icons --oneline --ignore-glob .DS_Store"
-alias lig="ls --git-ignore"
-alias ll="l --long --git"
+if hash zoxide 2>/dev/null; then
+    alias j=z
+fi
+
+if hash lazygit 2>/dev/null; then
+    alias lg=lazygit
+fi
+
+if hash gsed 2>/dev/null; then
+    alias sed=gsed        # gnu-sed (installed by homebrew)
+fi
+
+if hash gawk 2>/dev/null; then
+    alias awk=gawk        # gnu-awk (installed by homebrew)
+fi
+
+if hash gmake 2>/dev/null; then
+    alias make=gmake      # gnu-make (installed by homebrew)
+fi
+
+if hash colordiff 2>/dev/null; then
+    alias diff=colordiff
+fi
+
+if [ -x "$(brew --prefix)/bin/gzip" ]; then
+    alias zip=gzip
+    alias gzip='$(brew --prefix)/bin/gzip'
+fi
+
+if hash exa 2>/dev/null; then
+    alias l="exa --all --group-directories-first --icons --oneline --ignore-glob .DS_Store"
+    alias lig="ls --git-ignore"
+    alias ll="l --long --git"
+fi
+
