@@ -7,6 +7,7 @@
 [init]
     defaultBranch = main
 [core]
+    excludesFile = ~/.config/.gitignore_global
     pager = delta
 [interactive]
     diffFilter = delta --color-only
