@@ -60,6 +60,9 @@ return require('packer').startup(function(use)
   -- [[ Terminal ]]
   use({ 'akinsho/toggleterm.nvim', tag = '*' })
 
+  -- [[ Multicursor ]]
+  use({ 'mg979/vim-visual-multi' })
+
   -- [[ Telescope ]]
   use({
     'nvim-telescope/telescope.nvim',
