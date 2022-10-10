@@ -63,13 +63,21 @@ local opts = { silent = true, noremap = true }
 vim.keymap.set('n', '<leader>fs', symbols_outline.toggle_outline, opts)
 
 -- explore files
+vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, opts)
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').git_files, opts)
 vim.keymap.set('n', '<leader>fF', require('telescope.builtin').find_files, opts)
-vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, opts)
 vim.keymap.set(
   'n',
   '<leader>fd',
   "<cmd>lua require 'telescope'.extensions.file_browser.file_browser{ path = '%:p:h' }<CR>",
+  opts
+)
+vim.keymap.set(
+  'n',
+  '<leader>fD',
+  [[<cmd>lua require 'telescope'.extensions.file_browser.file_browser{
+    path = '%:p:h', respect_gitignore=False
+  }<CR>]],
   opts
 )
 -- fuzzy find and file browser
