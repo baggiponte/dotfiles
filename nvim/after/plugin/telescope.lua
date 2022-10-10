@@ -1,5 +1,4 @@
 local telescope = require('telescope')
-local filebrowser = telescope.extensions.file_browser
 local actions = require('telescope.actions')
 local trouble = require('trouble.providers.telescope')
 local symbols_outline = require('symbols-outline')
@@ -7,7 +6,7 @@ local symbols_outline = require('symbols-outline')
 telescope.setup({
   defaults = {
     initial_mode = 'normal',
-    file_ignore_patterns = {'__pycache__/*', 'git/*', '.DS_Store' },
+    file_ignore_patterns = { '__pycache__/*', 'git/*', '.DS_Store' },
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -43,7 +42,7 @@ telescope.setup({
         default = {
           after_action = function(selection)
             print('Directory changed to ' .. selection.path)
-            filebrowser.file_browser({ path = selection.path })
+            telescope.extensions.file_browser.file_browser({ path = selection.path })
           end,
         },
       },
@@ -64,10 +63,15 @@ vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, opts)
 vim.keymap.set('n', '<leader>fs', symbols_outline.toggle_outline, opts)
 vim.keymap.set('n', '<leader>fr', telescope.extensions.frecency.frecency, opts)
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, opts)
-vim.keymap.set('n', '<leader>ff', '<cmd>lua' .. filebrowser.file_browser({ path = '%:p:h' }) .. '<CR>', opts)
+vim.keymap.set(
+  'n',
+  '<leader>ff',
+  "<cmd>lua require'telescope'.extensions.file_browser.file_browser({ path = '%:p:h' })<CR>",
+  opts
+)
 vim.keymap.set(
   'n',
   '<leader>fd',
-  '<cmd>lua' .. filebrowser.file_browser({ path = '%:p:h', respect_gitignore = false }) .. '<CR>',
+  "<cmd>lua require'telescope'.extensions.file_browser.file_browser({ path = '%:p:h', respect_gitignore = false })<CR>",
   opts
 )
