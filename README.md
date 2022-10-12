@@ -12,10 +12,10 @@
 
 - **In what order are zsh startup files sourced?**
 
-Zsh read these files in the following order:
+This is explained in detail in [zsh docs](https://zsh.sourceforge.io/Doc/Release/Files.html#Startup_002fShutdown-Files):
 
-  - `.zshenv` - Should only contain user’s environment variables.
-  - `.zprofile` - Can be used to execute commands just after logging in.
-  - `.zshrc` - Should be used for the shell configuration and for executing commands.
-  - `.zlogin` - Same purpose than `.zprofile`, but read just after `.zshrc`.
-  - `.zlogout` - Can be used to execute commands when a shell exit.
+> Commands are first read from /etc/zshenv; this cannot be overridden. [...] Commands are then read from $ZDOTDIR/.zshenv. If the shell is a login shell, commands are read from /etc/zprofile and then $ZDOTDIR/.zprofile. Then, if the shell is interactive, commands are read from /etc/zshrc and then $ZDOTDIR/.zshrc. Finally, if the shell is a login shell, /etc/zlogin and $ZDOTDIR/.zlogin are read.
+
+In other words, this is the order in which these files get read. **Keep in mind that it reads first from the system-wide file (i.e. `/etc/zshenv`) then from the file in your home directory (`~/.zshenv`):**
+
+`.zshenv` → `.zprofile` → `.zshrc` → `.zlogin` → `.zlogout`
