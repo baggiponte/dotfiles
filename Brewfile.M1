@@ -78,6 +78,8 @@ brew "lolcat"
 brew "luarocks"
 # Utility for directing compilation
 brew "make"
+# Open source relational database management system
+brew "mysql", restart_service: true
 # NCurses Disk Usage
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
