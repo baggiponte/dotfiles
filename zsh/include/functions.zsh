@@ -131,7 +131,7 @@ if hash nvim 2>/dev/null; then
             nvim "$1"
         fi
     }
-    
+
     alias nn='n .'
 
     nvim-update () {
