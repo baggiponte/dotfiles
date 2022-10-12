@@ -19,7 +19,7 @@ export CONFIG_HOME="$CONFIG"
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# brew & brewfiles
+# MUST be before any "hash" call!
 if [ "$(sysctl -n machdep.cpu.brand_string)" = "Apple M1" ]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 	export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile.M1"
@@ -27,6 +27,10 @@ else
 	eval "$(/usr/local/bin/brew shellenv)"
 	export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile.Intel"
 fi
+
+# +----------------+
+# | CUSTOM CONFIGS |
+# +----------------+
 
 if hash nvim 2>/dev/null; then
 	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v
@@ -36,28 +40,18 @@ if hash nvim 2>/dev/null; then
 	export MYVIMRC="$CONFIG/nvim/init.lua"
 fi
 
-# +----------------+
-# | PLUGIN MANAGER |
-# +----------------+
+if hash npm 2>/dev/null; then
+	export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/.npmrc"
+	export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+fi
 
-# zsh plugin manager: https://github.com/zimfw/zimfw
 export ZIM_HOME="$XDG_CACHE_HOME/zim"
 
-# +-------------+
-# | CONFIG DIRS |
-# +-------------+
-
-# pipx is a python CLIs manager
 if hash pipx 2>/dev/null; then
 	export PIPX_HOME="$HOME/.local/pipx"
 	export PIPX_BIN_DIR="$HOME/.local/bin"
 fi
 
-# matplotlib
-export MPLCONFIGDIR="$CONFIG/matplotlib"
-export MATPLOTLIBRC="$MPLCONFIGDIR/matplotlibrc"
-
-# pyenv is a python version manager
 if hash pyenv 2>/dev/null; then
 	export PYENV_ROOT="$HOME/.pyenv"
 fi
@@ -73,13 +67,15 @@ if hash conda 2>/dev/null; then
 	export CONDA_ENVS_PATH="$CONDA_ROOT/envs"
 fi
 
-# cookiecutter: python CLI to create project templates
 if hash cookiecutter 2>/dev/null; then
 	export COOKIECUTTER_CONFIG="$CONFIG/cookiecutter.yaml"
 fi
 
-# postgres
 if hash psql 2>/dev/null; then
 	export PGDATA="/usr/local/var/postgres@14"
 	export PGDATABASE="postgres"
 fi
+
+export MPLCONFIGDIR="$CONFIG/matplotlib"
+export MATPLOTLIBRC="$MPLCONFIGDIR/matplotlibrc"
+
