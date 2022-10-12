@@ -70,4 +70,3 @@ if hash exa 2>/dev/null; then
     alias lig="ls --git-ignore"
     alias ll="l --long --git"
 fi
-
