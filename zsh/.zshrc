@@ -16,7 +16,7 @@
 sources=(
   "paths"         # core path env variables
   "envvars"       # other env vars used for configs
-  "zim"           # zsh plugin manager 
+  "zim"           # zsh plugin manager
   "options"       # setopt stuff
   "zstyle"        # completion menu, etc
   "vim"           # vim mode and double cursor

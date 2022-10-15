@@ -12,5 +12,3 @@ else
 	eval "$(/usr/local/bin/brew shellenv)"
 	export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile.Intel"
 fi
-
-
