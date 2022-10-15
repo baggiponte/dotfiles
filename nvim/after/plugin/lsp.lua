@@ -10,15 +10,12 @@ local on_attach = function(_, bufnr)
   end
 
   -- Mappings - See `:help vim.lsp.*`
-  bufmap('n', 'K', vim.lsp.buf.hover) -- Display hover information about the symbol
-  bufmap('n', 'gd', vim.lsp.buf.definition) -- Go to definition
-  bufmap('n', 'gD', vim.lsp.buf.declaration) -- Go to declaration; lesser used
-  bufmap('n', 'gi', vim.lsp.buf.implementation) -- List all the implementations
-  bufmap('n', 'go', vim.lsp.buf.type_definition) -- Jumps to the definition of the type symbol
-  bufmap('n', 'gr', vim.lsp.buf.references) -- Lists all the references
-  bufmap('n', '<c-k>', vim.lsp.buf.signature_help) -- Display a function's signature information
-  bufmap('n', '<leader>rn', vim.lsp.buf.rename) -- Rename all references of the symbol under the cursor
   bufmap('n', 'F', vim.lsp.buf.format)
+  bufmap('n', 'K', vim.lsp.buf.hover) -- Display hover information about the symbol
+  bufmap('n', 'gh', vim.lsp.buf.signature_help) -- Display a function's signature information
+  bufmap('n', 'gd', vim.lsp.buf.definition) -- Go to definition
+  bufmap('n', 'gr', vim.lsp.buf.references) -- Lists all the references
+  bufmap('n', '<leader>rn', vim.lsp.buf.rename) -- Rename all references of the symbol under the cursor
   bufmap('n', '<leader>ca', vim.lsp.buf.code_action) -- Selects a code action
 end
 
