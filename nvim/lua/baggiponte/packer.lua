@@ -103,12 +103,6 @@ return require('packer').startup(function(use)
   -- [[ LSP ]]
   use('neovim/nvim-lspconfig') -- Collection of configurations for built-in LSP client
 
-  -- Installer for external tooling e.g. LSP servers, linters, formatters...
-  use({
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-  })
-
   -- Completion sources
   use({
     'hrsh7th/nvim-cmp',
@@ -122,11 +116,21 @@ return require('packer').startup(function(use)
     },
   })
 
-  -- hook linters, formatters... into lsp keybindings
-  use('jose-elias-alvarez/null-ls.nvim')
+  -- [[ Snippets ]]
+  use({ 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }) -- Snippet Engine and Snippet Expansion
+  use('rafamadriz/friendly-snippets') -- Crowdsourced snippets
 
   -- adds vscode-like pictograms
   use('onsails/lspkind.nvim')
+
+  -- Installer for external tooling e.g. LSP servers, linters, formatters...
+  use({
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+  })
+
+  -- hook linters, formatters... into lsp keybindings
+  use('jose-elias-alvarez/null-ls.nvim')
 
   -- A tree like view for symbols in Neovim using the Language Server Protocol.
   use({
@@ -136,17 +140,18 @@ return require('packer').startup(function(use)
     end,
   })
 
-  -- [[ Diagnostics ]]
+  -- [[ TODOs ]]
   use({
-    'folke/trouble.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require('trouble').setup({})
+      require('todo-comments').setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
     end,
   })
-  -- [[ Snippets ]]
-  use({ 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }) -- Snippet Engine and Snippet Expansion
-  use('rafamadriz/friendly-snippets') -- Crowdsourced snippets
 
   -- [[ Others ]]
   use({
@@ -155,6 +160,16 @@ return require('packer').startup(function(use)
     ft = { 'quarto' },
   })
   use('quarto-dev/quarto-nvim') -- Quarto support
+
+  -- [[ Markdown Previews ]]
+  use({
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && npm install',
+    setup = function()
+      vim.g.mkdp_filetypes = { 'markdown' }
+    end,
+    ft = { 'markdown' },
+  })
 
   if packer_bootstrap then
     require('packer').sync()
