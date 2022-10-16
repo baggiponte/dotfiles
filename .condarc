@@ -2,16 +2,12 @@
 # https://conda.io/projects/conda/en/latest/configuration.html
 
 auto_activate_base: false
-
 channels:
   - conda-forge
   - defaults
-
 channel_priority: strict
-
 changeps1: false
-
-#envs_dirs:
-#  - ~/.conda/envs
-#pkgs_dirs:
-#  - ~/.conda/pkgs
+# envs_dirs:
+#   - ~/.conda/envs
+# pkgs_dirs:
+#   - ~/.conda/pkgs
