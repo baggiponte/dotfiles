@@ -30,7 +30,6 @@ return require('packer').startup(function(use)
   use('kdheepak/lazygit.nvim') -- Open a floating panel with lazygit
 
   -- [[ Indentation ]]
-  use('tpope/vim-sleuth') -- Better auto indentation
   use('lukas-reineke/indent-blankline.nvim') -- Highlight indentation
 
   -- [[ Bracket pairing ]]
