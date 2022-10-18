@@ -111,6 +111,16 @@ fi
 # | Other commands |
 # +----------------+
 
+# bulk rename extensions
+if hash fd 2>/dev/null; then
+    rename-ext() {
+    local ext_old="$1"
+    local ext_new="$2"
+
+    fd -e "$ext_old" -x mv "{}" "{.}.$ext_new"
+}
+fi
+
 # pretty print directory tree for git repos
 if hash exa 2>/dev/null; then
     ls-tree() {
