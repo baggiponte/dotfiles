@@ -38,8 +38,9 @@ vim.opt.number = true -- Make relative line numbers default
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes' -- Side column to display signs, e.g. git added/changed lines
 
--- [[ Working Directory ]]
--- vim.opt.autochdir = true -- Always set the current working directory to the same as the open buffer
+-- [[ Tabs]]
+-- smarttab enabled by default
+vim.opt.expandtab = true
 
 -- [[ Context ]]
 vim.opt.cursorline = true -- Highlight line where the cursor is
