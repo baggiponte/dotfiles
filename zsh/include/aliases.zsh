@@ -36,6 +36,10 @@ alias bd="b doctor"
 # | Optionals |
 # +-----------+
 
+if [ -x /Applications/quarto/bin/quarto ]; then
+    alias quarto=/Applications/quarto/bin/quarto 
+fi
+
 if hash zoxide 2>/dev/null; then
     alias j=z
 fi
