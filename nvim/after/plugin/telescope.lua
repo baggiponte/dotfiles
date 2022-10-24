@@ -4,6 +4,7 @@ local symbols_outline = require('symbols-outline')
 
 telescope.setup({
   defaults = {
+    sorting_strategy = 'descending',
     initial_mode = 'normal',
     file_ignore_patterns = { '__pycache__/*', 'git/*', '.DS_Store' },
     mappings = {
@@ -62,12 +63,12 @@ vim.keymap.set('n', '<leader>dd', require('telescope.builtin').diagnostics, opts
 vim.keymap.set(
   'n',
   '<leader>ff',
-  "<cmd>lua require'telescope'.extensions.file_browser.file_browser({ path = '%:p:h' })<CR>",
+  "<cmd>lua require'telescope'.extensions.file_browser.file_browser({ path = '%:p:h', grouped = true })<CR>",
   opts
 )
 vim.keymap.set(
   'n',
   '<leader>fd',
-  "<cmd>lua require'telescope'.extensions.file_browser.file_browser({ path = '%:p:h', respect_gitignore = false })<CR>",
+  "<cmd>lua require'telescope'.extensions.file_browser.file_browser({ path = '%:p:h', grouped = true, respect_gitignore = false })<CR>",
   opts
 )

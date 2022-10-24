@@ -18,7 +18,7 @@ vim.keymap.set(
 vim.keymap.set(
   'n',
   '<leader>V',
-  "<cmd>sp %:p:h | lua require 'telescope'.extensions.file_browser.file_browser{ path = '%:p:h' }<CR>",
+  "<cmd>sp %:p:h | lua require 'telescope'.extensions.file_browser.file_browser{ path = '%:p:h', grouped = true }<CR>",
   opts
 )
 
