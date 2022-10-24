@@ -99,6 +99,15 @@ return require('packer').startup(function(use)
     },
   })
 
+  -- [[ Moar movements ]]
+  use({
+    'ggandor/leap.nvim',
+    requires = 'tpope/vim-repeat',
+    config = function()
+      require('leap').add_default_mappings()
+    end,
+  })
+
   -- [[ LSP ]]
   use('neovim/nvim-lspconfig') -- Collection of configurations for built-in LSP client
 
@@ -158,7 +167,7 @@ return require('packer').startup(function(use)
     requires = { { 'vim-pandoc/vim-pandoc-syntax' } },
     ft = { 'quarto' },
   })
-  use('quarto-dev/quarto-nvim') -- Quarto support
+  use({ 'quarto-dev/quarto-nvim', ft = { 'quarto' } }) -- Quarto support
 
   -- [[ Markdown Previews ]]
   use({
