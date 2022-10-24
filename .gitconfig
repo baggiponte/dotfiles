@@ -18,6 +18,7 @@
     conflictstyle = diff3
 [diff]
     colorMoved = default
+	submodule = log
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
