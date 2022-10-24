@@ -22,7 +22,7 @@ if hash pipx 2>/dev/null; then
 fi
 
 if hash pyenv 2>/dev/null; then
-	export PYENV_ROOT="$HOME/.pyenv"
+	export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 fi
 
 if hash cookiecutter 2>/dev/null; then
