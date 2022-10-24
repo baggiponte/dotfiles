@@ -16,8 +16,9 @@ if hash npm 2>/dev/null; then
 fi
 
 if hash pipx 2>/dev/null; then
-	export PIPX_HOME="$HOME/.local/pipx"
-	export PIPX_BIN_DIR="$HOME/.local/bin"
+	export PIPX_HOME="$XDG_DATA_HOME/pipx"
+	export PIPX_BIN_DIR="$PIPX_HOME/bin"
+    export PATH="$PIPX_BIN_DIR:$PATH"
 fi
 
 if hash pyenv 2>/dev/null; then
