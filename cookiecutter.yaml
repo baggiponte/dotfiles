@@ -5,6 +5,8 @@ default_context:
   github_username: "baggiponte"
 cookiecutters_dir: "$XDG_CACHE_HOME/cookiecutters/"
 abbreviations:
-  py: https://github.com/baggiponte/cookiecutter-python.git
   # gh (github), bb (bitbucket), and gl (gitlab) abbreviations are  builtin
+  py: https://github.com/baggiponte/cookiecutter-python.git
+  ds: https://github.com/baggiponte/cookiecutter-datascience.git
   gh: https://github.com/{0}.git
+  me: https://github.com/baggiponte/{0}.git
