@@ -47,3 +47,26 @@ lspconfig['sumneko_lua'].setup({
     },
   },
 })
+
+lspconfig['arduino_language_server'].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    'arduino-language-server',
+    '-cli-config',
+    vim.fn.expand('$XDG_CONFIG_HOME') .. '/arduino/arduino-cli.yaml',
+    '-fqbn',
+    'arduino:avr:uno',
+    '-cli',
+    'arduino-cli',
+    '-clangd',
+    vim.fn.stdpath('data') .. '/' .. 'mason/bin/clangd',
+  },
+})
+
+lspconfig['clangd'].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'arduino', 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+})
+
