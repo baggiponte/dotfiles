@@ -60,7 +60,7 @@ return require('packer').startup(function(use)
   use({ 'akinsho/toggleterm.nvim', tag = '*' })
 
   -- [[ Multicursor ]]
-  use({ 'mg979/vim-visual-multi' })
+  use('mg979/vim-visual-multi')
 
   -- [[ Telescope ]]
   use({
@@ -93,7 +93,7 @@ return require('packer').startup(function(use)
       {
         'kylechui/nvim-surround',
         config = function()
-          require('nvim-surround').setup({})
+          require('nvim-surround').setup()
         end,
       },
     },
@@ -144,7 +144,7 @@ return require('packer').startup(function(use)
   use({
     'simrat39/symbols-outline.nvim',
     config = function()
-      require('symbols-outline').setup({})
+      require('symbols-outline').setup()
     end,
   })
 
@@ -153,21 +153,16 @@ return require('packer').startup(function(use)
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require('todo-comments').setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require('todo-comments').setup()
     end,
   })
 
   -- [[ Others ]]
   use({
     'quarto-dev/quarto-vim', -- Quarto syntax highting
-    requires = { { 'vim-pandoc/vim-pandoc-syntax' } },
+    requires = { 'vim-pandoc/vim-pandoc-syntax' },
     ft = { 'quarto' },
-  })
-  use({ 'quarto-dev/quarto-nvim', ft = { 'quarto' } }) -- Quarto support
+  }, { 'quarto-dev/quarto-nvim', ft = { 'quarto' } })
 
   -- [[ Markdown Previews ]]
   use({
