@@ -4,6 +4,16 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+# Arduino command-line interface
+brew "arduino-cli"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -12,6 +22,8 @@ brew "bash"
 brew "cmatrix"
 # Color-highlighted diff(1) output
 brew "colordiff"
+# Package acting as bridge between Node projects and their package managers
+brew "corepack"
 # Configurable talking characters in ASCII art
 brew "cowsay"
 # Load/unload environment variables based on $PWD
@@ -32,8 +44,6 @@ brew "fortune"
 brew "freetype"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Library for command-line editing
-brew "readline"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
@@ -42,20 +52,10 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Command-line interface for SQLite
-brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Quickly rewrite git repository history
 brew "git-filter-repo"
 # Git extension for versioning large files
 brew "git-lfs"
-# Platform built on V8 to build network applications
-brew "node"
-# Interactive command-line tool for using emoji in commit messages
-brew "gitmoji"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
@@ -161,8 +161,6 @@ cask "julia"
 cask "karabiner-elements"
 # Native app email client for Gmail
 cask "mimestream"
-# Tool to control external monitor brightness & volume
-cask "monitorcontrol"
 # Scientific and technical publishing system built on Pandoc
 cask "quarto"
 # Control your tools with a few keystrokes
