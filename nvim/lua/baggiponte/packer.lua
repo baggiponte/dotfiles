@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
   -- [[ Git ]]
   use('tpope/vim-fugitive') -- git
   use('lewis6991/gitsigns.nvim') -- git marks to denote added/changed/deleted line
-  use('kdheepak/lazygit.nvim') -- Open a floating panel with lazygit
+  -- use('kdheepak/lazygit.nvim') -- Open a floating panel with lazygit
 
   -- [[ Indentation ]]
   use('lukas-reineke/indent-blankline.nvim') -- Highlight indentation
