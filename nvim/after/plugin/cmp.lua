@@ -24,9 +24,9 @@ cmp.setup({
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-n>'] = cmp.mapping.complete(),
+    ['<C-space>'] = cmp.mapping.complete(),
     ['<esc>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
+    ['<C-n>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
