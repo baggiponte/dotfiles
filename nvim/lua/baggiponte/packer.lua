@@ -99,15 +99,6 @@ return require('packer').startup(function(use)
     },
   })
 
-  -- [[ Moar movements ]]
-  use({
-    'ggandor/leap.nvim',
-    requires = 'tpope/vim-repeat',
-    config = function()
-      require('leap').add_default_mappings()
-    end,
-  })
-
   -- [[ LSP ]]
   use('neovim/nvim-lspconfig') -- Collection of configurations for built-in LSP client
 
@@ -139,14 +130,6 @@ return require('packer').startup(function(use)
 
   -- hook linters, formatters... into lsp keybindings
   use('jose-elias-alvarez/null-ls.nvim')
-
-  -- A tree like view for symbols in Neovim using the Language Server Protocol.
-  use({
-    'simrat39/symbols-outline.nvim',
-    config = function()
-      require('symbols-outline').setup()
-    end,
-  })
 
   -- [[ TODOs ]]
   use({
