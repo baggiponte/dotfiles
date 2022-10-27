@@ -135,14 +135,14 @@ if hash nvim 2>/dev/null; then
     n () {
         if [ "$1" = "" ]; then
             nvim -c "Telescope zoxide list"
-        elif [ "$1" = "." ]; then
-            nvim -c "Telescope file_browser"
         else
             nvim "$1"
         fi
     }
-
-    alias nn='n .'
+    
+    nn () {
+        nvim -c "Telescope file_browser" "$1"
+    }
 
     nvim-update () {
         echo "updating nvim plugins..."
