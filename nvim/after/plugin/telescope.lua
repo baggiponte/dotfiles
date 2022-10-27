@@ -1,11 +1,12 @@
 local telescope = require('telescope')
+local builtin = require('telescope.builtin')
+local extensions = telescope.extensions
 local actions = require('telescope.actions')
-local symbols_outline = require('symbols-outline')
 
 telescope.setup({
   defaults = {
     sorting_strategy = 'descending',
-    initial_mode = 'normal',
+    initial_mode = 'insert',
     file_ignore_patterns = { '__pycache__/*', 'git/*', '.DS_Store' },
     mappings = {
       i = {
@@ -18,6 +19,7 @@ telescope.setup({
   },
   pickers = {
     buffers = {
+      initial_mode = 'normal',
       mappings = {
         i = {
           ['<C-q>'] = 'delete_buffer',
@@ -27,11 +29,24 @@ telescope.setup({
         },
       },
     },
+    diagnostics = {
+      initial_mode = 'normal',
+    },
+    find_files = {
+      initial_mode = 'insert',
+      hidden = true,
+      no_ignore = false,
+    },
   },
   extensions = {
     file_browser = {
+      initial_mode = 'normal',
       hijack_netrw = true,
       hidden = true,
+      grouped = true,
+      path = '%:p:h',
+      cwd = '%:p:h',
+      respect_gitignore = false,
     },
     zoxide = {
       mappings = {
@@ -47,28 +62,17 @@ telescope.setup({
 })
 
 -- [[ Enable extensions ]]
-local extensions = { 'fzf', 'file_browser', 'frecency', 'zoxide' }
-for _, extension in ipairs(extensions) do
+local exts = { 'fzf', 'file_browser', 'frecency', 'zoxide' }
+for _, extension in ipairs(exts) do
   telescope.load_extension(extension)
 end
 
 -- [[ Set keymaps ]]
 local opts = { silent = true, noremap = true }
 
-vim.keymap.set('n', '<leader>fs', symbols_outline.toggle_outline, opts)
-vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, opts)
-vim.keymap.set('n', '<leader>fr', telescope.extensions.frecency.frecency, opts)
-vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, opts)
-vim.keymap.set('n', '<leader>dd', require('telescope.builtin').diagnostics, opts)
-vim.keymap.set(
-  'n',
-  '<leader>ff',
-  "<cmd>lua require'telescope'.extensions.file_browser.file_browser({ path = '%:p:h', grouped = true })<CR>",
-  opts
-)
-vim.keymap.set(
-  'n',
-  '<leader>fd',
-  "<cmd>lua require'telescope'.extensions.file_browser.file_browser({ path = '%:p:h', grouped = true, respect_gitignore = false })<CR>",
-  opts
-)
+vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
+vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
+vim.keymap.set('n', '<leader>dd', builtin.diagnostics, opts)
+vim.keymap.set('n', '<leader>fd', extensions.file_browser.file_browser, opts)
+vim.keymap.set('n', '<leader>cd', extensions.zoxide.list, opts)
+vim.keymap.set('n', '<leader>fr', extensions.frecency.frecency, opts)

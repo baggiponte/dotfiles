@@ -17,7 +17,7 @@ require('nvim-treesitter.configs').setup({
     'yaml',
   },
 
-  indent = { enable = false },
+  indent = { enable = true },
 
   highlight = {
     enable = true,
@@ -28,7 +28,7 @@ require('nvim-treesitter.configs').setup({
     enable = true,
     keymaps = {
       init_selection = '<c-]>',
-      scope_incremental = '<tab>',
+      -- scope_incremental = '<tab>',
       node_incremental = '<c-]>',
       node_decremental = '<c-[>',
     },
@@ -49,23 +49,25 @@ require('nvim-treesitter.configs').setup({
     -- termcolors = {} -- table of colour name strings
   },
 
+  playground = { enable = true },
+
   textobjects = {
     select = {
       enable = true,
       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim.
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm.
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
+        ['ib'] = '@block.inner',
+        ['ab'] = '@block.outer',
         ['ac'] = '@class.outer',
         ['ic'] = '@class.inner',
         ['aC'] = '@comment.outer',
+        ['ai'] = '@conditional.outer',
+        ['ii'] = '@conditional.inner',
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
         ['al'] = '@loop.outer',
         ['il'] = '@loop.inner',
-        ['ib'] = '@block.inner',
-        ['ab'] = '@block.outer',
-        ['ir'] = '@parameter.inner',
-        ['ar'] = '@parameter.outer',
       },
     },
     move = {
