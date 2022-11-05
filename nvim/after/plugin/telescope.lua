@@ -1,7 +1,7 @@
-local telescope = require('telescope')
-local builtin = require('telescope.builtin')
-local extensions = telescope.extensions
 local actions = require('telescope.actions')
+local builtin = require('telescope.builtin')
+local extensions = require('telescope').extensions
+local telescope = require('telescope')
 
 telescope.setup({
   defaults = {
@@ -33,6 +33,7 @@ telescope.setup({
       initial_mode = 'normal',
     },
     find_files = {
+      cwd = '%:p:h',
       initial_mode = 'insert',
       hidden = true,
       no_ignore = false,
@@ -53,7 +54,7 @@ telescope.setup({
         default = {
           after_action = function(selection)
             print('Directory changed to ' .. selection.path)
-            telescope.extensions.file_browser.file_browser({ path = selection.path })
+            builtin.find_files({ path = selection.path })
           end,
         },
       },
@@ -70,7 +71,9 @@ end
 -- [[ Set keymaps ]]
 local opts = { silent = true, noremap = true }
 
+vim.keymap.set('n', '//', builtin.current_buffer_fuzzy_find, opts)
 vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, opts)
 vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
 vim.keymap.set('n', '<leader>dd', builtin.diagnostics, opts)
 vim.keymap.set('n', '<leader>fd', extensions.file_browser.file_browser, opts)
