@@ -64,8 +64,8 @@ if hash gmake 2>/dev/null; then
     alias make=gmake      # gnu-make (installed by homebrew)
 fi
 
-if hash colordiff 2>/dev/null; then
-    alias diff=colordiff
+if hash dust 2>/dev/null; then
+    alias dust="dust --reverse"
 fi
 
 if [ -x "$(brew --prefix)/bin/gzip" ]; then
