@@ -34,10 +34,6 @@ require('nvim-treesitter.configs').setup({
     },
   },
 
-  refactor = {
-    smart_rename = { enable = true, keymaps = { smart_rename = 'grr' } },
-    highlight_definitions = { enable = true },
-  },
   autopairs = { enable = true },
 
   rainbow = {
@@ -91,5 +87,6 @@ require('nvim-treesitter.configs').setup({
       },
     },
   },
+
   endwise = { enable = true },
 })
