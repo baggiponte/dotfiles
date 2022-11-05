@@ -9,18 +9,15 @@ vim.keymap.set('n', '<c-k>', '<c-w>k', opts)
 vim.keymap.set('n', '<c-l>', '<c-w>l', opts)
 
 -- [[ Create splits ]]
-vim.keymap.set(
-  'n',
-  '<leader>v',
-  "<cmd>vsp %:p:h | lua require 'telescope'.extensions.file_browser.file_browser{ path = '%:p:h' }<CR>",
-  opts
-)
-vim.keymap.set(
-  'n',
-  '<leader>V',
-  "<cmd>sp %:p:h | lua require 'telescope'.extensions.file_browser.file_browser{ path = '%:p:h', grouped = true }<CR>",
-  opts
-)
+vim.keymap.set('n', '<leader>v', function()
+  vim.cmd([[vsp %:p:h]])
+  require('telescope.builtin').find_files({ path = '%:p:h ' })
+end, opts)
+
+vim.keymap.set('n', '<leader>V', function()
+  vim.cmd([[sp %:p:h]])
+  require('telescope.builtin').find_files({ path = '%:p:h ' })
+end, opts)
 
 -- [[ Save and exit files ]]
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', opts) -- save file
