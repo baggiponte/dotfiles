@@ -90,6 +90,7 @@ return packer.startup({
       run = ':TSUpdate',
       requires = {
         'RRethy/nvim-treesitter-endwise', -- automatically add `end` to structs of certain languages
+        'danymat/neogen',
         'nvim-treesitter/nvim-treesitter-context',
         'nvim-treesitter/nvim-treesitter-textobjects',
         'nvim-treesitter/playground',
