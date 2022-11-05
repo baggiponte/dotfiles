@@ -21,7 +21,7 @@ end, opts)
 
 -- [[ Save and exit files ]]
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', opts) -- save file
-vim.keymap.set('n', '<leader>q', '<cmd>bd<CR>', opts) -- quit buffer
+vim.keymap.set('n', '<leader>q', '<cmd>Sayonara<CR>', opts) -- quit buffer
 vim.keymap.set('n', '<leader>Q', '<cmd>q<CR>', opts) -- quit all buffers
 
 -- [[ General remaps ]]
