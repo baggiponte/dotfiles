@@ -22,7 +22,18 @@ return packer.startup({
   config = {
     display = {
       open_fn = function()
-        return require('packer.util').float({ border = vim.g.border_chars })
+        return require('packer.util').float({
+          border = { -- default borders are vim.g.border_chars
+            { '╭', 'FloatBorder' },
+            { '─', 'FloatBorder' },
+            { '╮', 'FloatBorder' },
+            { '│', 'FloatBorder' },
+            { '╯', 'FloatBorder' },
+            { '─', 'FloatBorder' },
+            { '╰', 'FloatBorder' },
+            { '│', 'FloatBorder' },
+          },
+        })
       end,
     },
   },
@@ -37,31 +48,14 @@ return packer.startup({
     use({ 'akinsho/toggleterm.nvim', tag = '*' }) -- Terminal inside vim
     use({ 'numToStr/Comment.nvim', config = configure('Comment') }) -- Comments
     use({ 'nvim-lualine/lualine.nvim', config = configure('lualine', { theme = 'gruvbox' }) }) -- Statusline
-    use({ 'tpope/vim-fugitive', 'lewis6991/gitsigns.nvim' }) -- git
+    use({ 'tpope/vim-fugitive', { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' } }) -- git
     use({ 'windwp/nvim-autopairs', config = configure('nvim-autopairs') }) -- Autopair parentheses
-
-    -- [[ filetype-dependent plugins ]]
+    -- Lua
     use({
-      'iamcco/markdown-preview.nvim',
-      run = 'cd app && npm install',
-      setup = function()
-        vim.g.mkdp_filetypes = { 'markdown' }
-      end,
-      ft = { 'markdown' },
+      'folke/todo-comments.nvim',
+      requires = 'nvim-lua/plenary.nvim',
+      config = configure('todo-comments'),
     })
-
-    use({
-      {
-        'quarto-dev/quarto-vim',
-        requires = { 'vim-pandoc/vim-pandoc-syntax', ft = { 'quarto' } },
-        after = { 'vim-pandoc-syntax' },
-      },
-      {
-        'quarto-dev/quarto-nvim',
-        after = { 'quarto-vim' },
-      },
-    })
-
     -- [[ Debug Adapter ]]
     use({
       'mfussenegger/nvim-dap',
@@ -109,15 +103,8 @@ return packer.startup({
     })
 
     -- [[ LSP ]]
+    use('neovim/nvim-lspconfig')
     use({ 'williamboman/mason.nvim', requires = { 'williamboman/mason-lspconfig.nvim' } }) -- Installer for external tooling e.g. LSP servers, linters, formatters...
-
-    use({
-      'neovim/nvim-lspconfig',
-      requires = {
-        'nvim-lua/lsp-status.nvim',
-        'onsails/lspkind.nvim',
-      },
-    })
 
     use({
       'hrsh7th/nvim-cmp',
@@ -128,12 +115,13 @@ return packer.startup({
         'hrsh7th/cmp-nvim-lsp-signature-help',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
+        'onsails/lspkind.nvim',
       },
       after = 'nvim-lspconfig',
     })
 
     -- hook linters, formatters... into lsp keybindings
-    use({ 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-cmp' })
+    use({ 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-cmp', requires = 'nvim-lua/plenary.nvim' })
 
     -- snippets
     use({
@@ -142,8 +130,30 @@ return packer.startup({
       after = 'nvim-cmp',
     })
 
+    -- [[ filetype-dependent plugins ]]
+    use({
+      'iamcco/markdown-preview.nvim',
+      run = 'cd app && npm install',
+      setup = function()
+        vim.g.mkdp_filetypes = { 'markdown' }
+      end,
+      ft = { 'markdown' },
+    })
+
+    use({
+      {
+        'quarto-dev/quarto-vim',
+        requires = { 'vim-pandoc/vim-pandoc-syntax', ft = { 'quarto' } },
+        after = { 'vim-pandoc-syntax' },
+      },
+      {
+        'quarto-dev/quarto-nvim',
+        after = { 'quarto-vim' },
+      },
+    })
+
     if packer_bootstrap then
-      require('packer').sync()
+      packer.sync()
     end
   end,
 })
