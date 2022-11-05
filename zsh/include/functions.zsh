@@ -141,7 +141,7 @@ if hash nvim 2>/dev/null; then
     }
     
     nn () {
-        nvim -c "Telescope file_browser" "$1"
+        nvim -c "Telescope find_files" "$1"
     }
 
     nvim-update () {
