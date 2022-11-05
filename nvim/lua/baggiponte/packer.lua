@@ -64,9 +64,11 @@ return packer.startup({
 
     -- [[ Debug Adapter ]]
     use({
-      { 'mfussenegger/nvim-dap' },
-      { 'mfussenegger/nvim-dap-python', after = { 'nvim-dap' } },
-      { 'rcarriga/nvim-dap-ui', after = { 'nvim-dap' } },
+      'mfussenegger/nvim-dap',
+      requires = {
+        { 'rcarriga/nvim-dap-ui', after = { 'nvim-dap' } },
+        { 'mfussenegger/nvim-dap-python', ft = { 'python' } },
+      },
     })
 
     -- [[ Telescope ]]
