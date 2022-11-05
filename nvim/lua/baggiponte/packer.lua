@@ -32,6 +32,7 @@ return packer.startup({
     use('lewis6991/impatient.nvim') -- Improve startup time
     use('lukas-reineke/indent-blankline.nvim') -- Indentation
     use('mg979/vim-visual-multi') -- Multiline cursor
+    use('mhinz/vim-sayonara')
     use('sainnhe/gruvbox-material') -- Colorscheme
     use({ 'akinsho/toggleterm.nvim', tag = '*' }) -- Terminal inside vim
     use({ 'numToStr/Comment.nvim', config = configure('Comment') }) -- Comments
