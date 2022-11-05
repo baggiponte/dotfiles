@@ -18,6 +18,6 @@ null_ls.setup({
     formatting.shellharden.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
     formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
     formatting.stylua,
-    formatting.yamlfmt,
+    formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason
   },
 })
