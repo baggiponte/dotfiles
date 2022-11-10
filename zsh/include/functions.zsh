@@ -159,3 +159,19 @@ if command -v zimfw &>/dev/null; then
         zimfw update
     }
 fi
+if [ -x /Applications/RStudio.app ]; then
+    rstudio () {
+        # check if there is an .Rproj file
+        local files=(*.Rproj(N))
+
+        # if the number of files is not 0, then remove them
+        if [ $(($#files)) -eq 1 ]; then
+            open -a RStudio "${files[1]}"
+        elif [ $(($#files)) -gt 1 ]; then
+            echo "Multiple *.Rproj files found."
+        else
+            echo "No .Rproj file found, just launching RStudio"
+            open -a RStudio
+        fi
+    }
+fi

@@ -133,9 +133,13 @@ cask "karabiner-elements"
 cask "mimestream"
 # Scientific and technical publishing system built on Pandoc
 cask "quarto"
+# Environment for statistical computing and graphics
+cask "r"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Data science software focusing on R and Python
+cask "rstudio"
 # Collect, organize, cite, and share research sources
 cask "zotero"

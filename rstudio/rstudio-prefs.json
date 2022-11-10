@@ -1,0 +1,59 @@
+{
+    "initial_working_directory": "~/Documents/dev",
+    "posix_terminal_shell": "custom",
+    "editor_theme": "Material",
+    "load_workspace": false,
+    "remove_history_duplicates": true,
+    "auto_detect_indentation": true,
+    "insert_native_pipe_operator": true,
+    "scroll_past_end_of_document": true,
+    "highlight_r_function_calls": true,
+    "rainbow_parentheses": true,
+    "auto_append_newline": true,
+    "strip_trailing_whitespace": true,
+    "tab_multiline_completion": true,
+    "default_encoding": "UTF-8",
+    "editor_keybindings": "vim",
+    "font_size_points": 11,
+    "cran_mirror": {
+        "name": "Global (CDN)",
+        "host": "RStudio",
+        "url": "https://cran.rstudio.com/",
+        "country": "us",
+        "ok": 1,
+        "secondary": ""
+    },
+    "rmd_chunk_output_inline": false,
+    "custom_shell_command": "/opt/homebrew/bin/zsh",
+    "panes": {
+        "quadrants": [
+            "Source",
+            "TabSet2",
+            "Console",
+            "TabSet1"
+        ],
+        "tabSet1": [
+            "Environment",
+            "History",
+            "Connections",
+            "Build",
+            "VCS",
+            "Tutorial",
+            "Presentation"
+        ],
+        "tabSet2": [
+            "Files",
+            "Plots",
+            "Packages",
+            "Help",
+            "Viewer",
+            "Presentations"
+        ],
+        "hiddenTabSet": [],
+        "console_left_on_top": false,
+        "console_right_on_top": true,
+        "additional_source_columns": 0
+    },
+    "jobs_tab_visibility": "shown",
+    "save_workspace": "never"
+}
