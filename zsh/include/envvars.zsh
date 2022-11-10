@@ -2,6 +2,11 @@
 # | ENV VARS CONFIGS |
 # +------------------+
 
+if [ -d "/Library/Frameworks/R.framework/Resources" ]; then
+    export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/.Renviron
+    export R_PROFILE_USER=$XDG_CONFIG_HOME/R/.Rprofile
+fi
+
 if hash nvim 2>/dev/null; then
 	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v
 	# e.g. zsh will use vim keybindings!
