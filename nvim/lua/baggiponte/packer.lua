@@ -47,24 +47,48 @@ return packer.startup({
     },
   },
   function(use)
-    -- [[ generics ]]
-    use('wbthomason/packer.nvim') -- Package manager
-    use('lewis6991/impatient.nvim') -- Improve startup time
-    use('lukas-reineke/indent-blankline.nvim') -- Indentation
-    use('mg979/vim-visual-multi') -- Multiline cursor
+    -- [[ general purpose ]]
+    -- package management
+    use('wbthomason/packer.nvim') -- package manager
+    use('lewis6991/impatient.nvim') -- improve startup time
+
+    -- color scheme
+    use('sainnhe/gruvbox-material')
+
+    -- indentation
+    use('lukas-reineke/indent-blankline.nvim')
+
+    -- autopair parentheses
+    use({ 'windwp/nvim-autopairs', config = configure('nvim-autopairs') })
+
+    -- statusline
+    use({ 'nvim-lualine/lualine.nvim', config = configure('lualine', { theme = 'gruvbox' }) })
+
+    -- multiline cursor
+    use('mg979/vim-visual-multi')
+
+    -- terminal inside vim
+    use({ 'akinsho/toggleterm.nvim', tag = '*' })
+
+    -- smart close buffer
     use('mhinz/vim-sayonara')
-    use('sainnhe/gruvbox-material') -- Colorscheme
-    use({ 'akinsho/toggleterm.nvim', tag = '*' }) -- Terminal inside vim
-    use({ 'numToStr/Comment.nvim', config = configure('Comment') }) -- Comments
-    use({ 'nvim-lualine/lualine.nvim', config = configure('lualine', { theme = 'gruvbox' }) }) -- Statusline
-    use({ 'tpope/vim-fugitive', { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' } }) -- git
-    use({ 'windwp/nvim-autopairs', config = configure('nvim-autopairs') }) -- Autopair parentheses
-    -- Lua
+
+    -- comment and uncomment with gc
+    use({ 'numToStr/Comment.nvim', config = configure('Comment') })
+
+    -- git integration
+    use({ 'tpope/vim-fugitive', { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' } })
+
+    -- renaming (rg + sed)
+    use('nvim-pack/nvim-spectre')
+
+    -- find across your todos
     use({
       'folke/todo-comments.nvim',
       requires = 'nvim-lua/plenary.nvim',
       config = configure('todo-comments'),
     })
+
     -- [[ Debug Adapter ]]
     use({
       'mfussenegger/nvim-dap',
@@ -124,7 +148,10 @@ return packer.startup({
         'hrsh7th/cmp-nvim-lsp-signature-help',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
+        'hrsh7th/cmp-emoji',
+        'dmitmel/cmp-cmdline-history',
         'onsails/lspkind.nvim',
+        'saadparwaiz1/cmp_luasnip',
       },
       after = 'nvim-lspconfig',
     })
@@ -135,11 +162,18 @@ return packer.startup({
     -- snippets
     use({
       'L3MON4D3/LuaSnip',
-      requires = { 'saadparwaiz1/cmp_luasnip', 'rafamadriz/friendly-snippets' },
+      requires = 'rafamadriz/friendly-snippets',
       after = 'nvim-cmp',
     })
 
-    -- [[ filetype-dependent plugins ]]
+    -- nicer incremental rename
+    use({
+      'smjonas/inc-rename.nvim',
+      config = configure('inc_rename'),
+    })
+
+    -- [[ filetype specific plugins ]]
+    -- previews for markdown
     use({
       'iamcco/markdown-preview.nvim',
       run = 'cd app && npm install',
@@ -149,6 +183,7 @@ return packer.startup({
       ft = { 'markdown' },
     })
 
+    -- quarto support
     use({
       {
         'quarto-dev/quarto-vim',
