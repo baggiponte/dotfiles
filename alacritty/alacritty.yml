@@ -1,0 +1,19 @@
+live_config_reload: true
+shell:
+  program: /opt/homebrew/bin/zsh
+window:
+  opacity: 0.85
+  padding:
+    x: 8
+    y: 6
+  dynamic_padding: true
+  decorations: buttonless
+  startup_mode: Maximized
+font:
+  normal:
+    family: "Hack Nerd Font Mono"
+    style: Regular
+  size: 14.0
+cursor:
+  style:
+    shape: Beam

@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "rusty-ferris-club/tap"
 # Arduino command-line interface
 brew "arduino-cli"
 # Library for command-line editing
@@ -108,6 +109,10 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Secure shell history commands
+brew "rusty-ferris-club/tap/shellclear"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
@@ -123,8 +128,6 @@ cask "font-jetbrains-mono"
 # Monospaced typeface designed for programming in Julia
 cask "font-juliamono"
 cask "font-yanone-kaffeesatz"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # Programming language for technical computing
 cask "julia"
 # Keyboard customizer
