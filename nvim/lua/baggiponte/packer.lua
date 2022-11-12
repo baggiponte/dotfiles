@@ -137,8 +137,14 @@ return packer.startup({
 
     -- [[ LSP ]]
     use('neovim/nvim-lspconfig')
-    use({ 'williamboman/mason.nvim', requires = { 'williamboman/mason-lspconfig.nvim' } }) -- Installer for external tooling e.g. LSP servers, linters, formatters...
 
+    -- installer for external tooling e.g. LSP servers, linters, formatters...
+    use({ 'williamboman/mason.nvim', requires = { 'williamboman/mason-lspconfig.nvim' } })
+
+    -- better ui
+    use({ { 'glepnir/lspsaga.nvim', branch = 'main' }, 'onsails/lspkind.nvim' })
+
+    -- completion sources
     use({
       'hrsh7th/nvim-cmp',
       requires = {
@@ -150,7 +156,6 @@ return packer.startup({
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-emoji',
         'dmitmel/cmp-cmdline-history',
-        'onsails/lspkind.nvim',
         'saadparwaiz1/cmp_luasnip',
       },
       after = 'nvim-lspconfig',

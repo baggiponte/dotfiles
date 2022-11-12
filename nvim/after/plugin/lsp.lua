@@ -1,4 +1,17 @@
 local lspconfig = require('lspconfig')
+local saga = require('lspsaga')
+
+saga.init_lsp_saga({
+  code_action_lightbulb = { enable = false }, -- it's heinous
+  border_style = 'rounded',
+  move_in_saga = { prev = '<C-k>', next = '<C-j>' },
+  code_action_icon = '',
+  definition_action_keys = {
+    edit = '<CR>',
+    vsplit = 'V',
+    split = 'S',
+  },
+})
 
 local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -11,8 +24,22 @@ local on_attach = function(_, bufnr)
 
   -- Mappings - See `:help vim.lsp.*`
   bufmap('n', 'F', vim.lsp.buf.format)
-  bufmap('n', 'K', vim.lsp.buf.hover) -- Display hover information about the symbol
   bufmap('n', 'gh', vim.lsp.buf.signature_help) -- Display a function's signature information
+
+  -- find references and defintions
+  bufmap('n', 'gf', function ()
+    vim.cmd('Lspsaga lsp_finder')
+  end)
+
+  -- hover documentation
+  bufmap('n', 'K', function()
+    vim.cmd('Lspsaga hover_doc')
+  end) -- Display hover information about the symbol
+
+  -- peek definition
+  bufmap('n', 'gp', function()
+    vim.cmd('Lspsaga peek_definition')
+  end)
 
   -- Go to definition
   bufmap('n', 'gd', function()
