@@ -1,4 +1,4 @@
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspconfig = require('lspconfig')
 
 local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -13,13 +13,38 @@ local on_attach = function(_, bufnr)
   bufmap('n', 'F', vim.lsp.buf.format)
   bufmap('n', 'K', vim.lsp.buf.hover) -- Display hover information about the symbol
   bufmap('n', 'gh', vim.lsp.buf.signature_help) -- Display a function's signature information
-  bufmap('n', 'gd', vim.lsp.buf.definition) -- Go to definition
-  bufmap('n', 'gr', vim.lsp.buf.references) -- Lists all the references
-  bufmap('n', '<leader>rn', vim.lsp.buf.rename) -- Rename all references of the symbol under the cursor
-  bufmap('n', '<leader>ca', vim.lsp.buf.code_action) -- Selects a code action
+
+  -- Go to definition
+  bufmap('n', 'gd', function()
+    vim.cmd('Telescope lsp_definitions')
+  end)
+
+  -- Lists all the references
+  bufmap('n', 'gr', function()
+    vim.cmd('Telescope lsp_references')
+  end)
+
+  -- Lists all the implementations
+  bufmap('n', 'gi', function()
+    vim.cmd('Telescope lsp_implementations')
+  end)
+
+  -- go to type declaration
+  bufmap('n', 'gt', function()
+    vim.cmd('Telescope lsp_type_definitions')
+  end)
+
+  -- Selects a code action
+  bufmap('n', 'ca', vim.lsp.buf.code_action)
+
+  -- Rename all references of the symbol under the cursor
+  vim.keymap.set('n', '<leader>rn', function()
+    return ':IncRename ' .. vim.fn.expand('<cword>')
+  end, { expr = true })
 end
 
-local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 local servers = {
   'bashls',
   'dockerls',
@@ -69,4 +94,3 @@ lspconfig['clangd'].setup({
   capabilities = capabilities,
   filetypes = { 'arduino', 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
 })
-

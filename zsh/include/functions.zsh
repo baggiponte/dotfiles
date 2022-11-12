@@ -9,7 +9,7 @@ trash () { command mv "$@" ~/.Trash ; }
 take () { command mkdir -p "$1" && cd "$1"; }
 
 # create a python package
-mkpkg () { command mkdir "$1" ; touch "$1/__init__.py" ; }
+mkpkg () { command mkdir -p "$1" ; touch "$1/__init__.py" ; }
 
 # create a custom function to use gitignore.io to create .gitignore files
 gi() { curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$1" ;}
@@ -114,10 +114,10 @@ fi
 # bulk rename extensions
 if hash fd 2>/dev/null; then
     rename-ext() {
-    local ext_old="$1"
-    local ext_new="$2"
+        local ext_old="$1"
+        local ext_new="$2"
 
-    fd -e "$ext_old" -x mv "{}" "{.}.$ext_new"
+        fd -e "$ext_old" -x mv "{}" "{.}.$ext_new"
 }
 fi
 
@@ -135,15 +135,12 @@ if hash nvim 2>/dev/null; then
     n () {
         if [ "$1" = "" ]; then
             nvim -c "Telescope zoxide list"
+        elif [ -d "$1" ]; then
+            nvim -c "Telescope find_files" "$1"
         else
             nvim "$1"
         fi
     }
-    
-    nn () {
-        nvim -c "Telescope find_files" "$1"
-    }
-
     nvim-update () {
         echo "updating nvim plugins..."
         nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
@@ -159,6 +156,7 @@ if command -v zimfw &>/dev/null; then
         zimfw update
     }
 fi
+
 if [ -x /Applications/RStudio.app ]; then
     rstudio () {
         # check if there is an .Rproj file
@@ -175,3 +173,4 @@ if [ -x /Applications/RStudio.app ]; then
         fi
     }
 fi
+

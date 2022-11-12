@@ -33,7 +33,6 @@ telescope.setup({
       initial_mode = 'normal',
     },
     find_files = {
-      cwd = '%:p:h',
       initial_mode = 'insert',
       hidden = true,
       no_ignore = false,
