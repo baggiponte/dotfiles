@@ -4,6 +4,7 @@ local configure = function(plugin, opts)
   require(plugin).setup(opts)
 end
 
+-- function to bootstrap packer
 local ensure_packer = function()
   local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
@@ -15,6 +16,14 @@ local ensure_packer = function()
 
   return false
 end
+
+-- autocommand to reload nvim and sync plugins when this file is saved
+vim.cmd([[ 
+  augroup packer_auto_sync
+    autocmd!
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
+  augroup end
+]])
 
 local packer_bootstrap = ensure_packer()
 
