@@ -11,9 +11,6 @@ take () { command mkdir -p "$1" && cd "$1"; }
 # create a python package
 mkpkg () { command mkdir -p "$1" ; touch "$1/__init__.py" ; }
 
-# create a custom function to use gitignore.io to create .gitignore files
-gi() { curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$1" ;}
-
 # extract files
 extract() {
  ex() {
@@ -50,66 +47,22 @@ generate-pw () {
     openssl rand -base64 "$num_char" | tee /dev/tty | pbcopy
 }
 
+# create a custom function to use gitignore.io to create .gitignore files
+gi() { curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$1" ;}
+
 # create new kernel for jupyter notebooks
 jupyter-kernel-install () {
     ipython kernel install --user --name "$1" --display-name "$2" --sys-prefix
 }
 
-# +-------+
-# | macOS |
-# +-------+
-
-# open in Finder
-if [ "$(sysctl -n kern.ostype)" = "Darwin" ]; then
-
-    f() {
-        if [ "$1" = "" ]; then
-            open -a Finder ./
-        else
-            open -a Finder "$1"
-        fi
-    }
-fi
-
-# brew specific
-if hash brew 2>/dev/null; then
-
-    # update Homebrew
-    brew-update () {
-        brew update
-        brew upgrade
-    }
-
-    # clean homebrew
-    brew-cleanup () {
-
-        echo "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
-
-        echo "Removing lockfiles and outdated downloads..." && brew cleanup -s
-
-        # get the list of all files
-        local download_dir="$HOME/Library/Caches/Homebrew/downloads"
-        local files=("$download_dir"/*(N))
-
-        # if the number of files is not 0, then remove them
-        # see: https://unix.stackexchange.com/a/313187/402599
-        if (($#files)); then
-            echo "Removing downloads in $download_dir" && rm -- "${files[@]}"
-        else
-            echo "No downloads to remove"
-        fi
-
-        echo "Dumping formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
-        if [ -s "$HOMEBREW_BUNDLE_FILE" ]; then
-            mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
-        fi
-        brew bundle dump --describe
-    }
-fi
-
 # +----------------+
 # | Other commands |
 # +----------------+
+
+# navigate history
+if hash fzf 2>/dev/null; then
+    hist () { history 1 | fzf ; }
+fi
 
 # bulk rename extensions
 if hash fd 2>/dev/null; then
@@ -171,6 +124,58 @@ if [ -x /Applications/RStudio.app ]; then
             echo "No .Rproj file found, just launching RStudio"
             open -a RStudio
         fi
+    }
+fi
+
+# +-------+
+# | macOS |
+# +-------+
+
+# open in Finder
+if [ "$(sysctl -n kern.ostype)" = "Darwin" ]; then
+
+    f() {
+        if [ "$1" = "" ]; then
+            open -a Finder ./
+        else
+            open -a Finder "$1"
+        fi
+    }
+fi
+
+# brew specific
+if hash brew 2>/dev/null; then
+
+    # update Homebrew
+    brew-update () {
+        brew update
+        brew upgrade
+    }
+
+    # clean homebrew
+    brew-cleanup () {
+
+        echo "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
+
+        echo "Removing lockfiles and outdated downloads..." && brew cleanup -s
+
+        # get the list of all files
+        local download_dir="$HOME/Library/Caches/Homebrew/downloads"
+        local files=("$download_dir"/*(N))
+
+        # if the number of files is not 0, then remove them
+        # see: https://unix.stackexchange.com/a/313187/402599
+        if (($#files)); then
+            echo "Removing downloads in $download_dir" && rm -- "${files[@]}"
+        else
+            echo "No downloads to remove"
+        fi
+
+        echo "Dumping formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
+        if [ -s "$HOMEBREW_BUNDLE_FILE" ]; then
+            mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
+        fi
+        brew bundle dump --describe
     }
 fi
 
