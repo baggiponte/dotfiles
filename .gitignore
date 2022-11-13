@@ -1,12 +1,11 @@
 *.bak
 gh
-jump
+ipython
 iterm2
 !iterm2/*.json
+jupyter
 karabiner/*
 !karabiner/karabiner.json
-jump
 lazygit/state.yml
 nvim/plugin
 raycast
-zsh/.zsh_history
