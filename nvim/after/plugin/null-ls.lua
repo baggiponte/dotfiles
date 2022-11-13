@@ -17,7 +17,7 @@ null_ls.setup({
     formatting.black,
     formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
     formatting.jq,
-    formatting.shellharden.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
+    -- formatting.shellharden.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
     formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
     formatting.stylua,
     formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason

@@ -9,7 +9,6 @@ saga.init_lsp_saga({
   definition_action_keys = {
     edit = '<CR>',
     vsplit = 'V',
-    split = 'S',
   },
 })
 
@@ -27,7 +26,7 @@ local on_attach = function(_, bufnr)
   bufmap('n', 'gh', vim.lsp.buf.signature_help) -- Display a function's signature information
 
   -- find references and defintions
-  bufmap('n', 'gf', function ()
+  bufmap('n', 'gf', function()
     vim.cmd('Lspsaga lsp_finder')
   end)
 

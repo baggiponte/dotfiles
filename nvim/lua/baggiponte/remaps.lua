@@ -2,6 +2,9 @@
 
 local opts = { silent = true, noremap = true }
 
+-- delete single character without copying into register
+vim.keymap.set('n', 'x', '"_x')
+
 -- [[ Move across buffers ]]
 vim.keymap.set('n', '<c-h>', '<c-w>h', opts)
 vim.keymap.set('n', '<c-j>', '<c-w>j', opts)
@@ -21,8 +24,9 @@ end, opts)
 
 -- [[ Save and exit files ]]
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', opts) -- save file
-vim.keymap.set('n', '<leader>q', '<cmd>Sayonara<CR>', opts) -- quit buffer
-vim.keymap.set('n', '<leader>Q', '<cmd>q<CR>', opts) -- quit all buffers
+vim.keymap.set('n', '<leader>W', '<cmd>wa<CR>', opts) -- save file
+vim.keymap.set('n', 'q', '<cmd>Sayonara<CR>', opts) -- quit buffer
+vim.keymap.set('n', 'Q', '<cmd>Sayonara!<CR>', opts) -- quit all buffers
 
 -- [[ General remaps ]]
 vim.keymap.set('', 'H', '^') -- remap go to the beginning of the line
