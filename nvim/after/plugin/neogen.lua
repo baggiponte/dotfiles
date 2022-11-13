@@ -1,4 +1,8 @@
-local neogen = require('neogen')
+local neogen_status, neogen = pcall(require, 'neogen')
+
+if not neogen_status then
+  return
+end
 
 neogen.setup({
   languages = {

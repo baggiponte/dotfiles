@@ -14,6 +14,7 @@ local disabled_built_ins = {
   'tar',
   'zipPlugin',
   'zip',
+  'netrwPlugin',
 }
 
 for _, plugin in ipairs(disabled_built_ins) do
@@ -59,7 +60,7 @@ vim.opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below 
 vim.opt.undofile = true -- Store undos to reapply them even after file is closed
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.lazyredraw = true -- Prevents redrawing the buffer, e.g. when doing macros
+-- vim.opt.lazyredraw = true -- Prevents redrawing the buffer, e.g. when doing macros
 vim.opt.updatetime = 250 -- Decrease update time.
 
 -- [[ Clipboard ]]

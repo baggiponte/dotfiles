@@ -1,9 +1,5 @@
 local packer = require('packer')
 
-local configure = function(plugin, opts)
-  require(plugin).setup(opts)
-end
-
 -- function to bootstrap packer
 local ensure_packer = function()
   local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -59,10 +55,20 @@ return packer.startup({
     use('lukas-reineke/indent-blankline.nvim')
 
     -- autopair parentheses
-    use({ 'windwp/nvim-autopairs', config = configure('nvim-autopairs') })
+    use({
+      'windwp/nvim-autopairs',
+      config = function()
+        require('nvim-autopairs').setup()
+      end,
+    })
 
     -- statusline
-    use({ 'nvim-lualine/lualine.nvim', config = configure('lualine', { theme = 'gruvbox' }) })
+    use({
+      'nvim-lualine/lualine.nvim',
+      config = function()
+        require('lualine').setup({ theme = 'gruvbox' })
+      end,
+    })
 
     -- multiline cursor
     use('mg979/vim-visual-multi')
@@ -74,7 +80,12 @@ return packer.startup({
     use('mhinz/vim-sayonara')
 
     -- comment and uncomment with gc
-    use({ 'numToStr/Comment.nvim', config = configure('Comment') })
+    use({
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup()
+      end,
+    })
 
     -- git integration
     use({ 'tpope/vim-fugitive', { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' } })
@@ -86,7 +97,21 @@ return packer.startup({
     use({
       'folke/todo-comments.nvim',
       requires = 'nvim-lua/plenary.nvim',
-      config = configure('todo-comments'),
+      config = function()
+        require('todo-comments').setup()
+      end,
+    })
+
+    -- use the UI for messages, cmdline and popupmenu
+    use({
+      'folke/noice.nvim',
+      config = function()
+        require('noice').setup()
+      end,
+      requires = {
+        'MunifTanjim/nui.nvim',
+        -- 'rcarriga/nvim-notify',
+      },
     })
 
     -- [[ Debug Adapter ]]
@@ -131,7 +156,12 @@ return packer.startup({
         'nvim-treesitter/nvim-treesitter-textobjects',
         'nvim-treesitter/playground',
         'p00f/nvim-ts-rainbow',
-        { 'kylechui/nvim-surround', config = configure('nvim-surround') },
+        {
+          'kylechui/nvim-surround',
+          config = function()
+            require('nvim-surround').setup()
+          end,
+        },
       },
     })
 
@@ -174,7 +204,9 @@ return packer.startup({
     -- nicer incremental rename
     use({
       'smjonas/inc-rename.nvim',
-      config = configure('inc_rename'),
+      config = function()
+        require('inc_rename').setup()
+      end,
     })
 
     -- [[ filetype specific plugins ]]
@@ -182,7 +214,7 @@ return packer.startup({
     use({
       'iamcco/markdown-preview.nvim',
       run = 'cd app && npm install',
-      setup = function()
+      config = function()
         vim.g.mkdp_filetypes = { 'markdown' }
       end,
       ft = { 'markdown' },
