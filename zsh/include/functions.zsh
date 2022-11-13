@@ -50,14 +50,18 @@ generate-pw () {
 # create a custom function to use gitignore.io to create .gitignore files
 gi() { curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$1" ;}
 
-# create new kernel for jupyter notebooks
-jupyter-kernel-install () {
-    ipython kernel install --user --name "$1" --display-name "$2" --sys-prefix
-}
-
 # +----------------+
 # | Other commands |
 # +----------------+
+
+# see: https://ipython.readthedocs.io/en/stable/install/kernel_install.html#kernels-for-different-environments
+if hash python 2>/dev/null; then
+    ipykernel-install () {
+        local kernel_name="$1"
+        local display_name="$2"
+        python -m ipykernel install --user --name "$kernel_name" --display-name "$display_name"
+    }
+fi
 
 # navigate history
 if hash fzf 2>/dev/null; then
