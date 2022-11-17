@@ -36,9 +36,10 @@ alias bd="b doctor"
 # | Optionals |
 # +-----------+
 
-if [ -x /Applications/quarto/bin/quarto ]; then
-	alias quarto=/Applications/quarto/bin/quarto
-fi
+# don't need to set this if quarto is installed using rundel's tap
+# if [ -x /Applications/quarto/bin/quarto ]; then
+# 	alias quarto=/Applications/quarto/bin/quarto
+# fi
 
 if hash nvim 2>/dev/null; then
 	alias nn="n ."
