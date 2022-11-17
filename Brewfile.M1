@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "rundel/quarto-cli"
 tap "rusty-ferris-club/tap"
 # Arduino command-line interface
 brew "arduino-cli"
@@ -13,8 +14,6 @@ brew "readline"
 brew "sqlite"
 # General-purpose data compression with high compression ratio
 brew "xz"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -49,6 +48,8 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Quickly rewrite git repository history
 brew "git-filter-repo"
 # Git extension for versioning large files
@@ -109,6 +110,8 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Scientific and technical publishing system built on Pandoc
+brew "rundel/quarto-cli/quarto"
 # Secure shell history commands
 brew "rusty-ferris-club/tap/shellclear"
 # GPU-accelerated terminal emulator
@@ -134,8 +137,6 @@ cask "julia"
 cask "karabiner-elements"
 # Native app email client for Gmail
 cask "mimestream"
-# Scientific and technical publishing system built on Pandoc
-cask "quarto"
 # Environment for statistical computing and graphics
 cask "r"
 # Control your tools with a few keystrokes

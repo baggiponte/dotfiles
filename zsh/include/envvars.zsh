@@ -47,6 +47,10 @@ if [ -d "/Library/Frameworks/R.framework/Resources" ]; then
 	export R_PROFILE_USER=$XDG_CONFIG_HOME/R/.Rprofile
 fi
 
+if ! hash R 2>/dev/null; then
+    export PATH="$PATH:/usr/local/bin"
+fi
+
 # +-----+
 # | NPM |
 # +-----+
