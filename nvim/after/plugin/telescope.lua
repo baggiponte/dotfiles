@@ -9,9 +9,15 @@ telescope.setup({
     initial_mode = 'insert',
     file_ignore_patterns = { '__pycache__/*', 'git/*', '.DS_Store' },
     mappings = {
+      n = {
+        ['v'] = actions.file_vsplit,
+        ['<S-k>'] = actions.preview_scrolling_up,
+        ['<S-j>'] = actions.preview_scrolling_down,
+      },
       i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
+        ['<C-v>'] = actions.file_vsplit,
+        ['<S-k>'] = actions.preview_scrolling_up,
+        ['<S-j>'] = actions.preview_scrolling_down,
         ['<C-j>'] = actions.move_selection_next,
         ['<C-k>'] = actions.move_selection_previous,
       },
