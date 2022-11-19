@@ -14,7 +14,7 @@ local ensure_packer = function()
 end
 
 -- autocommand to reload nvim and sync plugins when this file is saved
-vim.cmd([[ 
+vim.cmd([[
   augroup packer_auto_sync
     autocmd!
     autocmd BufWritePost packer.lua source <afile> | PackerSync

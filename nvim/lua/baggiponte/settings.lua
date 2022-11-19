@@ -42,6 +42,8 @@ vim.opt.signcolumn = 'yes' -- Side column to display signs, e.g. git added/chang
 -- [[ Tabs]]
 -- smarttab enabled by default
 vim.opt.expandtab = true
+vim.opt.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
+vim.opt.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
 
 -- [[ Context ]]
 vim.opt.cursorline = true -- Highlight line where the cursor is
