@@ -5,7 +5,7 @@ if not noice_status then
 end
 
 noice.setup({
-  -- have messages (e.g. file saved) 
+  -- have messages (e.g. file saved)
   messages = { enabled = false },
   presets = {
     inc_rename = true,
