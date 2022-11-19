@@ -8,14 +8,6 @@ tap "rundel/quarto-cli"
 tap "rusty-ferris-club/tap"
 # Arduino command-line interface
 brew "arduino-cli"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Console Matrix
@@ -40,6 +32,8 @@ brew "figlet"
 brew "fortune"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Library for command-line editing
+brew "readline"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
@@ -48,6 +42,10 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Command-line interface for SQLite
+brew "sqlite"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Quickly rewrite git repository history
