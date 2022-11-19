@@ -19,3 +19,7 @@ This is explained in detail in [zsh docs](https://zsh.sourceforge.io/Doc/Release
 In other words, this is the order in which these files get read. **Keep in mind that it reads first from the system-wide file (i.e. `/etc/zshenv`) then from the file in your home directory (`~/.zshenv`):**
 
 `.zshenv` → `.zprofile` → `.zshrc` → `.zlogin` → `.zlogout`
+
+## Credits
+
+* Complex modification in [`karabiner.json`](./karabiner/karabiner.json) found thanks to [justmytwospence](https://github.com/justmytwospence/dotfiles/blob/main/osx/.config/karabiner/karabiner.json)
