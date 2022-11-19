@@ -15,8 +15,7 @@
 # | ORDER MATTERS! |
 # +----------------+
 sources=(
-	"paths"       # core path env variables
-	"envvars"     # other env vars used for configs
+	"paths"       # path env variables
 	"options"     # setopt stuff
 	"zstyle"      # completion menu, etc
 	"vim"         # vim mode and double cursor

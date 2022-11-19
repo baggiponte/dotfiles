@@ -2,11 +2,6 @@
 # | Aliases |
 # +---------+
 
-# # hashes to cd faster into dirs without defining aliases
-# # see https://www.arp242.net/zshrc.html
-# hash -d julia="$HOME/Documents/dev/julia-projects"
-# hash -d python="$HOME/Documents/dev/python-projects"
-
 alias e='exec $SHELL' # exec $SHELL but faster
 
 # utilities
