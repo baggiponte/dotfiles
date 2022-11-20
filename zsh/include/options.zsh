@@ -7,9 +7,17 @@
 # | * history: https://zsh.sourceforge.io/Guide/zshguide02.html#l17 |
 # +-----------------------------------------------------------------+
 
-export HISTFILE="${XDG_CACHE_HOME:-"$HOME/.cache"}/zsh/history"
+histfile="${XDG_CACHE_HOME:-"$HOME/.cache"}/zsh/history"
+
+if [ -f "$histfile" ]; then
+    touch "$histfile"
+fi
+
+export HISTFILE="$histfile"
 export HISTIZE=100000
 export HISTFILESIZE=100000
+
+unset histfile
 
 setopt complete_in_word       # tab completion works from both sides.
 setopt extended_glob          # use extended globbing syntax.
@@ -20,6 +28,7 @@ setopt cdable_vars            # change directory to a path stored in a variable.
 setopt auto_pushd             # push the old directory onto the stack on cd.
 setopt pushd_silent           # do not print the directory stack after pushd or popd.
 setopt rm_star_silent         # rm ./* does not request confirmation.
+setopt inc_append_history     # append every new line to history.
 setopt share_history          # share history between all sessions.
 setopt extended_history       # write the history file in the ':start:elapsed;command' format.
 setopt hist_ignore_all_dups   # remove duplicate entries.

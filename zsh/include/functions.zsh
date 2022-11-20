@@ -2,6 +2,17 @@
 # | General |
 # +---------+
 
+path () {
+    echo -e "${PATH//:/\\n}"
+}
+
+fpath (){
+    echo "${fpath}" | tr " " "\n"
+}
+
+td (){
+    date +%Y-%m-%d
+}
 # trash files instead of `rm` them.
 trash () { command mv "$@" ~/.Trash ; }
 
@@ -50,22 +61,94 @@ generate-pw () {
 # create a custom function to use gitignore.io to create .gitignore files
 gi() { curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$1" ;}
 
+colortest () {
+    fg=""
+    bg=""
+    for i in {0..255}; do
+        a=$(printf "\\x1b[38;5;%sm%3d\\e[0m " "$i" "$i")
+        b=$(printf "\\x1b[48;5;%sm%3d\\e[0m " "$i" "$i")
+        fg+="$a"
+        bg+="$b"
+        if (( "$i" % 5 ==0 )); then
+            echo -e "$fg\\t\\t$bg"
+            fg=""
+            bg=""
+        else
+            fg+="  "
+            bg+="  "
+        fi
+    done
+}
 # +----------------+
 # | Other commands |
 # +----------------+
 
 # see: https://ipython.readthedocs.io/en/stable/install/kernel_install.html#kernels-for-different-environments
+
 if hash python 2>/dev/null; then
-    ipykernel-install () {
+
+    pyenv-upgrade-pip () {
+        if [[ "$#" -eq 0 ]]; then
+            declare -a pyenv_versions=($(pyenv versions --bare | grep -E --invert-match '/envs/'))
+        else
+            pyenv_versions=("$@")
+        fi
+
+
+        for version in "${pyenv_versions[@]}"; do
+            rich --print "[bold]Upgrading [cyan]${version}[/]"
+            pyenv shell "$version" && pip install --upgrade pip setuptools;
+            echo 
+        done
+
+        # go back to default pyenv python
+        pyenv shell --unset
+    }
+
+    jupyter-kernel-install () {
+        if [ -z "${VIRTUAL_ENV}" ]; then
+            echo "'VIRTUAL_ENV' is unset. Either activate a virtual environment or set a local python version with 'pyenv local <env-name>'."
+            exit 1
+        fi
+
         local kernel_name="$1"
         local display_name="$2"
         python -m ipykernel install --user --name "$kernel_name" --display-name "$display_name"
+    }
+
+    ipython-kernel-install () {
+        if [ -z "${VIRTUAL_ENV}" ]; then
+            echo "'VIRTUAL_ENV' is unset. Either activate a virtual environment or set a local python version with 'pyenv local <env-name>'."
+            exit 1
+        fi
+
+        local kernel_name="$1"
+        local display_name="$2"
+
+        # do not use XDG_DATA_HOME because ipython will create a `share` directory anyway
+        local kernel_prefix="${HOME}/.local"
+        local kernel_dir="${JUPYTER_DATA_DIR:-"${kernel_prefix}/share/jupyter"}/kernels"
+        local kernel="${kernel_dir}/${kernel_name}/kernel.json"
+
+        local python_path="${VIRTUAL_ENV}/bin/python"
+
+        "$PIPX_BIN_DIR/ipython" kernel install \
+            --name="$kernel_name" \
+            --display-name="$display_name" \
+            --prefix="$kernel_prefix"
+
+
+        jq --arg p "${python_path}" '.argv[0] |= $p' "${kernel}" > "${kernel}.bak"
+
+        rm "${kernel}" && mv "${kernel}.bak" "${kernel}"
+
+        echo "kernel installed. In order to work, 'ipykernel' must be installe in the virtuale environment."
     }
 fi
 
 # navigate history
 if hash fzf 2>/dev/null; then
-    hist () { history 1 | fzf ; }
+    hist () { history 1 | fzf | pbcopy ; }
 fi
 
 # bulk rename extensions
@@ -181,5 +264,12 @@ if hash brew 2>/dev/null; then
         fi
         brew bundle dump --describe
     }
-fi
 
+    brew-graph () {
+        brew list -1 --formula | while read -r cask; do
+        echo -ne "\x1B[1;34m $cask \x1B[0m"
+        brew uses "$cask" --installed | awk '{printf(" %s ", $0)}'
+        echo ""
+        done
+    }
+fi
