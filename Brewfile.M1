@@ -100,6 +100,8 @@ brew "shfmt"
 brew "stylua"
 # Simplified and community-driven man pages
 brew "tldr"
+# Terminal multiplexer
+brew "tmux"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
 # Internet file retriever
