@@ -51,6 +51,9 @@ return packer.startup({
     -- color scheme
     use('sainnhe/gruvbox-material')
 
+    -- tmux integration
+    use('christoomey/vim-tmux-navigator')
+
     -- indentation
     use('lukas-reineke/indent-blankline.nvim')
 
