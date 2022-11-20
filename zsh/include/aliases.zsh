@@ -2,13 +2,11 @@
 # | Aliases |
 # +---------+
 
-alias e='exec $SHELL' # exec $SHELL but faster
+# exec $SHELL but faster
+alias e='exec $SHELL' 
 
 # utilities
 alias ...="../../"
-alias path='echo -e ${PATH//:/\\n}'
-alias fpath='echo ${fpath} | tr " " "\n"'
-alias td='echo $(date +%Y-%m-%d)'
 alias text="open -a TextEdit"
 
 # homebrew
