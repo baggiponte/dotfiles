@@ -68,7 +68,7 @@ telescope.setup({
 })
 
 -- [[ Enable extensions ]]
-local exts = { 'fzf', 'file_browser', 'frecency', 'zoxide' }
+local exts = { 'fzf', 'file_browser', 'frecency', 'zoxide', 'neoclip' }
 for _, extension in ipairs(exts) do
   telescope.load_extension(extension)
 end
@@ -80,7 +80,7 @@ vim.keymap.set('n', '//', builtin.current_buffer_fuzzy_find, opts)
 vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, opts)
 vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
-vim.keymap.set('n', '<leader>dd', builtin.diagnostics, opts)
+vim.keymap.set('n', '<leader>Dd', builtin.diagnostics, opts)
 vim.keymap.set('n', '<leader>fd', extensions.file_browser.file_browser, opts)
 vim.keymap.set('n', '<leader>cd', extensions.zoxide.list, opts)
 vim.keymap.set('n', '<leader>fr', extensions.frecency.frecency, opts)
