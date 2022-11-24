@@ -7,5 +7,7 @@ jupyter
 karabiner/*
 !karabiner/karabiner.json
 lazygit/state.yml
+nvim/.luarc.json
 nvim/plugin
 raycast
+sourcery
