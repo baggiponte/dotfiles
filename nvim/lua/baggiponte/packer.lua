@@ -51,6 +51,14 @@ return packer.startup({
     -- color scheme
     use('sainnhe/gruvbox-material')
 
+    -- highlight HEX colors
+    use({
+      'norcalli/nvim-colorizer.lua',
+      config = function()
+        require('colorizer').setup()
+      end,
+    })
+
     -- tmux integration
     use('christoomey/vim-tmux-navigator')
 
@@ -82,6 +90,14 @@ return packer.startup({
     -- smart close buffer
     use('mhinz/vim-sayonara')
 
+    -- smart clipboard
+    use({
+      'AckslD/nvim-neoclip.lua',
+      config = function()
+        require('neoclip').setup()
+      end,
+    })
+
     -- comment and uncomment with gc
     use({
       'numToStr/Comment.nvim',
@@ -105,6 +121,11 @@ return packer.startup({
       end,
     })
 
+    use({
+      'folke/trouble.nvim',
+      requires = 'kyazdani42/nvim-web-devicons',
+    })
+
     -- use the UI for messages, cmdline and popupmenu
     use({
       'folke/noice.nvim',
@@ -114,15 +135,6 @@ return packer.startup({
       requires = {
         'MunifTanjim/nui.nvim',
         -- 'rcarriga/nvim-notify',
-      },
-    })
-
-    -- [[ Debug Adapter ]]
-    use({
-      'mfussenegger/nvim-dap',
-      requires = {
-        { 'rcarriga/nvim-dap-ui', after = { 'nvim-dap' } },
-        { 'mfussenegger/nvim-dap-python', ft = { 'python' } },
       },
     })
 
@@ -168,11 +180,20 @@ return packer.startup({
       },
     })
 
-    -- [[ LSP ]]
-    use('neovim/nvim-lspconfig')
+    -- [[ LSP & Tooling ]]
 
-    -- installer for external tooling e.g. LSP servers, linters, formatters...
-    use({ 'williamboman/mason.nvim', requires = { 'williamboman/mason-lspconfig.nvim' } })
+    -- installer for external tooling e.g. LSP servers, linters, formatters, debuggers...
+    use({
+      'williamboman/mason.nvim',
+      requires = {
+        'williamboman/mason-lspconfig.nvim',
+        'jayp0521/mason-nvim-dap.nvim',
+        'jayp0521/mason-null-ls.nvim',
+      },
+    })
+
+    -- LSP
+    use('neovim/nvim-lspconfig')
 
     -- better ui
     use({ { 'glepnir/lspsaga.nvim', branch = 'main' }, 'onsails/lspkind.nvim' })
@@ -194,9 +215,6 @@ return packer.startup({
       after = 'nvim-lspconfig',
     })
 
-    -- hook linters, formatters... into lsp keybindings
-    use({ 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-cmp', requires = 'nvim-lua/plenary.nvim' })
-
     -- snippets
     use({
       'L3MON4D3/LuaSnip',
@@ -210,6 +228,16 @@ return packer.startup({
       config = function()
         require('inc_rename').setup()
       end,
+    })
+
+    -- hook linters, formatters... into lsp keybindings
+    use({ 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-cmp', requires = 'nvim-lua/plenary.nvim' })
+
+    -- debug adapter
+    use({
+      'mfussenegger/nvim-dap',
+      'rcarriga/nvim-dap-ui',
+      'mfussenegger/nvim-dap-python',
     })
 
     -- [[ filetype specific plugins ]]

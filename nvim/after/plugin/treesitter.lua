@@ -12,6 +12,7 @@ require('nvim-treesitter.configs').setup({
     'make',
     'markdown',
     'python',
+    'regex', -- needed for noice.nvim
     'sql',
     'toml',
     'yaml',
