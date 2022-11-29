@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "koekeishiya/formulae"
 tap "rundel/quarto-cli"
 tap "rusty-ferris-club/tap"
 # Arduino command-line interface
@@ -16,6 +17,8 @@ brew "cmatrix"
 brew "corepack"
 # Configurable talking characters in ASCII art
 brew "cowsay"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -44,8 +47,6 @@ brew "git"
 brew "git-delta"
 # Command-line interface for SQLite
 brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Quickly rewrite git repository history
@@ -62,6 +63,8 @@ brew "gzip"
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Fast, Dynamic Programming Language
+brew "julia"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Rainbows and unicorns in your console!
@@ -74,10 +77,14 @@ brew "make"
 brew "mysql", restart_service: true
 # NCurses Disk Usage
 brew "ncdu"
+# Fast, highly customisable system info script
+brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Shell command parallelization utility
 brew "parallel"
+# Animated pipes terminal screensaver
+brew "pipes-sh"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Framework for managing multi-language pre-commit hooks
@@ -110,6 +117,10 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Simple hotkey-daemon for macOS.
+brew "koekeishiya/formulae/skhd"
+# A tiling window manager for macOS based on binary space partitioning.
+brew "koekeishiya/formulae/yabai"
 # Scientific and technical publishing system built on Pandoc
 brew "rundel/quarto-cli/quarto"
 # Secure shell history commands
