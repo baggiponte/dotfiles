@@ -1,8 +1,6 @@
 *.bak
 gh
 ipython
-iterm2
-!iterm2/*.json
 jupyter
 karabiner/*
 !karabiner/karabiner.json
