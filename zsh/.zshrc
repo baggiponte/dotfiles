@@ -23,7 +23,6 @@ sources=(
 	"completions" # tab completion for installed binaries
 	"functions"   # utility functions
 	"aliases"     # utility aliases
-	# "conda"       # setup for conda/mamba
 )
 
 for s in "${sources[@]}"; do
