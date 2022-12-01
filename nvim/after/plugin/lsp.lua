@@ -86,6 +86,10 @@ for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({ capabilities = capabilities, on_attach = on_attach })
 end
 
+lspconfig['r_language_server'].setup({
+  filetypes = { 'r', 'rmd', 'quarto' },
+})
+
 lspconfig['sumneko_lua'].setup({
   on_attach = on_attach,
   capabilities = capabilities,

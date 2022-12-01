@@ -251,18 +251,18 @@ return packer.startup({
       ft = { 'markdown' },
     })
 
-    -- quarto support
-    use({
-      {
-        'quarto-dev/quarto-vim',
-        requires = { 'vim-pandoc/vim-pandoc-syntax', ft = { 'quarto' } },
-        after = { 'vim-pandoc-syntax' },
-      },
-      {
-        'quarto-dev/quarto-nvim',
-        after = { 'quarto-vim' },
-      },
-    })
+    -- -- quarto support
+    -- use({
+    --   {
+    --     'quarto-dev/quarto-vim',
+    --     requires = { 'vim-pandoc/vim-pandoc-syntax', ft = { 'quarto' } },
+    --     after = { 'vim-pandoc-syntax' },
+    --   },
+    --   {
+    --     'quarto-dev/quarto-nvim',
+    --     after = { 'quarto-vim' },
+    --   },
+    -- })
 
     if packer_bootstrap then
       packer.sync()
