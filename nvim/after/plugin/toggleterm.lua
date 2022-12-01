@@ -1,16 +1,9 @@
+-- [[ custom functions ]]
 local cmd = vim.api.nvim_create_user_command
 
 local Terminal = require('toggleterm.terminal').Terminal
 
-cmd('ToggleLazyGit', function()
-  if vim.fn.executable('lazygit') ~= 1 then
-    vim.notify('lazygit not found on $PATH', vim.log.levels.ERROR)
-  end
-  local lazygit = Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
-  lazygit:toggle()
-end, {})
-
-cmd('ToggleTermREPL', function(opts)
+cmd('ToggleREPL', function(opts)
   if vim.fn.executable(opts.args) ~= 1 then
     vim.notify(opts.args .. 'not found on $PATH', vim.log.levels.ERROR)
   end
@@ -20,6 +13,35 @@ cmd('ToggleTermREPL', function(opts)
   repl:toggle(60)
 end, { nargs = 1 })
 
+cmd('ToggleLazyGit', function()
+  if vim.fn.executable('lazygit') ~= 1 then
+    vim.notify('lazygit not found on $PATH', vim.log.levels.ERROR)
+  end
+  local lazygit = Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
+  lazygit:toggle()
+end, {})
+
+cmd('ToggleREPLAuto', function()
+  local filetypes = {
+    julia = 'julia',
+    lua = 'lua',
+    python = 'ipython',
+    quarto = 'radian',
+    r = 'radian',
+    rmd = 'radian',
+  }
+
+  local buffer_ft = vim.bo.filetype
+  local repl = filetypes[buffer_ft]
+
+  if repl == nil then
+    vim.notify('No REPL associated with current filetype', vim.log.levels.ERROR)
+  else
+    vim.cmd('ToggleREPL ' .. filetypes[buffer_ft])
+  end
+end, {})
+
+-- [[ key mappings ]]
 local opts = { silent = true, noremap = true }
 
 vim.keymap.set('n', '<leader>tt', function()
@@ -27,22 +49,26 @@ vim.keymap.set('n', '<leader>tt', function()
 end, opts)
 
 vim.keymap.set('n', '<leader>tr', function()
-  vim.cmd([[ToggleTermREPL radian]])
-end)
-
-vim.keymap.set('n', '<leader>tj', function()
-  vim.cmd([[ToggleTermREPL julia]])
-end)
-
-vim.keymap.set('n', '<leader>tp', function()
-  vim.cmd([[ToggleTermREPL ipython]])
-end)
+  vim.cmd([[ToggleREPLAuto]])
+end, opts)
 
 vim.keymap.set('n', '<leader>lg', function()
   vim.cmd([[ToggleLazyGit]])
-end, { noremap = true, silent = true })
+end, opts)
 
--- [[ key mappings ]]
+vim.keymap.set('n', '<leader>tl', function()
+  vim.cmd([[ToggleTermSendCurrentLine]])
+end)
+
+vim.keymap.set('v', '<leader>te', function()
+  vim.cmd([[ToggleTermSendVisualSelection]])
+end)
+
+vim.keymap.set('v', '<leader>tE', function()
+  vim.cmd([[ToggleTermSendVisualLines]])
+end)
+
+-- [[ terminal key mappings ]]
 function _G.set_terminal_keymaps()
   local termopts = { buffer = 0 }
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], termopts)
