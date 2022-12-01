@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "khanhas/tap"
 tap "koekeishiya/formulae"
 tap "rundel/quarto-cli"
 tap "rusty-ferris-club/tap"
@@ -103,6 +104,8 @@ brew "selene"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Terminal-based client for Spotify
+brew "spotify-tui"
 # Opinionated Lua code formatter
 brew "stylua"
 # Simplified and community-driven man pages
@@ -117,6 +120,8 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Command-line tool to customize Spotify client
+brew "khanhas/tap/spicetify-cli"
 # Simple hotkey-daemon for macOS.
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
@@ -152,9 +157,9 @@ cask "mimestream"
 cask "r"
 # Control your tools with a few keystrokes
 cask "raycast"
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle"
 # Data science software focusing on R and Python
 cask "rstudio"
+# Music streaming service
+cask "spotify"
 # Collect, organize, cite, and share research sources
 cask "zotero"
