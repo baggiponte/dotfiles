@@ -1,11 +1,14 @@
+!karabiner/karabiner.json
 *.bak
 gh
+gh-dash
 ipython
 jupyter
 karabiner/*
-!karabiner/karabiner.json
 lazygit/state.yml
 nvim/.luarc.json
 nvim/plugin
 raycast
 sourcery
+spicetify
+spotify-tui
