@@ -2,6 +2,14 @@ local cmd = vim.api.nvim_create_user_command
 
 local Terminal = require('toggleterm.terminal').Terminal
 
+cmd('ToggleLazyGit', function()
+  if vim.fn.executable('lazygit') ~= 1 then
+    vim.notify('lazygit not found on $PATH', vim.log.levels.ERROR)
+  end
+  local lazygit = Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
+  lazygit:toggle()
+end, {})
+
 cmd('ToggleTermREPL', function(opts)
   if vim.fn.executable(opts.args) ~= 1 then
     vim.notify(opts.args .. 'not found on $PATH', vim.log.levels.ERROR)
@@ -11,8 +19,6 @@ cmd('ToggleTermREPL', function(opts)
 
   repl:toggle(60)
 end, { nargs = 1 })
-
-local lazygit = Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
 
 local opts = { silent = true, noremap = true }
 
@@ -33,7 +39,7 @@ vim.keymap.set('n', '<leader>tp', function()
 end)
 
 vim.keymap.set('n', '<leader>lg', function()
-  lazygit:toggle()
+  vim.cmd([[ToggleLazyGit]])
 end, { noremap = true, silent = true })
 
 -- [[ key mappings ]]
