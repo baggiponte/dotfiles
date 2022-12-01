@@ -251,12 +251,6 @@ return packer.startup({
       ft = { 'markdown' },
     })
 
-    -- r support
-    use({
-      'jalvesaq/Nvim-R',
-      ft = { 'r', 'rmd' },
-    })
-
     -- quarto support
     use({
       {
