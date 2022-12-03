@@ -10,9 +10,20 @@ fpath (){
     echo "${fpath}" | tr " " "\n"
 }
 
-td (){
+td () {
     date +%Y-%m-%d
 }
+
+config () {
+    local config_dir="${XDG_CONFIG_HOME-"$HOME/.config"}"
+    
+    if [[ "$#" -eq 0 ]]; then
+        cd "$config_dir" || exit
+    else
+        cd "$config_dir/${1}" || echo "$1 is not a valid config directory." 
+    fi
+}
+
 # trash files instead of `rm` them.
 trash () { command mv "$@" ~/.Trash ; }
 
