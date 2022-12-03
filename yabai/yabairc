@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 
-#
+# +-------+
+# | Setup | 
+# +-------+
+
 # for this to work you must configure sudo such that
 # it will be able to run the command without password
 #
@@ -10,43 +13,85 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
-# global settings
+# +--------+
+# | Layout | 
+# +--------+
+
+# bsp or float (default: float)
+yabai -m config layout bsp
+
+# +---------+
+# | Padding | 
+# +---------+
+
+# # Set all padding and gaps to 20pt (default: 0)
+yabai -m config \
+    top_padding             10                \
+    bottom_padding          10                \
+    left_padding            10                \
+    right_padding           10                \
+    window_gap              10
+
+# +--------+
+# | Window | 
+# +--------+
+
+# New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config                                 \
-    mouse_follows_focus          off            \
-    focus_follows_mouse          off            \
-    window_origin_display        default        \
-    window_placement             second_child   \
-    window_topmost               off            \
-    window_shadow                on             \
     window_animation_duration    0.0            \
-    window_opacity_duration      0.0            \
-    active_window_opacity        1.0            \
-    normal_window_opacity        0.90           \
-    window_opacity               off            \
-    insert_feedback_color        0xffd75f5f     \
-    active_window_border_color   0xff775759     \
-    normal_window_border_color   0xff555555     \
-    window_border_width          4              \
-    window_border_radius         12             \
+    window_border                off            \
     window_border_blur           off            \
     window_border_hidpi          on             \
-    window_border                off            \
+    window_border_radius         12             \
+    window_border_width          4              \
+    window_gap                   6              \
+    window_origin_display        default        \
+    window_placement             second_child   \
+    window_shadow                on             \
+    window_topmost               off
+
+# active and inactive windows opacity
+yabai -m config                                 \
+    window_opacity               off            \
+    window_opacity_duration      0.0            \
+    active_window_border_color   0xff775759     \
+    active_window_opacity        1.0            \
+    normal_window_border_color   0xff555555     \
+    normal_window_opacity        0.90           \
+    insert_feedback_color        0xffd75f5f     \
+
+# +--------------+
+# | Split ratios | 
+# +--------------+
+
+# on or off (default: off)
+yabai -m config auto_balance off
+
+# Floating point value between 0 and 1 (default: 0.5)
+yabai -m config                                 \
     split_ratio                  0.50           \
     split_type                   auto           \
-    auto_balance                 off            \
-    top_padding                  12             \
-    bottom_padding               12             \
-    left_padding                 12             \
-    right_padding                12             \
-    window_gap                   06             \
-    layout                       bsp            \
-    mouse_modifier               fn             \
-    mouse_action1                move           \
-    mouse_action2                resize         \
-    mouse_drop_action            swap
 
-yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add app="^Raycast$" manage=off
-yabai -m rule --add app="^About This Mac$" manage=off
+# +-------+
+# | Mouse | 
+# +-------+
 
-echo "yabai configuration loaded.."
+yabai -m config                                 \
+    mouse_modifier              fn              \
+    mouse_action1               move            \
+    mouse_action2               resize          \
+    mouse_drop_action           swap            \
+    mouse_follows_focus         off             \
+
+# +-------+
+# | Rules | 
+# +-------+
+
+yabai -m rule \
+    --add app="^System Preferences$" manage=off     \
+    --add app="^Raycast$" manage=off                \
+    --add app="^About This Mac$" manage=off         \
+    --add app="^Karabiner-Elements$" manage=off     \
+    --add app="^Karabiner-EventViewer$" manage=off
+
+echo "yabai configuration loaded"
