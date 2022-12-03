@@ -56,7 +56,7 @@ vim.keymap.set('n', '<leader>lg', function()
   vim.cmd([[ToggleLazyGit]])
 end, opts)
 
-vim.keymap.set('n', '<leader>tl', function()
+vim.keymap.set('n', '<leader>te', function()
   vim.cmd([[ToggleTermSendCurrentLine]])
 end)
 
