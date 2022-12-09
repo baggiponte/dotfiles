@@ -25,9 +25,14 @@ end, opts)
 -- [[ Save and exit files ]]
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', opts) -- save file
 vim.keymap.set('n', '<leader>W', '<cmd>wa<CR>', opts) -- save file
+vim.keymap.set('n', '<leader>x', '<cmd>w | so %<CR>', opts) -- save and source the file
 vim.keymap.set('n', 'q', '<cmd>Sayonara<CR>', opts) -- quit buffer
 vim.keymap.set('n', 'Q', '<cmd>Sayonara!<CR>', opts) -- quit all buffers
 
--- [[ General remaps ]]
+-- [[ Movements ]]
 vim.keymap.set('', 'H', '^') -- remap go to the beginning of the line
 vim.keymap.set('', 'L', '$') -- remap go to the end of the line
+vim.keymap.set('n', 'n', 'nzz', opts) -- search and center screen
+vim.keymap.set('n', 'N', 'Nzz', opts) -- search and center screen
+vim.keymap.set('n', '<C-u>', '<C-u>zz', opts) -- go up half a page and center screen
+vim.keymap.set('n', '<C-d>', '<C-d>zz', opts) -- go down half a page and center screen
