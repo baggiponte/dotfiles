@@ -4,8 +4,6 @@ local lspkind = require('lspkind')
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
-require('luasnip.loaders.from_vscode').lazy_load() -- load snippets from rafamadriz/friendly-snippets
-
 cmp.setup({
   -- configure snippet engine
   snippet = {
