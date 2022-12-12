@@ -72,7 +72,6 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local servers = {
-  'bashls',
   'dockerls',
   'jsonls',
   'julials',
@@ -87,6 +86,8 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig['r_language_server'].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = { 'r', 'rmd', 'quarto' },
 })
 
