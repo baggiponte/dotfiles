@@ -3,7 +3,6 @@ local sources_dap = {
 }
 
 local sources_lsp = {
-  'bashls',
   'dockerls',
   'jsonls',
   'marksman',
