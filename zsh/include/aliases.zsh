@@ -3,7 +3,7 @@
 # +---------+
 
 # exec $SHELL but faster
-alias e='exec $SHELL' 
+alias e='exec $SHELL'
 
 # utilities
 alias ...="../../"
@@ -33,10 +33,6 @@ alias bd="b doctor"
 # if [ -x /Applications/quarto/bin/quarto ]; then
 # 	alias quarto=/Applications/quarto/bin/quarto
 # fi
-
-if hash nvim 2>/dev/null; then
-	alias nn="n ."
-fi
 
 if hash arduino-cli 2>/dev/null; then
 	alias ar=arduino-cli

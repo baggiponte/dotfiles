@@ -16,11 +16,11 @@ td () {
 
 config () {
     local config_dir="${XDG_CONFIG_HOME-"$HOME/.config"}"
-    
+
     if [[ "$#" -eq 0 ]]; then
         cd "$config_dir" || exit
     else
-        cd "$config_dir/${1}" || echo "$1 is not a valid config directory." 
+        cd "$config_dir/${1}" || echo "$1 is not a valid config directory."
     fi
 }
 
@@ -109,7 +109,7 @@ if hash python 2>/dev/null; then
         for version in "${pyenv_versions[@]}"; do
             rich --print "[bold]Upgrading [cyan]${version}[/]"
             pyenv shell "$version" && pip install --upgrade pip setuptools;
-            echo 
+            echo
         done
 
         # go back to default pyenv python
@@ -185,12 +185,15 @@ if hash nvim 2>/dev/null; then
     # open telescope in the current folder
     n () {
         if [ "$1" = "" ]; then
-            nvim -c "Telescope zoxide list"
+            nvim -c 'Telescope find_files'
         elif [ -d "$1" ]; then
-            nvim -c "Telescope find_files" "$1"
+            nvim -c "Telescope find_files cwd=$1"
         else
             nvim "$1"
         fi
+    }
+    nn () {
+        nvim -c "Telescope zoxide list"
     }
     nvim-update () {
         echo "updating nvim plugins..."
