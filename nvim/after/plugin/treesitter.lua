@@ -1,10 +1,12 @@
 require('nvim-treesitter.configs').setup({
 
   ensure_installed = {
+    'arduino',
     'bash',
     'dockerfile',
     'gitattributes',
     'gitignore',
+    'help',
     'json',
     'jsonc',
     'julia',
@@ -12,6 +14,7 @@ require('nvim-treesitter.configs').setup({
     'make',
     'markdown',
     'python',
+    'r',
     'regex', -- needed for noice.nvim
     'sql',
     'toml',
@@ -54,7 +57,7 @@ require('nvim-treesitter.configs').setup({
       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim.
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm.
-        ['ib'] = '@block.inner',
+        ['ib'] = '@block.inner', -- in markdown, it's fenced code blocks!
         ['ab'] = '@block.outer',
         ['ac'] = '@class.outer',
         ['ic'] = '@class.inner',
