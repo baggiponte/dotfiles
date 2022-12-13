@@ -1,5 +1,24 @@
 local packer = require('packer')
 
+local borders = { -- default borders are vim.g.border_chars
+  { '╭', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╮', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+  { '╯', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╰', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+}
+
+-- autocommand to reload nvim and sync plugins when this file is saved
+vim.cmd([[
+  augroup packer_auto_sync
+    autocmd!
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
+  augroup end
+]])
+
 -- function to bootstrap packer
 local ensure_packer = function()
   local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -13,32 +32,13 @@ local ensure_packer = function()
   return false
 end
 
--- autocommand to reload nvim and sync plugins when this file is saved
-vim.cmd([[
-  augroup packer_auto_sync
-    autocmd!
-    autocmd BufWritePost packer.lua source <afile> | PackerSync
-  augroup end
-]])
-
 local packer_bootstrap = ensure_packer()
 
 return packer.startup({
   config = {
     display = {
       open_fn = function()
-        return require('packer.util').float({
-          border = { -- default borders are vim.g.border_chars
-            { '╭', 'FloatBorder' },
-            { '─', 'FloatBorder' },
-            { '╮', 'FloatBorder' },
-            { '│', 'FloatBorder' },
-            { '╯', 'FloatBorder' },
-            { '─', 'FloatBorder' },
-            { '╰', 'FloatBorder' },
-            { '│', 'FloatBorder' },
-          },
-        })
+        return require('packer.util').float({ border = borders })
       end,
     },
   },
@@ -49,7 +49,8 @@ return packer.startup({
     use('lewis6991/impatient.nvim') -- improve startup time
 
     -- color scheme
-    use('sainnhe/gruvbox-material')
+    use('ellisonleao/gruvbox.nvim')
+    -- use('WIttyJudge/gruvbox-material.nvim') -- still WIP
 
     -- highlight HEX colors
     use({
@@ -89,14 +90,6 @@ return packer.startup({
 
     -- smart close buffer
     use('mhinz/vim-sayonara')
-
-    -- smart clipboard
-    use({
-      'AckslD/nvim-neoclip.lua',
-      config = function()
-        require('neoclip').setup()
-      end,
-    })
 
     -- comment and uncomment with gc
     use({
@@ -170,7 +163,6 @@ return packer.startup({
       run = ':TSUpdate',
       requires = {
         'RRethy/nvim-treesitter-endwise', -- automatically add `end` to structs of certain languages
-        'danymat/neogen',
         'nvim-treesitter/nvim-treesitter-context',
         'nvim-treesitter/nvim-treesitter-textobjects',
         'nvim-treesitter/playground',
