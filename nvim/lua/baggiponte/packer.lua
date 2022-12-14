@@ -107,7 +107,11 @@ return packer.startup({
     })
 
     -- git integration
-    use({ 'tpope/vim-fugitive', { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' } })
+    use({
+      'tpope/vim-fugitive',
+      { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' },
+      { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' },
+    })
 
     -- renaming (rg + sed)
     use('nvim-pack/nvim-spectre')
