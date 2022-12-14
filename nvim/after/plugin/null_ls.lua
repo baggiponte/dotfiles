@@ -8,7 +8,7 @@ null_ls.setup({
   sources = {
     diagnostics.actionlint,
     diagnostics.cpplint.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
-    diagnostics.flake8.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/.flake8') } }),
+    -- diagnostics.flake8.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/.flake8') } }),
     diagnostics.ruff,
     diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
     diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
