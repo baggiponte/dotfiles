@@ -41,32 +41,30 @@ cmd('ToggleREPLAuto', function()
   end
 end, {})
 
--- [[ key mappings ]]
-local opts = { silent = true, noremap = true }
-
+-- [[ key mappings ]
 vim.keymap.set('n', '<leader>tt', function()
   vim.cmd([[ToggleTerm direction=vertical size=50 dir='%:p:h']])
-end, opts)
+end, { desc = '[t]oggle [t]erminal}', silent = true, noremap = true })
 
 vim.keymap.set('n', '<leader>tr', function()
   vim.cmd([[ToggleREPLAuto]])
-end, opts)
+end, { desc = '[t]oggle [r]epl according to the filetype', silent = true, noremap = true })
 
 vim.keymap.set('n', '<leader>lg', function()
   vim.cmd([[ToggleLazyGit]])
-end, opts)
+end, { desc = 'Toggle [l]azy[g]it', silent = true, noremap = true })
 
 vim.keymap.set('n', '<leader>te', function()
   vim.cmd([[ToggleTermSendCurrentLine]])
-end)
+end, { desc = '[t]oggleTerm [e]xecute current line' })
 
 vim.keymap.set('v', '<leader>te', function()
   vim.cmd([[ToggleTermSendVisualSelection]])
-end)
+end, { desc = '[t]oggleTerm [e]xecute current visual selection' })
 
 vim.keymap.set('v', '<leader>tE', function()
   vim.cmd([[ToggleTermSendVisualLines]])
-end)
+end, { desc = '[t]oggleTerm [E]xecute current visual lines' })
 
 -- [[ terminal key mappings ]]
 function _G.set_terminal_keymaps()

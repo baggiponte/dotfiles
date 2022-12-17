@@ -4,10 +4,17 @@ trouble.setup({
   position = 'right',
 })
 
-local opts = { silent = true, noremap = true }
-
-vim.keymap.set('n', '<leader>dD', '<cmd>TroubleToggle<cr>', opts) -- <leader>dD is telescope diagnostics
-vim.keymap.set('n', '<leader>dw', '<cmd>TroubleToggle workspace_diagnostics<cr>', opts)
-vim.keymap.set('n', '<leader>dd', '<cmd>TroubleToggle document_diagnostics<cr>', opts)
-vim.keymap.set('n', '<leader>dl', '<cmd>TroubleToggle loclist<cr>', opts)
-vim.keymap.set('n', '<leader>dq', '<cmd>TroubleToggle quickfix<cr>', opts)
+vim.keymap.set(
+  'n',
+  '<leader>sw',
+  '<cmd>TroubleToggle workspace_diagnostics<cr>',
+  { desc = '[s]how [w]orkspace diagnostics' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>sd',
+  '<cmd>TroubleToggle document_diagnostics<cr>',
+  { desc = '[s]how [d]ocument diagnostics' }
+)
+vim.keymap.set('n', '<leader>sl', '<cmd>TroubleToggle loclist<cr>', { desc = '[s]how [l]oclist diagnostics' })
+vim.keymap.set('n', '<leader>sq', '<cmd>TroubleToggle quickfix<cr>', { desc = '[s]how [q]uickfix diagnostics' })
