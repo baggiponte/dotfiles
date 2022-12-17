@@ -9,11 +9,21 @@ window:
   dynamic_padding: true
   decorations: buttonless
   startup_mode: Maximized
+cursor:
+  style:
+    shape: Beam
 font:
   normal:
     family: "Hack Nerd Font Mono"
     style: Regular
   size: 14.0
-cursor:
-  style:
-    shape: Beam
+colors:
+  normal:
+    black: '#1d1f21'
+    red: '#cc6666'
+    green: '#b5bd68'
+    yellow: '#f0c674'
+    blue: '#81a2be'
+    magenta: '#b294bb'
+    cyan: '#8abeb7'
+    white: '#c5c8c6'
