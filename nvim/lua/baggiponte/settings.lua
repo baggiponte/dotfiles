@@ -1,8 +1,3 @@
--- [[ Leader ]]
--- It's a good idea to set this early in your config, because otherwise if you have
--- any mappings you set BEFORE doing this, they will be set to the OLD leader.
-vim.g.mapleader = ' '
-
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {
   'gzip',
@@ -33,6 +28,11 @@ for _, lang in ipairs(disabled_providers) do
   vim.api.nvim_set_var('loaded_' .. lang .. '_provider', 0)
 end
 
+-- [[ Leader ]]
+-- It's a good idea to set this early in your config, because otherwise if you have
+-- any mappings you set BEFORE doing this, they will be set to the OLD leader.
+vim.g.mapleader = ' '
+
 -- Check :h nvim-defaults first!
 -- [[ Sidebar ]]
 vim.opt.number = true -- Make relative line numbers default
@@ -56,17 +56,19 @@ vim.opt.breakindent = true -- Indent wrapped lines
 vim.opt.hlsearch = false -- Highlight all matching patterns
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
 vim.opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below the cursor.
 
 -- [[ Internals ]]
-vim.opt.undofile = true -- Store undos to reapply them even after file is closed
 vim.opt.swapfile = false
 vim.opt.backup = false
--- vim.opt.lazyredraw = true -- Prevents redrawing the buffer, e.g. when doing macros
-vim.opt.updatetime = 250 -- Decrease update time.
+vim.opt.undodir = vim.fn.stdpath('cache') .. '/undodir'
+vim.opt.undofile = true
+
+vim.opt.updatetime = 50 -- Decrease update time.
 
 -- [[ Clipboard ]]
-vim.opt.clipboard:append('unnamedplus') -- Use system clipboard
+-- vim.opt.clipboard:append('unnamedplus') -- Use system clipboard
 
 -- [[ Colors ]]
 vim.opt.termguicolors = true -- 256 colors terminal
