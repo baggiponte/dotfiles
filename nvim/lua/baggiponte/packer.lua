@@ -49,8 +49,8 @@ return packer.startup({
     use('lewis6991/impatient.nvim') -- improve startup time
 
     -- color scheme
-    use('ellisonleao/gruvbox.nvim')
-    -- use('WIttyJudge/gruvbox-material.nvim') -- still WIP
+    use('sainnhe/gruvbox-material')
+    -- use('wittyjudge/gruvbox-material.nvim') -- still WIP
 
     -- highlight HEX colors
     use({
