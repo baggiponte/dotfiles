@@ -106,6 +106,8 @@ return packer.startup({
       { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' },
     })
 
+    use('mbbill/undotree')
+
     -- renaming (rg + sed)
     use('nvim-pack/nvim-spectre')
 
