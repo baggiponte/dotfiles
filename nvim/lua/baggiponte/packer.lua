@@ -102,6 +102,7 @@ return packer.startup({
     -- git integration
     use({
       'tpope/vim-fugitive',
+      -- { 'f-person/git-blame.nvim' },
       { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' },
       { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' },
     })
