@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # +-------+
-# | Setup | 
+# | Setup |
 # +-------+
 
 # for this to work you must configure sudo such that
@@ -14,36 +14,36 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # +--------+
-# | Layout | 
+# | Layout |
 # +--------+
 
 # bsp or float (default: float)
 yabai -m config layout bsp
 
 # +---------+
-# | Padding | 
+# | Padding |
 # +---------+
 
 # # Set all padding and gaps to 20pt (default: 0)
 yabai -m config \
     top_padding             10                \
-    bottom_padding          10                \
+    bottom_padding          32                \
     left_padding            10                \
     right_padding           10                \
     window_gap              10
 
 # +--------+
-# | Window | 
+# | Window |
 # +--------+
 
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config                                 \
     window_animation_duration    0.0            \
-    window_border                off            \
+    window_border                on             \
     window_border_blur           off            \
     window_border_hidpi          on             \
     window_border_radius         12             \
-    window_border_width          4              \
+    window_border_width          2              \
     window_gap                   6              \
     window_origin_display        default        \
     window_placement             second_child   \
@@ -54,14 +54,14 @@ yabai -m config                                 \
 yabai -m config                                 \
     window_opacity               off            \
     window_opacity_duration      0.0            \
-    active_window_border_color   0xff775759     \
+    active_window_border_color   0xff89b482     \
     active_window_opacity        1.0            \
     normal_window_border_color   0xff555555     \
     normal_window_opacity        0.90           \
     insert_feedback_color        0xffd75f5f     \
 
 # +--------------+
-# | Split ratios | 
+# | Split ratios |
 # +--------------+
 
 # on or off (default: off)
@@ -73,7 +73,7 @@ yabai -m config                                 \
     split_type                   auto           \
 
 # +-------+
-# | Mouse | 
+# | Mouse |
 # +-------+
 
 yabai -m config                                 \
@@ -84,7 +84,7 @@ yabai -m config                                 \
     mouse_follows_focus         off             \
 
 # +-------+
-# | Rules | 
+# | Rules |
 # +-------+
 
 yabai -m rule --add app="^System Preferences$" manage=off
