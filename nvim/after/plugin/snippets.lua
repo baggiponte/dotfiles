@@ -14,7 +14,7 @@ ls.add_snippets(nil, {
     }, {
       text({ '```{r}', '' }), -- more arguments make it multiline
       insert(1),
-      text({ '', '```'}),
+      text({ '', '```' }),
     }),
     snip({
       trig = 'pyblock',
@@ -22,7 +22,7 @@ ls.add_snippets(nil, {
     }, {
       text({ '```{python}', '' }),
       insert(1),
-      text({ '', '```'}),
+      text({ '', '```' }),
     }),
   },
 })

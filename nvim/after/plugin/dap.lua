@@ -19,7 +19,10 @@ end
 dappy.setup(vim.fn.stdpath('data') .. '/mason/packages/debugpy/venv/bin/python')
 dappy.test_runner = 'pytest'
 
-local opts = { silent = true, noremap = true }
-
-vim.keymap.set('n', '<F5>', require('dap').continue, opts)
-vim.keymap.set('n', '<leader>b', require('dap').toggle_breakpoint, opts)
+vim.keymap.set('n', '<F5>', require('dap').continue, { desc = 'Start debugger session', silent = true, noremap = true })
+vim.keymap.set(
+  'n',
+  '<leader>b',
+  require('dap').toggle_breakpoint,
+  { desc = 'Toggle debugger [b]reakpoint', silent = true, noremap = true }
+)

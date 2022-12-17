@@ -74,17 +74,54 @@ for _, extension in ipairs(exts) do
 end
 
 -- [[ Set keymaps ]]
-local opts = { silent = true, noremap = true }
-
-vim.keymap.set('n', '//', builtin.current_buffer_fuzzy_find, opts)
-vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
-vim.keymap.set('n', '<leader>fF', builtin.git_files, opts)
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, opts)
-vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
-vim.keymap.set('n', '<leader>Dd', builtin.diagnostics, opts)
-vim.keymap.set('n', '<leader>fd', extensions.file_browser.file_browser, opts)
-vim.keymap.set('n', '<leader>cd', extensions.zoxide.list, opts)
-vim.keymap.set('n', '<leader>fr', extensions.frecency.frecency, opts)
-vim.keymap.set('n', '<leader>fz', function()
+vim.keymap.set(
+  'n',
+  '<leader>/',
+  builtin.current_buffer_fuzzy_find,
+  { desc = 'Telescope fuzzy find within the current buffer', silent = true, noremap = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>ff',
+  builtin.find_files,
+  { desc = 'Telescope [f]ind [f]iles', silent = true, noremap = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>fF',
+  builtin.git_files,
+  { desc = 'Telescope find within git files', silent = true, noremap = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>fg',
+  builtin.live_grep,
+  { desc = 'Telescope [f]ind symbol using [g]rep', silent = true, noremap = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>fb',
+  builtin.buffers,
+  { desc = 'Telescope [f]ind [b]uffer', silent = true, noremap = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>fd',
+  extensions.file_browser.file_browser,
+  { desc = 'Telescope [f]ind in [d]irectory tree', silent = true, noremap = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>cd',
+  extensions.zoxide.list,
+  { desc = 'Telescope [c]hange [d]irectory with zoxide', silent = true, noremap = true }
+)
+vim.keymap.set(
+  'n',
+  '<leader>fr',
+  extensions.frecency.frecency,
+  { desc = 'Telescope find files with [fr]ecency', silent = true, noremap = true }
+)
+vim.keymap.set('n', '<leader>ft', function()
   vim.cmd("TodoTelescope cwd='%:p:h")
-end)
+end, { desc = 'Telescope [f]ind within [t]odos' })

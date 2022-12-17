@@ -16,57 +16,57 @@ local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local bufmap = function(mode, shortcut, command)
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  local bufmap = function(mode, shortcut, command, desc)
+    local bufopts = { desc = desc, noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set(mode, shortcut, command, bufopts)
   end
 
   -- Mappings - See `:help vim.lsp.*`
-  bufmap('n', 'F', vim.lsp.buf.format)
-  bufmap('n', 'gh', vim.lsp.buf.signature_help) -- Display a function's signature information
+  bufmap('n', 'F', vim.lsp.buf.format, '[f]ormat current buffer')
+  bufmap('n', 'gh', vim.lsp.buf.signature_help, '[g]o to signature [h]elp')
 
   -- find references and defintions
   bufmap('n', 'gf', function()
     vim.cmd('Lspsaga lsp_finder')
-  end)
+  end, '[g]o to LSPsaga [f]inder')
 
   -- hover documentation
   bufmap('n', 'K', function()
     vim.cmd('Lspsaga hover_doc')
-  end) -- Display hover information about the symbol
+  end, 'Display signature on hover')
 
   -- peek definition
   bufmap('n', 'gp', function()
     vim.cmd('Lspsaga peek_definition')
-  end)
+  end, '[g]o to LSPsaga [p]eek definition')
 
   -- Go to definition
   bufmap('n', 'gd', function()
     vim.cmd('Telescope lsp_definitions')
-  end)
+  end, '[g]o to [d]efinition')
 
   -- Lists all the references
   bufmap('n', 'gr', function()
     vim.cmd('Telescope lsp_references')
-  end)
+  end, '[g]o to [r]eferences')
 
   -- Lists all the implementations
   bufmap('n', 'gi', function()
     vim.cmd('Telescope lsp_implementations')
-  end)
+  end, '[g]o to [i]mplementations')
 
   -- go to type declaration
   bufmap('n', 'gt', function()
     vim.cmd('Telescope lsp_type_definitions')
-  end)
+  end, '[g]o to [t]ype definition')
 
   -- Selects a code action
-  bufmap('n', 'ca', vim.lsp.buf.code_action)
+  bufmap('n', 'ca', vim.lsp.buf.code_action, 'Execue [c]ode [a]ction')
 
   -- Rename all references of the symbol under the cursor
   vim.keymap.set('n', '<leader>rn', function()
     return ':IncRename ' .. vim.fn.expand('<cword>')
-  end, { expr = true })
+  end, { expr = true, desc = 'Incremental [r]e[n]ame of a symbol' })
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
