@@ -1,3 +1,4 @@
+tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -75,7 +76,7 @@ brew "luarocks"
 # Utility for directing compilation
 brew "make"
 # Open source relational database management system
-brew "mysql", restart_service: true
+brew "mysql"
 # NCurses Disk Usage
 brew "ncdu"
 # Fast, highly customisable system info script
@@ -88,6 +89,8 @@ brew "parallel"
 brew "pipes-sh"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Object-relational database system
+brew "postgresql@14"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Python version management
@@ -104,8 +107,6 @@ brew "selene"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
-# Terminal-based client for Spotify
-brew "spotify-tui"
 # Opinionated Lua code formatter
 brew "stylua"
 # Simplified and community-driven man pages
@@ -120,6 +121,8 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar"
 # Command-line tool to customize Spotify client
 brew "khanhas/tap/spicetify-cli"
 # Simple hotkey-daemon for macOS.
