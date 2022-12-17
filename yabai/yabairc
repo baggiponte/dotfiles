@@ -27,7 +27,7 @@ yabai -m config layout bsp
 # # Set all padding and gaps to 20pt (default: 0)
 yabai -m config \
     top_padding             10                \
-    bottom_padding          32                \
+    bottom_padding          35                \
     left_padding            10                \
     right_padding           10                \
     window_gap              10

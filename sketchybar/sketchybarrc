@@ -1,0 +1,159 @@
+# This is a demo config to show some of the most important commands more easily.
+# This is meant to be changed and configured, as it is intentionally kept sparse.
+# For a more advanced configuration example see my dotfiles:
+# https://github.com/FelixKratz/dotfiles
+
+# +---------+
+# | Plugins |
+# +---------+
+
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+
+# +------------+
+# | Parameters |
+# +------------+
+
+GRUVBOX_RED=ea6962              #ea6962
+GRUVBOX_ORANGE=e78a4e           #e78a4e
+GRUVBOX_YELLOW=d8a657           #d8a657
+GRUVBOX_GREEN=a9b665            #a9b665
+GRUVBOX_AQUA=89b482             #89b482
+GRUVBOX_BLUE=7daea3             #7daea3
+GRUVBOX_PURPLE=d3869b           #d3869b
+
+FONT="Hack Nerd Font"
+
+# colors are: `#` (-`0x`) + `AARRGGBB`
+BAR_COLOR=0xff1e1d2e                  #1e1d2e
+BAR_HEIGHT=25
+BAR_PADDING=8
+
+ICON_COLOR=0xffffffff                 #ffffff
+ICON_FONT="${FONT}:Bold:14.0"
+ICON_PADDING=3
+
+LABEL_COLOR="${ICON_COLOR}"
+LABEL_FONT="${ICON_FONT}"
+LABEL_PADDING="${ICON_PADDING}"
+
+SPACE_ELEM_PADDING=8                    # width of the background
+SPACE_BG_HEIGHT="$((BAR_HEIGHT - 3))"
+SPACE_BG_PADDING="${ICON_PADDING}"      # padding between elements
+SPACE_BG_COLOR=0x99${GRUVBOX_RED}      # 60% opacity
+
+
+# +-------------+
+# | Appearances |
+# +-------------+
+
+# Configuring the general appearance of the bar, these are only some of the
+# options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+
+sketchybar --bar \
+                color="${BAR_COLOR}"                \
+                position=bottom                     \
+                height=25                           \
+                margin=10                           \
+                y_offset=3                          \
+                corner_radius=4                     \
+                blur_radius=20                      \
+                sticky=off                          \
+                padding_left="${BAR_PADDING}"       \
+                padding_right="${BAR_PADDING}"
+
+# +-------------------+
+# | Deefault Settings |
+# +-------------------+
+
+# We now change some default values that are applied to all further items
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+sketchybar --default \
+                    updates=when_shown                                      \
+                    drawing=on                                              \
+                    icon.font="${ICON_FONT}"                                \
+                    icon.color="${ICON_COLOR}"                              \
+                    icon.padding_left="${ICON_PADDING}"                     \
+                    icon.padding_right="${ICON_PADDING}"                    \
+                    label.font="${LABEL_FONT}"                              \
+                    label.color="${LABEL_COLOR}"                            \
+                    label.padding_left="${LABEL_PADDING}"                   \
+                    label.padding_right="${LABEL_PADDING}"
+
+# +--------+
+# | Spaces |
+# +--------+
+
+# Now we add some mission control spaces to indicate active and available mission control spaces
+# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+
+SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+
+for i in "${!SPACE_ICONS[@]}"
+do
+  sid=$((i+1))
+  sketchybar --add space space.$sid left                                                    \
+             --set space.$sid associated_space=$sid                                         \
+                              icon="${SPACE_ICONS[i]}"                                      \
+                              icon.padding_left="${SPACE_ELEM_PADDING}"                     \
+                              icon.padding_right="${SPACE_ELEM_PADDING}"                    \
+                              background.padding_left="${SPACE_BG_PADDING}"                 \
+                              background.padding_right="${SPACE_BG_PADDING}"                \
+                              background.color=${SPACE_BG_COLOR}                            \
+                              background.corner_radius=5                                    \
+                              background.height="${SPACE_BG_HEIGHT}"                        \
+                              background.drawing=off                                        \
+                              label.drawing=off                                             \
+                              script="${PLUGIN_DIR}/space.sh"                               \
+                              click_script="yabai -m space --focus $sid"
+done
+
+# +------+
+# | Left |
+# +------+
+
+# We add some regular items to the left side of the bar
+# only the properties deviating from the current defaults need to be set
+
+sketchybar --add item space_separator left                              \
+           --set space_separator icon=                                 \
+                                 background.padding_left=15             \
+                                 background.padding_right=15            \
+                                 label.drawing=off                      \
+                                                                        \
+           --add item front_app  left                                   \
+           --set front_app       script="${PLUGIN_DIR}/front_app.sh"    \
+                                 icon.drawing=off                       \
+           --subscribe front_app front_app_switched
+
+# +-------+
+# | Right |
+# +-------+
+
+# In the same way as the left items we can add items to the right side.
+# Additional position (e.g. center) are available, see:
+# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
+
+sketchybar --add item clock right                           \
+           --set clock   update_freq=10                     \
+                         script="${PLUGIN_DIR}/clock.sh"    \
+                                                            \
+           --add item battery right                         \
+           --set battery script="${PLUGIN_DIR}/battery.sh"  \
+                         update_freq=10                     \
+           --subscribe battery system_woke
+
+# +--------+
+# | Launch |
+# +--------+
+
+# The command below is only needed at the end of the initial configuration and
+# should never be run in an item script.
+
+sketchybar --update
+
+echo "sketchybar configuration loaded!"
