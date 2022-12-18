@@ -1,3 +1,4 @@
 wallpapers/wallpaper_02.jpg filter=lfs diff=lfs merge=lfs -text
 wallpapers/wallpaper_01.png filter=lfs diff=lfs merge=lfs -text
 wallpapers/wallpaper_03.png filter=lfs diff=lfs merge=lfs -text
+screenshots/2022_12_18.png filter=lfs diff=lfs merge=lfs -text
