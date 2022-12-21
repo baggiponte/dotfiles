@@ -27,7 +27,18 @@ local sources_null_ls = {
   'yamllint',
 }
 
-require('mason').setup({})
+local borders = { -- default borders are vim.g.border_chars
+  { '╭', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╮', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+  { '╯', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╰', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+}
+
+require('mason').setup({ ui = { border = borders } })
 
 require('mason-nvim-dap').setup({
   ensure_installed = sources_dap,
