@@ -7,7 +7,7 @@ telescope.setup({
   defaults = {
     sorting_strategy = 'descending',
     initial_mode = 'insert',
-    file_ignore_patterns = { '__pycache__/*', 'git/*', '.DS_Store' },
+    file_ignore_patterns = { '__pycache__/*', 'git/*', '.DS_Store', '.venv', '.*_cache' },
     mappings = {
       n = {
         ['v'] = actions.file_vsplit,
