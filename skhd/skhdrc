@@ -1,10 +1,14 @@
-# +---------------------------+
-# | LEGEND                    |
-# | * focus   ->  ctrl        |
-# | * window  ->  lalt        |
-# | * space   ->  cmd         |
-# | * display ->  cmd + shift |
-# +---------------------------+
+# +-----------------------------------------------------------------------------------------------------------+
+# | LEGEND                                                                                                    |
+# | window < space < display                                                                                  |
+# | * focus   ->  ctrl                                                                                        |
+# | * window  ->  lalt                                                                                        |
+# | * space   ->  cmd                                                                                         |
+# | * display ->  cmd + shift                                                                                 |
+# |                                                                                                           |
+# | if focusing stops working (`cannot focus space due to an error with the scripting-addition`)              |
+# | https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition  |
+# +-----------------------------------------------------------------------------------------------------------+
 
 # +--------+
 # | Global |
@@ -13,62 +17,15 @@
 # open terminal, blazingly fast compared to iTerm/Hyper
 hyper - t : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
-# +------------------------------+
-# | MOVE: Window across displays |
-# +------------------------------+
-
-# send window to desktop and follow focus
-lalt + shift + cmd - x : yabai -m window --display recent; yabai -m display --focus recent
-
-lalt + shift + cmd - n : yabai -m window --display next; yabai -m display --focus next
-lalt + shift + cmd - p : yabai -m window --display prev; yabai -m display --focus prev
-
-lalt + shift + cmd - 1 : yabai -m window --display  1; yabai -m display --focus 1
-lalt + shift + cmd - 2 : yabai -m window --display  2; yabai -m display --focus 2
-
-# +----------------------------+
-# | MOVE: Window across spaces |
-# +----------------------------+
-
-# TODO: check if these work
-
-lalt + cmd - x : yabai -m window --space recent; yabai -m space --focus recent
-
-lalt + cmd - n : yabai -m window --space next; yabai -m space --focus next
-lalt + cmd - p : yabai -m window --space prev; yabai -m space --focus prev
-
-lalt + cmd - 1 : yabai -m window --space  1; yabai -m space --focus 1
-lalt + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
-lalt + cmd - 3 : yabai -m window --space  3; yabai -m space --focus 3
-lalt + cmd - 4 : yabai -m window --space  4; yabai -m space --focus 4
-lalt + cmd - 5 : yabai -m window --space  5; yabai -m space --focus 5
-lalt + cmd - 6 : yabai -m window --space  6; yabai -m space --focus 6
-lalt + cmd - 7 : yabai -m window --space  7; yabai -m space --focus 7
-lalt + cmd - 8 : yabai -m window --space  8; yabai -m space --focus 8
-lalt + cmd - 9 : yabai -m window --space  9; yabai -m space --focus 9
-
-# +----------------+
-# | FOCUS: Display |
-# +----------------+
-
-ctrl + shift + cmd - x : yabai -m space --focus recent
-ctrl + shift + cmd - n : yabai -m space --focus next || yabai -m space --focus first
-ctrl + shift + cmd - p : yabai -m space --focus prev || yabai -m space --focus last
-
-ctrl + shift + cmd - 1 : yabai -m space --focus 1
-ctrl + shift + cmd - 2 : yabai -m space --focus 2
-
 # +--------------+
 # | FOCUS: Space |
 # +--------------+
-
-# TODO: check if these work
 
 ctrl + cmd - x : yabai -m space --focus recent
 ctrl + cmd - n : yabai -m space --focus next || yabai -m space --focus first
 ctrl + cmd - p : yabai -m space --focus prev || yabai -m space --focus last
 
-ctrl + cmd - 1 : yabai -m space --focus 1
+ctrl + cmd - 1 : yabai -m space --focus first
 ctrl + cmd - 2 : yabai -m space --focus 2
 ctrl + cmd - 3 : yabai -m space --focus 3
 ctrl + cmd - 4 : yabai -m space --focus 4
@@ -76,11 +33,43 @@ ctrl + cmd - 5 : yabai -m space --focus 5
 ctrl + cmd - 6 : yabai -m space --focus 6
 ctrl + cmd - 7 : yabai -m space --focus 7
 ctrl + cmd - 8 : yabai -m space --focus 8
-ctrl + cmd - 9 : yabai -m space --focus 9
+ctrl + cmd - 9 : yabai -m space --focus last
 
-# +---------------+
-# | FOCUS: Window |
-# +---------------+
+# +----------------------------+
+# | MOVE: Window across spaces |
+# +----------------------------+
+
+lalt + ctrl + cmd - x : yabai -m window --space recent; yabai -m space --focus recent
+
+lalt + ctrl + cmd - n : yabai -m window --space next; yabai -m space --focus next
+lalt + ctrl + cmd - p : yabai -m window --space prev; yabai -m space --focus prev
+
+lalt + ctrl + cmd - 1 : yabai -m window --space first; yabai -m space --focus first
+lalt + ctrl + cmd - 2 : yabai -m window --space 2; yabai -m space --focus 2
+lalt + ctrl + cmd - 3 : yabai -m window --space 3; yabai -m space --focus 3
+lalt + ctrl + cmd - 4 : yabai -m window --space 4; yabai -m space --focus 4
+lalt + ctrl + cmd - 5 : yabai -m window --space 5; yabai -m space --focus 5
+lalt + ctrl + cmd - 6 : yabai -m window --space 6; yabai -m space --focus 6
+lalt + ctrl + cmd - 7 : yabai -m window --space 7; yabai -m space --focus 7
+lalt + ctrl + cmd - 8 : yabai -m window --space 8; yabai -m space --focus 8
+lalt + ctrl + cmd - 9 : yabai -m window --space last; yabai -m space --focus last
+
+# +------------------------------+
+# | MOVE: Window across displays |
+# +------------------------------+
+
+# send window to desktop and follow focus
+hyper - x : yabai -m window --display recent; yabai -m display --focus recent
+
+hyper - n : yabai -m window --display next; yabai -m display --focus next
+hyper - p : yabai -m window --display prev; yabai -m display --focus prev
+
+hyper - 1 : yabai -m window --display 1; yabai -m display --focus 1
+hyper - 2 : yabai -m window --display 2; yabai -m display --focus 2
+
+# +--------+
+# | WINDOW |
+# +--------+
 
 # focus window
 lalt - h : yabai -m window --focus west
@@ -96,7 +85,7 @@ shift + lalt - k : yabai -m window --swap north
 shift + lalt - l : yabai -m window --swap east
 
 # +------------------+
-# | Resizing: Window |
+# | WINDOW: Resizing |
 # +------------------+
 
 # increase window size
