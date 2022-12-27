@@ -7,6 +7,14 @@ local insert = ls.insert_node
 require('luasnip.loaders.from_vscode').lazy_load() -- load snippets from rafamadriz/friendly-snippets
 
 ls.add_snippets(nil, {
+  python = {
+    snip({
+      trig = 'annotations',
+      dscr = 'Add `from __future__ import annotations`',
+    }, {
+      text({ 'from __future__ import annotations' }),
+    }),
+  },
   markdown = {
     snip({
       trig = 'Rblock',
