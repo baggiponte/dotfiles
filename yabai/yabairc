@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
+# +-----------------------------------------------------------------------------------------------------------+
+# | if focusing stops working (`cannot focus space due to an error with the scripting-addition`)              |
+# | https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition  |
+# +-----------------------------------------------------------------------------------------------------------+
+
 # +-------+
 # | Setup |
 # +-------+
