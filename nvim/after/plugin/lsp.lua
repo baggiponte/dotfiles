@@ -77,6 +77,7 @@ local servers = {
   'julials',
   'marksman',
   'pyright',
+  'ruff_lsp',
   'sqlls',
   'yamlls',
 }

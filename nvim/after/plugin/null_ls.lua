@@ -1,15 +1,13 @@
-local null_ls = require('null-ls')
+local nls = require('null-ls')
 local diagnostics = require('null-ls').builtins.diagnostics
 local formatting = require('null-ls').builtins.formatting
 
 -- local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
-null_ls.setup({
+nls.setup({
   sources = {
     diagnostics.actionlint,
     diagnostics.cpplint.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
-    -- diagnostics.flake8.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/.flake8') } }),
-    diagnostics.ruff,
     diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
     diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
     diagnostics.yamllint,
@@ -17,7 +15,7 @@ null_ls.setup({
     -- formatting.clang_format.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
     formatting.black,
     formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
-    formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
+    -- formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
     formatting.jq,
     formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
     formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
