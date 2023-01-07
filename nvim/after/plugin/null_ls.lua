@@ -15,7 +15,7 @@ nls.setup({
     -- formatting.clang_format.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
     formatting.black,
     formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
-    -- formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
+    formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
     formatting.jq,
     formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
     formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
