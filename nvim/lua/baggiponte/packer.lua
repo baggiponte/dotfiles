@@ -193,9 +193,15 @@ return packer.startup({
 
     -- LSP
     use('neovim/nvim-lspconfig')
+    use({
+      'simrat39/symbols-outline.nvim',
+      config = function()
+        require('symbols-outline').setup()
+      end,
+    })
 
     -- better ui
-    use({ { 'glepnir/lspsaga.nvim', branch = 'main' }, 'onsails/lspkind.nvim' })
+    use({ { 'glepnir/lspsaga.nvim', branch = 'version_2.2' }, 'onsails/lspkind.nvim' })
 
     -- completion sources
     use({
