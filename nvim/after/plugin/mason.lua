@@ -3,11 +3,8 @@ local sources_dap = {
 }
 
 local sources_lsp = {
-  'dockerls',
   'jsonls',
-  'marksman',
   'pyright',
-  'sqlls',
   'sumneko_lua',
   'yamlls',
 }
@@ -15,7 +12,6 @@ local sources_lsp = {
 local sources_null_ls = {
   'actionlint',
   'black',
-  'flake8',
   'isort',
   'jq',
   'ruff',

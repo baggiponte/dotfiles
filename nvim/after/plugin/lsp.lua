@@ -72,13 +72,11 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local servers = {
-  'dockerls',
   'jsonls',
-  'julials',
-  'marksman',
+  -- 'julials',
+  -- 'marksman',
   'pyright',
   'ruff_lsp',
-  'sqlls',
   'yamlls',
 }
 
@@ -86,11 +84,13 @@ for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({ capabilities = capabilities, on_attach = on_attach })
 end
 
-lspconfig['r_language_server'].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { 'r', 'rmd', 'quarto' },
-})
+if vim.fn.executable('R') == 1 then
+  lspconfig['r_language_server'].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'r', 'rmd', 'quarto' },
+  })
+end
 
 lspconfig['sumneko_lua'].setup({
   on_attach = on_attach,
@@ -105,24 +105,26 @@ lspconfig['sumneko_lua'].setup({
   },
 })
 
-lspconfig['arduino_language_server'].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = {
-    'arduino-language-server',
-    '-cli-config',
-    vim.fn.expand('$XDG_CONFIG_HOME') .. '/arduino/arduino-cli.yaml',
-    '-fqbn',
-    'arduino:avr:uno',
-    '-cli',
-    'arduino-cli',
-    '-clangd',
-    vim.fn.stdpath('data') .. '/' .. 'mason/bin/clangd',
-  },
-})
+if vim.fn.executable('arduino-cli') then
+  lspconfig['arduino_language_server'].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = {
+      'arduino-language-server',
+      '-cli-config',
+      vim.fn.expand('$XDG_CONFIG_HOME') .. '/arduino/arduino-cli.yaml',
+      '-fqbn',
+      'arduino:avr:uno',
+      '-cli',
+      'arduino-cli',
+      '-clangd',
+      vim.fn.stdpath('data') .. '/' .. 'mason/bin/clangd',
+    },
+  })
 
-lspconfig['clangd'].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { 'arduino', 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
-})
+  lspconfig['clangd'].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'arduino', 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+  })
+end

@@ -8,6 +8,7 @@ nls.setup({
   sources = {
     diagnostics.actionlint,
     diagnostics.cpplint.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
+    diagnostics.ruff,
     diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
     diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
     diagnostics.yamllint,
