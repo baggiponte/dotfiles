@@ -1,15 +1,6 @@
 local packer = require('packer')
 
-local borders = { -- default borders are vim.g.border_chars
-  { '╭', 'FloatBorder' },
-  { '─', 'FloatBorder' },
-  { '╮', 'FloatBorder' },
-  { '│', 'FloatBorder' },
-  { '╯', 'FloatBorder' },
-  { '─', 'FloatBorder' },
-  { '╰', 'FloatBorder' },
-  { '│', 'FloatBorder' },
-}
+local borders = require('baggiponte.utils.borders')
 
 -- autocommand to reload nvim and sync plugins when this file is saved
 vim.cmd([[
@@ -42,6 +33,7 @@ return packer.startup({
       end,
     },
   },
+
   function(use)
     -- [[ general purpose ]]
     -- package management

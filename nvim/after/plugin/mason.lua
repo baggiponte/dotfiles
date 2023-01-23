@@ -23,16 +23,7 @@ local sources_null_ls = {
   'yamllint',
 }
 
-local borders = { -- default borders are vim.g.border_chars
-  { '╭', 'FloatBorder' },
-  { '─', 'FloatBorder' },
-  { '╮', 'FloatBorder' },
-  { '│', 'FloatBorder' },
-  { '╯', 'FloatBorder' },
-  { '─', 'FloatBorder' },
-  { '╰', 'FloatBorder' },
-  { '│', 'FloatBorder' },
-}
+local borders = require('baggiponte.utils.borders')
 
 require('mason').setup({ ui = { border = borders } })
 
