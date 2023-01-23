@@ -39,23 +39,13 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move the line up' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move the line down' })
 
 -- [[ Save and exit files ]]
-vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true }) -- save file
-vim.keymap.set('n', '<leader>W', '<cmd>wa<CR>', { desc = '[w]rite [a]ll buffers', silent = true, noremap = true }) -- save file
+vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>Q', '<cmd>q!<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>W', '<cmd>wa<CR>', { desc = '[w]rite [a]ll buffers', silent = true, noremap = true })
 vim.keymap.set(
   'n',
   '<leader>x',
   '<cmd>w | so %<CR>',
   { desc = 'Write and source current buffer', silent = true, noremap = true }
-) -- save and source the file
--- vim.keymap.set(
---   'n',
---   'q',
---   '<cmd>Sayonara<CR>',
---   { desc = '[Q]uit current buffer with Sayonara', silent = true, noremap = true }
--- )
--- vim.keymap.set(
---   'n',
---   'Q',
---   '<cmd>Sayonara!<CR>',
---   { desc = '[Q]uit current buffer with Sayonara, but keep window layout', silent = true, noremap = true }
--- )
+)

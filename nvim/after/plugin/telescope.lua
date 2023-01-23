@@ -54,26 +54,26 @@ telescope.setup({
       cwd = '%:p:h',
       respect_gitignore = false,
     },
-    zoxide = {
-      mappings = {
-        default = {
-          after_action = function(selection)
-            print('Directory changed to ' .. selection.path)
-            builtin.find_files({ path = selection.path })
-          end,
-        },
-      },
-    },
   },
 })
 
 -- [[ Enable extensions ]]
-local exts = { 'fzf', 'file_browser', 'frecency', 'zoxide' }
+local exts = { 'fzf', 'file_browser', 'frecency' }
 for _, extension in ipairs(exts) do
   telescope.load_extension(extension)
 end
 
 -- [[ Set keymaps ]]
+vim.keymap.set('n', '<leader>v', function()
+  vim.cmd([[vsp %:p:h]])
+  require('telescope.builtin').find_files({ path = '%:p:h ' })
+end, { desc = 'Split window vertically', silent = true, noremap = true })
+
+vim.keymap.set('n', '<leader>V', function()
+  vim.cmd([[sp %:p:h]])
+  require('telescope.builtin').find_files({ path = '%:p:h ' })
+end, { desc = 'Split window horizontally', silent = true, noremap = true })
+
 vim.keymap.set(
   'n',
   '<leader>/',
@@ -109,12 +109,6 @@ vim.keymap.set(
   '<leader>fd',
   extensions.file_browser.file_browser,
   { desc = 'Telescope [f]ind in [d]irectory tree', silent = true, noremap = true }
-)
-vim.keymap.set(
-  'n',
-  '<leader>cd',
-  extensions.zoxide.list,
-  { desc = 'Telescope [c]hange [d]irectory with zoxide', silent = true, noremap = true }
 )
 vim.keymap.set(
   'n',

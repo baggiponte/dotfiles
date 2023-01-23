@@ -35,10 +35,25 @@ return packer.startup({
   },
 
   function(use)
-    -- [[ general purpose ]]
     -- package management
     use('wbthomason/packer.nvim') -- package manager
     use('lewis6991/impatient.nvim') -- improve startup time
+
+    -- tmux integration
+    use('christoomey/vim-tmux-navigator')
+
+    -- terminal inside vim
+    use({ 'akinsho/toggleterm.nvim', tag = '*' })
+
+    -- git integration
+    use({
+      'tpope/vim-fugitive',
+      -- { 'f-person/git-blame.nvim' },
+      { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' },
+      { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' },
+    })
+
+    use('mbbill/undotree')
 
     -- color scheme
     use('sainnhe/gruvbox-material')
@@ -52,19 +67,61 @@ return packer.startup({
       end,
     })
 
-    -- tmux integration
-    use('christoomey/vim-tmux-navigator')
+    -- editor
+    use({
+      'echasnovski/mini.comment',
+      config = function()
+        require('mini.comment').setup({})
+      end,
+    })
+
+    use({
+      'RRethy/vim-illuminate',
+      setup = function()
+        require('illuminate').configure({ delay = 200 })
+
+        vim.keymap.set('n', ']]', function()
+          require('illuminate').goto_next_reference(false)
+        end, {
+          desc = 'Go to the next reference',
+        })
+
+        vim.keymap.set('n', '[[', function()
+          require('illuminate').goto_prev_reference(false)
+        end, {
+          desc = 'Go to the previous reference',
+        })
+      end,
+    })
+
+    use({
+      'echasnovski/mini.pairs',
+      config = function()
+        require('mini.pairs').setup({})
+      end,
+    })
+
+    use({
+      'echasnovski/mini.bufremove',
+      config = function()
+        require('mini.bufremove').setup({})
+
+        vim.keymap.set('n', 'q', function()
+          require('mini.bufremove').delete(0, false)
+        end, {
+          desc = 'Delete buffer',
+        })
+
+        vim.keymap.set('n', 'Q', function()
+          require('mini.bufremove').delete(0, true)
+        end, {
+          desc = 'buffer delete (force)',
+        })
+      end,
+    })
 
     -- indentation
     use('lukas-reineke/indent-blankline.nvim')
-
-    -- autopair parentheses
-    use({
-      'windwp/nvim-autopairs',
-      config = function()
-        require('nvim-autopairs').setup()
-      end,
-    })
 
     -- statusline
     use({
@@ -76,30 +133,6 @@ return packer.startup({
 
     -- multiline cursor
     use('mg979/vim-visual-multi')
-
-    -- terminal inside vim
-    use({ 'akinsho/toggleterm.nvim', tag = '*' })
-
-    -- smart close buffer
-    use('mhinz/vim-sayonara')
-
-    -- comment and uncomment with gc
-    use({
-      'numToStr/Comment.nvim',
-      config = function()
-        require('Comment').setup()
-      end,
-    })
-
-    -- git integration
-    use({
-      'tpope/vim-fugitive',
-      -- { 'f-person/git-blame.nvim' },
-      { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' },
-      { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' },
-    })
-
-    use('mbbill/undotree')
 
     -- renaming (rg + sed)
     use('nvim-pack/nvim-spectre')
@@ -115,7 +148,7 @@ return packer.startup({
 
     use({
       'folke/trouble.nvim',
-      requires = 'kyazdani42/nvim-web-devicons',
+      requires = 'nvim-tree/nvim-web-devicons',
     })
 
     -- use the UI for messages, cmdline and popupmenu
@@ -136,10 +169,9 @@ return packer.startup({
       requires = {
         -- dependencies
         'nvim-lua/plenary.nvim',
-        'kyazdani42/nvim-web-devicons',
+        'nvim-tree/nvim-web-devicons',
         -- extra plugins
         'nvim-telescope/telescope-file-browser.nvim',
-        'jvgrootveld/telescope-zoxide',
         {
           'nvim-telescope/telescope-frecency.nvim',
           requires = { 'tami5/sqlite.lua' },
@@ -184,12 +216,19 @@ return packer.startup({
     })
 
     -- LSP
-    use('neovim/nvim-lspconfig')
     use({
-      'simrat39/symbols-outline.nvim',
-      config = function()
-        require('symbols-outline').setup()
-      end,
+      'neovim/nvim-lspconfig',
+      {
+        'simrat39/symbols-outline.nvim',
+        requires = 'neovim/nvim-lspconfig',
+        config = function()
+          require('symbols-outline').setup()
+        end,
+      },
+      {
+        'SmiteshP/nvim-navic',
+        requires = 'neovim/nvim-lspconfig',
+      },
     })
 
     -- better ui
