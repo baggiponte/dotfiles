@@ -38,17 +38,6 @@ vim.keymap.set('n', '<c-l>', '<c-w>l', { desc = 'Move focus to the right window'
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move the line up' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move the line down' })
 
--- [[ Create splits ]]
-vim.keymap.set('n', '<leader>v', function()
-  vim.cmd([[vsp %:p:h]])
-  require('telescope.builtin').find_files({ path = '%:p:h ' })
-end, { desc = 'Split window vertically', silent = true, noremap = true })
-
-vim.keymap.set('n', '<leader>V', function()
-  vim.cmd([[sp %:p:h]])
-  require('telescope.builtin').find_files({ path = '%:p:h ' })
-end, { desc = 'Split window horizontally', silent = true, noremap = true })
-
 -- [[ Save and exit files ]]
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true }) -- save file
 vim.keymap.set('n', '<leader>W', '<cmd>wa<CR>', { desc = '[w]rite [a]ll buffers', silent = true, noremap = true }) -- save file
@@ -58,15 +47,15 @@ vim.keymap.set(
   '<cmd>w | so %<CR>',
   { desc = 'Write and source current buffer', silent = true, noremap = true }
 ) -- save and source the file
-vim.keymap.set(
-  'n',
-  'q',
-  '<cmd>Sayonara<CR>',
-  { desc = '[Q]uit current buffer with Sayonara', silent = true, noremap = true }
-) -- quit buffer
-vim.keymap.set(
-  'n',
-  'Q',
-  '<cmd>Sayonara!<CR>',
-  { desc = '[Q]uit current buffer with Sayonara, but keep window layout', silent = true, noremap = true }
-) -- quit all buffers
+-- vim.keymap.set(
+--   'n',
+--   'q',
+--   '<cmd>Sayonara<CR>',
+--   { desc = '[Q]uit current buffer with Sayonara', silent = true, noremap = true }
+-- )
+-- vim.keymap.set(
+--   'n',
+--   'Q',
+--   '<cmd>Sayonara!<CR>',
+--   { desc = '[Q]uit current buffer with Sayonara, but keep window layout', silent = true, noremap = true }
+-- )
