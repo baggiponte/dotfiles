@@ -35,17 +35,13 @@ return packer.startup({
   },
 
   function(use)
-    -- package management
     use('wbthomason/packer.nvim') -- package manager
-    use('lewis6991/impatient.nvim') -- improve startup time
+    use('lewis6991/impatient.nvim') -- package caching
 
-    -- tmux integration
     use('christoomey/vim-tmux-navigator')
 
-    -- terminal inside vim
     use({ 'akinsho/toggleterm.nvim', tag = '*' })
 
-    -- git integration
     use({
       'tpope/vim-fugitive',
       -- { 'f-person/git-blame.nvim' },
@@ -53,9 +49,8 @@ return packer.startup({
       { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' },
     })
 
-    use('mbbill/undotree')
+    use('mbbill/undotree') -- file history
 
-    -- color scheme
     use('sainnhe/gruvbox-material')
     -- use('wittyjudge/gruvbox-material.nvim') -- still WIP
 
@@ -72,6 +67,26 @@ return packer.startup({
       'echasnovski/mini.comment',
       config = function()
         require('mini.comment').setup({})
+      end,
+    })
+
+    use({
+      'echasnovski/mini.pairs',
+      config = function()
+        require('mini.pairs').setup({})
+      end,
+    })
+
+    use({
+      'mhinz/vim-sayonara',
+      config = function()
+        vim.keymap.set('n', 'q', [[<cmd>Sayonara<cr>]], {
+          desc = '[q]uit current buffer with Sayonara',
+        })
+
+        vim.keymap.set('n', 'Q', [[<cmd>Sayonara!<cr>]], {
+          desc = '[Q]uit current buffer with Sayonara (force)',
+        })
       end,
     })
 
@@ -94,48 +109,18 @@ return packer.startup({
       end,
     })
 
-    use({
-      'echasnovski/mini.pairs',
-      config = function()
-        require('mini.pairs').setup({})
-      end,
-    })
-
-    use({
-      'echasnovski/mini.bufremove',
-      config = function()
-        require('mini.bufremove').setup({})
-
-        vim.keymap.set('n', 'q', function()
-          require('mini.bufremove').delete(0, false)
-        end, {
-          desc = 'Delete buffer',
-        })
-
-        vim.keymap.set('n', 'Q', function()
-          require('mini.bufremove').delete(0, true)
-        end, {
-          desc = 'buffer delete (force)',
-        })
-      end,
-    })
-
-    -- indentation
     use('lukas-reineke/indent-blankline.nvim')
 
-    -- statusline
     use({
       'nvim-lualine/lualine.nvim',
       config = function()
-        require('lualine').setup({ theme = 'gruvbox' })
+        require('lualine').setup({ theme = 'auto' })
       end,
     })
 
-    -- multiline cursor
-    use('mg979/vim-visual-multi')
+    use('mg979/vim-visual-multi') -- multiline cursor
 
-    -- renaming (rg + sed)
-    use('nvim-pack/nvim-spectre')
+    use('nvim-pack/nvim-spectre') -- renaming (rg + sed)
 
     -- find across your todos
     use({
@@ -146,6 +131,7 @@ return packer.startup({
       end,
     })
 
+    -- explore diagnostics
     use({
       'folke/trouble.nvim',
       requires = 'nvim-tree/nvim-web-devicons',
@@ -244,7 +230,6 @@ return packer.startup({
         'hrsh7th/cmp-nvim-lsp-signature-help',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
-        'hrsh7th/cmp-emoji',
         'dmitmel/cmp-cmdline-history',
         'saadparwaiz1/cmp_luasnip',
       },
@@ -286,19 +271,6 @@ return packer.startup({
       end,
       ft = { 'markdown' },
     })
-
-    -- -- quarto support
-    -- use({
-    --   {
-    --     'quarto-dev/quarto-vim',
-    --     requires = { 'vim-pandoc/vim-pandoc-syntax', ft = { 'quarto' } },
-    --     after = { 'vim-pandoc-syntax' },
-    --   },
-    --   {
-    --     'quarto-dev/quarto-nvim',
-    --     after = { 'quarto-vim' },
-    --   },
-    -- })
 
     if packer_bootstrap then
       packer.sync()
