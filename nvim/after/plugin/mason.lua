@@ -6,7 +6,6 @@ local sources_lsp = {
   'jsonls',
   'pyright',
   'sumneko_lua',
-  'yamlls',
 }
 
 local sources_null_ls = {
