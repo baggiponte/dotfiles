@@ -1,5 +1,4 @@
 local lspconfig = require('lspconfig')
-local navic = require('nvim-navic')
 local saga = require('lspsaga')
 
 saga.init_lsp_saga({
@@ -13,13 +12,9 @@ saga.init_lsp_saga({
   },
 })
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
-  end
 
   local bufmap = function(mode, shortcut, command, desc)
     local bufopts = { desc = desc, noremap = true, silent = true, buffer = bufnr }

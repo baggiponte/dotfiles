@@ -114,7 +114,7 @@ return packer.startup({
     use({
       'nvim-lualine/lualine.nvim',
       config = function()
-        require('lualine').setup({ theme = 'auto' })
+        require('lualine').setup({ theme = 'auto', extensions = { 'symbols-outline' } })
       end,
     })
 
@@ -210,10 +210,6 @@ return packer.startup({
         config = function()
           require('symbols-outline').setup()
         end,
-      },
-      {
-        'SmiteshP/nvim-navic',
-        requires = 'neovim/nvim-lspconfig',
       },
     })
 
