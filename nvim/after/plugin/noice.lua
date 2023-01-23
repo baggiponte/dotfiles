@@ -14,9 +14,10 @@ noice.setup({
     },
   },
   -- have messages (e.g. file saved)
-  messages = { enabled = false },
   presets = {
     inc_rename = true,
-    command_palette = true,
+    lsp_doc_border = true,
   },
+  cmdline = { enabled = true },
+  messages = { enabled = false },
 })
