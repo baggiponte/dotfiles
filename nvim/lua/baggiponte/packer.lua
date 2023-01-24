@@ -71,9 +71,9 @@ return packer.startup({
     })
 
     use({
-      'echasnovski/mini.pairs',
+      'windwp/nvim-autopairs',
       config = function()
-        require('mini.pairs').setup({})
+        require('nvim-autopairs').setup()
       end,
     })
 
