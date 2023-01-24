@@ -7,7 +7,7 @@ local formatting = require('null-ls').builtins.formatting
 nls.setup({
   sources = {
     diagnostics.actionlint,
-    diagnostics.cpplint.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
+    -- diagnostics.cpplint.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
     diagnostics.ruff,
     diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
     diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
@@ -15,11 +15,11 @@ nls.setup({
     -- is it builtin clangd server?
     -- formatting.clang_format.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
     formatting.black,
-    formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
+    -- formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
     formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
     formatting.jq,
     formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
-    formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
+    -- formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
     formatting.stylua,
     formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason
   },
