@@ -5,19 +5,21 @@ if not noice_status then
 end
 
 noice.setup({
+  cmdline = { enabled = true },
+  messages = { enabled = false },
   lsp = {
-    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
       ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
       ['vim.lsp.util.stylize_markdown'] = true,
-      ['cmp.entry.get_documentation'] = true,
+      -- ['cmp.entry.get_documentation'] = true,
     },
+    hover = { enabled = true },
+    signature = { enabled = true },
+    message = { enabled = true },
+    documentation = { enabled = true },
   },
-  -- have messages (e.g. file saved)
   presets = {
-    inc_rename = true,
+    inc_rename = true, -- requires inc-rename.nvim
     lsp_doc_border = true,
   },
-  cmdline = { enabled = true },
-  messages = { enabled = false },
 })
