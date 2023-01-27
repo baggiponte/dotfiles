@@ -2,6 +2,7 @@
 *.bak
 gh
 gh-dash
+github-copilot
 ipython
 jupyter
 karabiner/*
