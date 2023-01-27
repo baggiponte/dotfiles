@@ -5,22 +5,24 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "khanhas/tap"
 tap "koekeishiya/formulae"
 tap "rundel/quarto-cli"
-tap "rusty-ferris-club/tap"
 # Arduino command-line interface
 brew "arduino-cli"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Console Matrix
 brew "cmatrix"
-# Package acting as bridge between Node projects and their package managers
-brew "corepack"
 # Configurable talking characters in ASCII art
 brew "cowsay"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -37,8 +39,6 @@ brew "figlet"
 brew "fortune"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Library for command-line editing
-brew "readline"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
@@ -47,8 +47,6 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Command-line interface for SQLite
-brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Quickly rewrite git repository history
@@ -65,8 +63,8 @@ brew "gzip"
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Fast, Dynamic Programming Language
-brew "julia"
+# Handy way to save and run project-specific commands
+brew "just"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Rainbows and unicorns in your console!
@@ -75,22 +73,20 @@ brew "lolcat"
 brew "luarocks"
 # Utility for directing compilation
 brew "make"
-# Open source relational database management system
-brew "mysql"
 # NCurses Disk Usage
 brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Platform built on V8 to build network applications
+brew "node"
 # Shell command parallelization utility
 brew "parallel"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Object-relational database system
-brew "postgresql@14"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Python version management
@@ -123,16 +119,12 @@ brew "zoxide"
 brew "zsh"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
-# Command-line tool to customize Spotify client
-brew "khanhas/tap/spicetify-cli"
 # Simple hotkey-daemon for macOS.
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
 # Scientific and technical publishing system built on Pandoc
 brew "rundel/quarto-cli/quarto"
-# Secure shell history commands
-brew "rusty-ferris-club/tap/shellclear"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Enable Windows-like alt-tab
@@ -150,19 +142,11 @@ cask "font-jetbrains-mono"
 # Monospaced typeface designed for programming in Julia
 cask "font-juliamono"
 cask "font-yanone-kaffeesatz"
-# Programming language for technical computing
-cask "julia"
 # Keyboard customizer
 cask "karabiner-elements"
 # Native app email client for Gmail
 cask "mimestream"
-# Environment for statistical computing and graphics
-cask "r"
 # Control your tools with a few keystrokes
 cask "raycast"
-# Data science software focusing on R and Python
-cask "rstudio"
-# Music streaming service
-cask "spotify"
 # Collect, organize, cite, and share research sources
 cask "zotero"
