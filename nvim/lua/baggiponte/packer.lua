@@ -44,15 +44,32 @@ return packer.startup({
 
     use({
       'tpope/vim-fugitive',
-      -- { 'f-person/git-blame.nvim' },
       { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' },
       { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' },
     })
 
     use('mbbill/undotree') -- file history
 
+    -- [ UI ]
     use('sainnhe/gruvbox-material')
     -- use('wittyjudge/gruvbox-material.nvim') -- still WIP
+    use('lukas-reineke/indent-blankline.nvim')
+
+    use({
+      'nvim-lualine/lualine.nvim',
+      config = function()
+        require('lualine').setup({ theme = 'auto', extensions = { 'symbols-outline' } })
+      end,
+    })
+
+    -- use the UI for messages, cmdline and popupmenu
+    use({
+      'folke/noice.nvim',
+      requires = {
+        'MunifTanjim/nui.nvim',
+        -- 'rcarriga/nvim-notify',
+      },
+    })
 
     -- highlight HEX colors
     use({
@@ -90,34 +107,6 @@ return packer.startup({
       end,
     })
 
-    use({
-      'RRethy/vim-illuminate',
-      setup = function()
-        require('illuminate').configure({ delay = 200 })
-
-        vim.keymap.set('n', ']]', function()
-          require('illuminate').goto_next_reference(false)
-        end, {
-          desc = 'Go to the next reference',
-        })
-
-        vim.keymap.set('n', '[[', function()
-          require('illuminate').goto_prev_reference(false)
-        end, {
-          desc = 'Go to the previous reference',
-        })
-      end,
-    })
-
-    use('lukas-reineke/indent-blankline.nvim')
-
-    use({
-      'nvim-lualine/lualine.nvim',
-      config = function()
-        require('lualine').setup({ theme = 'auto', extensions = { 'symbols-outline' } })
-      end,
-    })
-
     use('mg979/vim-visual-multi') -- multiline cursor
 
     use('nvim-pack/nvim-spectre') -- renaming (rg + sed)
@@ -135,18 +124,6 @@ return packer.startup({
     use({
       'folke/trouble.nvim',
       requires = 'nvim-tree/nvim-web-devicons',
-    })
-
-    -- use the UI for messages, cmdline and popupmenu
-    use({
-      'folke/noice.nvim',
-      config = function()
-        require('noice').setup()
-      end,
-      requires = {
-        'MunifTanjim/nui.nvim',
-        -- 'rcarriga/nvim-notify',
-      },
     })
 
     -- [[ Telescope ]]
@@ -189,7 +166,76 @@ return packer.startup({
       },
     })
 
-    -- [[ LSP & Tooling ]]
+    -- [[ LSP & Autocompletion ]]
+
+    -- completion sources
+    use({
+      'hrsh7th/nvim-cmp',
+      requires = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-path',
+        'amarakon/nvim-cmp-buffer-lines',
+        'saadparwaiz1/cmp_luasnip',
+      },
+    })
+
+    -- snippets
+    use({
+      'L3MON4D3/LuaSnip',
+      requires = 'rafamadriz/friendly-snippets',
+      after = 'nvim-cmp',
+    })
+
+    -- gave in to the dark side
+    use({
+      'zbirenbaum/copilot.lua',
+      after = 'nvim-cmp',
+      config = function()
+        require('copilot').setup({
+          suggestion = { enabled = false },
+          panel = { enabled = false },
+        })
+      end,
+    })
+
+    use({
+      'zbirenbaum/copilot-cmp',
+      after = { 'copilot.lua' },
+      config = function()
+        require('copilot_cmp').setup()
+      end,
+    })
+
+    use({
+      { 'neovim/nvim-lspconfig', after = 'nvim-cmp' },
+      {
+        'simrat39/symbols-outline.nvim',
+        requires = 'neovim/nvim-lspconfig',
+        config = function()
+          require('symbols-outline').setup()
+        end,
+      },
+      -- {
+      --   'SmiteshP/nvim-navic',
+      --   requires = 'neovim/nvim-lspconfig',
+      --   after = 'neovim/nvim-lspconfig',
+      -- },
+    })
+
+    -- nicer incremental rename
+    use({
+      'smjonas/inc-rename.nvim',
+      after = 'nvim-lspconfig',
+      config = function()
+        require('inc_rename').setup()
+      end,
+    })
+
+    -- hook linters, formatters... into lsp keybindings
+    use({ 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-lspconfig', requires = 'nvim-lua/plenary.nvim' })
 
     -- installer for external tooling e.g. LSP servers, linters, formatters, debuggers...
     use({
@@ -200,55 +246,6 @@ return packer.startup({
         'jayp0521/mason-null-ls.nvim',
       },
     })
-
-    -- LSP
-    use({
-      'neovim/nvim-lspconfig',
-      {
-        'simrat39/symbols-outline.nvim',
-        requires = 'neovim/nvim-lspconfig',
-        config = function()
-          require('symbols-outline').setup()
-        end,
-      },
-    })
-
-    -- better ui
-    use({ { 'glepnir/lspsaga.nvim', branch = 'version_2.2' }, 'onsails/lspkind.nvim' })
-
-    -- completion sources
-    use({
-      'hrsh7th/nvim-cmp',
-      requires = {
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        'hrsh7th/cmp-nvim-lua',
-        'hrsh7th/cmp-path',
-        'dmitmel/cmp-cmdline-history',
-        'saadparwaiz1/cmp_luasnip',
-      },
-      after = 'nvim-lspconfig',
-    })
-
-    -- snippets
-    use({
-      'L3MON4D3/LuaSnip',
-      requires = 'rafamadriz/friendly-snippets',
-      after = 'nvim-cmp',
-    })
-
-    -- nicer incremental rename
-    use({
-      'smjonas/inc-rename.nvim',
-      config = function()
-        require('inc_rename').setup()
-      end,
-    })
-
-    -- hook linters, formatters... into lsp keybindings
-    use({ 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-cmp', requires = 'nvim-lua/plenary.nvim' })
 
     -- debug adapter
     use({

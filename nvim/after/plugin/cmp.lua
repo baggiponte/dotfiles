@@ -1,33 +1,29 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-local lspkind = require('lspkind')
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 cmp.setup({
-  -- configure snippet engine
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  -- use lspkind to have icons displayed
   formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol_text',
-      maxwidth = 50,
-    }),
+    format = function(_, item)
+      local icons = require('baggiponte.utils.icons').icons.kinds
+      if icons[item.kind] then
+        item.kind = icons[item.kind] .. item.kind
+      end
+      return item
+    end,
   },
-  -- keymaps
   mapping = {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-space>'] = cmp.mapping.complete(),
     ['<esc>'] = cmp.mapping.close(),
-    ['<C-n>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
+    ['<C-n>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -48,33 +44,41 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp_signature_help' },
+    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'buffer' },
+    { name = 'buffer' }, -- for strings
     { name = 'path' },
-    { name = 'nvim_lua' },
   }),
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
+  experimental = {
+    ghost_text = {
+      hl_group = 'LspCodeLens',
+    },
+  },
 })
 
 -- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
+cmp.setup.filetype('lua', {
   sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- completion from git if you installed cmp_git
+    { name = 'nvim_lua' },
+    { name = 'copilot' },
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
   }),
 })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' },
+    { name = 'buffer-lines' },
   },
 })
 
@@ -82,7 +86,8 @@ cmp.setup.cmdline('/', {
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' },
+    { name = 'nvim_lua' },
     { name = 'cmdline' },
+    { name = 'path' },
   }),
 })
