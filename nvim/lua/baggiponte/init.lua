@@ -5,4 +5,5 @@ require('impatient') -- impatient plugin to speedup startup
 require('impatient').enable_profile() -- enable profiling with impatient
 
 require('baggiponte.options') -- tweaking configurations (e.g. incremental search)
+require('baggiponte.autocmds')
 require('baggiponte.keymaps') -- keyboard remappings

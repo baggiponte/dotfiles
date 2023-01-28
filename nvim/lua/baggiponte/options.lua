@@ -76,14 +76,3 @@ vim.opt.termguicolors = true -- 256 colors terminal
 -- [[ Splits ]]
 vim.opt.splitright = true -- bool: Place new window to right of current one
 vim.opt.splitbelow = true -- bool: Place new window below the current one
-
--- [[ Highlight on yank ]]
-vim.api.nvim_exec(
-  [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
-  false
-)
