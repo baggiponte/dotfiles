@@ -26,12 +26,13 @@ local sources_null_ls = {
 
 return {
   {
+    { 'smjonas/inc-rename.nvim', config = true },
     { 'williamboman/mason.nvim', cmd = 'Mason', opts = { ui = { border = borders } } },
-    { 'williamboman/mason-lspconfig.nvim', cmd = 'Mason', opts = { ensure_installed = sources_lsp } },
     { 'jayp0521/mason-nvim-dap.nvim', cmd = 'Mason', opts = { ensure_installed = sources_dap } },
     { 'jayp0521/mason-null-ls.nvim', cmd = 'Mason', opts = { ensure_installed = sources_null_ls } },
     {
       'neovim/nvim-lspconfig',
+      dependencies = { 'williamboman/mason-lspconfig.nvim', opts = { ensure_installed = sources_lsp } },
       event = 'BufReadPre',
       config = function()
         local lspconfig = require('lspconfig')

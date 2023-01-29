@@ -98,20 +98,22 @@ local tsopts = {
 
 return {
   { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' },
-  { 'RRethy/nvim-treesitter-endwise' },
-  { 'nvim-treesitter/nvim-treesitter-context' },
-  { 'nvim-treesitter/nvim-treesitter-textobjects' },
-  { 'nvim-treesitter/playground' },
-  { 'p00f/nvim-ts-rainbow' },
-  {
-    'kylechui/nvim-surround',
-    config = true,
-  },
   {
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      { 'RRethy/nvim-treesitter-endwise' },
+      { 'nvim-treesitter/nvim-treesitter-context' },
+      { 'nvim-treesitter/nvim-treesitter-textobjects' },
+      { 'p00f/nvim-ts-rainbow' },
+      { 'windwp/nvim-autopairs', config = true },
+      {
+        'kylechui/nvim-surround',
+        config = true,
+      },
+    },
+    event = 'BufReadPost',
     version = false, -- last release is way too old and doesn't work on Windows
     build = ':TSUpdate',
-    event = 'BufReadPost',
     config = function()
       require('nvim-treesitter.configs').setup(tsopts)
     end,

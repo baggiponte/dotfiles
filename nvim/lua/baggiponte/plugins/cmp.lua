@@ -1,11 +1,25 @@
 return {
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-cmdline' },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-nvim-lua' },
-  { 'hrsh7th/cmp-path' },
-  { 'amarakon/nvim-cmp-buffer-lines' },
-  { 'saadparwaiz1/cmp_luasnip' },
+  { 'hrsh7th/cmp-buffer', event = 'InsertEnter' },
+  { 'hrsh7th/cmp-cmdline', event = 'InsertEnter' },
+  { 'hrsh7th/cmp-nvim-lsp', event = 'InsertEnter' },
+  { 'hrsh7th/cmp-nvim-lua', event = 'InsertEnter' },
+  { 'hrsh7th/cmp-path', event = 'InsertEnter' },
+  { 'amarakon/nvim-cmp-buffer-lines', event = 'InsertEnter' },
+  { 'saadparwaiz1/cmp_luasnip', name = 'cmp-luasnip', event = 'InsertEnter' },
+  {
+    'zbirenbaum/copilot.lua',
+    event = 'InsertEnter',
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+    },
+  },
+  {
+    'zbirenbaum/copilot-cmp',
+    event = 'InsertEnter',
+    name = 'copilot-cmp',
+    config = true,
+  },
   {
     'hrsh7th/nvim-cmp',
     version = false, -- last release is way too old
