@@ -13,14 +13,18 @@ return {
     keys = {
       {
         '<F5>',
-        require('dap').continue,
+        function()
+          require('dap').continue()
+        end,
         desc = 'Start debugger session',
         silent = true,
         noremap = true,
       },
       {
         '<leader>b',
-        require('dap').toggle_breakpoint,
+        function()
+          require('dap').toggle_breakpoint()
+        end,
         desc = 'Toggle debugger [b]reakpoint',
         silent = true,
         noremap = true,

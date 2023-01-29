@@ -3,7 +3,9 @@ return {
   keys = {
     {
       '<leader>S',
-      require('spectre').open,
+      function()
+        require('spectre').open()
+      end,
       desc = 'Toggle [S]pecte.nvim',
     },
   },
