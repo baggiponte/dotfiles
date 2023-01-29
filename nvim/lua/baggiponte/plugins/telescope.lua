@@ -1,28 +1,3 @@
-local dependencies = {
-  'nvim-lua/plenary.nvim',
-  'nvim-tree/nvim-web-devicons',
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    config = function()
-      require('telescope').load_extension('fzf')
-    end,
-  },
-  {
-    'nvim-telescope/telescope-file-browser.nvim',
-    config = function()
-      require('telescope').load_extension('file_browser')
-    end,
-  },
-  {
-    'nvim-telescope/telescope-frecency.nvim',
-    dependencies = { 'tami5/sqlite.lua' },
-    config = function()
-      require('telescope').load_extension('frecency')
-    end,
-  },
-}
-
 local keys = {
   {
     '<leader>v',
@@ -92,7 +67,7 @@ local keys = {
   {
     '<leader>fd',
     function()
-      require('telescope').extensions.file_browser()
+      require('telescope').extensions.file_browser.file_browser()
     end,
     desc = 'Telescope [f]ind in [d]irectory tree',
     silent = true,
@@ -117,64 +92,92 @@ local keys = {
 }
 
 return {
-  'nvim-telescope/telescope.nvim',
-  dependencies = dependencies,
-  keys = keys,
-  config = function()
-    local actions = require('telescope.actions')
+  {
+    'nvim-telescope/telescope-file-browser.nvim',
+    cmd = 'Telescope file_browser',
+    config = function()
+      require('telescope').load_extension('file_browser')
+    end,
+  },
+  {
+    'nvim-telescope/telescope-frecency.nvim',
+    cmd = 'Telescope frecency',
+    dependencies = { 'tami5/sqlite.lua' },
+    config = function()
+      require('telescope').load_extension('frecency')
+    end,
+  },
+  {
+    'nvim-telescope/telescope.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        config = function()
+          require('telescope').load_extension('fzf')
+        end,
+      },
+    },
+    keys = keys,
+    config = function()
+      local actions = require('telescope.actions')
 
-    require('telescope').setup({
-      defaults = {
-        sorting_strategy = 'descending',
-        initial_mode = 'insert',
-        file_ignore_patterns = { '__pycache__/*', 'git/*', '.DS_Store', '.venv', '.*_cache' },
-        mappings = {
-          n = {
-            ['v'] = actions.file_vsplit,
-            ['<S-k>'] = actions.preview_scrolling_up,
-            ['<S-j>'] = actions.preview_scrolling_down,
-          },
-          i = {
-            ['<C-v>'] = actions.file_vsplit,
-            ['<S-k>'] = actions.preview_scrolling_up,
-            ['<S-j>'] = actions.preview_scrolling_down,
-            ['<C-j>'] = actions.move_selection_next,
-            ['<C-k>'] = actions.move_selection_previous,
-          },
-        },
-      },
-      pickers = {
-        buffers = {
-          initial_mode = 'normal',
-          mappings = {
-            i = {
-              ['<C-q>'] = 'delete_buffer',
-            },
-            n = {
-              ['q'] = 'delete_buffer',
-            },
-          },
-        },
-        diagnostics = {
-          initial_mode = 'normal',
-        },
-        find_files = {
+      require('telescope').setup({
+        defaults = {
+          sorting_strategy = 'descending',
           initial_mode = 'insert',
-          hidden = true,
-          no_ignore = false,
+          file_ignore_patterns = { '__pycache__/*', '.git/*', '.DS_Store', '.venv', '.*_cache' },
+          mappings = {
+            n = {
+              ['v'] = actions.file_vsplit,
+              ['<S-k>'] = actions.preview_scrolling_up,
+              ['<S-j>'] = actions.preview_scrolling_down,
+            },
+            i = {
+              ['<C-v>'] = actions.file_vsplit,
+              ['<S-k>'] = actions.preview_scrolling_up,
+              ['<S-j>'] = actions.preview_scrolling_down,
+              ['<C-j>'] = actions.move_selection_next,
+              ['<C-k>'] = actions.move_selection_previous,
+            },
+          },
         },
-      },
-      extensions = {
-        file_browser = {
-          initial_mode = 'normal',
-          hijack_netrw = true,
-          hidden = true,
-          grouped = true,
-          path = '%:p:h',
-          cwd = '%:p:h',
-          respect_gitignore = false,
+        pickers = {
+          buffers = {
+            initial_mode = 'normal',
+            mappings = {
+              i = {
+                ['<C-q>'] = 'delete_buffer',
+              },
+              n = {
+                ['q'] = 'delete_buffer',
+              },
+            },
+          },
+          diagnostics = {
+            initial_mode = 'normal',
+          },
+          find_files = {
+            initial_mode = 'insert',
+            hidden = true,
+            no_ignore = false,
+          },
         },
-      },
-    })
-  end,
+        extensions = {
+          file_browser = {
+            initial_mode = 'normal',
+            hijack_netrw = true,
+            hidden = true,
+            grouped = true,
+            path = '%:p:h',
+            cwd = '%:p:h',
+            respect_gitignore = false,
+          },
+        },
+      })
+    end,
+  },
 }

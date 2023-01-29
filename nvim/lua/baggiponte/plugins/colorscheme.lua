@@ -13,4 +13,9 @@ return {
     end,
   },
   { 'ellisonleao/gruvbox.nvim' },
+  {
+    'norcalli/nvim-colorizer.lua',
+    name = 'colorizer',
+    config = true,
+  },
 }
