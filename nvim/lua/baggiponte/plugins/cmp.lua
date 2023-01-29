@@ -8,6 +8,8 @@ return {
   { 'saadparwaiz1/cmp_luasnip' },
   {
     'hrsh7th/nvim-cmp',
+    version = false, -- last release is way too old
+    event = 'InsertEnter',
     config = function()
       local cmp = require('cmp')
       local luasnip = require('luasnip')
