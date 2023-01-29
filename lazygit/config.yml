@@ -1,3 +1,7 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never --syntax-theme base16-256 --diff-highlight
 customCommands:
   - key: "C"
     command: "git cz c"
