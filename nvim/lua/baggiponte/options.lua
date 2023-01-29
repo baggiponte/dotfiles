@@ -28,6 +28,13 @@ for _, lang in ipairs(disabled_providers) do
   vim.api.nvim_set_var('loaded_' .. lang .. '_provider', 0)
 end
 
+local diagnostics = require('baggiponte.utils.icons').icons.diagnostics
+
+for type, icon in pairs(diagnostics) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- [[ Leader ]]
 -- It's a good idea to set this early in your config, because otherwise if you have
 -- any mappings you set BEFORE doing this, they will be set to the OLD leader.
