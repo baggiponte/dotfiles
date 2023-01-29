@@ -16,7 +16,7 @@ local dependencies = {
   },
   {
     'nvim-telescope/telescope-frecency.nvim',
-    requires = { 'tami5/sqlite.lua' },
+    dependencies = { 'tami5/sqlite.lua' },
     config = function()
       require('telescope').load_extension('frecency')
     end,
@@ -117,8 +117,7 @@ local keys = {
 }
 
 return {
-
-  'telescope.nvim',
+  'nvim-telescope/telescope.nvim',
   dependencies = dependencies,
   keys = keys,
   config = function()

@@ -1,5 +1,5 @@
 return {
-  'mhinz/vim-spectre',
+  'nvim-pack/nvim-spectre',
   keys = {
     {
       '<leader>S',

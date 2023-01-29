@@ -26,12 +26,13 @@ local sources_null_ls = {
 
 return {
   {
-    { 'williamboman/mason.nvim', opts = { ui = { border = borders } } },
-    { 'williamboman/mason-lspconfig.nvim', opts = { ensure_installed = sources_lsp } },
-    { 'jayp0521/mason-nvim-dap.nvim', opts = { ensure_installed = sources_dap } },
-    { 'jayp0521/mason-null-ls.nvim', opts = { ensure_installed = sources_null_ls } },
+    { 'williamboman/mason.nvim', cmd = 'Mason', opts = { ui = { border = borders } } },
+    { 'williamboman/mason-lspconfig.nvim', cmd = 'Mason', opts = { ensure_installed = sources_lsp } },
+    { 'jayp0521/mason-nvim-dap.nvim', cmd = 'Mason', opts = { ensure_installed = sources_dap } },
+    { 'jayp0521/mason-null-ls.nvim', cmd = 'Mason', opts = { ensure_installed = sources_null_ls } },
     {
       'neovim/nvim-lspconfig',
+      event = 'BufReadPre',
       config = function()
         local lspconfig = require('lspconfig')
 
@@ -137,6 +138,8 @@ return {
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
+    event = 'BufReadPre',
+    dependencies = 'nvim-lua/plenary.nvim',
     config = function()
       local diagnostics = require('null-ls').builtins.diagnostics
       local formatting = require('null-ls').builtins.formatting
