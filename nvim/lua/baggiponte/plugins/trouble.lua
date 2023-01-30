@@ -1,7 +1,7 @@
 return {
   {
     'folke/trouble.nvim',
-    cmd = { 'TroubleToggle', 'Trouble' },
+    cmd = { 'TroubleToggle' },
     dependencies = 'nvim-web-devicons',
     keys = {
       {
@@ -22,7 +22,6 @@ return {
   {
     'folke/todo-comments.nvim',
     cmd = { 'TodoTrouble', 'TodoTelescope' },
-    event = 'BufReadPost',
     config = true,
     -- stylua: ignore
     keys = {
