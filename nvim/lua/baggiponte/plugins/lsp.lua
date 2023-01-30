@@ -39,7 +39,7 @@ return {
     {
       'neovim/nvim-lspconfig',
       dependencies = { 'williamboman/mason-lspconfig.nvim', opts = { ensure_installed = sources_lsp } },
-      event = 'BufReadPre',
+      event = 'BufEnter',
       config = function()
         local lspconfig = require('lspconfig')
 
@@ -145,7 +145,7 @@ return {
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
-    event = 'BufReadPre',
+    event = 'BufEnter',
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
       local diagnostics = require('null-ls').builtins.diagnostics

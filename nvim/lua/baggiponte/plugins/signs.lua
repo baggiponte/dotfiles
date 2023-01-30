@@ -2,7 +2,7 @@ return {
   { 'sindrets/diffview.nvim', cmd = 'DiffviewOpen', dependencies = 'nvim-lua/plenary.nvim' },
   {
     'lewis6991/gitsigns.nvim',
-    event = 'BufReadPre',
+    event = 'VeryLazy',
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
       require('gitsigns').setup({

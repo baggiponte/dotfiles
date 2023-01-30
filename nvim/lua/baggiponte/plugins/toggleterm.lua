@@ -54,6 +54,7 @@ local keys = {
 return {
   'akinsho/toggleterm.nvim',
   version = '*',
+  cmd = { 'ToggleTerm' },
   config = function()
     local cmd = vim.api.nvim_create_user_command
 
