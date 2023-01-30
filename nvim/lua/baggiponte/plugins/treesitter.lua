@@ -1,4 +1,4 @@
-require('nvim-treesitter.configs').setup({
+local tsopts = {
 
   ensure_installed = {
     'arduino',
@@ -13,6 +13,7 @@ require('nvim-treesitter.configs').setup({
     'lua',
     'make',
     'markdown',
+    'markdown_inline',
     'python',
     'r',
     'regex', -- needed for noice.nvim
@@ -93,4 +94,28 @@ require('nvim-treesitter.configs').setup({
   },
 
   endwise = { enable = true },
-})
+}
+
+return {
+  { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      { 'RRethy/nvim-treesitter-endwise' },
+      { 'nvim-treesitter/nvim-treesitter-context' },
+      { 'nvim-treesitter/nvim-treesitter-textobjects' },
+      { 'p00f/nvim-ts-rainbow' },
+      { 'windwp/nvim-autopairs', config = true },
+      {
+        'kylechui/nvim-surround',
+        config = true,
+      },
+    },
+    event = 'BufEnter',
+    version = false, -- last release is way too old and doesn't work on Windows
+    build = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup(tsopts)
+    end,
+  },
+}
