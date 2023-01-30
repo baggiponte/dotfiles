@@ -53,8 +53,8 @@ local keys = {
 
 return {
   'akinsho/toggleterm.nvim',
+  cmd = { 'ToggleTerm', 'ToggleLazyGit', 'ToggleREPL', 'ToggleREPLAuto' },
   version = '*',
-  cmd = { 'ToggleTerm' },
   config = function()
     local cmd = vim.api.nvim_create_user_command
 
@@ -110,12 +110,13 @@ return {
 
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead
     vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+    require('toggleterm').setup({
+      direction = 'float',
+      float_opts = {
+        border = 'curved',
+      },
+    })
   end,
   keys = keys,
-  opts = {
-    direction = 'float',
-    float_opts = {
-      border = 'curved',
-    },
-  },
 }
