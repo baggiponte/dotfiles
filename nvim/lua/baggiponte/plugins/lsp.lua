@@ -31,6 +31,12 @@ return {
     { 'jayp0521/mason-nvim-dap.nvim', cmd = 'Mason', opts = { ensure_installed = sources_dap } },
     { 'jayp0521/mason-null-ls.nvim', cmd = 'Mason', opts = { ensure_installed = sources_null_ls } },
     {
+      'smjonas/inc-rename.nvim',
+      name = 'inc-rename',
+      cmd = 'IncRename',
+      config = true,
+    },
+    {
       'neovim/nvim-lspconfig',
       dependencies = { 'williamboman/mason-lspconfig.nvim', opts = { ensure_installed = sources_lsp } },
       event = 'BufReadPre',
