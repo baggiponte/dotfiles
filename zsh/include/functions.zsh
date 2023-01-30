@@ -197,7 +197,7 @@ if hash nvim 2>/dev/null; then
     }
     nvim-update () {
         echo "updating nvim plugins..."
-        nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+        nvim --headless -c 'Lazy update | qall'
         echo "done!"
     }
 fi

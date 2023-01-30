@@ -1,13 +1,17 @@
 return {
   'L3MON4D3/LuaSnip',
+  name = 'luasnip',
+  dependencies = {
+    'rafamadriz/friendly-snippets',
+    config = function()
+      require('luasnip.loaders.from_vscode').lazy_load()
+    end,
+  },
   config = function()
     local ls = require('luasnip')
     local snip = ls.snippet
     local text = ls.text_node
     local insert = ls.insert_node
-
-    -- https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#loaders
-    require('luasnip.loaders.from_vscode').lazy_load() -- load snippets from rafamadriz/friendly-snippets
 
     ls.add_snippets(nil, {
       python = {

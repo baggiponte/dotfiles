@@ -18,7 +18,7 @@ return {
         documentation = { enabled = true },
       },
       presets = {
-        inc_rename = true, -- requires inc-rename.nvim
+        -- inc_rename = true,
         lsp_doc_border = true,
       },
     })
