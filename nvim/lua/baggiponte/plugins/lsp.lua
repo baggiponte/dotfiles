@@ -27,6 +27,14 @@ local sources_null_ls = {
 
 return {
   {
+    { 'williamboman/mason.nvim', cmd = 'Mason', opts = { ui = { border = borders } } },
+    { 'jayp0521/mason-nvim-dap.nvim', cmd = 'Mason', opts = { ensure_installed = sources_dap } },
+    { 'jayp0521/mason-null-ls.nvim', cmd = 'Mason', opts = { ensure_installed = sources_null_ls } },
+    {
+      'smjonas/inc-rename.nvim',
+      cmd = 'IncRename',
+      config = true,
+    },
     {
       'glepnir/lspsaga.nvim',
       cmd = 'Lspsaga',
@@ -37,13 +45,49 @@ return {
         ui = { border = 'rounded', code_action = icons.diagnostics.Hint },
       },
     },
-    { 'williamboman/mason.nvim', cmd = 'Mason', opts = { ui = { border = borders } } },
-    { 'jayp0521/mason-nvim-dap.nvim', cmd = 'Mason', opts = { ensure_installed = sources_dap } },
-    { 'jayp0521/mason-null-ls.nvim', cmd = 'Mason', opts = { ensure_installed = sources_null_ls } },
     {
-      'smjonas/inc-rename.nvim',
-      cmd = 'IncRename',
-      config = true,
+      'jose-elias-alvarez/null-ls.nvim',
+      event = 'BufEnter',
+      dependencies = 'nvim-lua/plenary.nvim',
+      config = function()
+        local diagnostics = require('null-ls').builtins.diagnostics
+        local formatting = require('null-ls').builtins.formatting
+
+        -- local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+        require('null-ls').setup({
+          sources = {
+            diagnostics.actionlint,
+            -- diagnostics.cpplint.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
+            diagnostics.ruff,
+            diagnostics.mypy,
+            diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
+            diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
+            diagnostics.yamllint,
+            -- formatting.clang_format.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
+            formatting.black,
+            -- formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
+            formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
+            formatting.jq,
+            formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
+            -- formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
+            formatting.stylua,
+            formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason
+          },
+          -- on_attach = function(client, bufnr)
+          --   if client.supports_method('textDocument/formatting') then
+          --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          --     vim.api.nvim_create_autocmd('BufWritePre', {
+          --       group = augroup,
+          --       buffer = bufnr,
+          --       callback = function()
+          --         vim.lsp.buf.format({ bufnr = bufnr })
+          --       end,
+          --     })
+          --   end
+          -- end,
+        })
+      end,
     },
     {
       'neovim/nvim-lspconfig',
@@ -111,7 +155,7 @@ return {
             Lua = {
               runtime = { version = 'LuaJIT' }, -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
               diagnostics = { globals = { 'vim' } }, -- Get the language server to recognize the `vim` global
-              workspace = { library = vim.api.nvim_get_runtime_file('', true) }, -- Make the server aware of Neovim runtime files
+              workspace = { checkThirdParty = false },
               telemetry = { enable = false }, -- Do not send telemetry data containing a randomized but unique identifier
             },
           },
@@ -153,49 +197,5 @@ return {
         end
       end,
     },
-  },
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    event = 'BufEnter',
-    dependencies = 'nvim-lua/plenary.nvim',
-    config = function()
-      local diagnostics = require('null-ls').builtins.diagnostics
-      local formatting = require('null-ls').builtins.formatting
-
-      -- local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
-      require('null-ls').setup({
-        sources = {
-          diagnostics.actionlint,
-          -- diagnostics.cpplint.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
-          diagnostics.ruff,
-          diagnostics.mypy,
-          diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
-          diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
-          diagnostics.yamllint,
-          -- formatting.clang_format.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
-          formatting.black,
-          -- formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
-          formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
-          formatting.jq,
-          formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
-          -- formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
-          formatting.stylua,
-          formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason
-        },
-        -- on_attach = function(client, bufnr)
-        --   if client.supports_method('textDocument/formatting') then
-        --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        --     vim.api.nvim_create_autocmd('BufWritePre', {
-        --       group = augroup,
-        --       buffer = bufnr,
-        --       callback = function()
-        --         vim.lsp.buf.format({ bufnr = bufnr })
-        --       end,
-        --     })
-        --   end
-        -- end,
-      })
-    end,
   },
 }
