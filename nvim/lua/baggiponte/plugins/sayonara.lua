@@ -1,6 +1,6 @@
 return {
   'mhinz/vim-sayonara',
-  event = { 'BufDelete', 'BufWipeout' },
+  event = 'VeryLazy',
   config = function()
     vim.keymap.set('n', 'q', [[<cmd>Sayonara<cr>]], {
       desc = '[q]uit current buffer with Sayonara',
