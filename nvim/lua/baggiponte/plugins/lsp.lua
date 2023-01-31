@@ -1,4 +1,5 @@
 local borders = require('baggiponte.utils.borders')
+local icons = require('baggiponte.utils.icons').icons
 
 local sources_dap = {
   'python',
@@ -26,13 +27,21 @@ local sources_null_ls = {
 
 return {
   {
-    { 'smjonas/inc-rename.nvim', config = true },
+    {
+      'glepnir/lspsaga.nvim',
+      cmd = 'Lspsaga',
+      event = 'VeryLazy',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      opts = {
+        lightbulb = { enable = false },
+        ui = { border = 'rounded', code_action = icons.diagnostics.Hint },
+      },
+    },
     { 'williamboman/mason.nvim', cmd = 'Mason', opts = { ui = { border = borders } } },
     { 'jayp0521/mason-nvim-dap.nvim', cmd = 'Mason', opts = { ensure_installed = sources_dap } },
     { 'jayp0521/mason-null-ls.nvim', cmd = 'Mason', opts = { ensure_installed = sources_null_ls } },
     {
       'smjonas/inc-rename.nvim',
-      name = 'inc-rename',
       cmd = 'IncRename',
       config = true,
     },
@@ -53,27 +62,29 @@ return {
         require('lspconfig.ui.windows').default_options.border = borders
 
         local on_attach = function(_, bufnr)
-          local bufmap = function(mode, shortcut, command, desc)
+          local bufmap = function(shortcut, command, desc)
             local bufopts = { desc = desc, noremap = true, silent = true, buffer = bufnr }
-            vim.keymap.set(mode, shortcut, command, bufopts)
+            vim.keymap.set('n', shortcut, command, bufopts)
           end
 
-          bufmap('n', 'F', function()
+          vim.keymap.set('n', '<leader>rn', function()
+            return ':IncRename: ' .. vim.fn.expand('<cword>')
+          end, { expr = true, desc = 'Incremental [r]e[n]ame of a symbol' })
+
+          bufmap('F', function()
             vim.lsp.buf.format({ async = true })
           end, '[f]ormat current buffer')
 
-          vim.keymap.set('n', '<leader>rn', function()
-            return ':IncRename ' .. vim.fn.expand('<cword>')
-          end, { expr = true, desc = 'Incremental [r]e[n]ame of a symbol' })
-
-          bufmap('n', 'K', vim.lsp.buf.hover, 'Display documentation on hover')
-          bufmap('n', 'ca', vim.lsp.buf.code_action, 'Execute [c]ode [action]')
-          bufmap('n', 'gD', vim.lsp.buf.declaration, '[g]o to [D]eclaration')
-          bufmap('n', 'gd', vim.lsp.buf.definition, '[g]o to [d]efinition')
-          bufmap('n', 'gh', vim.lsp.buf.signature_help, '[g]o to signature [h]elp')
-          bufmap('n', 'gi', vim.lsp.buf.implementation, '[g]o to [i]mplementation')
-          bufmap('n', 'gr', vim.lsp.buf.references, '[g]o to [r]eferences')
-          bufmap('n', 'gt', vim.lsp.buf.type_definition, '[g]o to [t]ype definition')
+          bufmap('gf', '<cmd>Lspsaga lsp_finder<CR>', '[g]o [f]ind occurrences with Lspsaga')
+          bufmap('gp', '<cmd>Lspsaga peek_definition<CR>', '[g]o [p]eek the definition with Lspsaga')
+          bufmap('gD', vim.lsp.buf.declaration, '[g]o to [D]eclaration')
+          bufmap('gd', vim.lsp.buf.definition, '[g]o to [d]efinition')
+          bufmap('gh', vim.lsp.buf.signature_help, '[g]o to signature [h]elp')
+          bufmap('gi', vim.lsp.buf.implementation, '[g]o to [i]mplementation')
+          bufmap('gr', vim.lsp.buf.references, '[g]o to [r]eferences')
+          bufmap('gt', vim.lsp.buf.type_definition, '[g]o to [t]ype definition')
+          bufmap('K', vim.lsp.buf.hover, 'Display documentation on hover')
+          bufmap('ca', vim.lsp.buf.code_action, 'Execute [c]ode [action]')
         end
 
         local servers = {
