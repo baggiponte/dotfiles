@@ -1,28 +1,28 @@
 # This is Git's per-user configuration file.
 [user]
-    name = baggiponte
-    email = 57922983+baggiponte@users.noreply.github.com
+  name = baggiponte
+  email = 57922983+baggiponte@users.noreply.github.com
 [github]
-    user = baggiponte
+  user = baggiponte
 [init]
-    defaultBranch = main
+  defaultBranch = main
 [core]
-    excludesFile = ~/.config/.gitignore.global
-    pager = delta
+  excludesFile = ~/.config/.gitignore.global
+  pager = delta
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [delta]
-    navigate = true  # use n and N to move between diff sections
-    features = side-by-side line-numbers decorations
+  navigate = true  # use n and N to move between diff sections
+  features = side-by-side line-numbers decorations
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
 [diff]
-    colorMoved = default
-    submodule = log
+  colorMoved = default
+  submodule = log
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
