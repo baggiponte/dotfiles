@@ -112,7 +112,7 @@ return {
           end
 
           vim.keymap.set('n', '<leader>rn', function()
-            return ':IncRename: ' .. vim.fn.expand('<cword>')
+            return ':IncRename ' .. vim.fn.expand('<cword>')
           end, { expr = true, desc = 'Incremental [r]e[n]ame of a symbol' })
 
           bufmap('F', function()
