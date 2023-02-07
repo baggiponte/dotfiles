@@ -17,7 +17,10 @@ return {
       { '<leader>sl', '<cmd>TroubleToggle loclist<cr>', desc = '[s]how [l]oclist diagnostics' },
       { '<leader>sq', '<cmd>TroubleToggle quickfix<cr>', desc = '[s]how [q]uickfix diagnostics' },
     },
-    opts = { position = 'right', use_diagnostic_signs = true },
+    opts = {
+      -- position = 'right',
+      use_diagnostic_signs = true,
+    },
   },
   {
     'folke/todo-comments.nvim',
