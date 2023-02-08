@@ -160,6 +160,20 @@ fi
 # navigate history
 if hash fzf 2>/dev/null; then
     hist () { history 1 | fzf | pbcopy ; }
+    _ff () {
+        fd -t=f -HI \
+            -E .DS_Store \
+            -E .git \
+            -E .mypy_cache \
+            -E .ruff_cache \
+            -E .venv \
+            -E __pycache__ \
+            -E assets \
+            -E raycast \
+            -E tmux/plugins \
+            | fzf --preview="bat --color=always --style='plain,changes' --line-range=:300 {}"
+    }
+    ff () { _ff | pbcopy; }
 fi
 
 # bulk rename extensions
@@ -183,6 +197,11 @@ fi
 
 if hash nvim 2>/dev/null; then
     # open telescope in the current folder
+    nvim-update () {
+        echo "updating nvim plugins..."
+        nvim --headless -c 'Lazy update | qall'
+        echo "done!"
+    }
     n () {
         if [ "$1" = "" ]; then
             nvim -c 'Telescope find_files'
@@ -193,12 +212,7 @@ if hash nvim 2>/dev/null; then
         fi
     }
     nn () {
-        nvim -c "Telescope zoxide list"
-    }
-    nvim-update () {
-        echo "updating nvim plugins..."
-        nvim --headless -c 'Lazy update | qall'
-        echo "done!"
+        n "$(_ff)"
     }
 fi
 
