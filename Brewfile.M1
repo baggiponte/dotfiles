@@ -19,6 +19,8 @@ brew "xz"
 brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Console Matrix
 brew "cmatrix"
 # Configurable talking characters in ASCII art
@@ -78,7 +80,7 @@ brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
+brew "neovim", args: ["HEAD"]
 # Platform built on V8 to build network applications
 brew "node"
 # Shell command parallelization utility
