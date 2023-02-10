@@ -1,5 +1,4 @@
 local tsopts = {
-
   ensure_installed = {
     'arduino',
     'bash',
@@ -21,14 +20,14 @@ local tsopts = {
     'toml',
     'yaml',
   },
-
   indent = { enable = true },
-
+  autopairs = { enable = true },
+  autotag = { enable = true },
+  playground = { enable = true },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -38,9 +37,6 @@ local tsopts = {
       node_decremental = '<c-[>',
     },
   },
-
-  autopairs = { enable = true },
-
   rainbow = {
     enable = true,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
@@ -49,9 +45,6 @@ local tsopts = {
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
   },
-
-  playground = { enable = true },
-
   textobjects = {
     select = {
       enable = true,
@@ -92,7 +85,6 @@ local tsopts = {
       },
     },
   },
-
   endwise = { enable = true },
 }
 
@@ -106,10 +98,8 @@ return {
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
       { 'p00f/nvim-ts-rainbow' },
       { 'windwp/nvim-autopairs', config = true },
-      {
-        'kylechui/nvim-surround',
-        config = true,
-      },
+      -- { 'windwp/nvim-ts-autotag', config = true },
+      { 'kylechui/nvim-surround', config = true },
     },
     version = false, -- last release is way too old and doesn't work on Windows
     build = ':TSUpdate',
