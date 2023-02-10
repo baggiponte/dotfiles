@@ -8,7 +8,7 @@ return {
       show_current_context_start = false,
       use_treesitter = true,
       buftype_exclude = { 'terminal' },
-      filetype_exclude = { 'help', 'packer', 'TelescopePrompt' },
+      filetype_exclude = { 'help', 'packer', 'TelescopePrompt', 'Lazy' },
     })
   end,
 }
