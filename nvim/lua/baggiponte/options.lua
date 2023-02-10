@@ -1,21 +1,3 @@
--- Disable some built-in plugins we don't want
-local disabled_built_ins = {
-  'gzip',
-  -- 'man',
-  'matchit',
-  'matchparen',
-  'shada_plugin',
-  'tarPlugin',
-  'tar',
-  'zipPlugin',
-  'zip',
-  'netrwPlugin',
-}
-
-for _, plugin in ipairs(disabled_built_ins) do
-  vim.g['loaded_' .. plugin] = 1
-end
-
 -- disable currently unused providers (see :h provider)
 local disabled_providers = {
   'python3',
