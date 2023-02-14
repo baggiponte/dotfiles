@@ -6,9 +6,17 @@ local sources_dap = {
 }
 
 local sources_lsp = {
-  'jsonls',
+  'lua_ls',
+  'pyre',
   'pyright',
-  'sumneko_lua',
+  'ruff_lsp',
+  'sourcery',
+  -- 'arduino_language_server',
+  -- 'docker-compose-language-server',
+  -- 'dockerfile-language-server',
+  -- 'jsonls',
+  -- 'julials',
+  -- 'yamlls',
 }
 
 local sources_null_ls = {
@@ -18,6 +26,7 @@ local sources_null_ls = {
   'jq',
   'ruff',
   'selene',
+  'semgrep',
   'shellcheck',
   'shfmt',
   'stylua',
@@ -58,21 +67,20 @@ return {
         require('null-ls').setup({
           sources = {
             diagnostics.actionlint,
-            -- diagnostics.cpplint.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
-            diagnostics.ruff,
             diagnostics.mypy,
+            diagnostics.ruff,
             diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
+            diagnostics.semgrep,
             diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
             diagnostics.yamllint,
-            -- formatting.clang_format.with({ filetypes = { 'arduino', 'c', 'cpp', 'cs', 'cuda' } }),
             formatting.black,
-            -- formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
             formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
             formatting.jq,
             formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
-            -- formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
             formatting.stylua,
             formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason
+            -- formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
+            -- formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
           },
           -- on_attach = function(client, bufnr)
           --   if client.supports_method('textDocument/formatting') then
@@ -132,10 +140,14 @@ return {
         end
 
         local servers = {
-          'jsonls',
-          -- 'julials',
+          'pyre',
           'pyright',
           'ruff_lsp',
+          'sourcery',
+          -- 'docker-compose-language-server',
+          -- 'dockerfile-language-server',
+          -- 'jsonls',
+          -- 'julials',
           -- 'yamlls',
         }
 
@@ -147,7 +159,7 @@ return {
           })
         end
 
-        lspconfig['sumneko_lua'].setup({
+        lspconfig['lua_ls'].setup({
           on_attach = on_attach,
           capabilities = capabilities,
           handlers = handlers,
@@ -170,7 +182,7 @@ return {
           })
         end
 
-        if vim.fn.executable('arduino-cli') then
+        if vim.fn.executable('arduino-cli') == 1 then
           lspconfig['arduino_language_server'].setup({
             on_attach = on_attach,
             capabilities = capabilities,
