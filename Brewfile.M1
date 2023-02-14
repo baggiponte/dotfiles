@@ -7,8 +7,6 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "rundel/quarto-cli"
-# Arduino command-line interface
-brew "arduino-cli"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -105,6 +103,8 @@ brew "selene"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Create beautiful image of your source code
+brew "silicon"
 # Opinionated Lua code formatter
 brew "stylua"
 # Simplified and community-driven man pages
