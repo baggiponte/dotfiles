@@ -7,7 +7,6 @@ local sources_dap = {
 
 local sources_lsp = {
   'lua_ls',
-  'pyre',
   'pyright',
   'ruff_lsp',
   'sourcery',
@@ -26,12 +25,13 @@ local sources_null_ls = {
   'jq',
   'ruff',
   'selene',
-  'semgrep',
   'shellcheck',
   'shfmt',
   'stylua',
   'yamlfmt',
   'yamllint',
+  -- 'semgrep',
+  -- 'vulture',
 }
 
 return {
@@ -66,11 +66,14 @@ return {
 
         require('null-ls').setup({
           sources = {
+            -- diagnostics.semgrep,
+            -- diagnostics.vulture,
+            -- formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
+            -- formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
             diagnostics.actionlint,
             diagnostics.mypy,
             diagnostics.ruff,
             diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
-            diagnostics.semgrep,
             diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
             diagnostics.yamllint,
             formatting.black,
@@ -79,8 +82,6 @@ return {
             formatting.shfmt.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
             formatting.stylua,
             formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason
-            -- formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
-            -- formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
           },
           -- on_attach = function(client, bufnr)
           --   if client.supports_method('textDocument/formatting') then
@@ -140,7 +141,6 @@ return {
         end
 
         local servers = {
-          'pyre',
           'pyright',
           'ruff_lsp',
           'sourcery',
