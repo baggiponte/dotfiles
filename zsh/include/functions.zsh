@@ -18,7 +18,7 @@ config () {
     local config_dir="${XDG_CONFIG_HOME-"$HOME/.config"}"
 
     if [[ "$#" -eq 0 ]]; then
-        cd "$config_dir" || exit
+        cd "$config_dir" || return 1
     else
         cd "$config_dir/${1}" || echo "$1 is not a valid config directory."
     fi
@@ -90,140 +90,177 @@ colortest () {
         fi
     done
 }
-# +----------------+
-# | Other commands |
-# +----------------+
+# +--------------------------------------------------+
+# | functions that require something to be installed |
+# +--------------------------------------------------+
 
-# see: https://ipython.readthedocs.io/en/stable/install/kernel_install.html#kernels-for-different-environments
+_check_is_installed () {
 
-if hash python 2>/dev/null; then
-
-    pyenv-upgrade-pip () {
-        if [[ "$#" -eq 0 ]]; then
-            declare -a pyenv_versions=($(pyenv versions --bare | grep -E --invert-match '/envs/'))
-        else
-            pyenv_versions=("$@")
+    for cmd in "$@"; do
+        if ! command -v "$cmd" &>/dev/null; then
+            echo "$cmd not installed"
+            return 1
         fi
-
-
-        for version in "${pyenv_versions[@]}"; do
-            rich --print "[bold]Upgrading [cyan]${version}[/]"
-            pyenv shell "$version" && pip install --upgrade pip setuptools;
-            echo
-        done
-
-        # go back to default pyenv python
-        pyenv shell --unset
-    }
-
-    jupyter-kernel-install () {
-        if [ -z "${VIRTUAL_ENV}" ]; then
-            echo "'VIRTUAL_ENV' is unset. Either activate a virtual environment or set a local python version with 'pyenv local <env-name>'."
-            exit 1
-        fi
-
-        local kernel_name="$1"
-        local display_name="$2"
-        python -m ipykernel install --user --name "$kernel_name" --display-name "$display_name"
-    }
-
-    ipython-kernel-install () {
-        if [ -z "${VIRTUAL_ENV}" ]; then
-            echo "'VIRTUAL_ENV' is unset. Either activate a virtual environment or set a local python version with 'pyenv local <env-name>'."
-            exit 1
-        fi
-
-        local kernel_name="$1"
-        local display_name="$2"
-
-        # do not use XDG_DATA_HOME because ipython will create a `share` directory anyway
-        local kernel_prefix="${HOME}/.local"
-        local kernel_dir="${JUPYTER_DATA_DIR:-"${kernel_prefix}/share/jupyter"}/kernels"
-        local kernel="${kernel_dir}/${kernel_name}/kernel.json"
-
-        local python_path="${VIRTUAL_ENV}/bin/python"
-
-        "$PIPX_BIN_DIR/ipython" kernel install \
-            --name="$kernel_name" \
-            --display-name="$display_name" \
-            --prefix="$kernel_prefix"
-
-
-        jq --arg p "${python_path}" '.argv[0] |= $p' "${kernel}" > "${kernel}.bak"
-
-        rm "${kernel}" && mv "${kernel}.bak" "${kernel}"
-
-        echo "kernel installed. In order to work, 'ipykernel' must be installe in the virtuale environment."
-    }
-fi
-
-# navigate history
-if hash fzf 2>/dev/null; then
-    hist () { history 1 | fzf | pbcopy ; }
-    _ff () {
-        fd -t=f -HI \
-            -E .DS_Store \
-            -E .git \
-            -E .mypy_cache \
-            -E .ruff_cache \
-            -E .venv \
-            -E __pycache__ \
-            -E assets \
-            -E raycast \
-            -E tmux/plugins \
-            | fzf --preview="bat --color=always --style='plain,changes' --line-range=:300 {}"
-    }
-    ff () { _ff | pbcopy; }
-fi
-
-# bulk rename extensions
-if hash fd 2>/dev/null; then
-    rename-ext() {
-        local ext_old="$1"
-        local ext_new="$2"
-
-        fd -e "$ext_old" -x mv "{}" "{.}.$ext_new"
+    done
 }
-fi
+
+tealdeer () {
+    _check_is_installed tldr
+    tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr
+}
 
 # pretty print directory tree for git repos
-if hash exa 2>/dev/null; then
-    ls-tree() {
-        local level="${1:-"1"}"
+ls-tree() {
+    _check_is_installed exa
+    local level="${1:-"1"}"
+    local dir="${2:-"."}"
 
-        exa --tree --level "$level" --group-directories-first --all --git-ignore --ignore-glob .git
-    }
-fi
+    exa "$dir" --tree --level "$level" --group-directories-first --all --git-ignore --ignore-glob .git
+}
 
-if hash nvim 2>/dev/null; then
-    # open telescope in the current folder
-    nvim-update () {
-        echo "updating nvim plugins..."
-        nvim --headless -c 'Lazy update | qall'
-        echo "done!"
-    }
-    n () {
-        if [ "$1" = "" ]; then
-            nvim -c 'Telescope find_files'
-        elif [ -d "$1" ]; then
-            nvim -c "Telescope find_files cwd=$1"
-        else
-            nvim "$1"
-        fi
-    }
-    nn () {
-        n "$(_ff)"
-    }
-fi
+# navigate history
+hist () {
+    _check_is_installed fzf
 
-# has to use command -v as zimfw is actually sourced
-if command -v zimfw &>/dev/null; then
-    zim-update () {
-        zimfw upgrade
-        zimfw uninstall
-        zimfw update
-    }
-fi
+    fc -ln 0 | fzf --tac
+}
+
+# bulk rename extensions
+rename-ext() {
+    _check_is_installed fd
+
+    local ext_old="$1"
+    local ext_new="$2"
+
+    fd -e "$ext_old" -x mv "{}" "{.}.$ext_new"
+}
+
+# fuzzy find preview
+_fzf_preview () {
+    _check_is_installed fzf
+
+    fzf --preview="bat --color=always --style='plain,changes' --line-range=:500 {}";
+}
+
+# find files and pipe in fzf preview
+_ff () {
+    _check_is_installed fd
+
+    local pattern="${1:-"."}"
+
+    fd -t=f "$pattern" -HI \
+        -E .DS_Store \
+        -E .git \
+        -E .mypy_cache \
+        -E .ruff_cache \
+        -E .venv \
+        -E __pycache__ \
+        -E assets \
+        -E raycast \
+        -E tmux/plugins \
+        | _fzf_preview
+}
+
+ff () { _ff "$1" | pbcopy; }
+
+# grep string and pipe in fzf preview
+_fg () {
+    _check_is_installed rg
+
+    rg "$1" --files-with-matches | _fzf_preview
+}
+
+fg () { _fg "$1" | pbcopy; }
+
+# open telescope in the current folder
+nvim-update () {
+    _check_is_installed nvim
+
+    echo "updating nvim plugins..."
+    nvim --headless -c 'Lazy update | qall'
+    echo "done!"
+}
+
+n () {
+    _check_is_installed nvim
+
+    if [ "$1" = "" ]; then
+        nvim -c 'Telescope find_files'
+    elif [ -d "$1" ]; then
+        nvim -c "Telescope find_files cwd=$1"
+    else
+        nvim "$1"
+    fi
+}
+
+# open list of files with match
+nn () {
+    _check_is_installed nvim
+
+    nvim "$(_ff "$1")"
+}
+
+# open list of files that contain the match
+ng () {
+    _check_is_installed nvim
+
+    nvim "$(_fg "$1")"
+}
+
+# open zoxide dir
+j () {
+    _check_is_installed nvim fzf zoxide
+
+    local chosen_directory
+
+    chosen_directory=$(zoxide query --list | fzf --sort)
+
+    cd "$chosen_directory" || return 1
+
+    nvim -c "Telescope find_files"
+}
+
+python-latest () {
+
+    _check_is_installed rg sed
+
+    local version="$1"
+    local match
+    match="$(pyenv install -l | sed 's/  //g' | rg "^${version}" | sort | tail --lines=1)"
+
+    if [[ -n "$match" ]]; then
+        print "$match"
+    else
+        echo "Python version ${match} does not exist."
+        return 1
+    fi
+}
+
+pyenv-upgrade-pip () {
+    if [[ "$#" -eq 0 ]]; then
+        typeset -a pyenv_versions=( $(pyenv versions --bare | rg -v 'system') )
+    else
+        pyenv_versions=("$@")
+    fi
+
+
+    for version in "${pyenv_versions[@]}"; do
+        rich --print "[bold]Upgrading [cyan]${version}[/]"
+        pyenv shell "$version" && pip install --upgrade pip setuptools;
+        echo
+    done
+
+    # go back to default pyenv python
+    pyenv shell --unset
+}
+
+zim-update () {
+    _check_is_installed zimfw
+
+    zimfw upgrade
+    zimfw uninstall
+    zimfw update
+}
 
 if [ -x /Applications/RStudio.app ]; then
     rstudio () {
@@ -247,57 +284,50 @@ fi
 # +-------+
 
 # open in Finder
-if [ "$(sysctl -n kern.ostype)" = "Darwin" ]; then
+f() {
+    if [ "$1" = "" ]; then
+        open -a Finder ./
+    else
+        open -a Finder "$1"
+    fi
+}
 
-    f() {
-        if [ "$1" = "" ]; then
-            open -a Finder ./
-        else
-            open -a Finder "$1"
-        fi
-    }
-fi
+# update Homebrew
+brew-update () {
+    brew update
+    brew upgrade
+}
 
-# brew specific
-if hash brew 2>/dev/null; then
+# clean homebrew
+brew-cleanup () {
 
-    # update Homebrew
-    brew-update () {
-        brew update
-        brew upgrade
-    }
+    echo "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
 
-    # clean homebrew
-    brew-cleanup () {
+    echo "Removing lockfiles and outdated downloads..." && brew cleanup -s
 
-        echo "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
+    # get the list of all files
+    local download_dir="$HOME/Library/Caches/Homebrew/downloads"
+    local files=("$download_dir"/*(N))
 
-        echo "Removing lockfiles and outdated downloads..." && brew cleanup -s
+    # if the number of files is not 0, then remove them
+    # see: https://unix.stackexchange.com/a/313187/402599
+    if (($#files)); then
+        echo "Removing downloads in $download_dir" && rm -- "${files[@]}"
+    else
+        echo "No downloads to remove"
+    fi
 
-        # get the list of all files
-        local download_dir="$HOME/Library/Caches/Homebrew/downloads"
-        local files=("$download_dir"/*(N))
+    echo "Dumping formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
+    if [ -s "$HOMEBREW_BUNDLE_FILE" ]; then
+        mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
+    fi
+    brew bundle dump --describe
+}
 
-        # if the number of files is not 0, then remove them
-        # see: https://unix.stackexchange.com/a/313187/402599
-        if (($#files)); then
-            echo "Removing downloads in $download_dir" && rm -- "${files[@]}"
-        else
-            echo "No downloads to remove"
-        fi
-
-        echo "Dumping formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
-        if [ -s "$HOMEBREW_BUNDLE_FILE" ]; then
-            mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
-        fi
-        brew bundle dump --describe
-    }
-
-    brew-graph () {
-        brew list -1 --formula | while read -r cask; do
-        echo -ne "\x1B[1;34m $cask \x1B[0m"
-        brew uses "$cask" --installed | awk '{printf(" %s ", $0)}'
-        echo ""
-        done
-    }
-fi
+brew-graph () {
+    brew list -1 --formula | while read -r cask; do
+    echo -ne "\x1B[1;34m $cask \x1B[0m"
+    brew uses "$cask" --installed | awk '{printf(" %s ", $0)}'
+    echo ""
+    done
+}
