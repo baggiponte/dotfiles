@@ -13,7 +13,7 @@ require('lazy').setup('baggiponte.plugins', {
   defaults = { lazy = true, version = false },
   install = { colorscheme = { 'gruvbox-material', 'gruvbox' } },
   ui = { border = borders },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = { enabled = false }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins
