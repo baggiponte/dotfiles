@@ -107,8 +107,8 @@ brew "shfmt"
 brew "silicon"
 # Opinionated Lua code formatter
 brew "stylua"
-# Simplified and community-driven man pages
-brew "tldr"
+# Very fast implementation of tldr in Rust
+brew "tealdeer"
 # Terminal multiplexer
 brew "tmux"
 # ODBC 3 connectivity for UNIX

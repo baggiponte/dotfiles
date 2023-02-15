@@ -56,6 +56,14 @@ if hash cookiecutter 2>/dev/null; then
 	export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter.yaml"
 fi
 
+# +-------+
+# | OTHER |
+# +-------+
+
+if hash tldr 2>/dev/null; then
+    export TEALDEER_CONFIG_DIR="$XDG_CONFIG_HOME/tealdeer"
+fi
+
 # +---+
 # | R |
 # +---+
