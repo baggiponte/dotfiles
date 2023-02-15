@@ -42,10 +42,6 @@ if hash gh 2>/dev/null; then
 	alias ghw='gh repo view --web'
 fi
 
-if hash zoxide 2>/dev/null; then
-	alias j=z
-fi
-
 if hash lazygit 2>/dev/null; then
 	alias lg=lazygit
 fi
