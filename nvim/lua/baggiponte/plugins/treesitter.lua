@@ -92,6 +92,7 @@ return {
   { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' },
   {
     'nvim-treesitter/nvim-treesitter',
+    event = 'UIEnter',
     dependencies = {
       { 'RRethy/nvim-treesitter-endwise' },
       { 'nvim-treesitter/nvim-treesitter-context' },
