@@ -129,7 +129,7 @@ return {
         defaults = {
           sorting_strategy = 'descending',
           initial_mode = 'insert',
-          file_ignore_patterns = { '__pycache__/*', '.git/*', '.DS_Store', '.venv', '.*_cache' },
+          file_ignore_patterns = { '__pycache__/*', '.git/*', '.DS_Store', '.venv', '.*_cache', '.cache/' },
           mappings = {
             n = {
               ['v'] = actions.file_vsplit,
@@ -161,6 +161,7 @@ return {
             initial_mode = 'normal',
           },
           find_files = {
+            find_command = { 'rg', '--files', '--color', 'never', '--follow' },
             initial_mode = 'insert',
             hidden = true,
             no_ignore = false,
