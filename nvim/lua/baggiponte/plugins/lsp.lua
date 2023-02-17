@@ -26,12 +26,12 @@ local sources_null_ls = {
   'ruff',
   'selene',
   'shellcheck',
-  'shellharden',
   'shfmt',
   'stylua',
   'yamlfmt',
   'yamllint',
   -- 'semgrep',
+  -- 'shellharden',
   -- 'vulture',
 }
 
@@ -68,6 +68,7 @@ return {
         require('null-ls').setup({
           sources = {
             -- diagnostics.semgrep,
+            -- diagnostics.shellharden,
             -- diagnostics.vulture,
             -- formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
             -- formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
@@ -76,7 +77,6 @@ return {
             diagnostics.ruff,
             diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
             diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
-            diagnostics.shellharden.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
             diagnostics.yamllint,
             formatting.black,
             formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
