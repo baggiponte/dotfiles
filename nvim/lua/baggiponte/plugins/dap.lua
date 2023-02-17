@@ -1,5 +1,6 @@
 return {
   { 'rcarriga/nvim-dap-ui', name = 'dapui', config = true },
+  { 'theHamsta/nvim-dap-virtual-text', dependencies = { 'nvim-treesitter/nvim-treesitter' }, config = true },
   {
     'mfussenegger/nvim-dap-python',
     config = function()
