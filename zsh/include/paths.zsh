@@ -15,6 +15,10 @@ fi
 # | ENV VARS CONFIGS |
 # +------------------+
 
+if hash rustup-init 2>/dev/null; then
+    . "$HOME/.cargo/env"
+fi
+
 # +------+
 # | NVIM |
 # +------+

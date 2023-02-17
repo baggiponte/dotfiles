@@ -26,6 +26,7 @@ local sources_null_ls = {
   'ruff',
   'selene',
   'shellcheck',
+  'shellharden',
   'shfmt',
   'stylua',
   'yamlfmt',
@@ -75,6 +76,7 @@ return {
             diagnostics.ruff,
             diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
             diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
+            diagnostics.shellharden.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
             diagnostics.yamllint,
             formatting.black,
             formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
@@ -158,6 +160,18 @@ return {
             handlers = handlers,
           })
         end
+
+        lspconfig.rust_analyzer.setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+          handlers = handlers,
+          cmd = {
+            'rustup',
+            'run',
+            'stable',
+            'rust-analyzer',
+          },
+        })
 
         lspconfig['lua_ls'].setup({
           on_attach = on_attach,

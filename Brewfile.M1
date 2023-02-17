@@ -95,6 +95,8 @@ brew "pyenv-virtualenv"
 brew "rename"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Rust toolchain installer
+brew "rustup-init"
 # Blazing-fast modern Lua linter
 brew "selene"
 # Static analysis and lint tool, for (ba)sh scripts
