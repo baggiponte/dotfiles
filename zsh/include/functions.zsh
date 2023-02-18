@@ -207,13 +207,24 @@ ng () {
     nvim "$(_fg "$1")"
 }
 
-# open zoxide dir
-j () {
-    _check_is_installed nvim fzf zoxide
+zoxide-clean () {
+    zoxide query --list | fzf --multi --sort | xargs -I % sh -c "rich --print 'deleting [blue]%[/]'; zoxide remove %"
+}
 
+# open zoxide dir
+o () {
+    _check_is_installed nvim zoxide
+
+    local query="$1"
     local chosen_directory
 
-    chosen_directory=$(zoxide query --list | fzf --sort)
+    chosen_directory=$(
+        zoxide query --list | fzf \
+            --preview="exa --all --group-directories-first --icons --oneline --ignore-glob={.DS_Store,.git} {}" \
+            --preview-window=down,40% \
+            --preview-label=" content preview " \
+            --query="$query"
+    )
 
     cd "$chosen_directory" || return 1
 
