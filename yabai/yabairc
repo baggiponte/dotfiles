@@ -92,11 +92,12 @@ yabai -m config                                 \
 # | Rules |
 # +-------+
 
-yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add app="^App Store$" manage=off
-yabai -m rule --add app="^Raycast$" manage=off
-yabai -m rule --add app="^About This Mac$" manage=off
-yabai -m rule --add app="^Karabiner-Elements$" manage=off
-yabai -m rule --add app="^Karabiner-EventViewer$" manage=off
+yabai -m rule \
+    --add app="^System Preferences$" manage=off     \
+    --add app="^App Store$" manage=off              \
+    --add app="^Raycast$" manage=off                \
+    --add app="^About This Mac$" manage=off         \
+    --add app="^Karabiner-Elements$" manage=off     \
+    --add app="^Karabiner-EventViewer$" manage=off
 
 echo "yabai configuration loaded"
