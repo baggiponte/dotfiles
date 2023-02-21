@@ -12,7 +12,7 @@ return {
       },
       {
         '<leader>hr',
-        '<cmd?>Gitsigns reset_hunk<CR>',
+        '<cmd>Gitsigns reset_hunk<CR>',
         mode = { 'n', 'v' },
       },
       {
