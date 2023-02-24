@@ -231,6 +231,43 @@ o () {
     nvim -c "Telescope find_files"
 }
 
+tn () {
+    _check_is_installed tmux zoxide
+
+    local zoxide_result
+    zoxide_result=$(zoxide query "$1")
+
+    if [ "$zoxide_result" = "" ]; then
+        exit 1
+    fi
+
+    local target_folder
+    target_folder=$(basename "$zoxide_result")
+
+    local session_name
+    session_name=$(echo "$target_folder" | tr ' ' '_' | tr '.' '_' | tr ':' '_')
+
+    local session
+    session=$(tmux list-sessions -F '#S' | grep "^$session_name$")
+
+    if [ "$TMUX" = "" ]; then
+        if [ "$session" = "" ]; then
+            cd "$zoxide_result" || exit 1
+            tmux new-session -s "$session_name"
+        else
+            tmux attach -t "$session"
+        fi
+    else
+        if [ "$session" = "" ]; then
+            cd "$zoxide_result" || exit 1
+            tmux new-session -d -s "$session_name"
+            tmux switch-client -t "$session_name"
+        else
+            tmux switch-client -t "$session"
+        fi
+    fi
+}
+
 python-latest () {
 
     _check_is_installed rg sed
