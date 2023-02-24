@@ -9,9 +9,5 @@ jupyter
 karabiner/*
 lazygit/state.yml
 nvim/.luarc.json
-nvim/plugin
 raycast
 sourcery
-spicetify
-spotify-tui
-tmux/plugins
