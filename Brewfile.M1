@@ -1,3 +1,4 @@
+tap "arl/arl"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
@@ -117,6 +118,8 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Git in your tmux status bar.
+brew "arl/arl/gitmux"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
 # Simple hotkey-daemon for macOS.
