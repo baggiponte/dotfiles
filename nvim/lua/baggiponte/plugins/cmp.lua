@@ -75,7 +75,6 @@ return {
         { name = 'copilot' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'buffer' }, -- for strings
         { name = 'path' },
       }),
       window = {
@@ -100,6 +99,18 @@ return {
         { name = 'path' },
       }),
     })
+
+    local text_filetypes = { 'markdown', 'gitcommit', 'text' }
+
+    for _, filetype in ipairs(text_filetypes) do
+      cmp.setup.filetype(filetype, {
+        sources = cmp.config.sources({
+          { name = 'copilot' },
+          { name = 'buffer' },
+          { name = 'path' },
+        }),
+      })
+    end
 
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline({ '/', '?' }, {
