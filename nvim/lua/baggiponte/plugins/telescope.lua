@@ -88,6 +88,17 @@ local keys = {
       vim.cmd("TodoTelescope cwd='%:p:h")
     end,
     desc = 'Telescope [f]ind within [t]odos',
+    silent = true,
+    noremap = true,
+  },
+  {
+    '<leader>fs',
+    function()
+      require('telescope.builtin').symbols({ sources = { 'nerd' } })
+    end,
+    desc = 'Telescope [f]ind [s]ymbol',
+    silent = true,
+    noremap = true,
   },
 }
 
@@ -108,18 +119,19 @@ return {
     end,
   },
   {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    config = function()
+      require('telescope').load_extension('fzf')
+    end,
+  },
+  {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        config = function()
-          require('telescope').load_extension('fzf')
-        end,
-      },
+      'nvim-telescope/telescope-symbols.nvim',
     },
     keys = keys,
     config = function()
