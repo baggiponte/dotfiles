@@ -1,0 +1,10 @@
+[tool.poetry]
+name = "poetry-instance"
+version = "1.4.0"
+description = ""
+authors = []
+license = ""
+
+[tool.poetry.dependencies]
+python = "3.10.10"
+poetry = "1.4.0"
