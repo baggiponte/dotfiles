@@ -28,6 +28,7 @@ return {
         -- local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
         return {
+          border = 'rounded',
           sources = {
             -- diagnostics.semgrep,
             -- diagnostics.shellharden,
