@@ -6,6 +6,7 @@ local sources_dap = {
 }
 
 local sources_lsp = {
+  'jsonls',
   'lua_ls',
   'pyright',
   'ruff_lsp',
@@ -13,7 +14,6 @@ local sources_lsp = {
   -- 'arduino_language_server',
   -- 'docker-compose-language-server',
   -- 'dockerfile-language-server',
-  -- 'jsonls',
   -- 'julials',
   -- 'yamlls',
 }
@@ -77,7 +77,9 @@ return {
             diagnostics.ruff,
             diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
             diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
-            diagnostics.yamllint,
+            diagnostics.yamllint.with({
+              extra_args = { '--config-data', '{extends: default, rules: {document-start: {present: false}}}' },
+            }),
             formatting.black,
             formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
             formatting.jq,
@@ -143,12 +145,12 @@ return {
         end
 
         local servers = {
+          'jsonls',
           'pyright',
           'ruff_lsp',
           'sourcery',
           -- 'docker-compose-language-server',
           -- 'dockerfile-language-server',
-          -- 'jsonls',
           -- 'julials',
           -- 'yamlls',
         }
