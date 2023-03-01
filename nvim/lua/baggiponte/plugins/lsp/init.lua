@@ -29,6 +29,7 @@ return {
 
         return {
           border = 'rounded',
+          diagnostics_format = ' #{m} • #{s} [#{c}]',
           sources = {
             -- diagnostics.semgrep,
             -- diagnostics.shellharden,
