@@ -38,8 +38,26 @@ M.servers = {
   -- 'docker-compose-language-server',
   -- 'dockerfile-language-server',
   -- 'julials',
-  -- 'yamlls',
-  jsonls = {},
+  yamlls = {
+    settings = {
+      yaml = {
+        schemas = function()
+          require('schemastore').json.schemas()
+        end,
+        validate = { enable = true },
+      },
+    },
+  },
+  jsonls = {
+    settings = {
+      json = {
+        schemas = function()
+          require('schemastore').json.schemas()
+        end,
+        validate = { enable = true },
+      },
+    },
+  },
   pyright = {},
   ruff_lsp = {},
   sourcery = {},
