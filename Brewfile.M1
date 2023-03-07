@@ -62,6 +62,8 @@ brew "gzip"
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Julia installer and version multiplexer
+brew "juliaup"
 # Handy way to save and run project-specific commands
 brew "just"
 # Simple terminal UI for git commands
@@ -78,8 +80,6 @@ brew "ncdu"
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim", args: ["HEAD"]
-# Platform built on V8 to build network applications
-brew "node"
 # Shell command parallelization utility
 brew "parallel"
 # Animated pipes terminal screensaver
@@ -94,6 +94,8 @@ brew "pyenv"
 brew "rename"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Polyglot runtime manager (asdf rust clone)
+brew "rtx"
 # Rust toolchain installer
 brew "rustup-init"
 # Blazing-fast modern Lua linter
