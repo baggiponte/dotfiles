@@ -2,7 +2,7 @@
 [user]
   name = baggiponte
   email = 57922983+baggiponte@users.noreply.github.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP1nqAUN1gTkCNAPmM5OZGeFE+58rhXiPlCaHglMdz8Y 57922983+baggiponte@users.noreply.github.com
+	signingkey = ~/.ssh/commit_signature_ed25519
 [github]
   user = baggiponte
 [init]
