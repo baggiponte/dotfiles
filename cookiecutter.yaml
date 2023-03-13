@@ -3,10 +3,15 @@ default_context:
   full_name: "Luca Baggi"
   email: "57922983+baggiponte@users.noreply.github.com"
   github_username: "baggiponte"
+  # slidev cookiecutter
+  author_name: "Luca Baggi"
+  author_github: "baggiponte"
+  author_job_title: "ML Engineer @Futura"
 cookiecutters_dir: "$XDG_CACHE_HOME/cookiecutters/"
 abbreviations:
   # gh (github), bb (bitbucket), and gl (gitlab) abbreviations are  builtin
-  py: https://github.com/baggiponte/cookiecutter-python.git
-  ds: https://github.com/baggiponte/cookiecutter-datascience.git
-  gh: https://github.com/{0}.git
-  me: https://github.com/baggiponte/{0}.git
+  gh: https://github.com/{0}
+  # personal cookiecutters
+  me: https://github.com/baggiponte/{0}
+  py: https://github.com/baggiponte/cookiecutter-python
+  slidev: https://github.com/baggiponte/cookiecutter-slidev
