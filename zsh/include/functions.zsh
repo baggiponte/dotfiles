@@ -104,7 +104,7 @@ _check_is_installed () {
     done
 }
 
-tealdeer () {
+teal () {
     _check_is_installed tldr
     tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr
 }
