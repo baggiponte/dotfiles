@@ -3,7 +3,16 @@ local icons = require('baggiponte.utils.icons').icons
 local mason = require('baggiponte.plugins.lsp.sources').mason
 
 return {
-  { 'williamboman/mason.nvim', cmd = 'Mason', opts = { ui = { border = borders } } },
+  {
+    'williamboman/mason.nvim',
+    cmd = 'Mason',
+    opts = {
+      ui = {
+        border = borders,
+        icons = { package_installed = '✓', package_uninstalled = '✗', package_pending = '⟳' },
+      },
+    },
+  },
   { 'jayp0521/mason-nvim-dap.nvim', cmd = 'Mason', opts = { ensure_installed = mason.dap } },
   { 'jayp0521/mason-null-ls.nvim', cmd = 'Mason', opts = { ensure_installed = mason.null_ls } },
   { 'smjonas/inc-rename.nvim', cmd = 'IncRename', config = true },
