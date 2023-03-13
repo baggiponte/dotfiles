@@ -24,6 +24,8 @@ brew "cmatrix"
 brew "cowsay"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# View disk space usage and delete unwanted data, fast
+brew "dua-cli"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -74,8 +76,6 @@ brew "lolcat"
 brew "luarocks"
 # Utility for directing compilation
 brew "make"
-# NCurses Disk Usage
-brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -88,8 +88,6 @@ brew "pipes-sh"
 brew "pipx"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
-# Python version management
-brew "pyenv"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
