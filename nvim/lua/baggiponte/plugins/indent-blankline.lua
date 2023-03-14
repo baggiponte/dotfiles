@@ -8,12 +8,15 @@ return {
     use_treesitter = true,
     buftype_exclude = { 'terminal' },
     filetype_exclude = {
+      'NvimTree',
       'TelescopePrompt',
       'Trouble',
-      'NvimTree',
       'fugitive',
       'help',
       'lazy',
+      'lspinfo',
+      'mason',
+      'null-ls-info',
     },
   },
 }
