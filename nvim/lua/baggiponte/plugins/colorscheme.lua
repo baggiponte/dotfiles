@@ -27,7 +27,7 @@ return {
   { 'ellisonleao/gruvbox.nvim' },
   {
     'norcalli/nvim-colorizer.lua',
-    event = 'VeryLazy',
+    cmd = 'ColorizerToggle',
     name = 'colorizer',
     config = true,
   },
