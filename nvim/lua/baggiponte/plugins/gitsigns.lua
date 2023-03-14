@@ -1,5 +1,22 @@
 return {
-  { 'tpope/vim-fugitive', event = 'VeryLazy' },
+  {
+    'tpope/vim-fugitive',
+    event = 'VeryLazy',
+    keys = {
+      {
+        '<leader>G',
+        '<cmd>Git<CR>',
+        mode = { 'n', 'v' },
+        desc = 'Fugitive: toggle [g]it status window',
+      },
+      {
+        '<leader>gc',
+        '<cmd>Git commit<CR>',
+        mode = { 'n', 'v' },
+        desc = 'Fugitive: [g]it [c]ommit',
+      },
+    },
+  },
   {
     'lewis6991/gitsigns.nvim',
     event = 'VeryLazy',
