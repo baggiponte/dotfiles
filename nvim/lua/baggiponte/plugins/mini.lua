@@ -2,7 +2,7 @@ return {
   {
     'echasnovski/mini.comment',
     version = false,
-    event = 'VeryLazy',
+    keys = { 'gcc' },
     config = function()
       require('mini.comment').setup({})
     end,
@@ -10,7 +10,7 @@ return {
   {
     'echasnovski/mini.splitjoin',
     version = false,
-    event = 'VeryLazy',
+    keys = { 'gss' },
     config = function()
       require('mini.splitjoin').setup({
         mappings = {
