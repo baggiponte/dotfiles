@@ -10,6 +10,7 @@ return {
     filetype_exclude = {
       'TelescopePrompt',
       'Trouble',
+      'NvimTree',
       'fugitive',
       'help',
       'lazy',
