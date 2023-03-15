@@ -4,7 +4,7 @@ local dependencies = {
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-nvim-lua' },
   { 'hrsh7th/cmp-path' },
-  { 'amarakon/nvim-cmp-buffer-lines' },
+  { 'amarakon/nvim-cmp-buffer-lines', name = 'cmp-buffer-lines' },
   { 'saadparwaiz1/cmp_luasnip', name = 'cmp-luasnip' },
   {
     'zbirenbaum/copilot.lua',
