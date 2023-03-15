@@ -43,6 +43,18 @@ return {
       symbols = {
         separator = '',
       },
+      exclude_filetypes = {
+        'NvimTree',
+        'TelescopePrompt',
+        'Trouble',
+        'fugitive',
+        'help',
+        'lazy',
+        'lspinfo',
+        'mason',
+        'null-ls-info',
+        'toggleterm',
+      },
     },
   },
   {
