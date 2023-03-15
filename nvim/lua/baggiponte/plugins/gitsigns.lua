@@ -67,16 +67,16 @@ return {
         expr = true,
       },
     },
-    config = function()
-      require('gitsigns').setup({
-        signs = {
-          add = { hl = 'GitGutterAdd', text = '|' },
-          change = { hl = 'GitGutterChange', text = '|' },
-          delete = { hl = 'GitGutterDelete', text = '_' },
-          topdelete = { hl = 'GitGutterDelete', text = '‾' },
-          changedelete = { hl = 'GitGutterChange', text = '~' },
-        },
-      })
-    end,
+    opts = {
+      signs = {
+        add = { hl = 'GitGutterAdd', text = '|' },
+        change = { hl = 'GitGutterChange', text = '|' },
+        delete = { hl = 'GitGutterDelete', text = '_' },
+        topdelete = { hl = 'GitGutterDelete', text = '‾' },
+        changedelete = { hl = 'GitGutterChange', text = '~' },
+      },
+      current_line_blame = true,
+      preview_config = { border = 'round' },
+    },
   },
 }
