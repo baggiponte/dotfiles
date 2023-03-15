@@ -25,8 +25,24 @@ return {
     },
     opts = {
       lightbulb = { enable = false },
+      symbol_in_winbar = { enable = false },
       beacon = { enable = false },
       ui = { border = 'rounded', code_action = icons.diagnostics.Hint },
+    },
+  },
+  {
+    'utilyre/barbecue.nvim',
+    event = 'VeryLazy',
+    name = 'barbecue',
+    version = '*',
+    dependencies = {
+      'SmiteshP/nvim-navic',
+      'nvim-tree/nvim-web-devicons', -- optional dependency
+    },
+    opts = {
+      symbols = {
+        separator = '',
+      },
     },
   },
   {
