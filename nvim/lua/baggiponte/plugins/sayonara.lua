@@ -1,13 +1,18 @@
 return {
   'mhinz/vim-sayonara',
-  event = 'VeryLazy',
-  config = function()
-    vim.keymap.set('n', 'q', [[<cmd>Sayonara<cr>]], {
+  cmd = 'Sayonara',
+  keys = {
+    {
+      'q',
+      '<cmd>Sayonara<CR>',
+      mode = { 'n', 'v' },
       desc = '[q]uit current buffer with Sayonara',
-    })
-
-    vim.keymap.set('n', 'Q', [[<cmd>Sayonara!<cr>]], {
-      desc = '[Q]uit current buffer with Sayonara (force)',
-    })
-  end,
+    },
+    {
+      'Q',
+      '<cmd>Sayonara!<CR>',
+      mode = { 'n', 'v' },
+      desc = 'Force [Q]uit current buffer with Sayonara',
+    },
+  },
 }
