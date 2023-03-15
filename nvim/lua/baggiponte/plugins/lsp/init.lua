@@ -48,6 +48,7 @@ return {
         'TelescopePrompt',
         'Trouble',
         'fugitive',
+        'gitcommit',
         'help',
         'lazy',
         'lspinfo',
