@@ -18,10 +18,14 @@ return {
   { 'smjonas/inc-rename.nvim', cmd = 'IncRename', config = true },
   {
     'glepnir/lspsaga.nvim',
-    event = 'VeryLazy',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    cmd = { 'Lspsaga' },
+    dependencies = {
+      { 'nvim-tree/nvim-web-devicons' },
+      { 'nvim-treesitter/nvim-treesitter' }, -- install markdown and markdown_inline parser
+    },
     opts = {
       lightbulb = { enable = false },
+      beacon = { enable = false },
       ui = { border = 'rounded', code_action = icons.diagnostics.Hint },
     },
   },
