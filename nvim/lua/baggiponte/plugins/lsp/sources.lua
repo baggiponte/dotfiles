@@ -17,17 +17,19 @@ M.mason = {
     -- 'yamlls',
   },
   null_ls = {
-    'actionlint',
-    'black',
-    'isort',
-    'jq',
-    'ruff',
-    'selene',
-    'shellcheck',
-    'shfmt',
-    'stylua',
-    'yamlfmt',
-    'yamllint',
+    'actionlint', -- linter github actions
+    'black', -- formatter python
+    'cfn-lint', -- linter cloudformation
+    'isort', -- formatter python
+    'jq', -- formatter json
+    'jsonlint', -- linter json
+    'ruff', -- linter python
+    'selene', -- linter lua
+    'shellcheck', -- linter shell
+    'shfmt', -- formatter shell
+    'stylua', -- formatter lua
+    'yamlfmt', -- formatter yaml
+    'yamllint', -- linter yaml
     -- 'semgrep',
     -- 'shellharden',
     -- 'vulture',
