@@ -12,6 +12,7 @@ return {
       'TelescopePrompt',
       'Trouble',
       'fugitive',
+      'git',
       'gitcommit',
       'help',
       'lazy',
