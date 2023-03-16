@@ -79,6 +79,8 @@ return {
           -- formatting.format_r.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
           -- formatting.styler.with({ filetypes = { 'r', 'rmd', 'quarto' } }),
           diagnostics.actionlint,
+          diagnostics.jsonlint,
+          diagnostics.cfn_lint,
           diagnostics.mypy,
           diagnostics.ruff,
           diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
