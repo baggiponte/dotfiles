@@ -7,6 +7,8 @@ default_context:
   author_name: "Luca Baggi"
   author_github: "baggiponte"
   author_job_title: "ML Engineer @Futura"
+  # futura cookiecutter
+  maintainer_name: "Luca Baggi"
 cookiecutters_dir: "$XDG_CACHE_HOME/cookiecutters/"
 abbreviations:
   # gh (github), bb (bitbucket), and gl (gitlab) abbreviations are  builtin
