@@ -1,8 +1,8 @@
 # see https://cookiecutter.readthedocs.io/en/2.0.2/advanced/user_config.html
 default_context:
-  full_name: "Luca Baggi"
+  author: "Luca Baggi"
   email: "57922983+baggiponte@users.noreply.github.com"
-  github_username: "baggiponte"
+  github_handle: "baggiponte"
   # slidev cookiecutter
   author_name: "Luca Baggi"
   author_github: "baggiponte"
@@ -15,5 +15,5 @@ abbreviations:
   gh: https://github.com/{0}
   # personal cookiecutters
   me: https://github.com/baggiponte/{0}
-  py: https://github.com/baggiponte/cookiecutter-python
+  chef: https://github.com/baggiponte/chef
   slidev: https://github.com/baggiponte/cookiecutter-slidev
