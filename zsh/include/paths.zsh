@@ -1,6 +1,6 @@
-# +-------------------------+
-# | MUST ADD TO $PATH FIRST |
-# +-------------------------+
+# +---------------------+
+# |  ADD TO $PATH FIRST |
+# +---------------------+
 
 # MUST be before any "hash" call!
 if [ "$(sysctl -n machdep.cpu.brand_string)" = "Apple M1" ]; then
@@ -16,7 +16,7 @@ fi
 # +------------------+
 
 if hash rustup-init 2>/dev/null; then
-    . "$HOME/.cargo/env"
+	. "$HOME/.cargo/env"
 fi
 
 # +------+
@@ -24,7 +24,7 @@ fi
 # +------+
 
 if hash nvim 2>/dev/null; then
-    # NOTE: exporting EDITOR=nvim will automatically run bindkey -v (vim mode)
+	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v (vim mode)
 	export EDITOR="nvim"
 	export MANPAGER="nvim +Man!"
 	export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
@@ -34,30 +34,26 @@ fi
 # | PYTHON |
 # +--------+
 
-if hash pipx 2>/dev/null; then
-	export PIPX_HOME="$XDG_DATA_HOME/pipx"
-	export PIPX_BIN_DIR="$PIPX_HOME/bin"
-	export PATH="$PIPX_BIN_DIR:$PATH"
-fi
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+# https://docs.jupyter.org/en/latest/use/jupyter-directories.html
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export JUPYTER_DATA_DIR="$XDG_DATA_HOME/jupyter"
+export JUPYTER_RUNTIME_DIR="$JUPYTER_DATA_DIR/runtime"
+
+export PIPX_HOME="$XDG_DATA_HOME/pipx"
+export PIPX_BIN_DIR="$PIPX_HOME/bin"
+export PATH="$PIPX_BIN_DIR:$PATH"
+
+export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
+export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
+export POETRY_HOME="$XDG_DATA_HOME/pypoetry"
 
 if hash pyenv 2>/dev/null; then
 	export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-	export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
-	# https://docs.jupyter.org/en/latest/use/jupyter-directories.html
-	export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-	export JUPYTER_DATA_DIR="$XDG_DATA_HOME/jupyter"
-	export JUPYTER_RUNTIME_DIR="$JUPYTER_DATA_DIR/runtime"
-
-fi
-
-if hash poetry 2>/dev/null; then
-    export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
-    export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
-    export POETRY_HOME="$XDG_DATA_HOME/pypoetry"
 fi
 
 if hash cookiecutter 2>/dev/null; then
-	export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter.yaml"
+	export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutter.yaml"
 fi
 
 # +-------+
@@ -65,7 +61,7 @@ fi
 # +-------+
 
 if hash tldr 2>/dev/null; then
-    export TEALDEER_CONFIG_DIR="$XDG_CONFIG_HOME/tealdeer"
+	export TEALDEER_CONFIG_DIR="$XDG_CONFIG_HOME/tealdeer"
 fi
 
 # +---+
@@ -77,9 +73,9 @@ if [ -d "/Library/Frameworks/R.framework/Resources" ]; then
 	export R_PROFILE_USER=$XDG_CONFIG_HOME/R/.Rprofile
 fi
 
-if ! hash R 2>/dev/null; then
-    export PATH="$PATH:/usr/local/bin"
-fi
+# if ! hash R 2>/dev/null; then
+# 	export PATH="$PATH:/usr/local/bin"
+# fi
 
 # +-----+
 # | NPM |
