@@ -2,7 +2,7 @@ return {
   {
     'echasnovski/mini.comment',
     version = false,
-    keys = { 'gcc' },
+    keys = { 'gcc', 'gc' },
     config = function()
       require('mini.comment').setup({})
     end,
