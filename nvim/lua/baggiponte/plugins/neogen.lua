@@ -1,14 +1,7 @@
 return {
   'danymat/neogen',
   dependencies = 'nvim-treesitter/nvim-treesitter',
-  keys = {
-    {
-      '<Leader>nf',
-      ":lua require('neogen').generate()<CR>",
-      silent = true,
-      noremap = true,
-    },
-  },
+  cmd = { 'Neogen' },
   opts = {
     languages = {
       python = {
