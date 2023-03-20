@@ -3,11 +3,11 @@
 # +---------+
 
 path () {
-    echo -e "${PATH//:/\\n}"
+    print -e "${PATH//:/\\n}"
 }
 
 fpath (){
-    echo "${fpath}" | tr " " "\n"
+    print "${fpath}" | tr " " "\n"
 }
 
 td () {
@@ -20,7 +20,7 @@ config () {
     if [[ "$#" -eq 0 ]]; then
         cd "$config_dir" || return 1
     else
-        cd "$config_dir/${1}" || echo "$1 is not a valid config directory."
+        cd "$config_dir/${1}" || print "$1 is not a valid config directory."
     fi
 }
 
@@ -49,7 +49,7 @@ extract() {
         *.rar)      7z x "$1"         ;; # require p7zip
         *.iso)      7z x "$1"         ;; # require p7zip
         *.Z)        uncompress "$1"   ;;
-        *)          echo "$1 cannot be extracted" ;;
+        *)          print "$1 cannot be extracted" ;;
     esac
     }
 
@@ -58,7 +58,7 @@ extract() {
         if [ -f "$file" ]; then
             ex "$file"
         else
-            echo "'$file' is not a valid file"
+            print "'$file' is not a valid file"
         fi
     done
 }
@@ -81,7 +81,7 @@ colortest () {
         fg+="$a"
         bg+="$b"
         if (( "$i" % 5 ==0 )); then
-            echo -e "$fg\\t\\t$bg"
+            print -e "$fg\\t\\t$bg"
             fg=""
             bg=""
         else
@@ -98,7 +98,7 @@ _check_is_installed () {
 
     for cmd in "$@"; do
         if ! command -v "$cmd" &>/dev/null; then
-            echo "$cmd not installed"
+            print "$cmd not installed"
             return 1
         fi
     done
@@ -176,9 +176,9 @@ fg () { _fg "$1" | pbcopy; }
 nvim-update () {
     _check_is_installed nvim
 
-    echo "updating nvim plugins..."
+    print "updating nvim plugins..."
     nvim --headless -c 'Lazy update | qall'
-    echo "done!"
+    print "done!"
 }
 
 n () {
@@ -245,7 +245,7 @@ tn () {
     target_folder=$(basename "$zoxide_result")
 
     local session_name
-    session_name=$(echo "$target_folder" | tr ' ' '_' | tr '.' '_' | tr ':' '_')
+    session_name=$(print "$target_folder" | tr ' ' '_' | tr '.' '_' | tr ':' '_')
 
     local session
     session=$(tmux list-sessions -F '#S' | grep "^$session_name$")
@@ -279,7 +279,7 @@ python-latest () {
     if [[ -n "$match" ]]; then
         print "$match"
     else
-        echo "Python version ${match} does not exist."
+        print "Python version ${match} does not exist."
         return 1
     fi
 }
@@ -295,7 +295,7 @@ pyenv-upgrade-pip () {
     for version in "${pyenv_versions[@]}"; do
         rich --print "[bold]Upgrading [cyan]${version}[/]"
         pyenv shell "$version" && pip install --upgrade pip setuptools;
-        echo
+        print
     done
 
     # go back to default pyenv python
@@ -319,9 +319,9 @@ if [ -x /Applications/RStudio.app ]; then
         if [ $(($#files)) -eq 1 ]; then
             open -a RStudio "${files[1]}"
         elif [ $(($#files)) -gt 1 ]; then
-            echo "Multiple *.Rproj files found."
+            print "Multiple *.Rproj files found."
         else
-            echo "No .Rproj file found, just launching RStudio"
+            print "No .Rproj file found, just launching RStudio"
             open -a RStudio
         fi
     }
@@ -349,23 +349,44 @@ brew-update () {
 # clean homebrew
 brew-cleanup () {
 
-    echo "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
+    # print "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
+    print "🧼 Removing unused formulae..." && brew autoremove
 
-    echo "Removing lockfiles and outdated downloads..." && brew cleanup -s
+    print "🧼 Removing lockfiles and outdated downloads..." && brew cleanup -s
 
-    # get the list of all files
-    local download_dir="$HOME/Library/Caches/Homebrew/downloads"
-    local files=("$download_dir"/*(N))
+    local brew_cachedir
+    brew_cachedir="$(brew --cache)"
 
-    # if the number of files is not 0, then remove them
+    print "\n🧹 Cleaning $brew_cachedir..."
+
+    local downloaddir="$brew_cachedir/downloads"
+    local caskdir="$brew_cachedir/Cask"
+
+    local formulaes=("$downloaddir"/*(N))
+    local casks=("$caskdir"/*(N))
+    local symlinks=("$brew_cachedir"/*(@N))
+
+    # if the number of formulaes is not 0, then remove them
     # see: https://unix.stackexchange.com/a/313187/402599
-    if (($#files)); then
-        echo "Removing downloads in $download_dir" && rm -- "${files[@]}"
+    if (($#formulaes)); then
+        print "📦 Removing formulae installers in $downloaddir" && rm -- "${formulaes[@]}"
     else
-        echo "No downloads to remove"
+        print "No formulae installers to remove"
     fi
 
-    echo "Dumping formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
+    if (($#casks)); then
+        print "📦 Removing cask installers in $caskdir" && rm -- "${casks[@]}"
+    else
+        print "No cask installers to remove"
+    fi
+
+    if (($#symlinks)); then
+        print "🔗 Removing symlinks in $brew_cachedir" && rm -- "${symlinks[@]}"
+    else
+        print "No symlinks to remove"
+    fi
+
+    print "Dumping formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
     if [ -s "$HOMEBREW_BUNDLE_FILE" ]; then
         mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
     fi
@@ -374,8 +395,8 @@ brew-cleanup () {
 
 brew-graph () {
     brew list -1 --formula | while read -r cask; do
-    echo -ne "\x1B[1;34m $cask \x1B[0m"
+    print -ne "\x1B[1;34m $cask \x1B[0m"
     brew uses "$cask" --installed | awk '{printf(" %s ", $0)}'
-    echo ""
+    print ""
     done
 }
