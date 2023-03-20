@@ -18,7 +18,7 @@ if [[ $(command -v arduino-cli) && ! -s $XDG_CACHE_HOME/zsh/zfunc/_arduino-cli ]
 fi
 
 if [[ $(command -v rustup) && ! -s $XDG_CACHE_HOME/zsh/zfunc/_rustup ]]; then
-    rustup completions zsh >"${XDG_CACHE_HOME}/zsh/zfunc/_rustup"
+	rustup completions zsh >"${XDG_CACHE_HOME}/zsh/zfunc/_rustup"
 fi
 
 # comment out if using zim's completion zmodule
@@ -36,8 +36,6 @@ command -v python >/dev/null && eval "$(python -m pip completion --zsh)"        
 # +-------+
 
 # hook binaries into zsh
-# command -v pyenv >/dev/null && eval "$(pyenv init -)"                               # python version manager
-# command -v pyenv-virtualenv-init >/dev/null && eval "$(pyenv virtualenv-init -)"    # virtualenv manager plugin for pyenv
-command -v direnv >/dev/null && eval "$(direnv hook zsh)"                           # load project specific env variables
-command -v rtx >/dev/null && eval "$(rtx activate zsh)"                             # hook rtx
-command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd=j)"                   # autojump between directories; it's jump, not autojump!
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"         # load project specific env variables
+command -v rtx >/dev/null && eval "$(rtx activate zsh)"           # hook rtx
+command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd=j)" # autojump between directories; it's jump, not autojump!
