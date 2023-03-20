@@ -369,24 +369,24 @@ brew-cleanup () {
     # if the number of formulaes is not 0, then remove them
     # see: https://unix.stackexchange.com/a/313187/402599
     if (($#formulaes)); then
-        print "📦 Removing formulae installers in $downloaddir" && rm -- "${formulaes[@]}"
+        print "* 📦 Removing formulae installers in $downloaddir" && rm -- "${formulaes[@]}"
     else
-        print "No formulae installers to remove"
+        print "* No formulae installers to remove"
     fi
 
     if (($#casks)); then
-        print "📦 Removing cask installers in $caskdir" && rm -- "${casks[@]}"
+        print "* 📦 Removing cask installers in $caskdir" && rm -- "${casks[@]}"
     else
-        print "No cask installers to remove"
+        print "* No cask installers to remove"
     fi
 
     if (($#symlinks)); then
-        print "🔗 Removing symlinks in $brew_cachedir" && rm -- "${symlinks[@]}"
+        print "* 🔗 Removing symlinks in $brew_cachedir" && rm -- "${symlinks[@]}"
     else
-        print "No symlinks to remove"
+        print "* No symlinks to remove"
     fi
 
-    print "Dumping formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
+    print "\n💾 Dumping formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
     if [ -s "$HOMEBREW_BUNDLE_FILE" ]; then
         mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
     fi
