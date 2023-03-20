@@ -5,7 +5,6 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
-tap "rundel/quarto-cli"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -86,8 +85,6 @@ brew "parallel"
 brew "pipes-sh"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Framework for managing multi-language pre-commit hooks
-brew "pre-commit"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
@@ -126,8 +123,6 @@ brew "felixkratz/formulae/sketchybar"
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
-# Scientific and technical publishing system built on Pandoc
-brew "rundel/quarto-cli/quarto"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Enable Windows-like alt-tab
