@@ -5,15 +5,15 @@ M.mason = {
     'python',
   },
   lsp = {
+    'docker-compose-language-server',
+    'dockerfile-language-server',
     'jsonls',
     'lua_ls',
     'pyright',
     'ruff_lsp',
-    -- 'sourcery',
     -- 'arduino_language_server',
-    -- 'docker-compose-language-server',
-    -- 'dockerfile-language-server',
     -- 'julials',
+    -- 'sourcery',
     -- 'yamlls',
   },
   null_ls = {
@@ -37,6 +37,10 @@ M.mason = {
 }
 
 M.servers = {
+  pyright = {},
+  ruff_lsp = {},
+  docker_compose_language_service = {},
+  dockerls = {},
   yamlls = {
     settings = {
       yaml = {
@@ -57,8 +61,6 @@ M.servers = {
       },
     },
   },
-  pyright = {},
-  ruff_lsp = {},
   rust_analyzer = {
     cmd = {
       'rustup',
@@ -77,8 +79,6 @@ M.servers = {
       },
     },
   },
-  -- 'docker-compose-language-server' = {},
-  -- 'dockerfile-language-server' = {},
   -- 'julials' = {},
   -- sourcery = {},
   -- r_language_server = {
