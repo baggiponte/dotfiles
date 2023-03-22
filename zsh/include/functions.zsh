@@ -143,7 +143,7 @@ _fzf_preview () {
 }
 
 # find files and pipe in fzf preview
-_ff () {
+_fuzzy_find_file () {
     _check_is_installed fd
 
     local pattern="${1:-"."}"
@@ -161,7 +161,7 @@ _ff () {
         | _fzf_preview
 }
 
-ff () { _ff "$1" | pbcopy; }
+ff () { _fuzzy_find_file "$1" | pbcopy; }
 
 # grep string and pipe in fzf preview
 _fg () {
@@ -197,7 +197,7 @@ n () {
 nn () {
     _check_is_installed nvim
 
-    nvim "$(_ff "$1")"
+    nvim "$(_fuzzy_find_file "$1")"
 }
 
 # open list of files that contain the match
