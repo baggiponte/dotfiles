@@ -212,7 +212,7 @@ zoxide-clean () {
 }
 
 # open zoxide dir
-o () {
+jj () {
     _check_is_installed nvim zoxide
 
     local query="$1"
