@@ -5,8 +5,7 @@ M.mason = {
     'python',
   },
   lsp = {
-    'docker-compose-language-server',
-    'dockerfile-language-server',
+    'dockerls',
     'jsonls',
     'lua_ls',
     'pyright',
@@ -39,7 +38,6 @@ M.mason = {
 M.servers = {
   pyright = {},
   ruff_lsp = {},
-  docker_compose_language_service = {},
   dockerls = {},
   yamlls = {
     settings = {
@@ -74,12 +72,12 @@ M.servers = {
       Lua = {
         runtime = { version = 'LuaJIT' }, -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         diagnostics = { globals = { 'vim' } }, -- Get the language server to recognize the `vim` global
-        workspace = { checkThirdParty = false },
         telemetry = { enable = false }, -- Do not send telemetry data containing a randomized but unique identifier
+        workspace = { checkThirdParty = false },
       },
     },
   },
-  -- 'julials' = {},
+  -- julials = {},
   -- sourcery = {},
   -- r_language_server = {
   --   filetypes = { 'r', 'rmd', 'quarto' },
