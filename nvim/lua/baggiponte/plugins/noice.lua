@@ -2,10 +2,19 @@ return {
   {
     'folke/noice.nvim',
     event = 'VeryLazy',
-    dependencies = { 'MunifTanjim/nui.nvim' },
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      {
+        'rcarriga/nvim-notify',
+        opts = {
+          render = 'compact',
+          stages = 'slide',
+        },
+      },
+    },
     opts = {
       cmdline = { enabled = true },
-      messages = { enabled = false },
+      messages = { enabled = true },
       lsp = {
         progress = { enabled = false },
         override = {
