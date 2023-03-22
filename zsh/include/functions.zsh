@@ -235,6 +235,11 @@ jj () {
     nvim -c "Telescope find_files"
 }
 
+jk () {
+    _zoxide_with_preview "$1"
+    nvim -c "Telescope live_grep"
+}
+
 tn () {
     _check_is_installed tmux zoxide
 
