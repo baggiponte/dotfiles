@@ -249,6 +249,11 @@ jk () {
     nvim -c "Telescope live_grep"
 }
 
+jl () {
+    _zoxide_with_preview "$1"
+    lazygit
+}
+
 tn () {
     _check_is_installed tmux zoxide
 
