@@ -21,15 +21,17 @@ if [[ $(command -v rustup) && ! -s $XDG_CACHE_HOME/zsh/zfunc/_rustup ]]; then
 	rustup completions zsh >"${XDG_CACHE_HOME}/zsh/zfunc/_rustup"
 fi
 
+[ -f $ZDOTDIR/include/fzf.zsh ] && source "$ZDOTDIR/include/fzf.zsh"
+
 # comment out if using zim's completion zmodule
 autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
 autoload -Uz bashcompinit && bashcompinit
 
 # `eval` commands are run **after** compinit
 # completions
-command -v cz >/dev/null && eval "$(register-python-argcomplete cz)"                # conventional commits + semver + keep a changelog
-command -v pipx >/dev/null && eval "$(register-python-argcomplete pipx)"            # autocompletion for pipx
-command -v python >/dev/null && eval "$(python -m pip completion --zsh)"            # autocompletion for pip
+command -v cz >/dev/null && eval "$(register-python-argcomplete cz)"     # conventional commits + semver + keep a changelog
+command -v pipx >/dev/null && eval "$(register-python-argcomplete pipx)" # autocompletion for pipx
+command -v python >/dev/null && eval "$(python -m pip completion --zsh)" # autocompletion for pip
 
 # +-------+
 # | HOOKS |
