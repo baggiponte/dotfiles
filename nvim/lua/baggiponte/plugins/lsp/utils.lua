@@ -14,6 +14,8 @@ M.on_attach = function(_, bufnr)
     vim.lsp.buf.format({ async = true })
   end, '[f]ormat current buffer')
 
+  bufmap('[d', vim.diagnostic.goto_prev, 'Go to next [d]iagnostic')
+  bufmap(']d', vim.diagnostic.goto_next, 'Go to previous [d]iagnostic')
   bufmap('gf', '<cmd>Lspsaga lsp_finder<CR>', '[g]o [f]ind occurrences with Lspsaga')
   bufmap('gp', '<cmd>Lspsaga peek_definition<CR>', '[g]o [p]eek the definition with Lspsaga')
   bufmap('gD', vim.lsp.buf.declaration, '[g]o to [D]eclaration')
