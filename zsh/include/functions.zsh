@@ -139,7 +139,7 @@ rename-ext() {
 _fzf_preview () {
     _check_is_installed fzf
 
-    fzf --preview="bat --color=always --style='plain,changes' --line-range=:500 {}";
+    fzf --preview="bat --color=always --style='plain,changes' --line-range=:500 {}"
 }
 
 # find files and pipe in fzf preview
