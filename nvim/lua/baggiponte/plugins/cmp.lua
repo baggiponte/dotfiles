@@ -4,7 +4,6 @@ local dependencies = {
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-nvim-lua' },
   { 'hrsh7th/cmp-path' },
-  { 'amarakon/nvim-cmp-buffer-lines', name = 'cmp-buffer-lines' },
   { 'saadparwaiz1/cmp_luasnip', name = 'cmp-luasnip' },
   {
     'zbirenbaum/copilot.lua',
@@ -117,7 +116,6 @@ return {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
         { name = 'buffer' },
-        { name = 'buffer-lines' },
       },
     })
 
