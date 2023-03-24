@@ -9,6 +9,8 @@ return {
         opts = {
           render = 'compact',
           stages = 'slide',
+          top_down = false,
+          max_width = 50,
         },
       },
     },
