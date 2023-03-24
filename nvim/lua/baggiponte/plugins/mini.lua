@@ -23,6 +23,26 @@ return {
     end,
   },
   {
+    'echasnovski/mini.bufremove',
+    -- stylua: ignore
+    keys = {
+      {
+        "q",
+        function()
+          require("mini.bufremove").delete(0, false)
+        end,
+        desc = "Delete the current buffer"
+      },
+      {
+        "<C-q>",
+        function() require("mini.bufremove").delete(0, true) end,
+        desc = "Force delete the current buffer."
+      },
+      { "Q",     "<cmd>quit<CR>",  desc = "[Q]uit neovim" },
+      { "<C-Q>", "<cmd>quit!<CR>", desc = "Force [Q]uit neovim" },
+    },
+  },
+  {
     'Wansmer/treesj',
     keys = { '<space>m', '<space>j', '<space>s' },
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
