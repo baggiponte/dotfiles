@@ -96,6 +96,18 @@ n() {
 	fi
 }
 
+nn() {
+	_requires nvim
+
+	if [ -z "$1" ]; then
+		nvim -c 'Telescope live_grep'
+	elif [ -d "$1" ]; then
+		nvim -c "Telescope live_grep cwd=$1"
+	else
+		nvim -c 'Telescope current_buffer_fuzzy_find' -- "$1"
+	fi
+}
+
 # open zoxide dir
 
 zoxide-interactive() {
