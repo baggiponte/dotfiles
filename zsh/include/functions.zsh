@@ -216,7 +216,7 @@ ng () {
 }
 
 zoxide-clean () {
-    zoxide query --list | fzf --multi --sort | xargs -I % sh -c "rich --print 'deleting [blue]%[/]'; zoxide remove %"
+    zoxide query --list | fzf --multi --sort | xargs -I % sh -c "rich --print 'deleting [blue]%[/]'; zoxide remove '%'"
 }
 
 # open zoxide dir
