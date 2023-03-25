@@ -15,14 +15,16 @@
 # | ORDER MATTERS! |
 # +----------------+
 sources=(
-	"paths"       # path env variables
-	"options"     # setopt stuff
-	"zstyle"      # completion menu, etc
-	"vim"         # vim mode and double cursor
+	"paths"       # set path env variables
+	"options"     # configure zsh
+	"zstyle"      # configure completion menu, etc
+	"vim"         # enable vim modes and cursor
 	"zim"         # zsh plugin manager
-	"completions" # tab completion for installed binaries
-	"functions"   # utility functions
+	"completions" # autocompletion and hooks
+	"functions"   # frequently used functions
+	"maintenance" # maintenance functions
 	"aliases"     # utility aliases
+	"bindkeys"    # bind functions to keymaps
 )
 
 for s in "${sources[@]}"; do
