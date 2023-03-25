@@ -161,8 +161,6 @@ _fuzzy_find_file () {
         | _fzf_preview
 }
 
-ff () { _fuzzy_find_file "$1" | pbcopy; }
-
 # grep string and pipe in fzf preview
 _live_grep_file_contents () {
     _check_is_installed rg
@@ -178,8 +176,6 @@ _live_grep_file_contents () {
         --delimiter : \
         --preview 'bat --color=always {1} --highlight-line {2} --plain'
 }
-
-fg () { _live_grep_file_contents "$1" | pbcopy; }
 
 # open telescope in the current folder
 nvim-update () {
@@ -206,14 +202,17 @@ n () {
 nn () {
     _check_is_installed nvim
 
-    nvim "$(_fuzzy_find_file "$1")"
+    nvim "$(_fuzzy_find_file)"
 }
 
 # open list of files that contain the match
 ng () {
     _check_is_installed nvim
 
-    nvim "$(_live_grep_file_contents "$1")"
+    local file
+    file="$(_live_grep_file_contents | cut -d : -f 1,2)"
+
+    nvim +"${file#*:}" "${file%:*}" -c "normal zz"
 }
 
 zoxide-clean () {
