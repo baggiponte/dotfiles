@@ -18,4 +18,4 @@ _zle_zoxide() {
 }
 
 zle -N _zle_zoxide
-bindkey '^j' _zle_zoxide
+bindkey '^w' _zle_zoxide
