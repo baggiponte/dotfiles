@@ -61,7 +61,7 @@ return {
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
-    event = 'BufEnter',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = 'nvim-lua/plenary.nvim',
     opts = function()
       local diagnostics = require('null-ls').builtins.diagnostics
@@ -116,7 +116,7 @@ return {
       { 'williamboman/mason-lspconfig.nvim', opts = { ensure_installed = mason.lsp } },
       { 'b0o/SchemaStore.nvim', name = 'schemastore' },
     },
-    event = 'BufEnter',
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local servers = require('baggiponte.plugins.lsp.sources').servers
 
