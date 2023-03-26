@@ -24,7 +24,6 @@ return {
       end
     end,
   },
-  { 'ellisonleao/gruvbox.nvim' },
   {
     'norcalli/nvim-colorizer.lua',
     cmd = 'ColorizerToggle',
