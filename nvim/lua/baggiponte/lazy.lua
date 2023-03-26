@@ -11,7 +11,7 @@ local borders = require('baggiponte.utils.borders')
 
 require('lazy').setup('baggiponte.plugins', {
   defaults = { lazy = true, version = false },
-  install = { colorscheme = { 'gruvbox-material', 'gruvbox' } },
+  install = { colorscheme = { 'gruvbox-material', 'nordic' } },
   ui = { border = borders },
   checker = { enabled = false }, -- automatically check for plugin updates
   performance = {

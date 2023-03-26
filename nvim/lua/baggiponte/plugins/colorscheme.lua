@@ -25,6 +25,16 @@ return {
     end,
   },
   {
+    'AlexvZyl/nordic.nvim',
+    opts = {
+      transparent_bg = true,
+      style = 'classic',
+      telescope = {
+        style = 'classic',
+      },
+    },
+  },
+  {
     'norcalli/nvim-colorizer.lua',
     cmd = 'ColorizerToggle',
     name = 'colorizer',
