@@ -4,26 +4,36 @@ Using [`lazy.nvim`](https://github.com/folke/lazy.nvim)
 
 ## Benchmarks
 
-Baseline (no `init.lua` is loaded):
+### Using [`hyperfine`](https://github.com/sharkdp/hyperfine)
+
+Command:
 
 ```bash
-hyperfine "nvim -u NONE +qa" --warmup 5
+hyperfine "nvim -u NONE +qa" "nvim +qa" --warmup 5
 ```
+
+Results:
 
 ```
 Benchmark 1: nvim -u NONE +qa
-  Time (mean ± σ):      18.2 ms ±   0.2 ms    [User: 11.1 ms, System: 4.8 ms]
-  Range (min … max):    17.7 ms …  19.2 ms    145 runs
+  Time (mean ± σ):      18.3 ms ±   0.3 ms    [User: 10.9 ms, System: 5.0 ms]
+  Range (min … max):    17.7 ms …  19.0 ms    142 runs
+
+Benchmark 2: nvim +qa
+  Time (mean ± σ):      31.3 ms ±   0.3 ms    [User: 21.5 ms, System: 7.3 ms]
+  Range (min … max):    30.7 ms …  32.3 ms    89 runs
+
+Summary
+  'nvim -u NONE +qa' ran
+    1.71 ± 0.03 times faster than 'nvim +qa'
 ```
 
-This setup:
-
-```bash
-hyperfine "nvim +qa" --warmup 5
-```
+### [`lazy.nvim`](https://github.com/folke/lazy.nvim) native profiler
 
 ```
-Benchmark 1: nvim +qa
-  Time (mean ± σ):      41.6 ms ±   0.4 ms    [User: 29.0 ms, System: 10.1 ms]
-  Range (min … max):    41.0 ms …  43.2 ms    68 runs
+Based on the actual CPU time of the Neovim process till UIEnter.
+This is more accurate than `nvim --startuptime`.
+  LazyStart 14.31ms
+  LazyDone  28.72ms (+14.41ms)
+  UIEnter   76.93ms (+48.21ms)
 ```
