@@ -19,6 +19,8 @@ brew "bash"
 brew "bat"
 # Console Matrix
 brew "cmatrix"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Configurable talking characters in ASCII art
 brew "cowsay"
 # Load/unload environment variables based on $PWD
@@ -35,6 +37,8 @@ brew "exa"
 brew "fd"
 # Banner-like program prints strings as ASCII art
 brew "figlet"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
 # Command-line fuzzy finder written in Go
