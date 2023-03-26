@@ -137,6 +137,7 @@ return {
     config = function()
       local actions = require('telescope.actions')
 
+      require('telescope').load_extension('notify')
       require('telescope').setup({
         defaults = {
           sorting_strategy = 'descending',
