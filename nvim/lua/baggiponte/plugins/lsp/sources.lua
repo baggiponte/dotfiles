@@ -36,6 +36,7 @@ M.mason = {
 }
 
 M.servers = {
+  cssls = {},
   pyright = {},
   ruff_lsp = {},
   dockerls = {},
