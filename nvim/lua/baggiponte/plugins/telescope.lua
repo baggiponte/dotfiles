@@ -173,6 +173,9 @@ return {
           diagnostics = {
             initial_mode = 'normal',
           },
+          live_grep = {
+            additional_args = { '--hidden' },
+          },
           find_files = {
             find_command = { 'rg', '--files', '--color', 'never', '--follow' },
             initial_mode = 'insert',
