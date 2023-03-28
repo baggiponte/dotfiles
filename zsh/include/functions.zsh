@@ -13,7 +13,7 @@ _requires() {
 }
 
 # find files and pipe in fzf preview
-_fuzzy_find() {
+_fuzzy-find() {
 	_requires fd fzf bat
 
 	local pattern="$1"
@@ -32,12 +32,12 @@ _fuzzy_find() {
 			--query="$pattern"
 }
 
-fuzzy_find() {
+fuzzy-find() {
 	_requires nvim
 
 	local pattern="$1"
 	local file
-	file="$(_fuzzy_find "$pattern")"
+	file="$(_fuzzy-find "$pattern")"
 
 	if [ -z "$file" ]; then
 		return 1
@@ -47,7 +47,7 @@ fuzzy_find() {
 }
 
 # grep string and pipe in fzf preview
-_live_grep() {
+_live-grep() {
 	_requires rg fzf bat
 
 	local pattern="$1"
@@ -66,12 +66,12 @@ _live_grep() {
 			--query "$pattern"
 }
 
-live_grep() {
+live-grep() {
 	_requires nvim
 
 	local pattern="$1"
 	local file
-	file="$(_live_grep "$pattern" | cut -d : -f 1,2)"
+	file="$(_live-grep "$pattern" | cut -d : -f 1,2)"
 
 	if [ -z "$file" ]; then
 		return 1
@@ -101,11 +101,11 @@ nn() {
 	_requires nvim
 
 	if [ -z "$1" ]; then
-		nvim -c 'Telescope live_grep'
+		nvim -c 'Telescope live-grep'
 	elif [ -d "$1" ]; then
-		nvim -c "Telescope live_grep cwd=$1"
+		nvim -c "Telescope live-grep cwd=$1"
 	else
-		nvim -c 'Telescope current_buffer_fuzzy_find' -- "$1"
+		nvim -c 'Telescope current_buffer_fuzzy-find' -- "$1"
 	fi
 }
 
