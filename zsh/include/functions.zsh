@@ -53,6 +53,7 @@ _live_grep() {
 	local pattern="$1"
 
 	rg \
+		--hidden \
 		--color=always \
 		--line-number \
 		--no-heading \
