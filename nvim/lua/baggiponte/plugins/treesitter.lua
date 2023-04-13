@@ -5,7 +5,6 @@ local tsopts = {
     'dockerfile',
     'gitattributes',
     'gitignore',
-    'help',
     'json',
     'jsonc',
     'julia',
@@ -18,6 +17,7 @@ local tsopts = {
     'regex', -- needed for noice.nvim
     'sql',
     'toml',
+    'vimdoc',
     'yaml',
   },
   indent = { enable = true },
