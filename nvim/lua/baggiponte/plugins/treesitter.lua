@@ -23,7 +23,6 @@ local tsopts = {
   indent = { enable = true },
   autopairs = { enable = true },
   autotag = { enable = true },
-  playground = { enable = true },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -89,7 +88,6 @@ local tsopts = {
 }
 
 return {
-  { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' },
   {
     'nvim-treesitter/nvim-treesitter',
     event = 'UIEnter',
