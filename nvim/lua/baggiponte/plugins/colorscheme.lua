@@ -35,7 +35,7 @@ return {
     },
   },
   {
-    'norcalli/nvim-colorizer.lua',
+    'nvchad/nvim-colorizer.lua',
     cmd = 'ColorizerToggle',
     name = 'colorizer',
     config = true,
