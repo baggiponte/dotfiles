@@ -48,10 +48,6 @@ export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
 export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
 export POETRY_HOME="$XDG_DATA_HOME/pypoetry"
 
-if hash pyenv 2>/dev/null; then
-	export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-fi
-
 if hash cookiecutter 2>/dev/null; then
 	export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutter.yaml"
 fi
