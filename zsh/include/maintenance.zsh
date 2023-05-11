@@ -21,7 +21,7 @@ take () { command mkdir -p "$1" && cd "$1"; }
 mkpkg () { command mkdir -p "$1" ; touch "$1/__init__.py" ; }
 
 path () {
-    print -e "${PATH//:/\\n}"
+    print "${PATH//:/\\n}"
 }
 
 fpath (){
