@@ -68,7 +68,7 @@ if [ -x "$(brew --prefix)/bin/gzip" ]; then
 fi
 
 if hash exa 2>/dev/null; then
-	alias l="exa --all --group-directories-first --icons --oneline --ignore-glob .DS_Store"
+	alias l="exa --all --group-directories-first --icons --oneline --ignore-glob='.DS_Store|.*cache|__pycache__'"
 	alias lig="ls --git-ignore"
 	alias ll="l --long --git"
 fi
