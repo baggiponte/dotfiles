@@ -72,3 +72,7 @@ if hash exa 2>/dev/null; then
 	alias lig="ls --git-ignore"
 	alias ll="l --long --git"
 fi
+
+if hash code-insiders 2>/dev/null; then
+	alias code=code-insiders
+fi
