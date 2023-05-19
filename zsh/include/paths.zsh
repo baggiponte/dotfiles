@@ -11,6 +11,8 @@ else
 	export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile.Intel"
 fi
 
+export PATH="$PATH:/usr/local/bin"
+
 # +------------------+
 # | ENV VARS CONFIGS |
 # +------------------+
@@ -68,10 +70,6 @@ if [ -d "/Library/Frameworks/R.framework/Resources" ]; then
 	export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/.Renviron
 	export R_PROFILE_USER=$XDG_CONFIG_HOME/R/.Rprofile
 fi
-
-# if ! hash R 2>/dev/null; then
-# 	export PATH="$PATH:/usr/local/bin"
-# fi
 
 # +-----+
 # | NPM |
