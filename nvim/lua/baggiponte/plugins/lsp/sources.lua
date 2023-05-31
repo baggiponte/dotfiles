@@ -10,9 +10,9 @@ M.mason = {
     'lua_ls',
     'pyright',
     'ruff_lsp',
+    'terraformls',
     -- 'arduino_language_server',
     -- 'julials',
-    -- 'sourcery',
     -- 'yamlls',
   },
   null_ls = {
@@ -40,6 +40,8 @@ M.servers = {
   pyright = {},
   ruff_lsp = {},
   dockerls = {},
+  docker_compose_language_service = {},
+  terraformls = {},
   yamlls = {
     settings = {
       yaml = {
