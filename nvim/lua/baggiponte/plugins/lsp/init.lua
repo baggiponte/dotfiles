@@ -74,13 +74,14 @@ return {
         diagnostics_format = ' #{m} • #{s} [#{c}]',
         sources = {
           diagnostics.actionlint,
-          diagnostics.jsonlint,
           diagnostics.cfn_lint,
+          diagnostics.jsonlint,
           diagnostics.mypy,
           diagnostics.ruff,
-          diagnostics.stylelint,
           diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
           diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
+          diagnostics.stylelint,
+          diagnostics.terraform_validate,
           diagnostics.yamllint.with({ extra_args = { '-c=' .. vim.fn.expand('$XDG_CONFIG_HOME/yamllint/config') } }),
           formatting.black,
           formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
@@ -107,6 +108,7 @@ return {
               'handlebars',
             },
           }),
+          formatting.terraform_fmt,
           formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason
         },
         on_attach = function(client, bufnr)
