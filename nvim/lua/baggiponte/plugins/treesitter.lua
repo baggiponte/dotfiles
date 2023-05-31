@@ -17,6 +17,7 @@ local tsopts = {
     'regex', -- needed for noice.nvim
     'sql',
     'toml',
+    'terraform',
     'vimdoc',
     'yaml',
   },
