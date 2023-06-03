@@ -1,9 +1,17 @@
 #!/usr/bin/env sh
 
-# +-----------------------------------------------------------------------------------------------------------+
-# | if focusing stops working (`cannot focus space due to an error with the scripting-addition`)              |
-# | https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition  |
-# +-----------------------------------------------------------------------------------------------------------+
+# +--------------------------------------------------------------------------------------------------------------------------+
+# | If focusing stops working (`cannot focus space due to an error with the scripting-addition`)
+# |
+# | ```
+# | sudo visudo -f /private/etc/sudoers.d/yabai
+# | echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) \
+# |   | cut -d " " -f 1) $(which yabai) --load-sa" \
+# |   | pbcopy
+# | ```
+# |
+# | Reference: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+# +--------------------------------------------------------------------------------------------------------------------------+
 
 # +-------+
 # | Setup |
@@ -31,39 +39,39 @@ yabai -m config layout bsp
 
 # # Set all padding and gaps to 20pt (default: 0)
 yabai -m config \
-    top_padding             10                \
-    bottom_padding          35                \
-    left_padding            10                \
-    right_padding           10                \
-    window_gap              10
+	top_padding 10 \
+	bottom_padding 35 \
+	left_padding 10 \
+	right_padding 10 \
+	window_gap 10
 
 # +--------+
 # | Window |
 # +--------+
 
 # New window spawns to the right if vertical split, or bottom if horizontal split
-yabai -m config                                 \
-    window_animation_duration    0.0            \
-    window_border                on             \
-    window_border_blur           off            \
-    window_border_hidpi          on             \
-    window_border_radius         12             \
-    window_border_width          2              \
-    window_gap                   6              \
-    window_origin_display        default        \
-    window_placement             second_child   \
-    window_shadow                on             \
-    window_topmost               off
+yabai -m config \
+	window_animation_duration 0.0 \
+	window_border on \
+	window_border_blur off \
+	window_border_hidpi on \
+	window_border_radius 12 \
+	window_border_width 2 \
+	window_gap 6 \
+	window_origin_display default \
+	window_placement second_child \
+	window_shadow on \
+	window_topmost off
 
 # active and inactive windows opacity
-yabai -m config                                 \
-    window_opacity               off            \
-    window_opacity_duration      0.0            \
-    active_window_border_color   0xff89b482     \
-    active_window_opacity        1.0            \
-    normal_window_border_color   0xff555555     \
-    normal_window_opacity        0.90           \
-    insert_feedback_color        0xffd75f5f     \
+yabai -m config \
+	window_opacity off \
+	window_opacity_duration 0.0 \
+	active_window_border_color 0xff89b482 \
+	active_window_opacity 1.0 \
+	normal_window_border_color 0xff555555 \
+	normal_window_opacity 0.90 \
+	insert_feedback_color 0xffd75f5f
 
 # +--------------+
 # | Split ratios |
@@ -73,31 +81,31 @@ yabai -m config                                 \
 yabai -m config auto_balance off
 
 # Floating point value between 0 and 1 (default: 0.5)
-yabai -m config                                 \
-    split_ratio                  0.50           \
-    split_type                   auto           \
+yabai -m config \
+	split_ratio 0.50 \
+	split_type auto
 
 # +-------+
 # | Mouse |
 # +-------+
 
-yabai -m config                                 \
-    mouse_modifier              fn              \
-    mouse_action1               move            \
-    mouse_action2               resize          \
-    mouse_drop_action           swap            \
-    mouse_follows_focus         off             \
+yabai -m config \
+	mouse_modifier fn \
+	mouse_action1 move \
+	mouse_action2 resize \
+	mouse_drop_action swap \
+	mouse_follows_focus off
 
 # +-------+
 # | Rules |
 # +-------+
 
 yabai -m rule \
-    --add app="^System Preferences$" manage=off     \
-    --add app="^App Store$" manage=off              \
-    --add app="^Raycast$" manage=off                \
-    --add app="^About This Mac$" manage=off         \
-    --add app="^Karabiner-Elements$" manage=off     \
-    --add app="^Karabiner-EventViewer$" manage=off
+	--add app="^System Preferences$" manage=off \
+	--add app="^App Store$" manage=off \
+	--add app="^Raycast$" manage=off \
+	--add app="^About This Mac$" manage=off \
+	--add app="^Karabiner-Elements$" manage=off \
+	--add app="^Karabiner-EventViewer$" manage=off
 
 echo "yabai configuration loaded"
