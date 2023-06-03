@@ -16,24 +16,26 @@ Results:
 
 ```
 Benchmark 1: nvim -u NONE +qa
-  Time (mean ± σ):      18.3 ms ±   0.3 ms    [User: 10.9 ms, System: 5.0 ms]
-  Range (min … max):    17.7 ms …  19.0 ms    142 runs
+  Time (mean ± σ):      18.4 ms ±   0.3 ms    [User: 11.1 ms, System: 5.1 ms]
+  Range (min … max):    17.8 ms …  19.6 ms    142 runs
 
 Benchmark 2: nvim +qa
-  Time (mean ± σ):      31.3 ms ±   0.3 ms    [User: 21.5 ms, System: 7.3 ms]
-  Range (min … max):    30.7 ms …  32.3 ms    89 runs
+  Time (mean ± σ):      31.6 ms ±   0.4 ms    [User: 21.9 ms, System: 7.4 ms]
+  Range (min … max):    30.9 ms …  32.6 ms    86 runs
 
 Summary
   'nvim -u NONE +qa' ran
-    1.71 ± 0.03 times faster than 'nvim +qa'
+    1.72 ± 0.04 times faster than 'nvim +qa'
 ```
 
 ### [`lazy.nvim`](https://github.com/folke/lazy.nvim) native profiler
 
 ```
+Startuptime: 82ms
+
 Based on the actual CPU time of the Neovim process till UIEnter.
 This is more accurate than `nvim --startuptime`.
-  LazyStart 14.31ms
-  LazyDone  28.72ms (+14.41ms)
-  UIEnter   76.93ms (+48.21ms)
+  LazyStart 14.43ms
+  LazyDone  29.69ms (+15.27ms)
+  UIEnter   82ms (+52.31ms)
 ```
