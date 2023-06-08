@@ -142,7 +142,16 @@ return {
         defaults = {
           sorting_strategy = 'descending',
           initial_mode = 'insert',
-          file_ignore_patterns = { '__pycache__/*', '.git/', '.DS_Store', '.venv', '.*_cache', '.cache/' },
+          file_ignore_patterns = {
+            '__pycache__/*',
+            '.git/',
+            '.DS_Store',
+            '.venv',
+            '.*_cache',
+            '.cache/',
+            '.Rproj.user',
+            'renv/*',
+          },
           mappings = {
             n = {
               ['v'] = actions.file_vsplit,
