@@ -66,7 +66,7 @@ fi
 # | R |
 # +---+
 
-if [ -d "/Library/Frameworks/R.framework/Resources" ]; then
+if hash R 2>/dev/null; then
 	export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/.Renviron
 	export R_PROFILE_USER=$XDG_CONFIG_HOME/R/.Rprofile
 fi
