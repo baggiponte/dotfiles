@@ -146,8 +146,6 @@ cask "font-juliamono"
 cask "font-yanone-kaffeesatz"
 # Keyboard customizer
 cask "karabiner-elements"
-# Native app email client for Gmail
-cask "mimestream"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Collect, organize, cite, and share research sources
