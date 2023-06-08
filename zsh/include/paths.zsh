@@ -54,6 +54,10 @@ if hash cookiecutter 2>/dev/null; then
 	export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutter.yaml"
 fi
 
+if hash sam 3>/dev/null; then
+	export SAM_CLI_TELEMETRY=0
+fi
+
 # +-------+
 # | OTHER |
 # +-------+
