@@ -26,6 +26,8 @@ _fuzzy-find() {
 		-E .venv \
 		-E __pycache__ \
 		-E assets \
+		-E .Rproj.user \
+		-E renv/ \
 		-E raycast |
 		fzf \
 			--preview="bat --color=always --style='plain,changes' --line-range=:500 {}" \
