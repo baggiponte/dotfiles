@@ -1,6 +1,7 @@
 !karabiner/karabiner.json
 *.bak
 .semgrep
+asciinema
 gh
 gh-dash
 github-copilot
