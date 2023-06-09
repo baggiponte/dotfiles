@@ -10,12 +10,13 @@
 histfile="${XDG_CACHE_HOME:-"$HOME/.cache"}/zsh/history"
 
 if [ -f "$histfile" ]; then
-    touch "$histfile"
+	touch "$histfile"
 fi
 
 export HISTFILE="$histfile"
 export HISTIZE=100000
 export HISTFILESIZE=100000
+export SAVEHIST=100000
 
 unset histfile
 
