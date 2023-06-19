@@ -11,6 +11,7 @@ M.mason = {
     'pyright',
     'ruff_lsp',
     'terraformls',
+    'tflint', -- linter terraform, acts as lsp
     -- 'arduino_language_server',
     -- 'julials',
     -- 'yamlls',
@@ -27,6 +28,7 @@ M.mason = {
     'shellcheck', -- linter shell
     'shfmt', -- formatter shell
     'stylua', -- formatter lua
+    'tfsec', -- security terraform
     'yamlfmt', -- formatter yaml
     'yamllint', -- linter yaml
     -- 'semgrep',
@@ -42,6 +44,7 @@ M.servers = {
   dockerls = {},
   docker_compose_language_service = {},
   terraformls = {},
+  tflint = {},
   yamlls = {
     settings = {
       yaml = {
