@@ -25,7 +25,7 @@ M.on_attach = function(_, bufnr)
   bufmap('gr', vim.lsp.buf.references, '[g]o to [r]eferences')
   bufmap('gt', vim.lsp.buf.type_definition, '[g]o to [t]ype definition')
   bufmap('K', vim.lsp.buf.hover, 'Display documentation on hover')
-  bufmap('ca', vim.lsp.buf.code_action, 'Execute [c]ode [action]')
+  bufmap('<leader>ca', vim.lsp.buf.code_action, 'Execute [c]ode [action]')
 end
 
 M.handlers = {
