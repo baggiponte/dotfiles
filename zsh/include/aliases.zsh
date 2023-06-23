@@ -34,8 +34,8 @@ alias bd="b doctor"
 # 	alias quarto=/Applications/quarto/bin/quarto
 # fi
 
-if hash arduino-cli 2>/dev/null; then
-	alias ar=arduino-cli
+if hash rtx 2>/dev/null; then
+	alias tf=terraform
 fi
 
 if hash gh 2>/dev/null; then
@@ -58,10 +58,6 @@ if hash gmake 2>/dev/null; then
 	alias make=gmake # gnu-make (installed by homebrew)
 fi
 
-if hash dust 2>/dev/null; then
-	alias dust="dust --reverse"
-fi
-
 if [ -x "$(brew --prefix)/bin/gzip" ]; then
 	alias zip=gzip
 	alias gzip='$(brew --prefix)/bin/gzip'
@@ -75,4 +71,12 @@ fi
 
 if hash code-insiders 2>/dev/null; then
 	alias code=code-insiders
+fi
+
+if hash dust 2>/dev/null; then
+	alias dust="dust --reverse"
+fi
+
+if hash arduino-cli 2>/dev/null; then
+	alias ar=arduino-cli
 fi
