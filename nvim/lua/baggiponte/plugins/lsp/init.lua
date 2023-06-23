@@ -28,6 +28,9 @@ return {
       symbol_in_winbar = { enable = false },
       beacon = { enable = false },
       ui = { border = 'rounded', code_action = icons.diagnostics.Hint },
+      definition = {
+        vsplit = '<C-v>',
+      },
     },
   },
   {
