@@ -25,6 +25,7 @@ _fuzzy-find() {
 		-E .ruff_cache \
 		-E .venv \
 		-E __pycache__ \
+		-E .terraform \
 		-E assets \
 		-E .Rproj.user \
 		-E renv/ \
