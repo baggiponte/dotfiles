@@ -143,6 +143,7 @@ return {
           sorting_strategy = 'descending',
           initial_mode = 'insert',
           file_ignore_patterns = {
+            '**/.terraform/*',
             '__pycache__/*',
             '.git/',
             '.DS_Store',
