@@ -46,6 +46,10 @@ if hash lazygit 2>/dev/null; then
 	alias lg=lazygit
 fi
 
+if hash jupyter-lab 2>/dev/null; then
+	alias jl=jupyter-lab
+fi
+
 if hash gsed 2>/dev/null; then
 	alias sed=gsed # gnu-sed (installed by homebrew)
 fi
@@ -67,10 +71,6 @@ if hash exa 2>/dev/null; then
 	alias l="exa --all --group-directories-first --icons --oneline --ignore-glob='.DS_Store|.*cache|__pycache__'"
 	alias lig="ls --git-ignore"
 	alias ll="l --long --git"
-fi
-
-if hash code-insiders 2>/dev/null; then
-	alias code=code-insiders
 fi
 
 if hash dust 2>/dev/null; then
