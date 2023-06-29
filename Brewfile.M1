@@ -51,10 +51,6 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
-# Quickly rewrite git repository history
-brew "git-filter-repo"
 # Git extension for versioning large files
 brew "git-lfs"
 # GNU implementation of the famous stream editor
@@ -67,8 +63,6 @@ brew "gzip"
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Julia installer and version multiplexer
-brew "juliaup"
 # Handy way to save and run project-specific commands
 brew "just"
 # Simple terminal UI for git commands
@@ -103,8 +97,6 @@ brew "selene"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
-# Create beautiful image of your source code
-brew "silicon"
 # Opinionated Lua code formatter
 brew "stylua"
 # Very fast implementation of tldr in Rust
