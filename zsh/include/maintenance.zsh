@@ -217,37 +217,3 @@ rename-ext() {
 
     fd -e "$ext_old" -x mv "{}" "{.}.$ext_new"
 }
-
-# python-latest () {
-#
-#     _requires rg sed
-#
-#     local version="$1"
-#     local match
-#     match="$(pyenv install -l | sed 's/  //g' | rg "^${version}" | sort | tail --lines=1)"
-#
-#     if [[ -n "$match" ]]; then
-#         print "$match"
-#     else
-#         print "Python version ${match} does not exist."
-#         return 1
-#     fi
-# }
-#
-# pyenv-upgrade-pip () {
-#     if [[ "$#" -eq 0 ]]; then
-#         typeset -a pyenv_versions=( $(pyenv versions --bare | rg -v 'system') )
-#     else
-#         pyenv_versions=("$@")
-#     fi
-#
-#
-#     for version in "${pyenv_versions[@]}"; do
-#         rich --print "[bold]Upgrading [cyan]${version}[/]"
-#         pyenv shell "$version" && pip install --upgrade pip setuptools;
-#         print
-#     done
-#
-#     # go back to default pyenv python
-#     pyenv shell --unset
-# }
