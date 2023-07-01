@@ -36,6 +36,7 @@ alias bd="b doctor"
 
 if hash rtx 2>/dev/null; then
 	alias tf=terraform
+	alias tg=terragrunt
 fi
 
 if hash gh 2>/dev/null; then
