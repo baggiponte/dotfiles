@@ -12,14 +12,13 @@ M.mason = {
     'ruff_lsp',
     'terraformls',
     'tflint', -- linter terraform, acts as lsp
+    'yamlls',
     -- 'arduino_language_server',
     -- 'julials',
-    -- 'yamlls',
   },
   null_ls = {
     'actionlint', -- linter github actions
     'black', -- formatter python
-    'cfn-lint', -- linter cloudformation
     'isort', -- formatter python
     'jq', -- formatter json
     'jsonlint', -- linter json
@@ -29,8 +28,9 @@ M.mason = {
     'shfmt', -- formatter shell
     'stylua', -- formatter lua
     'tfsec', -- security terraform
-    'yamlfmt', -- formatter yaml
     'yamllint', -- linter yaml
+    -- 'yamlfmt', -- formatter yaml, lsp provides formatter capabilites
+    -- 'cfn-lint', -- linter cloudformation
     -- 'semgrep',
     -- 'shellharden',
     -- 'vulture',
@@ -48,19 +48,18 @@ M.servers = {
   yamlls = {
     settings = {
       yaml = {
-        schemas = function()
-          require('schemastore').yaml.schemas()
-        end,
-        validate = { enable = true },
+        schemaStore = { enable = true },
+        format = {
+          enable = true,
+          singleQuote = false,
+          bracketSpacing = false,
+        },
       },
     },
   },
   jsonls = {
     settings = {
       json = {
-        schemas = function()
-          require('schemastore').json.schemas()
-        end,
         validate = { enable = true },
       },
     },
@@ -80,6 +79,7 @@ M.servers = {
         diagnostics = { globals = { 'vim' } }, -- Get the language server to recognize the `vim` global
         telemetry = { enable = false }, -- Do not send telemetry data containing a randomized but unique identifier
         workspace = { checkThirdParty = false },
+        format = { enable = false },
       },
     },
   },
