@@ -7,6 +7,7 @@ return {
     'williamboman/mason.nvim',
     cmd = 'Mason',
     opts = {
+      PATH = 'append',
       ui = {
         border = borders,
         icons = { package_installed = '✓', package_uninstalled = '✗', package_pending = '⟳' },
@@ -77,16 +78,16 @@ return {
         diagnostics_format = ' #{m} • #{s} [#{c}]',
         sources = {
           diagnostics.actionlint,
-          diagnostics.cfn_lint,
           diagnostics.jsonlint,
           diagnostics.mypy,
           diagnostics.ruff,
           diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
           diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
-          diagnostics.stylelint,
           diagnostics.terraform_validate,
-          diagnostics.tfsec,
+          -- diagnostics.tfsec,
           diagnostics.yamllint.with({ extra_args = { '-c=' .. vim.fn.expand('$XDG_CONFIG_HOME/yamllint/config') } }),
+          -- diagnostics.cfn_lint,
+          -- diagnostics.stylelint, -- css
           formatting.black,
           formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
           formatting.jq,
