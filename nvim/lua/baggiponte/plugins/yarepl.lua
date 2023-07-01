@@ -60,7 +60,6 @@ local keys = {
 
 return {
   'milanglacier/yarepl.nvim',
-  enable = true,
   cmd = 'REPLStart',
   config = function()
     local yarepl = require('yarepl')
