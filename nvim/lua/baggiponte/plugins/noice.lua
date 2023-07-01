@@ -25,10 +25,10 @@ return {
           -- ['cmp.entry.get_documentation'] = true,
         },
       },
-    },
-    presets = {
-      inc_rename = true,
-      lsp_doc_border = true,
+      presets = {
+        inc_rename = true,
+        lsp_doc_border = true,
+      },
     },
   },
   {
