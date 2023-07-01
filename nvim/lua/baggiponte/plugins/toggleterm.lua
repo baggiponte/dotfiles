@@ -52,7 +52,6 @@ return {
     'ToggleLazyGit',
   },
   version = '*',
-  enable = false,
   keys = keys,
   config = function()
     for _, command in ipairs(commands) do
