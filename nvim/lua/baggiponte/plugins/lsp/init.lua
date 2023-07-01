@@ -1,13 +1,13 @@
 local borders = require('baggiponte.utils.borders')
-local icons = require('baggiponte.utils.icons').icons
 local mason = require('baggiponte.plugins.lsp.sources').mason
+local utils = require('baggiponte.plugins.lsp.utils')
 
 return {
   {
     'williamboman/mason.nvim',
     cmd = 'Mason',
     opts = {
-      PATH = 'append',
+      -- PATH = 'append',
       ui = {
         border = borders,
         icons = { package_installed = '✓', package_uninstalled = '✗', package_pending = '⟳' },
@@ -18,60 +18,12 @@ return {
   { 'jayp0521/mason-null-ls.nvim', cmd = 'Mason', opts = { ensure_installed = mason.null_ls } },
   { 'smjonas/inc-rename.nvim', cmd = 'IncRename', config = true },
   {
-    'glepnir/lspsaga.nvim',
-    cmd = { 'Lspsaga' },
-    dependencies = {
-      { 'nvim-tree/nvim-web-devicons' },
-      { 'nvim-treesitter/nvim-treesitter' }, -- install markdown and markdown_inline parser
-    },
-    opts = {
-      lightbulb = { enable = false },
-      symbol_in_winbar = { enable = false },
-      beacon = { enable = false },
-      ui = { border = 'rounded', code_action = icons.diagnostics.Hint },
-      definition = {
-        vsplit = '<C-v>',
-      },
-    },
-  },
-  {
-    'utilyre/barbecue.nvim',
-    event = 'VeryLazy',
-    name = 'barbecue',
-    version = '*',
-    dependencies = {
-      'SmiteshP/nvim-navic',
-      'nvim-tree/nvim-web-devicons', -- optional dependency
-    },
-    opts = {
-      symbols = {
-        separator = '',
-      },
-      exclude_filetypes = {
-        'NvimTree',
-        'TelescopePrompt',
-        'Trouble',
-        'fugitive',
-        'git',
-        'gitcommit',
-        'help',
-        'lazy',
-        'lspinfo',
-        'mason',
-        'null-ls-info',
-        'toggleterm',
-      },
-    },
-  },
-  {
     'jose-elias-alvarez/null-ls.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = 'nvim-lua/plenary.nvim',
     opts = function()
       local diagnostics = require('null-ls').builtins.diagnostics
       local formatting = require('null-ls').builtins.formatting
-
-      local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
       return {
         border = 'rounded',
@@ -114,18 +66,7 @@ return {
           formatting.terraform_fmt,
           formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason
         },
-        on_attach = function(client, bufnr)
-          if client.supports_method('textDocument/formatting') then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr })
-              end,
-            })
-          end
-        end,
+        on_attach = utils.nullls_on_attach,
       }
     end,
   },
@@ -133,7 +74,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason-lspconfig.nvim', opts = { ensure_installed = mason.lsp } },
-      { 'b0o/SchemaStore.nvim', name = 'schemastore' },
+      -- { 'b0o/SchemaStore.nvim', name = 'schemastore' },
     },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
@@ -143,9 +84,9 @@ return {
 
       for lsp, lsp_specific_configs in pairs(servers) do
         local lsp_general_configs = {
-          capabilities = require('baggiponte.plugins.lsp.utils').capabilities,
-          on_attach = require('baggiponte.plugins.lsp.utils').on_attach,
-          handlers = require('baggiponte.plugins.lsp.utils').handlers,
+          capabilities = utils.capabilities,
+          on_attach = utils.lsp_on_attach,
+          handlers = utils.handlers,
         }
 
         local lsp_configs = vim.tbl_deep_extend('force', lsp_general_configs, lsp_specific_configs)
