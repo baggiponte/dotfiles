@@ -25,12 +25,6 @@ fi
 # | NVIM |
 # +------+
 
-if hash nvim 2>/dev/null; then
-	# NOTE: exporting EDITOR=nvim will automatically run bindkey -v (vim mode)
-	export EDITOR="nvim"
-	export MANPAGER="nvim +Man!"
-	export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
-fi
 # NOTE: exporting EDITOR=nvim will automatically run bindkey -v (vim mode)
 export PATH="$PATH:$XDG_DATA_HOME/bob/nvim-bin/"
 export EDITOR="nvim"
@@ -55,9 +49,7 @@ export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
 export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
 export POETRY_HOME="$XDG_DATA_HOME/pypoetry"
 
-if hash cookiecutter 2>/dev/null; then
-	export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutter.yaml"
-fi
+export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutter.yaml"
 
 if hash sam 2>/dev/null; then
 	export SAM_CLI_TELEMETRY=0
@@ -71,36 +63,20 @@ if hash tldr 2>/dev/null; then
 	export TEALDEER_CONFIG_DIR="$XDG_CONFIG_HOME/tealdeer"
 fi
 
-# +---+
-# | R |
-# +---+
-
 if hash R 2>/dev/null; then
 	export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/.Renviron
 	export R_PROFILE_USER=$XDG_CONFIG_HOME/R/.Rprofile
 fi
-
-# +-----+
-# | NPM |
-# +-----+
 
 if hash npm 2>/dev/null; then
 	export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/.npmrc"
 	export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 fi
 
-# +----------+
-# | POSTGRES |
-# +----------+
-
 if hash psql 2>/dev/null; then
 	export PGDATA="/usr/local/var/postgres@14"
 	export PGDATABASE="postgres"
 fi
-
-# +---------+
-# | ARDUINO |
-# +---------+
 
 if hash arduino-cli 2>/dev/null; then
 	export ARDUINO_DIRECTORIES_DATA="$XDG_DATA_HOME/arduino"
