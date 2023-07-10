@@ -38,7 +38,6 @@ return {
           diagnostics.terraform_validate,
           -- diagnostics.tfsec,
           diagnostics.yamllint.with({ extra_args = { '-c=' .. vim.fn.expand('$XDG_CONFIG_HOME/yamllint/config') } }),
-          -- diagnostics.cfn_lint,
           -- diagnostics.stylelint, -- css
           formatting.black,
           formatting.isort.with({ extra_args = { '--profile=black', '--filter-files' } }),
@@ -64,7 +63,6 @@ return {
             },
           }),
           formatting.terraform_fmt,
-          formatting.yamlfmt, -- only one that cannot be installed with brew, requires go + mason
         },
         on_attach = utils.nullls_on_attach,
       }
