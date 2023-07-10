@@ -31,6 +31,11 @@ if hash nvim 2>/dev/null; then
 	export MANPAGER="nvim +Man!"
 	export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
 fi
+# NOTE: exporting EDITOR=nvim will automatically run bindkey -v (vim mode)
+export PATH="$PATH:$XDG_DATA_HOME/bob/nvim-bin/"
+export EDITOR="nvim"
+export MANPAGER="nvim +Man!"
+export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
 
 # +--------+
 # | PYTHON |
