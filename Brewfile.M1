@@ -59,8 +59,6 @@ brew "git-delta"
 brew "git-lfs"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
 # Popular GNU data compression program
 brew "gzip"
 # Command-line benchmarking tool
@@ -79,8 +77,6 @@ brew "luarocks"
 brew "make"
 # Fast, highly customisable system info script
 brew "neofetch"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim", args: ["HEAD"]
 # Shell command parallelization utility
 brew "parallel"
 # Animated pipes terminal screensaver
