@@ -9,5 +9,12 @@ return {
       desc = 'Toggle [S]pecte.nvim',
     },
   },
-  config = true,
+  opts = {
+    default = {
+      find = {
+        cmd = 'rg',
+        options = { 'hidden' },
+      },
+    },
+  },
 }
