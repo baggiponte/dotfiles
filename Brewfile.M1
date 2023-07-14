@@ -3,8 +3,14 @@ tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
+tap "homebrew/core"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
+tap "noovolari/brew"
+tap "r-lib/rig"
+tap "taiki-e/tap"
+# Run your GitHub Actions locally
+brew "act"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -27,8 +33,12 @@ brew "coreutils"
 brew "cowsay"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# Tool for exploring each layer in a docker image
+brew "dive"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
+# Pluggable and configurable code formatting platform written in Rust
+brew "dprint"
 # View disk space usage and delete unwanted data, fast
 brew "dua-cli"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -79,6 +89,8 @@ brew "make"
 brew "neofetch"
 # Shell command parallelization utility
 brew "parallel"
+# Password manager
+brew "pass"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
 # Execute binaries from Python packages in isolated environments
@@ -101,8 +113,12 @@ brew "shfmt"
 brew "stylua"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
+# Static analysis security scanner for your terraform code
+brew "tfsec"
 # Terminal multiplexer
 brew "tmux"
+# Program that allows you to count code, quickly
+brew "tokei"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
 # Internet file retriever
@@ -119,6 +135,10 @@ brew "felixkratz/formulae/sketchybar"
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
+# Install Leapp CLI
+brew "noovolari/brew/leapp-cli-darwin-arm64"
+# Simple changelog parser, written in Rust
+brew "taiki-e/tap/parse-changelog"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Enable Windows-like alt-tab
@@ -138,7 +158,15 @@ cask "font-juliamono"
 cask "font-yanone-kaffeesatz"
 # Keyboard customizer
 cask "karabiner-elements"
+# Cloud credentials manager
+cask "leapp"
 # Control your tools with a few keystrokes
 cask "raycast"
+# The R Installation Manager
+cask "rig"
+# Data science software focusing on R and Python
+cask "rstudio"
+# Music streaming service
+cask "spotify"
 # Collect, organize, cite, and share research sources
 cask "zotero"
