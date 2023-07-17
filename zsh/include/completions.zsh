@@ -2,6 +2,8 @@
 # | COMPLETIONS |
 # +-------------+
 
+[[ -d "${XDG_CACHE_HOME}/zsh/zfunc" ]] || mkdir -p "${XDG_CACHE_HOME}/zsh/zfunc"
+
 # $XDG_CACHE_HOME/zsh/zcompdump and run compinit
 fpath=(${XDG_CACHE_HOME}/zsh/zfunc $fpath) # won't work if there are quotes
 
@@ -19,6 +21,10 @@ fi
 
 if [[ $(command -v rustup) && ! -s $XDG_CACHE_HOME/zsh/zfunc/_rustup ]]; then
 	rustup completions zsh >"${XDG_CACHE_HOME}/zsh/zfunc/_rustup"
+fi
+
+if [[ $(command -v rustup) && ! -s $XDG_CACHE_HOME/zsh/zfunc/_cargo ]]; then
+	rustup completions zsh cargo >"${XDG_CACHE_HOME}/zsh/zfunc/_cargo"
 fi
 
 [ -f $ZDOTDIR/include/fzf.zsh ] && source "$ZDOTDIR/include/fzf.zsh"
