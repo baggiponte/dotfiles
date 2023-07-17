@@ -36,5 +36,5 @@ auto_update = true
 auto_update_interval_hours = 720
 
 [directories]
-cache_dir = "/Users/lucabaggi/.cache/tealdeer"
-custom_pages_dir = "/Users/lucabaggi/.local/share/tealdeer/pages/"
+cache_dir = "/Users/luca/.cache/tealdeer"
+custom_pages_dir = "/Users/luca/.local/share/tealdeer/pages/"
