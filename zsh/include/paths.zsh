@@ -18,7 +18,9 @@ export PATH="$PATH:/usr/local/bin"
 # +------------------+
 
 if hash rustup-init 2>/dev/null; then
-	. "$HOME/.cargo/env"
+	export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+	export CARGO_HOME="$XDG_DATA_HOME"/cargo
+	. "${CARGO_HOME}/env"
 fi
 
 # +------+
