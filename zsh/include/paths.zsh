@@ -17,10 +17,10 @@ export PATH="$PATH:/usr/local/bin"
 # | ENV VARS CONFIGS |
 # +------------------+
 
-if hash rustup-init 2>/dev/null; then
+if hash rustup 2>/dev/null; then
 	export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 	export CARGO_HOME="$XDG_DATA_HOME"/cargo
-	. "${CARGO_HOME}/env"
+	source "$CARGO_HOME"/env
 fi
 
 # +------+
