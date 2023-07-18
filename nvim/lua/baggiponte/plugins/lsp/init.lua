@@ -5,7 +5,8 @@ local utils = require('baggiponte.plugins.lsp.utils')
 return {
   {
     'williamboman/mason.nvim',
-    cmd = 'Mason',
+    build = ':MasonUpdate',
+    cmd = { 'Mason' },
     opts = {
       -- PATH = 'append',
       ui = {
@@ -14,9 +15,17 @@ return {
       },
     },
   },
-  { 'jayp0521/mason-nvim-dap.nvim', cmd = 'Mason', opts = { ensure_installed = mason.dap } },
-  { 'jayp0521/mason-null-ls.nvim', cmd = 'Mason', opts = { ensure_installed = mason.null_ls } },
-  { 'smjonas/inc-rename.nvim', cmd = 'IncRename', config = true },
+  {
+    'jayp0521/mason-nvim-dap.nvim',
+    cmd = { 'Mason', 'DapInstall', 'DapUninstall' },
+    opts = { ensure_installed = mason.dap },
+  },
+  {
+    'jayp0521/mason-null-ls.nvim',
+    cmd = { 'Mason', 'NullLsInstall', 'NullLsUninstall' },
+    opts = { ensure_installed = mason.null_ls },
+  },
+  { 'smjonas/inc-rename.nvim', cmd = { 'IncRename' }, config = true },
   {
     'jose-elias-alvarez/null-ls.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
