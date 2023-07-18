@@ -13,7 +13,7 @@ if ! xcode-select --print-path &>/dev/null; then
 
 	# Wait until the XCode Command Line Tools are installed
 	until xcode-select --print-path &>/dev/null; do
-		sleep 5
+		sleep 10
 	done
 
 	echo "✔︎ xcode command line tools installed!"
@@ -31,15 +31,13 @@ zdotdir_line='export ZDOTDIR="$HOME/.config/zsh"'
 
 # Check if /etc/zshenv exists
 if [[ -f "/etc/zshenv" ]]; then
-	# Check if the desired line is already present in the file
 	if ! grep -qF "$zdotdir_line" "/etc/zshenv"; then
 		echo "$zdotdir_line" | sudo tee -a "/etc/zshenv" >/dev/null
-		echo "✔︎ appended '${zdotdir_line}' to '/etc/zshenv/'"
+		echo "✔︎ appended '$zdotdir_line' to '/etc/zshenv/'"
 	fi
 else
-	# Create the file if it doesn't exist and append the line
 	echo "$zdotdir_line" | sudo tee "/etc/zshenv" >/dev/null
-	echo "✔︎ created '/etc/zshenv' and appended the '${zdotdir_line}' line."
+	echo "✔︎ created '/etc/zshenv' and appended the '$zdotdir_line' line."
 fi
 
 # +--------------+
@@ -86,7 +84,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 if ! [[ -d ~/.config ]]; then
 	git clone https://github.com/baggiponte/dotfiles ~/.config
 else
-	read -r -p "⚠️ '~/.config' already exists. Replace dotfiles (contents of '~/.config' will not be deleted)? [y/N]" response
+	read -r -p "⚠️ '~/.config' already exists. Replace dotfiles? (contents of '~/.config' will not be deleted) [y/N]" response
 	if [[ $response =~ (y|yes|Y) ]]; then
 
 		mv ~/.config ~/.config.bak
@@ -113,7 +111,7 @@ if [[ $response =~ (y|yes|Y) ]]; then
 		local brewfile="~/.config/Brewfile.Intel"
 	fi
 
-	brew bundle --file="${brewfile}"
+	brew bundle --file="$brewfile"
 else
 	echo "⚠️ skipped brew package installs"
 fi
@@ -125,7 +123,7 @@ fi
 eval "$(rtx activate zsh)"
 
 for lang in python@3.11 python@3.10 node@latest; do
-	rtx install "${lang}"
+	rtx install "$lang"
 done
 
 rtx global python@3.10 node@latest
@@ -154,7 +152,7 @@ bob use nightly
 # +---------------------+
 
 for lib in pdm cruft; do
-	pipx install "${lib}"
+	pipx install "$lib"
 done
 
 mkdir -p "$HOME/Library/Application Support/pdm"
