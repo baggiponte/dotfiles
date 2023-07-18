@@ -156,3 +156,6 @@ bob use nightly
 for lib in pdm cruft; do
 	pipx install "${lib}"
 done
+
+mkdir -p "$HOME/Library/Application Support/pdm"
+ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/config.toml"
