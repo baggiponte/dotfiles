@@ -1,1 +1,10 @@
-/Users/lucabaggi/Library/Application Support/pdm/config.toml
+cache_dir = "/Users/luca/.cache/pdm"
+
+[global_project]
+path = "/Users/luca/.local/state/pdm/global-project"
+
+[venv]
+location = "/Users/luca/.local/state/pdm/venvs"
+
+[python]
+use_pyenv = false
