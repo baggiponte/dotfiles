@@ -94,8 +94,6 @@ brew "pipx"
 brew "ripgrep"
 # Polyglot runtime manager (asdf rust clone)
 brew "rtx"
-# Rust toolchain installer
-brew "rustup-init"
 # Blazing-fast modern Lua linter
 brew "selene"
 # Static analysis and lint tool, for (ba)sh scripts
