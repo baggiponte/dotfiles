@@ -6,8 +6,6 @@ tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "r-lib/rig"
-# Run your GitHub Actions locally
-brew "act"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -92,8 +90,6 @@ brew "pass"
 brew "pipes-sh"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Perl-powered file rename script with many helpful built-ins
-brew "rename"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Polyglot runtime manager (asdf rust clone)
@@ -110,8 +106,6 @@ brew "shfmt"
 brew "stylua"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
-# Static analysis security scanner for your terraform code
-brew "tfsec"
 # Terminal multiplexer
 brew "tmux"
 # Program that allows you to count code, quickly
