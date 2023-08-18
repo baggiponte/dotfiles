@@ -38,6 +38,7 @@ autoload -Uz bashcompinit && bashcompinit
 command -v cz >/dev/null && eval "$(register-python-argcomplete cz)"     # conventional commits + semver + keep a changelog
 command -v pipx >/dev/null && eval "$(register-python-argcomplete pipx)" # autocompletion for pipx
 command -v python >/dev/null && eval "$(python -m pip completion --zsh)" # autocompletion for pip
+command -v pixi >/dev/null && eval "$(pixi completion --shell zsh)"
 
 # +-------+
 # | HOOKS |
