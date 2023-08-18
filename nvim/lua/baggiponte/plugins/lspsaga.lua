@@ -1,7 +1,7 @@
 local icons = require('baggiponte.utils.icons').icons
 
 return {
-  'glepnir/lspsaga.nvim',
+  'nvimdev/lspsaga.nvim',
   cmd = { 'Lspsaga' },
   dependencies = {
     { 'nvim-tree/nvim-web-devicons' },
