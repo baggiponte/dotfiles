@@ -137,6 +137,11 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+for version in stable nightly; do
+	rustup install "$version"
+	rustup component add rust-analyzer --toolchain="$version"
+done
+
 cargo install bob-nvim
 
 # +--------------+
@@ -151,7 +156,7 @@ bob use nightly
 # | install python CLIs |
 # +---------------------+
 
-for lib in pdm cruft; do
+for lib in pdm cruft pre-commit virtualenv; do
 	pipx install "$lib"
 done
 
