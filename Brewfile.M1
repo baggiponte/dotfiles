@@ -18,6 +18,8 @@ brew "awscli"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Yet another cross-platform graphical process/system monitor
+brew "bottom"
 # Console Matrix
 brew "cmatrix"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -90,6 +92,8 @@ brew "pass"
 brew "pipes-sh"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Package management made easy
+brew "pixi"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Polyglot runtime manager (asdf rust clone)
