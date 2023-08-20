@@ -5,6 +5,14 @@
 # | * https://thevaluable.dev/zsh-line-editor-configuration-mouseless/  |
 # +---------------------------------------------------------------------+
 
+# +-------------------------+
+# | Edit command in $EDITOR |
+# +-------------------------+
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^E' edit-command-line
+
 # +-----------+
 # | Live grep |
 # +-----------+
@@ -57,11 +65,3 @@ _zle-zoxide_live-grep() {
 
 zle -N _zle-zoxide_live-grep
 bindkey '^O' _zle-zoxide_live-grep
-
-# +-------------------------+
-# | Edit command in $EDITOR |
-# +-------------------------+
-
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey '^E' edit-command-line
