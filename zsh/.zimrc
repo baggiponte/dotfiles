@@ -1,6 +1,6 @@
 zmodule zdharma-continuum/fast-syntax-highlighting
 zmodule zsh-users/zsh-autosuggestions
 zmodule hlissner/zsh-autopair
-zmodule sindresorhus/pure --source async.zsh --source pure.zsh
+# zmodule sindresorhus/pure --source async.zsh --source pure.zsh
 
 zmodule zsh-users/zsh-completions --fpath src
