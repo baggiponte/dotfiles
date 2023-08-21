@@ -104,6 +104,8 @@ brew "selene"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Opinionated Lua code formatter
 brew "stylua"
 # Very fast implementation of tldr in Rust
