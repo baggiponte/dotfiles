@@ -40,7 +40,7 @@ return {
         sources = {
           diagnostics.actionlint,
           diagnostics.jsonlint,
-          diagnostics.mypy,
+          diagnostics.mypy.with({ only_local = '.venv/bin/' }),
           diagnostics.ruff,
           diagnostics.selene.with({ extra_args = { '--config=' .. vim.fn.expand('$XDG_CONFIG_HOME/selene.toml') } }),
           diagnostics.shellcheck.with({ filetypes = { 'sh', 'bash', 'zsh' } }),
