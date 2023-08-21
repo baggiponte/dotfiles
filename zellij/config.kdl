@@ -3,6 +3,10 @@ keybinds {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
+        unbind "Ctrl g"
+        unbind "Ctrl h"
+        unbind "Ctrl n"
+        unbind "Ctrl o"
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
@@ -246,7 +250,7 @@ theme "kanagawa"
 // The name of the default layout to load on startup
 // Default: "default"
 //
-// default_layout "compact"
+default_layout "compact"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal
