@@ -3,10 +3,10 @@ keybinds clear-defaults=true {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
-        unbind "Ctrl g"
-        unbind "Ctrl h"
-        unbind "Ctrl n"
-        unbind "Ctrl o"
+        unbind "Ctrl g" // conflicts with neovim
+        unbind "Ctrl h" // conflicts with neovim
+        unbind "Ctrl n" // conflicts with neovim
+        unbind "Ctrl o" // conflicts with neovim
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
