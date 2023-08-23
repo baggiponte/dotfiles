@@ -27,41 +27,41 @@ bindkey '^g' live-grep
 zle -N fuzzy-find
 bindkey '^f' fuzzy-find
 
-# +--------+
-# | Zoxide |
-# +--------+
-
-# see: https://unix.stackexchange.com/a/703707/402599
-_zle-zoxide() {
-	zoxide-interactive
-	zle -I
-}
-
-zle -N _zle-zoxide
-bindkey '^w' _zle-zoxide
-
-# +---------------------+
-# | Zoxide + Fuzzy find |
-# +---------------------+
-
-_zle-zoxide_fuzzy-find() {
-	zoxide-interactive
-	zle -I
-	fuzzy-find
-}
-
-zle -N _zle-zoxide_fuzzy-find
-bindkey '^P' _zle-zoxide_fuzzy-find
-
-# +--------------------+
-# | Zoxide + Live grep |
-# +--------------------+
-
-_zle-zoxide_live-grep() {
-	zoxide-interactive
-	zle -I
-	live-grep
-}
-
-zle -N _zle-zoxide_live-grep
-bindkey '^O' _zle-zoxide_live-grep
+# # +--------+
+# # | Zoxide |
+# # +--------+
+#
+# # see: https://unix.stackexchange.com/a/703707/402599
+# _zle-zoxide() {
+# 	zoxide-interactive
+# 	zle -I
+# }
+#
+# zle -N _zle-zoxide
+# bindkey '^w' _zle-zoxide
+#
+# # +---------------------+
+# # | Zoxide + Fuzzy find |
+# # +---------------------+
+#
+# _zle-zoxide_fuzzy-find() {
+# 	zoxide-interactive
+# 	zle -I
+# 	fuzzy-find
+# }
+#
+# zle -N _zle-zoxide_fuzzy-find
+# bindkey '^P' _zle-zoxide_fuzzy-find
+#
+# # +--------------------+
+# # | Zoxide + Live grep |
+# # +--------------------+
+#
+# _zle-zoxide_live-grep() {
+# 	zoxide-interactive
+# 	zle -I
+# 	live-grep
+# }
+#
+# zle -N _zle-zoxide_live-grep
+# bindkey '^O' _zle-zoxide_live-grep
