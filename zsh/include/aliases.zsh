@@ -2,9 +2,6 @@
 # | Aliases |
 # +---------+
 
-# exec $SHELL but faster
-alias e='exec $SHELL'
-
 # utilities
 alias ...="../../"
 alias text="open -a TextEdit"
@@ -45,6 +42,10 @@ fi
 
 if hash lazygit 2>/dev/null; then
 	alias lg=lazygit
+fi
+
+if hash zellij 2>/dev/null; then
+	alias z=zellij
 fi
 
 if hash jupyter-lab 2>/dev/null; then
