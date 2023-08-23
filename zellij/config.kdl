@@ -311,9 +311,15 @@ default_layout "compact"
 // mirror_session true
 
 // The folder in which Zellij will look for layouts
+// Defaults to ZELLIJ_CONFIG_DIR/layouts
+// see https://zellij.dev/documentation/configuration#where-does-zellij-look-for-the-config-file
+// or run zellij setup --check
 //
 // layout_dir "/path/to/my/layout_dir"
 
 // The folder in which Zellij will look for themes
+// Defaults to ZELLIJ_CONFIG_DIR/themes
+// see https://zellij.dev/documentation/configuration#where-does-zellij-look-for-the-config-file
+// or run zellij setup --check
 //
 // theme_dir "/path/to/my/theme_dir"
