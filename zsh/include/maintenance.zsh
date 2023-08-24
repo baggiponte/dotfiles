@@ -42,7 +42,7 @@ config () {
 brew-update () {
     _requires brew
 
-    print "\n🍺 Check out new bottles and casks from the brew! 🍺"
+    print -- "\n🍺 $fg_bold[white]Check out new bottles and casks from the brew!$reset_color 🍺"
 
     brew update && brew upgrade
 }
@@ -50,7 +50,7 @@ brew-update () {
 zim-update () {
     _requires zimfw
 
-    print "\n🐚 Let's fish some new shells! 🐚"
+    print -- "\n🐚 $fg_bold[white]Let's fish some new shells!$reset_color 🐚"
 
     zimfw upgrade && zimfw uninstall && zimfw update
 }
@@ -58,7 +58,7 @@ zim-update () {
 # clean homebrew
 brew-cleanup () {
     
-    print "\n 🧹 Cellar cleanup duties coming up! 🧼"
+    print -- "\n🧹 $fg_bold[white]Cellar cleanup duties coming up!$reset_color 🧼"
 
     local brew_cachedir
     brew_cachedir="$(brew --cache)"
@@ -70,25 +70,25 @@ brew-cleanup () {
     local symlinks=("$brew_cachedir"/*(@N))
 
     # print "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
-    print "* Removing unused formulae..." && brew autoremove
-    print "* Removing lockfiles and outdated downloads..." && brew cleanup -s
+    print -x 2 "\t* Removing unused formulae..." && brew autoremove
+    print -x 2 "\t* Removing lockfiles and outdated downloads..." && brew cleanup -s
 
-    print "* Cleaning $brew_cachedir..."
+    print -x 2 "\t* Cleaning $brew_cachedir..."
     # if the number of formulaes is not 0, then remove them
     # see: https://unix.stackexchange.com/a/313187/402599
     if (($#formulaes)); then
-        print "\t* 📦 Removing formulae installers in $downloaddir" && rm -- "${formulaes[@]}"
+        print -x 4 "\t* Removing formulae installers in $downloaddir" && rm -- "${formulaes[@]}"
     fi
 
     if (($#casks)); then
-        print "\t* 📦 Removing cask installers in $caskdir" && rm -- "${casks[@]}"
+        print -x 4 "\t* Removing cask installers in $caskdir" && rm -- "${casks[@]}"
     fi
 
     if (($#symlinks)); then
-        print "\t* 🔗 Removing symlinks in $brew_cachedir" && rm -- "${symlinks[@]}"
+        print -x 4 "\t* Removing symlinks in $brew_cachedir" && rm -- "${symlinks[@]}"
     fi
 
-    print "* Dump formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
+    print -x 2 "\t* Dump formulae and casks to $(basename "$HOMEBREW_BUNDLE_FILE")..."
     [ -s "$HOMEBREW_BUNDLE_FILE" ] && mv "$HOMEBREW_BUNDLE_FILE" "$HOMEBREW_BUNDLE_FILE.bak"
     brew bundle dump --describe
 }

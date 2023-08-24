@@ -4,6 +4,9 @@
 
 zmodload zsh/complist
 
+# colors for print
+autoload -Uz colors && colors
+
 # use vim keys to navigate the menu selection
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
