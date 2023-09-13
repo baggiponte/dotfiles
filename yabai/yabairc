@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# If focusing stops working (`cannot focus space due to an error with the scripting-addition`):
+# After an update
 #
 # ```
 # if [ -d "/private/etc/sudoers.d" ]; then
@@ -9,9 +9,9 @@
 #
 # echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) |
 # 	cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee "/private/etc/sudoers.d/yabai"
-# ```
 #
-# Then run `yabai --restart-service`
+# yabai --restart-service
+# ```
 #
 # Reference: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 
