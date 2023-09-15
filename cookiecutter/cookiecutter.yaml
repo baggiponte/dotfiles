@@ -1,12 +1,10 @@
 # see https://cookiecutter.readthedocs.io/en/2.0.2/advanced/user_config.html
 default_context:
-  # chef and slidev cookiecutter
   author_name: "Luca Baggi" # works for slidev too
   author_email: "57922983+baggiponte@users.noreply.github.com"
   author_github_handle: "baggiponte"
-  author_job_title: "ML Engineer @Futura"
-  # futura cookiecutter
-  maintainer_name: "Luca Baggi"
+  author_job_title: "ML Engineer"
+  requires_python: 3.10
 cookiecutters_dir: "$XDG_CACHE_HOME/cookiecutters/"
 abbreviations:
   # gh (github), bb (bitbucket), and gl (gitlab) abbreviations are  builtin
