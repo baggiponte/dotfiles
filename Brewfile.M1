@@ -140,6 +140,8 @@ cask "alt-tab"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
+# Tool to hide status bar icons
+cask "dozer"
 # Developer targeted fonts with a high number of glyphs
 cask "font-dejavu-sans-mono-nerd-font"
 # Developer targeted fonts with a high number of glyphs
@@ -153,9 +155,5 @@ cask "font-yanone-kaffeesatz"
 cask "karabiner-elements"
 # Control your tools with a few keystrokes
 cask "raycast"
-# The R Installation Manager
-cask "rig"
-# Data science software focusing on R and Python
-cask "rstudio"
 # Collect, organize, cite, and share research sources
 cask "zotero"
