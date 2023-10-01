@@ -1,3 +1,5 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 local dependencies = {
   { 'hrsh7th/cmp-buffer' },
   { 'hrsh7th/cmp-cmdline' },
@@ -25,8 +27,8 @@ return {
   version = false, -- last release is way too old
   event = 'InsertEnter',
   config = function()
-    local cmp = require('cmp')
-    local luasnip = require('luasnip')
+    local cmp = safe_require('cmp')
+    local luasnip = safe_require('luasnip')
 
     vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
@@ -38,7 +40,7 @@ return {
       },
       formatting = {
         format = function(_, item)
-          local icons = require('baggiponte.utils.icons').icons.kinds
+          local icons = safe_require('baggiponte.utils.icons').icons.kinds
           if icons[item.kind] then
             item.kind = icons[item.kind] .. item.kind
           end

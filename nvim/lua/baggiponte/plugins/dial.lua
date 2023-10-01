@@ -1,15 +1,17 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 local keys = {
   {
     '<C-a>',
     function()
-      require('dial.map').manipulate('increment', 'normal')
+      safe_require('dial.map').manipulate('increment', 'normal')
     end,
     desc = 'Increment number',
   },
   {
     '<C-x>',
     function()
-      require('dial.map').manipulate('decrement', 'normal')
+      safe_require('dial.map').manipulate('decrement', 'normal')
     end,
     desc = 'Decrement number',
   },
@@ -17,7 +19,7 @@ local keys = {
     '<C-a>',
     mode = { 'v' },
     function()
-      require('dial.map').manipulate('increment', 'visual')
+      safe_require('dial.map').manipulate('increment', 'visual')
     end,
     desc = 'Increment number',
   },
@@ -25,7 +27,7 @@ local keys = {
     '<C-x>',
     mode = { 'v' },
     function()
-      require('dial.map').manipulate('decrement', 'visual')
+      safe_require('dial.map').manipulate('decrement', 'visual')
     end,
     desc = 'Decrement number',
   },
@@ -33,5 +35,6 @@ local keys = {
 
 return {
   'monaqa/dial.nvim',
+  lazy = true,
   keys = keys,
 }

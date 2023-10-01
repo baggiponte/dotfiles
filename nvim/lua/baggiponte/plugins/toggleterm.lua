@@ -1,3 +1,5 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 local needs = function(executable)
   if vim.fn.executable(executable) ~= 1 then
     vim.notify(executable .. ' not found on $PATH', vim.log.levels.ERROR)
@@ -5,7 +7,7 @@ local needs = function(executable)
 end
 
 local create_terminal = function(opts)
-  local Terminal = require('toggleterm.terminal').Terminal
+  local Terminal = safe_require('toggleterm.terminal').Terminal
   return Terminal:new({ cmd = opts.command, hidden = opts.hidden, direction = opts.direction })
 end
 
@@ -71,7 +73,7 @@ return {
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead
     vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
-    require('toggleterm').setup({
+    safe_require('toggleterm').setup({
       direction = 'float',
       float_opts = {
         border = 'curved',

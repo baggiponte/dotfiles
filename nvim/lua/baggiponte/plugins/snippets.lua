@@ -1,10 +1,12 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 return {
   'L3MON4D3/LuaSnip',
   name = 'luasnip',
   dependencies = {
     'rafamadriz/friendly-snippets',
     config = function()
-      require('luasnip.loaders.from_vscode').lazy_load()
+      safe_require('luasnip.loaders.from_vscode').lazy_load()
     end,
   },
   config = function()

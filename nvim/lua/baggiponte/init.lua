@@ -1,5 +1,7 @@
-require('baggiponte.options')
-require('baggiponte.autocmds')
-require('baggiponte.keymaps')
-require('baggiponte.lazy')
-require('baggiponte.groups')
+local safe_require = require('baggiponte.utils').safe_require
+
+safe_require('baggiponte.options')
+safe_require('baggiponte.autocmds')
+safe_require('baggiponte.keymaps')
+safe_require('baggiponte.lazy')
+safe_require('baggiponte.groups')

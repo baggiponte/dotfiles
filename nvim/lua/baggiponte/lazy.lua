@@ -1,3 +1,5 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   -- bootstrap lazy.nvim
@@ -7,9 +9,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-local borders = require('baggiponte.utils.borders')
+local borders = safe_require('baggiponte.utils.borders')
 
-require('lazy').setup('baggiponte.plugins', {
+safe_require('lazy').setup('baggiponte.plugins', {
   defaults = { lazy = true, version = false },
   install = { colorscheme = { 'gruvbox-material', 'nordic' } },
   ui = { border = borders },

@@ -1,3 +1,5 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 return {
   {
     'tpope/vim-fugitive',
@@ -35,7 +37,7 @@ return {
       {
         ']h',
         function()
-          local gs = require('gitsigns')
+          local gs = safe_require('gitsigns')
 
           if vim.wo.diff then
             return ']h'
@@ -52,7 +54,7 @@ return {
       {
         '[h',
         function()
-          local gs = require('gitsigns')
+          local gs = safe_require('gitsigns')
 
           if vim.wo.diff then
             return '[h'

@@ -1,3 +1,5 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 -- disable currently unused providers (see :h provider)
 local disabled_providers = {
   'python3',
@@ -10,7 +12,7 @@ for _, lang in ipairs(disabled_providers) do
   vim.api.nvim_set_var('loaded_' .. lang .. '_provider', 0)
 end
 
-local diagnostics = require('baggiponte.utils.icons').icons.diagnostics
+local diagnostics = safe_require('baggiponte.utils.icons').icons.diagnostics
 
 for type, icon in pairs(diagnostics) do
   local hl = 'DiagnosticSign' .. type
