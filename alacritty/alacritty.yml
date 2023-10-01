@@ -1,6 +1,6 @@
 live_config_reload: true
 shell:
-  program: /opt/homebrew/bin/zsh
+  program: /opt/homebrew/bin/zellij
 window:
   option_as_alt: Both
   opacity: 0.85
