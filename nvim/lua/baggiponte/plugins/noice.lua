@@ -31,11 +31,4 @@ return {
       },
     },
   },
-  {
-    'j-hui/fidget.nvim',
-    event = 'VeryLazy',
-    opts = {
-      text = { spinner = 'dots' },
-    },
-  },
 }
