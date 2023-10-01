@@ -20,16 +20,17 @@ _fuzzy-find() {
 
 	fd -t=f -HI \
 		-E .DS_Store \
+		-E .Rproj.user \
 		-E .git \
 		-E .mypy_cache \
 		-E .ruff_cache \
+		-E .terraform \
 		-E .venv \
 		-E __pycache__ \
-		-E .terraform \
 		-E assets \
-		-E .Rproj.user \
-		-E renv/ \
-		-E raycast |
+		-E node_modules/ \
+		-E raycast \
+		-E renv/ |
 		fzf \
 			--preview="bat --color=always --style='plain,changes' --line-range=:500 {}" \
 			--query="$pattern"
