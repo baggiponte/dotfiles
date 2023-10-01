@@ -1,3 +1,5 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 local M = {}
 
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
@@ -48,6 +50,6 @@ M.handlers = {
   ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
 }
 
-M.capabilities = require('cmp_nvim_lsp').default_capabilities()
+M.capabilities = safe_require('cmp_nvim_lsp').default_capabilities()
 
 return M

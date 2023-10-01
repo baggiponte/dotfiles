@@ -1,9 +1,11 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 local keys = {
   {
     '<leader>v',
     function()
       vim.cmd([[vsp %:p:h]])
-      require('telescope.builtin').find_files({ path = '%:p:h ' })
+      safe_require('telescope.builtin').find_files({ path = '%:p:h ' })
     end,
     desc = 'Split window vertically and find files',
     silent = true,
@@ -13,7 +15,7 @@ local keys = {
     '<leader>V',
     function()
       vim.cmd([[sp %:p:h]])
-      require('telescope.builtin').find_files({ path = '%:p:h ' })
+      safe_require('telescope.builtin').find_files({ path = '%:p:h ' })
     end,
     desc = 'Split window horizontally and find files',
     silent = true,
@@ -22,7 +24,7 @@ local keys = {
   {
     '<leader>/',
     function()
-      require('telescope.builtin').current_buffer_fuzzy_find()
+      safe_require('telescope.builtin').current_buffer_fuzzy_find()
     end,
     desc = 'Telescope fuzzy find within the current buffer',
     silent = true,
@@ -31,7 +33,7 @@ local keys = {
   {
     '<leader>ff',
     function()
-      require('telescope.builtin').find_files()
+      safe_require('telescope.builtin').find_files()
     end,
     desc = 'Telescope [f]ind [f]iles',
     silent = true,
@@ -40,7 +42,7 @@ local keys = {
   {
     '<leader>fF',
     function()
-      require('telescope.builtin').git_files()
+      safe_require('telescope.builtin').git_files()
     end,
     desc = 'Telescope [f]ind within git [F]iles',
     silent = true,
@@ -49,7 +51,7 @@ local keys = {
   {
     '<leader>fg',
     function()
-      require('telescope.builtin').live_grep()
+      safe_require('telescope.builtin').live_grep()
     end,
     desc = 'Telescope [f]ind symbol using [g]rep',
     silent = true,
@@ -58,7 +60,7 @@ local keys = {
   {
     '<leader>fb',
     function()
-      require('telescope.builtin').buffers()
+      safe_require('telescope.builtin').buffers()
     end,
     desc = 'Telescope [f]ind [b]uffer',
     silent = true,
@@ -67,7 +69,7 @@ local keys = {
   {
     '<leader>fd',
     function()
-      require('telescope').extensions.file_browser.file_browser()
+      safe_require('telescope').extensions.file_browser.file_browser()
     end,
     desc = 'Telescope [f]ind in [d]irectory tree',
     silent = true,
@@ -76,7 +78,7 @@ local keys = {
   {
     '<leader>fr',
     function()
-      require('telescope').extensions.frecency.frecency()
+      safe_require('telescope').extensions.frecency.frecency()
     end,
     desc = 'Telescope find files with [fr]ecency',
     silent = true,
@@ -94,7 +96,7 @@ local keys = {
   {
     '<leader>fs',
     function()
-      require('telescope.builtin').symbols({ sources = { 'nerd' } })
+      safe_require('telescope.builtin').symbols({ sources = { 'nerd' } })
     end,
     desc = 'Telescope [f]ind [s]ymbol',
     silent = true,
@@ -107,7 +109,7 @@ return {
     'nvim-telescope/telescope-file-browser.nvim',
     cmd = 'Telescope file_browser',
     config = function()
-      require('telescope').load_extension('file_browser')
+      safe_require('telescope').load_extension('file_browser')
     end,
   },
   {
@@ -115,14 +117,14 @@ return {
     cmd = 'Telescope frecency',
     dependencies = { 'tami5/sqlite.lua' },
     config = function()
-      require('telescope').load_extension('frecency')
+      safe_require('telescope').load_extension('frecency')
     end,
   },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
     config = function()
-      require('telescope').load_extension('fzf')
+      safe_require('telescope').load_extension('fzf')
     end,
   },
   {
@@ -135,10 +137,10 @@ return {
     },
     keys = keys,
     config = function()
-      local actions = require('telescope.actions')
+      local actions = safe_require('telescope.actions')
 
-      require('telescope').load_extension('notify')
-      require('telescope').setup({
+      safe_require('telescope').load_extension('notify')
+      safe_require('telescope').setup({
         defaults = {
           sorting_strategy = 'descending',
           initial_mode = 'insert',

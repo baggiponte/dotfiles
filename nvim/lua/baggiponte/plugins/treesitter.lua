@@ -1,3 +1,5 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 local tsopts = {
   ensure_installed = {
     'arduino',
@@ -104,7 +106,7 @@ return {
     version = false, -- last release is way too old and doesn't work on Windows
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter.configs').setup(tsopts)
+      safe_require('nvim-treesitter.configs').setup(tsopts)
     end,
   },
 }

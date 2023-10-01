@@ -1,3 +1,5 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 local keys = {
   {
     '<leader>ip',
@@ -62,7 +64,7 @@ return {
   'milanglacier/yarepl.nvim',
   cmd = 'REPLStart',
   config = function()
-    local yarepl = require('yarepl')
+    local yarepl = safe_require('yarepl')
 
     yarepl.setup({
       wincmd = string.format('vertical %d split', math.floor(vim.o.columns * 0.4)),
