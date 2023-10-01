@@ -2,6 +2,6 @@ return {
   'sontungexpt/url-open',
   event = 'VeryLazy',
   cmd = 'URLOpenUnderCursor',
-  keys = { 'gx', '<cmd>URLOpenUnderCursor<cr>', desc = 'Open the url under the cursor' },
+  -- keys = { '<leader>gx', '<cmd>URLOpenUnderCursor<cr>', desc = 'Open the url under the cursor' }, -- doesn't work
   opts = {},
 }
