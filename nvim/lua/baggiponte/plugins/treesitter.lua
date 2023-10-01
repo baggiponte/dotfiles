@@ -93,7 +93,7 @@ local tsopts = {
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    event = 'UIEnter',
+    event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
       { 'RRethy/nvim-treesitter-endwise' },
       { 'nvim-treesitter/nvim-treesitter-context' },
