@@ -1,6 +1,6 @@
 return {
   'utilyre/barbecue.nvim',
-  event = 'VeryLazy',
+  event = 'LspAttach',
   name = 'barbecue',
   version = '*',
   dependencies = {
