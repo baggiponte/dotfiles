@@ -156,7 +156,7 @@ bob use nightly
 # | install python CLIs |
 # +---------------------+
 
-for lib in pdm cruft pre-commit virtualenv; do
+for lib in 'pdm[all]' cruft pre-commit virtualenv; do
 	pipx install "$lib"
 done
 
