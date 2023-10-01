@@ -1,6 +1,8 @@
-local borders = require('baggiponte.utils.borders')
-local mason = require('baggiponte.plugins.lsp.sources').mason
-local utils = require('baggiponte.plugins.lsp.utils')
+local safe_require = require('baggiponte.utils').safe_require
+
+local borders = safe_require('baggiponte.utils.borders')
+local mason = safe_require('baggiponte.plugins.lsp.sources').mason
+local utils = safe_require('baggiponte.plugins.lsp.utils')
 
 return {
   {
@@ -31,8 +33,8 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = 'nvim-lua/plenary.nvim',
     opts = function()
-      local diagnostics = require('null-ls').builtins.diagnostics
-      local formatting = require('null-ls').builtins.formatting
+      local diagnostics = safe_require('null-ls').builtins.diagnostics
+      local formatting = safe_require('null-ls').builtins.formatting
 
       return {
         border = 'rounded',
@@ -85,9 +87,9 @@ return {
     },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      local servers = require('baggiponte.plugins.lsp.sources').servers
+      local servers = safe_require('baggiponte.plugins.lsp.sources').servers
 
-      require('lspconfig.ui.windows').default_options.border = borders
+      safe_require('lspconfig.ui.windows').default_options.border = borders
 
       for lsp, lsp_specific_configs in pairs(servers) do
         local lsp_general_configs = {
@@ -98,7 +100,7 @@ return {
 
         local lsp_configs = vim.tbl_deep_extend('force', lsp_general_configs, lsp_specific_configs)
 
-        require('lspconfig')[lsp].setup(lsp_configs)
+        safe_require('lspconfig')[lsp].setup(lsp_configs)
       end
     end,
   },

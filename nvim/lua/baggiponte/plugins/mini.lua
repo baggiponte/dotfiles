@@ -1,3 +1,5 @@
+local safe_require = require('baggiponte.utils').safe_require
+
 return {
   {
     'echasnovski/mini.comment',
@@ -7,7 +9,7 @@ return {
       { 'gc', mode = { 'n', 'v' } },
     },
     config = function()
-      require('mini.comment').setup({})
+      safe_require('mini.comment').setup({})
     end,
   },
   {
@@ -15,7 +17,7 @@ return {
     version = false,
     keys = { 'gss' },
     config = function()
-      require('mini.splitjoin').setup({
+      safe_require('mini.splitjoin').setup({
         mappings = {
           toggle = 'gss',
         },
