@@ -2,21 +2,6 @@ local safe_require = require('baggiponte.utils').safe_require
 
 local M = {}
 
-local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
-M.nullls_on_attach = function(client, bufnr)
-  if client.supports_method('textDocument/formatting') then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format({ bufnr = bufnr })
-      end,
-    })
-  end
-end
-
 M.lsp_on_attach = function(_, bufnr)
   local bufmap = function(shortcut, command, desc)
     local bufopts = { desc = desc, noremap = true, silent = true, buffer = bufnr }
