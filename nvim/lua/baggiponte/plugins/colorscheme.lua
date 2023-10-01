@@ -26,6 +26,7 @@ return {
   },
   {
     'AlexvZyl/nordic.nvim',
+    lazy = true,
     opts = {
       transparent_bg = true,
       style = 'classic',
