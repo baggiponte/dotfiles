@@ -25,7 +25,7 @@ return {
         'mason',
         'null-ls-info',
       },
-      buftype = { 'terminal' },
+      buftypes = { 'terminal' },
     },
   },
 }
