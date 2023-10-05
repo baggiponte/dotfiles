@@ -43,9 +43,3 @@ vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = '[w]rite current buffer'
 vim.keymap.set('n', '<leader>Q', '<cmd>q!<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true })
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true })
 vim.keymap.set('n', '<leader>W', '<cmd>wa<CR>', { desc = '[w]rite [a]ll buffers', silent = true, noremap = true })
-vim.keymap.set(
-  'n',
-  '<leader>x',
-  '<cmd>w | so %<CR>',
-  { desc = 'Write and source current buffer', silent = true, noremap = true }
-)
