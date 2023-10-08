@@ -1,5 +1,4 @@
 local safe_require = require('baggiponte.utils').safe_require
-
 local icons = safe_require('baggiponte.utils.icons').icons
 
 return {
