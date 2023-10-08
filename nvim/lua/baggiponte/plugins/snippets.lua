@@ -3,6 +3,7 @@ local safe_require = require('baggiponte.utils').safe_require
 return {
   'L3MON4D3/LuaSnip',
   name = 'luasnip',
+  event = { 'InsertEnter' },
   dependencies = {
     'rafamadriz/friendly-snippets',
     config = function()
