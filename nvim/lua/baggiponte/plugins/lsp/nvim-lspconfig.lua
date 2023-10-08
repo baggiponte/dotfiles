@@ -5,9 +5,15 @@ local mason = safe_require('baggiponte.plugins.lsp.utils.sources').mason
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    'williamboman/mason-lspconfig.nvim',
-    cmd = { 'Mason', 'LspInstall', 'LspUninstall' },
-    opts = { ensure_installed = mason.lsp },
+    {
+      'williamboman/mason-lspconfig.nvim',
+      cmd = { 'Mason', 'LspInstall', 'LspUninstall' },
+      opts = { ensure_installed = mason.lsp },
+    },
+    {
+      'folke/neodev.nvim',
+      opts = {},
+    },
   },
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
