@@ -1,10 +1,9 @@
 local safe_require = require('baggiponte.utils').safe_require
 
 return {
-  { 'rcarriga/nvim-dap-ui', name = 'dapui', config = true },
-  { 'theHamsta/nvim-dap-virtual-text', dependencies = { 'nvim-treesitter/nvim-treesitter' }, config = true },
   {
     'mfussenegger/nvim-dap-python',
+    ft = 'python',
     config = function()
       local dappy = safe_require('dap-python')
       dappy.setup(vim.fn.stdpath('data') .. '/mason/packages/debugpy/venv/bin/python')
@@ -13,6 +12,10 @@ return {
   },
   {
     'mfussenegger/nvim-dap',
+    dependencies = {
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
+    },
     keys = {
       {
         '<F5>',
