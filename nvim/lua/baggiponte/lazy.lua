@@ -14,6 +14,7 @@ local borders = safe_require('baggiponte.utils.borders')
 safe_require('lazy').setup({
   spec = {
     { import = 'baggiponte.plugins' },
+    { import = 'baggiponte.plugins.ui' },
     { import = 'baggiponte.plugins.extras' },
   },
   defaults = { lazy = true, version = false },
