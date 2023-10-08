@@ -1,3 +1,5 @@
+gui:
+  border: 'rounded'
 git:
   overrideGpg: true
   paging:
