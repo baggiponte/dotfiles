@@ -13,16 +13,6 @@ fi
 
 export PATH="$PATH:/usr/local/bin"
 
-# +------------------+
-# | ENV VARS CONFIGS |
-# +------------------+
-
-if [[ -f $XDG_DATA_HOME/cargo/bin/rustup ]]; then
-	export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-	export CARGO_HOME="$XDG_DATA_HOME"/cargo
-	source "$CARGO_HOME"/env
-fi
-
 # +------+
 # | NVIM |
 # +------+
@@ -32,6 +22,16 @@ export PATH="$PATH:$XDG_DATA_HOME/bob/nvim-bin/"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
+
+# +------+
+# | RUST |
+# +------+
+
+if [[ -f $XDG_DATA_HOME/cargo/bin/rustup ]]; then
+	export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+	export CARGO_HOME="$XDG_DATA_HOME"/cargo
+	source "$CARGO_HOME"/env
+fi
 
 # +--------+
 # | PYTHON |
