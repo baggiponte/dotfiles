@@ -16,6 +16,7 @@ local tsopts = {
     'markdown_inline',
     'python',
     'r',
+    'rust',
     'regex', -- needed for noice.nvim
     'sql',
     'toml',
@@ -23,9 +24,6 @@ local tsopts = {
     'vimdoc',
     'yaml',
   },
-  indent = { enable = true },
-  autopairs = { enable = true },
-  -- autotag = { enable = true },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -39,6 +37,7 @@ local tsopts = {
       node_decremental = '<c-[>',
     },
   },
+  indent = { enable = true },
   rainbow = {
     enable = true,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
@@ -91,17 +90,16 @@ local tsopts = {
 }
 
 return {
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
+  { 'kylechui/nvim-surround', event = 'UIEnter', opts = {} },
+  { 'nvim-treesitter/nvim-treesitter-context', event = 'UIEnter' },
   {
     'nvim-treesitter/nvim-treesitter',
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
       { 'RRethy/nvim-treesitter-endwise' },
-      { 'nvim-treesitter/nvim-treesitter-context' },
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
       { 'p00f/nvim-ts-rainbow' },
-      { 'windwp/nvim-autopairs', config = true },
-      -- { 'windwp/nvim-ts-autotag', config = true },
-      { 'kylechui/nvim-surround', config = true },
     },
     version = false, -- last release is way too old and doesn't work on Windows
     build = ':TSUpdate',
