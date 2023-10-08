@@ -1,15 +1,19 @@
 local safe_require = require('baggiponte.utils').safe_require
 
 local borders = safe_require('baggiponte.utils.borders')
-local mason = safe_require('baggiponte.plugins.lsp.sources').mason
-local utils = safe_require('baggiponte.plugins.lsp.utils')
+local mason = safe_require('baggiponte.plugins.lsp.utils.sources').mason
+local utils = safe_require('baggiponte.plugins.lsp.utils.capabilities')
 
 return {
   'neovim/nvim-lspconfig',
-  dependencies = { 'williamboman/mason-lspconfig.nvim', opts = { ensure_installed = mason.lsp } },
+  dependencies = {
+    'williamboman/mason-lspconfig.nvim',
+    cmd = { 'Mason', 'LspInstall', 'LspUninstall' },
+    opts = { ensure_installed = mason.lsp },
+  },
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    local servers = safe_require('baggiponte.plugins.lsp.sources').servers
+    local servers = safe_require('baggiponte.plugins.lsp.utils.sources').servers
 
     safe_require('lspconfig.ui.windows').default_options.border = borders
 
@@ -24,5 +28,5 @@ return {
 
       safe_require('lspconfig')[lsp].setup(lsp_configs)
     end
-  end
+  end,
 }
