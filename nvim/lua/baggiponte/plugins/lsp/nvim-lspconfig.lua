@@ -1,8 +1,6 @@
 local safe_require = require('baggiponte.utils').safe_require
 
-local borders = safe_require('baggiponte.utils.borders')
 local mason = safe_require('baggiponte.plugins.lsp.utils.sources').mason
-local utils = safe_require('baggiponte.plugins.lsp.utils.capabilities')
 
 return {
   'neovim/nvim-lspconfig',
@@ -13,15 +11,17 @@ return {
   },
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
+    local borders = safe_require('baggiponte.utils.borders')
     local servers = safe_require('baggiponte.plugins.lsp.utils.sources').servers
+    local configs = safe_require('baggiponte.plugins.lsp.utils.configs')
 
     safe_require('lspconfig.ui.windows').default_options.border = borders
 
     for lsp, lsp_specific_configs in pairs(servers) do
       local lsp_general_configs = {
-        capabilities = utils.capabilities,
-        on_attach = utils.lsp_on_attach,
-        handlers = utils.handlers,
+        capabilities = configs.capabilities,
+        on_attach = configs.lsp_on_attach,
+        handlers = configs.handlers,
       }
 
       local lsp_configs = vim.tbl_deep_extend('force', lsp_general_configs, lsp_specific_configs)
