@@ -11,7 +11,11 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 local borders = safe_require('baggiponte.utils.borders')
 
-safe_require('lazy').setup('baggiponte.plugins', {
+safe_require('lazy').setup({
+  spec = {
+    { import = 'baggiponte.plugins' },
+    { import = 'baggiponte.plugins.extras' },
+  },
   defaults = { lazy = true, version = false },
   install = { colorscheme = { 'gruvbox-material', 'nordic' } },
   ui = { border = borders },
