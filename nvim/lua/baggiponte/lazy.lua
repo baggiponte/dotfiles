@@ -16,6 +16,7 @@ safe_require('lazy').setup({
     { import = 'baggiponte.plugins' },
     { import = 'baggiponte.plugins.ui' },
     { import = 'baggiponte.plugins.extras' },
+    { import = 'baggiponte.plugins.lsp' },
   },
   defaults = { lazy = true, version = false },
   install = { colorscheme = { 'gruvbox-material', 'nordic' } },

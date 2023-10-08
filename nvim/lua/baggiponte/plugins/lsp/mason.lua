@@ -1,7 +1,7 @@
 local safe_require = require('baggiponte.utils').safe_require
 
 local borders = safe_require('baggiponte.utils.borders')
-local mason = safe_require('baggiponte.plugins.lsp.sources').mason
+local mason = safe_require('baggiponte.plugins.lsp.utils.sources').mason
 
 return {
   {
