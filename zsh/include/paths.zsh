@@ -34,6 +34,14 @@ if [[ -f $XDG_DATA_HOME/cargo/bin/rustup ]]; then
 fi
 
 # +--------+
+# | DOCKER |
+# +--------+
+
+if command -v colima >/dev/null && command -v docker >/dev/null; then
+	export DOCKER_HOST="unix:///${HOME}/.colima/default/docker.sock"
+fi
+
+# +--------+
 # | PYTHON |
 # +--------+
 
