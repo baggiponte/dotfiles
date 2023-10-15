@@ -17,7 +17,7 @@ end
 
 return {
   'nvimtools/none-ls.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   dependencies = 'nvim-lua/plenary.nvim',
   opts = function()
     local diagnostics = safe_require('null-ls').builtins.diagnostics

@@ -16,7 +16,7 @@ return {
       opts = {},
     },
   },
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   config = function()
     local borders = safe_require('baggiponte.utils.borders')
     local servers = safe_require('baggiponte.plugins.lsp.utils.sources').servers
