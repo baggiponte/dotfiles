@@ -142,8 +142,6 @@ for version in stable nightly; do
 	rustup component add rust-analyzer --toolchain="$version"
 done
 
-cargo install bob-nvim
-
 # +--------------+
 # | install nvim |
 # +--------------+
