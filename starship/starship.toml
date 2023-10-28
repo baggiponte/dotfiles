@@ -40,6 +40,7 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [python]
+format = ' via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 style = "yellow"
 
 [cmd_duration]
