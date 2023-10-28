@@ -62,8 +62,7 @@ yabai -m config \
 	window_gap 6 \
 	window_origin_display default \
 	window_placement second_child \
-	window_shadow on \
-	window_topmost off
+	window_shadow on
 
 # active and inactive windows opacity
 yabai -m config \
