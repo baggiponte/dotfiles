@@ -14,7 +14,7 @@ _requires() {
 
 # find files and pipe in fzf preview
 _fuzzy-find() {
-	_requires fd fzf bat
+	_requires fd sk bat
 
 	local pattern="$1"
 
@@ -31,7 +31,7 @@ _fuzzy-find() {
 		-E node_modules/ \
 		-E raycast \
 		-E renv/ |
-		fzf \
+		sk \
 			--preview="bat --color=always --style='plain,changes' --line-range=:500 {}" \
 			--query="$pattern"
 }
@@ -52,7 +52,7 @@ fuzzy-find() {
 
 # grep string and pipe in fzf preview
 _live-grep() {
-	_requires rg fzf bat
+	_requires rg sk bat
 
 	local pattern="$1"
 
@@ -62,7 +62,7 @@ _live-grep() {
 		--line-number \
 		--no-heading \
 		--smart-case "${*:-}" |
-		fzf \
+		sk \
 			--ansi \
 			--color "hl:-1:underline,hl+:-1:underline:reverse" \
 			--delimiter : \
@@ -85,8 +85,8 @@ live-grep() {
 }
 
 teal() {
-	_requires tldr
-	tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr
+	_requires tldr sk
+	tldr --list | sk --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr
 }
 
 n() {
@@ -116,7 +116,7 @@ nn() {
 # open zoxide dir
 
 zoxide-interactive() {
-	_requires zoxide
+	_requires zoxide sk
 
 	local query="$1"
 	local chosen_directory
@@ -125,11 +125,10 @@ zoxide-interactive() {
 		zoxide query \
 			--exclude "$PWD" \
 			--list |
-			fzf \
+			sk \
 				--preview="exa --all --group-directories-first --icons --oneline --ignore-glob={.DS_Store,.git} {}" \
 				--height 40% \
 				--preview-window=down,40% \
-				--preview-label=" content preview " \
 				--query="$query"
 	)
 
@@ -137,44 +136,7 @@ zoxide-interactive() {
 }
 
 zoxide-clean() {
-	zoxide query --list |
-		fzf --multi --sort |
-		xargs -I % sh -c "rich --print 'deleting [blue]%[/]'; zoxide remove '%'"
-}
+    _requires zoxide sk
 
-tn() {
-	_requires tmux zoxide
-
-	local zoxide_result
-	zoxide_result=$(zoxide query "$1")
-
-	if [ "$zoxide_result" = "" ]; then
-		exit 1
-	fi
-
-	local target_folder
-	target_folder=$(basename "$zoxide_result")
-
-	local session_name
-	session_name=$(print "$target_folder" | tr ' ' '_' | tr '.' '_' | tr ':' '_')
-
-	local session
-	session=$(tmux list-sessions -F '#S' | grep "^$session_name$")
-
-	if [ "$TMUX" = "" ]; then
-		if [ "$session" = "" ]; then
-			cd "$zoxide_result" || exit 1
-			tmux new-session -s "$session_name"
-		else
-			tmux attach -t "$session"
-		fi
-	else
-		if [ "$session" = "" ]; then
-			cd "$zoxide_result" || exit 1
-			tmux new-session -d -s "$session_name"
-			tmux switch-client -t "$session_name"
-		else
-			tmux switch-client -t "$session"
-		fi
-	fi
+    zoxide remove $(zoxide query --list | sk -m)
 }
