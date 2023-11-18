@@ -1,11 +1,12 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
-local servers = safe_require('baggiponte.plugins.lsp.utils.servers')
+local servers = import('baggiponte.plugins.lsp.utils.servers')
 
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
     {
+      -- required to discover LSPs installed with Mason
       'williamboman/mason-lspconfig.nvim',
       cmd = { 'Mason', 'LspInstall', 'LspUninstall' },
       opts = { ensure_installed = vim.tbl_keys(servers) },
@@ -18,10 +19,10 @@ return {
   },
   event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   config = function()
-    local borders = safe_require('baggiponte.utils.borders')
-    local configs = safe_require('baggiponte.plugins.lsp.utils.configs')
+    local borders = import('baggiponte.utils.borders')
+    local configs = import('baggiponte.plugins.lsp.utils.configs')
 
-    safe_require('lspconfig.ui.windows').default_options.border = borders
+    import('lspconfig.ui.windows').default_options.border = borders
 
     local lsp_general_configs = {
       capabilities = configs.capabilities,
@@ -32,7 +33,7 @@ return {
     for lsp, lsp_specific_configs in pairs(servers) do
       local lsp_configs = vim.tbl_deep_extend('force', lsp_general_configs, lsp_specific_configs)
 
-      safe_require('lspconfig')[lsp].setup(lsp_configs)
+      import('lspconfig')[lsp].setup(lsp_configs)
     end
   end,
 }
