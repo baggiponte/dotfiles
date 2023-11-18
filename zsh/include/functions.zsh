@@ -12,28 +12,31 @@ _requires() {
 	done
 }
 
+ignores=(
+     "-E" ".DS_Store"
+     "-E" ".Rproj.user"
+     "-E" ".git"
+     "-E" ".mypy_cache"
+     "-E" ".ruff_cache"
+     "-E" ".terraform"
+     "-E" ".venv"
+     "-E" "__pycache__"
+     "-E" "assets"
+     "-E" "node_modules/"
+     "-E" "raycast"
+     "-E" "renv/"
+ )
+
 # find files and pipe in fzf preview
 _fuzzy-find() {
 	_requires fd sk bat
 
 	local pattern="$1"
 
-	fd -t=f -HI \
-		-E .DS_Store \
-		-E .Rproj.user \
-		-E .git \
-		-E .mypy_cache \
-		-E .ruff_cache \
-		-E .terraform \
-		-E .venv \
-		-E __pycache__ \
-		-E assets \
-		-E node_modules/ \
-		-E raycast \
-		-E renv/ |
-		sk \
-			--preview="bat --color=always --style='plain,changes' --line-range=:500 {}" \
-			--query="$pattern"
+    fd --type=file --unrestricted $ignores |
+        sk \
+            --preview="bat --color=always --style='plain,changes' --line-range=:500 {}" \
+            --query="$pattern"
 }
 
 fuzzy-find() {
