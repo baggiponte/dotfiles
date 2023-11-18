@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 local tsopts = {
   ensure_installed = {
@@ -105,7 +105,7 @@ return {
     version = false, -- last release is way too old and doesn't work on Windows
     build = ':TSUpdate',
     config = function()
-      safe_require('nvim-treesitter.configs').setup(tsopts)
+      import('nvim-treesitter.configs').setup(tsopts)
     end,
   },
 }

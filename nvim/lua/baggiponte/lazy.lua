@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -9,9 +9,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-local borders = safe_require('baggiponte.utils.borders')
+local borders = import('baggiponte.utils.borders')
 
-safe_require('lazy').setup({
+import('lazy').setup({
   spec = {
     { import = 'baggiponte.plugins' },
     { import = 'baggiponte.plugins.ui' },
