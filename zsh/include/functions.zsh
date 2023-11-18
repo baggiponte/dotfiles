@@ -12,6 +12,12 @@ requires() {
 }
 
 zellij-switcher() {
+    if [[ -v ZELLIJ ]]; then
+        print "You are inside a zellij session. Currently zellij API does not allow switching sessions."
+        print "You can use the session-switcher plugin, or exit the session and run this command again."
+        return 1
+    fi
+
     requires zellij sk
 
     local sessions
@@ -26,16 +32,31 @@ zellij-switcher() {
     session="$(sk --ansi --cmd="zellij list-sessions --short")"
 
     if [[ -z "$session" ]]; then
-      return 1
-    fi
-
-    if [[ -v ZELLIJ ]]; then
-        exit
+        return 1
     fi
 
     zellij attach "$session"
 
     return 0
+}
+
+zellij-sessionizer() {
+    if [[ -v ZELLIJ ]]; then
+        print "You are inside a zellij session. Currently zellij API does not allow switching sessions."
+        print "You can use the session-switcher plugin, or exit the session and run this command again."
+        return 1
+    fi
+
+    requires zellij sk zoxide
+
+    local dir
+    dir="$(sk --height=40% --preview-window=down,40% --cmd="zoxide query --list")"
+
+    if [[ -z "$dir" ]]; then
+        return 1
+    fi
+
+    zellij attach --create "$(basename "${dir}")" && cd "$dir"
 }
 
 ignores=(
