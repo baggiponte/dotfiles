@@ -1,7 +1,7 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
-local borders = safe_require('baggiponte.utils.borders')
-local tools = safe_require('baggiponte.plugins.lsp.utils.tools')
+local borders = import('baggiponte.utils.borders')
+local tools = import('baggiponte.plugins.lsp.utils.tools')
 
 return {
   {

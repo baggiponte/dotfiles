@@ -1,7 +1,7 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
-safe_require('baggiponte.options')
-safe_require('baggiponte.autocmds')
-safe_require('baggiponte.keymaps')
-safe_require('baggiponte.lazy')
-safe_require('baggiponte.groups')
+import('baggiponte.options')
+import('baggiponte.autocmds')
+import('baggiponte.keymaps')
+import('baggiponte.lazy')
+import('baggiponte.groups')

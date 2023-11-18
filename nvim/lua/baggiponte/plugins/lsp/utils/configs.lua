@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 local M = {}
 
@@ -35,6 +35,6 @@ M.handlers = {
   ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
 }
 
-M.capabilities = safe_require('cmp_nvim_lsp').default_capabilities()
+M.capabilities = import('cmp_nvim_lsp').default_capabilities()
 
 return M

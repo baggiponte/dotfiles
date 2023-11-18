@@ -1,6 +1,6 @@
-local safe_require = require('baggiponte.utils').safe_require
-local utils = safe_require('baggiponte.plugins.ui.lualine.utils')
-local widgets = safe_require('baggiponte.plugins.ui.lualine.widgets')
+local import = require('baggiponte.utils').import
+local utils = import('baggiponte.plugins.ui.lualine.utils')
+local widgets = import('baggiponte.plugins.ui.lualine.widgets')
 
 -- my variation on gruvbox-material
 ---@enum Palette

@@ -1,17 +1,17 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 local keys = {
   {
     '<C-a>',
     function()
-      safe_require('dial.map').manipulate('increment', 'normal')
+      import('dial.map').manipulate('increment', 'normal')
     end,
     desc = 'Increment number',
   },
   {
     '<C-x>',
     function()
-      safe_require('dial.map').manipulate('decrement', 'normal')
+      import('dial.map').manipulate('decrement', 'normal')
     end,
     desc = 'Decrement number',
   },
@@ -19,7 +19,7 @@ local keys = {
     '<C-a>',
     mode = { 'v' },
     function()
-      safe_require('dial.map').manipulate('increment', 'visual')
+      import('dial.map').manipulate('increment', 'visual')
     end,
     desc = 'Increment number',
   },
@@ -27,7 +27,7 @@ local keys = {
     '<C-x>',
     mode = { 'v' },
     function()
-      safe_require('dial.map').manipulate('decrement', 'visual')
+      import('dial.map').manipulate('decrement', 'visual')
     end,
     desc = 'Decrement number',
   },

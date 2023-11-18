@@ -1,11 +1,11 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 return {
   {
     '<leader>v',
     function()
       vim.cmd([[vsp %:p:h]])
-      safe_require('telescope.builtin').find_files({ path = '%:p:h ' })
+      import('telescope.builtin').find_files({ path = '%:p:h ' })
     end,
     desc = 'Split window vertically and find files',
     silent = true,
@@ -15,7 +15,7 @@ return {
     '<leader>V',
     function()
       vim.cmd([[sp %:p:h]])
-      safe_require('telescope.builtin').find_files({ path = '%:p:h ' })
+      import('telescope.builtin').find_files({ path = '%:p:h ' })
     end,
     desc = 'Split window horizontally and find files',
     silent = true,
@@ -24,7 +24,7 @@ return {
   {
     '<leader>/',
     function()
-      safe_require('telescope.builtin').current_buffer_fuzzy_find()
+      import('telescope.builtin').current_buffer_fuzzy_find()
     end,
     desc = 'Telescope fuzzy find within the current buffer',
     silent = true,
@@ -33,7 +33,7 @@ return {
   {
     '<leader>ff',
     function()
-      safe_require('telescope.builtin').find_files()
+      import('telescope.builtin').find_files()
     end,
     desc = 'Telescope [f]ind [f]iles',
     silent = true,
@@ -42,7 +42,7 @@ return {
   {
     '<leader>fF',
     function()
-      safe_require('telescope.builtin').git_files()
+      import('telescope.builtin').git_files()
     end,
     desc = 'Telescope [f]ind within git [F]iles',
     silent = true,
@@ -51,7 +51,7 @@ return {
   {
     '<leader>fg',
     function()
-      safe_require('telescope.builtin').live_grep()
+      import('telescope.builtin').live_grep()
     end,
     desc = 'Telescope [f]ind symbol using [g]rep',
     silent = true,
@@ -60,7 +60,7 @@ return {
   {
     '<leader>fb',
     function()
-      safe_require('telescope.builtin').buffers()
+      import('telescope.builtin').buffers()
     end,
     desc = 'Telescope [f]ind [b]uffer',
     silent = true,
@@ -69,7 +69,7 @@ return {
   {
     '<leader>fd',
     function()
-      safe_require('telescope').extensions.file_browser.file_browser()
+      import('telescope').extensions.file_browser.file_browser()
     end,
     desc = 'Telescope [f]ind in [d]irectory tree',
     silent = true,
@@ -78,7 +78,7 @@ return {
   {
     '<leader>fr',
     function()
-      safe_require('telescope').extensions.frecency.frecency()
+      import('telescope').extensions.frecency.frecency()
     end,
     desc = 'Telescope find files with [fr]ecency',
     silent = true,
@@ -96,7 +96,7 @@ return {
   {
     '<leader>fs',
     function()
-      safe_require('telescope.builtin').symbols({ sources = { 'nerd' } })
+      import('telescope.builtin').symbols({ sources = { 'nerd' } })
     end,
     desc = 'Telescope [f]ind [s]ymbol',
     silent = true,

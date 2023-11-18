@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
@@ -20,8 +20,8 @@ return {
   event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   dependencies = 'nvim-lua/plenary.nvim',
   opts = function()
-    local diagnostics = safe_require('null-ls').builtins.diagnostics
-    local formatting = safe_require('null-ls').builtins.formatting
+    local diagnostics = import('null-ls').builtins.diagnostics
+    local formatting = import('null-ls').builtins.formatting
 
     return {
       border = 'rounded',

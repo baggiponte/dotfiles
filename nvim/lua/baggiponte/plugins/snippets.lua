@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 return {
   'L3MON4D3/LuaSnip',
@@ -7,7 +7,7 @@ return {
   dependencies = {
     'rafamadriz/friendly-snippets',
     config = function()
-      safe_require('luasnip.loaders.from_vscode').lazy_load()
+      import('luasnip.loaders.from_vscode').lazy_load()
     end,
   },
   config = function()

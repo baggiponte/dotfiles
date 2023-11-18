@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 return {
   {
@@ -9,7 +9,7 @@ return {
       { 'gc', mode = { 'n', 'v' } },
     },
     config = function()
-      safe_require('mini.comment').setup({})
+      import('mini.comment').setup({})
     end,
   },
   {
@@ -17,7 +17,7 @@ return {
     version = false,
     keys = { 'gss' },
     config = function()
-      safe_require('mini.splitjoin').setup({
+      import('mini.splitjoin').setup({
         mappings = {
           toggle = 'gss',
         },

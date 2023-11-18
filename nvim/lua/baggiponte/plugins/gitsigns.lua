@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 local keys = {
     {
@@ -14,7 +14,7 @@ local keys = {
     {
       ']h',
       function()
-        local gs = safe_require('gitsigns')
+        local gs = import('gitsigns')
 
         if vim.wo.diff then
           return ']h'
@@ -31,7 +31,7 @@ local keys = {
     {
       '[h',
       function()
-        local gs = safe_require('gitsigns')
+        local gs = import('gitsigns')
 
         if vim.wo.diff then
           return '[h'

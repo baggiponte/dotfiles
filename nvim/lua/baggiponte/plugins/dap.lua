@@ -1,11 +1,11 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 return {
   {
     'mfussenegger/nvim-dap-python',
     ft = 'python',
     config = function()
-      local dappy = safe_require('dap-python')
+      local dappy = import('dap-python')
       dappy.setup(vim.fn.stdpath('data') .. '/mason/packages/debugpy/venv/bin/python')
       dappy.test_runner = 'pytest'
     end,
@@ -20,7 +20,7 @@ return {
       {
         '<F5>',
         function()
-          safe_require('dap').continue()
+          import('dap').continue()
         end,
         desc = 'Start debugger session',
         silent = true,
@@ -29,15 +29,15 @@ return {
       {
         '<leader>b',
         function()
-          safe_require('dap').toggle_breakpoint()
+          import('dap').toggle_breakpoint()
         end,
         desc = 'Toggle debugger [b]reakpoint',
         silent = true,
         noremap = true,
       },
       config = function()
-        local dap = safe_require('dap')
-        local dapui = safe_require('dapui')
+        local dap = import('dap')
+        local dapui = import('dapui')
 
         dap.listeners.after.event_initialized['dapui_config'] = function()
           dapui.open({})

@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 local keys = {
   {
@@ -64,7 +64,7 @@ return {
   'milanglacier/yarepl.nvim',
   cmd = 'REPLStart',
   config = function()
-    local yarepl = safe_require('yarepl')
+    local yarepl = import('yarepl')
 
     yarepl.setup({
       wincmd = string.format('vertical %d split', math.floor(vim.o.columns * 0.4)),

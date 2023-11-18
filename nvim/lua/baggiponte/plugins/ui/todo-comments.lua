@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 return {
   'folke/todo-comments.nvim',
@@ -8,14 +8,14 @@ return {
     {
       ']t',
       function()
-        safe_require('todo-comments').jump_next()
+        import('todo-comments').jump_next()
       end,
       desc = 'Next [t]odo comment',
     },
     {
       '[t',
       function()
-        safe_require('todo-comments').jump_prev()
+        import('todo-comments').jump_prev()
       end,
       desc = 'Previous [t]odo comment',
     },

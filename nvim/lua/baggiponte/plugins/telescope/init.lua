@@ -1,6 +1,6 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
-local keys = safe_require('baggiponte.plugins.telescope.keys')
+local keys = import('baggiponte.plugins.telescope.keys')
 
 return {
   'nvim-telescope/telescope.nvim',
@@ -16,11 +16,11 @@ return {
   },
   keys = keys,
   config = function()
-    local actions = safe_require('telescope.actions')
+    local actions = import('telescope.actions')
 
-    safe_require('telescope').load_extension('fzf')
+    import('telescope').load_extension('fzf')
 
-    safe_require('telescope').setup({
+    import('telescope').setup({
       defaults = {
         sorting_strategy = 'descending',
         initial_mode = 'insert',
