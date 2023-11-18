@@ -1,43 +1,4 @@
-local M = {}
-
-M.mason = {
-  dap = {
-    'python',
-  },
-  lsp = {
-    'dockerls',
-    'jsonls',
-    'lua_ls',
-    'pyright',
-    'ruff_lsp',
-    'terraformls',
-    'tflint', -- linter terraform, acts as lsp
-    'yamlls',
-    -- 'arduino_language_server',
-    -- 'julials',
-  },
-  null_ls = {
-    'actionlint', -- linter github actions
-    'black', -- formatter python
-    'isort', -- formatter python
-    'jq', -- formatter json
-    'jsonlint', -- linter json
-    'ruff', -- linter python
-    'selene', -- linter lua
-    'shellcheck', -- linter shell
-    'shfmt', -- formatter shell
-    'stylua', -- formatter lua
-    'tfsec', -- security terraform
-    'yamllint', -- linter yaml
-    -- 'yamlfmt', -- formatter yaml, lsp provides formatter capabilites
-    -- 'cfn-lint', -- linter cloudformation
-    -- 'semgrep',
-    -- 'shellharden',
-    -- 'vulture',
-  },
-}
-
-M.servers = {
+return {
   cssls = {},
   pyright = {},
   ruff_lsp = {},
@@ -75,11 +36,12 @@ M.servers = {
   lua_ls = {
     settings = {
       Lua = {
-        runtime = { version = 'LuaJIT' }, -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        runtime = { version = 'LuaJIT' }, -- Tell the language server which version of Lua you're using
         diagnostics = { globals = { 'vim' } }, -- Get the language server to recognize the `vim` global
         telemetry = { enable = false }, -- Do not send telemetry data containing a randomized but unique identifier
         workspace = { checkThirdParty = false },
-        format = { enable = false },
+        format = { enable = false }, -- formatting is done via selene
+        hint = { enable = true },
       },
     },
   },
@@ -105,5 +67,3 @@ M.servers = {
   --   filetypes = { 'arduino', 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   -- },
 }
-
-return M
