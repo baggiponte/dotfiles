@@ -1,5 +1,5 @@
-local safe_require = require('baggiponte.utils').safe_require
-local icons = safe_require('baggiponte.utils.icons').icons
+local import = require('baggiponte.utils').import
+local icons = import('baggiponte.utils.icons').icons
 
 return {
   'nvimdev/lspsaga.nvim',

@@ -1,4 +1,4 @@
-local safe_require = require('baggiponte.utils').safe_require
+local import = require('baggiponte.utils').import
 
 return {
   'nvim-pack/nvim-spectre',
@@ -6,7 +6,7 @@ return {
     {
       '<leader>S',
       function()
-        safe_require('spectre').open()
+        import('spectre').open()
       end,
       desc = 'Toggle [S]pecte.nvim',
     },
