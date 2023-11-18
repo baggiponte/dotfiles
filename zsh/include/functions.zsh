@@ -2,8 +2,7 @@
 # | Almost always require an external command |
 # +-------------------------------------------+
 
-_requires() {
-
+requires() {
 	for cmd in "$@"; do
 		if ! command -v "$cmd" &>/dev/null; then
 			print "$cmd not installed"
@@ -29,7 +28,7 @@ ignores=(
 
 # find files and pipe in fzf preview
 _fuzzy-find() {
-	_requires fd sk bat
+	requires fd sk bat
 
 	local pattern="$1"
 
@@ -40,7 +39,7 @@ _fuzzy-find() {
 }
 
 fuzzy-find() {
-	_requires nvim
+	requires nvim
 
 	local pattern="$1"
 	local file
@@ -55,7 +54,7 @@ fuzzy-find() {
 
 # grep string and pipe in fzf preview
 _live-grep() {
-	_requires rg sk bat
+	requires rg sk bat
 
 	local pattern="$1"
 
@@ -74,7 +73,7 @@ _live-grep() {
 }
 
 live-grep() {
-	_requires nvim
+	requires nvim
 
 	local pattern="$1"
 	local file
@@ -88,12 +87,12 @@ live-grep() {
 }
 
 teal() {
-	_requires tldr sk
+	requires tldr sk
 	tldr --list | sk --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr
 }
 
 n() {
-	_requires nvim
+	requires nvim
 
 	if [ -z "$1" ]; then
 		nvim -c 'Telescope find_files'
@@ -105,7 +104,7 @@ n() {
 }
 
 nn() {
-	_requires nvim
+	requires nvim
 
 	if [ -z "$1" ]; then
 		nvim -c 'Telescope live-grep'
@@ -119,7 +118,7 @@ nn() {
 # open zoxide dir
 
 zoxide-interactive() {
-	_requires zoxide sk
+	requires zoxide sk
 
 	local query="$1"
 	local chosen_directory
@@ -139,7 +138,7 @@ zoxide-interactive() {
 }
 
 zoxide-clean() {
-    _requires zoxide sk
+    requires zoxide sk
 
     zoxide remove $(zoxide query --list | sk -m)
 }
