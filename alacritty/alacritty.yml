@@ -1,10 +1,6 @@
 live_config_reload: true
 shell:
   program: /opt/homebrew/bin/zsh
-  args:
-    - -l
-    - -c
-    - "zellij attach || zellij"
 window:
   option_as_alt: Both
   opacity: 0.85
