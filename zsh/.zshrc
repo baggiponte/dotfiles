@@ -32,3 +32,9 @@ for s in "${sources[@]}"; do
 	# shellcheck source-path=./include
 	source "$ZDOTDIR/include/${s}.zsh"
 done
+
+if [[ ! -v ZELLIJ ]]; then
+    zellij-switcher
+fi
+
+typeset -U PATH
