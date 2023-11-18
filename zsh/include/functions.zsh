@@ -11,6 +11,33 @@ requires() {
 	done
 }
 
+zellij-switcher() {
+    requires zellij sk
+
+    local sessions
+    sessions=($(zellij list-sessions --no-formatting --short))
+
+    if [[ "${#sessions}" -eq 0 ]]; then
+        print "No zellij sessions found."
+        return 0
+    fi
+
+    local session
+    session="$(sk --ansi --cmd="zellij list-sessions --short")"
+
+    if [[ -z "$session" ]]; then
+      return 1
+    fi
+
+    if [[ -v ZELLIJ ]]; then
+        exit
+    fi
+
+    zellij attach "$session"
+
+    return 0
+}
+
 ignores=(
      "-E" ".DS_Store"
      "-E" ".Rproj.user"
