@@ -17,13 +17,8 @@ return {
     },
   },
   {
-    'jayp0521/mason-nvim-dap.nvim',
-    cmd = { 'Mason', 'DapInstall', 'DapUninstall' },
-    opts = { ensure_installed = mason.dap },
-  },
-  {
-    'jayp0521/mason-null-ls.nvim',
-    cmd = { 'Mason', 'NullLsInstall', 'NullLsUninstall' },
-    opts = { ensure_installed = mason.null_ls },
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    cmd = { 'MasonToolsInstall', 'MasonToolsUpdate', 'MasonToolsClean' },
+    opts = { ensure_installed = tools },
   },
 }
