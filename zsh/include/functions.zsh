@@ -45,7 +45,7 @@ fuzzy-find() {
 	local file
 	file="$(_fuzzy-find "$pattern")"
 
-	if [ -z "$file" ]; then
+	if [[ -z "$file" ]]; then
 		return 1
 	else
 		nvim -- "$file"
@@ -79,7 +79,7 @@ live-grep() {
 	local file
 	file="$(_live-grep "$pattern" | cut -d : -f 1,2)"
 
-	if [ -z "$file" ]; then
+	if [[ -z "$file" ]]; then
 		return 1
 	else
 		nvim +"${file#*:}" -c "normal zz" -- "${file%:*}"
@@ -94,9 +94,9 @@ teal() {
 n() {
 	requires nvim
 
-	if [ -z "$1" ]; then
+	if [[ -z "$1" ]]; then
 		nvim -c 'Telescope find_files'
-	elif [ -d "$1" ]; then
+	elif [[ -d "$1" ]]; then
 		nvim -c "Telescope find_files cwd=$1"
 	else
 		nvim -- "$1"
@@ -106,9 +106,9 @@ n() {
 nn() {
 	requires nvim
 
-	if [ -z "$1" ]; then
+	if [[ -z "$1" ]]; then
 		nvim -c 'Telescope live-grep'
-	elif [ -d "$1" ]; then
+	elif [[ -d "$1" ]]; then
 		nvim -c "Telescope live-grep cwd=$1"
 	else
 		nvim -c 'Telescope current_buffer_fuzzy-find' -- "$1"
