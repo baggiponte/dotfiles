@@ -7,8 +7,8 @@ M.keys = {
       return ':IncRename ' .. vim.fn.expand('<cword>')
     end,
     'Incremental [r]e[n]ame of a symbol',
-    { expr = true }
-  }
+    { expr = true },
+  },
   {
     '<leader>f',
     function()
@@ -16,7 +16,7 @@ M.keys = {
     end,
     '[f]ormat current buffer',
   },
-  { '<leader>ca', vim.lsp.buf.code_action, 'Execute [c]ode [a]ction'}
+  { '<leader>ca', vim.lsp.buf.code_action, 'Execute [c]ode [a]ction' },
   { '[d', vim.diagnostic.goto_prev, 'Go to next [d]iagnostic' },
   { ']d', vim.diagnostic.goto_next, 'Go to previous [d]iagnostic' },
   { 'gf', '<cmd>Lspsaga finder<CR>', '[g]o [f]ind occurrences with Lspsaga' },
@@ -31,9 +31,20 @@ M.keys = {
 }
 
 M.on_attach = function(_, buffer)
-  local bufmap = function(shortcut, command, desc, opts)
-    local bufopts = vim.tbl_extend('force', { desc = desc, noremap = true, silent = true, buffer = buffer }, opts)
-    vim.keymap.set('n', shortcut, command, bufopts)
+  local bufmap = function(args)
+    local lhs, rhs, desc, opts
+    lhs, rhs, desc, opts = unpack(args)
+
+    local bufopts = vim.tbl_extend('force', { desc = desc, noremap = true, silent = true, buffer = buffer }, opts or {})
+
+    local mode ---@type string
+    if type(opts) == 'table' and vim.tbl_contains(opts, mode) then
+      mode = vim.tbl_get(opts, 'mode')
+    else
+      mode = 'n'
+    end
+
+    vim.keymap.set(mode, lhs, rhs, bufopts)
   end
 
   for _, keymap in ipairs(M.keys) do
