@@ -45,25 +45,4 @@ return {
       },
     },
   },
-  -- julials = {},
-  -- sourcery = {},
-  -- r_language_server = {
-  --   filetypes = { 'r', 'rmd', 'quarto' },
-  -- },
-  -- arduino_language_server = {
-  --   cmd = {
-  --     'arduino-language-server',
-  --     '-cli-config',
-  --     vim.fn.expand('$XDG_CONFIG_HOME') .. '/arduino/arduino-cli.yaml',
-  --     '-fqbn',
-  --     'arduino:avr:uno',
-  --     '-cli',
-  --     'arduino-cli',
-  --     '-clangd',
-  --     vim.fn.stdpath('data') .. '/' .. 'mason/bin/clangd',
-  --   },
-  -- },
-  -- clangd = {
-  --   filetypes = { 'arduino', 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
-  -- },
 }
