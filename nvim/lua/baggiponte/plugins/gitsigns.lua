@@ -1,51 +1,51 @@
 local import = require('baggiponte.utils').import
 
 local keys = {
-    {
-      '<leader>hs',
-      '<cmd>Gitsigns stage_hunk<CR>',
-      mode = { 'n', 'v' },
-    },
-    {
-      '<leader>hr',
-      '<cmd>Gitsigns reset_hunk<CR>',
-      mode = { 'n', 'v' },
-    },
-    {
-      ']h',
-      function()
-        local gs = import('gitsigns')
+  {
+    '<leader>hs',
+    '<cmd>Gitsigns stage_hunk<CR>',
+    mode = { 'n', 'v' },
+  },
+  {
+    '<leader>hr',
+    '<cmd>Gitsigns reset_hunk<CR>',
+    mode = { 'n', 'v' },
+  },
+  {
+    ']h',
+    function()
+      local gs = import('gitsigns')
 
-        if vim.wo.diff then
-          return ']h'
-        end
+      if vim.wo.diff then
+        return ']h'
+      end
 
-        vim.schedule(function()
-          gs.next_hunk()
-        end)
+      vim.schedule(function()
+        gs.next_hunk()
+      end)
 
-        return '<Ignore>'
-      end,
-      expr = true,
-    },
-    {
-      '[h',
-      function()
-        local gs = import('gitsigns')
+      return '<Ignore>'
+    end,
+    expr = true,
+  },
+  {
+    '[h',
+    function()
+      local gs = import('gitsigns')
 
-        if vim.wo.diff then
-          return '[h'
-        end
+      if vim.wo.diff then
+        return '[h'
+      end
 
-        vim.schedule(function()
-          gs.prev_hunk()
-        end)
+      vim.schedule(function()
+        gs.prev_hunk()
+      end)
 
-        return '<Ignore>'
-      end,
-      expr = true,
-    },
-  }
+      return '<Ignore>'
+    end,
+    expr = true,
+  },
+}
 
 return {
   'lewis6991/gitsigns.nvim',
@@ -62,5 +62,5 @@ return {
     },
     current_line_blame = false,
     preview_config = { border = 'round' },
-  }
+  },
 }
