@@ -9,8 +9,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-local borders = import('baggiponte.utils.borders')
-
 import('lazy').setup({
   spec = {
     { import = 'baggiponte.plugins' },
@@ -20,7 +18,7 @@ import('lazy').setup({
   },
   defaults = { lazy = true, version = false },
   install = { colorscheme = { 'gruvbox-material', 'nordic' } },
-  ui = { border = borders },
+  ui = { border = 'rounded' },
   checker = { enabled = false }, -- automatically check for plugin updates
   performance = {
     rtp = {
