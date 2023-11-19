@@ -1,7 +1,5 @@
 local import = require('baggiponte.utils').import
 
-local servers = import('baggiponte.plugins.lsp.utils.servers')
-
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -22,7 +20,7 @@ return {
     local borders = import('baggiponte.utils.borders')
     local configs = import('baggiponte.plugins.lsp.utils.configs')
 
-    import('lspconfig.ui.windows').default_options.border = borders
+    require('lspconfig.ui.windows').default_options.border = 'rounded'
 
     local lsp_general_configs = {
       capabilities = configs.capabilities,

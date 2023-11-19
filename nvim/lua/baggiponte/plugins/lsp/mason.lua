@@ -1,6 +1,5 @@
 local import = require('baggiponte.utils').import
 
-local borders = import('baggiponte.utils.borders')
 local tools = import('baggiponte.plugins.lsp.utils.tools')
 
 return {
@@ -11,7 +10,7 @@ return {
     opts = {
       -- PATH = 'append',
       ui = {
-        border = borders,
+        border = 'rounded',
         icons = { package_installed = '✓', package_uninstalled = '✗', package_pending = '⟳' },
       },
     },
