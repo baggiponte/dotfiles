@@ -1,3 +1,5 @@
+local servers = require('baggiponte.plugins.lsp.utils.tools').servers
+
 return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
@@ -7,21 +9,7 @@ return {
     { 'williamboman/mason-lspconfig.nvim' },
   },
   opts = {
-    servers = {
-      pyright = {},
-      lua_ls = {
-        settings = {
-          Lua = {
-            runtime = { version = 'LuaJIT' }, -- Tell the language server which version of Lua you're using
-            diagnostics = { globals = { 'vim' } }, -- Get the language server to recognize the `vim` global
-            telemetry = { enable = false }, -- Do not send telemetry data containing a randomized but unique identifier
-            workspace = { checkThirdParty = false },
-            format = { enable = false }, -- formatting is done via selene
-            hint = { enable = true },
-          },
-        },
-      },
-    },
+    servers = servers,
   },
   config = function(_, opts)
     local lspconfig = require('lspconfig')
@@ -57,6 +45,7 @@ return {
     end
 
     if has_mason then
+      -- install missing servers and configures those already installed with mason
       mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
     end
 
