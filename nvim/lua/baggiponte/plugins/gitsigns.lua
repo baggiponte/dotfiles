@@ -60,7 +60,7 @@ return {
       topdelete = { hl = 'GitGutterDelete', text = '‾' },
       changedelete = { hl = 'GitGutterChange', text = '~' },
     },
-    current_line_blame = true,
+    current_line_blame = false,
     preview_config = { border = 'round' },
   }
 }
