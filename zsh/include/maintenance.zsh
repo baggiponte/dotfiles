@@ -40,7 +40,7 @@ config () {
 
 # update Homebrew
 brew-update () {
-    _requires brew
+    requires brew
 
     print -- "\n🍺 $fg_bold[white]Check out new bottles and casks from the brew!$reset_color 🍺"
 
@@ -48,7 +48,7 @@ brew-update () {
 }
 
 zim-update () {
-    _requires zimfw
+    requires zimfw
 
     print -- "\n🐚 $fg_bold[white]Let's fish some new shells!$reset_color 🐚"
 
@@ -107,7 +107,7 @@ brew-graph () {
 
 # pretty print directory tree for git repos
 ls-tree() {
-    _requires exa
+    requires exa
     local level="${1:-"1"}"
     local dir="${2:-"."}"
 
@@ -195,7 +195,7 @@ colortest () {
 
 # bulk rename extensions
 rename-ext() {
-    _requires fd
+    requires fd
 
     local ext_old="$1"
     local ext_new="$2"
