@@ -61,10 +61,6 @@ export POETRY_HOME="$XDG_DATA_HOME/pypoetry"
 
 export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutter.yaml"
 
-if hash sam 2>/dev/null; then
-	export SAM_CLI_TELEMETRY=0
-fi
-
 # +-------+
 # | OTHER |
 # +-------+
@@ -83,17 +79,9 @@ if hash npm 2>/dev/null; then
 	export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 fi
 
-if hash psql 2>/dev/null; then
-	export PGDATA="/usr/local/var/postgres@14"
-	export PGDATABASE="postgres"
-fi
 
-if hash arduino-cli 2>/dev/null; then
-	export ARDUINO_DIRECTORIES_DATA="$XDG_DATA_HOME/arduino"
-	export ARDUINO_DIRECTORIES_DOWNLOADS="$ARDUINO_DIRECTORIES_DATA/staging"
-	export ARDUINO_DIRECTORIES_USER="$HOME/dev/arduino"
+# +-----------+
+# | JETBRAINS |
+# +-----------+
 
-	if ! [ -f "$ARDUINO_DIRECTORIES_DATA/arduino-cli.yaml" ]; then
-		ln -s "$XDG_CONFIG_HOME/arduino/arduino-cli.yaml" "$ARDUINO_DIRECTORIES_DATA/arduino-cli.yaml"
-	fi
-fi
+export PATH="$PATH:$HOME/.local/share/jetbrains/bin"
