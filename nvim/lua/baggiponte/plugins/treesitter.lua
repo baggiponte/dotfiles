@@ -7,6 +7,7 @@ local tsopts = {
     'dockerfile',
     'gitattributes',
     'gitignore',
+    'ini',
     'json',
     'jsonc',
     'julia',
