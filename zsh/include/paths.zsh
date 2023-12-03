@@ -11,7 +11,7 @@ else
 	export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile.Intel"
 fi
 
-export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/usr/local/bin:$HOME/.local/bin"
 
 # +------+
 # | NVIM |

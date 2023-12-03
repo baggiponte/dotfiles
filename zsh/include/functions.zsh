@@ -2,63 +2,6 @@
 # | Almost always require an external command |
 # +-------------------------------------------+
 
-requires() {
-	for cmd in "$@"; do
-		if ! command -v "$cmd" &>/dev/null; then
-			print "$cmd not installed"
-			return 1
-		fi
-	done
-}
-
-zellij-switcher() {
-    if [[ -v ZELLIJ ]]; then
-        print "You are inside a zellij session. Currently zellij API does not allow switching sessions."
-        print "You can use the session-switcher plugin, or exit the session and run this command again."
-        return 1
-    fi
-
-    requires zellij sk
-
-    local sessions
-    sessions=($(zellij list-sessions --no-formatting --short))
-
-    if [[ "${#sessions}" -eq 0 ]]; then
-        print "No zellij sessions found."
-        return 0
-    fi
-
-    local session
-    session="$(sk --ansi --cmd="zellij list-sessions --short")"
-
-    if [[ -z "$session" ]]; then
-        return 1
-    fi
-
-    zellij attach "$session"
-
-    return 0
-}
-
-zellij-sessionizer() {
-    if [[ -v ZELLIJ ]]; then
-        print "You are inside a zellij session. Currently zellij API does not allow switching sessions."
-        print "You can use the session-switcher plugin, or exit the session and run this command again."
-        return 1
-    fi
-
-    requires zellij sk zoxide
-
-    local dir
-    dir="$(sk --height=40% --preview-window=down,40% --cmd="zoxide query --list")"
-
-    if [[ -z "$dir" ]]; then
-        return 1
-    fi
-
-    zellij attach --create "$(basename "${dir}")" && cd "$dir"
-}
-
 IGNORES=(
     ".git"
     "assets"
@@ -179,50 +122,6 @@ live-grep() {
 	fi
 }
 
-teal() {
-	requires tldr sk
-	tldr --list | sk --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr
-}
-
-n() {
-	requires nvim
-
-	if [[ -z "$1" ]]; then
-		nvim -c 'Telescope find_files'
-	elif [[ -d "$1" ]]; then
-		nvim -c "Telescope find_files cwd=$1"
-	else
-		nvim -- "$1"
-	fi
-}
-
-nn() {
-	requires nvim
-
-	if [[ -z "$1" ]]; then
-		nvim -c 'Telescope live-grep'
-	elif [[ -d "$1" ]]; then
-		nvim -c "Telescope live-grep cwd=$1"
-	else
-		nvim -c 'Telescope current_buffer_fuzzy_find' -- "$1"
-	fi
-}
-
-nd() {
-    requires nvim
-
-    local filemanager_cmd="${NVIM_FILEMANAGER_CMD:-"NvimTreeToggle"}"
-
-    if [[ -z "$1" ]]; then
-        nvim -c "${filemanager_cmd}"
-    elif [[ -d "$1" ]]; then
-        nvim -c "${filemanager_cmd} $1"
-    else
-        print "'{$1}' is not a directory"
-        return 1
-    fi
-}
-
 zoxide-interactive() {
 	requires zoxide sk
 
@@ -241,10 +140,4 @@ zoxide-interactive() {
 	)
 
 	cd -- "$chosen_directory" || return 1
-}
-
-zoxide-clean() {
-    requires zoxide sk
-
-    zoxide remove $(zoxide query --list | sk -m)
 }
