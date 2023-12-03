@@ -20,48 +20,16 @@ bindkey '^E' edit-command-line
 zle -N live-grep
 bindkey '^g' live-grep
 
-# +------------+
-# | Fuzzy find |
-# +------------+
+# +------------------+
+# | Fuzzy find files |
+# +------------------+
 
-zle -N fuzzy-find
-bindkey '^f' fuzzy-find
+zle -N fuzzy-file
+bindkey '^f' fuzzy-file
 
-# # +--------+
-# # | Zoxide |
-# # +--------+
-#
-# # see: https://unix.stackexchange.com/a/703707/402599
-# _zle-zoxide() {
-# 	zoxide-interactive
-# 	zle -I
-# }
-#
-# zle -N _zle-zoxide
-# bindkey '^w' _zle-zoxide
-#
-# # +---------------------+
-# # | Zoxide + Fuzzy find |
-# # +---------------------+
-#
-# _zle-zoxide_fuzzy-find() {
-# 	zoxide-interactive
-# 	zle -I
-# 	fuzzy-find
-# }
-#
-# zle -N _zle-zoxide_fuzzy-find
-# bindkey '^P' _zle-zoxide_fuzzy-find
-#
-# # +--------------------+
-# # | Zoxide + Live grep |
-# # +--------------------+
-#
-# _zle-zoxide_live-grep() {
-# 	zoxide-interactive
-# 	zle -I
-# 	live-grep
-# }
-#
-# zle -N _zle-zoxide_live-grep
-# bindkey '^O' _zle-zoxide_live-grep
+# +------------------------+
+# | Fuzzy find directories |
+# +------------------------+
+
+zle -N fuzzy-dir
+bindkey '^a' fuzzy-dir
