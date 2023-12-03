@@ -59,48 +59,63 @@ zellij-sessionizer() {
     zellij attach --create "$(basename "${dir}")" && cd "$dir"
 }
 
-ignores=(
-     "-E" ".DS_Store"
-     "-E" ".Rproj.user"
-     "-E" ".git"
-     "-E" ".mypy_cache"
-     "-E" ".ruff_cache"
-     "-E" ".terraform"
-     "-E" ".venv"
-     "-E" "__pycache__"
-     "-E" "assets"
-     "-E" "node_modules/"
-     "-E" "raycast"
-     "-E" "renv/"
- )
+IGNORES=(
+    ".git"
+    "assets"
+    ".DS_Store"
+    "raycast"
+    ".idea"
+    ".vscode"
+    ".Rproj.user"
+    "renv/"
+    ".venv"
+    "venv"
+    ".ipynb_checkpoints"
+    ".mypy_cache"
+    ".pytest_cache"
+    ".ruff_cache"
+    "__pycache__"
+    "debug/"
+    "target/"
+    ".terraform"
+    "node_modules/"
+)
 
-# find files and pipe in fzf preview
-_fuzzy-find() {
+# prepend "-E " to each element of ignores
+IGNORES_FD=("${IGNORES[@]/#/-E=}")
+
+# chain every ignore in `ignore1|ignore2` format
+IGNORES_EXA="${(j:|:)IGNORES}"
+
+CMD_PREVIEW_BAT="bat --color=always --style='plain,changes' --line-range=:500 -- {}"
+CMD_PREVIEW_EXA="exa --all --group-directories-first --icons --level=2 --tree --ignore-glob=\"$IGNORES_EXA\" -- {}"
+
+# find files and pipe in sk/fzf preview with bat
+_fuzzy-file() {
 	requires fd sk bat
 
 	local pattern="$1"
 
-    fd --type=file --unrestricted $ignores |
+    fd --type=file --unrestricted "${IGNORES_FD[@]}" |
         sk \
-            --preview="bat --color=always --style='plain,changes' --line-range=:500 {}" \
-            --query="$pattern"
+        --preview="$CMD_PREVIEW_BAT" \
+        --query="$pattern"
 }
 
-fuzzy-find() {
-	requires nvim
+# find directories and pipe in sk/fzf preview with exa
+_fuzzy-dir() {
+    requires fd sk bat
 
-	local pattern="$1"
-	local file
-	file="$(_fuzzy-find "$pattern")"
+    local pattern="$1"
 
-	if [[ -z "$file" ]]; then
-		return 1
-	else
-		nvim -- "$file"
-	fi
+    # `sk --cmd` does not work with zle
+    fd --type=directory --unrestricted "${IGNORES_FD[@]}" |
+        sk \
+        --preview="$CMD_PREVIEW_EXA" \
+        --query="$pattern"
 }
 
-# grep string and pipe in fzf preview
+# live grep and pipe in sk/fzf preview with bat
 _live-grep() {
 	requires rg sk bat
 
@@ -118,6 +133,36 @@ _live-grep() {
 			--delimiter : \
 			--preview 'bat --color=always {1} --highlight-line {2} --plain' \
 			--query "$pattern"
+}
+
+fuzzy-file() {
+	requires nvim
+
+	local pattern="$1"
+	local file
+	file="$(_fuzzy-file "$pattern")"
+
+	if [[ -z "$file" ]]; then
+		return 1
+	else
+		nvim -- "$file"
+	fi
+}
+
+fuzzy-dir() {
+    requires nvim
+
+    local filemanager_cmd="${NVIM_FILEMANAGER_CMD:-"NvimTreeToggle"}"
+
+    local pattern="$1"
+    local dir
+    dir="$(_fuzzy-dir "$pattern")"
+
+    if [[ -z "$dir" ]]; then
+        return 1
+    else
+        nvim -c "${filemanager_cmd} ${dir}"
+    fi
 }
 
 live-grep() {
@@ -159,11 +204,24 @@ nn() {
 	elif [[ -d "$1" ]]; then
 		nvim -c "Telescope live-grep cwd=$1"
 	else
-		nvim -c 'Telescope current_buffer_fuzzy-find' -- "$1"
+		nvim -c 'Telescope current_buffer_fuzzy_find' -- "$1"
 	fi
 }
 
-# open zoxide dir
+nd() {
+    requires nvim
+
+    local filemanager_cmd="${NVIM_FILEMANAGER_CMD:-"NvimTreeToggle"}"
+
+    if [[ -z "$1" ]]; then
+        nvim -c "${filemanager_cmd}"
+    elif [[ -d "$1" ]]; then
+        nvim -c "${filemanager_cmd} $1"
+    else
+        print "'{$1}' is not a directory"
+        return 1
+    fi
+}
 
 zoxide-interactive() {
 	requires zoxide sk
@@ -175,11 +233,11 @@ zoxide-interactive() {
 		zoxide query \
 			--exclude "$PWD" \
 			--list |
-			sk \
-				--preview="exa --all --group-directories-first --icons --oneline --ignore-glob={.DS_Store,.git} {}" \
-				--height 40% \
-				--preview-window=down,40% \
-				--query="$query"
+        sk \
+            --preview="$CMD_PREVIEW_EXA" \
+            --height 40% \
+            --preview-window=down,40% \
+            --query="$query"
 	)
 
 	cd -- "$chosen_directory" || return 1
