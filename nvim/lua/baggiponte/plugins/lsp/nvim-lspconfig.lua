@@ -18,6 +18,10 @@ return {
 
     require('lspconfig.ui.windows').default_options.border = 'rounded'
 
+    vim.diagnostic.config({
+      virtual_text = { prefix = '' },
+    })
+
     local default_capabilities = vim.tbl_deep_extend(
       'force',
       {},
