@@ -1,6 +1,5 @@
 # My Dotfiles
 
-
 ![latest-setup](./screenshots/2022_12_18.png)
 
 ## Software I use
@@ -20,7 +19,12 @@ Everything is installed with [`homebrew`](https://brew.sh/), the missing package
 
 ## To do
 
-- [ ] Create an install script
+- [x] Create an install script
+  - [ ] Test the install script
+
+## References and links
+
+- [scripts](https://github.com/baggiponte/scripts): a place to home some functions that grew out of my [dotfiles](./zsh/include/functions.zsh).
 
 ## FAQ
 
