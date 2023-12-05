@@ -112,6 +112,20 @@ if [[ $response =~ (y|yes|Y) ]]; then
 	fi
 
 	brew bundle --file="$brewfile"
+
+    if command -v "docker-compose" &> /dev/null; then
+        if ! [[ -d "~/.docker/cli-plugins" ]]; then
+            mkdir -p ~/.docker/cli-plugins
+        fi
+        ln -sfn /opt/homebrew/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+    fi
+
+    if command -v "docker-buildx" &> /dev/null; then
+        if ! [[ -d "~/.docker/cli-plugins" ]]; then
+            mkdir -p ~/.docker/cli-plugins
+        fi
+        ln -sfn /opt/homebrew/opt/docker-compose/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+    fi
 else
 	echo "⚠️ skipped brew package installs"
 fi
