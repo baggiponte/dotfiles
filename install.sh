@@ -59,12 +59,7 @@ if [[ $? != 0 ]]; then
 		exit 2
 	fi
 
-	if [ "$(sysctl -n machdep.cpu.brand_string)" = "Apple M1" ]; then
-		eval "$(/opt/homebrew/bin/brew shellenv)"
-	else
-		eval "$(/usr/local/bin/brew shellenv)"
-	fi
-
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # +--------------+
@@ -105,13 +100,7 @@ ln -s ~/.config/.gitconfig ~/.gitconfig
 read -r -p "❓ install dependencies from Brewfile? [y/N]" response
 if [[ $response =~ (y|yes|Y) ]]; then
 
-	if [ "$(sysctl -n machdep.cpu.brand_string)" = "Apple M1" ]; then
-		local brewfile="~/.config/Brewfile.M1"
-	else
-		local brewfile="~/.config/Brewfile.Intel"
-	fi
-
-	brew bundle --file="$brewfile"
+	brew bundle --file="$HOME/.config/Brewfile"
 
     if command -v "docker-compose" &> /dev/null; then
         if ! [[ -d "~/.docker/cli-plugins" ]]; then
