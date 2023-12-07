@@ -76,44 +76,44 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # | clone dotfiles |
 # +----------------+
 
-if ! [[ -d ~/.config ]]; then
-	git clone "https://github.com/baggiponte/dotfiles" "~/.config"
+if ! [[ -d "$HOME/.config" ]]; then
+	git clone "https://github.com/baggiponte/dotfiles" "$HOME/.config"
 else
-	read -r -p "⚠️ '~/.config' already exists. Replace dotfiles? (contents of '~/.config' will not be deleted) [y/N]" response
-	if [[ $response =~ (y|yes|Y) ]]; then
+	read -r -p "⚠️ '$HOME/.config' already exists. Replace dotfiles? (contents of '$HOME/.config' will not be deleted) [y/N]" response
+	if [[ $response =$HOME (y|yes|Y) ]]; then
 
-		mv "~/.config" "~/.config.bak"
-		print "✔︎ moved old configs to '~/.config.bak'"
+		mv "$HOME/.config" "$HOME/.config.bak"
+		print "✔︎ moved old configs to '$HOME/.config.bak'"
 
-		git clone "https://github.com/baggiponte/dotfiles" "~/.config"
+		git clone "https://github.com/baggiponte/dotfiles" "$HOME/.config"
 	else
 		print "⚠️ did not clone dotfiles: this script might fail if a binary is not found"
 	fi
 fi
 
-ln -s "~/.config/.gitconfig" "~/.gitconfig"
+ln -s "$HOME/.config/.gitconfig" "$HOME/.gitconfig"
 
 # +----------------------+
 # | install dependencies |
 # +----------------------+
 
 read -r -p "❓ install dependencies from Brewfile? [y/N]" response
-if [[ $response =~ (y|yes|Y) ]]; then
+if [[ $response =$HOME (y|yes|Y) ]]; then
 
 	brew bundle --file="$HOME/.config/Brewfile"
 
     if command -v "docker-compose" &> /dev/null; then
-        if ! [[ -d "~/.docker/cli-plugins" ]]; then
-            mkdir -p "~/.docker/cli-plugins"
+        if ! [[ -d "$HOME/.docker/cli-plugins" ]]; then
+            mkdir -p "$HOME/.docker/cli-plugins"
         fi
-        ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-compose" "~/.docker/cli-plugins/docker-compose"
+        ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-compose" "$HOME/.docker/cli-plugins/docker-compose"
     fi
 
     if command -v "docker-buildx" &> /dev/null; then
-        if ! [[ -d "~/.docker/cli-plugins" ]]; then
-            mkdir -p "~/.docker/cli-plugins"
+        if ! [[ -d "$HOME/.docker/cli-plugins" ]]; then
+            mkdir -p "$HOME/.docker/cli-plugins"
         fi
-        ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-buildx" "~/.docker/cli-plugins/docker-buildx"
+        ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-buildx" "$HOME/.docker/cli-plugins/docker-buildx"
     fi
 else
 	print "⚠️ skipped brew package installs"
