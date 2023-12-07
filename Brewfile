@@ -6,14 +6,6 @@ tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "r-lib/rig"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -22,8 +14,12 @@ brew "bat"
 brew "bob"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
+# Cross-platform make
+brew "cmake"
 # Console Matrix
 brew "cmatrix"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
 # GNU File, Shell, and Text utilities
@@ -36,6 +32,8 @@ brew "dive"
 brew "docker"
 # Docker CLI plugin for extended build capabilities with BuildKit
 brew "docker-buildx"
+# Isolated development environments using Docker
+brew "docker-compose"
 # Platform keystore credential helper for Docker
 brew "docker-credential-helper"
 # Pluggable and configurable code formatting platform written in Rust
@@ -58,6 +56,8 @@ brew "findutils"
 brew "fortune"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Library for command-line editing
+brew "readline"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
@@ -94,6 +94,8 @@ brew "parallel"
 brew "pass"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
+# Command-line interface for SQLite
+brew "sqlite"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Package management made easy
@@ -157,6 +159,8 @@ cask "font-jetbrains-mono"
 # Monospaced typeface designed for programming in Julia
 cask "font-juliamono"
 cask "font-yanone-kaffeesatz"
+# JetBrains tools manager
+cask "jetbrains-toolbox"
 # Keyboard customizer
 cask "karabiner-elements"
 # Control your tools with a few keystrokes
