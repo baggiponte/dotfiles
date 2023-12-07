@@ -77,21 +77,21 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # +----------------+
 
 if ! [[ -d ~/.config ]]; then
-	git clone https://github.com/baggiponte/dotfiles ~/.config
+	git clone "https://github.com/baggiponte/dotfiles" "~/.config"
 else
 	read -r -p "⚠️ '~/.config' already exists. Replace dotfiles? (contents of '~/.config' will not be deleted) [y/N]" response
 	if [[ $response =~ (y|yes|Y) ]]; then
 
-		mv ~/.config ~/.config.bak
+		mv "~/.config" "~/.config.bak"
 		print "✔︎ moved old configs to '~/.config.bak'"
 
-		git clone https://github.com/baggiponte/dotfiles ~/.config
+		git clone "https://github.com/baggiponte/dotfiles" "~/.config"
 	else
 		print "⚠️ did not clone dotfiles: this script might fail if a binary is not found"
 	fi
 fi
 
-ln -s ~/.config/.gitconfig ~/.gitconfig
+ln -s "~/.config/.gitconfig" "~/.gitconfig"
 
 # +----------------------+
 # | install dependencies |
@@ -104,14 +104,14 @@ if [[ $response =~ (y|yes|Y) ]]; then
 
     if command -v "docker-compose" &> /dev/null; then
         if ! [[ -d "~/.docker/cli-plugins" ]]; then
-            mkdir -p ~/.docker/cli-plugins
+            mkdir -p "~/.docker/cli-plugins"
         fi
         ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-compose" "~/.docker/cli-plugins/docker-compose"
     fi
 
     if command -v "docker-buildx" &> /dev/null; then
         if ! [[ -d "~/.docker/cli-plugins" ]]; then
-            mkdir -p ~/.docker/cli-plugins
+            mkdir -p "~/.docker/cli-plugins"
         fi
         ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-buildx" "~/.docker/cli-plugins/docker-buildx"
     fi
@@ -125,7 +125,7 @@ fi
 
 eval "$(rtx activate zsh)"
 
-for lang in python@3.11 python@3.10 node@latest; do
+for lang in "python@3.11" "python@3.10" "node@latest"; do
 	rtx install "$lang"
 done
 
@@ -140,7 +140,7 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-for version in stable nightly; do
+for version in "stable" "nightly"; do
 	rustup install "$version"
 	rustup component add rust-analyzer --toolchain="$version"
 done
@@ -157,7 +157,7 @@ bob use nightly
 # | install python CLIs |
 # +---------------------+
 
-for lib in 'pdm[all]' cruft pre-commit virtualenv; do
+for lib in "pdm[all]" "pre-commit" "virtualenv"; do
 	pipx install "$lib"
 done
 
