@@ -4,11 +4,11 @@
 # | install xcode tools |
 # +---------------------+
 
-echo "📍 checking xcode tools are installed..."
+print "📍 checking xcode tools are installed..."
 
 if ! xcode-select --print-path &>/dev/null; then
 
-	echo "🏗️ installing xcode command line tools..."
+	print "🏗️ installing xcode command line tools..."
 	xcode-select --install &>/dev/null
 
 	# Wait until the XCode Command Line Tools are installed
@@ -16,9 +16,9 @@ if ! xcode-select --print-path &>/dev/null; then
 		sleep 10
 	done
 
-	echo "✔︎ xcode command line tools installed!"
+	print "✔︎ xcode command line tools installed!"
 
-	echo "⚠️ Agree with the xcode command line tools licence:"
+	print "⚠️ Agree with the xcode command line tools licence:"
 	sudo xcodebuild -license
 fi
 
@@ -32,30 +32,30 @@ zdotdir_line='export ZDOTDIR="$HOME/.config/zsh"'
 # Check if /etc/zshenv exists
 if [[ -f "/etc/zshenv" ]]; then
 	if ! grep -qF "$zdotdir_line" "/etc/zshenv"; then
-		echo "$zdotdir_line" | sudo tee -a "/etc/zshenv" >/dev/null
-		echo "✔︎ appended '$zdotdir_line' to '/etc/zshenv/'"
+		print "$zdotdir_line" | sudo tee -a "/etc/zshenv" >/dev/null
+		print "✔︎ appended '$zdotdir_line' to '/etc/zshenv/'"
 	fi
 else
-	echo "$zdotdir_line" | sudo tee "/etc/zshenv" >/dev/null
-	echo "✔︎ created '/etc/zshenv' and appended the '$zdotdir_line' line."
+	print "$zdotdir_line" | sudo tee "/etc/zshenv" >/dev/null
+	print "✔︎ created '/etc/zshenv' and appended the '$zdotdir_line' line."
 fi
 
 # +--------------+
 # | install brew |
 # +--------------+
 
-echo "📍 Checking homebrew is installed..."
+print "📍 Checking homebrew is installed..."
 local brew_bin
 brew_bin=$(which brew) 2>&1 >/dev/null
 
 if [[ $? != 0 ]]; then
-	echo "🏗️ installing homebrew..."
+	print "🏗️ installing homebrew..."
 
 	# has to run in bash
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 	if [[ $? != 0 ]]; then
-		echo "🚨 unable to install homebrew, script $0 abort!"
+		print "🚨 unable to install homebrew, script $0 abort!"
 		exit 2
 	fi
 
@@ -88,11 +88,11 @@ else
 	if [[ $response =~ (y|yes|Y) ]]; then
 
 		mv ~/.config ~/.config.bak
-		echo "✔︎ moved old configs to '~/.config.bak'"
+		print "✔︎ moved old configs to '~/.config.bak'"
 
 		git clone https://github.com/baggiponte/dotfiles ~/.config
 	else
-		echo "⚠️ did not clone dotfiles: this script might fail if a binary is not found"
+		print "⚠️ did not clone dotfiles: this script might fail if a binary is not found"
 	fi
 fi
 
@@ -127,7 +127,7 @@ if [[ $response =~ (y|yes|Y) ]]; then
         ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-buildx" "~/.docker/cli-plugins/docker-buildx"
     fi
 else
-	echo "⚠️ skipped brew package installs"
+	print "⚠️ skipped brew package installs"
 fi
 
 # +------------------------------+
