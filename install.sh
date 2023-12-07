@@ -125,11 +125,8 @@ fi
 
 eval "$(rtx activate zsh)"
 
-for lang in "python@3.11" "python@3.10" "node@latest"; do
-	rtx install "$lang"
-done
-
-rtx global python@3.10 node@latest
+rtx install "python@3.11" "python@3.10" "node@latest"
+rtx global "python@3.10" "node@latest"
 
 # +--------------+
 # | install rust |
