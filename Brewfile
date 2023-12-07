@@ -1,4 +1,3 @@
-tap "arl/arl"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
@@ -118,8 +117,6 @@ brew "starship"
 brew "stylua"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
-# Terminal multiplexer
-brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
 # ODBC 3 connectivity for UNIX
@@ -132,8 +129,6 @@ brew "zellij"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Git in your tmux status bar.
-brew "arl/arl/gitmux"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
 # Simple hotkey-daemon for macOS.
