@@ -22,6 +22,8 @@ alias blc="bl --cask"
 
 alias bd="b doctor"
 
+alias td="date +%Y-%m-%d"
+
 # +-----------+
 # | Optionals |
 # +-----------+

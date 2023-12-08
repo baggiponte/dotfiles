@@ -39,10 +39,6 @@ if [ -x /Applications/RStudio.app ]; then
     }
 fi
 
-td () {
-    date +%Y-%m-%d
-}
-
 # extract files
 extract() {
  ex() {
