@@ -14,8 +14,6 @@ alias bic="bi --cask"
 alias bu="b uninstall"
 alias buc="bu --cask"
 
-alias bcs="b cleanup -s" # scrub the cache
-
 alias bl="b list"
 alias blf="bl --formula"
 alias blc="bl --cask"
