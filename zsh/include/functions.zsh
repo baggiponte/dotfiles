@@ -141,3 +141,25 @@ zoxide-interactive() {
 
 	cd -- "$chosen_directory" || return 1
 }
+
+# +-------+
+# | Utils |
+# +-------+
+
+path() {
+    print "${PATH//:/\\n}"
+}
+
+fpath() {
+    print "${fpath}" | tr " " "\n"
+}
+
+config() {
+    local config_dir="${XDG_CONFIG_HOME-"$HOME/.config"}"
+
+    if [[ "$#" -eq 0 ]]; then
+        cd -- "$config_dir" || return 1
+    else
+        cd -- "$config_dir/${1}" || print "$1 is not a valid config directory."
+    fi
+}
