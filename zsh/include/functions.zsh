@@ -163,3 +163,11 @@ config() {
         cd -- "$config_dir/${1}" || print "$1 is not a valid config directory."
     fi
 }
+
+zim-update () {
+    requires zimfw
+
+    print -- "\n🐚 $fg_bold[white]Let's fish some new shells!$reset_color 🐚"
+
+    zimfw upgrade && zimfw uninstall && zimfw update
+}
