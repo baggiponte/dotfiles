@@ -23,7 +23,6 @@ sources=(
 	"autocomp"    # dump missing autocompletions
 	"eval"        # shell hooks (e.g. promtp, rtx)
 	"functions"   # frequently used functions
-	"maintenance" # maintenance functions
 	"aliases"     # utility aliases
 	"bindkeys"    # bind functions to keymaps
 )
