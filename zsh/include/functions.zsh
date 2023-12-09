@@ -165,8 +165,6 @@ config() {
 }
 
 zim-update () {
-    requires zimfw
-
     print -- "\n🐚 $fg_bold[white]Let's fish some new shells!$reset_color 🐚"
 
     zimfw upgrade && zimfw uninstall && zimfw update
