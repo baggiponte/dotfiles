@@ -2,30 +2,33 @@
 # | ADD TO $PATH FIRST |
 # +--------------------+
 
+# override PATH because path_helper screws it up
+paths=(
+    "${HOME}/.local/bin"
+    "${XDG_DATA_HOME}/bob/nvim-bin"
+    "${XDG_DATA_HOME}/jetbrains/bin"
+    "/usr/bin"
+    "/bin"
+    "/usr/sbin"
+    "/sbin"
+)
+
+# reference:
+# https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion-Flags
+# can use any pair of delimiters
+export PATH="${(j.:.)paths}"
+
 # MUST be before any "hash" call!
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# +-----------+
-# | JETBRAINS |
-# +-----------+
-
-export PATH="${PATH}:${HOME}/.local/share/jetbrains/bin"
 
 # +------+
 # | NVIM |
 # +------+
 
 # NOTE: exporting EDITOR=nvim will automatically run bindkey -v (vim mode)
-export PATH="${PATH}:${XDG_DATA_HOME}/bob/nvim-bin/"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export MYVIMRC="${XDG_CONFIG_HOME}/nvim/init.lua"
-
-# +----------------+
-# | CUSTOM SCRIPTS |
-# +----------------+
-
-export PATH="${HOME}/.local/bin:${PATH}"
 
 # +------+
 # | RUST |
