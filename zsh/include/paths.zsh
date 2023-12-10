@@ -21,10 +21,10 @@ export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
 # | RUST |
 # +------+
 
-if [[ -f $XDG_DATA_HOME/cargo/bin/rustup ]]; then
-	export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-	export CARGO_HOME="$XDG_DATA_HOME"/cargo
-	source "$CARGO_HOME"/env
+if [[ -f "${XDG_DATA_HOME}/cargo/bin/rustup" ]]; then
+	export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
+	export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+	source "${CARGO_HOME}/env"
 fi
 
 # +--------+
@@ -39,43 +39,42 @@ fi
 # | PYTHON |
 # +--------+
 
-export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 # https://docs.jupyter.org/en/latest/use/jupyter-directories.html
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-export JUPYTER_DATA_DIR="$XDG_DATA_HOME/jupyter"
-export JUPYTER_RUNTIME_DIR="$JUPYTER_DATA_DIR/runtime"
+export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
+export JUPYTER_DATA_DIR="${XDG_DATA_HOME}/jupyter"
+export JUPYTER_RUNTIME_DIR="${JUPYTER_DATA_DIR}/runtime"
 
-export PIPX_HOME="$XDG_DATA_HOME/pipx"
-export PIPX_BIN_DIR="$PIPX_HOME/bin"
-export PATH="$PIPX_BIN_DIR:$PATH"
+export PIPX_HOME="${XDG_DATA_HOME}/pipx"
+export PIPX_BIN_DIR="${PIPX_HOME}/bin"
+export PATH="${PIPX_BIN_DIR}:${PATH}"
 
-export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
-export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
-export POETRY_HOME="$XDG_DATA_HOME/pypoetry"
+export POETRY_CONFIG_DIR="${XDG_CONFIG_HOME}/pypoetry"
+export POETRY_DATA_DIR="${XDG_DATA_HOME}/pypoetry"
+export POETRY_HOME="${XDG_DATA_HOME}/pypoetry"
 
-export COOKIECUTTER_CONFIG="$XDG_CONFIG_HOME/cookiecutter/cookiecutter.yaml"
+export COOKIECUTTER_CONFIG="${XDG_CONFIG_HOME}/cookiecutter/cookiecutter.yaml"
 
 # +-------+
 # | OTHER |
 # +-------+
 
 if hash tldr 2>/dev/null; then
-	export TEALDEER_CONFIG_DIR="$XDG_CONFIG_HOME/tealdeer"
+	export TEALDEER_CONFIG_DIR="${XDG_CONFIG_HOME}/tealdeer"
 fi
 
 if hash R 2>/dev/null; then
-	export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/.Renviron
-	export R_PROFILE_USER=$XDG_CONFIG_HOME/R/.Rprofile
+	export R_ENVIRON_USER=${XDG_CONFIG_HOME}/R/.Renviron
+	export R_PROFILE_USER=${XDG_CONFIG_HOME}/R/.Rprofile
 fi
 
 if hash npm 2>/dev/null; then
-	export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/.npmrc"
-	export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+	export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/.npmrc"
+	export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
 fi
-
 
 # +-----------+
 # | JETBRAINS |
 # +-----------+
 
-export PATH="$PATH:$HOME/.local/share/jetbrains/bin"
+export PATH="${PATH}:${HOME}/.local/share/jetbrains/bin"
