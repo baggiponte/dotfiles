@@ -1,21 +1,31 @@
-# +---------------------+
-# |  ADD TO $PATH FIRST |
-# +---------------------+
+# +--------------------+
+# | ADD TO $PATH FIRST |
+# +--------------------+
 
 # MUST be before any "hash" call!
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export PATH="$PATH:/usr/local/bin:$HOME/.local/bin"
+# +-----------+
+# | JETBRAINS |
+# +-----------+
+
+export PATH="${PATH}:${HOME}/.local/share/jetbrains/bin"
 
 # +------+
 # | NVIM |
 # +------+
 
 # NOTE: exporting EDITOR=nvim will automatically run bindkey -v (vim mode)
-export PATH="$PATH:$XDG_DATA_HOME/bob/nvim-bin/"
+export PATH="${PATH}:${XDG_DATA_HOME}/bob/nvim-bin/"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
-export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
+export MYVIMRC="${XDG_CONFIG_HOME}/nvim/init.lua"
+
+# +----------------+
+# | CUSTOM SCRIPTS |
+# +----------------+
+
+export PATH="${HOME}/.local/bin:${PATH}"
 
 # +------+
 # | RUST |
@@ -72,9 +82,3 @@ if hash npm 2>/dev/null; then
 	export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/.npmrc"
 	export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
 fi
-
-# +-----------+
-# | JETBRAINS |
-# +-----------+
-
-export PATH="${PATH}:${HOME}/.local/share/jetbrains/bin"
