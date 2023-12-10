@@ -51,17 +51,20 @@ SPACE_BG_COLOR=0x99${GRUVBOX_RED}      # 60% opacity
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar \
-                color="${BAR_COLOR}"                \
-                position=bottom                     \
-                height=25                           \
-                margin=10                           \
-                y_offset=3                          \
-                corner_radius=4                     \
-                blur_radius=20                      \
-                sticky=off                          \
-                padding_left="${BAR_PADDING}"       \
-                padding_right="${BAR_PADDING}"
+bar=(
+  color="${BAR_COLOR}"
+  position=bottom
+  height=25
+  margin=10
+  y_offset=3
+  corner_radius=4
+  blur_radius=20
+  sticky=off
+  padding_left="${BAR_PADDING}"
+  padding_right="${BAR_PADDING}"
+)
+
+sketchybar --bar "${bar[@]}"
 
 # +-------------------+
 # | Deefault Settings |
@@ -71,17 +74,20 @@ sketchybar --bar \
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-sketchybar --default \
-                    updates=when_shown                                      \
-                    drawing=on                                              \
-                    icon.font="${ICON_FONT}"                                \
-                    icon.color="${ICON_COLOR}"                              \
-                    icon.padding_left="${ICON_PADDING}"                     \
-                    icon.padding_right="${ICON_PADDING}"                    \
-                    label.font="${LABEL_FONT}"                              \
-                    label.color="${LABEL_COLOR}"                            \
-                    label.padding_left="${LABEL_PADDING}"                   \
-                    label.padding_right="${LABEL_PADDING}"
+defaults=(
+  updates=when_shown
+  drawing=on
+  icon.font="${ICON_FONT}"
+  icon.color="${ICON_COLOR}"
+  icon.padding_left="${ICON_PADDING}"
+  icon.padding_right="${ICON_PADDING}"
+  label.font="${LABEL_FONT}"
+  label.color="${LABEL_COLOR}"
+  label.padding_left="${LABEL_PADDING}"
+  label.padding_right="${LABEL_PADDING}"
+)
+
+sketchybar --default "${defaults[@]}"
 
 # +--------+
 # | Spaces |
