@@ -36,4 +36,3 @@ if [[ ! -v ZELLIJ ]]; then
     zellij-switcher
 fi
 
-typeset -U PATH
