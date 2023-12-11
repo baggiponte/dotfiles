@@ -152,6 +152,14 @@ fpath() { print "${fpath}" | tr " " "\n" }
 
 take () { command mkdir -p "$1" && cd "$1"; }
 
+tmp() {
+    local dir="$1"
+    local dest="/tmp/${dir}"
+    mkdir -p "${dest}"
+
+    cd "${dest}" || return 1
+}
+
 config() {
     local config_dir="${XDG_CONFIG_HOME-"$HOME/.config"}"
 
