@@ -117,6 +117,8 @@ brew "starship"
 brew "stylua"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
+# Terminal multiplexer
+brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
 # ODBC 3 connectivity for UNIX
