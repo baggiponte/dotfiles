@@ -160,3 +160,12 @@ done
 
 mkdir -p "$HOME/Library/Application Support/pdm"
 ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/config.toml"
+
+# +-------------------+
+# | compile bat theme |
+# +-------------------+
+
+if command -v bat; then
+    bat cache --build
+fi
+
