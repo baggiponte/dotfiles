@@ -146,13 +146,11 @@ zoxide-interactive() {
 # | Utils |
 # +-------+
 
-path() {
-    print "${PATH//:/\\n}"
-}
+path() { print "${PATH//:/\\n}" }
 
-fpath() {
-    print "${fpath}" | tr " " "\n"
-}
+fpath() { print "${fpath}" | tr " " "\n" }
+
+take () { command mkdir -p "$1" && cd "$1"; }
 
 config() {
     local config_dir="${XDG_CONFIG_HOME-"$HOME/.config"}"
