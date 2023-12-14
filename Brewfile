@@ -97,8 +97,6 @@ brew "pipes-sh"
 brew "sqlite"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
-# Package management made easy
-brew "pixi"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Polyglot runtime manager (asdf rust clone)
