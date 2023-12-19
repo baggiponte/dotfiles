@@ -3,25 +3,25 @@
 # +-------------------------------------------+
 
 IGNORES=(
-    ".git"
-    "assets"
     ".DS_Store"
-    "raycast"
-    ".idea"
-    ".vscode"
     ".Rproj.user"
-    "renv/"
-    ".venv"
-    "venv"
+    ".git"
+    ".idea"
     ".ipynb_checkpoints"
     ".mypy_cache"
     ".pytest_cache"
     ".ruff_cache"
-    "__pycache__"
-    "debug/"
-    "target/"
     ".terraform"
+    ".venv"
+    ".vscode"
+    "__pycache__"
+    "assets"
+    "debug/"
     "node_modules/"
+    "raycast"
+    "renv/"
+    "target/"
+    "venv"
 )
 
 # prepend "-E " to each element of ignores
