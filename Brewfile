@@ -43,8 +43,8 @@ brew "dua-cli"
 brew "duf"
 # More intuitive version of du in rust
 brew "dust"
-# Modern replacement for 'ls'
-brew "exa"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Banner-like program prints strings as ASCII art
@@ -143,8 +143,6 @@ cask "alt-tab"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
-# Tool to hide status bar icons
-cask "dozer"
 # Developer targeted fonts with a high number of glyphs
 cask "font-dejavu-sans-mono-nerd-font"
 # Developer targeted fonts with a high number of glyphs
