@@ -28,10 +28,10 @@ IGNORES=(
 IGNORES_FD=("${IGNORES[@]/#/-E=}")
 
 # chain every ignore in `ignore1|ignore2` format
-IGNORES_EXA="${(j:|:)IGNORES}"
+IGNORES_EZA="${(j:|:)IGNORES}"
 
 CMD_PREVIEW_BAT="bat --color=always --style='plain,changes' --line-range=:500 -- {}"
-CMD_PREVIEW_EXA="exa --all --group-directories-first --icons --level=2 --tree --ignore-glob=\"$IGNORES_EXA\" -- {}"
+CMD_PREVIEW_EZA="eza --all --group-directories-first --icons --level=2 --tree --ignore-glob=\"$IGNORES_EZA\" -- {}"
 
 # find files and pipe in sk/fzf preview with bat
 _fuzzy-file() {
@@ -45,7 +45,7 @@ _fuzzy-file() {
         --query="$pattern"
 }
 
-# find directories and pipe in sk/fzf preview with exa
+# find directories and pipe in sk/fzf preview with eza
 _fuzzy-dir() {
     requires fd sk bat
 
@@ -54,7 +54,7 @@ _fuzzy-dir() {
     # `sk --cmd` does not work with zle
     fd --type=directory --unrestricted "${IGNORES_FD[@]}" |
         sk \
-        --preview="$CMD_PREVIEW_EXA" \
+        --preview="$CMD_PREVIEW_EZA" \
         --query="$pattern"
 }
 
@@ -133,7 +133,7 @@ zoxide-interactive() {
 			--exclude "$PWD" \
 			--list |
         sk \
-            --preview="$CMD_PREVIEW_EXA" \
+            --preview="$CMD_PREVIEW_EZA" \
             --height 40% \
             --preview-window=down,40% \
             --query="$query"
