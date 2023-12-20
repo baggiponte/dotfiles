@@ -32,3 +32,7 @@ for s in "${sources[@]}"; do
 	source "$ZDOTDIR/include/${s}.zsh"
 done
 
+if [[ -z $TMUX ]]; then
+    tmux-sessionizer
+fi
+
