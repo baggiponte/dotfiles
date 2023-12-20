@@ -32,7 +32,3 @@ for s in "${sources[@]}"; do
 	source "$ZDOTDIR/include/${s}.zsh"
 done
 
-if [[ ! -v ZELLIJ ]]; then
-    zellij-switcher
-fi
-
