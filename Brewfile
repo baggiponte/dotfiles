@@ -123,8 +123,6 @@ brew "tokei"
 brew "unixodbc"
 # Internet file retriever
 brew "wget"
-# Pluggable terminal workspace, with terminal multiplexer as the base feature
-brew "zellij"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
