@@ -92,6 +92,7 @@ else
 fi
 
 ln -s "$HOME/.config/.gitconfig" "$HOME/.gitconfig"
+ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs/" "icloud"
 
 # +----------------------+
 # | install dependencies |
