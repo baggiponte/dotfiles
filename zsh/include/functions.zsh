@@ -160,6 +160,12 @@ tmp() {
     cd "${dest}" || return 1
 }
 
+leave() {
+    local here="${PWD}"
+    cd .. || return 1
+    rm -rf "$here"
+}
+
 config() {
     local config_dir="${XDG_CONFIG_HOME-"$HOME/.config"}"
 
