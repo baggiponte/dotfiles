@@ -153,7 +153,7 @@ fpath() { print "${fpath}" | tr " " "\n" }
 take () { command mkdir -p "$1" && cd "$1"; }
 
 tmp() {
-    local dir="$1"
+    local dir="${1:-test}"
     local dest="/tmp/${dir}"
     mkdir -p "${dest}"
 
