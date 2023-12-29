@@ -1,0 +1,35 @@
+live_config_reload = true
+
+[colors.normal]
+black = "#1d1f21"
+blue = "#81a2be"
+cyan = "#8abeb7"
+green = "#b5bd68"
+magenta = "#b294bb"
+red = "#cc6666"
+white = "#c5c8c6"
+yellow = "#f0c674"
+
+[cursor.style]
+shape = "Beam"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "Hack Nerd Font Mono"
+style = "Regular"
+
+[shell]
+program = "/opt/homebrew/bin/zsh"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = true
+opacity = 0.85
+option_as_alt = "Both"
+startup_mode = "Maximized"
+
+[window.padding]
+x = 8
+y = 6
