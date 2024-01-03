@@ -11,7 +11,7 @@ command -v pixi >/dev/null && eval "$(pixi completion --shell zsh)"
 
 # hook binaries into zsh
 command -v direnv >/dev/null && eval "$(direnv hook zsh)"         # autoload dotenv files
-command -v rtx >/dev/null && eval "$(rtx activate zsh)"           # hook rtx
+command -v mise >/dev/null && eval "$(mise activate zsh)"         # hook mise (formerly rtx)
 command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd=j)" # autojump with j
 
 if command -v starship >/dev/null; then
