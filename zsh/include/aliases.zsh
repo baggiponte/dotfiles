@@ -31,11 +31,6 @@ alias td="date +%Y-%m-%d"
 # 	alias quarto=/Applications/quarto/bin/quarto
 # fi
 
-if hash rtx 2>/dev/null; then
-	alias tf=terraform
-	alias tg=terragrunt
-fi
-
 if hash gh 2>/dev/null; then
 	alias ghw='gh repo view --web'
 fi
