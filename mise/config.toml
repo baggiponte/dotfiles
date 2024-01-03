@@ -1,0 +1,7 @@
+[settings]
+experimental = true
+
+[tools]
+node = "latest"
+python = "3.10"
+# pipx = "latest"
