@@ -85,6 +85,8 @@ brew "lolcat"
 brew "luarocks"
 # Utility for directing compilation
 brew "make"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Shell command parallelization utility
@@ -99,8 +101,6 @@ brew "sqlite"
 brew "pipx"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Polyglot runtime manager (asdf rust clone)
-brew "rtx"
 # Blazing-fast modern Lua linter
 brew "selene"
 # Static analysis and lint tool, for (ba)sh scripts
