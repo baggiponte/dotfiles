@@ -4,16 +4,16 @@ gui:
 git:
   overrideGpg: true
   paging:
-    colorArg: always
+    colorArg: 'always'
     pager: >
       delta --dark --paging=never --syntax-theme base16-256
       --diff-highlight
       --line-numbers-left-format ""
       --line-numbers-right-format "│ "
 customCommands:
-  - key: "C"
-    command: "git cz c"
-    context: "files"
-    loadingText: "opening commitizen commit tool"
-    description: "commit with commitizen"
+  - key: 'C'
+    command: 'git cz c'
+    context: 'files'
+    loadingText: 'opening commitizen commit tool'
+    description: 'commit with commitizen'
     subprocess: true
