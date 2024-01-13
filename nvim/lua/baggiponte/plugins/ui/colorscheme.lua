@@ -29,6 +29,7 @@ return {
     lazy = true,
     opts = {
       transparent_bg = true,
+      bright_border = true,
       style = 'classic',
       telescope = {
         style = 'classic',
