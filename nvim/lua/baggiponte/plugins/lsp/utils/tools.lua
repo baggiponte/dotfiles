@@ -8,7 +8,6 @@ M.linters = {
   'shellcheck',
   'tfsec',
   'yamllint',
-  -- 'cfn-lint',
 }
 
 M.formatters = {
@@ -29,6 +28,7 @@ M.servers = {
   docker_compose_language_service = {},
   terraformls = {},
   tflint = {},
+  lua_ls = {},
   yamlls = {
     settings = {
       yaml = {
@@ -54,18 +54,6 @@ M.servers = {
       'run',
       'stable',
       'rust-analyzer',
-    },
-  },
-  lua_ls = {
-    settings = {
-      Lua = {
-        runtime = { version = 'LuaJIT' }, -- Tell the language server which version of Lua you're using
-        diagnostics = { globals = { 'vim' } }, -- Get the language server to recognize the `vim` global
-        telemetry = { enable = false }, -- Do not send telemetry data containing a randomized but unique identifier
-        workspace = { checkThirdParty = false },
-        format = { enable = false }, -- formatting is done via selene
-        hint = { enable = true },
-      },
     },
   },
 }
