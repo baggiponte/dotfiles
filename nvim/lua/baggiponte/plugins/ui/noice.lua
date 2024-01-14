@@ -10,7 +10,7 @@ return {
           render = 'compact',
           stages = 'slide',
           top_down = false,
-          max_width = math.floor(vim.o.columns * 0.4),
+          -- max_width = math.floor(vim.o.columns * 0.6),
         },
       },
     },
