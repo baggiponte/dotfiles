@@ -153,7 +153,5 @@ cask "font-yanone-kaffeesatz"
 cask "jetbrains-toolbox"
 # Keyboard customizer
 cask "karabiner-elements"
-# Control your tools with a few keystrokes
-cask "raycast"
 # Collect, organize, cite, and share research sources
 cask "zotero"
