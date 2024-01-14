@@ -11,6 +11,13 @@ local keys = {
     noremap = true,
   },
   {
+    '<leader>dt',
+    function()
+      import('dapui').toggle()
+    end,
+    desc = '[d]ebugger [t]oggle',
+  },
+  {
     '<leader>b',
     function()
       import('dap').toggle_breakpoint()
@@ -19,61 +26,62 @@ local keys = {
     silent = true,
     noremap = true,
   },
-  config = function()
-    local dap = import('dap')
-    local dapui = import('dapui')
-
-    dap.listeners.after.event_initialized['dapui_config'] = function()
-      dapui.open({})
-    end
-
-    dap.listeners.before.event_terminated['dapui_config'] = function()
-      dapui.close({})
-    end
-
-    dap.listeners.before.event_exited['dapui_config'] = function()
-      dapui.close({})
-    end
-  end,
 }
 
 return {
-  {
-    'mfussenegger/nvim-dap',
-    keys = keys,
-  },
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap' },
-    config = function()
-      local dap = require('dap')
-      local dapui = require('dapui')
-
-      dapui.setup()
-
-      dap.listeners.after.event_initialized['dapui_config'] = function()
-        dapui.open()
-      end
-
-      dap.listeners.before.event_terminated['dapui_config'] = function()
-        dapui.close()
-      end
-
-      dap.listeners.before.event_exited['dapui_config'] = function()
-        dapui.close()
-      end
-    end,
-  },
   {
     'mfussenegger/nvim-dap-python',
     ft = 'python',
     dependencies = {
       'mfussenegger/nvim-dap',
-      'mfussenegger/nvim-dap-ui',
     },
     config = function()
       local path = require('mason-registry').get_package('debugpy'):get_install_path()
       require('dap-python').setup(path .. '/venv/bin/python')
+    end,
+  },
+  {
+    'mfussenegger/nvim-dap',
+    keys = keys,
+    dependencies = {
+      'rcarriga/nvim-dap-ui',
+      opts = {
+        icons = {
+          expanded = '',
+          collapsed = '',
+          current_frame = '',
+        },
+        controls = {
+          enabled = true,
+          element = 'console',
+          icons = {
+            pause = '',
+            play = '',
+            step_into = '',
+            step_over = '',
+            step_out = '',
+            step_back = '',
+            run_last = '',
+            terminate = '',
+          },
+        },
+      },
+    },
+    config = function()
+      local dap, dapui = require('dap'), require('dapui')
+
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
     end,
   },
 }
