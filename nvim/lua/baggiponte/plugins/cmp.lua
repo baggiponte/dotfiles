@@ -25,7 +25,7 @@ return {
   'hrsh7th/nvim-cmp',
   dependencies = dependencies,
   version = false, -- last release is way too old
-  event = 'InsertEnter',
+  event = { 'InsertEnter', 'CmdlineEnter' },
   config = function()
     local cmp = import('cmp')
     local luasnip = import('luasnip')
@@ -113,9 +113,15 @@ return {
       })
     end
 
+    local window = {
+      completion = cmp.config.window.bordered({
+        winhighlight = 'Normal:Normal,FloatBorder:SpecialCmpBorder,Search:None',
+      }),
+    }
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline({ '/', '?' }, {
       mapping = cmp.mapping.preset.cmdline(),
+      window = window,
       sources = {
         { name = 'buffer' },
       },
@@ -124,6 +130,7 @@ return {
     -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
+      window = window,
       sources = cmp.config.sources({
         { name = 'nvim_lua' },
         { name = 'cmdline' },
