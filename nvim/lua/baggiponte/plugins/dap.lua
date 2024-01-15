@@ -57,25 +57,28 @@ return {
     'mfussenegger/nvim-dap',
     keys = keys,
     dependencies = {
-      'rcarriga/nvim-dap-ui',
-      opts = {
-        icons = {
-          expanded = '',
-          collapsed = '',
-          current_frame = '',
-        },
-        controls = {
-          enabled = true,
-          element = 'console',
+      { 'theHamsta/nvim-dap-virtual-text', opts = {} },
+      {
+        'rcarriga/nvim-dap-ui',
+        opts = {
           icons = {
-            pause = '',
-            play = '',
-            step_into = '',
-            step_over = '',
-            step_out = '',
-            step_back = '',
-            run_last = '',
-            terminate = '',
+            expanded = '',
+            collapsed = '',
+            current_frame = '',
+          },
+          controls = {
+            enabled = true,
+            element = 'console',
+            icons = {
+              pause = '',
+              play = '',
+              step_into = '',
+              step_over = '',
+              step_out = '',
+              step_back = '',
+              run_last = '',
+              terminate = '',
+            },
           },
         },
       },
