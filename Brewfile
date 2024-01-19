@@ -153,5 +153,7 @@ cask "font-yanone-kaffeesatz"
 cask "jetbrains-toolbox"
 # Keyboard customizer
 cask "karabiner-elements"
+# Calendar for professionals and teams
+cask "notion-calendar"
 # Collect, organize, cite, and share research sources
 cask "zotero"
