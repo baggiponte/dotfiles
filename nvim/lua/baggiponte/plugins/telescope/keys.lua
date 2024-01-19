@@ -69,9 +69,9 @@ return {
   {
     '<leader>fd',
     function()
-      import('telescope').extensions.file_browser.file_browser()
+      import('telescope.builtin').diagnostics()
     end,
-    desc = 'Telescope [f]ind in [d]irectory tree',
+    desc = 'Telescope [f]ind in workspace [d]iagnostics',
     silent = true,
     noremap = true,
   },
