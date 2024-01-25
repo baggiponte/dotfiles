@@ -5,7 +5,7 @@ return {
   keys = {
     {
       '<leader>N',
-      '<cmd>Neotree toggle right<CR>',
+      '<cmd>Neotree toggle<CR>',
       mode = { 'n', 'v' },
       desc = 'Toggle NeoTree',
     },
