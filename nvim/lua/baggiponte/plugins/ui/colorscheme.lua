@@ -37,6 +37,12 @@ return {
     },
   },
   {
+    'HoNamDuong/hybrid.nvim',
+    opts = {
+      transparent = true,
+    },
+  },
+  {
     'nvchad/nvim-colorizer.lua',
     cmd = 'ColorizerToggle',
     name = 'colorizer',
