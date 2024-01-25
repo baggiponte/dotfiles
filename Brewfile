@@ -24,6 +24,8 @@ brew "colima"
 brew "coreutils"
 # Configurable talking characters in ASCII art
 brew "cowsay"
+# Good-lookin' diffs with diff-highlight and more
+brew "diff-so-fancy"
 # Tool for exploring each layer in a docker image
 brew "dive"
 # Pack, ship and run any application as a lightweight container
