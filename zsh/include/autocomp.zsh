@@ -9,6 +9,10 @@ COMPDIR="${XDG_CACHE_HOME}/zsh/zfunc"
 # $XDG_CACHE_HOME/zsh/zcompdump and run compinit
 fpath=(${COMPDIR} $fpath) # won't work if there are quotes
 
+if [[ $(command -v rye) && ! -s ${COMPDIR}/_rye ]]; then
+    rye self completion -s zsh > "${COMPDIR}/_rye"
+fi
+
 if [[ $(command -v pdm) && ! -s ${COMPDIR}/_pdm ]]; then
 	pdm completion zsh >"${COMPDIR}/_pdm"
 fi
