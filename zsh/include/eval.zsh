@@ -13,6 +13,7 @@ command -v pixi >/dev/null && eval "$(pixi completion --shell zsh)"
 command -v direnv >/dev/null && eval "$(direnv hook zsh)"         # autoload dotenv files
 command -v mise >/dev/null && eval "$(mise activate zsh)"         # hook mise (formerly rtx)
 command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd=j)" # autojump with j
+command -v rye >/dev/null && eval "$(rye self completion)"
 
 if command -v starship >/dev/null; then
 	export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
