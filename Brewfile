@@ -26,8 +26,6 @@ brew "coreutils"
 brew "cowsay"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Tool for exploring each layer in a docker image
-brew "dive"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Docker CLI plugin for extended build capabilities with BuildKit
@@ -96,12 +94,10 @@ brew "parallel"
 brew "pass"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
-# Command-line interface for SQLite
-brew "sqlite"
-# Execute binaries from Python packages in isolated environments
-brew "pipx"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Experimental Package Management Solution for Python
+brew "rye"
 # Blazing-fast modern Lua linter
 brew "selene"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -110,16 +106,14 @@ brew "shellcheck"
 brew "shfmt"
 # Fuzzy Finder in rust!
 brew "sk"
+# Command-line interface for SQLite
+brew "sqlite"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Opinionated Lua code formatter
-brew "stylua"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Terminal multiplexer
 brew "tmux"
-# Program that allows you to count code, quickly
-brew "tokei"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
 # Internet file retriever
