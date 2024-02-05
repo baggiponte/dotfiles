@@ -155,8 +155,8 @@ bob use latest
 # | install python CLIs |
 # +---------------------+
 
-for lib in "pdm[all]" "pre-commit" "virtualenv"; do
-	pipx install "$lib"
+for lib in "pdm[all]" "pre-commit" "virtualenv" "maturin" "cookiecutter"; do
+	rye install "$lib"
 done
 
 mkdir -p "$HOME/Library/Application Support/pdm"

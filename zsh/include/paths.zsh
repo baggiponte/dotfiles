@@ -52,6 +52,9 @@ fi
 # | PYTHON |
 # +--------+
 
+export RYE_HOME="${XDG_DATA_HOME}/rye"
+. "${RYE_HOME}/env"
+
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 # https://docs.jupyter.org/en/latest/use/jupyter-directories.html
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
