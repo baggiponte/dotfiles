@@ -102,8 +102,6 @@ brew "rye"
 brew "selene"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
-# Autoformat shell script source code
-brew "shfmt"
 # Fuzzy Finder in rust!
 brew "sk"
 # Command-line interface for SQLite
