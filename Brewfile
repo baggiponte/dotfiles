@@ -114,6 +114,8 @@ brew "tealdeer"
 brew "tmux"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Internet file retriever
 brew "wget"
 # Shell extension to navigate your filesystem faster
@@ -145,7 +147,7 @@ cask "font-juliamono"
 cask "font-yanone-kaffeesatz"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
-# Keyboard customizer
+# Keyboard customiser
 cask "karabiner-elements"
 # Calendar for professionals and teams
 cask "notion-calendar"
