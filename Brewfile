@@ -114,8 +114,6 @@ brew "tealdeer"
 brew "tmux"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # Internet file retriever
 brew "wget"
 # Shell extension to navigate your filesystem faster
@@ -151,5 +149,7 @@ cask "jetbrains-toolbox"
 cask "karabiner-elements"
 # Calendar for professionals and teams
 cask "notion-calendar"
-# Collect, organize, cite, and share research sources
+# Collaboration platform for API development
+cask "postman"
+# Collect, organise, cite, and share research sources
 cask "zotero"
