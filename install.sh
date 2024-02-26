@@ -120,21 +120,38 @@ else
 	print "⚠️ skipped brew package installs"
 fi
 
+# +---------------------+
+# | install python CLIs |
+# +---------------------+
+
+print "Install rye (rye-up.com)"
+
+export RYE_HOME="$XDG_DATA_HOME/rye"
+
+curl -sSf https://rye-up.com/get | bash
+
+for lib in "pdm[all]" "pre-commit" "virtualenv" "maturin" "cookiecutter"; do
+	rye install "$lib"
+done
+
+mkdir -p "$HOME/Library/Application Support/pdm"
+ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/config.toml"
+
 # +------------------------------+
 # | configure languages with rtx |
 # +------------------------------+
 
-eval "$(rtx activate zsh)"
+eval "$(mise activate zsh)"
 
-rtx install "python@3.11" "python@3.10" "node@latest"
-rtx global "python@3.10" "node@latest"
+mise install "python@3.11" "python@3.10" "node@latest"
+mise global "python@3.10" "node@latest"
 
 # +--------------+
 # | install rust |
 # +--------------+
 
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -150,17 +167,6 @@ done
 bob install latest
 bob install nightly
 bob use latest
-
-# +---------------------+
-# | install python CLIs |
-# +---------------------+
-
-for lib in "pdm[all]" "pre-commit" "virtualenv" "maturin" "cookiecutter"; do
-	rye install "$lib"
-done
-
-mkdir -p "$HOME/Library/Application Support/pdm"
-ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/config.toml"
 
 # +-------------------+
 # | compile bat theme |
