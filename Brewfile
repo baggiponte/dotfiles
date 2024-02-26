@@ -1,7 +1,9 @@
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
+tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
+tap "homebrew/core"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -96,8 +98,6 @@ brew "pass"
 brew "pipes-sh"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Experimental Package Management Solution for Python
-brew "rye"
 # Blazing-fast modern Lua linter
 brew "selene"
 # Static analysis and lint tool, for (ba)sh scripts
