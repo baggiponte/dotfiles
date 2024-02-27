@@ -12,6 +12,10 @@ local keys = {
     mode = { 'n', 'v' },
   },
   {
+    '<leader>hp',
+    '<cmd>Gitsigns preview_hunk<CR>',
+  },
+  {
     ']h',
     function()
       local gs = import('gitsigns')
