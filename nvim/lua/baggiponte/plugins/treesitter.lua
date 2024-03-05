@@ -19,6 +19,7 @@ local tsopts = {
     'python',
     'r',
     'regex', -- needed for noice.nvim
+    'requirements', -- python requirements.txt
     'rust',
     'sql',
     'terraform',
