@@ -145,6 +145,8 @@ cask "jetbrains-toolbox"
 cask "karabiner-elements"
 # Calendar for professionals and teams
 cask "notion-calendar"
+# Open-source software for live streaming and screen recording
+cask "obs"
 # Collaboration platform for API development
 cask "postman"
 # Collect, organise, cite, and share research sources
