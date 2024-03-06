@@ -138,8 +138,6 @@ cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
 # Typeface made for developers
 cask "font-jetbrains-mono"
-# Monospaced typeface designed for programming in Julia
-cask "font-juliamono"
 cask "font-yanone-kaffeesatz"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
