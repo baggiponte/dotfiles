@@ -98,8 +98,6 @@ brew "pipes-sh"
 brew "ripgrep"
 # Blazing-fast modern Lua linter
 brew "selene"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
 # Fuzzy Finder in rust!
 brew "sk"
 # Command-line interface for SQLite
