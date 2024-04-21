@@ -22,8 +22,15 @@ M.dap = {
 
 M.servers = {
   cssls = {},
-  pyright = {},
-  ruff_lsp = {},
+  pyright = {
+    settings = {
+      pyright = {
+        -- Using Ruff's import organizer
+        disableOrganizeImports = true,
+      },
+    },
+  },
+  ruff = {},
   dockerls = {},
   docker_compose_language_service = {},
   terraformls = {},
