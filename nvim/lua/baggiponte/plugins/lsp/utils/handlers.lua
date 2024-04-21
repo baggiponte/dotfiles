@@ -1,3 +1,5 @@
+local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+
 local M = {}
 
 M.keys = {
@@ -30,7 +32,7 @@ M.keys = {
   { '<C-k>', vim.lsp.buf.signature_help, 'go to signature help' },
 }
 
-M.on_attach = function(_, buffer)
+M.on_attach = function(client, buffer)
   local bufmap = function(args)
     local lhs, rhs, desc, opts
     lhs, rhs, desc, opts = unpack(args)
@@ -45,6 +47,11 @@ M.on_attach = function(_, buffer)
     end
 
     vim.keymap.set(mode, lhs, rhs, bufopts)
+  end
+
+  if client.name == 'ruff' then
+    -- Disable hover in favor of Pyright
+    client.server_capabilities.hoverProvider = false
   end
 
   for _, keymap in ipairs(M.keys) do
