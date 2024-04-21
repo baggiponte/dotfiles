@@ -59,4 +59,14 @@ M.on_attach = function(client, buffer)
   end
 end
 
+M.make_client_capabilities = function(opts)
+  return vim.tbl_deep_extend(
+    'force',
+    {},
+    vim.lsp.protocol.make_client_capabilities(),
+    has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+    opts.capabilities or {}
+  )
+end
+
 return M
