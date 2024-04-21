@@ -130,7 +130,7 @@ export RYE_HOME="$XDG_DATA_HOME/rye"
 
 curl -sSf https://rye-up.com/get | bash
 
-for lib in "pdm[all]" "pre-commit" "virtualenv" "maturin" "cookiecutter"; do
+for lib in "pre-commit" "uv" "cookiecutter" "commitizen" "argcomplete"; do
 	rye install "$lib"
 done
 
@@ -165,7 +165,6 @@ done
 # +--------------+
 
 bob install latest
-bob install nightly
 bob use latest
 
 # +-------------------+
