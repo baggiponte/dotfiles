@@ -1,5 +1,4 @@
 local linters = {
-  fish = { 'fish' },
   json = { 'jsonlint' },
   lua = { 'selene' },
   python = { 'mypy' },
