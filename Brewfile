@@ -16,6 +16,10 @@ brew "bottom"
 brew "cmake"
 # Console Matrix
 brew "cmatrix"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -54,8 +58,6 @@ brew "findutils"
 brew "fortune"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Library for command-line editing
-brew "readline"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
@@ -76,8 +78,14 @@ brew "hyperfine"
 brew "jq"
 # Handy way to save and run project-specific commands
 brew "just"
+# Run local Kubernetes cluster in Docker
+brew "kind"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
 # Simple terminal UI for git commands
 brew "lazygit"
+# LLVM's OpenMP runtime library
+brew "libomp"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Package manager for the Lua programming language
@@ -88,6 +96,8 @@ brew "make"
 brew "mise"
 # Fast, highly customisable system info script
 brew "neofetch"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
 # Shell command parallelization utility
 brew "parallel"
 # Password manager
@@ -100,14 +110,14 @@ brew "ripgrep"
 brew "selene"
 # Fuzzy Finder in rust!
 brew "sk"
-# Command-line interface for SQLite
-brew "sqlite"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Terminal multiplexer
 brew "tmux"
+# Program that allows you to count code, quickly
+brew "tokei"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
 # Internet file retriever
