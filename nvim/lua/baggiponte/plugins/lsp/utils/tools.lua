@@ -3,7 +3,6 @@ local M = {}
 M.linters = {
   'actionlint',
   'jsonlint',
-  'ruff',
   'selene',
   'shellcheck',
   'tfsec',
