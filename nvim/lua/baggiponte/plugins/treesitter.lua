@@ -23,6 +23,7 @@ local tsopts = {
     'rust',
     'sql',
     'terraform',
+    'tmux',
     'toml',
     'vimdoc',
     'yaml',
