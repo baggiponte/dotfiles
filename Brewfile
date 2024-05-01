@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
+tap "oven-sh/bun"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -92,8 +93,6 @@ brew "lolcat"
 brew "luarocks"
 # Utility for directing compilation
 brew "make"
-# Polyglot runtime manager (asdf rust clone)
-brew "mise"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Create, run, and share large language models (LLMs)
@@ -132,6 +131,8 @@ brew "felixkratz/formulae/sketchybar"
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Enable Windows-like alt-tab
