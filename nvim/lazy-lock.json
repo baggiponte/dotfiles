@@ -13,7 +13,7 @@
   "dial.nvim": { "branch": "master", "commit": "27eb570085db2ef44bff4f620d3806039184651c" },
   "fidget.nvim": { "branch": "main", "commit": "1ba38e4cbb24683973e00c2e36f53ae64da38ef5" },
   "friendly-snippets": { "branch": "main", "commit": "d5f74ce4dfdd82848f3f4eac65fe6e29ac5df4c2" },
-  "gitsigns.nvim": { "branch": "main", "commit": "790355f00af1fc2c330ea1b2b7f68d65f19b57c9" },
+  "gitsigns.nvim": { "branch": "main", "commit": "f65d1d82013e032ca6c199b62f08089b420b068c" },
   "gruvbox-material": { "branch": "master", "commit": "80331fbbec9ba18590a17bc6b7d277d96c05c2b6" },
   "hybrid.nvim": { "branch": "master", "commit": "82d847fc6bdc1b9b4e7f34f22410989c61979081" },
   "inc-rename.nvim": { "branch": "main", "commit": "5e03e986625961d1fac296d1bf332a6510c3add6" },
