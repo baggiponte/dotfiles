@@ -37,8 +37,6 @@ if [[ $(command -v zellij) && ! -s ${COMPDIR}/_zellij ]]; then
 	zellij setup --generate-completion zsh >"${COMPDIR}/_zellij"
 fi
 
-[ -f $ZDOTDIR/include/fzf.zsh ] && source "$ZDOTDIR/include/fzf.zsh"
-
 # comment out if using zim's completion zmodule
 autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
 autoload -Uz bashcompinit && bashcompinit
