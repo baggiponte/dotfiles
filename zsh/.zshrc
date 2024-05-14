@@ -33,6 +33,6 @@ for s in "${sources[@]}"; do
 done
 
 if [[ -z $TMUX ]]; then
-    tmux-sessionizer
+    tmux-switcher
 fi
 
