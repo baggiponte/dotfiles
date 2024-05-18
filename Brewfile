@@ -140,6 +140,8 @@ cask "alt-tab"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
+# Opensource IDE for exploring and testing api's
+cask "bruno"
 # Developer targeted fonts with a high number of glyphs
 cask "font-dejavu-sans-mono-nerd-font"
 # Developer targeted fonts with a high number of glyphs
@@ -157,7 +159,5 @@ cask "notion-calendar"
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# Collaboration platform for API development
-cask "postman"
 # Collect, organise, cite, and share research sources
 cask "zotero"
