@@ -12,8 +12,6 @@ brew "bat"
 brew "bob"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
-# Cross-platform make
-brew "cmake"
 # Console Matrix
 brew "cmatrix"
 # Library for command-line editing
@@ -38,8 +36,6 @@ brew "docker-buildx"
 brew "docker-compose"
 # Platform keystore credential helper for Docker
 brew "docker-credential-helper"
-# Pluggable and configurable code formatting platform written in Rust
-brew "dprint"
 # View disk space usage and delete unwanted data, fast
 brew "dua-cli"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -78,10 +74,6 @@ brew "hyperfine"
 brew "jq"
 # Handy way to save and run project-specific commands
 brew "just"
-# Run local Kubernetes cluster in Docker
-brew "kind"
-# Kubernetes command-line interface
-brew "kubernetes-cli"
 # Simple terminal UI for git commands
 brew "lazygit"
 # LLVM's OpenMP runtime library
@@ -96,8 +88,6 @@ brew "make"
 brew "mise"
 # Fast, highly customisable system info script
 brew "neofetch"
-# Create, run, and share large language models (LLMs)
-brew "ollama"
 # Shell command parallelization utility
 brew "parallel"
 # Password manager
