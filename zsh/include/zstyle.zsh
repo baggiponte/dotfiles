@@ -21,6 +21,8 @@ zstyle ':completion:*' menu select
 
 # syntax highlight for file completion
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --color=always --tree --level=2 --group-directories-first $realpath'
+zstyle ':fzf-tab:complete:j:*' fzf-preview 'eza --color=always --tree --level=2 --group-directories-first $realpath'
 
 # use cache for tab completion
 zstyle ':completion:*' use-cache on
