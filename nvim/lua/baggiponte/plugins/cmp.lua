@@ -53,7 +53,7 @@ return {
         ['<C-space>'] = cmp.mapping.complete(),
         ['<esc>'] = cmp.mapping.close(),
         ['<C-n>'] = cmp.mapping.confirm({ select = true }),
-        ['<Tab>'] = function(fallback)
+        [']'] = function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
           elseif luasnip.expand_or_jumpable() then
@@ -62,7 +62,7 @@ return {
             fallback()
           end
         end,
-        ['<S-Tab>'] = function(fallback)
+        ['['] = function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
           elseif luasnip.jumpable(-1) then
