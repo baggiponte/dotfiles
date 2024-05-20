@@ -17,7 +17,7 @@ return {
 
     local capabilities = handlers.make_client_capabilities(opts)
 
-    ---@param spec MasonLSPSpec
+    ---@param spec MasonServerSpec
     local setup = function(spec)
       local server = spec['name']
       local settings = vim.tbl_deep_extend('force', {
