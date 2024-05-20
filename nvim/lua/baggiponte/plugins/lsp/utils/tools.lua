@@ -67,35 +67,9 @@ M.servers = {
   },
   ['yaml-language-server'] = {
     name = 'yamlls',
-    config = {
-      settings = {
-        yaml = {
-          schemaStore = {
-            -- You must disable built-in schemaStore support if you want to use
-            -- schemastore.nvim and its advanced options like `ignore`.
-            enable = false,
-            -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-            url = '',
-          },
-          schemas = function()
-            return require('schemastore').yaml.schemas()
-          end,
-        },
-      },
-    },
   },
   ['json-lsp'] = {
     name = 'jsonls',
-    config = {
-      settings = {
-        json = {
-          schemas = function()
-            return require('schemastore').json.schemas()
-          end,
-          validate = { enable = true },
-        },
-      },
-    },
   },
   ['rust-analyzer'] = {
     name = 'rust_analyzer',
