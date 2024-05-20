@@ -1,7 +1,7 @@
 ---@alias MasonTool string name of a Mason tool (lsp, formatter, linter, debugger)
 ---@alias NvimLSPServer string name of a nvim-lspconfig server
 
----@class MasonServer
+---@class MasonServerSpec
 ---@field name NvimLSPServer
 ---@field config? table
 
@@ -9,7 +9,7 @@
 ---@field linters MasonTool[]
 ---@field formatters MasonTool[]
 ---@field dap MasonTool[]
----@field servers table<MasonTool, MasonServer>
+---@field servers table<MasonTool, MasonServerSpec>
 ---@field all MasonTool[]
 local M = {}
 
