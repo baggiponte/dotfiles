@@ -41,10 +41,4 @@ return {
       transparent = true,
     },
   },
-  {
-    'nvchad/nvim-colorizer.lua',
-    cmd = 'ColorizerToggle',
-    name = 'colorizer',
-    config = true,
-  },
 }
