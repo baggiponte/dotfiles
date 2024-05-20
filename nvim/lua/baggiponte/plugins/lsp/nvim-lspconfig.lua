@@ -4,7 +4,6 @@ return {
   dependencies = {
     { 'folke/neodev.nvim', opts = {}, ft = { 'lua' } },
     { 'williamboman/mason.nvim' },
-    { 'b0o/schemastore.nvim' },
   },
   config = function(opts)
     local lspconfig = require('lspconfig')
