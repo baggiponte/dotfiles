@@ -58,12 +58,6 @@ vim.opt.undofile = true
 
 vim.opt.updatetime = 50 -- Decrease update time.
 
--- [[ Clipboard ]]
--- vim.opt.clipboard:append('unnamedplus') -- Use system clipboard
-
--- [[ Colors ]]
-vim.opt.termguicolors = true -- 256 colors terminal
-
 -- [[ Splits ]]
 vim.opt.splitright = true -- bool: Place new window to right of current one
 vim.opt.splitbelow = true -- bool: Place new window below the current one
