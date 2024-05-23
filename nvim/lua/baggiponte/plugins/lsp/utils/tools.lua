@@ -35,6 +35,14 @@ M.dap = {
 M.servers = {
   ['lua-language-server'] = {
     name = 'lua_ls',
+    config = {
+      settings = {
+        Lua = {
+          hint = { enable = true },
+          arrayIndex = 'Disable',
+        },
+      },
+    },
   },
   ['css-lsp'] = {
     name = 'cssls',
