@@ -38,8 +38,14 @@ M.servers = {
     config = {
       settings = {
         Lua = {
+          diagnostics = {
+            globals = { 'vim' },
+          },
           hint = { enable = true },
           arrayIndex = 'Disable',
+          telemetry = {
+            enable = false,
+          },
         },
       },
     },

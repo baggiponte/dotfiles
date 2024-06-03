@@ -2,7 +2,6 @@ return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   dependencies = {
-    { 'folke/neodev.nvim', opts = {}, ft = { 'lua' } },
     { 'williamboman/mason.nvim' },
   },
   config = function(opts)
