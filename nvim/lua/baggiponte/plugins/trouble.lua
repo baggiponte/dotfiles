@@ -1,8 +1,8 @@
 return {
   {
     'folke/todo-comments.nvim',
+    cmd = { 'TodoTrouble', 'TodoTelescope', 'TodoQuickFix', 'TodoLocList' },
     dependencies = { 'nvim-lua/plenary.nvim' },
-    event = 'VeryLazy',
     opts = {},
   },
   {
