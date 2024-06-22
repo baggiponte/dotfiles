@@ -35,10 +35,4 @@ return {
       },
     },
   },
-  {
-    'HoNamDuong/hybrid.nvim',
-    opts = {
-      transparent = true,
-    },
-  },
 }
