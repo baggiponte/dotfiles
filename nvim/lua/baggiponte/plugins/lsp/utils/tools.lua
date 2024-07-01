@@ -85,17 +85,18 @@ M.servers = {
   ['json-lsp'] = {
     name = 'jsonls',
   },
-  ['rust-analyzer'] = {
-    name = 'rust_analyzer',
-    config = {
-      cmd = {
-        'rustup',
-        'run',
-        'stable',
-        'rust-analyzer',
-      },
-    },
-  },
+  -- ignore since using rustaceanvim
+  -- ['rust-analyzer'] = {
+  --   name = 'rust_analyzer',
+  --   config = {
+  --     cmd = {
+  --       'rustup',
+  --       'run',
+  --       'stable',
+  --       'rust-analyzer',
+  --     },
+  --   },
+  -- },
 }
 
 M.all = vim.iter({ M.dap, M.linters, M.formatters, vim.tbl_keys(M.servers) }):flatten():totable()
