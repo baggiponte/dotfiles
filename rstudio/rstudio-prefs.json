@@ -61,5 +61,7 @@
         "additional_source_columns": 0
     },
     "insert_native_pipe_operator": true,
+    "copilot_enabled": true,
+    "copilot_indexing_enabled": true,
     "show_terminal_tab": false
 }
