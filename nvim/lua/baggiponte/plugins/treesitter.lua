@@ -11,6 +11,7 @@ local tsopts = {
     'json',
     'jsonc',
     'julia',
+    'just',
     'kdl',
     'lua',
     'make',
