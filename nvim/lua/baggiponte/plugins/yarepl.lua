@@ -2,32 +2,18 @@ local import = require('baggiponte.utils').import
 
 local keys = {
   {
-    '<leader>ip',
+    '<leader>tp',
     function()
-      vim.cmd([[REPLStart pdm]])
+      vim.cmd([[REPLStart bpython]])
     end,
-    desc = 'yarepl: [t]oggle [r]epl ipython with PDM',
+    desc = 'yarepl: [t]oggle [p]ython repl with bpython',
   },
   {
     '<leader>tf',
     function()
-      vim.cmd([[REPLFocus]])
+      vim.cmd([[REPLHideOrFocus]])
     end,
     desc = 'yarepl: [r]epl [f]ocus',
-  },
-  {
-    '<leader>th',
-    function()
-      vim.cmd([[REPLHide]])
-    end,
-    desc = 'yarepl: [r]epl [h]ide',
-  },
-  {
-    '<leader>tc',
-    function()
-      vim.cmd([[REPLCleanup]])
-    end,
-    desc = 'yarepl: [r]epl [c]leanup',
   },
   {
     '<leader>tq',
@@ -52,9 +38,9 @@ local keys = {
     mode = 'v',
   },
   {
-    '<leader>t',
+    '<leader>tx',
     function()
-      vim.cmd([[REPLSendMotion]])
+      vim.cmd([[REPLSendOperator]])
     end,
     desc = 'yarepl: [r]epl [s]end visual selection',
   },
@@ -69,9 +55,15 @@ return {
     yarepl.setup({
       wincmd = string.format('vertical %d split', math.floor(vim.o.columns * 0.4)),
       metas = {
-        pdm = {
-          cmd = { 'pdm', 'run', 'ipython' },
-          formatter = yarepl.formatter.bracketed_pasting,
+        bpython = {
+          cmd = function()
+            if vim.fn.executable('bpython') == 1 then
+              return { 'bpython' }
+            else
+              return { 'uv', 'run', 'bpython' }
+            end
+          end,
+          formatter = yarepl.formatter.trim_empty_lines,
         },
       },
     })
