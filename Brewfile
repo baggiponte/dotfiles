@@ -1,3 +1,4 @@
+tap "dotenvx/brew"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
@@ -116,6 +117,8 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Better dotenv–from the creator of `dotenv`
+brew "dotenvx/brew/dotenvx"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
 # Simple hotkey-daemon for macOS.
