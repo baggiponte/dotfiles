@@ -3,12 +3,7 @@
 #
 
 # completions
-command -v az /dev/null && eval "$(register-python-argcomplete az)"      # autocompletion for azure-cli
-command -v cz >/dev/null && eval "$(register-python-argcomplete cz)"     # conventional commits + semver + keep a changelog
-command -v pipx >/dev/null && eval "$(register-python-argcomplete pipx)" # autocompletion for pipx
-command -v pixi >/dev/null && eval "$(pixi completion --shell zsh)"
 command -v python >/dev/null && eval "$(python -m pip completion --zsh)" # autocompletion for pip
-command -v rye >/dev/null && eval "$(rye self completion)"
 command -v sk >/dev/null && compdef _gnu_generic sk
 
 if command -v fzf >/dev/null; then
