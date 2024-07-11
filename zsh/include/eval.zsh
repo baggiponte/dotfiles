@@ -5,6 +5,7 @@
 # completions
 command -v python >/dev/null && eval "$(python -m pip completion --zsh)" # autocompletion for pip
 command -v sk >/dev/null && compdef _gnu_generic sk
+command -v sky >/dev/null && source ~/.sky/.sky-complete.zsh
 
 if command -v fzf >/dev/null; then
     eval "$(fzf --zsh)"
