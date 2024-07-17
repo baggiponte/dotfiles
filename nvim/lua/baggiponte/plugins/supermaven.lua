@@ -7,4 +7,8 @@ return {
       clear_suggestion = '<C-]>',
     },
   },
+  config = function()
+    local api = require('supermaven-nvim.api')
+    api.use_free_version()
+  end,
 }
