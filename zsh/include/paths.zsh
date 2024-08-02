@@ -45,7 +45,7 @@ fi
 # +--------+
 
 if command -v colima >/dev/null && command -v docker >/dev/null; then
-	export DOCKER_HOST="unix:///${HOME}/.colima/default/docker.sock"
+	export DOCKER_HOST="unix://${XDG_CONFIG_HOME}/colima/default/docker.sock"
 fi
 
 # +--------+
