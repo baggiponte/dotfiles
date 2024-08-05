@@ -34,7 +34,7 @@ return {
       adapters = {
         require('neotest-python')({
           dap = {
-            justMyoCode = false,
+            justMyCode = false,
             console = 'integratedTerminal',
           },
           runner = 'pytest',
