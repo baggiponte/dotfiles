@@ -1,3 +1,4 @@
+tap "azure/kubelogin"
 tap "dotenvx/brew"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
@@ -75,6 +76,12 @@ brew "hyperfine"
 brew "jq"
 # Handy way to save and run project-specific commands
 brew "just"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "k9s"
+# Run local Kubernetes cluster in Docker
+brew "kind"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
 # Simple terminal UI for git commands
 brew "lazygit"
 # LLVM's OpenMP runtime library
@@ -85,6 +92,8 @@ brew "lolcat"
 brew "luarocks"
 # Utility for directing compilation
 brew "make"
+# Run a Kubernetes cluster locally
+brew "minikube"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Fast, highly customisable system info script
@@ -117,6 +126,8 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# A Kubernetes credential (exec) plugin implementing azure authentication
+brew "azure/kubelogin/kubelogin"
 # Better dotenv–from the creator of `dotenv`
 brew "dotenvx/brew/dotenvx"
 # Custom macOS statusbar with shell plugin, interaction and graph support
