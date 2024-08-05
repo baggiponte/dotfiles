@@ -150,5 +150,7 @@ cask "notion-calendar"
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Screenshot measurement and annotation tool
+cask "shottr"
 # Collect, organise, cite, and share research sources
 cask "zotero"
