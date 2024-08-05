@@ -13,7 +13,6 @@ import('lazy').setup({
   spec = {
     { import = 'baggiponte.plugins' },
     { import = 'baggiponte.plugins.ui' },
-    { import = 'baggiponte.plugins.extras' },
     { import = 'baggiponte.plugins.lsp' },
   },
   defaults = { lazy = true, version = false },
