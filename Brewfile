@@ -144,8 +144,6 @@ cask "font-yanone-kaffeesatz"
 cask "jetbrains-toolbox"
 # Keyboard customiser
 cask "karabiner-elements"
-# Calendar for professionals and teams
-cask "notion-calendar"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
