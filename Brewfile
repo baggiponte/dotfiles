@@ -134,6 +134,8 @@ cask "appcleaner"
 # Chromium based browser
 cask "arc"
 # Developer targeted fonts with a high number of glyphs
+# UI to create reproducible developer environments based on a devcontainer.json
+cask "devpod"
 cask "font-dejavu-sans-mono-nerd-font"
 # Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font"
