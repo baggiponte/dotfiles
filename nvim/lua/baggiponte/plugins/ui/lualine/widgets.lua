@@ -9,7 +9,7 @@ end
 
 ---@return string|EmptyString
 M.lsp_clients = function()
-  local buf_clients = vim.lsp.get_active_clients()
+  local buf_clients = vim.lsp.get_clients()
 
   if vim.tbl_isempty(buf_clients) then
     return ''
@@ -27,7 +27,7 @@ end
 
 ---@return string|EmptyString
 M.null_ls_sources = function()
-  local buf_clients = vim.lsp.get_active_clients({ name = 'null-ls' })
+  local buf_clients = vim.lsp.get_clients({ name = 'null-ls' })
 
   if vim.tbl_isempty(buf_clients) then
     return ''
@@ -50,7 +50,7 @@ end
 
 ---@return string|EmptyString
 M.copilot_active = function()
-  local buf_clients = vim.lsp.get_active_clients({ name = 'copilot' })
+  local buf_clients = vim.lsp.get_clients({ name = 'copilot' })
 
   if vim.tbl_isempty(buf_clients) then
     return ''
