@@ -7,8 +7,8 @@ return {
   },
   {
     'folke/trouble.nvim',
-    enabled = false,
-    cmd = { 'Trouble', 'TroubleClose', 'TroubleToggle' },
+    cmd = { 'Trouble' },
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {},
   },
 }
