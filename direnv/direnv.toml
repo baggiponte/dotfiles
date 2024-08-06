@@ -1,3 +1,0 @@
-[global]
-load_dotenv = true
-bash_path = "/opt/homebrew/bin/bash"
