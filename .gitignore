@@ -1,14 +1,25 @@
-!karabiner/karabiner.json
 *.bak
-.semgrep
-asciinema
+# github
 gh
-gh-dash
 github-copilot
+
+# python
 ipython
 jupyter
+
+# karabiner elements
 karabiner/*
+!karabiner/karabiner.json
+
+# lazygit
 lazygit/state.yml
+
+# nvim
 nvim/.luarc.json
-raycast
-sourcery
+
+# lima directory, includes disk images
+_lima/
+
+# unix sockets
+*.sock
+
