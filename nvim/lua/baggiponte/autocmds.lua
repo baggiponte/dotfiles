@@ -1,12 +1,12 @@
 -- [[ Highlight on yank ]]
-vim.api.nvim_exec(
+vim.api.nvim_exec2(
   [[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]],
-  false
+  { output = false }
 )
 
 -- close some filetypes with <q>
