@@ -12,7 +12,14 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+
+# Run Sketchybar together with AeroSpace
+# sketchbar has a built-in detection of already running process,
+# so it won't be run twice on AeroSpace restart
+after-startup-command = [
+  'exec-and-forget sketchybar',
+  'exec-and-forget borders'
+]
 
 # Start AeroSpace at login
 start-at-login = true
@@ -66,7 +73,11 @@ outer.right =      6
 
 # *** CUSTOM ***
 alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Alacritty.app'
-alt-shift-r = 'reload-config' # need to disable replace mode in neovim?
+alt-shift-r = [
+  'reload-config',
+  'exec-and-forget borders',
+  'exec-and-forget sketchybar --reload'
+]
 alt-f = 'fullscreen'
 
 # *** DEFAULT ***
