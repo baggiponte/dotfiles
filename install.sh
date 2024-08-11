@@ -124,15 +124,46 @@ fi
 # | install python CLIs |
 # +---------------------+
 
-print "Install rye (rye-up.com)"
+print "Install uv (https://github.com/astral-sh/uv#uv)"
 
-export RYE_HOME="$XDG_DATA_HOME/rye"
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-curl -sSf https://rye-up.com/get | bash
+versions=(
+    "3.12"
+    "3.11"
+    "3.10"
+    "3.9"
+)
 
-for lib in "pre-commit" "uv" "cookiecutter" "commitizen" "argcomplete"; do
-	rye install "$lib"
+safe_version="${versions[1]}"
+
+for version in "${versions[@]}"; do
+    uv python install -- "$version"
 done
+
+libs=(
+    "argcomplete"
+    "asitop"
+    "commitizen"
+    "cookiecutter"
+    "datamodel-code-generator"
+    "huggingface-cli"
+    "jupytext"
+    "mypy"
+    "pdm"
+    "poetry"
+    "posting"
+    "pre-commit"
+    "pytest"
+    "ruff"
+)
+
+for lib in "${libs[@]}"; do
+	uv tool install --upgrade --python="$safe_version" -- "$lib"
+done
+
+uv tool install --upgrade --python="$safe_version" --prerelease=allow -- "azure-cli"
+uv tool install --upgrade --python="$safe_version" -- "skypilot-nightly[kubernetes]"
 
 mkdir -p "$HOME/Library/Application Support/pdm"
 ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/config.toml"
@@ -143,8 +174,8 @@ ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/
 
 eval "$(mise activate zsh)"
 
-mise install "python@3.11" "python@3.10" "node@latest"
-mise global "python@3.10" "node@latest"
+mise install "node@latest"
+mise global "node@latest"
 
 # +--------------+
 # | install rust |
@@ -174,4 +205,3 @@ bob use latest
 if command -v bat; then
     bat cache --build
 fi
-
