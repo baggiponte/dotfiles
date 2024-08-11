@@ -71,6 +71,8 @@ brew "git-lfs"
 brew "gnu-sed"
 # Popular GNU data compression program
 brew "gzip"
+# Kubernetes package manager
+brew "helm"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
