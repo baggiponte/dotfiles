@@ -35,4 +35,3 @@ done
 if [[ -z $TMUX ]]; then
     tmux-switcher
 fi
-
