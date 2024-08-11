@@ -72,7 +72,7 @@ outer.right =      6
 [mode.main.binding]
 
 # *** CUSTOM ***
-alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Alacritty.app'
+alt-enter = 'exec-and-forget open -n /Applications/Alacritty.app'
 alt-shift-r = [
   'reload-config',
   'exec-and-forget borders',
