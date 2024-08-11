@@ -135,6 +135,8 @@ brew "zsh"
 brew "azure/kubelogin/kubelogin"
 # Better dotenv–from the creator of `dotenv`
 brew "dotenvx/brew/dotenvx"
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
 brew "runpod/runpodctl/runpodctl"
