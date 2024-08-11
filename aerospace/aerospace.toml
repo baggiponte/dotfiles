@@ -67,6 +67,7 @@ outer.right =      5
 # *** CUSTOM ***
 alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Alacritty.app'
 alt-shift-r = 'reload-config' # need to disable replace mode in neovim?
+alt-f = 'fullscreen'
 
 # *** DEFAULT ***
 # All possible keys:
