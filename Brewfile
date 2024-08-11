@@ -5,7 +5,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
-tap "koekeishiya/formulae"
+tap "nikitabobko/tap"
 tap "runpod/runpodctl"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
@@ -135,17 +135,15 @@ brew "zsh"
 brew "azure/kubelogin/kubelogin"
 # Better dotenv–from the creator of `dotenv`
 brew "dotenvx/brew/dotenvx"
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
-# Simple hotkey-daemon for macOS.
-brew "koekeishiya/formulae/skhd"
-# A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai"
 brew "runpod/runpodctl/runpodctl"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "aerospace"
 # GPU-accelerated terminal emulator
 cask "alacritty"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Application uninstaller
 cask "appcleaner"
 # Chromium based browser
