@@ -111,6 +111,8 @@ brew "ripgrep"
 brew "selene"
 # Fuzzy Finder in rust!
 brew "sk"
+# Graphical command-line client for SSH
+brew "sshs"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Very fast implementation of tldr in Rust
