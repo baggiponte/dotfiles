@@ -25,19 +25,20 @@ FONT="Hack Nerd Font"
 
 # colors are: `#` (-`0x`) + `AARRGGBB`
 BAR_COLOR=0xff1e1d2e                  #1e1d2e
-BAR_HEIGHT=25
-BAR_PADDING=8
+BAR_HEIGHT=30
+BAR_PADDING=7                         # padding from bar edges
+BAR_MARGIN=5                          # padding from screen edges
 
 ICON_COLOR=0xffffffff                 #ffffff
 ICON_FONT="${FONT}:Bold:14.0"
-ICON_PADDING=3
+ICON_PADDING=2                        # padding between icons
 
 LABEL_COLOR="${ICON_COLOR}"
 LABEL_FONT="${ICON_FONT}"
 LABEL_PADDING="${ICON_PADDING}"
 
-SPACE_ELEM_PADDING=8                    # width of the background
-SPACE_BG_HEIGHT="$((BAR_HEIGHT - 3))"
+SPACE_ELEM_PADDING=6                    # width of the background
+SPACE_BG_HEIGHT="$((BAR_HEIGHT - 10))"
 SPACE_BG_PADDING="${ICON_PADDING}"      # padding between elements
 SPACE_BG_COLOR=0x99${GRUVBOX_RED}      # 60% opacity
 
