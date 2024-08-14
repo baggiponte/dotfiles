@@ -79,6 +79,8 @@ brew "gnu-sed"
 brew "gzip"
 # Kubernetes package manager
 brew "helm"
+# Configurable static site generator
+brew "hugo"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
