@@ -15,6 +15,8 @@ brew "bat"
 brew "bob"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
+# Multi-platform, multi-architecture disassembly framework
+brew "capstone"
 # Console Matrix
 brew "cmatrix"
 # Library for command-line editing
