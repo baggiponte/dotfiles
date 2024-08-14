@@ -47,6 +47,8 @@ brew "dua-cli"
 brew "duf"
 # More intuitive version of du in rust
 brew "dust"
+# ODBC 3 connectivity for UNIX
+brew "unixodbc"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
@@ -69,6 +71,8 @@ brew "git"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
+# Statically typed language for the Erlang VM
+brew "gleam"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Popular GNU data compression program
@@ -125,8 +129,6 @@ brew "tealdeer"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
 # Internet file retriever
 brew "wget"
 # Shell extension to navigate your filesystem faster
