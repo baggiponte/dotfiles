@@ -146,14 +146,10 @@ libs=(
     "asitop"
     "commitizen"
     "cookiecutter"
-    "datamodel-code-generator"
-    "huggingface-cli"
+    "huggingface-hub[cli]"
     "jupytext"
     "mypy"
-    "pdm"
-    "poetry"
     "posting"
-    "pre-commit"
     "pytest"
     "ruff"
 )
@@ -162,8 +158,9 @@ for lib in "${libs[@]}"; do
 	uv tool install --upgrade --python="$safe_version" -- "$lib"
 done
 
+uv tool install --upgrade --python="$safe_version" --with pre-commit-uv -- pre-commit
 uv tool install --upgrade --python="$safe_version" --prerelease=allow -- "azure-cli"
-uv tool install --upgrade --python="$safe_version" -- "skypilot-nightly[kubernetes]"
+uv tool install --upgrade --python="$safe_version" -- "skypilot-nightly[kubernetes,runpod]"
 
 mkdir -p "$HOME/Library/Application Support/pdm"
 ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/config.toml"
