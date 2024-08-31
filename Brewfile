@@ -87,10 +87,6 @@ brew "hyperfine"
 brew "jq"
 # Handy way to save and run project-specific commands
 brew "just"
-# Kubernetes CLI To Manage Your Clusters In Style!
-brew "k9s"
-# Run local Kubernetes cluster in Docker
-brew "kind"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
 # Simple terminal UI for git commands
@@ -103,8 +99,6 @@ brew "lolcat"
 brew "luarocks"
 # Utility for directing compilation
 brew "make"
-# Run a Kubernetes cluster locally
-brew "minikube"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Fast, highly customisable system info script
