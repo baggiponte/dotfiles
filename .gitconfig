@@ -49,3 +49,5 @@
 	gpgsign = true
 [credential]
 	helper = osxkeychain
+[maintenance]
+	repo = /Users/luca/.config
