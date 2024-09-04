@@ -35,6 +35,10 @@ if hash colima 2>/dev/null; then
     alias c="colima"
 fi
 
+if hash kubectl 2>/dev/null; then
+	alias k=kubectl
+fi
+
 if hash gh 2>/dev/null; then
 	alias ghw='gh repo view --web'
 fi
