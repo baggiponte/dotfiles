@@ -17,8 +17,8 @@ lazygit/state.yml
 # nvim
 nvim/.luarc.json
 
-# lima directory, includes disk images
-_lima/
+# colima
+colima/*
 
 # unix sockets
 *.sock
