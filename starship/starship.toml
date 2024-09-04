@@ -46,11 +46,14 @@ style = "bright-black"
 [kubernetes]
 disabled = false
 symbol = "🛟 "
-format = '[$symbol$context( \($namespace\))]($style) '
+format = '⋅ [$symbol$context( \($namespace\))]($style) '
 
 [python]
-format = ' via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = '⋅ [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 style = "yellow"
+
+[rust]
+format = '⋅ [$symbol($version )]($style)'
 
 [cmd_duration]
 format = "[$duration]($style) "
