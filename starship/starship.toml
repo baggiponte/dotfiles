@@ -5,9 +5,12 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$nix_shell\
 $python\
 $rust\
 $docker_context\
+$kubernetes\
+$helm\
 $line_break\
 $character"""
 
@@ -26,7 +29,7 @@ format = "[$branch]($style)"
 style = "bright-black"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style) "
 style = "cyan"
 conflicted = "​"
 untracked = "​"
@@ -39,6 +42,11 @@ stashed = "≡"
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
+
+[kubernetes]
+disabled = false
+symbol = "🛟 "
+format = '[$symbol$context( \($namespace\))]($style) '
 
 [python]
 format = ' via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
