@@ -51,6 +51,10 @@ fi
 
 # misc
 
+if [[ $(command -v runpodctl) && ! -s ${COMPDIR}/_runpodctl ]]; then
+    runpodctl completion zsh >"${COMPDIR}/_runpodctl"
+fi
+
 if [[ $(command -v az) && ! -s ${COMPDIR}/_az ]]; then
     register-python-argcomplete az >"${COMPDIR}/_az"
 fi
