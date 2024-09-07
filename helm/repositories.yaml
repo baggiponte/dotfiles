@@ -1,0 +1,21 @@
+apiVersion: ""
+generated: "0001-01-01T00:00:00Z"
+repositories:
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: kuberay
+  pass_credentials_all: false
+  password: ""
+  url: https://ray-project.github.io/kuberay-helm/
+  username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: kubernetes-dashboard
+  pass_credentials_all: false
+  password: ""
+  url: https://kubernetes.github.io/dashboard/
+  username: ""
