@@ -127,6 +127,8 @@ brew "tealdeer"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
 # Internet file retriever
 brew "wget"
 # Shell extension to navigate your filesystem faster
