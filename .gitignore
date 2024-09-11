@@ -1,7 +1,11 @@
 *.bak
+
 # github
 gh
 github-copilot
+
+# raycast
+raycast
 
 # python
 ipython
