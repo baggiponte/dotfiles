@@ -14,7 +14,7 @@ hyperfine "nvim -u NONE +qa" "nvim +qa" --warmup 5
 
 Results:
 
-```
+```plaintext
 Benchmark 1: nvim -u NONE +qa
   Time (mean ± σ):      17.3 ms ±   0.6 ms    [User: 9.7 ms, System: 5.7 ms]
   Range (min … max):    16.5 ms …  19.9 ms    146 runs
