@@ -121,6 +121,8 @@ brew "sk"
 brew "sshs"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Opinionated Lua code formatter
+brew "stylua"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Terminal multiplexer
