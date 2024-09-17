@@ -14,9 +14,9 @@ if [ -f "$histfile" ]; then
 fi
 
 export HISTFILE="$histfile"
-export HISTIZE=100000
-export HISTFILESIZE=100000
-export SAVEHIST=100000
+export HISTIZE=1000000
+export HISTFILESIZE=1000000
+export SAVEHIST=1000000
 
 unset histfile
 
