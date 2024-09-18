@@ -103,6 +103,8 @@ brew "lolcat"
 brew "luarocks"
 # Utility for directing compilation
 brew "make"
+# Run a Kubernetes cluster locally
+brew "minikube"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Fast, highly customisable system info script
