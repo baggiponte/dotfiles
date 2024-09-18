@@ -79,6 +79,8 @@ brew "gnu-sed"
 brew "gzip"
 # Kubernetes package manager
 brew "helm"
+# Improved top (interactive process viewer)
+brew "htop"
 # Configurable static site generator
 brew "hugo"
 # Command-line benchmarking tool
