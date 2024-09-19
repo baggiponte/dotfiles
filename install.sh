@@ -108,6 +108,19 @@ if [[ $response =$HOME (y|yes|Y) ]]; then
             mkdir -p "$HOME/.docker/cli-plugins"
         fi
         ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-compose" "$HOME/.docker/cli-plugins/docker-compose"
+
+        if ! [[ -d "$HOME/.docker" ]]; then
+            mkdir -p "$HOME/.docker"
+        fi
+
+        cat <<- EOF > $HOME/.docker/config.json
+        {
+          "cliPluginsExtraDirs": [
+            "/opt/homebrew/lib/docker/cli-plugins"
+          ]
+        }
+        EOF
+
     fi
 
     if command -v "docker-buildx" &> /dev/null; then
