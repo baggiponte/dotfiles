@@ -115,6 +115,8 @@ brew "parallel"
 brew "pass"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
+# Quick and easy command-line file transfer utility from any computer to another
+brew "portal"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Blazing-fast modern Lua linter
