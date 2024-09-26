@@ -28,7 +28,8 @@ if [[ $(command -v ruff) && ! -s ${COMPDIR}/_ruff ]]; then
 fi
 
 if [[ $(command -v uv) && ! -s ${COMPDIR}/_uv ]]; then
-	uv generate-shell-completion zsh >"${COMPDIR}/_uv"
+	uv generate-shell-completion=zsh >"${COMPDIR}/_uv"
+    uvx --generate-completion=zsh >"${COMPDIR}/_uvx"
 fi
 
 if [[ $(command -v pipx) && ! -s ${COMPDIR}/_pipx ]]; then
