@@ -87,6 +87,8 @@ brew "jq"
 brew "just"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
+# Tool to move from `docker-compose` to Kubernetes
+brew "kompose"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
 # Simple terminal UI for git commands
