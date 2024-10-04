@@ -35,6 +35,11 @@ if hash colima 2>/dev/null; then
     alias c="colima"
 fi
 
+if hash minikube 2>/dev/null; then
+	alias min=minikube
+    alias mk="minikube kubectl --"
+fi
+
 if hash kubectl 2>/dev/null; then
 	alias k=kubectl
 fi
