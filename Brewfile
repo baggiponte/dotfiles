@@ -162,6 +162,7 @@ cask "appcleaner"
 cask "arc"
 # UI to create reproducible developer environments based on a devcontainer.json
 cask "devpod"
+cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono"
