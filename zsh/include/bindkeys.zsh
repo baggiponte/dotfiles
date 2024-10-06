@@ -27,6 +27,9 @@ bindkey '^g' live-grep
 zle -N fuzzy-file
 bindkey '^f' fuzzy-file
 
+zle -N fuzzy-dir
+bindkey '^n' fuzzy-dir
+
 # +------------------------+
 # | Fuzzy find directories |
 # +------------------------+
