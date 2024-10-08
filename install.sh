@@ -182,10 +182,7 @@ ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/
 # | configure languages with rtx |
 # +------------------------------+
 
-eval "$(mise activate zsh)"
-
-mise install "node@latest"
-mise global "node@latest"
+volta install "node@latest"
 
 # +--------------+
 # | install rust |
