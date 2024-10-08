@@ -52,28 +52,42 @@ fi
 # | PYTHON |
 # +--------+
 
-export RYE_HOME="${XDG_DATA_HOME}/rye"
-source "${RYE_HOME}/env"
+# TODO: remove once uv takes over :)
+if command -v poetry >/dev/null; then
+    export POETRY_CONFIG_DIR="${XDG_CONFIG_HOME}/pypoetry"
+    export POETRY_DATA_DIR="${XDG_DATA_HOME}/pypoetry"
+    export POETRY_HOME="${XDG_DATA_HOME}/pypoetry"
+fi
+
+if command -v pipx >/dev/null; then
+	export PIPX_HOME="${XDG_DATA_HOME}/pipx"
+	export PIPX_BIN_DIR="${PIPX_HOME}/bin"
+	export PATH="${PIPX_BIN_DIR}:${PATH}"
+fi
+
+
+if command -v rye >/dev/null; then
+    export RYE_HOME="${XDG_DATA_HOME}/rye"
+    source "${RYE_HOME}/env"
+fi
 
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+
 # https://docs.jupyter.org/en/latest/use/jupyter-directories.html
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
 export JUPYTER_DATA_DIR="${XDG_DATA_HOME}/jupyter"
 export JUPYTER_RUNTIME_DIR="${JUPYTER_DATA_DIR}/runtime"
-
-# export PIPX_HOME="${XDG_DATA_HOME}/pipx"
-# export PIPX_BIN_DIR="${PIPX_HOME}/bin"
-# export PATH="${PIPX_BIN_DIR}:${PATH}"
-
-export POETRY_CONFIG_DIR="${XDG_CONFIG_HOME}/pypoetry"
-export POETRY_DATA_DIR="${XDG_DATA_HOME}/pypoetry"
-export POETRY_HOME="${XDG_DATA_HOME}/pypoetry"
 
 export COOKIECUTTER_CONFIG="${XDG_CONFIG_HOME}/cookiecutter/cookiecutter.yaml"
 
 # +-------+
 # | OTHER |
 # +-------+
+
+if command -v volta >/dev/null; then
+    export VOLTA_HOME="$HOME/.volta"
+    export PATH="$VOLTA_HOME/bin:$PATH"
+fi
 
 if hash tldr 2>/dev/null; then
 	export TEALDEER_CONFIG_DIR="${XDG_CONFIG_HOME}/tealdeer"
