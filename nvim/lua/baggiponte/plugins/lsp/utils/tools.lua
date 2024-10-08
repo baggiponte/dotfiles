@@ -85,6 +85,15 @@ M.servers = {
   ['json-lsp'] = {
     name = 'jsonls',
   },
+  ['bacon-ls'] = {
+    name = 'bacon-ls',
+  },
+  ['azure-pipelines-language-server'] = {
+    name = 'azure-pipelines-language-server',
+  },
+  ['helm-ls'] = {
+    name = 'helm-ls',
+  },
   -- ignore since using rustaceanvim
   -- ['rust-analyzer'] = {
   --   name = 'rust_analyzer',
