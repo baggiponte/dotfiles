@@ -103,8 +103,6 @@ brew "luarocks"
 brew "make"
 # Run a Kubernetes cluster locally
 brew "minikube"
-# Polyglot runtime manager (asdf rust clone)
-brew "mise"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Shell command parallelization utility
@@ -135,6 +133,8 @@ brew "tmux"
 brew "tokei"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
+# JavaScript toolchain manager for reproducible environments
+brew "volta"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
