@@ -20,7 +20,7 @@ sources=(
 	"zstyle"      # configure completion menu, etc
 	"vim"         # enable vim modes and cursor
 	"zim"         # zsh plugin manager
-	"autocomp"    # dump missing autocompletions
+	"completions"    # dump missing autocompletions
     "eval"        # shell hooks (e.g. prompt, mise (formerly rtx))
 	"functions"   # frequently used functions
 	"aliases"     # utility aliases
