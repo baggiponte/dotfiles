@@ -1,7 +1,15 @@
 return {
   'williamboman/mason.nvim',
   build = ':MasonUpdate',
-  cmd = { 'Mason', 'MasonUpdate' },
+  dependencies = { 'Zeioth/mason-extra-cmds', opts = {} },
+  cmd = {
+    'Mason',
+    'MasonInstall',
+    'MasonUninstall',
+    'MasonUninstallAll',
+    'MasonUpdate',
+    'MasonUpdateAll',
+  },
   opts = {
     ui = {
       border = 'rounded',
