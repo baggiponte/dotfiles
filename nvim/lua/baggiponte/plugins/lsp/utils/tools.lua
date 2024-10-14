@@ -18,7 +18,6 @@ M.linters = {
   'jsonlint',
   'selene',
   'shellcheck',
-  'tfsec',
   'yamllint',
 }
 
@@ -59,12 +58,6 @@ M.servers = {
   ['docker-compose-language-service'] = {
     name = 'docker_compose_language_service',
   },
-  ['terraform-ls'] = {
-    name = 'terraformls',
-  },
-  tflint = {
-    name = 'tflint',
-  },
   ruff = {
     name = 'ruff',
   },
@@ -85,18 +78,6 @@ M.servers = {
   ['json-lsp'] = {
     name = 'jsonls',
   },
-  -- ignore since using rustaceanvim
-  -- ['rust-analyzer'] = {
-  --   name = 'rust_analyzer',
-  --   config = {
-  --     cmd = {
-  --       'rustup',
-  --       'run',
-  --       'stable',
-  --       'rust-analyzer',
-  --     },
-  --   },
-  -- },
 }
 
 M.all = vim.iter({ M.dap, M.linters, M.formatters, vim.tbl_keys(M.servers) }):flatten():totable()
