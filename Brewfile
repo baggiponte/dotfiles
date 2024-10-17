@@ -158,8 +158,6 @@ cask "alacritty"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
-# UI to create reproducible developer environments based on a devcontainer.json
-cask "devpod"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
@@ -173,7 +171,5 @@ cask "karabiner-elements"
 cask "maccy"
 # Open-source software for live streaming and screen recording
 cask "obs"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
 # Collect, organise, cite, and share research sources
 cask "zotero"
