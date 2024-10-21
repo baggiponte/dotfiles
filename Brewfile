@@ -158,6 +158,8 @@ cask "alacritty"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
+# Opensource IDE for exploring and testing api's
+cask "bruno"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
