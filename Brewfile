@@ -30,6 +30,8 @@ brew "colima"
 brew "coreutils"
 # Configurable talking characters in ASCII art
 brew "cowsay"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
