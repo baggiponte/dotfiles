@@ -132,8 +132,6 @@ brew "tmux"
 brew "tokei"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
-# JavaScript toolchain manager for reproducible environments
-brew "volta"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
