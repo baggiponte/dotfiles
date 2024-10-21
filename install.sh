@@ -169,12 +169,6 @@ uv tool install --upgrade --python="$safe_version" --with pre-commit-uv -- pre-c
 mkdir -p "$HOME/Library/Application Support/pdm"
 ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/config.toml"
 
-# +------------------------------+
-# | configure languages with rtx |
-# +------------------------------+
-
-volta install "node@latest"
-
 # +--------------+
 # | install rust |
 # +--------------+
