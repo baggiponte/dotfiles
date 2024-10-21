@@ -142,6 +142,7 @@ print "Install uv (https://github.com/astral-sh/uv#uv)"
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 versions=(
+    "3.13"
     "3.12"
     "3.11"
     "3.10"
