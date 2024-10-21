@@ -84,11 +84,6 @@ export COOKIECUTTER_CONFIG="${XDG_CONFIG_HOME}/cookiecutter/cookiecutter.yaml"
 # | OTHER |
 # +-------+
 
-if command -v volta >/dev/null; then
-    export VOLTA_HOME="$HOME/.volta"
-    export PATH="$VOLTA_HOME/bin:$PATH"
-fi
-
 if hash tldr 2>/dev/null; then
 	export TEALDEER_CONFIG_DIR="${XDG_CONFIG_HOME}/tealdeer"
 fi
