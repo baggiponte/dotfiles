@@ -158,8 +158,7 @@ take () { command mkdir -p "$1" && cd "$1"; }
 
 tmp() { cd "$(mktemp -t scratch --directory)" }
 
-    cd "${dest}" || return 1
-}
+cleanup() { rm -rf * }
 
 leave() {
     local here="${PWD}"
