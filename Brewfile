@@ -6,6 +6,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "nikitabobko/tap"
+tap "oven-sh/bun"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -30,8 +31,6 @@ brew "colima"
 brew "coreutils"
 # Configurable talking characters in ASCII art
 brew "cowsay"
-# Secure runtime for JavaScript and TypeScript
-brew "deno"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
@@ -150,6 +149,8 @@ brew "dotenvx/brew/dotenvx"
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
 # GPU-accelerated terminal emulator
