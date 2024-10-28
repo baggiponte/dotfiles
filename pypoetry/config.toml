@@ -1,4 +1,0 @@
-cache-dir = "/Users/luca/.cache/pypoetry"
-
-[virtualenvs]
-in-project = true
