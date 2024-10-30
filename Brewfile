@@ -57,6 +57,10 @@ brew "figlet"
 brew "findutils"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
+# ODBC 3 connectivity for UNIX
+brew "unixodbc"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
+brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GNU awk utility
@@ -129,8 +133,6 @@ brew "tealdeer"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
