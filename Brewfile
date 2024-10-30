@@ -2,8 +2,6 @@ tap "azure/kubelogin"
 tap "dotenvx/brew"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
@@ -29,8 +27,8 @@ brew "xz"
 brew "colima"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Configurable talking characters in ASCII art
-brew "cowsay"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
@@ -49,6 +47,8 @@ brew "duf"
 brew "dust"
 # Modern, maintained replacement for ls
 brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Banner-like program prints strings as ASCII art
@@ -103,8 +103,6 @@ brew "luarocks"
 brew "make"
 # Run a Kubernetes cluster locally
 brew "minikube"
-# Fast, highly customisable system info script
-brew "neofetch"
 # Shell command parallelization utility
 brew "parallel"
 # Password manager
