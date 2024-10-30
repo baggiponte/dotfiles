@@ -7,6 +7,8 @@ tap "nikitabobko/tap"
 tap "oven-sh/bun"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Version manager for neovim
