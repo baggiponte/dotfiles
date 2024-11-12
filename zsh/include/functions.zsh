@@ -166,16 +166,6 @@ leave() {
     rm -rf "$here"
 }
 
-config() {
-    local config_dir="${XDG_CONFIG_HOME-"$HOME/.config"}"
-
-    if [[ "$#" -eq 0 ]]; then
-        cd -- "$config_dir" || return 1
-    else
-        cd -- "$config_dir/${1}" || print "$1 is not a valid config directory."
-    fi
-}
-
 zim-update () {
     print -- "\n🐚 $fg_bold[white]Let's fish some new shells!$reset_color 🐚"
 
