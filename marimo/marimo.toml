@@ -1,0 +1,46 @@
+[server]
+browser = "default"
+follow_symlink = false
+
+[ai]
+rules = ""
+[ai.open_ai]
+
+[ai.anthropic]
+
+[ai.google]
+
+[runtime]
+auto_reload = "autorun"
+on_cell_change = "autorun"
+auto_instantiate = true
+
+[save]
+autosave = "after_delay"
+format_on_save = true
+autosave_delay = 1000
+
+[experimental]
+multi_column = true
+
+[completion]
+copilot = "github"
+activate_on_typing = true
+
+[package_management]
+manager = "uv"
+
+[formatting]
+line_length = 79
+
+[display]
+default_width = "full"
+dataframes = "rich"
+theme = "light"
+code_editor_font_size = 14
+cell_output = "above"
+
+[keymap]
+preset = "default"
+
+[keymap.overrides]
