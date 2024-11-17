@@ -163,6 +163,8 @@ cask "appcleaner"
 cask "arc"
 # Opensource IDE for exploring and testing api's
 cask "bruno"
+# Voice and text chat software
+cask "discord"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
@@ -174,7 +176,11 @@ cask "jetbrains-toolbox"
 cask "karabiner-elements"
 # Clipboard manager
 cask "maccy"
+# Tool to control external monitor brightness & volume
+cask "monitorcontrol"
 # Open-source software for live streaming and screen recording
 cask "obs"
+# Get up and running with large language models locally
+cask "ollama"
 # Collect, organise, cite, and share research sources
 cask "zotero"
