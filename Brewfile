@@ -19,16 +19,12 @@ brew "bottom"
 brew "capstone"
 # Console Matrix
 brew "cmatrix"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -65,6 +61,8 @@ brew "unixodbc"
 brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Library for command-line editing
+brew "readline"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
@@ -109,6 +107,8 @@ brew "luarocks"
 brew "make"
 # Run a Kubernetes cluster locally
 brew "minikube"
+# Platform built on V8 to build network applications
+brew "node"
 # Shell command parallelization utility
 brew "parallel"
 # Password manager
@@ -123,6 +123,8 @@ brew "ripgrep"
 brew "selene"
 # Fuzzy Finder in rust!
 brew "sk"
+# Command-line interface for SQLite
+brew "sqlite"
 # Graphical command-line client for SSH
 brew "sshs"
 # Cross-shell prompt for astronauts
