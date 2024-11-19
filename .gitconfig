@@ -4,9 +4,6 @@
   email = 57922983+baggiponte@users.noreply.github.com
 	signingkey = /Users/luca/.ssh/commit_signature-macbook_pro-ed25519.pub
 
-[includeIf "gitdir:~/work/xtream/a2a/"]
-  path = ~/work/xtream/a2a/.gitconfig
-
 [github]
   user = baggiponte
 [init]
