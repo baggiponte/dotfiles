@@ -164,7 +164,7 @@ m = 'workspace M'
 esc = ['mode main']
 
 [mode.launcher.binding]
-d = ['workspace D', 'exec-and-forget open -n /Applications/Discord.appmode main']
+d = ['workspace D', 'exec-and-forget open -n /Applications/Discord.app', 'mode main']
 a = ['workspace A', 'exec-and-forget open -n /Applications/Arc.app', 'mode main']
 g = ['workspace G', 'exec-and-forget open -n /Applications/Google\ Chrome.app', 'mode main']
 m = ['workspace M', 'exec-and-forget open -n /Applications/Microsoft\ Teams.app', 'mode main']
