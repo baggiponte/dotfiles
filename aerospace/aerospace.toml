@@ -73,12 +73,15 @@ outer.right =      6
 
 # *** CUSTOM ***
 # alt-enter = 'exec-and-forget open -n /Applications/Alacritty.app'
-alt-shift-r = [
-  'reload-config',
-  'exec-and-forget borders',
-  'exec-and-forget sketchybar --reload'
-]
-alt-f = 'fullscreen'
+
+# not really working: use alt-shift-space then esc
+# alt-shift-r = [
+#   'reload-config',
+#   'exec-and-forget borders',
+#   'exec-and-forget sketchybar --reload'
+# ]
+alt-shift-f = 'fullscreen'
+alt-f = 'layout floating'
 
 # *** DEFAULT ***
 # All possible keys:
@@ -148,23 +151,22 @@ alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-# *-----------------------*
-# * Not using stuff below *
-# *-----------------------*
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = 'mode service'
+alt-shift-enter = 'mode launcher'
+alt-shift-space = 'mode apps'
 
-# 'service' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-[mode.service.binding]
+[mode.apps.binding]
+d = 'workspace D'
+a = 'workspace A'
+g = 'workspace G'
+m = 'workspace M'
+
+esc = ['mode main']
+
+[mode.launcher.binding]
+d = ['workspace D', 'exec-and-forget open -n /Applications/Discord.appmode main']
+a = ['workspace A', 'exec-and-forget open -n /Applications/Arc.app', 'mode main']
+g = ['workspace G', 'exec-and-forget open -n /Applications/Google\ Chrome.app', 'mode main']
+m = ['workspace M', 'exec-and-forget open -n /Applications/Microsoft\ Teams.app', 'mode main']
+
 esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
-#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main']
-
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
