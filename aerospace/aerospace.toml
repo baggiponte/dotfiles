@@ -51,6 +51,34 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+run = 'move-node-to-workspace T'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace G'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.pycharm'
+run = 'move-node-to-workspace P'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = 'move-node-to-workspace M'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace A'
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace D'
+
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -146,17 +174,23 @@ alt-shift-enter = 'mode launcher'
 alt-enter = 'mode apps'
 
 [mode.apps.binding]
-t = ['workspace T', 'mode main']
-d = ['workspace D', 'mode main']
+1 = ['workspace T', 'mode main']
+
 a = ['workspace A', 'mode main']
+d = ['workspace D', 'mode main']
 g = ['workspace G', 'mode main']
 m = ['workspace M', 'mode main']
+p = ['workspace P', 'mode main']
+t = ['workspace T', 'mode main']
+
+esc = ['reload-config', 'mode main']
 
 [mode.launcher.binding]
-t = ['workspace T', 'exec-and-forget open -n /Applications/Alacritty.app', 'mode main']
-d = ['workspace D', 'exec-and-forget open -n /Applications/Discord.app', 'mode main']
-a = ['workspace A', 'exec-and-forget open -n /Applications/Arc.app', 'mode main']
-g = ['workspace G', 'exec-and-forget open -n /Applications/Google\ Chrome.app', 'mode main']
-m = ['workspace M', 'exec-and-forget open -n /Applications/Microsoft\ Teams.app', 'mode main']
+a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
+d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
+g = ['exec-and-forget open -b com.google.Chrome', 'mode main']
+m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
+p = ['exec-and-forget open -b com.jetbrains.pycharm', 'mode main']
+t = ['exec-and-forget open -b org.alacritty', 'mode main']
 
 esc = ['reload-config', 'mode main']
