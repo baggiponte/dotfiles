@@ -98,16 +98,6 @@ outer.right =      6
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 [mode.main.binding]
-
-# *** CUSTOM ***
-# alt-enter = 'exec-and-forget open -n /Applications/Alacritty.app'
-
-# not really working: use alt-shift-space then esc
-# alt-shift-r = [
-#   'reload-config',
-#   'exec-and-forget borders',
-#   'exec-and-forget sketchybar --reload'
-# ]
 alt-shift-f = 'fullscreen'
 alt-f = 'layout floating'
 
@@ -122,14 +112,10 @@ alt-f = 'layout floating'
 # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
 #                   keypadMinus, keypadMultiply, keypadPlus
 # - Arrows.         left, down, up, right
-
+#
 # All possible modifiers: cmd, alt, ctrl, shift
-
+#
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-
-# You can uncomment this line to open up terminal with alt + enter shortcut
-# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
