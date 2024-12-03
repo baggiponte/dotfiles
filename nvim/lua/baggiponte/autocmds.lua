@@ -15,3 +15,9 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', 'q', '<cmd>close!<cr>', { buffer = event.buf, silent = true })
   end,
 })
+
+-- Automatic removal of trailing whitespace
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  pattern = { '*' },
+  command = [[%s/\s\+$//e]],
+})
