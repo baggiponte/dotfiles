@@ -1,13 +1,11 @@
 -- [[ Highlight on yank ]]
-vim.api.nvim_exec2(
-  [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
-  { output = false }
-)
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd('FileType', {
