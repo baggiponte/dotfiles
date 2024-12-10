@@ -61,8 +61,8 @@ M.servers = {
   ruff = {
     name = 'ruff',
   },
-  pyright = {
-    name = 'pyright',
+  basedpyright = {
+    name = 'basedpyright',
     config = {
       settings = {
         pyright = {
