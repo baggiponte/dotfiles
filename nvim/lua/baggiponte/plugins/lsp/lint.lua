@@ -15,8 +15,7 @@ return {
   event = 'BufReadPost',
   config = function()
     -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/linting.lua
-    local import = require('baggiponte.utils').import
-    local lint = import('lint')
+    local lint = require('lint')
 
     lint.linters_by_ft = linters
 
