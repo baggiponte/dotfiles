@@ -1,37 +1,17 @@
-local import = require('baggiponte.utils').import
-
 return {
-  {
-    '<leader>/',
-    function()
-      import('telescope.builtin').current_buffer_fuzzy_find()
-    end,
-    desc = 'Telescope fuzzy find within the current buffer',
-    silent = true,
-    noremap = true,
-  },
   {
     '<leader>ff',
     function()
-      import('telescope.builtin').find_files()
+      require('telescope.builtin').find_files()
     end,
     desc = 'Telescope [f]ind [f]iles',
     silent = true,
     noremap = true,
   },
   {
-    '<leader>fF',
-    function()
-      import('telescope.builtin').git_files()
-    end,
-    desc = 'Telescope [f]ind within git [F]iles',
-    silent = true,
-    noremap = true,
-  },
-  {
     '<leader>fg',
     function()
-      import('telescope.builtin').live_grep()
+      require('telescope.builtin').live_grep()
     end,
     desc = 'Telescope [f]ind symbol using [g]rep',
     silent = true,
@@ -40,7 +20,7 @@ return {
   {
     '<leader>fb',
     function()
-      import('telescope.builtin').buffers()
+      require('telescope.builtin').buffers()
     end,
     desc = 'Telescope [f]ind [b]uffer',
     silent = true,
@@ -49,18 +29,27 @@ return {
   {
     '<leader>fd',
     function()
-      import('telescope.builtin').diagnostics()
+      require('telescope.builtin').diagnostics()
     end,
     desc = 'Telescope [f]ind in workspace [d]iagnostics',
     silent = true,
     noremap = true,
   },
   {
-    '<leader>ft',
+    '<leader>fh',
     function()
-      vim.cmd("TodoTelescope cwd='%:p:h")
+      require('telescope.builtin').help_tags()
     end,
-    desc = 'Telescope [f]ind within [t]odos',
+    desc = 'Telescope [h]elp [t]ags',
+    silent = true,
+    noremap = true,
+  },
+  {
+    '<leader>fw',
+    function()
+      require('telescope.builtin').grep_string()
+    end,
+    desc = 'Telescope [g]rep [s]tring',
     silent = true,
     noremap = true,
   },
