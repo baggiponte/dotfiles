@@ -1,5 +1,4 @@
-local import = require('baggiponte.utils').import
-local icons = import('baggiponte.utils.icons').icons
+local icons = require('baggiponte.utils.icons').icons
 
 return {
   'nvimdev/lspsaga.nvim',
