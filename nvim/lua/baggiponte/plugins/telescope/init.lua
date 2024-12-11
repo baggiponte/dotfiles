@@ -37,13 +37,8 @@ return {
         mappings = {
           n = {
             ['v'] = actions.file_vsplit,
-            ['<S-k>'] = actions.preview_scrolling_up,
-            ['<S-j>'] = actions.preview_scrolling_down,
           },
           i = {
-            ['<C-v>'] = actions.file_vsplit,
-            ['<S-k>'] = actions.preview_scrolling_up,
-            ['<S-j>'] = actions.preview_scrolling_down,
             ['<C-j>'] = actions.move_selection_next,
             ['<C-k>'] = actions.move_selection_previous,
           },
