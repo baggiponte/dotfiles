@@ -1,5 +1,3 @@
-local import = require('baggiponte.utils').import
-
 local keys = {
   {
     '<leader>hs',
@@ -18,7 +16,7 @@ local keys = {
   {
     ']h',
     function()
-      local gs = import('gitsigns')
+      local gs = require('gitsigns')
 
       if vim.wo.diff then
         return ']h'
@@ -35,7 +33,7 @@ local keys = {
   {
     '[h',
     function()
-      local gs = import('gitsigns')
+      local gs = require('gitsigns')
 
       if vim.wo.diff then
         return '[h'
