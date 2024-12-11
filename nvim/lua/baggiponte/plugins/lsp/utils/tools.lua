@@ -64,11 +64,8 @@ M.servers = {
   basedpyright = {
     name = 'basedpyright',
     config = {
-      settings = {
-        pyright = {
-          -- Using Ruff's import organizer
-          disableOrganizeImports = true,
-        },
+      basedpyright = {
+        disableOrganizeImports = true,
       },
     },
   },
