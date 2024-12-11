@@ -1,10 +1,8 @@
-local import = require('baggiponte.utils').import
-
 local keys = {
   {
     '<leader>ds',
     function()
-      import('dap').continue()
+      require('dap').continue()
     end,
     desc = 'Start [d]ebugger [s]ession',
     silent = true,
@@ -13,14 +11,14 @@ local keys = {
   {
     '<leader>dt',
     function()
-      import('dapui').toggle()
+      require('dapui').toggle()
     end,
     desc = '[d]ebugger [t]oggle',
   },
   {
     '<leader>b',
     function()
-      import('dap').toggle_breakpoint()
+      require('dap').toggle_breakpoint()
     end,
     desc = 'Toggle debugger [b]reakpoint',
     silent = true,

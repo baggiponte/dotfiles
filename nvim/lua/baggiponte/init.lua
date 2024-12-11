@@ -1,7 +1,5 @@
-local import = require('baggiponte.utils').import
-
-import('baggiponte.options')
-import('baggiponte.autocmds')
-import('baggiponte.keymaps')
-import('baggiponte.lazy')
-import('baggiponte.groups')
+require('baggiponte.options')
+require('baggiponte.autocmds')
+require('baggiponte.keymaps')
+require('baggiponte.lazy')
+require('baggiponte.groups')

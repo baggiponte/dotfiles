@@ -1,5 +1,3 @@
-local import = require('baggiponte.utils').import
-
 local keys = {
   {
     '<leader>tp',
@@ -50,7 +48,7 @@ return {
   'milanglacier/yarepl.nvim',
   cmd = 'REPLStart',
   config = function()
-    local yarepl = import('yarepl')
+    local yarepl = require('yarepl')
 
     yarepl.setup({
       wincmd = string.format('vertical %d split', math.floor(vim.o.columns * 0.4)),

@@ -1,5 +1,3 @@
-local import = require('baggiponte.utils').import
-
 local dependencies = {
   { 'hrsh7th/cmp-buffer' },
   { 'hrsh7th/cmp-cmdline' },
@@ -27,8 +25,8 @@ return {
   version = false, -- last release is way too old
   event = { 'InsertEnter', 'CmdlineEnter' },
   config = function()
-    local cmp = import('cmp')
-    local luasnip = import('luasnip')
+    local cmp = require('cmp')
+    local luasnip = require('luasnip')
 
     vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
@@ -40,7 +38,7 @@ return {
       },
       formatting = {
         format = function(_, item)
-          local icons = import('baggiponte.utils.icons').icons.kinds
+          local icons = require('baggiponte.utils.icons').icons.kinds
           if icons[item.kind] then
             item.kind = icons[item.kind] .. item.kind
           end
