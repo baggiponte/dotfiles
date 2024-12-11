@@ -53,4 +53,13 @@ return {
     silent = true,
     noremap = true,
   },
+  {
+    '<leader>fp',
+    function()
+      require('telescope').extensions.file_browser.file_browser()
+    end,
+    desc = 'Telescope [b]uffers',
+    silent = true,
+    noremap = true,
+  },
 }
