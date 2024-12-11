@@ -4,6 +4,7 @@ local icons = import('baggiponte.utils.icons').icons
 return {
   'nvimdev/lspsaga.nvim',
   cmd = { 'Lspsaga' },
+  enabled = false,
   dependencies = {
     { 'nvim-tree/nvim-web-devicons' },
     { 'nvim-treesitter/nvim-treesitter' }, -- install markdown and markdown_inline parser
