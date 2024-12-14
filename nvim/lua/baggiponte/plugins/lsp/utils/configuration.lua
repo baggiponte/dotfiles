@@ -1,4 +1,4 @@
-local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+local has_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
 
 local M = {}
 
@@ -21,13 +21,12 @@ M.keys = {
     end,
     '[f]ormat current buffer',
   },
-  { '<leader>e', vim.diagnostic.open_float, 'Open diagnistics floating pane' },
+  -- { '<leader>e', vim.diagnostic.open_float, 'Open diagnistics floating pane' },
   { 'ca', vim.lsp.buf.code_action, 'Execute [c]ode [a]ction' },
-  { 'gf', '<cmd>Telescope lsp_references<CR>', '[g]o [f]ind occurrences with Lspsaga' },
+  { 'gf', '<cmd>Telescope lsp_references<CR>', '[g]o [f]ind occurrences with Telescope' },
   { 'gD', vim.lsp.buf.declaration, '[g]o to [D]eclaration' },
   { 'gd', vim.lsp.buf.definition, '[g]o to [d]efinition' },
   { 'gi', vim.lsp.buf.implementation, '[g]o to [i]mplementation' },
-  { 'gr', vim.lsp.buf.references, '[g]o to [r]eferences' },
   { 'gt', vim.lsp.buf.type_definition, '[g]o to [t]ype definition' },
   { '<leader>h', vim.lsp.buf.signature_help, 'go to signature help' },
 }
@@ -59,12 +58,12 @@ M.on_attach = function(client, buffer)
   end
 end
 
-M.make_client_capabilities = function(opts)
+M.extend_client_capabilities_with_cmp = function(opts)
   return vim.tbl_deep_extend(
     'force',
     {},
     vim.lsp.protocol.make_client_capabilities(),
-    has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+    has_cmp and cmp.default_capabilities() or {},
     opts.capabilities or {}
   )
 end
