@@ -16,7 +16,7 @@ return {
     local capabilities = configuration.extend_client_capabilities_with_cmp(opts)
 
     local handlers = {
-      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
+      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
       ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
     }
 
