@@ -21,17 +21,18 @@ M.keys = {
     end,
     '[f]ormat current buffer',
   },
-  -- { '<leader>e', vim.diagnostic.open_float, 'Open diagnistics floating pane' },
+  { '<leader>e', vim.diagnostic.open_float, 'Open diagnistics floating pane' },
   { 'ca', vim.lsp.buf.code_action, 'Execute [c]ode [a]ction' },
-  { 'gf', '<cmd>Telescope lsp_references<CR>', '[g]o [f]ind occurrences with Telescope' },
-  { 'gD', vim.lsp.buf.declaration, '[g]o to [D]eclaration' },
-  { 'gd', vim.lsp.buf.definition, '[g]o to [d]efinition' },
-  { 'gi', vim.lsp.buf.implementation, '[g]o to [i]mplementation' },
-  { 'gt', vim.lsp.buf.type_definition, '[g]o to [t]ype definition' },
+  { 'gf', require('telescope.builtin').lsp_references, '[g]o to [f]ile' },
+  { 'gd', require('telescope.builtin').lsp_definitions, '[g]o to [d]efinition' },
   { '<leader>h', vim.lsp.buf.signature_help, 'go to signature help' },
 }
 
 M.on_attach = function(client, buffer)
+  if not client then
+    return
+  end
+
   local bufmap = function(args)
     local lhs, rhs, desc, opts
     lhs, rhs, desc, opts = unpack(args)
@@ -48,13 +49,13 @@ M.on_attach = function(client, buffer)
     vim.keymap.set(mode, lhs, rhs, bufopts)
   end
 
+  for _, keymap in ipairs(M.keys) do
+    bufmap(keymap)
+  end
+
   if client.name == 'ruff' then
     -- Disable hover in favor of Pyright
     client.server_capabilities.hoverProvider = false
-  end
-
-  for _, keymap in ipairs(M.keys) do
-    bufmap(keymap)
   end
 end
 
@@ -67,5 +68,10 @@ M.extend_client_capabilities_with_cmp = function(opts)
     opts.capabilities or {}
   )
 end
+
+M.handlers = {
+  ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+  ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+}
 
 return M

@@ -7,30 +7,25 @@ return {
   config = function(opts)
     local lspconfig = require('lspconfig')
     local tools = require('baggiponte.plugins.lsp.utils.tools')
-    local configuration = require('baggiponte.plugins.lsp.utils.configuration')
+    local defaults = require('baggiponte.plugins.lsp.utils.defaults')
 
     require('lspconfig.ui.windows').default_options.border = 'rounded'
 
     vim.diagnostic.config({ virtual_text = { prefix = '' } })
 
-    local capabilities = configuration.extend_client_capabilities_with_cmp(opts)
-
-    local handlers = {
-      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-    }
+    local capabilities = defaults.extend_client_capabilities_with_cmp(opts)
 
     ---@param spec MasonServerSpec
     local setup = function(spec)
       local server = spec['name']
 
-      local defaults = {
+      local config = {
         capabilities = vim.deepcopy(capabilities),
-        on_attach = configuration.on_attach,
-        handlers = handlers,
+        on_attach = defaults.on_attach,
+        handlers = defaults.handlers,
       }
 
-      local settings = vim.tbl_deep_extend('force', defaults, spec['config'] or {})
+      local settings = vim.tbl_deep_extend('force', config, spec['config'] or {})
 
       lspconfig[server].setup(settings)
     end
@@ -38,5 +33,30 @@ return {
     for _, tool in pairs(tools.servers) do
       setup(tool)
     end
+
+    vim.api.nvim_create_autocmd('LspAttach', {
+      callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+        if not client then
+          return
+        end
+
+        if client.name == 'ruff' then
+          -- Disable hover in favor of Pyright
+          client.server_capabilities.hoverProvider = false
+        end
+
+        if client.supports_method('textDocument/formatting') and not string.find(client.name, 'pyright') then
+          -- Format the current buffer on save
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            buffer = args.buf,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+            end,
+          })
+        end
+      end,
+    })
   end,
 }
