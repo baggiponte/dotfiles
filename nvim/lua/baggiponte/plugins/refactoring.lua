@@ -1,16 +1,21 @@
+local keys = {
+  {
+    '<leader>rr',
+    function()
+      require('refactoring').select_refactor()
+    end,
+    desc = 'Refactor: select refactor',
+    mode = 'v',
+  },
+}
+
 return {
   'ThePrimeagen/refactoring.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
   },
-  keys = {
-    {
-      '<leader>rr',
-      require('refactoring').select_refactor,
-      desc = 'Refactor: select refactor',
-    },
-  },
+  keys = keys,
   cmd = { 'Refactor' },
   opts = {},
 }
