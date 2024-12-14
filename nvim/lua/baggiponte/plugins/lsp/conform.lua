@@ -4,12 +4,12 @@ local formatters = {
   json = { 'jq' },
   just = { 'just' },
   sh = { 'shfmt' },
-  ['*'] = { 'trim_whitespace', 'codespell' },
 }
 
 return {
   'stevearc/conform.nvim',
-  event = { 'BufWritePre' },
+  enabled = false,
+  ft = { 'lua', 'json', 'just', 'sh' },
   cmd = { 'ConformInfo' },
   keys = {
     {
