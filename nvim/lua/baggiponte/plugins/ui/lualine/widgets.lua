@@ -56,7 +56,7 @@ M.copilot_active = function()
     return ''
   end
 
-  return ' copilot'
+  return ' copilot'
 end
 
 return M
