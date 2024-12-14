@@ -34,20 +34,6 @@ M.dap = {
 M.servers = {
   ['lua-language-server'] = {
     name = 'lua_ls',
-    config = {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' },
-          },
-          hint = { enable = true },
-          arrayIndex = 'Disable',
-          telemetry = {
-            enable = false,
-          },
-        },
-      },
-    },
   },
   ['css-lsp'] = {
     name = 'cssls',
