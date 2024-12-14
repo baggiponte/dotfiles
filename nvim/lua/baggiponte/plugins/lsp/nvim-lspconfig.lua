@@ -52,6 +52,14 @@ return {
           vim.api.nvim_create_autocmd('BufWritePre', {
             buffer = args.buf,
             callback = function()
+              if client.name == 'ruff' then
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  filter = function(action)
+                    return action.title == 'Ruff: Organize imports'
+                  end,
+                })
+              end
               vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
             end,
           })
