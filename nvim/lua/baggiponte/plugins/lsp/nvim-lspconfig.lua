@@ -19,15 +19,15 @@ return {
     local setup = function(spec)
       local server = spec['name']
 
-      local config = {
+      local default_config = {
         capabilities = vim.deepcopy(capabilities),
         on_attach = defaults.on_attach,
         handlers = defaults.handlers,
       }
 
-      local settings = vim.tbl_deep_extend('force', config, spec['config'] or {})
+      local config = vim.tbl_deep_extend('force', default_config, spec['config'] or {})
 
-      lspconfig[server].setup(settings)
+      lspconfig[server].setup(config)
     end
 
     for _, tool in pairs(tools.servers) do
