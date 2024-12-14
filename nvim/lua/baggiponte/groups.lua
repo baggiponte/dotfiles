@@ -1,7 +1,5 @@
 local groups = {
   LspInfoBorder = 'White',
-  NullLsInfoBorder = 'White',
-  SagaBorder = 'Aqua',
 }
 
 for group, hl in pairs(groups) do
