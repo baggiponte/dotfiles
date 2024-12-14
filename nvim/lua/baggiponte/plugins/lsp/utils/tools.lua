@@ -50,9 +50,14 @@ M.servers = {
   basedpyright = {
     name = 'basedpyright',
     config = {
-      basedpyright = {
-        disableOrganizeImports = true,
-      },
+      settings = {
+        basedpyright = {
+          disableOrganizeImports = true,
+          analysis = {
+            diagnosticMode = "workspace",
+          }
+        },
+      }
     },
   },
   ['yaml-language-server'] = {
