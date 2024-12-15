@@ -9,6 +9,7 @@ return {
     local tools = require('baggiponte.plugins.lsp.utils.tools')
     local defaults = require('baggiponte.plugins.lsp.utils.defaults')
 
+    -- this will actually be deprecated
     require('lspconfig.ui.windows').default_options.border = 'rounded'
 
     vim.diagnostic.config({ virtual_text = { prefix = '' } })
@@ -47,11 +48,14 @@ return {
           client.server_capabilities.hoverProvider = false
         end
 
+        -- Format the current buffer on save
+        -- Don't do this for pyright/basedpyright, as I want to use ruff
         if client.supports_method('textDocument/formatting') and not string.find(client.name, 'pyright') then
-          -- Format the current buffer on save
           vim.api.nvim_create_autocmd('BufWritePre', {
             buffer = args.buf,
             callback = function()
+              -- if the client is ruff, then run the code action to organize imports
+              -- (this is still not available as an LSP capability)
               if client.name == 'ruff' then
                 vim.lsp.buf.code_action({
                   apply = true,
@@ -60,6 +64,7 @@ return {
                   end,
                 })
               end
+
               vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
             end,
           })
