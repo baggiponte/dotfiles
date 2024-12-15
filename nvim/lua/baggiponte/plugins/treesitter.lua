@@ -1,6 +1,6 @@
 local tsopts = {
   ensure_installed = {
-    'arduino',
+    -- 'arduino',
     'bash',
     'dockerfile',
     'gitattributes',
@@ -8,7 +8,7 @@ local tsopts = {
     'ini',
     'json',
     'jsonc',
-    'julia',
+    -- 'julia',
     'just',
     'kdl',
     'lua',
@@ -17,7 +17,7 @@ local tsopts = {
     'markdown_inline',
     'python',
     'r',
-    'regex', -- needed for noice.nvim
+    'regex',        -- needed for noice.nvim
     'requirements', -- python requirements.txt
     'rust',
     'sql',
@@ -93,16 +93,27 @@ local tsopts = {
 }
 
 return {
-  { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
-  { 'kylechui/nvim-surround', event = 'UIEnter', opts = {} },
+  { 'kylechui/nvim-surround',                  event = 'UIEnter', opts = {} },
   { 'nvim-treesitter/nvim-treesitter-context', event = 'UIEnter' },
   {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    dependencies = { 'hrsh7th/nvim-cmp' },
+    config = function()
+      require('nvim-autopairs').setup {}
+      -- If you want to automatically add `(` after selecting a function or method
+      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+      local cmp = require 'cmp'
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+    end,
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
-    event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
+    event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
-      { 'RRethy/nvim-treesitter-endwise' },
-      { 'nvim-treesitter/nvim-treesitter-textobjects' },
-      { 'p00f/nvim-ts-rainbow' },
+      { 'RRethy/nvim-treesitter-endwise',              event = "InsertEnter" },
+      { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'UIEnter' },
+      { 'p00f/nvim-ts-rainbow',                        event = 'UIEnter' },
     },
     version = false, -- last release is way too old and doesn't work on Windows
     build = ':TSUpdate',
