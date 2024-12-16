@@ -4,35 +4,35 @@ local keys = {
     function()
       vim.cmd([[REPLStart bpython]])
     end,
-    desc = 'yarepl: [t]oggle [p]ython repl with bpython',
+    desc = 'yarepl: toggle python repl with bpython',
   },
   {
     '<leader>tf',
     function()
       vim.cmd([[REPLHideOrFocus]])
     end,
-    desc = 'yarepl: [r]epl [f]ocus',
+    desc = 'yarepl: REPL focus',
   },
   {
     '<leader>tq',
     function()
       vim.cmd([[REPLClose]])
     end,
-    desc = 'yarepl: {r}epl [q]uit',
+    desc = 'yarepl: REPL quit',
   },
   {
     '<leader>te',
     function()
       vim.cmd([[REPLSendLine]])
     end,
-    desc = 'yarepl: [r]epl [s]end line',
+    desc = 'yarepl: REPL send line',
   },
   {
     '<leader>T',
     function()
       vim.cmd([[REPLSendVisual]])
     end,
-    desc = 'yarepl: [r]epl [s]end visual selection',
+    desc = 'yarepl: REPL send visual selection',
     mode = 'v',
   },
   {
@@ -40,7 +40,7 @@ local keys = {
     function()
       vim.cmd([[REPLSendOperator]])
     end,
-    desc = 'yarepl: [r]epl [s]end visual selection',
+    desc = 'yarepl: repl send visual selection',
   },
 }
 

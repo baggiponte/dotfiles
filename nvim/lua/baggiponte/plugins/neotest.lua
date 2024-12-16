@@ -4,21 +4,21 @@ local keys = {
     function()
       require('neotest').run.run()
     end,
-    desc = 'neotest: test [m]ethod',
+    desc = 'neotest: test method',
   },
   {
     '<leader>dM',
     function()
       require('neotest').run.run({ strategy = 'dap' })
     end,
-    desc = 'neotest: test [M]ethod with debugger',
+    desc = 'neotest: test method with debugger',
   },
   {
     '<leader>dS',
     function()
       require('neotest').summary.toggle()
     end,
-    desc = 'neotest: [d]ebug [S]ummary',
+    desc = 'neotest: debug summary',
   },
 }
 return {

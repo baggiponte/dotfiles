@@ -6,13 +6,13 @@ return {
       'q',
       '<cmd>Sayonara<CR>',
       mode = { 'n', 'v' },
-      desc = '[q]uit current buffer with Sayonara',
+      desc = 'quit current buffer with Sayonara',
     },
     {
       'Q',
       '<cmd>Sayonara!<CR>',
       mode = { 'n', 'v' },
-      desc = 'Force [Q]uit current buffer with Sayonara',
+      desc = 'Force quit current buffer with Sayonara',
     },
   },
 }

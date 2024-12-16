@@ -4,7 +4,7 @@ return {
     function()
       require('telescope.builtin').find_files()
     end,
-    desc = 'Telescope [f]ind [f]iles',
+    desc = 'Telescope find files',
     silent = true,
     noremap = true,
   },
@@ -13,7 +13,7 @@ return {
     function()
       require('telescope.builtin').live_grep()
     end,
-    desc = 'Telescope [f]ind symbol using [g]rep',
+    desc = 'Telescope find symbol using grep',
     silent = true,
     noremap = true,
   },
@@ -22,7 +22,7 @@ return {
     function()
       require('telescope.builtin').buffers()
     end,
-    desc = 'Telescope [f]ind [b]uffer',
+    desc = 'Telescope find buffer',
     silent = true,
     noremap = true,
   },
@@ -31,7 +31,7 @@ return {
     function()
       require('telescope.builtin').diagnostics()
     end,
-    desc = 'Telescope [f]ind in workspace [d]iagnostics',
+    desc = 'Telescope find in workspace diagnostics',
     silent = true,
     noremap = true,
   },
@@ -40,7 +40,7 @@ return {
     function()
       require('telescope.builtin').help_tags()
     end,
-    desc = 'Telescope [h]elp [t]ags',
+    desc = 'Telescope help tags',
     silent = true,
     noremap = true,
   },
@@ -49,7 +49,7 @@ return {
     function()
       require('telescope.builtin').grep_string()
     end,
-    desc = 'Telescope [g]rep [s]tring',
+    desc = 'Telescope grep string',
     silent = true,
     noremap = true,
   },
@@ -58,7 +58,7 @@ return {
     function()
       require('telescope').extensions.file_browser.file_browser()
     end,
-    desc = 'Telescope [b]uffers',
+    desc = 'Telescope buffers',
     silent = true,
     noremap = true,
   },
