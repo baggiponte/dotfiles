@@ -6,13 +6,38 @@ local M = {}
 -- K -> hover
 -- ]d [d -> next/prev diagnostic
 M.keys = {
-  { '<leader>rn', function() return ':IncRename ' .. vim.fn.expand('<cword>') end, 'Incremental rename of a symbol', { expr = true } },
-  { '<leader>f',  function() vim.lsp.buf.format({ async = true }) end,             'format current buffer' },
-  { '<leader>e',  vim.diagnostic.open_float,                                       'Open diagnistics floating pane' },
-  { 'ca',         vim.lsp.buf.code_action,                                         'Execute code action' },
-  { 'gf',         function() require('telescope.builtin').lsp_references() end,    'Go to find references' },
-  { 'gd',         function() require('telescope.builtin').lsp_definitions() end,   'Go to definition' },
-  { '<leader>h',  vim.lsp.buf.signature_help,                                      'Go to signature help' },
+  {
+    '<leader>rn',
+    function()
+      return ':IncRename ' .. vim.fn.expand('<cword>')
+    end,
+    'Incremental rename of a symbol',
+    { expr = true },
+  },
+  {
+    '<leader>f',
+    function()
+      vim.lsp.buf.format({ async = true })
+    end,
+    'format current buffer',
+  },
+  { '<leader>e', vim.diagnostic.open_float, 'Open diagnistics floating pane' },
+  { 'ca', vim.lsp.buf.code_action, 'Execute code action' },
+  {
+    'gf',
+    function()
+      require('telescope.builtin').lsp_references()
+    end,
+    'Go to find references',
+  },
+  {
+    'gd',
+    function()
+      require('telescope.builtin').lsp_definitions()
+    end,
+    'Go to definition',
+  },
+  { '<leader>h', vim.lsp.buf.signature_help, 'Go to signature help' },
 }
 
 M.on_attach = function(client, buffer)
