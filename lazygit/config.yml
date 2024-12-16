@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
 gui:
   border: 'rounded'
+  nerdFontsVersion: "3"
 git:
   overrideGpg: true
   paging:
