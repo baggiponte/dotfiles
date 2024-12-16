@@ -17,7 +17,7 @@ local tsopts = {
     'markdown_inline',
     'python',
     'r',
-    'regex',        -- needed for noice.nvim
+    'regex', -- needed for noice.nvim
     'requirements', -- python requirements.txt
     'rust',
     'sql',
@@ -93,17 +93,17 @@ local tsopts = {
 }
 
 return {
-  { 'kylechui/nvim-surround',                  event = 'UIEnter', opts = {} },
+  { 'kylechui/nvim-surround', event = 'UIEnter', opts = {} },
   { 'nvim-treesitter/nvim-treesitter-context', event = 'UIEnter' },
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     dependencies = { 'hrsh7th/nvim-cmp' },
     config = function()
-      require('nvim-autopairs').setup {}
+      require('nvim-autopairs').setup({})
       -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+      local cmp = require('cmp')
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
@@ -111,9 +111,9 @@ return {
     'nvim-treesitter/nvim-treesitter',
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
-      { 'RRethy/nvim-treesitter-endwise',              event = "InsertEnter" },
+      { 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
       { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'UIEnter' },
-      { 'p00f/nvim-ts-rainbow',                        event = 'UIEnter' },
+      { 'p00f/nvim-ts-rainbow', event = 'UIEnter' },
     },
     version = false, -- last release is way too old and doesn't work on Windows
     build = ':TSUpdate',

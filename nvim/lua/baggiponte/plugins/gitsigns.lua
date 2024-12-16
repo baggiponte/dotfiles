@@ -3,19 +3,19 @@ local keys = {
     '<leader>hs',
     '<cmd>Gitsigns stage_hunk<CR>',
     mode = { 'n', 'v' },
-    desc = "Gitsigns: stage hunk",
+    desc = 'Gitsigns: stage hunk',
   },
   {
     '<leader>hr',
     '<cmd>Gitsigns reset_hunk<CR>',
     mode = { 'n', 'v' },
-    desc = "Gitsigns: reset hunk",
+    desc = 'Gitsigns: reset hunk',
   },
   {
     '<leader>hp',
     '<cmd>Gitsigns preview_hunk<CR>',
     mode = { 'n', 'v' },
-    desc = "Gitsigns: preview hunk",
+    desc = 'Gitsigns: preview hunk',
   },
   {
     ']h',
@@ -33,7 +33,7 @@ local keys = {
       return '<Ignore>'
     end,
     expr = true,
-    desc = "Gitsigns: go to next hunk",
+    desc = 'Gitsigns: go to next hunk',
   },
   {
     '[h',
@@ -51,7 +51,7 @@ local keys = {
       return '<Ignore>'
     end,
     expr = true,
-    desc = "Gitsigns: go to previous hunk",
+    desc = 'Gitsigns: go to previous hunk',
   },
 }
 
