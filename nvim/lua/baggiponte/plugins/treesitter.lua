@@ -109,7 +109,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
     dependencies = {
       { 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
       { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'UIEnter' },
