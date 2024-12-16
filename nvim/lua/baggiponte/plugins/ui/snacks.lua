@@ -6,7 +6,12 @@ return {
   opts = {
     indent = {
       enabled = true,
-      char = '┊', -- does not seem to work
+      indent = {
+        char = '┊', -- does not seem to work
+      },
+      scope = {
+        char = '┊',
+      },
       animate = { enabled = false },
     },
     input = { enabled = true },
