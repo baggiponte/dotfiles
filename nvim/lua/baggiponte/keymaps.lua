@@ -27,16 +27,14 @@ vim.keymap.set(
   '<C-d>zz',
   { desc = 'go down half a page and center screen', silent = true, noremap = true }
 )
+vim.keymap.set('n', ']w', '<CMD>cnext<CR>', { desc = 'Move to next quickfix item', silent = true })
+vim.keymap.set('n', '[w', '<CMD>cprevious<CR>', { desc = 'Move to previous quickfix item', silent = true })
 
 -- across buffers
 vim.keymap.set('n', '<c-h>', '<c-w>h', { desc = 'Move focus to the left window', silent = true, noremap = true })
 vim.keymap.set('n', '<c-j>', '<c-w>j', { desc = 'Move focus to the window above', silent = true, noremap = true })
 vim.keymap.set('n', '<c-k>', '<c-w>k', { desc = 'Move focus to the window below', silent = true, noremap = true })
 vim.keymap.set('n', '<c-l>', '<c-w>l', { desc = 'Move focus to the right window', silent = true, noremap = true })
-
--- move lines up and down in visual mode
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move the line up' })
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move the line down' })
 
 -- [[ Save and exit files ]]
 vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = 'write current buffer', silent = true, noremap = true })
