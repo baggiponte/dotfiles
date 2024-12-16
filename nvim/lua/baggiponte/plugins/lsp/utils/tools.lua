@@ -54,10 +54,10 @@ M.servers = {
         basedpyright = {
           disableOrganizeImports = true,
           analysis = {
-            diagnosticMode = "workspace",
-          }
+            diagnosticMode = 'workspace',
+          },
         },
-      }
+      },
     },
   },
   ['yaml-language-server'] = {
@@ -65,6 +65,9 @@ M.servers = {
   },
   ['json-lsp'] = {
     name = 'jsonls',
+  },
+  ['r-languageserver'] = {
+    name = 'r_language_server',
   },
 }
 
