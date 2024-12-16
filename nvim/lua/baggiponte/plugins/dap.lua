@@ -4,7 +4,7 @@ local keys = {
     function()
       require('dap').continue()
     end,
-    desc = 'Start [d]ebugger [s]ession',
+    desc = 'Start debugger session',
     silent = true,
     noremap = true,
   },
@@ -13,14 +13,14 @@ local keys = {
     function()
       require('dapui').toggle()
     end,
-    desc = '[d]ebugger [t]oggle',
+    desc = 'debugger toggle',
   },
   {
     '<leader>b',
     function()
       require('dap').toggle_breakpoint()
     end,
-    desc = 'Toggle debugger [b]reakpoint',
+    desc = 'Toggle debugger breakpoint',
     silent = true,
     noremap = true,
   },
@@ -42,7 +42,7 @@ return {
         ---@type string
         local venv_path = vim.fs.find({ '.venv' }, {
           upward = true,
-          stop = vim.loop.os_homedir(),
+          stop = vim.uv.os_homedir(),
           type = 'directory',
           limit = 1,
         })[1]

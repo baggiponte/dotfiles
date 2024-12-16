@@ -16,11 +16,11 @@ vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Yank and send to the system 
 -- [[ Movements ]]
 
 -- inside the buffer
-vim.keymap.set('', 'H', '^', { desc = 'go to the beginning of the line' })
-vim.keymap.set('', 'L', '$', { desc = 'go to the end of the line' })
-vim.keymap.set('n', 'n', 'nzz', { desc = 'search and center screen', silent = true, noremap = true })
-vim.keymap.set('n', 'N', 'Nzz', { desc = 'search and center screen', silent = true, noremap = true })
-vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'go up half a page and center screen', silent = true, noremap = true })
+vim.keymap.set('', 'H', '^', { desc = 'Go to the beginning of the line' })
+vim.keymap.set('', 'L', '$', { desc = 'Go to the end of the line' })
+vim.keymap.set('n', 'n', 'nzz', { desc = 'Search and center screen', silent = true, noremap = true })
+vim.keymap.set('n', 'N', 'Nzz', { desc = 'Search and center screen', silent = true, noremap = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Go up half a page and center screen', silent = true, noremap = true })
 vim.keymap.set(
   'n',
   '<C-d>',
@@ -39,7 +39,7 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move the line up' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move the line down' })
 
 -- [[ Save and exit files ]]
-vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true })
-vim.keymap.set('n', '<leader>Q', '<cmd>q!<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true })
-vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[w]rite current buffer', silent = true, noremap = true })
-vim.keymap.set('n', '<leader>W', '<cmd>wa<CR>', { desc = '[w]rite [a]ll buffers', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = 'write current buffer', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>Q', '<cmd>q!<CR>', { desc = 'write current buffer', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = 'write current buffer', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>W', '<cmd>wa<CR>', { desc = 'write all buffers', silent = true, noremap = true })

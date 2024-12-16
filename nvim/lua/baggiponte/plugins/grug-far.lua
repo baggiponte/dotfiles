@@ -4,9 +4,7 @@ return {
   keys = {
     {
       '<leader>S',
-      function()
-        vim.cmd([[GrugFar]])
-      end,
+      '<cmd>GrugFar<CR>',
       desc = 'Toggle grug-far.nvim',
     },
   },
