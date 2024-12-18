@@ -14,7 +14,7 @@ return {
 
     vim.diagnostic.config({ virtual_text = { prefix = '' } })
 
-    local capabilities = defaults.extend_client_capabilities_with_cmp(opts)
+    local capabilities = defaults.extend_client_capabilities_with_blink(opts)
 
     ---@param spec MasonServerSpec
     local setup = function(spec)

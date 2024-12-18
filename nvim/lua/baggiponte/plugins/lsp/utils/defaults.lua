@@ -1,5 +1,3 @@
-local has_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
-
 local M = {}
 
 -- 0.10.0 defaults:
@@ -71,12 +69,14 @@ M.on_attach = function(client, buffer)
   end
 end
 
-M.extend_client_capabilities_with_cmp = function(opts)
+M.extend_client_capabilities_with_blink = function(opts)
+  local blink_capabilities = require('blink.cmp').get_lsp_capabilities()
+
   return vim.tbl_deep_extend(
     'force',
     {},
     vim.lsp.protocol.make_client_capabilities(),
-    has_cmp and cmp.default_capabilities() or {},
+    blink_capabilities or {},
     opts.capabilities or {}
   )
 end
