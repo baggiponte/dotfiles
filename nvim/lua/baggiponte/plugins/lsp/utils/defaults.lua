@@ -14,15 +14,15 @@ M.keys = {
     'Incremental rename of a symbol',
     { expr = true },
   },
-  {
-    '<leader>f',
-    function()
-      vim.lsp.buf.format({ async = true })
-    end,
-    'format current buffer',
-  },
   { '<leader>e', vim.diagnostic.open_float, 'Open diagnistics floating pane' },
-  { 'ca', vim.lsp.buf.code_action, 'Execute code action' },
+  { 'ca',        vim.lsp.buf.code_action,   'Execute code action' },
+  {
+    'go',
+    function()
+      require('telescope.builtin').lsp_document_symbols()
+    end,
+    'Go to navigate symbols',
+  },
   {
     'gf',
     function()
