@@ -39,32 +39,32 @@ CMD_PREVIEW_EZA="eza --all --group-directories-first --icons --level=2 --tree --
 
 # find files and pipe in sk/fzf preview with bat
 _fuzzy-file() {
-	requires fd sk bat
+	requires fd fzf bat
 
 	local pattern="$1"
 
     fd --type=file --unrestricted "${IGNORES_FD[@]}" |
-        sk \
+        fzf \
         --preview="$CMD_PREVIEW_BAT" \
         --query="$pattern"
 }
 
 # find directories and pipe in sk/fzf preview with eza
 _fuzzy-dir() {
-    requires fd sk bat
+    requires fd fzf bat
 
     local pattern="$1"
 
     # `sk --cmd` does not work with zle
     fd --type=directory --unrestricted "${IGNORES_FD[@]}" |
-        sk \
+        fzf \
         --preview="$CMD_PREVIEW_EZA" \
         --query="$pattern"
 }
 
 # live grep and pipe in sk/fzf preview with bat
 _live-grep() {
-	requires rg sk bat
+	requires rg fzf bat
 
 	local pattern="$1"
 
@@ -74,7 +74,7 @@ _live-grep() {
 		--line-number \
 		--no-heading \
 		--smart-case "${*:-}" |
-		sk \
+		fzf \
 			--ansi \
 			--color "hl:-1:underline,hl+:-1:underline:reverse" \
 			--delimiter : \
@@ -127,7 +127,7 @@ live-grep() {
 }
 
 zoxide-interactive() {
-	requires zoxide sk
+	requires zoxide fzf
 
 	local query="$1"
 	local chosen_directory
@@ -136,7 +136,7 @@ zoxide-interactive() {
 		zoxide query \
 			--exclude "$PWD" \
 			--list |
-        sk \
+        fzf \
             --preview="$CMD_PREVIEW_EZA" \
             --height 40% \
             --preview-window=down,40% \
