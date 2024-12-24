@@ -120,8 +120,6 @@ brew "portal"
 brew "ripgrep"
 # Blazing-fast modern Lua linter
 brew "selene"
-# Fuzzy Finder in rust!
-brew "sk"
 # Command-line interface for SQLite
 brew "sqlite"
 # Graphical command-line client for SSH
