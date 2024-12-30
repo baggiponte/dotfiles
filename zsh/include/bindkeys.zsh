@@ -28,7 +28,7 @@ zle -N fuzzy-file
 bindkey '^f' fuzzy-file
 
 zle -N fuzzy-dir
-bindkey '^n' fuzzy-dir
+bindkey '^p' fuzzy-dir
 
 # +------------------------+
 # | Fuzzy find directories |
