@@ -1,0 +1,4 @@
+font-size = 8
+# theme = gruvbox-material
+background-opacity = 0.85
+background = #1d1f21
