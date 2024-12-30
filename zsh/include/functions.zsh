@@ -99,7 +99,7 @@ fuzzy-file() {
 fuzzy-dir() {
     requires nvim
 
-    local filemanager_cmd="${NVIM_FILEMANAGER_CMD:-"Neotree"}"
+    local filemanager_cmd="${NVIM_FILEMANAGER_CMD:-"Oil"}"
 
     local pattern="$1"
     local dir
