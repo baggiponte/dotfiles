@@ -1,48 +1,48 @@
+[package_management]
+manager = "uv"
+
 [runtime]
-on_cell_change = "autorun"
-auto_instantiate = true
 auto_reload = "autorun"
-
-[server]
-browser = "default"
-follow_symlink = false
-
-[formatting]
-line_length = 79
+auto_instantiate = true
+on_cell_change = "autorun"
 
 [completion]
 activate_on_typing = true
 copilot = "github"
 
 [save]
+autosave_delay = 1000
 autosave = "after_delay"
 format_on_save = true
-autosave_delay = 1000
-
-[experimental]
-tracing = true
-chat_sidebar = true
-multi_column = true
-
-[display]
-dataframes = "rich"
-cell_output = "above"
-code_editor_font_size = 14
-theme = "light"
-default_width = "full"
 
 [keymap]
 preset = "default"
+
 [keymap.overrides]
 
-[package_management]
-manager = "uv"
+[display]
+dataframes = "rich"
+theme = "light"
+cell_output = "above"
+default_width = "full"
+code_editor_font_size = 14
+
+[formatting]
+line_length = 79
+
+[server]
+follow_symlink = false
+browser = "default"
 
 [ai]
 rules = ""
+[ai.google]
 
 [ai.anthropic]
 
 [ai.open_ai]
 
-[ai.google]
+[experimental]
+tracing = true
+chat_sidebar = true
+multi_column = true
