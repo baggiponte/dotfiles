@@ -1,4 +1,10 @@
-font-size = 8
-# theme = gruvbox-material
+font-family = Hack Nerd Font Mono
+font-size = 14
+font-thicken = 1
+
+adjust-cell-width = -6%
+adjust-cell-height = -5%
+
+theme = gruvbox-material-dark-hard
 background-opacity = 0.85
 background = #1d1f21
