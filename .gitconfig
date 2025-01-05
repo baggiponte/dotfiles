@@ -44,7 +44,9 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
-[credential]
-	helper = osxkeychain
+
 [maintenance]
 	repo = /Users/luca/.config
+
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
