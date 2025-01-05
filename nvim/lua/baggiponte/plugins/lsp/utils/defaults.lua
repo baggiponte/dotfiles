@@ -69,17 +69,6 @@ M.on_attach = function(client, buffer)
   end
 end
 
-M.extend_client_capabilities_with_cmp = function(opts)
-  local blink_capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-  return vim.tbl_deep_extend(
-    'force',
-    {},
-    vim.lsp.protocol.make_client_capabilities(),
-    blink_capabilities() or {},
-    opts.capabilities or {}
-  )
-end
-
 M.handlers = {
   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
   ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
