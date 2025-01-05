@@ -17,7 +17,7 @@ local tsopts = {
     'markdown_inline',
     'python',
     'r',
-    'regex', -- needed for noice.nvim
+    'regex',        -- needed for noice.nvim
     'requirements', -- python requirements.txt
     'rust',
     'sql',
@@ -93,8 +93,6 @@ local tsopts = {
 }
 
 return {
-  { 'kylechui/nvim-surround', event = 'UIEnter', opts = {} },
-  { 'nvim-treesitter/nvim-treesitter-context', event = 'UIEnter' },
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
@@ -109,11 +107,12 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
+    event = 'VeryLazy',
     dependencies = {
-      { 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
-      { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'UIEnter' },
-      { 'p00f/nvim-ts-rainbow', event = 'UIEnter' },
+      { 'kylechui/nvim-surround',                     opts = {} },
+      { 'RRethy/nvim-treesitter-endwise' },
+      { 'nvim-treesitter/nvim-treesitter-textobjects' },
+      { 'nvim-treesitter/nvim-treesitter-context' },
     },
     version = false, -- last release is way too old and doesn't work on Windows
     build = ':TSUpdate',
