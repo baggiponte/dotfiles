@@ -15,7 +15,7 @@ M.keys = {
     { expr = true },
   },
   { '<leader>e', vim.diagnostic.open_float, 'Open diagnistics floating pane' },
-  { 'ca',        vim.lsp.buf.code_action,   'Execute code action' },
+  { 'ca', vim.lsp.buf.code_action, 'Execute code action' },
   {
     'go',
     function()
