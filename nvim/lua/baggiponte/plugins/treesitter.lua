@@ -17,7 +17,7 @@ local tsopts = {
     'markdown_inline',
     'python',
     'r',
-    'regex',        -- needed for noice.nvim
+    'regex', -- needed for noice.nvim
     'requirements', -- python requirements.txt
     'rust',
     'sql',
@@ -109,7 +109,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     event = 'VeryLazy',
     dependencies = {
-      { 'kylechui/nvim-surround',                     opts = {} },
+      { 'kylechui/nvim-surround', opts = {} },
       { 'RRethy/nvim-treesitter-endwise' },
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
       { 'nvim-treesitter/nvim-treesitter-context' },
