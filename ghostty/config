@@ -5,6 +5,5 @@ font-thicken = 1
 adjust-cell-width = -6%
 adjust-cell-height = -5%
 
-theme = gruvbox-material-dark-hard
+theme = gruvbox-material-hard-dark
 background-opacity = 0.85
-background = #1d1f21
