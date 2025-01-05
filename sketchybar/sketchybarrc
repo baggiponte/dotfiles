@@ -90,33 +90,56 @@ defaults=(
 
 sketchybar --default "${defaults[@]}"
 
-# +--------+
-# | Spaces |
-# +--------+
+# +-----------+
+# | Aerospace |
+# +-----------+
 
-# Now we add some mission control spaces to indicate active and available mission control spaces
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+sketchybar --add event aerospace_workspace_change
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
-
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid=$((i+1))
-  sketchybar --add space space.$sid left                                                    \
-             --set space.$sid associated_space=$sid                                         \
-                              icon="${SPACE_ICONS[i]}"                                      \
-                              icon.padding_left="${SPACE_ELEM_PADDING}"                     \
-                              icon.padding_right="${SPACE_ELEM_PADDING}"                    \
-                              background.padding_left="${SPACE_BG_PADDING}"                 \
-                              background.padding_right="${SPACE_BG_PADDING}"                \
-                              background.color=${SPACE_BG_COLOR}                            \
-                              background.corner_radius=5                                    \
-                              background.height="${SPACE_BG_HEIGHT}"                        \
-                              background.drawing=off                                        \
-                              label.drawing=off                                             \
-                              script="${PLUGIN_DIR}/space.sh"                               \
-                              click_script="yabai -m space --focus $sid"
+for sid in $(aerospace list-workspaces --all); do
+  sketchybar --add item space.$sid left                                       \
+             --subscribe space.$sid aerospace_workspace_change                \
+             --set                                                            \
+                space.$sid                                                    \
+                background.padding_left="${SPACE_BG_PADDING}" \
+                background.padding_right="${SPACE_BG_PADDING}" \
+                background.color="${SPACE_BG_COLOR}"                          \
+                background.corner_radius=5                                    \
+                background.height="${SPACE_BG_HEIGHT}"                        \
+                background.drawing=off                                        \
+                label="$sid"                                                  \
+                label.padding_left="${SPACE_ELEM_PADDING}" \
+                click_script="aerospace workspace $sid"                       \
+                script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
+
+# # +--------+
+# # | Spaces |
+# # +--------+
+#
+# # Now we add some mission control spaces to indicate active and available mission control spaces
+# # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+#
+# SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+#
+# for i in "${!SPACE_ICONS[@]}"
+# do
+#   sid=$((i+1))
+#   sketchybar --add space space.$sid left                                                    \
+#              --set space.$sid associated_space=$sid                                         \
+#                               icon="${SPACE_ICONS[i]}"                                      \
+#                               icon.padding_left="${SPACE_ELEM_PADDING}"                     \
+#                               icon.padding_right="${SPACE_ELEM_PADDING}"                    \
+#                               background.padding_left="${SPACE_BG_PADDING}"                 \
+#                               background.padding_right="${SPACE_BG_PADDING}"                \
+#                               background.color=${SPACE_BG_COLOR}                            \
+#                               background.corner_radius=5                                    \
+#                               background.height="${SPACE_BG_HEIGHT}"                        \
+#                               background.drawing=off                                        \
+#                               label.drawing=off                                             \
+#                               script="${PLUGIN_DIR}/space.sh"                               \
+#                               click_script="yabai -m space --focus $sid"
+# done
 
 # +------+
 # | Left |
