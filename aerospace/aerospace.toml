@@ -185,6 +185,6 @@ d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
 g = ['exec-and-forget open -b com.google.Chrome', 'mode main']
 m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
 p = ['exec-and-forget open -b com.jetbrains.pycharm', 'mode main']
-t = ['exec-and-forget open -b org.alacritty', 'mode main']
+t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
 
 esc = ['reload-config', 'mode main']
