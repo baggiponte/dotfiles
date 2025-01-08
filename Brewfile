@@ -96,8 +96,6 @@ brew "kompose"
 brew "kubernetes-cli"
 # Simple terminal UI for git commands
 brew "lazygit"
-# LLVM's OpenMP runtime library
-brew "libomp"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Package manager for the Lua programming language
@@ -169,6 +167,8 @@ cask "font-jetbrains-mono"
 cask "font-yanone-kaffeesatz"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Cross-platform Git credential storage for multiple hosting providers
+cask "git-credential-manager"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
 # Keyboard customiser
