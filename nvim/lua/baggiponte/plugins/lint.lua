@@ -1,5 +1,5 @@
 local linters = {
-  lua = { 'selene' },
+  -- lua = { 'selene' },
   -- python = { 'mypy' },
   sh = { 'shellcheck' },
   yaml = { 'yamllint', 'actionlint' },
