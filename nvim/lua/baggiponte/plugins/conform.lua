@@ -1,7 +1,6 @@
 -- TODO: retrieve formatters from Mason tool list
 local formatters = {
   lua = { 'stylua' },
-  json = { 'jq' },
   just = { 'just' },
   sh = { 'shfmt' },
 }
