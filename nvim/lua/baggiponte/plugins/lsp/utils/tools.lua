@@ -44,6 +44,15 @@ M.servers = {
   ['docker-compose-language-service'] = {
     name = 'docker_compose_language_service',
   },
+  ['yaml-language-server'] = {
+    name = 'yamlls',
+  },
+  ['r-languageserver'] = {
+    name = 'r_language_server',
+  },
+  biome = {
+    name = 'biomejs',
+  },
   ruff = {
     name = 'ruff',
   },
@@ -59,15 +68,6 @@ M.servers = {
         },
       },
     },
-  },
-  ['yaml-language-server'] = {
-    name = 'yamlls',
-  },
-  ['json-lsp'] = {
-    name = 'jsonls',
-  },
-  ['r-languageserver'] = {
-    name = 'r_language_server',
   },
 }
 
