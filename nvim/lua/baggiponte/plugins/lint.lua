@@ -1,17 +1,16 @@
 local linters = {
-  json = { 'jsonlint' },
   lua = { 'selene' },
-  python = { 'mypy' },
+  -- python = { 'mypy' },
   sh = { 'shellcheck' },
   yaml = { 'yamllint', 'actionlint' },
   sql = { 'sqlfluff' },
-  terraform = { 'tfsec' },
+  docker = { 'hadolint' },
   ['*'] = { 'codespell' },
 }
 
 return {
   'mfussenegger/nvim-lint',
-  enabled = false,
+  enabled = true,
   event = 'BufReadPost',
   config = function()
     -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/linting.lua
