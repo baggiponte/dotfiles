@@ -7,7 +7,7 @@ local formatters = {
 
 return {
   'stevearc/conform.nvim',
-  ft = { 'lua', 'json', 'just', 'sh' },
+  ft = { 'lua', 'just', 'sh' },
   cmd = { 'ConformInfo' },
   keys = {
     {
