@@ -4,54 +4,49 @@ local keys = {
     function()
       require('telescope.builtin').find_files()
     end,
-    desc = 'Telescope find files',
-    silent = true,
-    noremap = true,
+    desc = 'Telescope: find files',
   },
   {
     '<leader>fg',
     function()
       require('telescope.builtin').live_grep()
     end,
-    desc = 'Telescope find symbol using grep',
-    silent = true,
-    noremap = true,
+    desc = 'Telescope: find symbol using grep',
   },
   {
     '<leader>fb',
     function()
       require('telescope.builtin').buffers()
     end,
-    desc = 'Telescope find buffer',
-    silent = true,
-    noremap = true,
+    desc = 'Telescope: find buffer',
   },
   {
     '<leader>fd',
     function()
       require('telescope.builtin').diagnostics()
     end,
-    desc = 'Telescope find in workspace diagnostics',
-    silent = true,
-    noremap = true,
+    desc = 'Telescope: find in workspace diagnostics',
   },
   {
     '<leader>fh',
     function()
       require('telescope.builtin').help_tags()
     end,
-    desc = 'Telescope help tags',
-    silent = true,
-    noremap = true,
+    desc = 'Telescope: help tags',
   },
   {
     '<leader>fw',
     function()
       require('telescope.builtin').grep_string()
     end,
-    desc = 'Telescope grep string',
-    silent = true,
-    noremap = true,
+    desc = 'Telescope: grep string',
+  },
+  {
+    '<leader>fk',
+    function()
+      require('telescope.builtin').keymaps()
+    end,
+    desc = 'Telescope: keymaps',
   },
 }
 
