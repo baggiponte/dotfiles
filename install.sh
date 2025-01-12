@@ -166,9 +166,6 @@ done
 
 uv tool install --upgrade --python="$safe_version" --with pre-commit-uv -- pre-commit
 
-mkdir -p "$HOME/Library/Application Support/pdm"
-ln -s "$XDG_CONFIG_HOME/pdm/config.toml" "$HOME/Library/Application Support/pdm/config.toml"
-
 # +--------------+
 # | install rust |
 # +--------------+
@@ -182,13 +179,6 @@ for version in "stable"; do
 	rustup install "$version"
 	rustup component add rust-analyzer --toolchain="$version"
 done
-
-# +--------------+
-# | install nvim |
-# +--------------+
-
-bob install latest
-bob use latest
 
 # +-------------------+
 # | compile bat theme |
