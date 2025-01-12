@@ -1,23 +1,58 @@
+local linters = {
+  'actionlint',
+  'jsonlint',
+  'selene',
+  'shellcheck',
+  'yamllint',
+}
+
+local formatters = {
+  'shfmt',
+  'stylua',
+}
+
+local debuggers = {
+  'debugpy',
+}
+
+local servers = {
+  'lua-language-server',
+  'css-lsp',
+  'dockerfile-language-server',
+  'docker-compose-language-service',
+  'yaml-language-server',
+  'r-languageserver',
+  'biome',
+  'ruff',
+  'basedpyright',
+}
+
 return {
   'williamboman/mason.nvim',
   build = ':MasonUpdate',
-  dependencies = { 'Zeioth/mason-extra-cmds', opts = {} },
   cmd = {
     'Mason',
     'MasonInstall',
     'MasonUninstall',
     'MasonUninstallAll',
     'MasonUpdate',
-    'MasonUpdateAll',
   },
   opts = {
-    ui = {
-      border = 'rounded',
-      icons = { package_installed = '✓', package_uninstalled = '✗', package_pending = '⟳' },
+    plugin = {
+      ui = {
+        border = 'rounded',
+        icons = { package_installed = '✓', package_uninstalled = '✗', package_pending = '⟳' },
+      },
+    },
+    tools = {
+      linters = linters,
+      formatters = formatters,
+      debuggers = debuggers,
+      servers = servers,
     },
   },
   config = function(_, opts)
-    require('mason').setup(opts)
+    require('mason').setup(opts.plugin)
 
     -- perhaps this is a chicken and egg problem
     -- the lsp might not attach if you don't have the server installed
@@ -26,7 +61,7 @@ return {
     -- make sense to disable it until an lsp is actually attached
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function()
-        local tools = require('baggiponte.plugins.lsp.utils.tools')
+        local tools = vim.iter({ opts.debuggers, opts.linters, opts.formatters, opts.servers }):flatten():totable()
         local registry = require('mason-registry')
 
         registry.refresh(function()
