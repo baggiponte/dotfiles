@@ -10,8 +10,5 @@ return {
       enabled = false,
       hover = { enabled = false },
     },
-    presets = {
-      inc_rename = true,
-    },
   },
 }
