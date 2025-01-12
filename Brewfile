@@ -114,12 +114,14 @@ brew "pass"
 brew "pipes-sh"
 # Quick and easy command-line file transfer utility from any computer to another
 brew "portal"
+# Command-line interface for SQLite
+brew "sqlite"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Blazing-fast modern Lua linter
 brew "selene"
-# Command-line interface for SQLite
-brew "sqlite"
 # Graphical command-line client for SSH
 brew "sshs"
 # Cross-shell prompt for astronauts
