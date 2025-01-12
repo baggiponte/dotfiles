@@ -1,13 +1,12 @@
 local linters = {
   'actionlint',
-  'jsonlint',
-  'selene',
-  'shellcheck',
+  -- 'selene',
+  -- 'shellcheck',
   'yamllint',
 }
 
 local formatters = {
-  'shfmt',
+  -- 'shfmt',
   'stylua',
 }
 
@@ -16,15 +15,15 @@ local debuggers = {
 }
 
 local servers = {
-  'lua-language-server',
-  'css-lsp',
-  'dockerfile-language-server',
-  'docker-compose-language-service',
-  'yaml-language-server',
-  'r-languageserver',
-  'biome',
-  'ruff',
   'basedpyright',
+  'biome',
+  'css-lsp',
+  'docker-compose-language-service',
+  'dockerfile-language-server',
+  'lua-language-server',
+  'r-languageserver',
+  'ruff',
+  'yaml-language-server',
 }
 
 return {
