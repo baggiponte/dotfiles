@@ -1,74 +1,103 @@
+local servers = {
+  lua_ls = {},
+  cssls = {},
+  dockerls = {},
+  docker_compose_language_service = {},
+  yamlls = {},
+  r_language_server = {},
+  biome = {},
+  ruff = {},
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        disableOrganizeImports = true,
+        analysis = {
+          diagnosticMode = 'workspace',
+        },
+      },
+    },
+  },
+}
+
+local keymaps = {
+  {
+    'n',
+    '<leader>rn',
+    vim.lsp.buf.rename,
+    { desc = 'LSP: Rename word under cursor' },
+  },
+  {
+    'n',
+    '<leader>e',
+    vim.diagnostic.open_float,
+    { desc = 'LSP: Open diagnistics floating pane' },
+  },
+  {
+    'n',
+    'ca',
+    vim.lsp.buf.code_action,
+    { desc = 'LSP: Execute code action' },
+  },
+  {
+    'n',
+    'gf',
+    function()
+      require('telescope.builtin').lsp_references()
+    end,
+    { desc = 'LSP: Go to find references' },
+  },
+  {
+    'n',
+    'gd',
+    function()
+      require('telescope.builtin').lsp_definitions()
+    end,
+    { desc = 'LSP: Go to definition' },
+  },
+  {
+    'n',
+    '<leader>h',
+    vim.lsp.buf.signature_help,
+    { desc = 'LSP: Go to signature help' },
+  },
+}
+
 return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   dependencies = {
-    { 'williamboman/mason.nvim' },
+    'folke/lazydev.nvim',
+    ft = 'lua', -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      },
+    },
   },
-  config = function(opts)
-    local lspconfig = require('lspconfig')
-    local tools = require('baggiponte.plugins.lsp.utils.tools')
-    local defaults = require('baggiponte.plugins.lsp.utils.defaults')
+  opts = {
+    servers = servers,
+    keymaps = keymaps,
+  },
+  config = function(_, opts)
+    local utils = require('baggiponte.plugins.lsp.config.utils')
 
     -- this will actually be deprecated
     require('lspconfig.ui.windows').default_options.border = 'rounded'
 
     vim.diagnostic.config({ virtual_text = { prefix = '' } })
 
-    local capabilities = defaults.extend_client_capabilities_with_cmp(opts)
+    local capabilities = utils.extend_capabilities(opts.capabilities)
 
-    ---@param spec MasonServerSpec
-    local setup = function(spec)
-      local server = spec['name']
-
-      local default_config = {
-        capabilities = vim.deepcopy(capabilities),
-        on_attach = defaults.on_attach,
-        handlers = defaults.handlers,
-      }
-
-      local config = vim.tbl_deep_extend('force', default_config, spec['config'] or {})
-
-      lspconfig[server].setup(config)
-    end
-
-    for _, tool in pairs(tools.servers) do
-      setup(tool)
+    for server, config in pairs(opts.servers) do
+      utils.setup(server, config, capabilities)
     end
 
     vim.api.nvim_create_autocmd('LspAttach', {
-      callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-        if not client then
-          return
-        end
-
-        if client.name == 'ruff' then
-          -- Disable hover in favor of Pyright
-          client.server_capabilities.hoverProvider = false
-        end
-
-        -- Format the current buffer on save
-        -- Don't do this for pyright/basedpyright, as I want to use ruff
-        if client.supports_method('textDocument/formatting') and not string.find(client.name, 'pyright') then
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            buffer = args.buf,
-            callback = function()
-              -- if the client is ruff, then run the code action to organize imports
-              -- (this is still not available as an LSP capability)
-              if client.name == 'ruff' then
-                vim.lsp.buf.code_action({
-                  apply = true,
-                  filter = function(action)
-                    return action.title == 'Ruff: Organize imports'
-                  end,
-                })
-              end
-
-              vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-            end,
-          })
-        end
+      desc = 'Configure LSP keymaps on attach',
+      callback = function(event)
+        utils.on_attach(event, opts)
       end,
     })
   end,
