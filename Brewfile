@@ -10,8 +10,6 @@ brew "bash"
 brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Version manager for neovim
-brew "bob"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
 # Multi-platform, multi-architecture disassembly framework
@@ -104,6 +102,8 @@ brew "luarocks"
 brew "make"
 # Run a Kubernetes cluster locally
 brew "minikube"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
 # Shell command parallelization utility
