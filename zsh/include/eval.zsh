@@ -34,10 +34,12 @@ autoload -Uz bashcompinit && bashcompinit
 # these require compdef
 command -v python >/dev/null && eval "$(python -m pip completion --zsh)"
 
-if command -v sky >/dev/null && [[ -s ~/.sky/.sky-complete.zsh ]]; then
-    source ~/.sky/.sky-complete.zsh
-elif ! [[ -s ~/.sky/.sky-complete.zsh ]]; then
-    echo "skypilot compdef not found. Run 'sky --install-shell-completion' to install"
+if command -v sky >/dev/null; then
+    if [[ -s ~/.sky/.sky-complete.zsh ]]; then
+        source ~/.sky/.sky-complete.zsh
+    elif ! [[ -s ~/.sky/.sky-complete.zsh ]]; then
+        echo "skypilot compdef not found. Run 'sky --install-shell-completion' to install"
+    fi
 fi
 
 if command -v fzf >/dev/null; then
