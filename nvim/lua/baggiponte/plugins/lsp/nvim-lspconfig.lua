@@ -4,7 +4,6 @@ local servers = {
   dockerls = {},
   docker_compose_language_service = {},
   yamlls = {},
-  r_language_server = {},
   biome = {},
   ruff = {},
   basedpyright = {
