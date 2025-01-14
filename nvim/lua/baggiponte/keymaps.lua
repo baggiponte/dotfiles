@@ -5,13 +5,13 @@
 -- J appends the line after to the current one
 -- vim.keymap.set("n", "J", "mzJ`z") -- this remap makes the cursor stay in place
 
-vim.keymap.set('n', 'x', '"_x', { desc = 'Delete a character without copying into register' })
-vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = 'Delete and send to the null register' })
+vim.keymap.set({ 'n', 'v' }, 'x', '"_x', { desc = 'Delete a character without copying into register' })
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'do not override register when pasting over an object' })
 
 -- copy from system clipboard
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank and send to the system clipboard' })
-vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Yank and send to the system clipboard' })
+vim.keymap.set({ 'n', 'v', 'o' }, 'gy', '"+y', { desc = 'Yank and send to the system clipboard' })
+-- not needed: you can cmd+V
+-- vim.keymap.set({ 'n', 'v', 'o' }, 'gp', '"+p', { desc = 'Paste from the system clipboard' })
 
 -- [[ Movements ]]
 
