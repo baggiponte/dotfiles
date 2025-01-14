@@ -15,6 +15,7 @@ return {
       animate = { enabled = false },
     },
     input = { enabled = true },
+    rename = { enabled = true },
     notifier = {
       enabled = true,
       top_down = false,
