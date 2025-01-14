@@ -11,4 +11,7 @@ return {
       hover = { enabled = false },
     },
   },
+  presets = {
+    lsp_doc_border = false, -- add a border to hover docs and signature help
+  },
 }
