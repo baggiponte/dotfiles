@@ -37,17 +37,17 @@ return {
     },
 
     completion = {
-      list = { selection = 'auto_insert' },
-
       menu = {
         border = 'rounded',
         draw = {
           columns = {
-            { 'label',     'label_description' },
+            { 'label', 'label_description' },
             { 'kind_icon', 'kind' },
           },
         },
       },
+
+      ghost_text = { enabled = true },
 
       documentation = {
         auto_show = true,
