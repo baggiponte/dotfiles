@@ -5,7 +5,11 @@ local servers = {
   docker_compose_language_service = {},
   yamlls = {},
   biome = {},
-  ruff = {},
+  ruff = {
+    capabilities = {
+      hoverProvider = false,
+    },
+  },
   basedpyright = {
     settings = {
       basedpyright = {
@@ -63,6 +67,7 @@ local keymaps = {
 
 return {
   'neovim/nvim-lspconfig',
+  version = 'v1.3.0',
   event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   dependencies = {
     'williamboman/mason.nvim',
@@ -83,23 +88,32 @@ return {
     keymaps = keymaps,
   },
   config = function(_, opts)
-    local utils = require('baggiponte.plugins.lsp.config.utils')
-
-    -- this will actually be deprecated
-    require('lspconfig.ui.windows').default_options.border = 'rounded'
+    local lspconfig = require('lspconfig')
+    local utils = require('baggiponte.utils.lsp')
 
     vim.diagnostic.config({ virtual_text = { prefix = '' } })
 
-    local capabilities = require('blink.cmp').get_lsp_capabilities({ override = opts, include_nvim_defaults = true })
+    local handlers = {
+      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+    }
 
-    for server, config in pairs(opts.servers) do
-      utils.setup(server, config, capabilities)
+    local capabilities = require('blink.cmp').get_lsp_capabilities({ include_nvim_defaults = true })
+
+    local defaults = {
+      capabilities = vim.deepcopy(capabilities),
+      handlers = handlers,
+    }
+
+    for server, overrides in pairs(opts.servers) do
+      local config = vim.tbl_deep_extend('force', defaults, overrides)
+      lspconfig[server].setup(config)
     end
 
     vim.api.nvim_create_autocmd('LspAttach', {
       desc = 'Configure LSP keymaps on attach',
       callback = function(event)
-        utils.on_attach(event, opts)
+        utils.on_attach(event, opts.keymaps)
       end,
     })
   end,
