@@ -27,8 +27,6 @@ vim.keymap.set(
   '<C-d>zz',
   { desc = 'go down half a page and center screen', silent = true, noremap = true }
 )
-vim.keymap.set('n', ']w', '<CMD>cnext<CR>', { desc = 'Move to next quickfix item', silent = true })
-vim.keymap.set('n', '[w', '<CMD>cprevious<CR>', { desc = 'Move to previous quickfix item', silent = true })
 
 -- across buffers
 vim.keymap.set('n', '<c-h>', '<c-w>h', { desc = 'Move focus to the left window', silent = true, noremap = true })
