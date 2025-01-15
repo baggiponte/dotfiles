@@ -16,7 +16,7 @@ return {
         require('conform').format({ async = true, lsp_fallback = true })
       end,
       mode = '',
-      desc = 'Format buffer with conform.nvim',
+      desc = 'conform.nvim: Format buffer',
     },
   },
   opts = {
