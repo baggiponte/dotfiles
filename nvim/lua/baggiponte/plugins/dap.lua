@@ -4,7 +4,7 @@ local keys = {
     function()
       require('dap').continue()
     end,
-    desc = 'Start debugger session',
+    desc = 'nvim-dap: Start debugger session',
     silent = true,
     noremap = true,
   },
@@ -13,14 +13,14 @@ local keys = {
     function()
       require('dapui').toggle()
     end,
-    desc = 'debugger toggle',
+    desc = 'nvim-dap: debugger toggle',
   },
   {
     '<leader>b',
     function()
       require('dap').toggle_breakpoint()
     end,
-    desc = 'Toggle debugger breakpoint',
+    desc = 'nvim-dap: Toggle debugger breakpoint',
     silent = true,
     noremap = true,
   },

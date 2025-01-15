@@ -2,7 +2,11 @@ return {
   'stevearc/oil.nvim',
   cmd = 'Oil',
   keys = {
-    { '<leader>o', '<CMD>Oil<CR>' },
+    {
+      '<leader>o',
+      '<CMD>Oil<CR>',
+      desc = 'oil.nvim: toggle',
+    },
   },
   opts = {
     show_hidden = true,
