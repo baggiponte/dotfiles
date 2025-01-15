@@ -1,46 +1,13 @@
 local M = {}
 
-M.setup = function(server, config, capabilities)
-  local handlers = {
-    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-  }
-
-  local default_config = {
-    capabilities = vim.deepcopy(capabilities),
-    handlers = handlers,
-  }
-
-  local conf = vim.tbl_deep_extend('force', default_config, config or {})
-
-  require('lspconfig')[server].setup(conf)
-end
-
-M.extend_capabilities = function(capabilities)
-  local has_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
-
-  return vim.tbl_deep_extend(
-    'force',
-    {},
-    vim.lsp.protocol.make_client_capabilities(),
-    has_cmp and cmp.default_capabilities() or {},
-    capabilities or {}
-  )
-end
-
-M.on_attach = function(event, opts)
+M.on_attach = function(event, keymaps)
   local client = vim.lsp.get_client_by_id(event.data.client_id)
   if not client then
     return
   end
 
-  for _, keymap in ipairs(opts.keymaps) do
+  for _, keymap in ipairs(keymaps) do
     vim.keymap.set(unpack(keymap))
-  end
-
-  if client.name == 'ruff' then
-    -- Disable hover in favor of Pyright
-    client.server_capabilities.hoverProvider = false
   end
 
   -- Format the current buffer on save
