@@ -1,4 +1,4 @@
-return {
+rturn({
   'saghen/blink.cmp',
   event = { 'InsertEnter', 'CmdlineEnter' },
   -- optional: provides snippets for the snippet source
@@ -20,11 +20,17 @@ return {
     keymap = {
       preset = 'default',
 
-      ['['] = { 'select_prev', 'fallback' },
-      [']'] = { 'select_next', 'fallback' },
-      ['<C-n>'] = { 'select_and_accept' },
+      -- also remember C-space shows docs
+      -- ref: https://cmp.saghen.dev/configuration/keymap.html#default
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+
+      -- gotta learn this!
+      ['<C-y>'] = { 'select_and_accept' },
+
+      -- disable select previous and next
       ['<C-p>'] = {},
-      ['<C-y>'] = {},
+      ['<C-n>'] = {},
     },
 
     appearance = {
@@ -72,4 +78,4 @@ return {
     },
   },
   opts_extend = { 'sources.default' },
-}
+})
