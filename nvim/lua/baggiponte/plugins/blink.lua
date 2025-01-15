@@ -1,4 +1,4 @@
-rturn({
+return {
   'saghen/blink.cmp',
   event = { 'InsertEnter', 'CmdlineEnter' },
   -- optional: provides snippets for the snippet source
@@ -78,4 +78,4 @@ rturn({
     },
   },
   opts_extend = { 'sources.default' },
-})
+}
