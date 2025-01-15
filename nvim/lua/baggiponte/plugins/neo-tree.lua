@@ -7,7 +7,7 @@ return {
       '<leader>N',
       '<cmd>Neotree toggle<CR>',
       mode = { 'n', 'v' },
-      desc = 'Toggle NeoTree',
+      desc = 'NeoTree: Toggle',
     },
   },
   opts = function(_, opts)
