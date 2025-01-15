@@ -12,7 +12,7 @@ M.on_attach = function(event, keymaps)
 
   -- Format the current buffer on save
   -- Don't do this for pyright/basedpyright, as I want to use ruff
-  if client.supports_method('textDocument/formatting') and not string.find(client.name, 'basedpyright') then
+  if client.supports_method('textDocument/formatting', event.buf) and not string.find(client.name, 'basedpyright') then
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = event.buf,
       callback = function()

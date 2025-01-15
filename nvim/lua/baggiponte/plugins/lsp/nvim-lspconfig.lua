@@ -22,24 +22,18 @@ local servers = {
   },
 }
 
+-- |grn| in Normal mode maps to |vim.lsp.buf.rename()|
+-- |grr| in Normal mode maps to |vim.lsp.buf.references()|
+-- |gri| in Normal mode maps to |vim.lsp.buf.implementation()|
+-- |gO| in Normal mode maps to |vim.lsp.buf.document_symbol()|
+-- |gra| in Normal and Visual mode maps to |vim.lsp.buf.code_action()|
+-- CTRL-S in Insert and Select mode maps to |vim.lsp.buf.signature_help()|
 local keymaps = {
   {
     'n',
-    '<leader>rn',
-    vim.lsp.buf.rename,
-    { desc = 'LSP: Rename word under cursor' },
-  },
-  {
-    'n',
-    '<leader>e',
+    'ge',
     vim.diagnostic.open_float,
     { desc = 'LSP: Open diagnistics floating pane' },
-  },
-  {
-    'n',
-    'ca',
-    vim.lsp.buf.code_action,
-    { desc = 'LSP: Execute code action' },
   },
   {
     'n',
@@ -59,7 +53,7 @@ local keymaps = {
   },
   {
     'n',
-    '<leader>h',
+    'gh',
     vim.lsp.buf.signature_help,
     { desc = 'LSP: Go to signature help' },
   },
