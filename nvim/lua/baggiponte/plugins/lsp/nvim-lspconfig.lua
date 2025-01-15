@@ -90,7 +90,7 @@ return {
 
     vim.diagnostic.config({ virtual_text = { prefix = '' } })
 
-    local capabilities = utils.extend_capabilities(opts.capabilities)
+    local capabilities = require('blink.cmp').get_lsp_capabilities({ override = opts, include_nvim_defaults = true })
 
     for server, config in pairs(opts.servers) do
       utils.setup(server, config, capabilities)
