@@ -19,6 +19,9 @@ return {
       desc = 'conform.nvim: Format buffer',
     },
   },
+  -- This will provide type hinting with LuaLS
+  ---@module "conform"
+  ---@type conform.setupOpts
   opts = {
     format_on_save = { timeout_ms = 500, lsp_fallback = true },
     formatters_by_ft = formatters,
