@@ -103,7 +103,7 @@ brew "make"
 # Run a Kubernetes cluster locally
 brew "minikube"
 # Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
+brew "neovim", args: ["HEAD"]
 # Platform built on V8 to build network applications
 brew "node"
 # Shell command parallelization utility
