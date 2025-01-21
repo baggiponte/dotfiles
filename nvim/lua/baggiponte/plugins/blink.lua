@@ -26,7 +26,7 @@ return {
       ['<S-Tab>'] = { 'select_prev', 'fallback' },
 
       -- gotta learn this!
-      ['<C-y>'] = { 'select_and_accept' },
+      ['<C-y>'] = { 'show', 'select_and_accept' },
 
       -- disable select previous and next
       ['<C-p>'] = {},
@@ -48,7 +48,7 @@ return {
         border = 'rounded',
         draw = {
           columns = {
-            { 'label', 'label_description' },
+            { 'label',     'label_description' },
             { 'kind_icon', 'kind' },
           },
         },
