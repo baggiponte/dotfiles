@@ -85,7 +85,10 @@ return {
     local lspconfig = require('lspconfig')
     local utils = require('baggiponte.utils.lsp')
 
-    vim.diagnostic.config({ virtual_text = { prefix = '' } })
+    vim.diagnostic.config({
+      -- virtual_text = { prefix = '' },
+      virtual_lines = true,
+    })
 
     local handlers = {
       ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
