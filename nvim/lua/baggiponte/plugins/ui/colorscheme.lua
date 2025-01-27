@@ -1,8 +1,7 @@
 return {
   {
     'sainnhe/gruvbox-material',
-    lazy = false,
-    priority = 1000,
+    enabled = false,
     config = function()
       -- defaults
       -- vim.g.gruvbox_material_background = 'medium'
@@ -22,6 +21,19 @@ return {
       for _, element in ipairs({ 'PMenu', 'FloatBorder', 'NormalFloat' }) do
         vim.api.nvim_set_hl(0, element, { bg = 'none' })
       end
+    end,
+  },
+  {
+    'rose-pine/neovim',
+    lazy = false,
+    priority = 1000,
+    name = 'rose-pine',
+    config = function()
+      require('rose-pine').setup({
+        styles = { transparency = true },
+      })
+
+      vim.cmd('colorscheme rose-pine')
     end,
   },
   {
