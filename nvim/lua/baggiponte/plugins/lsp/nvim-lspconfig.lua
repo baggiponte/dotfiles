@@ -86,8 +86,8 @@ return {
     local utils = require('baggiponte.utils.lsp')
 
     vim.diagnostic.config({
-      -- virtual_text = { prefix = '' },
-      virtual_lines = true,
+      virtual_text = { prefix = '' },
+      -- virtual_lines = true,
     })
 
     local handlers = {
