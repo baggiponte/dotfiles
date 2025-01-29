@@ -1,7 +1,8 @@
 return {
   {
     'sainnhe/gruvbox-material',
-    enabled = false,
+    lazy = false,
+    priority = 1000,
     config = function()
       -- defaults
       -- vim.g.gruvbox_material_background = 'medium'
@@ -25,8 +26,6 @@ return {
   },
   {
     'rose-pine/neovim',
-    lazy = false,
-    priority = 1000,
     name = 'rose-pine',
     config = function()
       require('rose-pine').setup({
