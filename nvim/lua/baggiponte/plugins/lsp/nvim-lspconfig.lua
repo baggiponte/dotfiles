@@ -90,16 +90,10 @@ return {
       -- virtual_lines = true,
     })
 
-    local handlers = {
-      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-    }
-
     local capabilities = require('blink.cmp').get_lsp_capabilities({ include_nvim_defaults = true })
 
     local defaults = {
       capabilities = vim.deepcopy(capabilities),
-      handlers = handlers,
     }
 
     for server, overrides in pairs(opts.servers) do
