@@ -5,7 +5,7 @@
 # override PATH because path_helper screws it up
 paths=(
     "${HOME}/.local/bin"
-    "${XDG_DATA_HOME}/jetbrains/bin"
+    "/usr/local/bin"
     "/usr/bin"
     "/bin"
     "/usr/sbin"
