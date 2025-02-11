@@ -2,6 +2,35 @@
 
 Using [`lazy.nvim`](https://github.com/folke/lazy.nvim)
 
+## Compile from source
+
+1. Install required dependencies:
+
+```bash
+brew install ninja cmake gettext curl
+```
+
+2. Clone the repository:
+
+```bash
+git clone https://github.com/neovim/neovim.git
+```
+
+3. Change directory to the repository:
+
+```bash
+cd neovim
+```
+
+4. Compile the source code:
+
+```bash
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+```
+
+[Reference]
+
 ## Benchmarks
 
 ### Using [`hyperfine`](https://github.com/sharkdp/hyperfine)
