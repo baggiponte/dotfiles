@@ -12,8 +12,12 @@ brew "openssl@3"
 brew "bat"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # Multi-platform, multi-architecture disassembly framework
 brew "capstone"
+# Cross-platform make
+brew "cmake"
 # Console Matrix
 brew "cmatrix"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -102,8 +106,8 @@ brew "luarocks"
 brew "make"
 # Run a Kubernetes cluster locally
 brew "minikube"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim", args: ["HEAD"]
+# Small build system for use with gyp or CMake
+brew "ninja"
 # Platform built on V8 to build network applications
 brew "node"
 # Shell command parallelization utility
