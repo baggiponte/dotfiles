@@ -157,14 +157,21 @@ done
 
 libs=(
     "argcomplete"
-    "jupytext"
+    "commitizen"
+    "cookiecutter"
+    "huggingface-hub"
+    "marimo"
+    "mlx-lm"
+    "ruff"
+    "zizmor"
 )
 
 for lib in "${libs[@]}"; do
 	uv tool install --upgrade --python="$safe_version" -- "$lib"
 done
 
-uv tool install --upgrade --python="$safe_version" --with pre-commit-uv -- pre-commit
+uv tool install --upgrade --python="$safe_version" --with=pre-commit-uv -- pre-commit
+# uv tool install --upgrade --python="$safe_version" --with=llm-mlx -- llm
 
 # +--------------+
 # | install rust |
