@@ -164,8 +164,6 @@ alt-shift-enter = 'mode launcher'
 alt-enter = 'mode apps'
 
 [mode.apps.binding]
-1 = ['workspace T', 'mode main']
-
 a = ['workspace A', 'mode main']
 d = ['workspace D', 'mode main']
 g = ['workspace G', 'mode main']
@@ -178,8 +176,8 @@ esc = ['reload-config', 'mode main']
 [mode.launcher.binding]
 a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
 d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
-g = ['exec-and-forget open -b com.google.Chrome', 'mode main']
 m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
 t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
+o = ['exec-and-forget open -b com.microsoft.outlook', 'mode main']
 
 esc = ['reload-config', 'mode main']
