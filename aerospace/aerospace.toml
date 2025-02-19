@@ -60,6 +60,14 @@ if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.cisco.secureclient.gui'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.omnissa.horizon.client.mac'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
 run = 'layout floating'
 
