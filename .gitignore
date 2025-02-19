@@ -3,7 +3,6 @@
 *.bak
 
 # github
-gh
 github-copilot
 
 # raycast
@@ -16,12 +15,6 @@ jupyter
 # karabiner elements
 karabiner/*
 !karabiner/karabiner.json
-
-# lazygit
-lazygit/state.yml
-
-# nvim
-nvim/.luarc.json
 
 # colima
 colima/*
