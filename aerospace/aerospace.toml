@@ -84,6 +84,11 @@ if.app-id = 'com.jetbrains.pycharm'
 run = 'move-node-to-workspace P'
 
 [[on-window-detected]]
+# cursor
+if.app-id = 'com.todesktop.230313mzl4w4u92'
+run = 'move-node-to-workspace C'
+
+[[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace A'
 
@@ -183,9 +188,10 @@ esc = ['reload-config', 'mode main']
 
 [mode.launcher.binding]
 a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
+c = ['exec-and-forget open -b com.todesktop.230313mzl4w4u92', 'mode main']
 d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
 m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
-t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
 o = ['exec-and-forget open -b com.microsoft.outlook', 'mode main']
+t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
 
 esc = ['reload-config', 'mode main']
