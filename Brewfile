@@ -110,8 +110,6 @@ brew "minikube"
 brew "ninja"
 # Platform built on V8 to build network applications
 brew "node"
-# Shell command parallelization utility
-brew "parallel"
 # Password manager
 brew "pass"
 # Animated pipes terminal screensaver
