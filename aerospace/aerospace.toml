@@ -52,19 +52,11 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 [[on-window-detected]]
-if.app-id = 'com.apple.Preview'
-run = 'layout floating'
-
-[[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.cisco.secureclient.gui'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.omnissa.horizon.client.mac'
+if.app-id = 'com.apple.Preview'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -91,6 +83,15 @@ run = 'move-node-to-workspace A'
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace D'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace S'
+
+[[on-window-detected]]
+if.app-id = 'notion.id'
+run = 'move-node-to-workspace N'
+
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -175,10 +176,11 @@ alt-enter = 'mode apps'
 [mode.apps.binding]
 a = ['workspace A', 'mode main']
 d = ['workspace D', 'mode main']
-g = ['workspace G', 'mode main']
 m = ['workspace M', 'mode main']
 p = ['workspace P', 'mode main']
 t = ['workspace T', 'mode main']
+n = ['workspace N', 'mode main']
+s = ['workspace S', 'mode main']
 
 esc = ['reload-config', 'mode main']
 
@@ -188,5 +190,7 @@ c = ['exec-and-forget open -b com.todesktop.230313mzl4w4u92', 'mode main']
 d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
 m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
 t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
+n = ['exec-and-forget open -b notion.id', 'mode main']
+s = ['exec-and-forget open -b com.tinyspeck.slackmacgap', 'mode main']
 
 esc = ['reload-config', 'mode main']
