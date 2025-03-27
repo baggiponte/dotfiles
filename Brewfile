@@ -118,6 +118,8 @@ brew "pass"
 brew "pipes-sh"
 # Quick and easy command-line file transfer utility from any computer to another
 brew "portal"
+# Object-relational database system
+brew "postgresql@17"
 # Command-line interface for SQLite
 brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
