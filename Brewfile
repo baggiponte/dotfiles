@@ -158,6 +158,8 @@ brew "oven-sh/bun/bun"
 cask "aerospace"
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Private desktop AI chat application
+cask "anythingllm"
 # Application uninstaller
 cask "appcleaner"
 # Chromium based browser
