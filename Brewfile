@@ -179,11 +179,15 @@ cask "git-credential-manager"
 cask "karabiner-elements"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
+# App to write, plan, collaborate, and get organised
+cask "notion"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Get up and running with large language models locally
 cask "ollama"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Team communication and collaboration software
+cask "slack"
 # Collect, organise, cite, and share research sources
 cask "zotero"
