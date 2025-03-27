@@ -177,13 +177,13 @@ cask "ghostty"
 cask "git-credential-manager"
 # Keyboard customiser
 cask "karabiner-elements"
-# Clipboard manager
-cask "maccy"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Get up and running with large language models locally
 cask "ollama"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Collect, organise, cite, and share research sources
 cask "zotero"
