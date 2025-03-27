@@ -162,6 +162,8 @@ cask "appcleaner"
 cask "arc"
 # Opensource IDE for exploring and testing api's
 cask "bruno"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # Voice and text chat software
 cask "discord"
 cask "font-climate-crisis"
@@ -173,8 +175,6 @@ cask "font-yanone-kaffeesatz"
 cask "ghostty"
 # Cross-platform Git credential storage for multiple hosting providers
 cask "git-credential-manager"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
 # Keyboard customiser
 cask "karabiner-elements"
 # Clipboard manager
