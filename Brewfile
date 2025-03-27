@@ -156,6 +156,8 @@ brew "felixkratz/formulae/sketchybar"
 brew "oven-sh/bun/bun"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Application uninstaller
 cask "appcleaner"
 # Chromium based browser
