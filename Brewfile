@@ -160,13 +160,11 @@ brew "oven-sh/bun/bun"
 cask "aerospace"
 # Enable Windows-like alt-tab
 cask "alt-tab"
-# Private desktop AI chat application
-cask "anythingllm"
 # Application uninstaller
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
-# Opensource IDE for exploring and testing api's
+# Open source IDE for exploring and testing APIs
 cask "bruno"
 # Write, edit, and chat about your code with AI
 cask "cursor"
