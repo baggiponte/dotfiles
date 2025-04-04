@@ -48,7 +48,7 @@ return {
         border = 'rounded',
         draw = {
           columns = {
-            { 'label',     'label_description' },
+            { 'label', 'label_description' },
             { 'kind_icon', 'kind' },
           },
         },
