@@ -16,8 +16,6 @@ brew "bottom"
 brew "gettext"
 # Multi-platform, multi-architecture disassembly framework
 brew "capstone"
-# Cross-platform make
-brew "cmake"
 # Console Matrix
 brew "cmatrix"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -108,6 +106,8 @@ brew "luarocks"
 brew "make"
 # Run a Kubernetes cluster locally
 brew "minikube"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Platform built on V8 to build network applications
