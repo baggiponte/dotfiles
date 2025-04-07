@@ -34,10 +34,8 @@ export MYVIMRC="${XDG_CONFIG_HOME}/nvim/init.lua"
 # | RUST |
 # +------+
 
-if [[ -f "${XDG_DATA_HOME}/cargo/bin/rustup" ]]; then
-	export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
-	export CARGO_HOME="${XDG_DATA_HOME}/cargo"
-	source "${CARGO_HOME}/env"
+if [[ -x "${HOME}/.cargo/bin/rustup" ]]; then
+	source "${HOME}/.cargo/env"
 fi
 
 # +--------+
