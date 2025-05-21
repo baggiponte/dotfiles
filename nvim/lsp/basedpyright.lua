@@ -12,6 +12,12 @@ return {
       analysis = {
         diagnosticMode = 'workspace',
         typeCheckingMode = 'standard',
+        inlayHints = {
+          variableTypes = true,
+          callArgumentNames = true,
+          functionReturnTypes = true,
+          genericTypes = true,
+        },
       },
     },
   },
