@@ -1,3 +1,16 @@
+-- Configure diagnostics
+vim.diagnostic.config({
+  virtual_text = { prefix = '' },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = ' ',
+      [vim.diagnostic.severity.WARN] = ' ',
+      [vim.diagnostic.severity.HINT] = ' ',
+      [vim.diagnostic.severity.INFO] = ' ',
+    },
+  },
+})
+
 -- disable currently unused providers (see :h provider)
 local disabled_providers = {
   'python3',
@@ -8,13 +21,6 @@ local disabled_providers = {
 
 for _, lang in ipairs(disabled_providers) do
   vim.api.nvim_set_var('loaded_' .. lang .. '_provider', 0)
-end
-
-local diagnostics = require('baggiponte.utils.icons').icons.diagnostics
-
-for type, icon in pairs(diagnostics) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- [[ Leader ]]
