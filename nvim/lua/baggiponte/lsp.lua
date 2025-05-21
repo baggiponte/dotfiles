@@ -2,13 +2,12 @@
 vim.lsp.enable({
   'basedpyright',
   'biome',
-  'cssls',
   'docker',
   'docker-compose',
   'luals',
   'ruff',
   'sqruff',
-  'ty',
+  -- 'ty',
   'yamlls',
 })
 
