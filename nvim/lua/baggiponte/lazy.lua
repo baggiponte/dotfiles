@@ -22,9 +22,10 @@ require('lazy').setup({
     { import = 'baggiponte.plugins.ui' },
   },
   defaults = { lazy = true, version = false },
-  install = { colorscheme = { 'gruvbox-material', 'nordic' } },
+  install = { colorscheme = { 'gruvbox-material' } },
   ui = { border = 'rounded' },
   checker = { enabled = false }, -- automatically check for plugin updates
+  rocks = { hererocks = false },
   performance = {
     rtp = {
       -- disable some rtp plugins
