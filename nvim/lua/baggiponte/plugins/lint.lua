@@ -1,16 +1,12 @@
 local linters = {
-  -- lua = { 'selene' },
-  -- python = { 'mypy' },
   sh = { 'shellcheck' },
-  yaml = { 'yamllint', 'actionlint' },
-  sql = { 'sqlfluff' },
   docker = { 'hadolint' },
-  ['*'] = { 'codespell' },
+  ['yaml.ghaction'] = { 'actionlint', 'zizmor' },
+  -- ['*'] = { 'codespell' },
 }
 
 return {
   'mfussenegger/nvim-lint',
-  enabled = true,
   event = 'BufReadPost',
   config = function()
     -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/linting.lua

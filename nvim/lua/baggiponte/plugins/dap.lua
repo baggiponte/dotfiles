@@ -34,9 +34,9 @@ return {
       'mfussenegger/nvim-dap',
     },
     config = function()
-      local path = require('mason-registry').get_package('debugpy'):get_install_path()
+      local path = vim.env.XDG_DATA_HOME .. '/uv/tools/debugpy'
 
-      require('dap-python').setup(path .. '/venv/bin/python')
+      require('dap-python').setup(path .. '/bin/python')
 
       require('dap-python').resolve_python = function()
         ---@type string

@@ -166,6 +166,8 @@ cask "appcleaner"
 cask "arc"
 # Open source IDE for exploring and testing APIs
 cask "bruno"
+# Clipboard history app
+cask "clipbook"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # Voice and text chat software
