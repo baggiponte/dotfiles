@@ -4,18 +4,16 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Yet another cross-platform graphical process/system monitor
-brew "bottom"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
-# Multi-platform, multi-architecture disassembly framework
-brew "capstone"
+# Toolchain of the web
+brew "biome"
 # Console Matrix
 brew "cmatrix"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -54,12 +52,10 @@ brew "figlet"
 brew "findutils"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
-# Libraries to talk to Microsoft SQL Server and Sybase databases
-brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # Library for command-line editing
 brew "readline"
 # GNU awk utility
@@ -86,8 +82,6 @@ brew "hugo"
 brew "hyperfine"
 # Git-compatible distributed version control system
 brew "jj"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
 # Handy way to save and run project-specific commands
 brew "just"
 # Kubernetes CLI To Manage Your Clusters In Style!
@@ -100,8 +94,8 @@ brew "kubernetes-cli"
 brew "lazygit"
 # Rainbows and unicorns in your console!
 brew "lolcat"
-# Package manager for the Lua programming language
-brew "luarocks"
+# Language Server for the Lua language
+brew "lua-language-server"
 # Utility for directing compilation
 brew "make"
 # Run a Kubernetes cluster locally
@@ -110,24 +104,20 @@ brew "minikube"
 brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Platform built on V8 to build network applications
-brew "node"
 # Password manager
 brew "pass"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
 # Quick and easy command-line file transfer utility from any computer to another
 brew "portal"
-# Object-relational database system
-brew "postgresql@17"
 # Command-line interface for SQLite
 brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Blazing-fast modern Lua linter
-brew "selene"
+# Autoformat shell script source code
+brew "shfmt"
 # Graphical command-line client for SSH
 brew "sshs"
 # Cross-shell prompt for astronauts
@@ -144,6 +134,8 @@ brew "tokei"
 brew "watch"
 # Internet file retriever
 brew "wget"
+# Linter for YAML files
+brew "yamllint"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
