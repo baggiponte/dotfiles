@@ -1,6 +1,6 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
   local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
@@ -20,7 +20,6 @@ require('lazy').setup({
   spec = {
     { import = 'baggiponte.plugins' },
     { import = 'baggiponte.plugins.ui' },
-    { import = 'baggiponte.plugins.lsp' },
   },
   defaults = { lazy = true, version = false },
   install = { colorscheme = { 'gruvbox-material', 'nordic' } },
