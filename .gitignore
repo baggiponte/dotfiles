@@ -1,23 +1,20 @@
 .secrets
 
+zed/
+!zed/settings.json
+!zed/snippets
+!zed/keymap.json
+
 *.bak
 
-# github
 github-copilot
 
-# raycast
-raycast
-
-# python
 ipython
 jupyter
 
-# karabiner elements
 karabiner/*
 !karabiner/karabiner.json
 
-# colima
 colima/*
 
-# unix sockets
 *.sock
