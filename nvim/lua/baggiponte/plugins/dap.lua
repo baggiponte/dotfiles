@@ -1,3 +1,4 @@
+local paths = require('baggiponte.paths')
 local keys = {
   {
     '<leader>ds',
@@ -34,7 +35,12 @@ return {
       'mfussenegger/nvim-dap',
     },
     config = function()
-      local path = require('mason-registry').get_package('debugpy'):get_install_path()
+      if not paths.mason_has('debugpy') then
+        vim.notify('debugpy not installed', vim.log.levels.ERROR)
+      end
+
+      ---@type string
+      local path = paths.mason_get_path('debugpy')
 
       require('dap-python').setup(path .. '/venv/bin/python')
 
