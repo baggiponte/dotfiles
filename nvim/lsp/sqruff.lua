@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'uvx', 'sqruff', 'lsp' },
+  cmd = { 'uvx', '--from=sqruff', '--', 'sqruff', 'lsp' },
   filetypes = { 'sql' },
   root_markers = {
     '.git',
