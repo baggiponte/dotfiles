@@ -36,6 +36,4 @@ vim.keymap.set('n', '<c-l>', '<c-w>l', { desc = 'Move focus to the right window'
 
 -- [[ Save and exit files ]]
 vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = 'write current buffer', silent = true, noremap = true })
-vim.keymap.set('n', '<leader>Q', '<cmd>q!<CR>', { desc = 'write current buffer', silent = true, noremap = true })
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = 'write current buffer', silent = true, noremap = true })
-vim.keymap.set('n', '<leader>W', '<cmd>wa<CR>', { desc = 'write all buffers', silent = true, noremap = true })
