@@ -1,3 +1,16 @@
+-- Configure diagnostics
+vim.diagnostic.config({
+  virtual_text = { prefix = '' },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = ' ',
+      [vim.diagnostic.severity.WARN] = ' ',
+      [vim.diagnostic.severity.HINT] = ' ',
+      [vim.diagnostic.severity.INFO] = ' ',
+    },
+  },
+})
+
 -- disable currently unused providers (see :h provider)
 local disabled_providers = {
   'python3',
