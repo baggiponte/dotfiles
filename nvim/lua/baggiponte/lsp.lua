@@ -7,6 +7,7 @@ vim.lsp.enable({
   'docker-compose',
   'luals',
   'ruff',
+  'sqruff',
   'ty',
   'yamlls',
 })
