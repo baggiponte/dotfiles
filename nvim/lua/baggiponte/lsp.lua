@@ -1,7 +1,3 @@
-local paths = require('baggiponte.paths')
-
-vim.opt.rtp:prepend(paths.mason_bin_dir)
-
 -- Enable LSP servers
 vim.lsp.enable({
   'basedpyright',
