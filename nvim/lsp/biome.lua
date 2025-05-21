@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'biome', 'lsp-proxy' },
+  cmd = { 'bunx', 'biome', 'lsp-proxy' },
   root_markers = {
     '.git',
     'biome.json',

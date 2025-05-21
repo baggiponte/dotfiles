@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'yaml-language-server', '--stdio' },
+  cmd = { 'bunx', 'yaml-language-server', '--stdio' },
   root_markers = {
     '.git',
     '.yamllint',
