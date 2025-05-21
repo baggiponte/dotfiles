@@ -2,7 +2,7 @@
 return {
   cmd = { 'lua-language-server' },
   root_markers = {
-    '.git'
+    '.git',
     '.luarc.json',
     '.luarc.jsonc',
   },
@@ -13,7 +13,7 @@ return {
         version = 'LuaJIT',
       },
       diagnostics = {
-        globals = { 'vim' },
+        globals = { 'vim', 'Snacks' },
       },
       workspace = {
         library = {

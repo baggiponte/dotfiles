@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'ruff-lsp' },
+  cmd = { 'ruff', 'server' },
   root_markers = {
     '.git',
     'pyproject.toml',
