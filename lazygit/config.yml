@@ -8,6 +8,7 @@ git:
     colorArg: 'always'
     pager: >
       diff-so-fancy
+
 keybinding:
   commits:
     moveDownCommit: 'J'
@@ -18,4 +19,4 @@ customCommands:
     context: 'files'
     loadingText: 'opening commitizen commit tool'
     description: 'commit with commitizen'
-    subprocess: true
+    output: terminal
