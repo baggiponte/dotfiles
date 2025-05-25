@@ -114,7 +114,7 @@ return {
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
       { 'nvim-treesitter/nvim-treesitter-context' },
     },
-    version = false, -- last release is way too old and doesn't work on Windows
+    branch = 'main',
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup(tsopts)
