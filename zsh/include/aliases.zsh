@@ -1,3 +1,10 @@
+# +------------+
+# | Code tools |
+# +------------+
+
+alias claude="bunx @anthropic-ai/claude-code"
+alias codex="bunx @openai/codex"
+
 # +---------+
 # | Aliases |
 # +---------+
