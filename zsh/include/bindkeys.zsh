@@ -17,22 +17,20 @@ bindkey '^E' edit-command-line
 # | Live grep |
 # +-----------+
 
-zle -N live-grep
-bindkey '^g' live-grep
+telescope-live-grep() {
+    nvim -c "Telescope live_grep"
+}
+
+zle -N telescope-live-grep
+bindkey '^g' telescope-live-grep
 
 # +------------------+
 # | Fuzzy find files |
 # +------------------+
 
-zle -N fuzzy-file
-bindkey '^f' fuzzy-file
+telescope-file() {
+  nvim -c "Telescope find_files"
+}
 
-zle -N fuzzy-dir
-bindkey '^p' fuzzy-dir
-
-# +------------------------+
-# | Fuzzy find directories |
-# +------------------------+
-
-zle -N fuzzy-dir
-bindkey '^a' fuzzy-dir
+zle -N telescope-file
+bindkey '^f' telescope-file
