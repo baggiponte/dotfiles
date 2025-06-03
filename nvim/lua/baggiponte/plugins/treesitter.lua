@@ -118,6 +118,7 @@ return {
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup(tsopts)
+      vim.treesitter.language.register('bash', 'zsh')
     end,
   },
 }
