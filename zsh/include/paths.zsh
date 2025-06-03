@@ -10,7 +10,6 @@ paths=(
     "/bin"
     "/usr/sbin"
     "/sbin"
-    "/opt/homebrew/opt/postgresql@17/bin"
 )
 
 # reference:
