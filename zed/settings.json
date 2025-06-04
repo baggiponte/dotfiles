@@ -1,0 +1,81 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "vim_mode": true,
+  "terminal": {
+    "detect_venv": "off"
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "agent": {
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-latest"
+    }
+  },
+  "lsp": {
+    "basedpyright": {
+      "binary": {
+        "cmd": "uvx --from=basedpyright -- basedpyright-langserver",
+        "arguments": ["--stdio"]
+      },
+      "settings": {
+        "basedpyright": {
+          "disableOrganizeImports": true,
+          "analysis": {
+            "diagnosticMode": "workspace",
+            "inlayHints": {
+              "variableTypes": true,
+              // "callArgumentNames": true,
+              "functionReturnTypes": true,
+              "genericTypes": true
+            }
+          }
+        }
+      }
+    },
+    "taplo": {
+      "settings": {
+        "array_auto_collapse": false
+      }
+    },
+    "ty": {
+      "binary": {
+        "cmd": "uvx --from=ty -- ty server"
+      }
+    }
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["basedpyright", "ruff", "ty"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true
+            // "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    }
+  },
+  "ui_font_size": 15,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  }
+}
