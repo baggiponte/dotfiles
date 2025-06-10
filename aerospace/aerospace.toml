@@ -72,8 +72,8 @@ if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
-if.app-id = 'com.jetbrains.pycharm'
-run = 'move-node-to-workspace P'
+if.app-id = 'dev.zed.Zed'
+run = 'move-node-to-workspace Z'
 
 [[on-window-detected]]
 # cursor
@@ -181,10 +181,10 @@ alt-enter = 'mode apps'
 a = ['workspace A', 'mode main']
 d = ['workspace D', 'mode main']
 m = ['workspace M', 'mode main']
-p = ['workspace P', 'mode main']
-t = ['workspace T', 'mode main']
 n = ['workspace N', 'mode main']
 s = ['workspace S', 'mode main']
+t = ['workspace T', 'mode main']
+z = ['workspace Z', 'mode main']
 
 esc = ['reload-config', 'mode main']
 
@@ -192,8 +192,9 @@ esc = ['reload-config', 'mode main']
 a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
 d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
 m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
-t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
 n = ['exec-and-forget open -b notion.id', 'mode main']
 s = ['exec-and-forget open -b com.tinyspeck.slackmacgap', 'mode main']
+t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
+z = ['exec-and-forget open -b dev.zed.Zed', 'mode main']
 
 esc = ['reload-config', 'mode main']
