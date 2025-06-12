@@ -2,9 +2,10 @@
 return {
   cmd = { 'ruff', 'server' },
   root_markers = {
-    '.git',
-    'pyproject.toml',
     'ruff.toml',
+    'pyproject.toml',
+    'uv.lock',
+    '.git',
   },
   filetypes = { 'python' },
   capabilities = {
