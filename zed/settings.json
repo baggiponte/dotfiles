@@ -7,6 +7,11 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "model_parameters": [],
+    "always_allow_tool_actions": true,
+    "version": "2"
+  },
   "vim_mode": true,
   "terminal": {
     "detect_venv": "off"
@@ -14,12 +19,13 @@
   "features": {
     "edit_prediction_provider": "zed"
   },
-  "agent": {
-    "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-latest"
-    }
-  },
+  // "agent": {
+  //   "version": "2",
+  //   "default_model": {
+  //     "provider": "zed.dev",
+  //     "model": "gpt-4o"
+  //   }
+  // },
   "lsp": {
     "basedpyright": {
       "binary": {
