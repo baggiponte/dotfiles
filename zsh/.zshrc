@@ -24,7 +24,6 @@ sources=(
 	"functions"   # frequently used functions
 	"aliases"     # utility aliases
 	"bindkeys"    # bind functions to keymaps
-    "secrets"
 )
 
 for s in "${sources[@]}"; do
