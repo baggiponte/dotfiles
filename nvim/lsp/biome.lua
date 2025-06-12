@@ -2,9 +2,9 @@
 return {
   cmd = { 'bunx', 'biome', 'lsp-proxy' },
   root_markers = {
-    '.git',
     'biome.json',
     'biome.jsonc',
+    '.git',
   },
   filetypes = {
     'javascript',
