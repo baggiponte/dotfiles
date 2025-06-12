@@ -3,6 +3,7 @@
 # +------------+
 
 alias claude="bunx @anthropic-ai/claude-code"
+alias yolo="bunx @anthropic-ai/claude-code --dangerously-skip-permissions"
 alias codex="bunx @openai/codex"
 
 # +---------+
