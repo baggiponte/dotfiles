@@ -60,7 +60,11 @@
   },
   "languages": {
     "Python": {
-      "language_servers": ["basedpyright", "ruff", "ty"],
+      "language_servers": [
+        "basedpyright",
+        "ruff"
+        // "ty",
+      ],
       "format_on_save": "on",
       "formatter": [
         {
