@@ -1,7 +1,7 @@
-GOOSE_MODEL: gpt-4o
 extensions:
   developer:
     enabled: true
     name: developer
     type: builtin
-GOOSE_PROVIDER: openai
+GOOSE_MODEL: claude-3-5-sonnet-latest
+GOOSE_PROVIDER: anthropic
