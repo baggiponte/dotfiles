@@ -70,6 +70,8 @@ brew "git-delta"
 brew "git-lfs"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 # Popular GNU data compression program
 brew "gzip"
 # Kubernetes package manager
