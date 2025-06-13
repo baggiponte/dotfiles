@@ -5,6 +5,7 @@ return {
     'uv.lock',
     '.venv',
     '.git',
+    'pyproject.toml',
   },
   filetypes = { 'python' },
   settings = {
