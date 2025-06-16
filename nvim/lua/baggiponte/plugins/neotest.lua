@@ -39,7 +39,6 @@ return {
           },
           runner = 'pytest',
         }),
-        require('rustaceanvim.neotest'),
       },
     })
   end,
