@@ -65,6 +65,8 @@ return {
 
     signature = { window = { border = 'rounded' } },
 
+    cmdline = { completion = { menu = { auto_show = true } } },
+
     sources = {
       default = { 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
       providers = {
