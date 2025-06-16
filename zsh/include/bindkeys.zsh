@@ -24,4 +24,3 @@ bindkey -s '^g' "~/.local/bin/fzf-live\n"
 # +------------------+
 
 bindkey -s '^f' "~/.local/bin/fzf-file\n"
-bindkey -s '^F' "nvim -c 'Telescope find_files'\n"
