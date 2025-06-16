@@ -24,3 +24,10 @@ bindkey -s '^g' "~/.local/bin/fzf-live\n"
 # +------------------+
 
 bindkey -s '^f' "~/.local/bin/fzf-file\n"
+
+# +--------------------+
+# | Zoxide interactive |
+# +--------------------+
+
+_zi () { cd "$(fzf-zoxide)" }
+bindkey -s '^o' "_zi\n"
