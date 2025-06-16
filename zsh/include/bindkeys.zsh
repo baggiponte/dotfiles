@@ -17,15 +17,10 @@ bindkey '^E' edit-command-line
 # | Live grep |
 # +-----------+
 
-telescope-live-grep() {
-    nvim -c "Telescope live_grep"
-}
-
-zle -N telescope-live-grep
-bindkey '^g' telescope-live-grep
+bindkey -s '^g' "~/.local/bin/fzf-live\n"
 
 # +------------------+
 # | Fuzzy find files |
 # +------------------+
 
-bindkey -s '^f' "~/.local/bin/fzf-live\n"
+bindkey -s '^f' "~/.local/bin/fzf-file\n"
