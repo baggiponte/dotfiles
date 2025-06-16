@@ -5,10 +5,11 @@ vim.lsp.enable({
   'docker',
   'docker-compose',
   'luals',
+  'pyrefly',
   'ruff',
   'sqruff',
-  -- 'ty',
   'yamlls',
+  -- 'ty',
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
