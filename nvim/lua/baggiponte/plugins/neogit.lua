@@ -11,4 +11,18 @@ return {
     -- 'folke/snacks.nvim',             -- optional
   },
   cmd = 'Neogit',
+  keys = {
+    {
+      '<leader>g',
+      '<cmd>Neogit<CR>',
+      mode = { 'n', 'v' },
+      desc = 'Fugitive: toggle git status window',
+    },
+    {
+      '<leader>gc',
+      '<cmd>Neogit commit<CR>',
+      mode = { 'n', 'v' },
+      desc = 'Fugitive: git commit',
+    },
+  },
 }
