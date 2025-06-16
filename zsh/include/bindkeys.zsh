@@ -28,9 +28,4 @@ bindkey '^g' telescope-live-grep
 # | Fuzzy find files |
 # +------------------+
 
-telescope-file() {
-  nvim -c "Telescope find_files"
-}
-
-zle -N telescope-file
-bindkey '^f' telescope-file
+bindkey -s '^f' "~/.local/bin/fzf-live\n"
