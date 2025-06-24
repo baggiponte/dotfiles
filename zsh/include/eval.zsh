@@ -26,13 +26,13 @@ command -v az >/dev/null && register-python-argcomplete az > "${COMPDIR}/_az"
 command -v zellij >/dev/null && zellij setup --generate-completion zsh > "${COMPDIR}/_zellij"
 command -v devpod >/dev/null && devpod completion zsh > "${COMPDIR}/_devpod"
 command -v arduino-cli >/dev/null && arduino-cli completion zsh > "${COMPDIR}/_arduino-cli"
-command -v sk >/dev/null && compdef _gnu_generic sk
 
 autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
 autoload -Uz bashcompinit && bashcompinit
 
 # these require compdef
 command -v python >/dev/null && eval "$(python -m pip completion --zsh)"
+command -v sk >/dev/null && compdef _gnu_generic sk
 
 if command -v sky >/dev/null; then
     if [[ -s ~/.sky/.sky-complete.zsh ]]; then
