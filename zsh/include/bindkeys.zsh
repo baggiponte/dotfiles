@@ -17,13 +17,13 @@ bindkey '^E' edit-command-line
 # | Live grep |
 # +-----------+
 
-bindkey -s '^g' "~/.local/bin/fzf-live\n"
+bindkey -s '^g' "fzf-live\n"
 
 # +------------------+
 # | Fuzzy find files |
 # +------------------+
 
-bindkey -s '^f' "~/.local/bin/fzf-file\n"
+bindkey -s '^f' "fzf-file\n"
 
 # +--------------------+
 # | Zoxide interactive |
