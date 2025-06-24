@@ -184,9 +184,9 @@ cask "notion"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Get up and running with large language models locally
-cask "ollama"
 # Control your tools with a few keystrokes
 cask "raycast"
+cask "ollama-app"
 # Team communication and collaboration software
 cask "slack"
 # Multiplayer code editor
