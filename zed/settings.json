@@ -8,6 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent": {
+    "default_profile": "ask",
     "model_parameters": [],
     "always_allow_tool_actions": true,
     "version": "2"
@@ -29,8 +30,12 @@
   "lsp": {
     "basedpyright": {
       "binary": {
-        "cmd": "uvx --from=basedpyright -- basedpyright-langserver",
-        "arguments": ["--stdio"]
+        "path": "uvx",
+        "arguments": [
+          "--from=basedpyright",
+          "basedpyright-langserver",
+          "--stdio"
+        ]
       },
       "settings": {
         "basedpyright": {
@@ -54,17 +59,14 @@
     },
     "ty": {
       "binary": {
-        "cmd": "uvx --from=ty -- ty server"
+        "path": "uvx",
+        "arguments": ["--from=ty", "ty", "server"]
       }
     }
   },
   "languages": {
     "Python": {
-      "language_servers": [
-        "basedpyright",
-        "ruff"
-        // "ty",
-      ],
+      "language_servers": ["basedpyright", "ruff", "ty"],
       "format_on_save": "on",
       "formatter": [
         {
