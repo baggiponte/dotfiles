@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'ruff', 'server' },
+  cmd = { 'uvx', 'ruff', 'server' },
   root_markers = {
     'ruff.toml',
     'pyproject.toml',
