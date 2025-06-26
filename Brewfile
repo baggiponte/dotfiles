@@ -162,8 +162,6 @@ cask "arc"
 cask "bruno"
 # Clipboard history app
 cask "clipbook"
-# Write, edit, and chat about your code with AI
-cask "cursor"
 # Voice and text chat software
 cask "discord"
 cask "font-climate-crisis"
