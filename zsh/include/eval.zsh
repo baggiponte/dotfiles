@@ -26,6 +26,7 @@ command -v az >/dev/null && register-python-argcomplete az > "${COMPDIR}/_az"
 command -v zellij >/dev/null && zellij setup --generate-completion zsh > "${COMPDIR}/_zellij"
 command -v devpod >/dev/null && devpod completion zsh > "${COMPDIR}/_devpod"
 command -v arduino-cli >/dev/null && arduino-cli completion zsh > "${COMPDIR}/_arduino-cli"
+command -v tailscale >/dev/null && tailscale completion zsh > "${COMPDIR}/_tailscale"
 
 autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
 autoload -Uz bashcompinit && bashcompinit
