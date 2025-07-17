@@ -6,6 +6,7 @@ alias claude="bunx @anthropic-ai/claude-code"
 alias yolo="bunx @anthropic-ai/claude-code --dangerously-skip-permissions"
 alias codex="bunx @openai/codex"
 alias amp="bunx @sourcegraph/amp"
+alias openhands="uvx --python=3.12 --from=openhands-ai -- openhands"
 
 # +---------+
 # | Aliases |
