@@ -60,6 +60,14 @@ if.app-id = 'com.apple.Preview'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.riotgames.RiotGames.RiotClient'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'net.freemacsoft.AppCleaner'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.ikryanov.clipbook'
 run = 'layout floating'
 
