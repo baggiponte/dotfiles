@@ -6,6 +6,8 @@ tap "nikitabobko/tap"
 tap "oven-sh/bun"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
+# Code searching, linting, rewriting
+brew "ast-grep"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Cryptography and SSL/TLS Toolkit
