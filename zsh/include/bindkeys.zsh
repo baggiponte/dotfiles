@@ -36,6 +36,20 @@ zle -N fzf-file-widget
 bindkey -M vicmd '^f' fzf-file-widget
 bindkey -M viins '^f' fzf-file-widget
 
+# +------------------------+
+# | Fuzzy find directories |
+# +------------------------+
+
+yazi-dir-widget () {
+    local dir
+    dir=$(fd --hidden --exclude=.git | fzf)
+
+    yazi "${dir:-.}"
+}
+zle -N yazi-dir-widget
+
+bindkey -M vicmd '^o' yazi-dir-widget
+bindkey -M viins '^o' yazi-dir-widget
 
 # +--------------------+
 # | Zoxide interactive |
