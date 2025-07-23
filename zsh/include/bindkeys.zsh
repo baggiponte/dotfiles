@@ -17,17 +17,34 @@ bindkey '^E' edit-command-line
 # | Live grep |
 # +-----------+
 
-bindkey -s '^g' "fzf-live\n"
+fzf-live-widget () {
+    fzf-live
+}
+zle -N fzf-live-widget
+bindkey -M viins '^g' fzf-live-widget
+bindkey -M vicmd '^g' fzf-live-widget
 
 # +------------------+
 # | Fuzzy find files |
 # +------------------+
 
-bindkey -s '^f' "fzf-file\n"
+fzf-file-widget () {
+    fzf-file
+}
+zle -N fzf-file-widget
+
+bindkey -M vicmd '^f' fzf-file-widget
+bindkey -M viins '^f' fzf-file-widget
+
 
 # +--------------------+
 # | Zoxide interactive |
 # +--------------------+
 
-_zi () { cd "$(fzf-zoxide)" }
-bindkey -s '^o' "_zi\n"
+zi-widget () {
+    cd "$(fzf-zoxide)"
+}
+zle -N zi-widget
+
+bindkey -M vicmd '^n' zi-widget
+bindkey -M viins '^n' zi-widget
