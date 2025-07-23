@@ -23,8 +23,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- |gO| in Normal mode maps to |vim.lsp.buf.document_symbol()|
     -- |gra| in Normal and Visual mode maps to |vim.lsp.buf.code_action()|
     -- CTRL-S in Insert and Select mode maps to |vim.lsp.buf.signature_help()|
-    vim.keymap.set('n', 'ge', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', 'gh', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', 'gh', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', 'gf', function()
       require('telescope.builtin').lsp_references()
     end, opts)
