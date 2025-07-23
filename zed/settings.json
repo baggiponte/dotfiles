@@ -10,8 +10,7 @@
   "agent": {
     "default_profile": "ask",
     "model_parameters": [],
-    "always_allow_tool_actions": true,
-    "version": "2"
+    "always_allow_tool_actions": true
   },
   "vim_mode": true,
   "terminal": {
