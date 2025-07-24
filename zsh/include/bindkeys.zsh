@@ -42,9 +42,13 @@ bindkey -M viins '^f' fzf-file-widget
 
 yazi-dir-widget () {
     local dir
-    dir=$(fd --hidden --exclude=.git | fzf)
+    dir=$(fd --type=directory --hidden --exclude=.git | fzf)
 
-    yazi "${dir:-.}"
+    if [[ -z $dir ]]; then
+        return
+    fi
+
+    yazi "$dir"
 }
 zle -N yazi-dir-widget
 
