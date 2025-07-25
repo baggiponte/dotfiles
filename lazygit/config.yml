@@ -13,10 +13,3 @@ keybinding:
   commits:
     moveDownCommit: 'J'
     moveUpCommit: 'K'
-customCommands:
-  - key: 'C'
-    command: 'git cz c'
-    context: 'files'
-    loadingText: 'opening commitizen commit tool'
-    description: 'commit with commitizen'
-    output: terminal
