@@ -10,20 +10,10 @@
   defaultBranch = main
 [push]
   autoSetupRemote = true
-[merge]
-  conflictstyle = diff3
 
-# global gitignore
 [core]
   excludesFile = ~/.config/.gitignore.global
-  pager = delta
 
-# git (diff) pager
-[interactive]
-  diffFilter = delta --color-only
-[delta]
-  navigate = true  # use n and N to move between diff sections
-  features = side-by-side line-numbers decorations
 [diff]
   colorMoved = default
   submodule = log
