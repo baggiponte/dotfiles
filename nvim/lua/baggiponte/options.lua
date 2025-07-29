@@ -28,6 +28,8 @@ end
 -- any mappings you set BEFORE doing this, they will be set to the OLD leader.
 vim.g.mapleader = ' '
 
+vim.o.winborder = 'rounded'
+
 -- Check :h nvim-defaults first!
 -- [[ Sidebar ]]
 vim.opt.number = true -- Make relative line numbers default
