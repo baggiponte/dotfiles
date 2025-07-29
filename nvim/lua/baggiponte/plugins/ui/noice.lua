@@ -1,15 +1,14 @@
 return {
   'folke/noice.nvim',
-  enabled = false,
   event = 'VeryLazy',
   dependencies = { 'MunifTanjim/nui.nvim' },
   opts = {
     cmdline = { enabled = true },
-    popupmenu = { enabled = true },
     notify = { enabled = false },
     lsp = {
       enabled = false,
       hover = { enabled = false },
+      signature = { enabled = false },
     },
   },
   presets = {
