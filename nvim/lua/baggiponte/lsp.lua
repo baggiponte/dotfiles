@@ -15,22 +15,43 @@ vim.lsp.enable({
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'Configure LSP keymaps on attach',
   callback = function(event)
-    local opts = { buffer = event.buf }
-
     -- |grn| in Normal mode maps to |vim.lsp.buf.rename()|
     -- |grr| in Normal mode maps to |vim.lsp.buf.references()|
     -- |gri| in Normal mode maps to |vim.lsp.buf.implementation()|
     -- |gO| in Normal mode maps to |vim.lsp.buf.document_symbol()|
     -- |gra| in Normal and Visual mode maps to |vim.lsp.buf.code_action()|
     -- CTRL-S in Insert and Select mode maps to |vim.lsp.buf.signature_help()|
-    vim.keymap.set('n', 'gh', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', 'gf', function()
-      require('telescope.builtin').lsp_references()
-    end, opts)
-    vim.keymap.set('n', 'gd', function()
-      require('telescope.builtin').lsp_definitions()
-    end, opts)
+    local keymaps = {
+      {
+
+        'gh',
+        vim.diagnostic.open_float,
+      },
+      {
+
+        'K',
+        vim.lsp.buf.signature_help,
+      },
+      {
+        'gf',
+        function()
+          require('telescope.builtin').lsp_references()
+        end,
+      },
+      {
+        'gd',
+        function()
+          require('telescope.builtin').lsp_definitions()
+        end,
+      },
+    }
+
+    local opts = { buffer = event.buf }
+
+    for _, mapping in pairs(keymaps) do
+      local mapopts = mapping.opts or {}
+      vim.keymap.set(mapopts.mode or 'n', mapping[1], mapping[2], mapopts.opts or opts)
+    end
   end,
 })
 
