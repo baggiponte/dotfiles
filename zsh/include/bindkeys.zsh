@@ -40,20 +40,16 @@ bindkey -M viins '^f' fzf-file-widget
 # | Fuzzy find directories |
 # +------------------------+
 
-yazi-dir-widget () {
+fzf-dir-widget () {
     local dir
     dir=$(fd --type=directory --hidden --exclude=.git | fzf)
 
-    if [[ -z $dir ]]; then
-        return
-    fi
-
-    yazi "$dir"
+    nvim -c "Oil ${dir:-.}"
 }
-zle -N yazi-dir-widget
+zle -N fzf-dir-widget
 
-bindkey -M vicmd '^o' yazi-dir-widget
-bindkey -M viins '^o' yazi-dir-widget
+bindkey -M vicmd '^o' fzf-dir-widget
+bindkey -M viins '^o' fzf-dir-widget
 
 # +--------------------+
 # | Zoxide interactive |
