@@ -90,6 +90,7 @@ return {
           i = {
             ['<C-j>'] = actions.move_selection_next,
             ['<C-k>'] = actions.move_selection_previous,
+            ['<C-v>'] = actions.file_vsplit,
           },
         },
       },
@@ -105,28 +106,13 @@ return {
             },
           },
         },
-        diagnostics = {
-          initial_mode = 'normal',
-        },
         live_grep = {
           additional_args = { '--hidden' },
         },
         find_files = {
           find_command = { 'rg', '--files', '--color', 'never', '--follow' },
-          initial_mode = 'insert',
           hidden = true,
           no_ignore = false,
-        },
-      },
-      extensions = {
-        file_browser = {
-          initial_mode = 'normal',
-          hijack_netrw = true,
-          hidden = true,
-          grouped = true,
-          path = '%:p:h',
-          cwd = '%:p:h',
-          respect_gitignore = false,
         },
       },
     })
