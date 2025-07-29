@@ -6,6 +6,12 @@ local keys = {
     desc = 'Gitsigns: stage hunk',
   },
   {
+    '<leader>hS',
+    '<cmd>Gitsigns stage_buffer<CR>',
+    mode = { 'n', 'v' },
+    desc = 'Gitsigns: stage buffer',
+  },
+  {
     '<leader>hr',
     '<cmd>Gitsigns reset_hunk<CR>',
     mode = { 'n', 'v' },
@@ -62,6 +68,5 @@ return {
   keys = keys,
   opts = {
     current_line_blame = false,
-    preview_config = { border = 'round' },
   },
 }
