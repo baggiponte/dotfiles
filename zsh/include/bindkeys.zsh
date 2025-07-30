@@ -41,10 +41,7 @@ bindkey -M viins '^f' fzf-file-widget
 # +------------------------+
 
 fzf-dir-widget () {
-    local dir
-    dir=$(fd --type=directory --hidden --exclude=.git | fzf)
-
-    nvim -c "Oil ${dir:-.}"
+    fzf-dir
 }
 zle -N fzf-dir-widget
 
