@@ -8,7 +8,11 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent": {
-    "default_profile": "ask",
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-latest"
+    },
+    "default_profile": "write",
     "model_parameters": [],
     "always_allow_tool_actions": true
   },
