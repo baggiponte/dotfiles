@@ -4,7 +4,7 @@
 
 alias amp="bunx @sourcegraph/amp"
 alias claude="bunx @anthropic-ai/claude-code"
-alias codex="bunx @openai/codex"
+alias codex="bunx @openai/codex --model=gpt-5-codex --search"
 alias openhands="uvx --python=3.12 --from=openhands-ai -- openhands"
 alias qwen="bunx @qwen-code/qwen-code@latest"
 
@@ -64,10 +64,6 @@ fi
 
 if hash zellij 2>/dev/null; then
 	alias z=zellij
-fi
-
-if hash jupyter-lab 2>/dev/null; then
-	alias jl=jupyter-lab
 fi
 
 if hash gsed 2>/dev/null; then
