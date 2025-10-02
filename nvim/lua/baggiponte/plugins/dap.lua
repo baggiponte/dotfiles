@@ -29,26 +29,13 @@ local keys = {
 return {
   {
     'mfussenegger/nvim-dap-python',
+    enabled = false,
     ft = 'python',
     dependencies = {
       'mfussenegger/nvim-dap',
     },
     config = function()
-      local path = vim.env.XDG_DATA_HOME .. '/uv/tools/debugpy'
-
-      require('dap-python').setup(path .. '/bin/python')
-
-      require('dap-python').resolve_python = function()
-        ---@type string
-        local venv_path = vim.fs.find({ '.venv' }, {
-          upward = true,
-          stop = vim.uv.os_homedir(),
-          type = 'directory',
-          limit = 1,
-        })[1]
-
-        return venv_path .. '/bin/python'
-      end
+      require('dap-python').setup('uv')
     end,
   },
   {
