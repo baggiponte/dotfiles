@@ -64,43 +64,24 @@ bindkey -M viins '^n' zi-widget
 # | Git worktree navigator  |
 # +-------------------------+
 
-__fzf_find_git_root() {
-    local dir=$PWD
-
-    for level in {0..5}; do
-        if [[ -d "$dir/.git" || -f "$dir/.git" ]]; then
-            printf '%s\n' "$dir"
-            return 0
-        fi
-
-        [[ $dir == "/" ]] && break
-        dir="${dir:h}"
-    done
-
-    return 1
-}
-
 fzf-worktree-widget () {
-    local git_root selection
+    local selection exit_code
 
-    if ! command -v git >/dev/null 2>&1; then
-        print -u2 "git not installed."
+    if ! command -v fzf-git-worktrees >/dev/null 2>&1; then
+        print -u2 "fzf-git-worktrees script not found in PATH."
         return 1
     fi
 
-    if ! command -v fzf >/dev/null 2>&1; then
-        print -u2 "fzf not installed."
-        return 1
+    selection=$(fzf-git-worktrees "$PWD")
+    exit_code=$?
+
+    if (( exit_code == 130 )); then
+        return 0
     fi
 
-    git_root="$(__fzf_find_git_root)" || {
-        print -u2 "Not inside a git worktree (searched up to 5 levels)."
-        return 1
-    }
-
-    selection=$(git -C "$git_root" worktree list --porcelain 2>/dev/null | \
-        awk '/^worktree /{sub(/^worktree /, ""); print}' | \
-        fzf --tmux=90% --prompt='worktree> ')
+    if (( exit_code != 0 )); then
+        return $exit_code
+    fi
 
     [[ -n $selection ]] || return 0
 
