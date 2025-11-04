@@ -4,10 +4,10 @@ gui:
   nerdFontsVersion: "3"
 git:
   overrideGpg: true
-  paging:
-    colorArg: 'always'
-    pager: >
-      diff-so-fancy
+  pagers:
+    - colorArg: 'always'
+      pager: >
+        diff-so-fancy
 
 keybinding:
   commits:
