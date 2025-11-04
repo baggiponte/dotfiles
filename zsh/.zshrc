@@ -21,6 +21,7 @@ sources=(
 	"vim"         # enable vim modes and cursor
 	"zim"         # zsh plugin manager
     "eval"        # shell hooks and completions
+	"tmux"        # auto-start tmux on interactive shells
 	"functions"   # frequently used functions
 	"aliases"     # utility aliases
 	"bindkeys"    # bind functions to keymaps
