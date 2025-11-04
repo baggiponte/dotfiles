@@ -4,7 +4,7 @@
 
 alias amp="bunx @sourcegraph/amp"
 alias claude="bunx @anthropic-ai/claude-code"
-alias codex="bunx @openai/codex --model=gpt-5-codex --search"
+alias codex="bunx @openai/codex --model=gpt-5-codex --enable=web_search_request"
 alias openhands="uvx --python=3.12 --from=openhands-ai -- openhands"
 alias qwen="bunx @qwen-code/qwen-code@latest"
 
@@ -14,7 +14,6 @@ alias qwen="bunx @qwen-code/qwen-code@latest"
 
 # utilities
 alias ...="../../"
-alias text="open -a TextEdit"
 
 # homebrew
 alias b=brew
@@ -24,29 +23,17 @@ alias bic="bi --cask"
 alias bu="b uninstall"
 alias buc="bu --cask"
 
-alias bl="b list"
-alias blf="bl --formula"
-alias blc="bl --cask"
-
-alias bd="b doctor"
-
-alias td="date +%Y-%m-%d"
+alias gw="git worktree"
 
 # +-----------+
 # | Optionals |
 # +-----------+
-
-# don't need to set this if quarto is installed using rundel's tap
-# if [ -x /Applications/quarto/bin/quarto ]; then
-# 	alias quarto=/Applications/quarto/bin/quarto
-# fi
 
 if hash colima 2>/dev/null; then
     alias c="colima"
 fi
 
 if hash minikube 2>/dev/null; then
-	alias min=minikube
     alias mk="minikube kubectl --"
 fi
 
@@ -60,10 +47,6 @@ fi
 
 if hash lazygit 2>/dev/null; then
 	alias lg=lazygit
-fi
-
-if hash zellij 2>/dev/null; then
-	alias z=zellij
 fi
 
 if hash gsed 2>/dev/null; then
@@ -91,8 +74,4 @@ fi
 
 if hash dust 2>/dev/null; then
 	alias dust="dust --reverse"
-fi
-
-if hash arduino-cli 2>/dev/null; then
-	alias ar=arduino-cli
 fi
