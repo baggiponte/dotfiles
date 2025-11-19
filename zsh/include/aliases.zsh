@@ -4,7 +4,7 @@
 
 alias amp="bunx @sourcegraph/amp"
 alias claude="bunx @anthropic-ai/claude-code"
-alias codex="bunx @openai/codex --model=gpt-5-codex --enable=web_search_request"
+alias codex="bunx @openai/codex --enable=web_search_request"
 alias openhands="uvx --python=3.12 --from=openhands-ai -- openhands"
 alias qwen="bunx @qwen-code/qwen-code@latest"
 
