@@ -120,7 +120,7 @@ run = 'move-node-to-workspace N'
 inner.horizontal = 6
 inner.vertical =   6
 outer.left =       6
-outer.bottom =     40
+outer.bottom =     6
 outer.top =        6
 outer.right =      6
 
