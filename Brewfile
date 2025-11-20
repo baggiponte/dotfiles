@@ -8,14 +8,16 @@ tap "oven-sh/bun"
 brew "actionlint"
 # Code searching, linting, rewriting
 brew "ast-grep"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
+# Library for command-line editing
+brew "readline"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Toolchain of the web
-brew "biome"
 # Console Matrix
 brew "cmatrix"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -48,18 +50,10 @@ brew "eza"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Banner-like program prints strings as ASCII art
-brew "figlet"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
-# Infamous electronic fortune-cookie generator
-brew "fortune"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
-# Library for command-line editing
-brew "readline"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
@@ -68,6 +62,8 @@ brew "gh"
 brew "git"
 # Git extension for versioning large files
 brew "git-lfs"
+# Open-source GitLab command-line tool
+brew "glab"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
@@ -94,6 +90,8 @@ brew "kompose"
 brew "kubernetes-cli"
 # Simple terminal UI for git commands
 brew "lazygit"
+# LLM inference in C/C++
+brew "llama.cpp"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Language Server for the Lua language
@@ -104,16 +102,18 @@ brew "make"
 brew "minikube"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Small build system for use with gyp or CMake
-brew "ninja"
+# Command-line interface for SQLite
+brew "sqlite"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Password manager
 brew "pass"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
+# Paste PNG into files
+brew "pngpaste"
 # Quick and easy command-line file transfer utility from any computer to another
 brew "portal"
-# Command-line interface for SQLite
-brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
 # Search tool like grep and The Silver Searcher
@@ -136,6 +136,8 @@ brew "tokei"
 brew "watch"
 # Internet file retriever
 brew "wget"
+# Validate and execute GitHub Actions workflows locally
+brew "wrkflw"
 # Linter for YAML files
 brew "yamllint"
 # Shell extension to navigate your filesystem faster
@@ -158,8 +160,6 @@ cask "alt-tab"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
-# Open source IDE for exploring and testing APIs
-cask "bruno"
 # Clipboard history app
 cask "clipbook"
 # Voice and text chat software
@@ -181,8 +181,8 @@ cask "monitorcontrol"
 cask "notion"
 # Open-source software for live streaming and screen recording
 cask "obs"
-# Get up and running with large language models locally
-cask "ollama-app"
+# Collaboration platform for API development
+cask "postman"
 # Team communication and collaboration software
 cask "slack"
 # Multiplayer code editor
