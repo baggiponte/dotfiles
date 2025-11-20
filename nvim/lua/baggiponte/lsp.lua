@@ -1,6 +1,5 @@
 -- Enable LSP servers
 vim.lsp.enable({
-  -- 'basedpyright',
   'biome',
   'docker',
   'docker-compose',
@@ -9,8 +8,6 @@ vim.lsp.enable({
   'ruff',
   'sqruff',
   'yamlls',
-  -- 'ty',
-  -- 'zuban',
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
