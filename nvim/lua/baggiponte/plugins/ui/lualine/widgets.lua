@@ -17,9 +17,7 @@ M.lsp_clients = function()
 
   local buf_client_names = {}
   for _, client in pairs(buf_clients) do
-    if client.name ~= 'null-ls' and client.name ~= 'copilot' then
-      table.insert(buf_client_names, client.name)
-    end
+    table.insert(buf_client_names, client.name)
   end
 
   return ' ' .. table.concat(buf_client_names, '|')
@@ -46,17 +44,6 @@ M.null_ls_sources = function()
   end
 
   return '󰖷 ' .. table.concat(null_ls_sources_names, '|')
-end
-
----@return string|EmptyString
-M.copilot_active = function()
-  local buf_clients = vim.lsp.get_clients({ name = 'copilot' })
-
-  if vim.tbl_isempty(buf_clients) then
-    return ''
-  end
-
-  return ' copilot'
 end
 
 return M
