@@ -4,23 +4,16 @@
 
 ## Software I use
 
-* [`alacritty`](https://github.com/alacritty/alacritty): a blazingly fast terminal, written in rust.
+* [`ghostty`](https://github.com/ghostty-org/ghostty): a blazingly fast terminal, written in rust.
 * [`karabiner elements`](https://github.com/pqrs-org/Karabiner-Elements): a powerful utility for keyboard customization on macOS.
 * [`lazygit`](https://github.com/jesseduffield/lazygit): simple terminal UI for git commands.
-* [`neofetch`](https://github.com/dylanaraps/neofetch): a command line system information tool.
 * [`neovim`](https://github.com/neovim/neovim): a vim-fork focused on extensibility and usability.
+* [`aerospace`](https://github.com/nikitabobko/AeroSpace): AeroSpace is an i3-like tiling window manager for macOS
 * [`sketchybar`](https://github.com/FelixKratz/SketchyBar): a highly customisable macOS status bar replacement.
-* [`skhd`](https://github.com/koekeishiya/skhd): simple hotkey daemon for macOS.
 * [`tmux`](https://github.com/tmux/tmux): a terminal multiplexer.
-* [`yabai`](https://github.com/koekeishiya/yabai): a tiling window manager for macOS based on binary space partitioning.
 * [`zsh`](https://sourceforge.net/p/zsh/code/ci/master/tree/).
 
 Everything is installed with [`homebrew`](https://brew.sh/), the missing package manager for macOS (or Linux).
-
-## To do
-
-- [x] Create an install script
-  - [ ] Test the install script
 
 ## References and links
 
