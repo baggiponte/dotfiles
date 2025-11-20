@@ -66,15 +66,7 @@ return {
     cmdline = { completion = { menu = { auto_show = true } } },
 
     sources = {
-      default = { 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
-      providers = {
-        copilot = {
-          name = 'copilot',
-          module = 'blink-cmp-copilot',
-          score_offset = 100,
-          async = true,
-        },
-      },
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
   },
   opts_extend = { 'sources.default' },
