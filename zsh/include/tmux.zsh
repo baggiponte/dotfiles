@@ -12,6 +12,11 @@ command -v tmux >/dev/null 2>&1 || return
 # Allow opt-out per shell by exporting DISABLE_AUTO_TMUX=1.
 [[ -n "${DISABLE_AUTO_TMUX:-}" ]] && return
 
+# Skip tmux auto-start in integrated terminals
+case "${TERM_PROGRAM:-}" in
+	vscode|zed|*code*|*Code*) return ;;
+esac
+
 if tmux list-sessions >/dev/null 2>&1; then
 	if command -v tmux-switcher >/dev/null 2>&1; then
 		tmux-switcher
