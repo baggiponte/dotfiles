@@ -8,6 +8,7 @@ vim.lsp.enable({
   'ruff',
   'sqruff',
   'yamlls',
+  -- 'ty',
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
