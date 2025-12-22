@@ -10,18 +10,18 @@
   "agent": {
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-sonnet-4-latest"
+      "model": "claude-sonnet-4-latest",
     },
     "default_profile": "write",
     "model_parameters": [],
-    "always_allow_tool_actions": true
+    "always_allow_tool_actions": true,
   },
   "vim_mode": true,
   "terminal": {
-    "detect_venv": "off"
+    "detect_venv": "off",
   },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "zed",
   },
   // "agent": {
   //   "version": "2",
@@ -37,8 +37,8 @@
         "arguments": [
           "--from=basedpyright",
           "basedpyright-langserver",
-          "--stdio"
-        ]
+          "--stdio",
+        ],
       },
       "settings": {
         "basedpyright": {
@@ -49,52 +49,52 @@
               "variableTypes": true,
               // "callArgumentNames": true,
               "functionReturnTypes": true,
-              "genericTypes": true
-            }
-          }
-        }
-      }
+              "genericTypes": true,
+            },
+          },
+        },
+      },
     },
     "taplo": {
       "settings": {
-        "array_auto_collapse": false
-      }
+        "array_auto_collapse": false,
+      },
     },
     "ty": {
       "binary": {
         "path": "uvx",
-        "arguments": ["--from=ty", "ty", "server"]
-      }
-    }
+        "arguments": ["--from=ty", "ty", "server"],
+      },
+    },
   },
   "languages": {
     "Python": {
       "language_servers": [
-        "basedpyright",
-        "ruff"
-        //"ty"
+        "ty",
+        "ruff",
+        "!basedpyright",
+        "!pyrefly",
+        "!pyright",
+        "!pylsp",
       ],
       "format_on_save": "on",
       "formatter": [
         {
-          "code_actions": {
-            "source.organizeImports.ruff": true
-            // "source.fixAll.ruff": true
-          }
+          "code_action": "source.organizeImports.ruff",
         },
         {
           "language_server": {
-            "name": "ruff"
-          }
-        }
-      ]
-    }
+            "name": "ruff",
+          },
+        },
+      ],
+    },
   },
   "ui_font_size": 15,
   "buffer_font_size": 15,
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
-  }
+    "dark": "One Dark",
+  },
 }
