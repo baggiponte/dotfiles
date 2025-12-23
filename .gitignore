@@ -1,5 +1,7 @@
 .secrets
 
+gcloud
+
 zed/**
 !zed/settings.json
 !zed/snippets
