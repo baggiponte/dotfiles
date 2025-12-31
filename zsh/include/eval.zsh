@@ -21,12 +21,8 @@ command -v rustup >/dev/null && rustup completions zsh > "${COMPDIR}/_rustup"
 command -v cargo >/dev/null && rustup completions zsh cargo > "${COMPDIR}/_cargo"
 
 # misc
-command -v runpodctl >/dev/null && runpodctl completion zsh > "${COMPDIR}/_runpodctl"
 command -v az >/dev/null && register-python-argcomplete az > "${COMPDIR}/_az"
-command -v zellij >/dev/null && zellij setup --generate-completion zsh > "${COMPDIR}/_zellij"
-command -v devpod >/dev/null && devpod completion zsh > "${COMPDIR}/_devpod"
-command -v arduino-cli >/dev/null && arduino-cli completion zsh > "${COMPDIR}/_arduino-cli"
-command -v tailscale >/dev/null && tailscale completion zsh > "${COMPDIR}/_tailscale"
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
 autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
 autoload -Uz bashcompinit && bashcompinit
