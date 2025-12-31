@@ -7,7 +7,9 @@ vim.lsp.enable({
   'pyrefly',
   'ruff',
   'sqruff',
+  'tombi',
   'yamlls',
+  'zizmor',
   -- 'ty',
 })
 
