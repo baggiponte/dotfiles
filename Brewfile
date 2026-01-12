@@ -2,6 +2,7 @@ tap "azure/kubelogin"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "max-sixty/worktrunk"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
 # Static checker for GitHub Actions workflow files
@@ -150,6 +151,8 @@ brew "azure/kubelogin/kubelogin"
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
+# CLI for Git worktree management, designed for parallel AI agent workflows
+brew "max-sixty/worktrunk/wt"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # AeroSpace is an i3-like tiling window manager for macOS
