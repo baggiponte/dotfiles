@@ -2,6 +2,8 @@
 
 gcloud
 
+glab-cli/config.yml
+
 zed/**
 !zed/settings.json
 !zed/snippets
