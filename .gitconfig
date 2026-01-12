@@ -39,4 +39,14 @@
 	repo = /Users/luca/.config
 
 [credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
+	helper = osxkeychain
+[credential "https://repository.a2a.eu"]
+	provider = generic
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[credential "https://huggingface.co"]
+	provider = generic
+[lfs "customtransfer.xet"]
+	path = git-xet
+	args = transfer
+	concurrent = true
