@@ -121,6 +121,8 @@ brew "python@3.13"
 brew "ripgrep"
 # Autoformat shell script source code
 brew "shfmt"
+# Prettier way to inspect network connections
+brew "snitch"
 # Graphical command-line client for SSH
 brew "sshs"
 # Cross-shell prompt for astronauts
