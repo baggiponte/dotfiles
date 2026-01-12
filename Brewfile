@@ -91,6 +91,8 @@ brew "kompose"
 brew "kubernetes-cli"
 # Simple terminal UI for git commands
 brew "lazygit"
+# LLVM's OpenMP runtime library
+brew "libomp"
 # LLM inference in C/C++
 brew "llama.cpp"
 # Rainbows and unicorns in your console!
