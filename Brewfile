@@ -63,6 +63,8 @@ brew "gh"
 brew "git"
 # Git extension for versioning large files
 brew "git-lfs"
+# Git LFS plugin that uploads and downloads using the Xet protocol
+brew "git-xet"
 # Open-source GitLab command-line tool
 brew "glab"
 # GNU implementation of the famous stream editor
