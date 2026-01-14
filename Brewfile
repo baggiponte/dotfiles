@@ -196,6 +196,8 @@ cask "notion"
 cask "obs"
 # Collaboration platform for API development
 cask "postman"
+# Imaging utility to install operating systems to a microSD card
+cask "raspberry-pi-imager"
 # Team communication and collaboration software
 cask "slack"
 # Multiplayer code editor
