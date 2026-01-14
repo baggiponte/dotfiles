@@ -1,0 +1,8 @@
+[commit-generation]
+args = []
+command = ""
+
+[projects."github.com/baggiponte/sklab"]
+approved-commands = [
+    "uv sync",
+]
