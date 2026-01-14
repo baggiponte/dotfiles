@@ -169,8 +169,6 @@ cask "alt-tab"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
-# Clipboard history app
-cask "clipbook"
 # Voice and text chat software
 cask "discord"
 cask "font-climate-crisis"
