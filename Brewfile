@@ -173,6 +173,8 @@ cask "alt-tab"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
+# Open source IDE for exploring and testing APIs
+cask "bruno"
 # Voice and text chat software
 cask "discord"
 cask "font-climate-crisis"
