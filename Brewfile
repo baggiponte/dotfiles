@@ -107,6 +107,8 @@ brew "lua-language-server"
 brew "make"
 # Run a Kubernetes cluster locally
 brew "minikube"
+# Deep clean and optimize your Mac
+brew "mole"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Command-line interface for SQLite
