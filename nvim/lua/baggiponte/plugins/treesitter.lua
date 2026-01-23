@@ -107,7 +107,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
       { 'kylechui/nvim-surround', opts = {} },
       { 'RRethy/nvim-treesitter-endwise' },
