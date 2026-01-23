@@ -56,18 +56,6 @@ if command -v poetry >/dev/null; then
     export POETRY_HOME="${XDG_DATA_HOME}/pypoetry"
 fi
 
-if command -v pipx >/dev/null; then
-	export PIPX_HOME="${XDG_DATA_HOME}/pipx"
-	export PIPX_BIN_DIR="${PIPX_HOME}/bin"
-	export PATH="${PIPX_BIN_DIR}:${PATH}"
-fi
-
-
-if command -v rye >/dev/null; then
-    export RYE_HOME="${XDG_DATA_HOME}/rye"
-    source "${RYE_HOME}/env"
-fi
-
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 
 # https://docs.jupyter.org/en/latest/use/jupyter-directories.html
