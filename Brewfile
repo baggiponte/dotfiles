@@ -166,7 +166,7 @@ brew "max-sixty/worktrunk/wt"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # AeroSpace is an i3-like tiling window manager for macOS
-cask "aerospace"
+cask "nikitabobko/tap/aerospace"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
