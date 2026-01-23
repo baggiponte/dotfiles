@@ -1,10 +1,7 @@
 return {
   'saghen/blink.cmp',
   event = { 'InsertEnter', 'CmdlineEnter' },
-  -- optional: provides snippets for the snippet source
-  dependencies = {
-    'rafamadriz/friendly-snippets',
-  },
+  dependencies = {},
 
   -- use a release tag to download pre-built binaries
   version = '*',
@@ -65,7 +62,7 @@ return {
     cmdline = { completion = { menu = { auto_show = true } } },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lsp', 'path', 'buffer' },
     },
   },
   opts_extend = { 'sources.default' },
