@@ -83,8 +83,6 @@ brew "htop"
 brew "hugo"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Git-compatible distributed version control system
-brew "jj"
 # Handy way to save and run project-specific commands
 brew "just"
 # Kubernetes CLI To Manage Your Clusters In Style!
