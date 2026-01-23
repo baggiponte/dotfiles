@@ -200,7 +200,5 @@ cask "postman"
 cask "raspberry-pi-imager"
 # Team communication and collaboration software
 cask "slack"
-# Multiplayer code editor
-cask "zed"
 # Collect, organise, cite, and share research sources
 cask "zotero"
