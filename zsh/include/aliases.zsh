@@ -3,15 +3,10 @@
 # +------------+
 
 alias amp="bunx @sourcegraph/amp"
-alias claude="bunx @anthropic-ai/claude-code"
-alias codex="bunx @openai/codex --enable=web_search_request --full-auto"
 
 # +---------+
 # | Aliases |
 # +---------+
-
-# utilities
-alias ...="../../"
 
 # homebrew
 alias b=brew
