@@ -174,3 +174,10 @@ done
 if command -v bat; then
     bat cache --build
 fi
+
+# +---------------------+
+# | install code agents |
+# +---------------------+
+
+# codex installed with brew
+curl -fsSL https://claude.ai/install.sh | bash
