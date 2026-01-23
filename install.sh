@@ -146,7 +146,6 @@ versions=(
     "3.12"
     "3.11"
     "3.10"
-    "3.9"
 )
 
 safe_version="${versions[1]}"
@@ -157,35 +156,16 @@ done
 
 libs=(
     "argcomplete"
-    "commitizen"
-    "cookiecutter"
     "huggingface-hub"
-    "marimo"
     "mlx-lm"
-    "ruff"
-    "zizmor"
+    "prek"
 )
 
 for lib in "${libs[@]}"; do
 	uv tool install --upgrade --python="$safe_version" -- "$lib"
 done
 
-uv tool install --upgrade --python="$safe_version" --with=pre-commit-uv -- pre-commit
 # uv tool install --upgrade --python="$safe_version" --with=llm-mlx -- llm
-
-# +--------------+
-# | install rust |
-# +--------------+
-
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-for version in "stable"; do
-	rustup install "$version"
-	rustup component add rust-analyzer --toolchain="$version"
-done
 
 # +-------------------+
 # | compile bat theme |
