@@ -18,7 +18,7 @@ bindkey '^E' edit-command-line
 # +-----------+
 
 fzf-live-widget () {
-    fzf-live
+    fzf-file --mode=live
 }
 zle -N fzf-live-widget
 bindkey -M viins '^g' fzf-live-widget
