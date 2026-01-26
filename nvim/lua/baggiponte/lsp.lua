@@ -82,15 +82,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'De-emphasize LSP string tokens in Python so Tree-sitter injections show',
-  callback = function(args)
-    if vim.bo[args.buf].filetype ~= 'python' then
-      return
-    end
-
-    -- Keep semantic tokens generally, but clear string tokens so injected SQL can show.
-    vim.api.nvim_set_hl(0, '@lsp.type.string.python', {})
-  end,
-})
