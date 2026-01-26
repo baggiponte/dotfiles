@@ -18,7 +18,9 @@ bindkey '^E' edit-command-line
 # +-----------+
 
 fzf-live-widget () {
+    zle -I
     fzf-file --mode=live
+    zle reset-prompt
 }
 zle -N fzf-live-widget
 bindkey -M viins '^g' fzf-live-widget
@@ -29,7 +31,9 @@ bindkey -M vicmd '^g' fzf-live-widget
 # +------------------+
 
 fzf-file-widget () {
+    zle -I
     fzf-file
+    zle reset-prompt
 }
 zle -N fzf-file-widget
 
