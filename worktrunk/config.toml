@@ -1,8 +1,13 @@
-[commit-generation]
-args = []
+[commit.generation]
 command = ""
 
 [projects."github.com/baggiponte/sklab"]
 approved-commands = [
     "uv sync",
+]
+
+[projects."biosphere.teamsystem.com/tsdigital/oneplatform/machine-learning/ai-platform-core"]
+approved-commands = [
+    "uv venv --python=3.11",
+    "poetry install --with=dev",
 ]
