@@ -120,8 +120,8 @@ brew "pipes-sh"
 brew "pngpaste"
 # Quick and easy command-line file transfer utility from any computer to another
 brew "portal"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
+# Object-relational database system
+brew "postgresql@18"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Autoformat shell script source code
@@ -148,8 +148,6 @@ brew "wget"
 brew "worktrunk"
 # Validate and execute GitHub Actions workflows locally
 brew "wrkflw"
-# Linter for YAML files
-brew "yamllint"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
