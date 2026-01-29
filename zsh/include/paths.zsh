@@ -4,6 +4,7 @@
 
 # override PATH because path_helper screws it up
 paths=(
+    "/opt/homebrew/opt/postgresql@18/bin"
     "${HOME}/.local/bin"
     "/usr/local/bin"
     "/usr/bin"
