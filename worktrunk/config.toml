@@ -1,7 +1,5 @@
-# Inside the repository
-# Given project `./myproject` and branch `my-feature`
-# Creates: `./myproject/.worktrees/my-feature`
-worktree-path = ".worktrees/{{ branch | sanitize }}"
+[commit.generation]
+command = ""
 
 [projects."github.com/baggiponte/sklab"]
 approved-commands = [
