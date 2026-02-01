@@ -3,7 +3,8 @@
 # +------------+
 
 alias amp="bunx @sourcegraph/amp"
-alias codex="codex --enable=web_search_request --full-auto"
+alias codex="command codex --full-auto"
+alias yolo="command codex --yolo"
 
 # +---------+
 # | Aliases |
