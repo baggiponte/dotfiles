@@ -1,13 +1,13 @@
 local keys = {
   {
-    'gs',
+    'gsb',
     '<cmd>Namu symbols<cr>',
-    desc = 'Jump to LSP symbol',
+    desc = 'Namu: display LSP buffer symbols',
   },
   {
-    'gS',
+    'gsw',
     '<cmd>Namu workspace<cr>',
-    desc = 'LSP Symbols - Workspace',
+    desc = 'Namu: display LSP workspace symbols',
   },
 }
 
