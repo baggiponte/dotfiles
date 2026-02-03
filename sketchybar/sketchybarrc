@@ -43,6 +43,12 @@ SPACE_BG_HEIGHT="$((BAR_HEIGHT - 10))"
 SPACE_BG_PADDING="${ICON_PADDING}"      # padding between elements
 SPACE_BG_COLOR=0x99${GRUVBOX_RED}      # 60% opacity
 
+SPOTIFY_BG=0x663c3836
+SPOTIFY_BORDER=0xaa7daea3
+SPOTIFY_TEXT=0xffebdbb2
+SPOTIFY_ACCENT=0xffa9b665
+SPOTIFY_SF_FONT="SF Pro:Semibold:14.0"
+
 # +-------------+
 # | Appearances |
 # +-------------+
@@ -131,6 +137,72 @@ sketchybar --default "${defaults[@]}"
 #            --set front_app       script="${PLUGIN_DIR}/front_app.sh"    \
 #                                  icon.drawing=off                       \
 #            --subscribe front_app front_app_switched
+
+# +-------+
+# | Center|
+# +-------+
+
+# Source credit: Spotify widget/event ideas adapted from
+# https://github.com/FelixKratz/SketchyBar/discussions/12
+sketchybar --add event spotify_change com.spotify.client.PlaybackStateChanged
+
+sketchybar --add item spotify.logo center                                  \
+           --set spotify.logo icon=""                                     \
+                              icon.font="${FONT}:Regular:15.0"             \
+                              icon.color="${SPOTIFY_ACCENT}"               \
+                              icon.padding_left=11                         \
+                              icon.padding_right=8                         \
+                              label.drawing=off                            \
+                              click_script="${PLUGIN_DIR}/spotify.sh open" \
+                                                                           \
+           --add item spotify.prev center                                  \
+           --set spotify.prev icon="􀊎"                                    \
+                              icon.font="${SPOTIFY_SF_FONT}"               \
+                              icon.color="${SPOTIFY_TEXT}"                 \
+                              icon.padding_left=11                         \
+                              icon.padding_right=11                        \
+                              label.drawing=off                            \
+                              click_script="${PLUGIN_DIR}/spotify.sh previous; sketchybar --trigger spotify_change" \
+                                                                           \
+           --add item spotify.playpause center                             \
+           --set spotify.playpause icon="􀊄"                               \
+                                   icon.font="${SPOTIFY_SF_FONT}"          \
+                                   icon.color="${SPOTIFY_ACCENT}"          \
+                                   icon.padding_left=12                    \
+                                   icon.padding_right=12                   \
+                                   label.drawing=off                       \
+                                   click_script="${PLUGIN_DIR}/spotify.sh playpause; sketchybar --trigger spotify_change" \
+                                                                           \
+           --add item spotify.next center                                  \
+           --set spotify.next icon="􀊐"                                    \
+                              icon.font="${SPOTIFY_SF_FONT}"               \
+                              icon.color="${SPOTIFY_TEXT}"                 \
+                              icon.padding_left=11                         \
+                              icon.padding_right=11                        \
+                              label.drawing=off                            \
+                              click_script="${PLUGIN_DIR}/spotify.sh next; sketchybar --trigger spotify_change" \
+                                                                           \
+           --add item spotify.nowplaying center                            \
+           --set spotify.nowplaying icon.drawing=off                       \
+                                   label.color="${SPOTIFY_TEXT}"           \
+                                   width=220                               \
+                                   label.align=left                        \
+                                   label.max_chars=38                      \
+                                   label.padding_left=4                    \
+                                   label.padding_right=12                  \
+                                   script="${PLUGIN_DIR}/spotify.sh status" \
+                                   update_freq=2                           \
+           --subscribe spotify.nowplaying spotify_change                   \
+                                                                           \
+           --add bracket spotify.controls spotify.logo spotify.prev spotify.playpause spotify.next spotify.nowplaying \
+           --set spotify.controls background.color="${SPOTIFY_BG}"         \
+                                 background.border_color="${SPOTIFY_BORDER}" \
+                                 background.border_width=1                 \
+                                 background.corner_radius=10               \
+                                 background.height=28                      \
+                                 background.padding_left=4                 \
+                                 background.padding_right=4                \
+                                                                          \
 
 # +-------+
 # | Right |
