@@ -134,6 +134,8 @@ brew "sshs"
 brew "starship"
 # Opinionated Lua code formatter
 brew "stylua"
+# Change macOS audio source from the command-line
+brew "switchaudio-osx"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Terminal multiplexer
