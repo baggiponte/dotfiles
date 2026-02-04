@@ -222,8 +222,8 @@ sketchybar --add item spotify.logo center                                  \
                             label.max_chars=48                            \
                             label.padding_left=4                          \
                             label.padding_right=10                        \
-                            script="${PLUGIN_DIR}/audio_route.sh status"  \
-                            click_script="${PLUGIN_DIR}/audio_route.sh click" \
+                            script="${PLUGIN_DIR}/audio_route_swift.sh status" \
+                            click_script="${PLUGIN_DIR}/audio_route_swift.sh click" \
                             popup.align=center                            \
                             popup.background.color=0xee282828             \
                             popup.background.border_color="${AUDIO_BORDER}" \
