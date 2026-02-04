@@ -200,5 +200,7 @@ cask "obs"
 cask "postman"
 # Team communication and collaboration software
 cask "slack"
+# Music streaming service
+cask "spotify"
 # Collect, organise, cite, and share research sources
 cask "zotero"
