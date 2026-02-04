@@ -1,6 +1,6 @@
 # SketchyBar Plugins Notes
 
-This README documents the Spotify widget implementation and lessons learned while integrating it into this setup.
+This README documents the Spotify widget plus the Swift-based audio routing widget used in this setup.
 
 ## Source Credit
 
@@ -41,6 +41,14 @@ This README documents the Spotify widget implementation and lessons learned whil
 - `sketchybarrc`
   - Declares Spotify items, event subscription, styling, grouping
   - Wires click scripts to `plugins/spotify.sh`
+- `plugins/audio_route_swift.swift`
+  - Implements audio route state + popup menu logic in Swift
+  - Lists/selects output and input devices via `SwitchAudioSource`
+  - Updates `audio.route` item label and popup menu entries
+- `plugins/audio_route_swift.sh`
+  - Lightweight launcher for SketchyBar
+  - Builds the Swift binary into `/tmp/sketchybar-audio-route-swift` on demand
+  - Rebuilds automatically when `audio_route_swift.swift` changes
 
 ## Why The Current Script Is Structured This Way
 
@@ -94,6 +102,22 @@ This README documents the Spotify widget implementation and lessons learned whil
 - Add elapsed/total time and a slim progress bar.
 - Add hover or secondary click actions (open album/artist in Spotify).
 - Add graceful fallback icon set if SF Symbols are unavailable.
+- Replace `SwitchAudioSource` shell dependency with direct CoreAudio calls in Swift.
+
+## Audio Widget Notes (Swift Replacement)
+
+- `audio.route` now uses:
+  - `script="${PLUGIN_DIR}/audio_route_swift.sh status"`
+  - `click_script="${PLUGIN_DIR}/audio_route_swift.sh click"`
+- Click behavior:
+  - First click opens a popup attached to the widget
+  - Popup contains **Output** and **Input** sections
+  - Selecting an entry switches device and refreshes the label
+- Current label format:
+  - `Audio: <current output> ▾`
+- Runtime dependencies:
+  - `SwitchAudioSource` (`brew install switchaudio-osx`)
+  - Xcode CLT / `xcrun swiftc` for on-demand build
 
 ## Debug Commands
 
