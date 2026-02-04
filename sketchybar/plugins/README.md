@@ -116,8 +116,11 @@ This README documents the Spotify widget plus the Swift-based audio routing widg
 - Current label format:
   - `Audio: <current output> ▾`
 - Runtime dependencies:
-  - `SwitchAudioSource` (`brew install switchaudio-osx`)
+  - `SwitchAudioSource` (`brew install switchaudio-osx`) **required**
   - Xcode CLT / `xcrun swiftc` for on-demand build
+- Dependency decision:
+  - Keep `switchaudio-osx` as the backend for now (simpler + reliable).
+  - If `SwitchAudioSource` is uninstalled, the widget shows `Install SwitchAudioSource ▾` and device switching is disabled until reinstalled.
 
 ## Debug Commands
 
