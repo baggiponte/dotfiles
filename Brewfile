@@ -176,6 +176,8 @@ cask "bruno"
 cask "codex"
 # Voice and text chat software
 cask "discord"
+# Drivers for DisplayLink docks, adapters and monitors
+cask "displaylink"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
