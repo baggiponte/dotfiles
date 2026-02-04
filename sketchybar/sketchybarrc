@@ -48,6 +48,10 @@ SPOTIFY_BORDER=0xaa7daea3
 SPOTIFY_TEXT=0xffebdbb2
 SPOTIFY_ACCENT=0xffa9b665
 SPOTIFY_SF_FONT="SF Pro:Semibold:14.0"
+AUDIO_BG=0x663c3836
+AUDIO_BORDER=0xaa89b482
+AUDIO_TEXT=0xffebdbb2
+AUDIO_ACCENT=0xff89b482
 
 # +-------------+
 # | Appearances |
@@ -203,6 +207,39 @@ sketchybar --add item spotify.logo center                                  \
                                  background.padding_left=4                 \
                                  background.padding_right=4                \
                                                                           \
+           --add item spotify_audio.gap center                            \
+           --set spotify_audio.gap width=60                               \
+                                 icon.drawing=off                         \
+                                 label.drawing=off                        \
+                                                                          \
+           --add item audio.route center                                  \
+           --set audio.route icon="􀊱"                                     \
+                            icon.color="${AUDIO_ACCENT}"                  \
+                            icon.padding_left=10                          \
+                            icon.padding_right=7                          \
+                            label.color="${AUDIO_TEXT}"                   \
+                            width=285                                     \
+                            label.max_chars=48                            \
+                            label.padding_left=4                          \
+                            label.padding_right=10                        \
+                            script="${PLUGIN_DIR}/audio_route.sh status"  \
+                            click_script="${PLUGIN_DIR}/audio_route.sh click" \
+                            popup.align=center                            \
+                            popup.background.color=0xee282828             \
+                            popup.background.border_color="${AUDIO_BORDER}" \
+                            popup.background.border_width=1               \
+                            popup.background.corner_radius=8              \
+                            popup.blur_radius=20                          \
+                            update_freq=10                                \
+                                                                          \
+           --add bracket audio.route.widget audio.route                   \
+           --set audio.route.widget background.color="${AUDIO_BG}"        \
+                                  background.border_color="${AUDIO_BORDER}" \
+                                  background.border_width=1               \
+                                  background.corner_radius=10             \
+                                  background.height=28                    \
+                                  background.padding_left=5               \
+                                  background.padding_right=6
 
 # +-------+
 # | Right |
