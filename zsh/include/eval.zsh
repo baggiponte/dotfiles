@@ -33,6 +33,7 @@ if command -v fzf >/dev/null; then
 fi
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+if command -v but >/dev/null 2>&1; then eval "$(command but completions zsh)"; fi
 
 # hook binaries into zsh
 command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd=j)" # autojump with j
