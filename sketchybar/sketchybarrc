@@ -147,12 +147,14 @@ sketchybar --default "${defaults[@]}"
 sketchybar --add item audio.route left                                    \
            --set audio.route icon="􀊱"                                     \
                             icon.color="${AUDIO_ACCENT}"                  \
+                            icon.y_offset=1                               \
                             icon.padding_left=10                          \
-                            icon.padding_right=7                          \
+                            icon.padding_right=0                          \
                             label.color="${AUDIO_TEXT}"                   \
+                            label.y_offset=0                              \
                             width=248                                     \
                             label.max_chars=44                            \
-                            label.padding_left=4                          \
+                            label.padding_left=0                          \
                             label.padding_right=4                         \
                             script="${PLUGIN_DIR}/audio_route_swift.sh status" \
                             click_script="${PLUGIN_DIR}/audio_route_swift.sh click" \
