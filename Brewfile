@@ -188,6 +188,8 @@ cask "font-yanone-kaffeesatz"
 cask "ghostty"
 # Cross-platform Git credential storage for multiple hosting providers
 cask "git-credential-manager"
+# Git client for simultaneous branches on top of your existing workflow
+cask "gitbutler"
 # Keyboard customiser
 cask "karabiner-elements"
 # Tool to control external monitor brightness & volume
