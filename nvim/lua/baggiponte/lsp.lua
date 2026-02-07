@@ -4,13 +4,14 @@ vim.lsp.enable({
   'docker',
   'docker-compose',
   'luals',
-  -- 'pyrefly',
   'ruff',
+  'rumdl',
   'sqruff',
-  -- 'tombi',
+  'ty',
   'yamlls',
   'zizmor',
-  'ty',
+  -- 'pyrefly',
+  -- 'tombi',
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
