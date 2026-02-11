@@ -32,4 +32,4 @@
 	helper = osxkeychain
 
 [include]
-	path = .gitconfig.local
+	path = /Users/luca/.config/.gitconfig.local
