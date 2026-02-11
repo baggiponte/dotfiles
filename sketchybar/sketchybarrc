@@ -80,9 +80,9 @@ bar=(
 
 sketchybar --bar "${bar[@]}"
 
-# +-------------------+
-# | Deefault Settings |
-# +-------------------+
+# +------------------+
+# | Default Settings |
+# +------------------+
 
 # We now change some default values that are applied to all further items
 # For a full list of all available item properties see:
@@ -173,15 +173,15 @@ sketchybar --add item audio.route left                                    \
                                   background.padding_left="${PILL_PADDING_LEFT}" \
                                   background.padding_right="${PILL_PADDING_RIGHT}"
 
-# +-------+
-# | Center|
-# +-------+
+# +----------------+
+# | Right of Notch |
+# +----------------+
 
 # Source credit: Spotify widget/event ideas adapted from
 # https://github.com/FelixKratz/SketchyBar/discussions/12
 sketchybar --add event spotify_change com.spotify.client.PlaybackStateChanged
 
-sketchybar --add item spotify.logo center                                  \
+sketchybar --add item spotify.logo e                                       \
            --set spotify.logo icon=""                                     \
                               icon.font="${FONT}:Regular:15.0"             \
                               icon.color="${SPOTIFY_ACCENT}"               \
@@ -190,7 +190,7 @@ sketchybar --add item spotify.logo center                                  \
                               label.drawing=off                            \
                               click_script="${PLUGIN_DIR}/spotify.sh open" \
                                                                            \
-           --add item spotify.prev center                                  \
+           --add item spotify.prev e                                       \
            --set spotify.prev icon="􀊎"                                    \
                               icon.font="${SPOTIFY_SF_FONT}"               \
                               icon.color="${SPOTIFY_TEXT}"                 \
@@ -199,7 +199,7 @@ sketchybar --add item spotify.logo center                                  \
                               label.drawing=off                            \
                               click_script="${PLUGIN_DIR}/spotify.sh previous; sketchybar --trigger spotify_change" \
                                                                            \
-           --add item spotify.playpause center                             \
+           --add item spotify.playpause e                                  \
            --set spotify.playpause icon="􀊄"                               \
                                    icon.font="${SPOTIFY_SF_FONT}"          \
                                    icon.color="${SPOTIFY_ACCENT}"          \
@@ -208,7 +208,7 @@ sketchybar --add item spotify.logo center                                  \
                                    label.drawing=off                       \
                                    click_script="${PLUGIN_DIR}/spotify.sh playpause; sketchybar --trigger spotify_change" \
                                                                            \
-           --add item spotify.next center                                  \
+           --add item spotify.next e                                       \
            --set spotify.next icon="􀊐"                                    \
                               icon.font="${SPOTIFY_SF_FONT}"               \
                               icon.color="${SPOTIFY_TEXT}"                 \
@@ -217,7 +217,7 @@ sketchybar --add item spotify.logo center                                  \
                               label.drawing=off                            \
                               click_script="${PLUGIN_DIR}/spotify.sh next; sketchybar --trigger spotify_change" \
                                                                            \
-           --add item spotify.nowplaying center                            \
+           --add item spotify.nowplaying e                                 \
            --set spotify.nowplaying icon.drawing=off                       \
                                    label.color="${SPOTIFY_TEXT}"           \
                                    width=220                               \
@@ -287,5 +287,3 @@ sketchybar --add item clock right                           \
 # should never be run in an item script.
 
 sketchybar --update
-
-echo "sketchybar configuration loaded!"
