@@ -63,6 +63,12 @@ func setDevice(kind: DeviceKind, device: String) {
     _ = run(switchAudio, ["-s", device, "-t", kind.rawValue])
 }
 
+func normalizeSpaces(_ value: String) -> String {
+    value
+        .split(whereSeparator: \.isWhitespace)
+        .joined(separator: " ")
+}
+
 func compact(_ value: String) -> String {
     var text = value
         .replacingOccurrences(of: "(Bluetooth)", with: "")
@@ -70,7 +76,7 @@ func compact(_ value: String) -> String {
         .replacingOccurrences(of: "MacBook Pro Microphone", with: "Mac Mic")
         .replacingOccurrences(of: "MacBook Pro Speakers", with: "Mac Speakers")
         .replacingOccurrences(of: "MacBook Pro", with: "Mac")
-        .trimmingCharacters(in: .whitespacesAndNewlines)
+    text = normalizeSpaces(text)
     if text.count > 24 {
         text = String(text.prefix(24)) + "…"
     }
@@ -164,7 +170,8 @@ func setStatusLabel() {
         sbSet([targetItem, "label=Install SwitchAudioSource ▾", "icon.color=0xff928374"])
         return
     }
-    sbSet([targetItem, "icon.color=0xff89b482", "label=Audio: \(compact(out)) ▾"])
+    let route = compact(out)
+    sbSet([targetItem, "icon.color=0xff89b482", "label=Audio: \(route) ▾"])
 }
 
 let args = CommandLine.arguments
