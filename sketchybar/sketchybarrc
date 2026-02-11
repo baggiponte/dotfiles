@@ -149,7 +149,7 @@ sketchybar --add item audio.route left                                    \
                             icon.color="${AUDIO_ACCENT}"                  \
                             icon.y_offset=1                               \
                             icon.padding_left=10                          \
-                            icon.padding_right=0                          \
+                            icon.padding_right=6                          \
                             label.color="${AUDIO_TEXT}"                   \
                             label.y_offset=0                              \
                             width=248                                     \
