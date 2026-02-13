@@ -201,6 +201,8 @@ cask "monitorcontrol"
 cask "notion"
 # Open-source software for live streaming and screen recording
 cask "obs"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Collaboration platform for API development
 cask "postman"
 # Team communication and collaboration software
