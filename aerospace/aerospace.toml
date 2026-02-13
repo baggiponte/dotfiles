@@ -21,6 +21,11 @@ after-startup-command = [
   'exec-and-forget borders'
 ]
 
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+
 # Start AeroSpace at login
 start-at-login = true
 
@@ -34,7 +39,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 30
 
 # Possible values: tiles|accordion
-default-root-container-layout = 'tiles'
+default-root-container-layout = 'accordion'
 
 # Possible values: horizontal|vertical|auto
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
@@ -76,38 +81,40 @@ if.app-id = 'com.goodsnooze.MacWhisper'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.microsoft.teams2'
-run = 'move-node-to-workspace M'
-
-[[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace T'
-
-[[on-window-detected]]
-if.app-id = 'dev.zed.Zed'
-run = 'move-node-to-workspace Z'
-
-[[on-window-detected]]
-# cursor
-if.app-id = 'com.todesktop.230313mzl4w4u92'
-run = 'move-node-to-workspace C'
+run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
-run = 'move-node-to-workspace A'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace D'
+if.app-id = 'dev.zed.Zed'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace S'
+if.app-id = 'com.openai.codex'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
-run = 'move-node-to-workspace N'
+run = 'move-node-to-workspace 4'
 
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 5'
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -128,9 +135,6 @@ outer.right =      6
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 [mode.main.binding]
-alt-shift-f = 'fullscreen'
-alt-f = 'layout floating'
-
 # *** DEFAULT ***
 # All possible keys:
 # - Letters.        a, b, c, ..., z
@@ -146,10 +150,6 @@ alt-f = 'layout floating'
 # All possible modifiers: cmd, alt, ctrl, shift
 #
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
@@ -172,41 +172,21 @@ alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-# alt-tab = 'workspace-back-and-forth'
+alt-5 = 'workspace 5'
+alt-o = 'workspace --wrap-around next'
+alt-p = 'workspace --wrap-around prev'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-enter = 'mode launcher'
-alt-enter = 'mode apps'
-
-[mode.apps.binding]
-a = ['workspace A', 'mode main']
-d = ['workspace D', 'mode main']
-m = ['workspace M', 'mode main']
-n = ['workspace N', 'mode main']
-s = ['workspace S', 'mode main']
-t = ['workspace T', 'mode main']
-z = ['workspace Z', 'mode main']
-
-esc = ['reload-config', 'mode main']
 
 [mode.launcher.binding]
 a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
 d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
-m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
 n = ['exec-and-forget open -b notion.id', 'mode main']
-s = ['exec-and-forget open -b com.tinyspeck.slackmacgap', 'mode main']
+o = ['exec-and-forget open -b md.obsidian', 'mode main']
 t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
-z = ['exec-and-forget open -b dev.zed.Zed', 'mode main']
 
 esc = ['reload-config', 'mode main']
