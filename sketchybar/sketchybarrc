@@ -42,13 +42,19 @@ SPACE_ELEM_PADDING=6                    # width of the background
 SPACE_BG_HEIGHT="$((BAR_HEIGHT - 10))"
 SPACE_BG_PADDING="${ICON_PADDING}"      # padding between elements
 SPACE_BG_COLOR=0x99${GRUVBOX_RED}      # 60% opacity
+SPACE_ACTIVE_BG=0xaa3c3836
+SPACE_ACTIVE_BORDER=0x00000000
+SPACE_ACTIVE_TEXT=0xffffffff
+SPACE_INACTIVE_BG=0xaa3c3836
+SPACE_INACTIVE_BORDER=0x00000000
+SPACE_INACTIVE_TEXT=0xffffffff
 
 SPOTIFY_BG=0xaa3c3836
-SPOTIFY_TEXT=0xffebdbb2
+SPOTIFY_TEXT=0xffffffff
 SPOTIFY_ACCENT=0xffa9b665
 SPOTIFY_SF_FONT="SF Pro:Semibold:14.0"
 AUDIO_BG=0xaa3c3836
-AUDIO_TEXT=0xffebdbb2
+AUDIO_TEXT=0xffffffff
 AUDIO_ACCENT=0xff89b482
 PILL_RADIUS=8
 PILL_HEIGHT=27
@@ -111,19 +117,26 @@ sketchybar --add event aerospace_workspace_change
 
 for sid in 1 2 3 4 5; do
   sketchybar --add item space.$sid left                                       \
-             --subscribe space.$sid aerospace_workspace_change                \
+             --subscribe space.$sid aerospace_workspace_change space_windows_change \
              --set                                                            \
                 space.$sid                                                    \
                 background.padding_left="${SPACE_BG_PADDING}"                 \
                 background.padding_right="${SPACE_BG_PADDING}"                \
-                background.color="${SPACE_BG_COLOR}"                          \
+                background.color="${SPACE_INACTIVE_BG}"                       \
+                background.border_color="${SPACE_INACTIVE_BORDER}"            \
                 background.corner_radius="${PILL_RADIUS}"                     \
                 background.height="${PILL_HEIGHT}"                            \
                 background.border_width=0                                     \
-                background.drawing=off                                        \
-                label="$sid"                                                  \
-                label.padding_left="${SPACE_ELEM_PADDING}"                    \
-                label.padding_right="${SPACE_ELEM_PADDING}"                   \
+                background.drawing=on                                         \
+                icon="$sid"                                                   \
+                icon.color="${SPACE_INACTIVE_TEXT}"                           \
+                icon.padding_left=10                                          \
+                icon.padding_right=5                                          \
+                label=""                                                      \
+                label.font="sketchybar-app-font:Regular:14.0"                \
+                label.color="${SPACE_INACTIVE_TEXT}"                          \
+                label.padding_left=4                                          \
+                label.padding_right=10                                        \
                 label.align=center                                            \
                 click_script="aerospace workspace $sid"                       \
                 script="$CONFIG_DIR/plugins/aerospace.sh $sid"
@@ -147,17 +160,17 @@ done
 #                                  icon.drawing=off                       \
 #            --subscribe front_app front_app_switched
 
-sketchybar --add item audio.route left                                    \
+sketchybar --add item audio.route q                                       \
            --set audio.route icon="􀊱"                                     \
                             icon.color="${AUDIO_ACCENT}"                  \
                             icon.y_offset=1                               \
                             icon.padding_left=10                          \
-                            icon.padding_right=6                          \
+                            icon.padding_right=10                         \
                             label.color="${AUDIO_TEXT}"                   \
                             label.y_offset=0                              \
                             width=248                                     \
                             label.max_chars=44                            \
-                            label.padding_left=0                          \
+                            label.padding_left=2                          \
                             label.padding_right=4                         \
                             script="${PLUGIN_DIR}/audio_route_swift.sh status" \
                             click_script="${PLUGIN_DIR}/audio_route_swift.sh click" \
@@ -175,6 +188,12 @@ sketchybar --add item audio.route left                                    \
                                   background.height="${PILL_HEIGHT}"      \
                                   background.padding_left="${PILL_PADDING_LEFT}" \
                                   background.padding_right="${PILL_PADDING_RIGHT}"
+
+sketchybar --add item notch.gap e                                         \
+           --set notch.gap width=10                                       \
+                           icon.drawing=off                               \
+                           label.drawing=off                              \
+                           background.drawing=off
 
 # +----------------+
 # | Right of Notch |
