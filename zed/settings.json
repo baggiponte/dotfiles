@@ -7,59 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "agent": {
-    "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-latest",
-    },
-    "default_profile": "write",
-    "model_parameters": [],
-    "always_allow_tool_actions": true,
+  "edit_predictions": {
+    "provider": "zed",
   },
   "vim_mode": true,
   "terminal": {
     "detect_venv": "off",
   },
-  "features": {
-    "edit_prediction_provider": "zed",
-  },
-  // "agent": {
-  //   "version": "2",
-  //   "default_model": {
-  //     "provider": "zed.dev",
-  //     "model": "gpt-4o"
-  //   }
-  // },
   "lsp": {
-    "basedpyright": {
-      "binary": {
-        "path": "uvx",
-        "arguments": [
-          "--from=basedpyright",
-          "basedpyright-langserver",
-          "--stdio",
-        ],
-      },
-      "settings": {
-        "basedpyright": {
-          "disableOrganizeImports": true,
-          "analysis": {
-            "diagnosticMode": "workspace",
-            "inlayHints": {
-              "variableTypes": true,
-              // "callArgumentNames": true,
-              "functionReturnTypes": true,
-              "genericTypes": true,
-            },
-          },
-        },
-      },
-    },
-    "taplo": {
-      "settings": {
-        "array_auto_collapse": false,
-      },
-    },
     "ty": {
       "binary": {
         "path": "uvx",
