@@ -1,55 +1,63 @@
-[diagnostics]
-enabled = false
-sql_linter = true
-
-[package_management]
-manager = "uv"
-
-[ai]
-mode = "manual"
-rules = ""
-inline_tooltip = false
-
-[ai.anthropic]
-
-[ai.bedrock]
-
-[ai.google]
-
-[ai.models]
-displayed_models = []
-custom_models = []
-
-[ai.open_ai]
-
 [keymap]
 preset = "vim"
 destructive_delete = true
 
 [keymap.overrides]
 
+[language_servers.pylsp]
+enable_ruff = false
+enable_pydocstyle = false
+enable_mypy = false
+enabled = false
+enable_pylint = false
+enable_pyflakes = false
+enable_flake8 = false
+
+[language_servers.basedpyright]
+
+[language_servers.ty]
+enabled = true
+
+[formatting]
+line_length = 79
+
+[ai]
+inline_tooltip = false
+mode = "manual"
+rules = ""
+
+[ai.custom_providers]
+
+[ai.anthropic]
+
+[ai.bedrock]
+
+[ai.open_ai]
+
+[ai.google]
+
+[ai.models]
+custom_models = []
+displayed_models = []
+
 [mcp]
 presets = []
 
 [mcp.mcpServers]
 
-[display]
-cell_output = "below"
-code_editor_font_size = 14
-default_table_page_size = 25
-theme = "light"
-reference_highlighting = true
-dataframes = "rich"
-default_table_max_columns = 50
-default_width = "full"
+[save]
+format_on_save = true
+autosave = "after_delay"
+autosave_delay = 1000
 
 [completion]
+signature_hint_on_typing = true
+copilot = false
 activate_on_typing = true
-copilot = "github"
 
-[snippets]
-include_default_snippets = true
-custom_paths = []
+[server]
+browser = "default"
+follow_symlink = false
 
 [experimental]
 external_agents = true
@@ -57,40 +65,36 @@ multi_column = true
 tracing = true
 chat_sidebar = true
 
-[save]
-autosave_delay = 1000
-autosave = "after_delay"
-format_on_save = true
-
-[formatting]
-line_length = 79
-
-[language_servers.ty]
+[diagnostics]
+sql_linter = true
 enabled = true
 
-[language_servers.pylsp]
-enabled = false
-enable_ruff = false
-enable_pyflakes = false
-enable_mypy = false
-enable_pydocstyle = false
-enable_pylint = false
-enable_flake8 = false
+[display]
+dataframes = "rich"
+reference_highlighting = true
+cell_output = "below"
+default_table_max_columns = 50
+default_width = "full"
+theme = "light"
+default_table_page_size = 50
+code_editor_font_size = 14
 
-[language_servers.basedpyright]
+[snippets]
+include_default_snippets = true
+custom_paths = []
 
 [runtime]
 watcher_on_save = "lazy"
-auto_instantiate = true
-default_auto_download = []
-default_sql_output = "auto"
-dotenv = []
-on_cell_change = "autorun"
-reactive_tests = true
-auto_reload = "autorun"
+default_csv_encoding = "utf-8"
 output_max_bytes = 8000000
+default_sql_output = "native"
+dotenv = []
+reactive_tests = true
+on_cell_change = "autorun"
+default_auto_download = []
+auto_instantiate = true
+auto_reload = "autorun"
 std_stream_max_bytes = 1000000
 
-[server]
-browser = "default"
-follow_symlink = false
+[package_management]
+manager = "uv"
