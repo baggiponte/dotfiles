@@ -185,6 +185,7 @@ cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono"
 cask "font-sf-pro"
+cask "font-sketchybar-app-font"
 cask "font-yanone-kaffeesatz"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
