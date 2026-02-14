@@ -1,8 +1,7 @@
 local linters = {
   sh = { 'shellcheck' },
   docker = { 'hadolint' },
-  ['yaml.ghaction'] = { 'actionlint', 'zizmor' },
-  -- ['*'] = { 'codespell' },
+  ['yaml.ghaction'] = { 'actionlint' },
 }
 
 return {
