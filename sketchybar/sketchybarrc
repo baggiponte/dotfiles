@@ -114,33 +114,199 @@ sketchybar --default "${defaults[@]}"
 # +-----------+
 
 sketchybar --add event aerospace_workspace_change
+SPACE_APP_FONT="sketchybar-app-font:Regular:14.0"
+SPACE_PILL_GAP=6
 
-for sid in 1 2 3 4 5; do
-  sketchybar --add item space.$sid left                                       \
-             --subscribe space.$sid aerospace_workspace_change space_windows_change \
-             --set                                                            \
-                space.$sid                                                    \
-                background.padding_left="${SPACE_BG_PADDING}"                 \
-                background.padding_right="${SPACE_BG_PADDING}"                \
-                background.color="${SPACE_INACTIVE_BG}"                       \
-                background.border_color="${SPACE_INACTIVE_BORDER}"            \
-                background.corner_radius="${PILL_RADIUS}"                     \
-                background.height="${PILL_HEIGHT}"                            \
-                background.border_width=0                                     \
-                background.drawing=on                                         \
-                icon="$sid"                                                   \
-                icon.color="${SPACE_INACTIVE_TEXT}"                           \
-                icon.padding_left=10                                          \
-                icon.padding_right=5                                          \
-                label=""                                                      \
-                label.font="sketchybar-app-font:Regular:14.0"                \
-                label.color="${SPACE_INACTIVE_TEXT}"                          \
-                label.padding_left=4                                          \
-                label.padding_right=10                                        \
-                label.align=center                                            \
-                click_script="aerospace workspace $sid"                       \
-                script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-done
+# Workspace 1
+sketchybar --add item space.1.num left                                       \
+           --subscribe space.1.num aerospace_workspace_change space_windows_change \
+           --set space.1.num icon="1"                                        \
+                             label.drawing=off                               \
+                             background.drawing=off                          \
+                             icon.padding_left=10                            \
+                             icon.padding_right=5                            \
+                             click_script="aerospace workspace 1"            \
+                             script="$CONFIG_DIR/plugins/aerospace.sh 1"     \
+           --add item space.1.app.ghostty left                               \
+           --set space.1.app.ghostty icon=":ghostty:"                        \
+                                   icon.font="${SPACE_APP_FONT}"             \
+                                   label.drawing=off                         \
+                                   background.drawing=off                    \
+                                   icon.padding_left=2                       \
+                                   icon.padding_right=10                     \
+                                   click_script="aerospace workspace 1"      \
+           --add bracket space.1.pill space.1.num space.1.app.ghostty        \
+           --set space.1.pill background.color="${SPACE_INACTIVE_BG}"        \
+                              background.border_color="${SPACE_INACTIVE_BORDER}" \
+                              background.border_width=0                      \
+                              background.corner_radius="${PILL_RADIUS}"      \
+                              background.height="${PILL_HEIGHT}"             \
+                              background.padding_left="${SPACE_BG_PADDING}"  \
+                              background.padding_right="${SPACE_BG_PADDING}"
+
+sketchybar --add item space.gap.1 left                                       \
+           --set space.gap.1 width="${SPACE_PILL_GAP}"                       \
+                             icon.drawing=off                                \
+                             label.drawing=off                               \
+                             background.drawing=off
+
+# Workspace 2
+sketchybar --add item space.2.num left                                       \
+           --subscribe space.2.num aerospace_workspace_change space_windows_change \
+           --set space.2.num icon="2"                                        \
+                             label.drawing=off                               \
+                             background.drawing=off                          \
+                             icon.padding_left=10                            \
+                             icon.padding_right=5                            \
+                             click_script="aerospace workspace 2"            \
+                             script="$CONFIG_DIR/plugins/aerospace.sh 2"     \
+           --add item space.2.app.arc left                                   \
+           --set space.2.app.arc icon=":arc:"                                \
+                               icon.font="${SPACE_APP_FONT}"                 \
+                               label.drawing=off                             \
+                               background.drawing=off                        \
+                               icon.padding_left=2                           \
+                               icon.padding_right=10                         \
+                               click_script="aerospace workspace 2"          \
+           --add bracket space.2.pill space.2.num space.2.app.arc            \
+           --set space.2.pill background.color="${SPACE_INACTIVE_BG}"        \
+                              background.border_color="${SPACE_INACTIVE_BORDER}" \
+                              background.border_width=0                      \
+                              background.corner_radius="${PILL_RADIUS}"      \
+                              background.height="${PILL_HEIGHT}"             \
+                              background.padding_left="${SPACE_BG_PADDING}"  \
+                              background.padding_right="${SPACE_BG_PADDING}"
+
+sketchybar --add item space.gap.2 left                                       \
+           --set space.gap.2 width="${SPACE_PILL_GAP}"                       \
+                             icon.drawing=off                                \
+                             label.drawing=off                               \
+                             background.drawing=off
+
+# Workspace 3
+sketchybar --add item space.3.num left                                       \
+           --subscribe space.3.num aerospace_workspace_change space_windows_change \
+           --set space.3.num icon="3"                                        \
+                             label.drawing=off                               \
+                             background.drawing=off                          \
+                             icon.padding_left=10                            \
+                             icon.padding_right=5                            \
+                             click_script="aerospace workspace 3"            \
+                             script="$CONFIG_DIR/plugins/aerospace.sh 3"     \
+           --add item space.3.app.code left                                  \
+           --set space.3.app.code icon=":code:"                              \
+                                icon.font="${SPACE_APP_FONT}"                \
+                                label.drawing=off                            \
+                                background.drawing=off                       \
+                                icon.padding_left=2                          \
+                                icon.padding_right=4                         \
+                                click_script="aerospace workspace 3"         \
+           --add item space.3.app.zed left                                   \
+           --set space.3.app.zed icon=":zed:"                                \
+                               icon.font="${SPACE_APP_FONT}"                 \
+                               label.drawing=off                             \
+                               background.drawing=off                        \
+                               icon.padding_left=2                           \
+                               icon.padding_right=10                         \
+                               click_script="aerospace workspace 3"          \
+           --add bracket space.3.pill space.3.num space.3.app.code space.3.app.zed \
+           --set space.3.pill background.color="${SPACE_INACTIVE_BG}"        \
+                              background.border_color="${SPACE_INACTIVE_BORDER}" \
+                              background.border_width=0                      \
+                              background.corner_radius="${PILL_RADIUS}"      \
+                              background.height="${PILL_HEIGHT}"             \
+                              background.padding_left="${SPACE_BG_PADDING}"  \
+                              background.padding_right="${SPACE_BG_PADDING}"
+
+sketchybar --add item space.gap.3 left                                       \
+           --set space.gap.3 width="${SPACE_PILL_GAP}"                       \
+                             icon.drawing=off                                \
+                             label.drawing=off                               \
+                             background.drawing=off
+
+# Workspace 4
+sketchybar --add item space.4.num left                                       \
+           --subscribe space.4.num aerospace_workspace_change space_windows_change \
+           --set space.4.num icon="4"                                        \
+                             label.drawing=off                               \
+                             background.drawing=off                          \
+                             icon.padding_left=10                            \
+                             icon.padding_right=5                            \
+                             click_script="aerospace workspace 4"            \
+                             script="$CONFIG_DIR/plugins/aerospace.sh 4"     \
+           --add item space.4.app.obsidian left                              \
+           --set space.4.app.obsidian icon=":obsidian:"                      \
+                                    icon.font="${SPACE_APP_FONT}"            \
+                                    label.drawing=off                        \
+                                    background.drawing=off                   \
+                                    icon.padding_left=2                      \
+                                    icon.padding_right=4                     \
+                                    click_script="aerospace workspace 4"     \
+           --add item space.4.app.notion left                                \
+           --set space.4.app.notion icon=":notion:"                          \
+                                  icon.font="${SPACE_APP_FONT}"              \
+                                  label.drawing=off                          \
+                                  background.drawing=off                     \
+                                  icon.padding_left=2                        \
+                                  icon.padding_right=10                      \
+                                  click_script="aerospace workspace 4"       \
+           --add bracket space.4.pill space.4.num space.4.app.obsidian space.4.app.notion \
+           --set space.4.pill background.color="${SPACE_INACTIVE_BG}"        \
+                              background.border_color="${SPACE_INACTIVE_BORDER}" \
+                              background.border_width=0                      \
+                              background.corner_radius="${PILL_RADIUS}"      \
+                              background.height="${PILL_HEIGHT}"             \
+                              background.padding_left="${SPACE_BG_PADDING}"  \
+                              background.padding_right="${SPACE_BG_PADDING}"
+
+sketchybar --add item space.gap.4 left                                       \
+           --set space.gap.4 width="${SPACE_PILL_GAP}"                       \
+                             icon.drawing=off                                \
+                             label.drawing=off                               \
+                             background.drawing=off
+
+# Workspace 5
+sketchybar --add item space.5.num left                                       \
+           --subscribe space.5.num aerospace_workspace_change space_windows_change \
+           --set space.5.num icon="5"                                        \
+                             label.drawing=off                               \
+                             background.drawing=off                          \
+                             icon.padding_left=10                            \
+                             icon.padding_right=5                            \
+                             click_script="aerospace workspace 5"            \
+                             script="$CONFIG_DIR/plugins/aerospace.sh 5"     \
+           --add item space.5.app.discord left                               \
+           --set space.5.app.discord icon=":discord:"                        \
+                                    icon.font="${SPACE_APP_FONT}"            \
+                                    label.drawing=off                        \
+                                    background.drawing=off                   \
+                                    icon.padding_left=2                      \
+                                    icon.padding_right=4                     \
+                                    click_script="aerospace workspace 5"     \
+           --add item space.5.app.slack left                                 \
+           --set space.5.app.slack icon=":slack:"                            \
+                                  icon.font="${SPACE_APP_FONT}"              \
+                                  label.drawing=off                          \
+                                  background.drawing=off                     \
+                                  icon.padding_left=2                        \
+                                  icon.padding_right=4                       \
+                                  click_script="aerospace workspace 5"       \
+           --add item space.5.app.spotify left                               \
+           --set space.5.app.spotify icon=":spotify:"                        \
+                                    icon.font="${SPACE_APP_FONT}"            \
+                                    label.drawing=off                        \
+                                    background.drawing=off                   \
+                                    icon.padding_left=2                      \
+                                    icon.padding_right=10                    \
+                                    click_script="aerospace workspace 5"     \
+           --add bracket space.5.pill space.5.num space.5.app.discord space.5.app.slack space.5.app.spotify \
+           --set space.5.pill background.color="${SPACE_INACTIVE_BG}"        \
+                              background.border_color="${SPACE_INACTIVE_BORDER}" \
+                              background.border_width=0                      \
+                              background.corner_radius="${PILL_RADIUS}"      \
+                              background.height="${PILL_HEIGHT}"             \
+                              background.padding_left="${SPACE_BG_PADDING}"  \
+                              background.padding_right="${SPACE_BG_PADDING}"
 
 # +------+
 # | Left |
