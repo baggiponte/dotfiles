@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'bunx', 'biome', 'lsp-proxy' },
+  cmd = { 'mise', 'x', 'biome@latest', '--', 'biome', 'lsp-proxy' },
   root_markers = {
     'biome.json',
     'biome.jsonc',
@@ -8,9 +8,18 @@ return {
   },
   filetypes = {
     'javascript',
+    'javascriptreact',
     'typescript',
+    'typescriptreact',
     'css',
+    'graphql',
+    'html',
     'json',
     'jsonc',
+  },
+  settings = {
+    html = {
+      experimentalFullSupportEnabled = true,
+    },
   },
 }
