@@ -101,6 +101,12 @@ case "$sid" in
       set_app_color "space.5.app.slack" "$closed_color"
     fi
 
+    if is_app_open "$windows" '^Microsoft Teams'; then
+      set_app_color "space.5.app.teams" "$open_color"
+    else
+      set_app_color "space.5.app.teams" "$closed_color"
+    fi
+
     if is_app_open "$windows" '^Spotify$'; then
       set_app_color "space.5.app.spotify" "$open_color"
     else
