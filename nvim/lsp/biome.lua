@@ -9,6 +9,7 @@ return {
   filetypes = {
     'javascript',
     'typescript',
+    'css',
     'json',
     'jsonc',
   },
