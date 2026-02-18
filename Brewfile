@@ -195,6 +195,8 @@ cask "git-credential-manager"
 cask "hiddenbar"
 # Keyboard customiser
 cask "karabiner-elements"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # App to write, plan, collaborate, and get organised
