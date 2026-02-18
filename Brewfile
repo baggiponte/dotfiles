@@ -4,8 +4,6 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
-# Static checker for GitHub Actions workflow files
-brew "actionlint"
 # Code searching, linting, rewriting
 brew "ast-grep"
 # GNU internationalization (i18n) and localization (l10n) library
