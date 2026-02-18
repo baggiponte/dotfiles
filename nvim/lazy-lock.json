@@ -13,7 +13,7 @@
   "mini.splitjoin": { "branch": "main", "commit": "9fcd8856efb95a505090c3225726466494076127" },
   "namu.nvim": { "branch": "main", "commit": "fb13c050f3f4f812ca954caf60da48afdd274e1d" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "f3df514fff2bdd4318127c40470984137f87b62e" },
-  "neogit": { "branch": "master", "commit": "75ca811db3ca3e43137596d25d26e57331540ee0" },
+  "neogit": { "branch": "master", "commit": "9104991a424f5e0891cbe1cb44f91ae22cef28a0" },
   "neotest": { "branch": "master", "commit": "deadfb1af5ce458742671ad3a013acb9a6b41178" },
   "neotest-python": { "branch": "master", "commit": "b0d3a861bd85689d8ed73f0590c47963a7eb1bf9" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
