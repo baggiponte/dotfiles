@@ -291,6 +291,14 @@ sketchybar --add item space.5.num left                                       \
                                   icon.padding_left=2                        \
                                   icon.padding_right=4                       \
                                   click_script="aerospace workspace 5"       \
+           --add item space.5.app.teams left                                 \
+           --set space.5.app.teams icon=":microsoft_teams:"                 \
+                                  icon.font="${SPACE_APP_FONT}"              \
+                                  label.drawing=off                          \
+                                  background.drawing=off                     \
+                                  icon.padding_left=2                        \
+                                  icon.padding_right=4                       \
+                                  click_script="aerospace workspace 5"       \
            --add item space.5.app.spotify left                               \
            --set space.5.app.spotify icon=":spotify:"                        \
                                     icon.font="${SPACE_APP_FONT}"            \
@@ -299,7 +307,7 @@ sketchybar --add item space.5.num left                                       \
                                     icon.padding_left=2                      \
                                     icon.padding_right=10                    \
                                     click_script="aerospace workspace 5"     \
-           --add bracket space.5.pill space.5.num space.5.app.discord space.5.app.slack space.5.app.spotify \
+           --add bracket space.5.pill space.5.num space.5.app.discord space.5.app.slack space.5.app.teams space.5.app.spotify \
            --set space.5.pill background.color="${SPACE_INACTIVE_BG}"        \
                               background.border_color="${SPACE_INACTIVE_BORDER}" \
                               background.border_width=0                      \
