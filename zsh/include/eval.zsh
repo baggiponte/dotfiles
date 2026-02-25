@@ -24,9 +24,6 @@ command -v az >/dev/null && register-python-argcomplete az > "${COMPDIR}/_az"
 autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
 autoload -Uz bashcompinit && bashcompinit
 
-# these require compdef
-command -v python >/dev/null && eval "$(python -m pip completion --zsh)"
-
 if command -v fzf >/dev/null; then
     eval "$(fzf --zsh)"
     compdef _gnu_generic fzf
@@ -34,6 +31,7 @@ fi
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 if command -v but >/dev/null 2>&1; then eval "$(command but completions zsh)"; fi
+if comand -v mole >/dev/null 2>&1; then eval "$(command mole completions zsh)"; fi
 
 # hook binaries into zsh
 command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd=j)" # autojump with j
