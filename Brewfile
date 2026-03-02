@@ -4,8 +4,6 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
-# Code searching, linting, rewriting
-brew "ast-grep"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Library for command-line editing
@@ -94,8 +92,6 @@ brew "kubernetes-cli"
 brew "lazygit"
 # LLVM's OpenMP runtime library
 brew "libomp"
-# LLM inference in C/C++
-brew "llama.cpp"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Language Server for the Lua language
@@ -168,8 +164,6 @@ brew "oven-sh/bun/bun"
 cask "nikitabobko/tap/aerospace"
 # Enable Windows-like alt-tab
 cask "alt-tab"
-# Application uninstaller
-cask "appcleaner"
 # Chromium based browser
 cask "arc"
 # Open source IDE for exploring and testing APIs
