@@ -154,19 +154,6 @@ for version in "${versions[@]}"; do
     uv python install -- "$version"
 done
 
-libs=(
-    "argcomplete"
-    "huggingface-hub"
-    "mlx-lm"
-    "prek"
-)
-
-for lib in "${libs[@]}"; do
-	uv tool install --upgrade --python="$safe_version" -- "$lib"
-done
-
-# uv tool install --upgrade --python="$safe_version" --with=llm-mlx -- llm
-
 # +-------------------+
 # | compile bat theme |
 # +-------------------+
