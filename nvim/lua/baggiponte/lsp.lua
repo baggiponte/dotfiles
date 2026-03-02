@@ -5,11 +5,11 @@ vim.lsp.enable({
   'luals',
   'ruff',
   'sqruff',
-  'ty',
+  -- 'ty',
   'zizmor',
   'oxfmt',
   'oxlint',
-  -- 'pyrefly',
+  'pyrefly',
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
