@@ -4,6 +4,8 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
+# GitOps Continuous Delivery for Kubernetes
+brew "argocd"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Library for command-line editing
