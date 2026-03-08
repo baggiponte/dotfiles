@@ -168,8 +168,6 @@ cask "nikitabobko/tap/aerospace"
 cask "alt-tab"
 # Chromium based browser
 cask "arc"
-# Open source IDE for exploring and testing APIs
-cask "bruno"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Voice and text chat software
