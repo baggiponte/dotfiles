@@ -1,0 +1,3 @@
+- When configuring formatters and linters (e.g. for neovim), favour calling them with 1. `uv` 2. `mise` 3. `bunx`, in this order. This applies to `pre-commit` hooks as well, if there is no pre-made hook available.
+- Use `prek` for pre-commit hooks instead of `pre-commit`.
+- Always use `uv` to run Python commands.
