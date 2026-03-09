@@ -16,14 +16,13 @@ after-login-command = []
 # Run Sketchybar together with AeroSpace
 # sketchbar has a built-in detection of already running process,
 # so it won't be run twice on AeroSpace restart
-after-startup-command = [
-  'exec-and-forget sketchybar',
-  'exec-and-forget borders'
-]
+after-startup-command = ['exec-and-forget sketchybar', 'exec-and-forget borders']
 
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 # Start AeroSpace at login
@@ -133,11 +132,11 @@ run = 'move-node-to-workspace 5'
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 6
-inner.vertical =   6
-outer.left =       6
-outer.bottom =     6
-outer.top =        [{ monitor."built-in" = 6 }, 40]
-outer.right =      6
+inner.vertical = 6
+outer.left = 6
+outer.bottom = 6
+outer.top = [{ monitor."built-in" = 6 }, 40]
+outer.right = 6
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -193,6 +192,7 @@ alt-shift-enter = 'mode launcher'
 
 [mode.launcher.binding]
 a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
+c = ['exec-and-forget open -b com.openai.codex', 'mode main']
 d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
 m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
 n = ['exec-and-forget open -b notion.id', 'mode main']
