@@ -2,7 +2,6 @@
 # | Code tools |
 # +------------+
 
-alias amp="bunx @sourcegraph/amp"
 alias codex="command codex --full-auto"
 alias yolo="command codex --yolo"
 
@@ -18,7 +17,7 @@ alias bic="bi --cask"
 alias bu="b uninstall"
 alias buc="bu --cask"
 
-alias gw="git worktree"
+alias ...="cd ../.."
 
 # +-----------+
 # | Optionals |
@@ -63,8 +62,6 @@ fi
 
 if hash eza 2>/dev/null; then
 	alias l="eza --all --group-directories-first --icons --oneline --ignore-glob='.DS_Store|.*cache|__pycache__'"
-	alias lig="ls --git-ignore"
-	alias ll="l --long --git"
 fi
 
 if hash dust 2>/dev/null; then
