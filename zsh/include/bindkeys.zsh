@@ -39,15 +39,3 @@ zle -N fzf-file-widget
 
 bindkey -M vicmd '^f' fzf-file-widget
 bindkey -M viins '^f' fzf-file-widget
-
-# +--------------------+
-# | Zoxide interactive |
-# +--------------------+
-
-zi-widget () {
-    cd "$(fzf-zoxide)"
-}
-zle -N zi-widget
-
-bindkey -M vicmd '^n' zi-widget
-bindkey -M viins '^n' zi-widget
