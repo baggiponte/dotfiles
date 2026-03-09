@@ -188,7 +188,19 @@ alt-o = 'workspace --wrap-around next'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
+alt-enter = 'mode focus'
 alt-shift-enter = 'mode launcher'
+
+[mode.focus.binding]
+a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
+c = ['exec-and-forget open -b com.openai.codex', 'mode main']
+d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
+m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
+n = ['exec-and-forget open -b notion.id', 'mode main']
+o = ['exec-and-forget open -b md.obsidian', 'mode main']
+t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
+
+esc = ['reload-config', 'mode main']
 
 [mode.launcher.binding]
 a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
