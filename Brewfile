@@ -1,4 +1,5 @@
 tap "azure/kubelogin"
+tap "dotenvx/brew"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
@@ -158,6 +159,8 @@ brew "zoxide"
 brew "zsh"
 # A Kubernetes credential (exec) plugin implementing azure authentication
 brew "azure/kubelogin/kubelogin"
+# Secure dotenv–from the creator of `dotenv`
+brew "dotenvx/brew/dotenvx"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
