@@ -122,6 +122,8 @@ brew "pngpaste"
 brew "portal"
 # Object-relational database system
 brew "postgresql@18"
+# Database management TUI for PostgreSQL/MySQL/SQLite
+brew "rainfrog"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Autoformat shell script source code
