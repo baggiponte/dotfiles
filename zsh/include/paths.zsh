@@ -4,6 +4,7 @@
 
 # override PATH because path_helper screws it up
 paths=(
+    "/Applications/Obsidian.app/Contents/MacOS"
     "/opt/homebrew/opt/postgresql@18/bin"
     "${HOME}/.local/bin"
     "/usr/local/bin"
