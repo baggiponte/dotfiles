@@ -1,19 +1,5 @@
 local keys = {
   {
-    '<leader>ff',
-    function()
-      require('telescope.builtin').find_files()
-    end,
-    desc = 'Telescope: find files',
-  },
-  {
-    '<leader>fg',
-    function()
-      require('telescope.builtin').live_grep()
-    end,
-    desc = 'Telescope: find symbol using grep',
-  },
-  {
     '<leader>fb',
     function()
       require('telescope.builtin').buffers()
@@ -33,13 +19,6 @@ local keys = {
       require('telescope.builtin').help_tags()
     end,
     desc = 'Telescope: help tags',
-  },
-  {
-    '<leader>fw',
-    function()
-      require('telescope.builtin').grep_string()
-    end,
-    desc = 'Telescope: grep string',
   },
   {
     '<leader>fk',
@@ -105,14 +84,6 @@ return {
               ['q'] = 'delete_buffer',
             },
           },
-        },
-        live_grep = {
-          additional_args = { '--hidden' },
-        },
-        find_files = {
-          find_command = { 'rg', '--files', '--color', 'never', '--follow' },
-          hidden = true,
-          no_ignore = false,
         },
       },
     })
