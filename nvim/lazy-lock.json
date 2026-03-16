@@ -1,5 +1,4 @@
 {
-  "amp.nvim": { "branch": "main", "commit": "3b9ad5ef0328de1b35cc9bfa723a37db5daf9434" },
   "blink.cmp": { "branch": "main", "commit": "451168851e8e2466bc97ee3e026c3dcb9141ce07" },
   "conform.nvim": { "branch": "master", "commit": "086a40dc7ed8242c03be9f47fbcee68699cc2395" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
