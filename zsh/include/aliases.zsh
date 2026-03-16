@@ -4,6 +4,7 @@
 
 alias codex="command codex --full-auto"
 alias yolo="command codex --yolo"
+alias claude="CLAUDE_CODE_USE_BEDROCK=1 command claude"
 
 # +---------+
 # | Aliases |
