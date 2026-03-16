@@ -198,14 +198,10 @@ cask "karabiner-elements"
 cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# App to write, plan, collaborate, and get organised
-cask "notion"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# Collaboration platform for API development
-cask "postman"
 # Music streaming service
 cask "spotify"
 # Collect, organise, cite, and share research sources
