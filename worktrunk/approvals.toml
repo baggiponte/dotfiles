@@ -1,0 +1,2 @@
+[projects."github.com/baggiponte/sklab"]
+approved-commands = ["uv sync"]
