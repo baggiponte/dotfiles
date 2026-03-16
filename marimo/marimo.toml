@@ -1,63 +1,35 @@
+[server]
+follow_symlink = false
+browser = "default"
+
 [keymap]
-preset = "vim"
 destructive_delete = true
+preset = "vim"
 
 [keymap.overrides]
 
-[language_servers.pylsp]
-enable_ruff = false
-enable_pydocstyle = false
-enable_mypy = false
-enabled = false
-enable_pylint = false
-enable_pyflakes = false
-enable_flake8 = false
+[display]
+cell_output = "below"
+default_table_page_size = 50
+default_width = "full"
+theme = "light"
+default_table_max_columns = 50
+reference_highlighting = true
+dataframes = "rich"
+code_editor_font_size = 14
 
-[language_servers.basedpyright]
-
-[language_servers.ty]
-enabled = true
-
-[formatting]
-line_length = 79
-
-[ai]
-inline_tooltip = false
-mode = "manual"
-rules = ""
-
-[ai.custom_providers]
-
-[ai.anthropic]
-
-[ai.bedrock]
-
-[ai.open_ai]
-
-[ai.google]
-
-[ai.models]
-custom_models = []
-displayed_models = []
-
-[mcp]
-presets = []
-
-[mcp.mcpServers]
-
-[save]
-format_on_save = true
-autosave = "after_delay"
-autosave_delay = 1000
-
-[completion]
-signature_hint_on_typing = true
-copilot = false
-activate_on_typing = true
-
-[server]
-browser = "default"
-follow_symlink = false
+[runtime]
+dotenv = []
+auto_reload = "autorun"
+default_auto_download = []
+on_cell_change = "autorun"
+output_max_bytes = 8000000
+std_stream_max_bytes = 1000000
+auto_instantiate = true
+watcher_on_save = "lazy"
+default_sql_output = "native"
+reactive_tests = true
+default_csv_encoding = "utf-8"
 
 [experimental]
 external_agents = true
@@ -65,36 +37,67 @@ multi_column = true
 tracing = true
 chat_sidebar = true
 
+[ai]
+rules = ""
+mode = "manual"
+inline_tooltip = false
+
+[ai.models]
+custom_models = []
+displayed_models = []
+
+[ai.open_ai]
+
+[ai.bedrock]
+
+[ai.custom_providers]
+
+[ai.anthropic]
+
+[ai.google]
+
+[formatting]
+line_length = 79
+
+[mcp]
+presets = []
+
+[mcp.mcpServers]
+
+[package_management]
+manager = "uv"
+
 [diagnostics]
 sql_linter = true
 enabled = true
 
-[display]
-dataframes = "rich"
-reference_highlighting = true
-cell_output = "below"
-default_table_max_columns = 50
-default_width = "full"
-theme = "light"
-default_table_page_size = 50
-code_editor_font_size = 14
+[language_servers.pyrefly]
+enabled = false
+
+[language_servers.pylsp]
+enable_pylint = false
+enable_pyflakes = false
+enable_ruff = false
+enable_flake8 = false
+enable_mypy = false
+enabled = false
+enable_pydocstyle = false
+
+[language_servers.basedpyright]
+
+[language_servers.ty]
+enabled = false
 
 [snippets]
-include_default_snippets = true
 custom_paths = []
+include_default_snippets = true
 
-[runtime]
-watcher_on_save = "lazy"
-default_csv_encoding = "utf-8"
-output_max_bytes = 8000000
-default_sql_output = "native"
-dotenv = []
-reactive_tests = true
-on_cell_change = "autorun"
-default_auto_download = []
-auto_instantiate = true
-auto_reload = "autorun"
-std_stream_max_bytes = 1000000
+[completion]
+copilot = false
+activate_on_typing = true
+signature_hint_on_typing = true
 
-[package_management]
-manager = "uv"
+[save]
+autosave_delay = 1000
+autosave = "after_delay"
+format_on_save = true
