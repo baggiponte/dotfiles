@@ -100,10 +100,6 @@ if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'notion.id'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 5'
 
@@ -196,7 +192,6 @@ a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
 c = ['exec-and-forget open -b com.openai.codex', 'mode main']
 d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
 m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
-n = ['exec-and-forget open -b notion.id', 'mode main']
 o = ['exec-and-forget open -b md.obsidian', 'mode main']
 t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
 
@@ -207,7 +202,6 @@ a = ['exec-and-forget open -b company.thebrowser.Browser', 'mode main']
 c = ['exec-and-forget open -b com.openai.codex', 'mode main']
 d = ['exec-and-forget open -b com.hnc.Discord', 'mode main']
 m = ['exec-and-forget open -b com.microsoft.teams2', 'mode main']
-n = ['exec-and-forget open -b notion.id', 'mode main']
 o = ['exec-and-forget open -b md.obsidian', 'mode main']
 t = ['exec-and-forget open -b com.mitchellh.ghostty', 'mode main']
 
