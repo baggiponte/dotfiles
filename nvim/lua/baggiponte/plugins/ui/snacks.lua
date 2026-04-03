@@ -7,7 +7,7 @@ return {
     indent = {
       enabled = true,
       indent = {
-        char = '┊', -- does not seem to work
+        char = '┊',
       },
       scope = {
         char = '┊',
