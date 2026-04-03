@@ -31,15 +31,7 @@ local tsopts = {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-]>',
-      -- scope_incremental = '<tab>',
-      node_incremental = '<c-]>',
-      node_decremental = '<c-[>',
-    },
-  },
+  incremental_selection = { enable = true }, -- uses default keymaps: <van> to enter selection, <an> to increase node and <in to decrease
   indent = { enable = true },
   rainbow = {
     enable = true,
