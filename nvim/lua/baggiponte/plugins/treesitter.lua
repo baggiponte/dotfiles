@@ -99,11 +99,12 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
       { 'kylechui/nvim-surround', opts = {} },
       { 'RRethy/nvim-treesitter-endwise' },
-      { 'nvim-treesitter/nvim-treesitter-textobjects' },
+      { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
       -- { 'nvim-treesitter/nvim-treesitter-context' },
     },
     build = ':TSUpdate',
