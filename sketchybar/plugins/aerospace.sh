@@ -82,10 +82,10 @@ case "$sid" in
       set_app_color "space.4.app.obsidian" "$closed_color"
     fi
 
-    if is_app_open "$windows" '^Notion$'; then
-      set_app_color "space.4.app.notion" "$open_color"
+    if is_app_open "$windows" '^Zotero$'; then
+      set_app_color "space.4.app.zotero" "$open_color"
     else
-      set_app_color "space.4.app.notion" "$closed_color"
+      set_app_color "space.4.app.zotero" "$closed_color"
     fi
     ;;
   5)
