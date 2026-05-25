@@ -113,13 +113,13 @@ if [[ "$response" =~ '^(y|yes|Y)$' ]]; then
             mkdir -p "$HOME/.docker"
         fi
 
-        cat <<- EOF > $HOME/.docker/config.json
-        {
-          "cliPluginsExtraDirs": [
-            "/opt/homebrew/lib/docker/cli-plugins"
-          ]
-        }
-        EOF
+        cat > "$HOME/.docker/config.json" <<EOF
+{
+  "cliPluginsExtraDirs": [
+    "/opt/homebrew/lib/docker/cli-plugins"
+  ]
+}
+EOF
 
     fi
 
