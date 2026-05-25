@@ -1,12 +1,10 @@
 tap "azure/kubelogin"
-tap "dotenvx/brew"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "modem-dev/tap"
 tap "nikitabobko/tap"
-tap "oven-sh/bun"
-# GitOps Continuous Delivery for Kubernetes
-brew "argocd"
+tap "supercmdlabs/supercmd"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Library for command-line editing
@@ -81,6 +79,8 @@ brew "htop"
 brew "hugo"
 # Command-line benchmarking tool
 brew "hyperfine"
+# Command-line pager for JSON data
+brew "jless"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Handy way to save and run project-specific commands
@@ -89,6 +89,8 @@ brew "just"
 brew "k9s"
 # Tool to move from `docker-compose` to Kubernetes
 brew "kompose"
+# Tool that can switch between kubectl contexts easily and create aliases
+brew "kubectx"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
 # Simple terminal UI for git commands
@@ -107,26 +109,36 @@ brew "minikube"
 brew "mise"
 # Deep clean and optimize your Mac
 brew "mole"
+# Incremental parsing library
+brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Command-line interface for SQLite
 brew "sqlite"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
 # Password manager
 brew "pass"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
 # Paste PNG into files
 brew "pngpaste"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Quick and easy command-line file transfer utility from any computer to another
 brew "portal"
 # Object-relational database system
 brew "postgresql@18"
 # Database management TUI for PostgreSQL/MySQL/SQLite
 brew "rainfrog"
+# Perl-powered file rename script with many helpful built-ins
+brew "rename"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Semantic version control CLI with entity-level diffs and blame
+brew "sem-cli"
 # Autoformat shell script source code
 brew "shfmt"
 # Prettier way to inspect network connections
@@ -145,6 +157,8 @@ brew "tealdeer"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
@@ -159,12 +173,12 @@ brew "zoxide"
 brew "zsh"
 # A Kubernetes credential (exec) plugin implementing azure authentication
 brew "azure/kubelogin/kubelogin"
-# Secure dotenv–from the creator of `dotenv`
-brew "dotenvx/brew/dotenvx"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
+# Desktop-inspired terminal diff viewer for agent-authored changesets
+brew "modem-dev/tap/hunk"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # AeroSpace is an i3-like tiling window manager for macOS
@@ -173,6 +187,8 @@ cask "nikitabobko/tap/aerospace"
 cask "alt-tab"
 # Chromium based browser
 cask "arc"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Voice and text chat software
@@ -183,34 +199,36 @@ cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono"
-cask "font-sf-pro"
-cask "font-sketchybar-app-font"
 cask "font-yanone-kaffeesatz"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Cross-platform Git credential storage for multiple hosting providers
 cask "git-credential-manager"
+# Speech to text application
+cask "handy"
 # Utility to hide menu bar items
 cask "hiddenbar"
 # Keyboard customiser
 cask "karabiner-elements"
-# Meet, chat, call, and collaborate in just one place
-cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Open-source software for live streaming and screen recording
-cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Collaboration platform for API development
+cask "postman"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 # Music streaming service
 cask "spotify"
+# Open Source, AI Native MacOS Launcher
+cask "supercmdlabs/supercmd/supercmd"
+# Multiplayer code editor
+cask "zed"
 # Collect, organise, cite, and share research sources
 cask "zotero"
 uv "argcomplete"
 uv "azure-cli"
-uv "dbc"
 uv "huggingface-hub"
 uv "maturin"
-uv "mlx-lm"
 uv "prek"
 uv "wandb"
