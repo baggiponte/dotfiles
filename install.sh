@@ -80,7 +80,7 @@ if ! [[ -d "$HOME/.config" ]]; then
 	git clone "https://github.com/baggiponte/dotfiles" "$HOME/.config"
 else
 	read -r -p "⚠️ '$HOME/.config' already exists. Replace dotfiles? (contents of '$HOME/.config' will not be deleted) [y/N]" response
-	if [[ $response =$HOME (y|yes|Y) ]]; then
+	if [[ "$response" =~ '^(y|yes|Y)$' ]]; then
 
 		mv "$HOME/.config" "$HOME/.config.bak"
 		print "✔︎ moved old configs to '$HOME/.config.bak'"
@@ -99,7 +99,7 @@ ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs/" "icloud"
 # +----------------------+
 
 read -r -p "❓ install dependencies from Brewfile? [y/N]" response
-if [[ $response =$HOME (y|yes|Y) ]]; then
+if [[ "$response" =~ '^(y|yes|Y)$' ]]; then
 
 	brew bundle --file="$HOME/.config/Brewfile"
 
