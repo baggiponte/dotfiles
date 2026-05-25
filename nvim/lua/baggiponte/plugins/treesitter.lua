@@ -1,88 +1,110 @@
-local tsopts = {
-  ensure_installed = {
-    -- 'arduino',
-    'bash',
-    'dockerfile',
-    'gitattributes',
-    'gitignore',
-    'ini',
-    'json',
-    'jsonc',
-    -- 'julia',
-    'just',
-    -- 'kdl',
-    'lua',
-    'make',
-    'markdown',
-    'markdown_inline',
-    'python',
-    'r',
-    'regex', -- needed for noice.nvim
-    'requirements', -- python requirements.txt
-    'rust',
-    'sql',
-    'terraform',
-    'tmux',
-    'toml',
-    'vimdoc',
-    'yaml',
-  },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  incremental_selection = { enable = true }, -- uses default keymaps: <van> to enter selection, <an> to increase node and <in to decrease
-  indent = { enable = true },
-  rainbow = {
-    enable = true,
-    -- disable = { 'jsx', 'cpp' }, list of languages you want to disable the plugin for
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim.
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm.
-        ['ib'] = '@block.inner', -- in markdown, it's fenced code blocks!
-        ['ab'] = '@block.outer',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-        ['aC'] = '@comment.outer',
-        ['ai'] = '@conditional.outer',
-        ['ii'] = '@conditional.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['al'] = '@loop.outer',
-        ['il'] = '@loop.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']f'] = '@function.outer',
-        [']c'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']F'] = '@function.outer',
-        [']C'] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[f'] = '@function.outer',
-        ['[c'] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[F'] = '@function.outer',
-        ['[C'] = '@class.outer',
-      },
-    },
-  },
-  endwise = { enable = true },
+local parsers = {
+  -- 'arduino',
+  'bash',
+  'dockerfile',
+  'gitattributes',
+  'gitignore',
+  'ini',
+  'json',
+  -- 'jsonc', -- unsupported on nvim-treesitter main
+  -- 'julia',
+  'just',
+  -- 'kdl',
+  'lua',
+  'make',
+  'markdown',
+  'markdown_inline',
+  'python',
+  'r',
+  'regex',
+  'requirements',
+  'rust',
+  'sql',
+  'terraform',
+  'tmux',
+  'toml',
+  'vimdoc',
+  'yaml',
 }
+
+local textobjects = {
+  select = {
+    lookahead = true,
+  },
+  move = {
+    set_jumps = true,
+  },
+}
+
+local function setup_textobject_keymaps()
+  local select = require('nvim-treesitter-textobjects.select')
+  local move = require('nvim-treesitter-textobjects.move')
+  local map = vim.keymap.set
+
+  local function select_textobject(query)
+    return function()
+      select.select_textobject(query, 'textobjects')
+    end
+  end
+
+  local function goto_next_start(query)
+    return function()
+      move.goto_next_start(query, 'textobjects')
+    end
+  end
+
+  local function goto_next_end(query)
+    return function()
+      move.goto_next_end(query, 'textobjects')
+    end
+  end
+
+  local function goto_previous_start(query)
+    return function()
+      move.goto_previous_start(query, 'textobjects')
+    end
+  end
+
+  local function goto_previous_end(query)
+    return function()
+      move.goto_previous_end(query, 'textobjects')
+    end
+  end
+
+  map({ 'x', 'o' }, 'ib', select_textobject('@block.inner'))
+  map({ 'x', 'o' }, 'ab', select_textobject('@block.outer'))
+  map({ 'x', 'o' }, 'ac', select_textobject('@class.outer'))
+  map({ 'x', 'o' }, 'ic', select_textobject('@class.inner'))
+  map({ 'x', 'o' }, 'aC', select_textobject('@comment.outer'))
+  map({ 'x', 'o' }, 'ai', select_textobject('@conditional.outer'))
+  map({ 'x', 'o' }, 'ii', select_textobject('@conditional.inner'))
+  map({ 'x', 'o' }, 'af', select_textobject('@function.outer'))
+  map({ 'x', 'o' }, 'if', select_textobject('@function.inner'))
+  map({ 'x', 'o' }, 'al', select_textobject('@loop.outer'))
+  map({ 'x', 'o' }, 'il', select_textobject('@loop.inner'))
+
+  map({ 'n', 'x', 'o' }, ']f', goto_next_start('@function.outer'))
+  map({ 'n', 'x', 'o' }, ']c', goto_next_start('@class.outer'))
+  map({ 'n', 'x', 'o' }, ']F', goto_next_end('@function.outer'))
+  map({ 'n', 'x', 'o' }, ']C', goto_next_end('@class.outer'))
+  map({ 'n', 'x', 'o' }, '[f', goto_previous_start('@function.outer'))
+  map({ 'n', 'x', 'o' }, '[c', goto_previous_start('@class.outer'))
+  map({ 'n', 'x', 'o' }, '[F', goto_previous_end('@function.outer'))
+  map({ 'n', 'x', 'o' }, '[C', goto_previous_end('@class.outer'))
+end
+
+local function setup_treesitter_filetypes()
+  local group = vim.api.nvim_create_augroup('baggiponte-treesitter', { clear = true })
+
+  vim.api.nvim_create_autocmd('FileType', {
+    group = group,
+    pattern = parsers,
+    callback = function(args)
+      pcall(vim.treesitter.start, args.buf)
+      vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+  })
+end
 
 return {
   {
@@ -91,7 +113,6 @@ return {
     dependencies = { 'hrsh7th/nvim-cmp' },
     config = function()
       require('nvim-autopairs').setup({})
-      -- If you want to automatically add `(` after selecting a function or method
       local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       local cmp = require('cmp')
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
@@ -100,16 +121,18 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     branch = 'main',
-    event = { 'BufReadPost', 'BufNewFile' },
+    lazy = false,
     dependencies = {
       { 'kylechui/nvim-surround', opts = {} },
       { 'RRethy/nvim-treesitter-endwise' },
       { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
-      -- { 'nvim-treesitter/nvim-treesitter-context' },
     },
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter.configs').setup(tsopts)
+      require('nvim-treesitter').setup()
+      require('nvim-treesitter-textobjects').setup(textobjects)
+      setup_textobject_keymaps()
+      setup_treesitter_filetypes()
       vim.treesitter.language.register('bash', 'zsh')
     end,
   },

@@ -2,6 +2,7 @@ local formatters_by_filetype = {
   lua = { 'stylua' },
   just = { 'just' },
   sh = { 'shfmt' },
+  toml = { 'taplo' },
 }
 
 local function wrap_args(original_args, prefix_args, original_cmd, self, ctx)
@@ -75,6 +76,7 @@ return {
     'lua',
     'just',
     'sh',
+    'toml',
   },
   cmd = { 'ConformInfo' },
   -- This will provide type hinting with LuaLS
@@ -92,11 +94,33 @@ return {
 
     local formatter_overrides = {}
     for formatter_name, _ in pairs(configured_formatters) do
-      local wrapped_formatter = set_formatter_runner(formatter_name, 'mise', { 'x', '--' })
-      if wrapped_formatter then
-        formatter_overrides[formatter_name] = wrapped_formatter
+      if formatter_name ~= 'taplo' then
+        local wrapped_formatter = set_formatter_runner(formatter_name, 'mise', { 'x', '--' })
+        if wrapped_formatter then
+          formatter_overrides[formatter_name] = wrapped_formatter
+        end
       end
     end
+
+    formatter_overrides.taplo = {
+      command = 'bunx',
+      args = {
+        '--yes',
+        '@taplo/cli',
+        'format',
+        '--option',
+        'compact_arrays=false',
+        '--option',
+        'compact_inline_tables=false',
+        '--option',
+        'array_auto_collapse=false',
+        '--option',
+        'array_auto_expand=false',
+        '--stdin-filepath',
+        '$FILENAME',
+        '-',
+      },
+    }
 
     return {
       formatters_by_ft = formatters_by_filetype,

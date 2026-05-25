@@ -8,7 +8,6 @@ return {
     'typescript',
     'typescriptreact',
     'typescript.tsx',
-    'toml',
     'json',
     'jsonc',
     'json5',
