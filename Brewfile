@@ -3,6 +3,7 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "modem-dev/tap"
 tap "nikitabobko/tap"
+tap "shobhit99/tap"
 tap "supercmdlabs/supercmd"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
@@ -219,6 +220,8 @@ cask "rectangle"
 cask "spotify"
 # Open Source, AI Native MacOS Launcher
 cask "supercmdlabs/supercmd/supercmd"
+# Interactive island for the Mac notch
+cask "shobhit99/tap/superisland"
 # Multiplayer code editor
 cask "zed"
 # Collect, organise, cite, and share research sources
