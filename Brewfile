@@ -1,5 +1,4 @@
 tap "azure/kubelogin"
-tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "modem-dev/tap"
@@ -28,7 +27,7 @@ brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Pack, ship and run any application as a lightweight container
-brew "docker"
+brew "docker", link: false
 # Docker CLI plugin for extended build capabilities with BuildKit
 brew "docker-buildx"
 # Isolated development environments using Docker
@@ -95,6 +94,8 @@ brew "kubectx"
 brew "kubernetes-cli"
 # Simple terminal UI for git commands
 brew "lazygit"
+# LLM inference in C/C++
+brew "llama.cpp"
 # LLVM's OpenMP runtime library
 brew "libomp"
 # Rainbows and unicorns in your console!
@@ -173,10 +174,6 @@ brew "zoxide"
 brew "zsh"
 # A Kubernetes credential (exec) plugin implementing azure authentication
 brew "azure/kubelogin/kubelogin"
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
-# Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar"
 # Desktop-inspired terminal diff viewer for agent-authored changesets
 brew "modem-dev/tap/hunk"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
