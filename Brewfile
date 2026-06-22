@@ -202,8 +202,6 @@ cask "handy"
 cask "karabiner-elements"
 # Software for Logitech devices
 cask "logi-options+"
-# Meet, chat, call, and collaborate in just one place
-cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # Calendar for professionals and teams
