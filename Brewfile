@@ -1,6 +1,5 @@
 tap "azure/kubelogin"
 tap "databricks/tap"
-tap "felixkratz/formulae"
 tap "modem-dev/tap"
 tap "oven-sh/bun"
 # GitOps Continuous Delivery for Kubernetes
