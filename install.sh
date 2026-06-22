@@ -12,7 +12,7 @@ script_dir="$(cd "$(dirname "$0")" && pwd)"
 if ! [[ -d "$HOME/.config" ]]; then
 	git clone "https://github.com/baggiponte/dotfiles" "$HOME/.config"
 else
-	read -r -p "⚠️ '$HOME/.config' already exists. Replace dotfiles? [y/N] " response
+	read -r "?⚠️ '$HOME/.config' already exists. Replace dotfiles? [y/N] " response
 	if [[ "$response" =~ ^[Yy](es)?$ ]]; then
 
 		if [[ "$script_dir" == "$HOME/.config"* ]]; then
