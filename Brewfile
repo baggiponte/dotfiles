@@ -175,8 +175,6 @@ brew "zoxide"
 brew "zsh"
 # Chromium based browser
 cask "arc"
-# Anthropic's official Claude AI desktop app
-cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
