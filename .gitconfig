@@ -30,6 +30,7 @@
 
 [credential]
 	helper = osxkeychain
+	helper = /usr/local/share/gcm-core/git-credential-manager
 
 [include]
 	path = /Users/luca/.config/.gitconfig.local
