@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+print "📍 requesting admin privileges..."
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 script_dir="$(cd "$(dirname "$0")" && pwd)"
 
 # +----------------+
