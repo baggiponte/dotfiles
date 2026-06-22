@@ -2,9 +2,7 @@ tap "azure/kubelogin"
 tap "databricks/tap"
 tap "felixkratz/formulae"
 tap "modem-dev/tap"
-tap "nikitabobko/tap"
 tap "oven-sh/bun"
-tap "supercmdlabs/supercmd"
 # GitOps Continuous Delivery for Kubernetes
 brew "argocd"
 # Cryptography and SSL/TLS Toolkit
@@ -111,8 +109,6 @@ brew "kubernetes-cli"
 brew "lazygit"
 # LLM inference in C/C++
 brew "llama.cpp"
-# Rainbows and unicorns in your console!
-brew "lolcat"
 # Language Server for the Lua language
 brew "lua-language-server"
 # Utility for directing compilation
@@ -149,14 +145,10 @@ brew "pngpaste"
 brew "pnpm"
 # Quick and easy command-line file transfer utility from any computer to another
 brew "portal"
-# Object-relational database system
-brew "postgresql@18"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Semantic version control CLI with entity-level diffs and blame
 brew "sem-cli"
-# Autoformat shell script source code
-brew "shfmt"
 # Prettier way to inspect network connections
 brew "snitch"
 # Graphical command-line client for SSH
@@ -183,8 +175,6 @@ brew "wrkflw"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Chromium based browser
 cask "arc"
 # Anthropic's official Claude AI desktop app
@@ -208,8 +198,6 @@ cask "ghostty"
 cask "git-credential-manager"
 # Speech to text application
 cask "handy"
-# Utility to hide menu bar items
-cask "hiddenbar"
 # Keyboard customiser
 cask "karabiner-elements"
 # Software for Logitech devices
