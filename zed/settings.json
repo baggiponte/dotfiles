@@ -7,33 +7,34 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "new_window",
   "agent_servers": {
     "github-copilot-cli": {
-      "type": "registry"
+      "type": "registry",
     },
     "codex-acp": {
-      "type": "registry"
+      "type": "registry",
     },
     "amp-acp": {
-      "type": "registry"
-    }
+      "type": "registry",
+    },
   },
   "project_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "outline_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "collaboration_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "agent": {
     "dock": "left",
     "favorite_models": [],
-    "model_parameters": []
+    "model_parameters": [],
   },
   "git_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "edit_predictions": {
     "provider": "zed",
@@ -43,22 +44,28 @@
     "detect_venv": "off",
   },
   "lsp": {
+    "pyrefly": {
+      "binary": {
+        "path": "uvx",
+        "arguments": ["--from=pyrefly", "--offline", "--", "pyrefly", "lsp"],
+      },
+    },
     "ty": {
       "binary": {
         "path": "uvx",
-        "arguments": ["--from=ty", "ty", "server"],
+        "arguments": ["--from=ty", "--offline", "--", "ty", "server"],
       },
     },
   },
   "languages": {
     "Python": {
       "language_servers": [
-        "ty",
+        // "ty",
+        "pyrefly",
         "ruff",
         "!basedpyright",
-        "!pyrefly",
-        "!pyright",
         "!pylsp",
+        "!pyright",
       ],
       "format_on_save": "on",
       "formatter": [
