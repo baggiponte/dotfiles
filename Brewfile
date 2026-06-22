@@ -143,8 +143,6 @@ brew "pipes-sh"
 brew "pngpaste"
 # Fast, disk space efficient package manager
 brew "pnpm"
-# Quick and easy command-line file transfer utility from any computer to another
-brew "portal"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Semantic version control CLI with entity-level diffs and blame
