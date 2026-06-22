@@ -37,14 +37,11 @@ fi
 install_dir="$HOME/.config/install"
 
 modules=(
-	xcode
-	zdotdir
-	brew
-	xdg
-	symlinks
-	dependencies
+	prerequisites
+	packages
+	config
 	python
-	apply-ui-defaults
+	apply-macos-defaults
 )
 
 for m in "${modules[@]}"; do
