@@ -36,7 +36,7 @@ fi
 
 install_dir="$HOME/.config/install"
 
-modules=(
+steps=(
 	prerequisites
 	packages
 	config
@@ -44,6 +44,6 @@ modules=(
 	apply-macos-defaults
 )
 
-for m in "${modules[@]}"; do
-	source "$install_dir/${m}.zsh"
+for step in "${steps[@]}"; do
+	source "$install_dir/${step}.zsh"
 done
