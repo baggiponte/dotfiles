@@ -1,8 +1,10 @@
-tap "azure/kubelogin", trusted: true
-tap "databricks/tap", trusted: true
-tap "homebrew/bundle"
-tap "homebrew/services"
-tap "modem-dev/tap", trusted: true
+tap "azure/kubelogin"
+tap "databricks/tap"
+tap "felixkratz/formulae"
+tap "modem-dev/tap"
+tap "nikitabobko/tap"
+tap "oven-sh/bun"
+tap "supercmdlabs/supercmd"
 # GitOps Continuous Delivery for Kubernetes
 brew "argocd"
 # Cryptography and SSL/TLS Toolkit
@@ -21,10 +23,6 @@ brew "gettext"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Incredibly fast JavaScript runtime, bundler, test runner, and package manager
-brew "bun"
-# Vector graphics library with cross-device output support
-brew "cairo"
 # Console Matrix
 brew "cmatrix"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -149,14 +147,10 @@ brew "pipes-sh"
 brew "pngpaste"
 # Fast, disk space efficient package manager
 brew "pnpm"
-# PDF rendering library (based on the xpdf-3.0 code base)
-brew "poppler"
 # Quick and easy command-line file transfer utility from any computer to another
 brew "portal"
 # Object-relational database system
 brew "postgresql@18"
-# Database management TUI for PostgreSQL/MySQL/SQLite
-brew "rainfrog"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Semantic version control CLI with entity-level diffs and blame
@@ -171,34 +165,26 @@ brew "sshs"
 brew "starship"
 # Opinionated Lua code formatter
 brew "stylua"
-# Change macOS audio source from the command-line
-brew "switchaudio-osx"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Terminal multiplexer
 brew "tmux"
-# Program that allows you to count code, quickly
-brew "tokei"
 # Parser generator tool
 brew "tree-sitter-cli"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
 brew "wget"
-# CLI for Git worktree management, designed for parallel AI agent workflows
-brew "worktrunk"
 # Validate and execute GitHub Actions workflows locally
 brew "wrkflw"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# A Kubernetes credential (exec) plugin implementing azure authentication
-brew "azure/kubelogin/kubelogin"
-# Command-line interface for the Databricks platform
-brew "databricks/tap/databricks"
-# Desktop-inspired terminal diff viewer for agent-authored changesets
-brew "modem-dev/tap/hunk"
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Chromium based browser
 cask "arc"
 # Anthropic's official Claude AI desktop app
@@ -207,10 +193,8 @@ cask "claude"
 cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Drivers for DisplayLink docks, adapters and monitors
-cask "displaylink"
-# Window peeking utility app
-cask "dockdoor"
+# Voice and text chat software
+cask "discord"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
@@ -230,6 +214,8 @@ cask "hiddenbar"
 cask "karabiner-elements"
 # Software for Logitech devices
 cask "logi-options+"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # Calendar for professionals and teams
@@ -240,8 +226,6 @@ cask "notion-cli"
 cask "obsidian"
 # Collaboration platform for API development
 cask "postman"
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle"
 # Music streaming service
 cask "spotify"
 # Multiplayer code editor
