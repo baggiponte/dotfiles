@@ -1,0 +1,7 @@
+{
+  "trustedtaps": [
+    "azure/kubelogin",
+    "databricks/tap",
+    "modem-dev/tap"
+  ]
+}
