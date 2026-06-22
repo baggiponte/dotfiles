@@ -1,0 +1,11 @@
+{
+  "version": "1",
+  "environments": {
+    "prod": {
+      "49d2134e-739b-451b-9daf-9b66da25d29e": {
+        "id": "49d2134e-739b-451b-9daf-9b66da25d29e",
+        "name": "Luca's Workspace"
+      }
+    }
+  }
+}
