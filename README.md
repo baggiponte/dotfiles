@@ -1,19 +1,28 @@
 # My Dotfiles
 
+Bootstrap a new Mac:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/baggiponte/dotfiles/main/install.sh | zsh
+```
+
 ![latest-setup](./screenshots/2022_12_18.png)
 
 ## Software I use
 
-* [`ghostty`](https://github.com/ghostty-org/ghostty): a blazingly fast terminal, written in rust.
-* [`karabiner elements`](https://github.com/pqrs-org/Karabiner-Elements): a powerful utility for keyboard customization on macOS.
-* [`lazygit`](https://github.com/jesseduffield/lazygit): simple terminal UI for git commands.
-* [`neovim`](https://github.com/neovim/neovim): a vim-fork focused on extensibility and usability.
-* [`aerospace`](https://github.com/nikitabobko/AeroSpace): AeroSpace is an i3-like tiling window manager for macOS
-* [`sketchybar`](https://github.com/FelixKratz/SketchyBar): a highly customisable macOS status bar replacement.
-* [`tmux`](https://github.com/tmux/tmux): a terminal multiplexer.
-* [`zsh`](https://sourceforge.net/p/zsh/code/ci/master/tree/).
+Everything is installed with [`homebrew`](https://brew.sh/).
 
-Everything is installed with [`homebrew`](https://brew.sh/), the missing package manager for macOS (or Linux).
+## Install script
+
+[`install.sh`](./install.sh) orchestrates the setup by sourcing modules from [`install/`](./install/):
+
+| Module | What it does |
+|---|---|
+| [`prerequisites`](./install/prerequisites.zsh) | Installs Xcode CLI tools, accepts licence, configures `ZDOTDIR` in `/etc/zshenv` |
+| [`packages`](./install/packages.zsh) | Installs Homebrew (if missing), runs `brew bundle` from [`Brewfile`](./Brewfile), sets up Docker plugins |
+| [`config`](./install/config.zsh) | Exports `XDG_*` dirs, creates symlinks (`.gitconfig`, iCloud) |
+| [`python`](./install/python.zsh) | Installs Python versions (3.10–3.13) via uv |
+| [`apply-macos-defaults`](./install/apply-macos-defaults.zsh) | Applies macOS system settings — Dock, Finder, keyboard, mouse, trackpad, Stage Manager, screenshots, text substitutions, and compiles the bat theme |
 
 ## References and links
 
