@@ -11,23 +11,13 @@ script_dir="$(cd "$(dirname "$0")" && pwd)"
 
 if ! [[ -d "$HOME/.config" ]]; then
 	git clone "https://github.com/baggiponte/dotfiles" "$HOME/.config"
-else
-	read -r "?⚠️ '$HOME/.config' already exists. Replace dotfiles? [y/N] " response
-	if [[ "$response" =~ ^[Yy](es)?$ ]]; then
-
-		if [[ "$script_dir" == "$HOME/.config"* ]]; then
-			print "🚨 Cannot replace dotfiles while running from \$HOME/.config."
-			print "   Run this script from outside \$HOME/.config first."
-			exit 1
-		fi
-
-		mv "$HOME/.config" "$HOME/.config.bak"
-		print "✔︎ moved old configs to '$HOME/.config.bak'"
-
-		git clone "https://github.com/baggiponte/dotfiles" "$HOME/.config"
-	else
-		print "⚠️ did not clone dotfiles: this script might fail if a binary is not found"
-	fi
+elif ! [[ -d "$HOME/.config/.git" ]]; then
+	print "⚠️ '$HOME/.config' exists but is not a git repository."
+	print "   Remove it manually and re-run."
+	exit 1
+elif [[ "$script_dir" != "$HOME/.config"* ]]; then
+	print "📍 pulling latest dotfiles..."
+	git -C "$HOME/.config" pull --ff-only
 fi
 
 # +------------------+
