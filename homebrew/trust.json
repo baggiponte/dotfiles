@@ -2,6 +2,9 @@
   "trustedtaps": [
     "azure/kubelogin",
     "databricks/tap",
-    "modem-dev/tap"
+    "modem-dev/tap",
+  ],
+  "trustedformulae": [
+    "databricks/tap/databricks"
   ]
 }
