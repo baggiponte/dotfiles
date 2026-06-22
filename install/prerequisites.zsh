@@ -1,7 +1,7 @@
 print "📍 checking xcode tools are installed..."
 
 if ! xcode-select --print-path &>/dev/null; then
-	print "🏗️ installing xcode command line tools..."
+	print "🏗️ a popup will appear — click Install, then wait."
 	xcode-select --install &>/dev/null
 
 	until xcode-select --print-path &>/dev/null; do
