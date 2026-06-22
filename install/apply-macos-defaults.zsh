@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-print "Applying macOS UI defaults..."
+print "Applying macOS defaults..."
 
 # Dock
 defaults write com.apple.dock autohide -bool true
@@ -96,9 +96,26 @@ defaults write NSGlobalDomain NSUserDictionaryReplacementItems -array \
   '{on = 1; replace = otoh; with = "on the other hand";}' \
   '{on = 1; replace = wrt; with = "with respect to";}'
 
+# Stage Manager.
+defaults write com.apple.WindowManager GloballyEnabled -bool true
+defaults write com.apple.WindowManager AutoHide -bool true
+defaults write com.apple.WindowManager ShowDesktopEnabled -bool false
+defaults write com.apple.WindowManager StageManagerWidgetGrouping -int 0
+defaults write com.apple.WindowManager StandardShowDesktopMode -int 0
+
+# Screenshots.
+defaults write com.apple.screencapture location -string "$HOME/Desktop"
+defaults write com.apple.screencapture disable-shadow -bool true
+
+# Bat theme.
+if command -v bat &> /dev/null; then
+	bat cache --build
+fi
+
 # Restart affected services.
 killall Dock 2>/dev/null || true
 killall Finder 2>/dev/null || true
+killall WindowManager 2>/dev/null || true
 killall SystemUIServer 2>/dev/null || true
 
 print "Done. Some settings may require logging out and back in."
