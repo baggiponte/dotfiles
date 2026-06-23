@@ -1,5 +1,5 @@
-tap "azure/kubelogin"
-tap "databricks/tap"
+tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
+tap "databricks/tap", trusted: { formulae: ["databricks"] }
 tap "modem-dev/tap"
 tap "oven-sh/bun"
 # GitOps Continuous Delivery for Kubernetes
@@ -195,6 +195,8 @@ cask "git-credential-manager"
 cask "handy"
 # Keyboard customiser
 cask "karabiner-elements"
+# Menu bar app for running local LLMs
+cask "llama-app"
 # Software for Logitech devices
 cask "logi-options+"
 # Tool to control external monitor brightness & volume
