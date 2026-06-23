@@ -1,6 +1,7 @@
 {
   "trustedformulae": [
     "azure/kubelogin/kubelogin",
-    "databricks/tap/databricks"
+    "databricks/tap/databricks",
+    "modem-dev/tap/hunk"
   ]
 }
