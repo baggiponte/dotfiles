@@ -165,6 +165,8 @@ brew "uv"
 brew "watch"
 # Internet file retriever
 brew "wget"
+# CLI for Git worktree management, designed for parallel AI agent workflows
+brew "worktrunk"
 # Validate and execute GitHub Actions workflows locally
 brew "wrkflw"
 # Shell extension to navigate your filesystem faster
