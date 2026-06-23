@@ -1,7 +1,6 @@
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
 tap "databricks/tap", trusted: { formulae: ["databricks"] }
 tap "modem-dev/tap"
-tap "oven-sh/bun"
 # GitOps Continuous Delivery for Kubernetes
 brew "argocd"
 # Cryptography and SSL/TLS Toolkit
@@ -172,6 +171,8 @@ brew "wrkflw"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Desktop-inspired terminal diff viewer for agent-authored changesets
+brew "modem-dev/tap/hunk", trusted: true
 # Chromium based browser
 cask "arc"
 # Terminal-based AI coding assistant
