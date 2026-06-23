@@ -5,7 +5,6 @@
 # override PATH because path_helper screws it up
 paths=(
     "/Applications/Obsidian.app/Contents/MacOS"
-    "/opt/homebrew/opt/postgresql@18/bin"
     "${HOME}/.local/bin"
     "/usr/local/bin"
     "/usr/bin"
@@ -50,20 +49,6 @@ fi
 # +--------+
 # | PYTHON |
 # +--------+
-
-# TODO: remove once uv takes over :)
-if command -v poetry >/dev/null; then
-    export POETRY_CONFIG_DIR="${XDG_CONFIG_HOME}/pypoetry"
-    export POETRY_DATA_DIR="${XDG_DATA_HOME}/pypoetry"
-    export POETRY_HOME="${XDG_DATA_HOME}/pypoetry"
-fi
-
-export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
-
-# https://docs.jupyter.org/en/latest/use/jupyter-directories.html
-export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
-export JUPYTER_DATA_DIR="${XDG_DATA_HOME}/jupyter"
-export JUPYTER_RUNTIME_DIR="${JUPYTER_DATA_DIR}/runtime"
 
 export COOKIECUTTER_CONFIG="${XDG_CONFIG_HOME}/cookiecutter/cookiecutter.yaml"
 
