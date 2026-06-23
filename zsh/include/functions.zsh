@@ -17,9 +17,3 @@ leave () {
     cd .. || return 1
     rm -rf "$here"
 }
-
-zim-update () {
-    print -- "\n🐚 $fg_bold[white]Let's fish some new shells!$reset_color 🐚"
-
-    zimfw upgrade && zimfw uninstall && zimfw update
-}
