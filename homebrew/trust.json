@@ -1,7 +1,9 @@
 {
   "trustedformulae": [
+    "anomalyco/tap/opencode",
     "azure/kubelogin/kubelogin",
     "databricks/tap/databricks",
-    "modem-dev/tap/hunk"
+    "modem-dev/tap/hunk",
+    "openclaw/tap/gogcli"
   ]
 }
