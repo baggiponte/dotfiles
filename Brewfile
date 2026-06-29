@@ -1,6 +1,8 @@
+tap "anomalyco/tap"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
 tap "databricks/tap", trusted: { formulae: ["databricks"] }
 tap "modem-dev/tap"
+tap "openclaw/tap"
 # GitOps Continuous Delivery for Kubernetes
 brew "argocd"
 # Cryptography and SSL/TLS Toolkit
@@ -73,10 +75,6 @@ brew "gnu-sed"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Google Suite CLI
-brew "gogcli"
-# CLI for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more
-brew "googleworkspace-cli"
 # Popular GNU data compression program
 brew "gzip"
 # Kubernetes package manager
@@ -125,10 +123,6 @@ brew "neovim"
 brew "netwatch"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# AI coding agent, built for the terminal
-brew "opencode"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Password manager
@@ -143,6 +137,8 @@ brew "pngpaste"
 brew "pnpm"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Semantic version control CLI with entity-level diffs and blame
 brew "sem-cli"
 # Prettier way to inspect network connections
@@ -173,16 +169,16 @@ brew "wrkflw"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode", trusted: true
 # Desktop-inspired terminal diff viewer for agent-authored changesets
 brew "modem-dev/tap/hunk", trusted: true
+# Google CLI for Gmail, Calendar, Drive, Docs, Sheets, and more
+brew "openclaw/tap/gogcli", trusted: true
 # Chromium based browser
 cask "arc"
-# Terminal-based AI coding assistant
-cask "claude-code"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
-# Voice and text chat software
-cask "discord"
+# Clipboard history app
+cask "clipbook"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
@@ -204,14 +200,10 @@ cask "llama-app"
 cask "logi-options+"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Calendar for professionals and teams
-cask "notion-calendar"
 # Command-line interface for Notion
 cask "notion-cli"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# Collaboration platform for API development
-cask "postman"
 # Music streaming service
 cask "spotify"
 # Multiplayer code editor
