@@ -1,0 +1,42 @@
+#! /usr/bin/env zsh
+
+brew-cleanup () {
+    requires brew
+
+    print -- "\n🧹 $fg_bold[white]Cellar cleanup duties coming up!$reset_color 🧼"
+
+    local brew_cachedir
+    brew_cachedir="$(brew --cache)"
+    local downloaddir="$brew_cachedir/downloads"
+    local caskdir="$brew_cachedir/Cask"
+
+    local formulaes=("$downloaddir"/*(N))
+    local casks=("$caskdir"/*(N))
+    local symlinks=("$brew_cachedir"/*(@N))
+
+    # print "Removing unused formulae..." && brew leaves -p | parallel brew uninstall
+    print -x 2 "\t* Removing unused formulae..." && brew autoremove
+    print -x 2 "\t* Removing lockfiles and outdated downloads..." && brew cleanup -s
+
+    print -x 2 "\t* Cleaning $brew_cachedir..."
+    # if the number of formulaes is not 0, then remove them
+    # see: https://unix.stackexchange.com/a/313187/402599
+    if (($#formulaes)); then
+        print -x 4 "\t* Removing formulae installers in $downloaddir" && rm -- "${formulaes[@]}"
+    fi
+
+    if (($#casks)); then
+        print -x 4 "\t* Removing cask installers in $caskdir" && rm -- "${casks[@]}"
+    fi
+
+    if (($#symlinks)); then
+        print -x 4 "\t* Removing symlinks in $brew_cachedir" && rm -- "${symlinks[@]}"
+    fi
+
+    local bundlefile="${HOMEBREW_BUNDLE_FILE:-"$HOME/.config/Brewfile"}"
+    print -x 2 "\t* Dump formulae and casks to $(basename "${bundlefile}")..."
+    [ -s "${bundlefile}" ] && mv "${bundlefile}" "${bundlefile}.bak"
+    brew bundle dump --file="${bundlefile}"
+}
+
+brew-cleanup

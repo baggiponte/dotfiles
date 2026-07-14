@@ -1,0 +1,11 @@
+#! /usr/bin/env zsh
+
+ls-tree() {
+    requires eza
+    local level="${1:-"1"}"
+    local dir="${2:-"."}"
+
+    eza "$dir" --tree --level "$level" --group-directories-first --all --git-ignore --ignore-glob .git
+}
+
+ls-tree "$1" "$2"

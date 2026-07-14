@@ -1,0 +1,15 @@
+#! /usr/bin/env zsh
+
+teal() {
+	requires tldr sk
+
+    local pattern="$@"
+
+    sk \
+        --cmd="tldr --list" \
+        --preview "tldr {1} --color=always" --preview-window=right,70% \
+        --query="$pattern" \
+        | xargs tldr
+}
+
+teal "$@"

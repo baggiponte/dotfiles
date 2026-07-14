@@ -1,0 +1,12 @@
+#! /usr/bin/env zsh
+
+requires() {
+	for cmd in "$@"; do
+		if ! command -v "$cmd" &>/dev/null; then
+			print "$cmd not installed"
+			return 1
+		fi
+	done
+}
+
+requires "$@"

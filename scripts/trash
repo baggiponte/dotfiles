@@ -1,0 +1,5 @@
+#! /usr/bin/env zsh
+
+trash () { command mv "$@" ~/.Trash ; }
+
+trash "$@"

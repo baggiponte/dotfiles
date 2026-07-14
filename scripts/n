@@ -1,0 +1,13 @@
+#! /usr/bin/env zsh
+
+n() {
+	requires nvim
+
+	if [[ -z "$1" || -d "$1" ]]; then
+		nvim -c "Oil ${1:-.}"
+	else
+		nvim -- "$1"
+	fi
+}
+
+n "$1"
