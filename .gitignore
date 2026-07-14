@@ -30,3 +30,5 @@ colima/*
 *.sock
 
 .gitconfig.local
+
+notion/

@@ -192,6 +192,10 @@ cask "arc"
 cask "clipbook"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
+# Voice and text chat software
+cask "discord"
+# Offline voice-to-text dictation app with AI enhancement
+cask "fluidvoice"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
@@ -203,6 +207,8 @@ cask "gcloud-cli"
 cask "ghostty"
 # Cross-platform Git credential storage for multiple hosting providers
 cask "git-credential-manager"
+# Web browser
+cask "google-chrome"
 # Speech to text application
 cask "handy"
 # Keyboard customiser
@@ -211,6 +217,8 @@ cask "karabiner-elements"
 cask "llama-app"
 # Software for Logitech devices
 cask "logi-options+"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # Command-line interface for Notion
