@@ -7,15 +7,24 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "language_models": {
+    "opencode": {
+      "show_zen_models": false
+    }
+  },
   "cli_default_open_behavior": "new_window",
   "agent_servers": {
+    "opencode": {
+      "type": "custom",
+      "command": "opencode",
+      "args": [
+        "acp"
+      ]
+    },
     "github-copilot-cli": {
       "type": "registry",
     },
     "codex-acp": {
-      "type": "registry",
-    },
-    "amp-acp": {
       "type": "registry",
     },
   },
@@ -29,6 +38,12 @@
     "dock": "right",
   },
   "agent": {
+    "default_model": {
+      "provider": "opencode",
+      "model": "go/glm-5.2",
+      "enable_thinking": false
+    },
+    "sidebar_side": "left",
     "dock": "left",
     "favorite_models": [],
     "model_parameters": [],

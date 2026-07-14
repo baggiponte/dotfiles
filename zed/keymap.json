@@ -24,5 +24,10 @@
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
+  },
+  {
+    "bindings": {
+      "space g": "text_finder::Toggle"
+    }
   }
 ]

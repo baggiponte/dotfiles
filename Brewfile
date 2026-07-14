@@ -1,5 +1,6 @@
 tap "anomalyco/tap"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
+tap "can1357/tap"
 tap "databricks/tap", trusted: { formulae: ["databricks"] }
 tap "modem-dev/tap"
 tap "openclaw/tap"
@@ -51,6 +52,8 @@ brew "eza"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # Command-line fuzzy finder written in Go
@@ -123,6 +126,8 @@ brew "neovim"
 brew "netwatch"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Open client for Cisco AnyConnect VPN
+brew "openconnect"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Password manager
@@ -153,10 +158,14 @@ brew "stylua"
 brew "tealdeer"
 # Terminal multiplexer
 brew "tmux"
+# Official command-line interface for Todoist
+brew "todoist-cli"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Vpnc-script replacement for easy and secure split-tunnel VPN setup
+brew "vpn-slice"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
@@ -171,6 +180,8 @@ brew "zoxide"
 brew "zsh"
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
+# Coding agent with the IDE wired in
+brew "can1357/tap/omp", trusted: true
 # Desktop-inspired terminal diff viewer for agent-authored changesets
 brew "modem-dev/tap/hunk", trusted: true
 # Google CLI for Gmail, Calendar, Drive, Docs, Sheets, and more
@@ -179,6 +190,8 @@ brew "openclaw/tap/gogcli", trusted: true
 cask "arc"
 # Clipboard history app
 cask "clipbook"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
@@ -204,6 +217,8 @@ cask "monitorcontrol"
 cask "notion-cli"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# AI coding agent desktop client
+cask "opencode-desktop"
 # Music streaming service
 cask "spotify"
 # Multiplayer code editor
