@@ -8,7 +8,7 @@ ln -sf "$HOME/.config/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$HOME/Library/Mobile Documents/com~apple~CloudDocs/" "$HOME/icloud"
 
 mkdir -p "$HOME/.local/bin"
-for script in "$HOME/.config/bin"/*(N); do
+for script in "$HOME/.config/scripts"/*(N); do
     name="${script:t}"
     [[ "$name" == *.md ]] && continue
     [[ -d "$script" ]] && continue
