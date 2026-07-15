@@ -229,8 +229,6 @@ cask "obsidian"
 cask "opencode-desktop"
 # Music streaming service
 cask "spotify"
-# Multiplayer code editor
-cask "zed"
 # Collect, organise, cite, and share research sources
 cask "zotero"
 uv "argcomplete"
