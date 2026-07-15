@@ -7,5 +7,9 @@
       "enabled": true,
       "timeout": 30000
     }
+  },
+  "agent": {
+    "plan": { "model": "opencode-go/glm-5.2" },
+    "build": { "model": "opencode-go/glm-5.2" }
   }
 }
