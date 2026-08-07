@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'lua-language-server' },
+  cmd = { 'mise', 'x', 'lua-language-server', '--', 'lua-language-server' },
   root_markers = {
     '.git',
     '.luarc.json',

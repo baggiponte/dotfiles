@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'bunx', '--', 'oxlint', '--lsp' },
+  cmd = { 'mise', 'x', 'oxlint', '--', 'oxlint', '--lsp' },
   filetypes = {
     'javascript',
     'javascriptreact',
