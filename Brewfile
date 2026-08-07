@@ -1,33 +1,25 @@
+tap "agavra/tap"
 tap "anomalyco/tap"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
-tap "can1357/tap"
-tap "databricks/tap", trusted: { formulae: ["databricks"] }
+tap "databricks/tap"
 tap "modem-dev/tap"
 tap "openclaw/tap"
-# GitOps Continuous Delivery for Kubernetes
-brew "argocd"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
+# Library for command-line editing
+brew "readline"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Console Matrix
-brew "cmatrix"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Good-lookin' diffs with diff-highlight and more
@@ -60,8 +52,6 @@ brew "findutils"
 brew "fzf"
 # GNU awk utility
 brew "gawk"
-# LLVM's OpenMP runtime library
-brew "libomp"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -82,8 +72,6 @@ brew "go"
 brew "gzip"
 # Kubernetes package manager
 brew "helm"
-# Agent multiplexer that lives in your terminal
-brew "herdr"
 # Improved top (interactive process viewer)
 brew "htop"
 # Configurable static site generator
@@ -106,8 +94,8 @@ brew "kubectx"
 brew "kubernetes-cli"
 # Simple terminal UI for git commands
 brew "lazygit"
-# LLM inference in C/C++
-brew "llama.cpp"
+# LLVM's OpenMP runtime library
+brew "libomp"
 # Language Server for the Lua language
 brew "lua-language-server"
 # Utility for directing compilation
@@ -124,6 +112,8 @@ brew "tree-sitter"
 brew "neovim"
 # Cross-platform realtime network diagnostics TUI
 brew "netwatch"
+# Command-line interface for SQLite
+brew "sqlite"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Open client for Cisco AnyConnect VPN
@@ -138,14 +128,10 @@ brew "pi-coding-agent"
 brew "pipes-sh"
 # Paste PNG into files
 brew "pngpaste"
-# Fast, disk space efficient package manager
-brew "pnpm"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Semantic version control CLI with entity-level diffs and blame
-brew "sem-cli"
 # Prettier way to inspect network connections
 brew "snitch"
 # Graphical command-line client for SSH
@@ -158,8 +144,6 @@ brew "stylua"
 brew "tealdeer"
 # Terminal multiplexer
 brew "tmux"
-# Official command-line interface for Todoist
-brew "todoist-cli"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -178,24 +162,26 @@ brew "wrkflw"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
+brew "agavra/tap/tuicr", trusted: true
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
-# Coding agent with the IDE wired in
-brew "can1357/tap/omp", trusted: true
+# Command-line interface for the Databricks platform
+brew "databricks/tap/databricks", trusted: true
 # Desktop-inspired terminal diff viewer for agent-authored changesets
 brew "modem-dev/tap/hunk", trusted: true
 # Google CLI for Gmail, Calendar, Drive, Docs, Sheets, and more
 brew "openclaw/tap/gogcli", trusted: true
+# Enable Windows-like alt-tab
+cask "alt-tab"
 # Chromium based browser
 cask "arc"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Clipboard history app
 cask "clipbook"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
-# Voice and text chat software
-cask "discord"
-# Offline voice-to-text dictation app with AI enhancement
-cask "fluidvoice"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
@@ -213,16 +199,12 @@ cask "google-chrome"
 cask "handy"
 # Keyboard customiser
 cask "karabiner-elements"
-# Menu bar app for running local LLMs
-cask "llama-app"
 # Software for Logitech devices
 cask "logi-options+"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Command-line interface for Notion
-cask "notion-cli"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # AI coding agent desktop client
@@ -235,6 +217,8 @@ uv "argcomplete"
 uv "azure-cli"
 uv "google-colab-cli"
 uv "huggingface-hub"
+uv "llmfit"
 uv "maturin"
 uv "prek"
 uv "wandb"
+npm "prime-agent"
