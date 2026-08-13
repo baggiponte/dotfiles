@@ -96,8 +96,6 @@ brew "kubernetes-cli"
 brew "lazygit"
 # LLVM's OpenMP runtime library
 brew "libomp"
-# Language Server for the Lua language
-brew "lua-language-server"
 # Utility for directing compilation
 brew "make"
 # Run a Kubernetes cluster locally
