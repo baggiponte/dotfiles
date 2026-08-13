@@ -1,8 +1,8 @@
 {
   "trustedformulae": [
+    "agavra/tap/tuicr",
     "anomalyco/tap/opencode",
     "azure/kubelogin/kubelogin",
-    "can1357/tap/omp",
     "databricks/tap/databricks",
     "local/openconnect/openconnect",
     "modem-dev/tap/hunk",
