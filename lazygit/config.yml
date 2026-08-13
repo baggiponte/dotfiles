@@ -4,9 +4,9 @@ gui:
   nerdFontsVersion: "3"
 git:
   overrideGpg: true
-  pagers:
+  diffRenderers:
     - colorArg: 'always'
-      pager: >
+      command: >
         diff-so-fancy
 
 keybinding:
