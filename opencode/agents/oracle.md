@@ -1,7 +1,7 @@
 ---
 description: Second-opinion deep reasoner for complex bugs, architecture analysis, and refactoring plans. Use when the main agent is stuck, when you suspect a subtle bug, when you need to verify logic hasn't changed across a refactor, or when you want a different perspective on a hard problem. Invoke explicitly or let the main agent call you autonomously when it hits a wall.
 mode: subagent
-model: github-copilot/claude-opus-4.6
+model: opencode-go/kimi-k3
 permission:
   edit: deny
   bash: ask
