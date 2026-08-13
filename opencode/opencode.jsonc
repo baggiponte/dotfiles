@@ -9,7 +9,7 @@
     }
   },
   "agent": {
-    "plan": { "model": "opencode-go/glm-5.2" },
-    "build": { "model": "opencode-go/glm-5.2" }
+    "plan": { "model": "opencode-go/deepseek-v4-flash" },
+    "build": { "model": "opencode-go/deepseek-v4-flash" }
   }
 }
