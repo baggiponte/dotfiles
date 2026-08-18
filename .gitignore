@@ -1,34 +1,36 @@
+# Authentication & local credentials
+acli/
+glab-cli/config.yml
+glab-cli/recover/
 todoist-cli/config.json
+.secrets
+.gitconfig.local
 
+# OpenCode runtime state (auto-generated on startup)
+opencode/cli.json
+opencode/service.json
+
+# Apps & tools
 argocd/
+colima/*
+github-copilot
+gcloud
 mole/
 mlflow/
+notion/
 
-.secrets
+# Language runtimes
+ipython
+jupyter
 
-gcloud
-
-glab-cli/config.yml
-
+# Editors
 zed/**
 !zed/settings.json
 !zed/snippets
 !zed/keymap.json
-
-*.bak
-
-github-copilot
-
-ipython
-jupyter
-
 karabiner/*
 !karabiner/karabiner.json
 
-colima/*
-
+# Misc
+*.bak
 *.sock
-
-.gitconfig.local
-
-notion/
