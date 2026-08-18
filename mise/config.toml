@@ -1,5 +1,7 @@
 [tools]
 bun = "latest"
+"npm:@opencode-ai/cli" = { version = "beta", bun_args = "--trust" }
 
 [settings]
 experimental = true
+npm.package_manager = "bun"
