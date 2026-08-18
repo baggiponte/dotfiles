@@ -1,5 +1,6 @@
 tap "agavra/tap"
 tap "anomalyco/tap"
+tap "atlassian/acli"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
 tap "databricks/tap"
 tap "modem-dev/tap"
@@ -164,6 +165,8 @@ brew "zsh"
 brew "agavra/tap/tuicr", trusted: true
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
+# Software to interact with Atlassian Cloud from the terminal
+brew "atlassian/acli/acli", trusted: true
 # Command-line interface for the Databricks platform
 brew "databricks/tap/databricks", trusted: true
 # Desktop-inspired terminal diff viewer for agent-authored changesets
@@ -180,6 +183,8 @@ cask "chatgpt"
 cask "clipbook"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
+# Voice and text chat software
+cask "discord"
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
@@ -205,8 +210,6 @@ cask "microsoft-teams"
 cask "monitorcontrol"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# AI coding agent desktop client
-cask "opencode-desktop"
 # Music streaming service
 cask "spotify"
 # Collect, organise, cite, and share research sources
