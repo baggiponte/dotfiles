@@ -2,8 +2,7 @@
 # | Code tools |
 # +------------+
 
-alias codex="command codex --yolo"
-alias claude="CLAUDE_CODE_USE_BEDROCK=1 command claude"
+alias o="opencode2"
 
 # +---------+
 # | Aliases |
