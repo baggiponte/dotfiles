@@ -31,7 +31,8 @@ fi
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 if command -v but >/dev/null 2>&1; then eval "$(command but completions zsh)"; fi
-if comand -v mole >/dev/null 2>&1; then eval "$(command mole completions zsh)"; fi
+if command -v mole >/dev/null 2>&1; then eval "$(command mole completion zsh)"; fi
+if command -v mise >/dev/null 2>&1; then eval "$(command mise activate zsh)"; fi
 
 # hook binaries into zsh
 command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd=j)" # autojump with j
