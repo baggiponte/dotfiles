@@ -1,15 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "mcp": {
-    "atlassian": {
-      "type": "remote",
-      "url": "https://mcp.atlassian.com/v1/mcp/authv2",
-      "enabled": true,
-      "timeout": 30000
-    }
-  },
   "agent": {
     "plan": { "model": "opencode-go/deepseek-v4-flash" },
     "build": { "model": "opencode-go/deepseek-v4-flash" }
+  },
+  "websearch": {
+    "provider": "random"
   }
 }
