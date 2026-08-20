@@ -13,11 +13,11 @@ Migration is **highly feasible and worth doing**, but **not 1:1**. Roughly:
 
 | Area | Verdict |
 |---|---|
-| Homebrew formulae | Migrate to `[bootstrap.packages]` (100% covered, incl. `@17`-style pins) |
-| Homebrew casks incl. fonts | Migrate to `[bootstrap.packages]` as `brew-cask:` (covered; macOS only) |
+| Homebrew formulae (core) | Migrate to `[bootstrap.packages]` as `brew:` (incl. `@17`-style pins) — **validated working** |
+| Homebrew casks incl. fonts | **Do NOT migrate for v1.** Validated: casks already owned by Homebrew are *refused* by `brew-cask:` (adoption fails on 2026.8.9), and cask-fonts-tap fonts error out. **All casks/fonts stay in `brew bundle`** |
 | Taps, `trusted:`, VS Code ext, `uv` tools, npm deps in Brewfile | **Not covered by `[bootstrap.packages]`** — keep `brew bundle` as one fallback hook, or use package plugins/`[tools]` for the subsets you want |
-| Dotfiles symlinks (`~/.gitconfig`, `~/icloud`, `~/.local/bin` script farm) | Migrate to `[dotfiles]` (incl. `symlink-each`, the perfect fit for the script farm) |
-| macOS defaults | Migrate to `[bootstrap.macos.*]`, mostly 1:1; **3 entries can't** (see §5) |
+| Dotfiles symlinks (`~/.gitconfig`, `~/icloud`, `~/.local/bin` script farm) | Migrate to `[dotfiles]` (incl. `symlink-each`, the perfect fit for the script farm) — **validated: all already applied** |
+| macOS defaults | Migrate to `[bootstrap.macos.*]`, ~1:1 for scalars; **strictly typed** (ints vs floats!) and **no `$HOME` expansion, no arrays** (see §5) — **validated: 33/33 converge after float fixes** |
 | `prerequisites` (xcode, `/etc/zshenv`) | Split: **`/etc/zshenv` → `[bootstrap.files]`** (it elevates with sudo and converges — see §4.6); xcode-select + license stays a guarded hook/task |
 | Python (`python.zsh`) | **Stays 100% uv-owned. mise never touches it.** See §2 — this is your explicit constraint |
 | Docker Compose/Buildx plugin wiring | Keep as a `post-packages` hook |
@@ -94,20 +94,27 @@ Every `brew "x"` in your Brewfile becomes `"brew:x" = "latest"`. The `brew` mana
 
 > ⏱️ Note: since you already have Homebrew and use `brew bundle` for the residue, simplest is keeping Homebrew installed and letting the `brew:` / `brew-cask:` managers use the real CLI.
 
-### 4.2 Casks, taps, and the messy Brewfile residue
+### 4.2 Casks, taps, and the messy Brewfile residue — **validated constraints**
 
-- **Plain casks** (`arc`, `alt-tab`, `discord`, …) → `"brew-cask:arc" = "latest"` etc.
-- **Font casks** (`font-hack-nerd-font`, …) → `"brew-cask:font-hack-nerd-font" = "latest"` (also works on Linux for fonts).
-- **Tap-tap formulae** (`agavra/tap/tuicr`, `anomalyco/tap/opencode`, `databricks/tap/databricks`, …) → `brew:`/`brew-cask:` gourmet handling is uncertain for third-party taps + `trusted:`. **Decision point** below.
-- **`vscode "..."`**, **`uv "..."`**, **`npm "..."`** entries → **not** `[bootstrap.packages]`. They're VS Code extension installs, `uv tool` installs, and npm global installs respectively. mise has a `npm` backend for `[tools]` (`"npm:agent-browser"`), package-manager plugins for VS Code, and uv is *your* tool.
+**⚠️ 2026-08-20 validation changed this section.** On mise 2026.8.9, dry-runs against this machine (transcripts in `mise-bootstrap-validation.log` §7) show:
 
-**Decision (recommended for v1):** keep the `Brewfile` and run `brew bundle --file=...` once in a `post-packages` hook that tolerates already-applied bundles (`brew bundle check` or just rely on bundle idempotence). Migrate formulae + core casks into mise declarativity at your own pace; leave the taps/vscode/uv/npm entries in the Brewfile. This gives you convergence for the bulk and keeps the messy tail working without re-implementing it.
+- **Casks owned by real Homebrew cannot be migrated.** `brew-cask:alt-tab`/`arc` fail with *"Homebrew owns this cask; remove it with Homebrew before installing it with mise"* — even with the documented `{ version = "latest", adopt = true }` table form. Adoption is **not functional** for Homebrew-owned casks in this version.
+- **Font casks from `homebrew/cask-fonts` are unusable.** `brew-cask:font-hack-nerd-font` fails with *"Tapped casks must publish API metadata at api/cask/<token>.json"* plus a JSON parse error.
+
+**Consequence:** all casks and fonts **stay in `brew bundle`** for v1. Don't put them in `[bootstrap.packages]`.
+
+Remaining entries and their fates:
+
+- **Tap-tapped formulae** (`agavra/tap/tuicr`, `anomalyco/tap/opencode`, `databricks/tap/databricks`, …) → `brew:` handling of third-party taps is unverified; keep in `brew bundle`.
+- **`vscode "..."`**, **`uv "..."`**, **`npm "..."`** entries → **not** `[bootstrap.packages]`. They're VS Code extension installs, `uv tool` installs, and npm global installs respectively. mise has an `npm` backend for `[tools]` (`"npm:agent-browser"`), package plugins for VS Code, and uv is *your* tool (see §2).
+
+**Decision (validated for v1):** keep the `Brewfile` and run `brew bundle --file=...` in a `post-packages` hook. Migrate **only core formulae** into mise declarativity (`mise bootstrap packages import --manager brew` seeds the list). The fallback hook must *surface* failures rather than swallow them (`|| true` discouraged — see §5).
 
 ### 4.3 `config.zsh` → `[dotfiles]`
 
 | Current | Proposed `[dotfiles]` |
 |---|---|
-| `ln -sf ~/.config/.gitconfig ~/.gitconfig` | `"~/.gitconfig" = { mode = "symlink" }` (source resolved under `dotfiles.root`, or point at `~/.config/.gitconfig`) |
+| `ln -sf ~/.config/.gitconfig ~/.gitconfig` | `"~/.gitconfig" = { source = "~/.config/.gitconfig", mode = "symlink" }` — explicit source, no `dotfiles.root` needed |
 | `ln -sf "<CloudDocs>" ~/icloud` | `"~/icloud" = "<path to com~apple~CloudDocs dir>"` with `mode = "symlink"` (source outside the repo — fine, must be explicit) |
 | script farm → `~/.local/bin` | `"~/.local/bin" = { source = "~/.config/scripts", mode = "symlink-each" }` — **the exact feature for this**: symlinks each script individually, dir can hold other stuff, tracks managed links in `$MISE_STATE_DIR/dotfiles` |
 | `mkdir -p ~/.local/bin` | No longer needed (mise creates targets) |
@@ -117,7 +124,7 @@ Everything under `~/.config` is **already** your dotfiles repo, so `[dotfiles]` 
 
 ### 4.4 `apply-macos-defaults.zsh` → `[bootstrap.macos.*]`
 
-Mostly a faithful translation. Probably 40 of your entries are covered by curated sections:
+Mostly a faithful translation, with three traps found in validation (§5): values are **strictly typed** (float stays float), strings are written **literally** (no `$HOME` expansion), and **arrays are unsupported**. Curated sections cover a chunk:
 
 | Your default(s) | Friendly section |
 |---|---|
@@ -126,25 +133,50 @@ Mostly a faithful translation. Probably 40 of your entries are covered by curate
 | `NSGlobalDomain` KeyRepeat/InitialKeyRepeat/ApplePressAndHoldEnabled/keyboard.fnState | `[bootstrap.macos.keyboard] key_repeat, initial_key_repeat, press_and_hold, fn_state` |
 | `com.apple.AppleMultitouchTrackpad`/Bluetooth trackpad Clicking → `true` | `[bootstrap.macos.trackpad] tap_to_click = true` |
 
-Everything else (FlatFinder, WindowManager, screencapture, Magic Mouse, all other NSGlobalDomain, text-substitution array) goes into raw `[bootstrap.macos.defaults]` domain blocks. Value types map 1:1: TOML bool→`-bool`, int→`-int`, float→`-float`, string→`-string`.
+Everything else goes into raw `[bootstrap.macos.defaults]` — **one block per domain** (this matters: don't stuff trackpad/mouse/finder keys into `NSGlobalDomain`). Value types map 1:1: TOML bool→`-bool`, int→`-int`, float→`-float`, string→`-string`.
+
+**Completion checklist — every line in `apply-macos-defaults.zsh`, classified:**
+
+| Source line(s) | Domain / keys | Fate |
+|---|---|---|
+| `com.apple.dock` autohide, tilesize, magnification, largesize, orientation | `[bootstrap.macos.dock]` | curated |
+| `com.apple.dock` wvous-br-corner/-modifier | `[bootstrap.macos.defaults]` `"com.apple.dock"` | raw ints |
+| `NSGlobalDomain` AppleInterfaceStyle, AppleKeyboardUIMode, Miniaturize, PressAndHold (curated), _HIHideMenuBar, InitialKeyRepeat & KeyRepeat (curated), keyboard.fnState (curated) | `[bootstrap.macos.keyboard]` + `[bootstrap.macos.defaults]` `"NSGlobalDomain"` | curated + raw |
+| `NSGlobalDomain` mouse.doubleClickThreshold (float), mouse.linear, mouse.scaling (**float**), springing.delay (**float**), springing.enabled, trackpad.forceClick, trackpad.scaling (**float**), trackpad.scrolling | `[bootstrap.macos.defaults]` `"NSGlobalDomain"` | raw — **use `3.0`, not `3`** |
+| `com.apple.AppleMultitouchTrackpad` all keys (Clicking curated; ActuateDetents, thresholds, gestures…) | `[bootstrap.macos.defaults]` `"com.apple.AppleMultitouchTrackpad"` | raw |
+| `com.apple.driver.AppleBluetoothMultitouch.mouse` all keys (Magic Mouse) | `[bootstrap.macos.defaults]` `"com.apple.driver.AppleBluetoothMultitouch.mouse"` | raw |
+| `com.apple.finder` FXPreferredViewStyle (curated) + external/hard/removable drives, sidebar keys, SidebarWidth | `[bootstrap.macos.finder]` + `[bootstrap.macos.defaults]` `"com.apple.finder"` | curated + raw |
+| `NSGlobalDomain` NSAutomaticCapitalizationEnabled, NSAutomaticPeriodSubstitutionEnabled | `[bootstrap.macos.defaults]` `"NSGlobalDomain"` | raw |
+| `NSUserDictionaryReplacementItems` (array of dicts) | **not representable** | keep as raw `defaults write ... -array '…'` in `post-defaults` hook |
+| `com.apple.WindowManager` 5 keys (Stage Manager) | `[bootstrap.macos.defaults]` `"com.apple.WindowManager"` | raw |
+| `com.apple.screencapture` location (**resolved path**, not `$HOME`), disable-shadow | `[bootstrap.macos.defaults]` `"com.apple.screencapture"` | raw — **no `$HOME` expansion** |
 
 ### 4.5 The `bootstrap` task + hooks for the imperative tail
 
 ```toml
 [tasks.bootstrap]          # runs LAST, after tools; runs EVERY time → keep idempotent
 run = [
-  # xcode — irreducible part of prerequisites (see §4.6-B)
-  "test -d \"$(xcode-select -p 2>/dev/null || echo /no)\" || xcode-select --install",
+  # Xcode — faithful to prerequisites.zsh: wait for CLT to finish, then accept
+  # license. Blocks (GUI) on a fresh machine — irreducible, see §4.6-B.
+  "if ! xcode-select -p >/dev/null 2>&1; then xcode-select --install; until xcode-select -p >/dev/null 2>&1; do sleep 10; done; sudo xcodebuild -license accept; fi",
   # /etc/zshenv ZDOTDIR now lives in [bootstrap.files] (see §4.6-A) — no task needed
   "uv python install 3.13 3.12 3.11 3.10 || true",          # ← THE PYTHON RULE (see §2)
-  "brew bundle --file=~/.config/Brewfile || true",           # ← residue (see §4.2)
-  "gh auth status || gh auth login",
+  # Fallback for the Brewfile residue (taps/casks/fonts/vscode/uv/npm). Surface
+  # failures — write a log and warn instead of `|| true` (see §5).
+  "brew bundle --file=~/.config/Brewfile >/tmp/brew-bundle.log 2>&1 || { echo '⚠️ brew bundle failed — see /tmp/brew-bundle.log'; false; }",
+  # NOTE: `gh auth` was NOT in the original pipeline; opt in as a manual step,
+  # don't bake it into bootstrap (see §5).
 ]
 
 [bootstrap.hooks.post-packages]
 run = [
-  "mkdir -p ~/.docker/cli-plugins && ln -sfn \"$(brew --prefix)/opt/docker-compose/bin/docker-compose\" ~/.docker/cli-plugins/docker-compose",
-  "ln -sfn \"$(brew --prefix)/opt/docker-buildx/bin/docker-buildx\" ~/.docker/cli-plugins/docker-buildx || true",
+  # Docker CLI plugin wiring (+ the ~/.docker/config.json from packages.zsh)
+  "mkdir -p ~/.docker/cli-plugins",
+  "ln -sfn \"$(brew --prefix)/opt/docker-compose/bin/docker-compose\" ~/.docker/cli-plugins/docker-compose",
+  # FIX (from review): source script points buildx at docker-compose's bin
+  # (likely a typo). Use docker-buildx's own keg.
+  "ln -sfn \"$(brew --prefix)/opt/docker-buildx/bin/docker-buildx\" ~/.docker/cli-plugins/docker-buildx",
+  "printf '{\\n  \"cliPluginsExtraDirs\": [\\n    \"'\"$(brew --prefix)\"'/lib/docker/cli-plugins\"\\n  ]\\n}\\n' > ~/.docker/config.json",
 ]
 
 [bootstrap.hooks.post-dotfiles]      # recreate their script-farm side effects that aren't dotfiles
@@ -171,7 +203,8 @@ So the whole "append `export ZDOTDIR=...` to `/etc/zshenv`" hack becomes a decla
 content = '''
 export ZDOTDIR="$HOME/.config/zsh"
 '''
-mode = "0644"          # explicit ownership is optional on macOS; defaults to current user
+mode = "0644"          # owner/group intentionally unmanaged: file is root:wheel 0644
+                       # and `mise bootstrap files status` reports it unchanged (no chown/write)
 ```
 
 `mise bootstrap files apply --dry-run` shows you exactly what it would do, and `mise bootstrap files status` reports `set`/`differs`/`missing` like the other sections.
@@ -180,12 +213,16 @@ mode = "0644"          # explicit ownership is optional on macOS; defaults to cu
 
 **B) `xcode-select --install` + `xcodebuild -license accept` — ⚠️ irreducible.**
 
-This genuinely cannot be declarative: it's a GUI popup + click-through, needs physical presence, takes minutes, and blocks. No mise section covers it. It stays a **guarded task/hook** (idempotent — only acts when `xcode-select -p` fails):
+This genuinely cannot be declarative: it's a GUI popup + click-through, needs physical presence, takes minutes, and blocks. No mise section covers it. Keep it **faithful to `prerequisites.zsh`** — including the wait loop and license (reviewer fix: a bare `xcode-select --install` without waiting lets later steps race CLT install and skips licensing):
 
 ```sh
-command -v git >/dev/null || xcode-select --install   # note: needs interaction anyway
-test -d "$(xcode-select -p 2>/dev/null)" || xcode-select --install
-sudo xcodebuild -license accept 2>/dev/null || true
+if ! xcode-select -p >/dev/null 2>&1; then
+  xcode-select --install                  # GUI popup, needs human
+  until xcode-select -p >/dev/null 2>&1; do
+    sleep 10
+  done
+  sudo xcodebuild -license accept
+fi
 ```
 
 Related bonus: since you're touching shell plumbing, `[bootstrap.user].login_shell = "/bin/zsh"` covers the `/etc/shells` + `chsh` side (it even appends the shell to `/etc/shells` when missing, with the same sudo path). Your machine already runs zsh, so it's a no-op — nice to declare anyway.
@@ -199,11 +236,15 @@ Related bonus: since you're touching shell plumbing, `[bootstrap.user].login_she
 | Thing | Why | Handling |
 |---|---|---|
 | `/etc/zshenv` ZDOTDIR | `[dotfiles]` has no sudo, but **`[bootstrap.files]` elevates** (whole-file) → see §4.6 | `[bootstrap.files."/etc/zshenv"]` with inline `content`; fallback = guarded `grep`-then-append hook |
-| `xcode-select --install`, license | Interactive GUI popup + sudo; not declarable | Guarded hook/task (only runs when `xcode-select -p` fails) |
-| `NSUserDictionaryReplacementItems` (text substitutions) | `[bootstrap.macos.defaults]` supports **only** bool/int/float/string — no arrays | Keep in a hook or bootstrap task as a raw `defaults write ... -array '...'` |
+| `xcode-select --install`, license | Interactive GUI popup + sudo; not declarable | Guarded task with wait loop + `xcodebuild -license accept` (faithful to `prerequisites.zsh`) |
+| **Homebrew-owned casks** | `brew-cask:` *refuses* them on 2026.8.9 — "Homebrew owns this cask" even with `{ version, adopt = true }` (**validated**) | Stay in `brew bundle`; migration would require `brew uninstall --cask …` first |
+| **cask-fonts-tap fonts** | `brew-cask:` can't fetch tap API metadata + JSON parse error (**validated**) | Stay in `brew bundle` |
+| `NSUserDictionaryReplacementItems` (text substitutions) | `[bootstrap.macos.defaults]` supports **only** bool/int/float/string — no arrays | Keep in a `post-defaults` hook as raw `defaults write ... -array '...'` |
 | `vscode ...`, `uv ...`, `npm ...` Brewfile entries | Not package-manager entries | Stay in Brewfile fallback (or `[tools] npm:...`, uv-tool task) |
-| Third-party `tap`/`trusted:` formulae | mise `brew:`/`brew-cask:` support for non-core taps is unverified | Stay in Brewfile fallback for now |
-| Docker Compose/Buildx plugin dir wiring | Imperative, condititional on install | `post-packages` hook |
+| Third-party `tap`/`trusted:` formulae | mise `brew:` support for non-core taps is unverified | Stay in Brewfile fallback for now |
+| `brew bundle` failures | Silently ignoring (`|| true`) hides a partially bootstrapped machine | Log to `/tmp/brew-bundle.log` and fail loudly in the task |
+| `gh auth` | **Was not in the original pipeline** — do not invent interactive steps | Optional manual post-bootstrap step only |
+| Docker Compose/Buildx plugins + `~/.docker/config.json` | Imperative, conditional on install | `post-packages` hook; also **fix** the buildx symlink path (source script points it at docker-compose's bin — likely a typo) |
 | `~/icloud` symlink | Source is outside the dotfiles repo | Works, but must be explicit source; consider a hook if flaky |
 | `killall`s | mise won't do it | `post-defaults` hook or ignore reminders |
 
@@ -228,7 +269,9 @@ pnpm = "latest"
 # 👇 deliberately NO python. uv owns Python. See §2.
 
 [bootstrap.packages]
-# ---- formulae (translated from Brewfile) ----
+# ---- formulae ONLY (translated from Brewfile). ----
+# Validated: casks/fonts/taps CANNOT migrate (see §4.2) — they stay in Brewfile,
+# handled by the `brew bundle` step in [tasks.bootstrap].
 "brew:gettext" = "latest"
 "brew:readline" = "latest"
 "brew:bash" = "latest"
@@ -238,17 +281,12 @@ pnpm = "latest"
 "brew:coreutils" = "latest"
 "brew:curl" = "latest"
 "brew:git" = "latest"
-# ... (translate the rest of the Brewfile formulae) ...
+# ... (translate the rest of the Brewfile formulae; seed via `mise bootstrap
+# packages import --manager brew`) ...
 "brew:uv" = "latest"
 
-# ---- casks / fonts (translated from Brewfile) ----
-"brew-cask:alt-tab" = "latest"
-"brew-cask:arc" = "latest"
-"brew-cask:font-hack-nerd-font" = "latest"
-# ... rest ...
-
 # ---- fresh-box clone of this repo (see §4.6-B; only needed once) ----
-# Git clone the dotfiles repo before enclosing scratch; keep as a documented
+# Git clone the dotfiles repo before running bootstrap; keep as a documented
 # first-run step or a guarded pre- hook — do NOT declare it as [bootstrap.repos]
 # since the config you are running IS inside that repo (circular).
 
@@ -283,6 +321,7 @@ fn_state = true
 [bootstrap.macos.trackpad]
 tap_to_click = true
 
+# One block per domain — nothing stuffed into NSGlobalDomain that isn't global.
 [bootstrap.macos.defaults]
 "com.apple.dock" = { "wvous-br-corner" = 14, "wvous-br-modifier" = 0 }
 "NSGlobalDomain" = {
@@ -292,23 +331,56 @@ tap_to_click = true
   _HIHideMenuBar = true,
   "com.apple.mouse.doubleClickThreshold" = 0.15,
   "com.apple.mouse.linear" = false,
-  "com.apple.mouse.scaling" = 3,
+  "com.apple.mouse.scaling" = 3.0,        # float! `3` would drift forever
   "com.apple.springing.delay" = 0.0,
   "com.apple.springing.enabled" = true,
   "com.apple.trackpad.forceClick" = true,
-  "com.apple.trackpad.scaling" = 3,
+  "com.apple.trackpad.scaling" = 3.0,     # float!
   "com.apple.trackpad.scrolling" = true,
-  # ... rest of the AppleMultitouchTrackpad / Magic Mouse / Finder entries ...
+  NSAutomaticCapitalizationEnabled = true,
+  NSAutomaticPeriodSubstitutionEnabled = true,
+}
+"com.apple.AppleMultitouchTrackpad" = {
+  ActuateDetents = true, Clicking = true, DragLock = false, Dragging = false,
+  FirstClickThreshold = 1, ForceSuppressed = false, SecondClickThreshold = 1,
+  TrackpadCornerSecondaryClick = 0, TrackpadFiveFingerPinchGesture = 2,
+  TrackpadFourFingerHorizSwipeGesture = 2, TrackpadFourFingerPinchGesture = 2,
+  TrackpadFourFingerVertSwipeGesture = 2, TrackpadHandResting = true,
+  TrackpadHorizScroll = true, TrackpadMomentumScroll = true, TrackpadPinch = true,
+  TrackpadRightClick = true, TrackpadRotate = true, TrackpadScroll = true,
+  TrackpadThreeFingerDrag = false, TrackpadThreeFingerHorizSwipeGesture = 2,
+  TrackpadThreeFingerTapGesture = 0, TrackpadThreeFingerVertSwipeGesture = 2,
+  TrackpadTwoFingerDoubleTapGesture = 1, TrackpadTwoFingerFromRightEdgeSwipeGesture = 3,
+  USBMouseStopsTrackpad = false, UserPreferences = true,
+}
+"com.apple.driver.AppleBluetoothMultitouch.mouse" = {
+  MouseButtonDivision = 55, MouseButtonMode = "OneButton", MouseHorizontalScroll = true,
+  MouseMomentumScroll = true, MouseOneFingerDoubleTapGesture = 0,
+  MouseTwoFingerDoubleTapGesture = 3, MouseTwoFingerHorizSwipeGesture = 2,
+  MouseVerticalScroll = true, UserPreferences = true,
+}
+"com.apple.finder" = {
+  ShowExternalHardDrivesOnDesktop = true, ShowHardDrivesOnDesktop = false,
+  ShowRemovableMediaOnDesktop = true, ShowSidebar = true,
+  SidebarDevicesSectionDisclosedState = true, SidebarPlacesSectionDisclosedState = true,
+  SidebarShowingiCloudDesktop = false, SidebariCloudDriveSectionDisclosedState = true,
+  SidebarWidth = 148,
 }
 "com.apple.WindowManager" = {
   GloballyEnabled = true, AutoHide = true, ShowDesktopEnabled = false,
   StageManagerWidgetGrouping = 0, StandardShowDesktopMode = 0,
 }
-"com.apple.screencapture" = { location = "$HOME/Desktop", "disable-shadow" = true }
+# No $HOME expansion in defaults strings — use the resolved path (see §5).
+"com.apple.screencapture" = { location = "/Users/baggiponte/Desktop", "disable-shadow" = true }
 
 # --- imperative tail (see §4.5 / §5) ---
 [bootstrap.hooks.post-packages]
-run = ["…docker plugin wiring…"]
+run = [
+  "mkdir -p ~/.docker/cli-plugins",
+  "ln -sfn \"$(brew --prefix)/opt/docker-compose/bin/docker-compose\" ~/.docker/cli-plugins/docker-compose",
+  "ln -sfn \"$(brew --prefix)/opt/docker-buildx/bin/docker-buildx\" ~/.docker/cli-plugins/docker-buildx",
+  "printf '{\\n  \"cliPluginsExtraDirs\": [\\n    \"'\"$(brew --prefix)\"'/lib/docker/cli-plugins\"\\n  ]\\n}\\n' > ~/.docker/config.json",
+]
 
 [bootstrap.hooks.post-dotfiles]
 run = "command -v bat && bat cache --build || true"
@@ -318,11 +390,12 @@ run = "killall Dock Finder WindowManager SystemUIServer 2>/dev/null || true"
 
 [tasks.bootstrap]
 run = [
-  # xcode — the irreducible part of prerequisites (see §4.6-B)
-  "test -d \"$(xcode-select -p 2>/dev/null || echo /no)\" || xcode-select --install",
+  # xcode — faithful wait-loop + license (see §4.6-B)
+  "if ! xcode-select -p >/dev/null 2>&1; then xcode-select --install; until xcode-select -p >/dev/null 2>&1; do sleep 10; done; sudo xcodebuild -license accept; fi",
   "uv python install 3.13 3.12 3.11 3.10 || true",   # uv-owned, per your constraint
-  "brew bundle --file=~/.config/Brewfile || true",     # residue (taps/vscode/uv/npm)
-  "gh auth status || gh auth login",
+  # residue: taps/casks/fonts/vscode/uv/npm — log + fail loudly, don't hide
+  "brew bundle --file=~/.config/Brewfile >/tmp/brew-bundle.log 2>&1 || { echo '⚠️ brew bundle failed — see /tmp/brew-bundle.log'; false; }",
+  # NOTE: no `gh auth` — not part of the original pipeline (optional, manual)
 ]
 ```
 
@@ -331,10 +404,10 @@ run = [
 ## 7. Suggested adoption sequence (incremental, low-risk)
 
 1. **Phase 0 — nothing moves.** `mise trust` the repo; run `mise bootstrap --dry-run` (should be near-no-op on your config today) and play with `status`/`plan`. Learn the verbs.
-2. **Phase 1 — dotfiles.** Add the three `[dotfiles]` entries only. `mise bootstrap dotfiles apply --dry-run`, then apply. Lowest risk, immediately reversible with `unapply`.
-3. **Phase 2 — macOS defaults.** Add `[bootstrap.macos.*]` sections. `mise bootstrap macos defaults status --missing` to see drift before applying. Skip the 2–3 unmappable entries (keep them in a `post-defaults` hook).
-4. **Phase 3 — packages.** Add `[bootstrap.packages]` for formulae + core casks; keep `brew bundle` fallback for the rest. Use `mise bootstrap packages import --manager brew` to seed the list from your installed formulae, then curate.
-5. **Phase 4 — collapse the pipeline.** Replace `install.sh` + `install/*.zsh` with the hooks/task above; retire the files; run full `mise bootstrap --yes` on a scratch/user to verify.
+2. **Phase 1 — dotfiles.** Add the three `[dotfiles]` entries only. `mise bootstrap dotfiles apply --dry-run`, then apply. Lowest risk, immediately reversible with `unapply`. ✅ already validated.
+3. **Phase 2 — macOS defaults.** Add `[bootstrap.macos.*]` per the §4.4 checklist (one TOML block per domain). `status --missing` before applying. Only the text-substitution **array** is unmappable — keep it in a `post-defaults` hook. Watch the strictly-typed floats and the resolved screencapture path.
+4. **Phase 3 — packages.** Add `[bootstrap.packages]` **for core formulae only**; casks/taps/fonts/vscode/uv/npm stay in `brew bundle`. Seed with `mise bootstrap packages import --manager brew`, then curate.
+5. **Phase 4 — collapse the pipeline.** Replace `install.sh` + `install/*.zsh` with the hooks/task above (incl. the faithful xcode wait-loop); retire the files; run full `mise bootstrap --yes` on a scratch/user to verify.
 
 **Guardrail at every phase:** `mise bootstrap --dry-run` and `status --missing`. Nothing is ever written without a confirmation/`--yes`.
 
@@ -345,7 +418,9 @@ run = [
 - **Feature is new** (bulk landed mid-2026; you're on 2026.8.9). Expect minor CLI churn — the top-level `mise dotfiles` command is already deprecated in favor of `mise bootstrap dotfiles`.
 - **Destructive by design** — `--force-dotfiles` overwrites conflicting whole-file targets; read diffs before using it. Default is refuse, not replace.
 - **Curated macOS sections ≤ raw defaults**: friendly keys compile to raw `(domain, key)`; you can still write raw for the rest.
-- **No array/dict values** in `[bootstrap.macos.defaults]` — your text-substitution array is the notable casualty.
+- **`brew-cask:` on 2026.8.9 is a dead end for this machine** — Homebrew-owned casks are refused (adopt not honored) and tap-fonts fail. Migrating casks later = `brew uninstall --cask` first, or wait for a fixed release.
+- **No array/dict values** in `[bootstrap.macos.defaults]` — your text-substitution array is the notable casualty (stays a hook).
+- **Strictly typed + no `$HOME` expansion** in defaults — `3` ≠ `3.0`, `$HOME/Desktop` ≠ `/Users/<you>/Desktop`.
 - **`[dotfiles]` has no sudo** — that's why `/etc/zshenv` uses `[bootstrap.files]` instead (which does elevate). But `[bootstrap.files]` is whole-file: declaring `/etc/zshenv` content means mise owns that file and would overwrite anything else in it.
 - **`brew:`/`brew-cask:` third-party tap support unverified** — keep those in `brew bundle` until proven.
 - **Python rule is a hard constraint:** mise must never declare `python` in `[tools]`. If anyone adds it later, `UV_PYTHON`-style confusion returns.

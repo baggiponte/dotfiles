@@ -46,3 +46,50 @@ mise bootstrap: login shell
 mise login_shell: already set to /bin/zsh
 mise bootstrap: tools
 mise all tools are installed
+
+## 7) BLOCKER REPRODUCTION: Homebrew-owned casks + font casks
+--- 7a) brew-cask:alt-tab (Homebrew-owned, adopt=true) ---
+mise ERROR brew-cask:alt-tab: Homebrew owns this cask; remove it with Homebrew before installing it with mise
+mise ERROR Version: 2026.8.9 macos-arm64 (2026-08-19)
+mise ERROR Run with --verbose or MISE_VERBOSE=1 for more information
+
+--- 7b) brew-cask:font-hack-nerd-font (cask-fonts tap) ---
+mise ERROR failed to fetch Homebrew cask 'font-hack-nerd-font' directly. Tapped casks must publish API metadata at api/cask/<token>.json
+mise ERROR invalid type: null, expected a boolean at line 1 column 1966
+mise ERROR Version: 2026.8.9 macos-arm64 (2026-08-19)
+mise ERROR Run with --verbose or MISE_VERBOSE=1 for more information
+
+--- 7c) ownership proof ---
+alt-tab 11.5.0
+arc 1.160.0,85122
+
+## 8) POST-REVIEW revalidation (2026-08-20 15:03)
+--- files ---
+unchanged  file:/etc/zshenv  file mode 0644 uid 0 gid 0  file mode 0644  ~/.config/mise/bootstrap-audit-test.toml
+--- dotfiles ---
+~/.gitconfig  symlink       ~/.config/.gitconfig                            ~/.config/mise/bootstrap-audit-test.toml  applied
+~/icloud      symlink       ~/Library/Mobile Documents/com~apple~CloudDocs  ~/.config/mise/bootstrap-audit-test.toml  applied
+~/.local/bin  symlink-each  ~/.config/scripts                               ~/.config/mise/bootstrap-audit-test.toml  applied
+--- defaults: missing? ---
+com.apple.WindowManager                             StandardShowDesktopMode               0                          0                          set
+com.apple.screencapture                             location                              /Users/baggiponte/Desktop  /Users/baggiponte/Desktop  set
+com.apple.screencapture                             disable-shadow                        true                       true                       set
+exit=0
+--- user ---
+/bin/zsh  /bin/zsh  set
+--- plan ---
+unchanged  package:brew:uv   installed (0.12.5)          installed (any version)
+unchanged  package:brew:git  installed (2.55.0)          installed (any version)
+unchanged  file:/etc/zshenv  file mode 0644 uid 0 gid 0  file mode 0644           ~/.config/mise/bootstrap-audit-test.toml
+Plan: 0 create, 0 update, 4 unchanged, 0 remove, 0 unknown
+--- full pipeline dry-run ---
+mise bootstrap: system files
+mise system files: already converged
+mise bootstrap: dotfiles
+mise files: all files are applied
+mise bootstrap: system defaults
+mise defaults: 33 value(s) already set
+mise bootstrap: login shell
+mise login_shell: already set to /bin/zsh
+mise bootstrap: tools
+mise all tools are installed
