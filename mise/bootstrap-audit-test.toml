@@ -1,0 +1,102 @@
+# ⚠️ VALIDATION-ONLY CONFIG — DO NOT MERGE INTO config.toml AS-IS ⚠️
+#
+# Loaded only for testing, e.g.:
+#   MISE_CONFIG_FILE="$HOME/.config/mise/bootstrap-audit-test.toml" mise bootstrap <...> --dry-run
+#
+# Merge-mode is ADDITIVE (loads alongside ~/.config/mise/config.toml).
+# Everything here is intentionally inert unless you run an explicit
+# "mise bootstrap <part> apply --yes". Never run a real apply against
+# this file until the `review` pass has signed off.
+
+# ── prereq step A: /etc/zshenv ZDOTDIR (see audit §4.6-A) ────────────────────
+# Current file already contains this exact content + trailing newline, so this
+# should converge with ZERO drift on this machine.
+[bootstrap.files."/etc/zshenv"]
+content = '''
+export ZDOTDIR="$HOME/.config/zsh"
+'''
+mode = "0644"
+
+# ── config.zsh → [dotfiles] (see audit §4.3) ────────────────────────────────
+[dotfiles]
+"~/.gitconfig" = { source = "~/.config/.gitconfig", mode = "symlink" }
+"~/icloud" = { source = "~/Library/Mobile Documents/com~apple~CloudDocs", mode = "symlink" }
+"~/.local/bin" = { source = "~/.config/scripts", mode = "symlink-each" }
+
+# ── apply-macos-defaults.zsh → [bootstrap.macos.*] (see audit §4.4) ─────────
+[bootstrap.macos.dock]
+autohide = true
+tilesize = 50
+magnification = true
+largesize = 70
+orientation = "left"
+
+[bootstrap.macos.finder]
+preferred_view_style = "list"    # maps to FXPreferredViewStyle = Nlsv
+
+[bootstrap.macos.keyboard]
+key_repeat = 2
+initial_key_repeat = 15
+press_and_hold = false
+fn_state = true
+
+[bootstrap.macos.trackpad]
+tap_to_click = true
+
+[bootstrap.macos.defaults]
+"com.apple.dock" = { "wvous-br-corner" = 14, "wvous-br-modifier" = 0 }
+"NSGlobalDomain" = {
+  AppleInterfaceStyle = "Dark",
+  AppleKeyboardUIMode = 1,
+  AppleMiniaturizeOnDoubleClick = false,
+  _HIHideMenuBar = true,
+  "com.apple.mouse.doubleClickThreshold" = 0.15,
+  "com.apple.mouse.linear" = false,
+  # strictly-typed floats — `3` ≠ `3.0` (correctness fix from dry-run #1)
+  "com.apple.mouse.scaling" = 3.0,
+  "com.apple.springing.delay" = 0.0,
+  "com.apple.springing.enabled" = true,
+  "com.apple.trackpad.forceClick" = true,
+  "com.apple.trackpad.scaling" = 3.0,
+  "com.apple.trackpad.scrolling" = true,
+}
+"com.apple.WindowManager" = {
+  GloballyEnabled = true,
+  AutoHide = true,
+  ShowDesktopEnabled = false,
+  StageManagerWidgetGrouping = 0,
+  StandardShowDesktopMode = 0,
+}
+# defaults strings are written LITERALLY — no $HOME expansion. Use resolved path.
+"com.apple.screencapture" = { location = "/Users/baggiponte/Desktop", "disable-shadow" = true }
+
+# ── Brewfile formulae → [bootstrap.packages] (see audit §4.1) ────────────────
+# Subset for validation only.
+#
+# VALIDATION FINDINGS (dry-run #1/#2):
+#  * casks owned by real Homebrew CANNOT be adopted by mise 2026.8.9 — refused
+#    even with { version = "latest", adopt = true }.
+#  * font casks (homebrew/cask-fonts tap) fail under brew-cask entirely
+#    ("Tapped casks must publish API metadata" + JSON parse error).
+#    → casks + fonts stay in the `brew bundle` fallback, NOT in mise.
+[bootstrap.packages]
+"brew:bat" = "latest"
+"brew:uv" = "latest"
+"brew:git" = "latest"
+
+# ── user login shell (see audit §4.6 bonus) ─────────────────────────────────
+[bootstrap.user]
+login_shell = "/bin/zsh"
+
+# ── imperative tail (see audit §4.5) — uncomment to validate parse/print only ─
+# [tasks.bootstrap]
+# run = [
+#   "test -d \"$(xcode-select -p 2>/dev/null || echo /no)\" || xcode-select --install",
+#   "uv python install 3.13 3.12 3.11 3.10 || true",
+#   "brew bundle --file=~/.config/Brewfile || true",
+#   "gh auth status || gh auth login",
+# ]
+# [bootstrap.hooks.post-dotfiles]
+# run = "command -v bat && bat cache --build || true"
+# [bootstrap.hooks.post-defaults]
+# run = "killall Dock Finder WindowManager SystemUIServer 2>/dev/null || true"
