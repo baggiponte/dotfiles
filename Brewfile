@@ -202,6 +202,8 @@ cask "google-chrome"
 cask "handy"
 # Keyboard customiser
 cask "karabiner-elements"
+# Menu bar app for running local LLMs
+cask "llama-app"
 # Software for Logitech devices
 cask "logi-options+"
 # Meet, chat, call, and collaborate in just one place
