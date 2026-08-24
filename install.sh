@@ -32,6 +32,7 @@ install_dir="$HOME/.config/install"
 
 steps=(
 	prerequisites
+	mise
 	packages
 	config
 	python
