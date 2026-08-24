@@ -101,8 +101,6 @@ brew "libomp"
 brew "make"
 # Run a Kubernetes cluster locally
 brew "minikube"
-# Polyglot runtime manager (asdf rust clone)
-brew "mise"
 # Deep clean and optimize your Mac
 brew "mole"
 # Incremental parsing library
