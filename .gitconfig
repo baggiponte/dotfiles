@@ -35,7 +35,5 @@
 [includeIf "gitdir:~/work/"]
 	path = ~/work/.gitconfig
 
-[include]
-	path = /Users/luca/.config/.gitconfig.local
 [credential "https://dev.azure.com"]
 	useHttpPath = true
