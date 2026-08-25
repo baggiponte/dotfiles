@@ -7,7 +7,7 @@ local keys = {
 }
 return {
   'OXY2DEV/markview.nvim',
-  lazy = false,
+  ft = { 'markdown', 'rmd', 'quarto', 'mdx', 'pandoc' },
   keys = keys,
   opts = {
     preview = {
