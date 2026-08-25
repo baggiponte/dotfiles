@@ -64,6 +64,9 @@ vim.opt.undofile = true
 
 vim.opt.updatetime = 50 -- Decrease update time.
 
+-- Built-in undo tree (0.12+, ships as dist/opt plugin)
+vim.cmd.packadd('nvim.undotree')
+
 -- [[ Splits ]]
 vim.opt.splitright = true -- bool: Place new window to right of current one
 vim.opt.splitbelow = true -- bool: Place new window below the current one
