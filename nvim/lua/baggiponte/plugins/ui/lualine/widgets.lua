@@ -23,27 +23,4 @@ M.lsp_clients = function()
   return ' ' .. table.concat(buf_client_names, '|')
 end
 
----@return string|EmptyString
-M.null_ls_sources = function()
-  local buf_clients = vim.lsp.get_clients({ name = 'null-ls' })
-
-  if vim.tbl_isempty(buf_clients) then
-    return ''
-  end
-
-  local null_ls_installed, null_ls = pcall(require, 'null-ls')
-
-  if not null_ls_installed then
-    return ''
-  end
-
-  local null_ls_sources_names = {}
-
-  for _, source in ipairs(null_ls.get_source({ filetype = vim.bo.filetype })) do
-    table.insert(null_ls_sources_names, source.name)
-  end
-
-  return '󰖷 ' .. table.concat(null_ls_sources_names, '|')
-end
-
 return M
