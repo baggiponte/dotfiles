@@ -202,15 +202,29 @@ run_files_dirs_fzf() {
     local mode_header=""
     local expected_keys=""
 
+    # Exclude opencode runtime files that are gitignored (node_modules, package
+    # files, local auth/state) without dropping --no-ignore-vcs, so other
+    # gitignored local config (secrets, colima, gcloud, ...) stays browsable.
+    local -a OPENCODE_IGNORES
+    OPENCODE_IGNORES=(
+        --exclude '**/opencode/node_modules'
+        --exclude '**/opencode/package.json'
+        --exclude '**/opencode/package-lock.json'
+        --exclude '**/opencode/bun.lock'
+        --exclude '**/opencode/cli.json'
+        --exclude '**/opencode/service.json'
+        --exclude '**/opencode/.gitignore'
+    )
+
     case "$mode" in
         files)
-            LIST_CMD=(fd --hidden --no-ignore-vcs --type file)
+            LIST_CMD=(fd --hidden --no-ignore-vcs "${OPENCODE_IGNORES[@]}" --type file)
             prompt="Files> "
             mode_header="ctrl-d:dirs  ctrl-g:live"
             expected_keys="ctrl-d,ctrl-g"
             ;;
         directory)
-            LIST_CMD=(fd --hidden --no-ignore-vcs --type directory)
+            LIST_CMD=(fd --hidden --no-ignore-vcs "${OPENCODE_IGNORES[@]}" --type directory)
             prompt="Dirs> "
             mode_header="ctrl-f:files  ctrl-g:live"
             expected_keys="ctrl-f,ctrl-g"
