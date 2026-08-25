@@ -16,13 +16,13 @@ return {
       '<leader>g',
       '<cmd>Neogit<CR>',
       mode = { 'n', 'v' },
-      desc = 'Fugitive: toggle git status window',
+      desc = 'Neogit: toggle git status window',
     },
     {
       '<leader>gc',
       '<cmd>Neogit commit<CR>',
       mode = { 'n', 'v' },
-      desc = 'Fugitive: git commit',
+      desc = 'Neogit: git commit',
     },
   },
 }
