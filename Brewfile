@@ -2,6 +2,7 @@ tap "agavra/tap"
 tap "anomalyco/tap"
 tap "atlassian/acli"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
+tap "ctrlspice/otel-desktop-viewer"
 tap "databricks/tap"
 tap "modem-dev/tap"
 tap "openclaw/tap"
@@ -210,6 +211,8 @@ cask "microsoft-teams"
 cask "monitorcontrol"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# otel-desktop-viewer is a CLI tool for receiving OpenTelemetry traces, metrics, and logs on your local machine.
+cask "ctrlspice/otel-desktop-viewer/otel-desktop-viewer", trusted: true
 # Music streaming service
 cask "spotify"
 # Collect, organise, cite, and share research sources

@@ -8,5 +8,8 @@
     "local/openconnect/openconnect",
     "modem-dev/tap/hunk",
     "openclaw/tap/gogcli"
+  ],
+  "trustedcasks": [
+    "ctrlspice/otel-desktop-viewer/otel-desktop-viewer"
   ]
 }
