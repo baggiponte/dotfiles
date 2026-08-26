@@ -2,9 +2,8 @@
 return {
   cmd = { 'mise', 'x', 'lua-language-server', '--', 'lua-language-server' },
   root_markers = {
+    { '.luarc.json', '.luarc.jsonc' },
     '.git',
-    '.luarc.json',
-    '.luarc.jsonc',
   },
   filetypes = { 'lua' },
   settings = {
