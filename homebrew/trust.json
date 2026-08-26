@@ -2,7 +2,6 @@
   "trustedformulae": [
     "agavra/tap/tuicr",
     "anomalyco/tap/opencode",
-    "atlassian/acli/acli",
     "azure/kubelogin/kubelogin",
     "databricks/tap/databricks",
     "local/openconnect/openconnect",

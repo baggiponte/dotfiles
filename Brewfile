@@ -1,6 +1,5 @@
 tap "agavra/tap"
 tap "anomalyco/tap"
-tap "atlassian/acli"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
 tap "ctrlspice/otel-desktop-viewer"
 tap "databricks/tap"
@@ -164,8 +163,6 @@ brew "zsh"
 brew "agavra/tap/tuicr", trusted: true
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
-# Software to interact with Atlassian Cloud from the terminal
-brew "atlassian/acli/acli", trusted: true
 # Command-line interface for the Databricks platform
 brew "databricks/tap/databricks", trusted: true
 # Desktop-inspired terminal diff viewer for agent-authored changesets
