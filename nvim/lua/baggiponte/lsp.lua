@@ -1,4 +1,7 @@
--- Enable LSP servers
+-- Enable LSP servers.
+-- Python type-checker is a coin flip between `ty` and `pyrefly`: uncomment the
+-- entry below to switch. You can also switch live without editing config:
+--   :lsp disable pyrefly | :lsp enable ty   (see :lsp for all subcommands)
 vim.lsp.enable({
   'docker',
   'docker-compose',
@@ -78,6 +81,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     if client:supports_method('textDocument/inlayHint') then
       vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'Enable code lenses only when the server advertises them',
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+    if client == nil then
+      return
+    end
+
+    -- Few of the configured servers support textDocument/codeLens, so guard
+    -- the enable on the provider capability. Run one at the cursor with the
+    -- built-in `grx` mapping (vim.lsp.codelens.run()).
+    if client.server_capabilities.codeLensProvider then
+      vim.lsp.codelens.enable(true, { bufnr = args.buf })
     end
   end,
 })
