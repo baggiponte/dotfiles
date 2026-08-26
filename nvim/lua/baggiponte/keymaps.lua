@@ -14,6 +14,13 @@ vim.keymap.set({ 'n', 'v', 'o' }, 'gy', '"+y', { desc = 'Yank and send to the sy
 -- vim.keymap.set({ 'n', 'v', 'o' }, 'gp', '"+p', { desc = 'Paste from the system clipboard' })
 
 -- [[ Movements ]]
+--
+-- Note: since Nvim 0.12 you do NOT need a plugin for treesitter selection —
+-- it's built in and already mapped (in Visual mode, no config):
+--   an / in   select parent / child node
+--   ]n / [n   next / previous node
+--   ]N / [N   expand to next / previous node
+--   (falls back to LSP textDocument/selectionRange when no parser is attached)
 
 -- inside the buffer
 vim.keymap.set('', 'H', '^', { desc = 'Go to the beginning of the line' })
