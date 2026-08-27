@@ -1,6 +1,7 @@
 tap "agavra/tap"
 tap "anomalyco/tap"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
+tap "bjoernschotte/tap", trusted: true
 tap "ctrlspice/otel-desktop-viewer"
 tap "databricks/tap"
 tap "modem-dev/tap"
@@ -167,6 +168,8 @@ brew "zsh"
 brew "agavra/tap/tuicr", trusted: true
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
+# CLI for Atlassian Confluence and Jira
+brew "bjoernschotte/tap/atlcli", trusted: true
 # Command-line interface for the Databricks platform
 brew "databricks/tap/databricks", trusted: true
 # Desktop-inspired terminal diff viewer for agent-authored changesets
