@@ -141,6 +141,8 @@ brew "stylua"
 brew "tealdeer"
 # Terminal multiplexer
 brew "tmux"
+# Program that allows you to count code, quickly
+brew "tokei"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -155,6 +157,8 @@ brew "wget"
 brew "worktrunk"
 # Validate and execute GitHub Actions workflows locally
 brew "wrkflw"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
