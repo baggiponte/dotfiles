@@ -19,7 +19,8 @@ Notes:
   - Any remaining arguments are treated as the initial fzf query.
   - Common keys in all modes: enter=open, tab=select, ctrl-a=select all, ctrl-x=delete.
   - Mode switches: files(ctrl-d=dirs, ctrl-g=live), directory(ctrl-f=files, ctrl-g=live), live(ctrl-f=files, ctrl-d=dirs).
-  - Selections open in Neovim (files in splits, dir opens with Oil).
+  - Selections open in Neovim (files in splits, live results in quickfix); in directory mode,
+    enter opens the chosen directory in yazi (shell stays where you launched it).
 
 Dependencies:
   fd, fzf, bat, nvim, rg, eza
@@ -101,13 +102,17 @@ normalize_mode() {
 }
 
 open_selection() {
+    local mode="$1"
+    shift
     local -a selection
     selection=("$@")
 
     if (( ${#selection[@]} == 0 )) || [[ -z ${selection[1]} ]]; then
         return 0
     fi
-    if [[ -d $selection[1] ]]; then
+    if [[ $mode == directory ]] && [[ -d ${selection[1]} ]]; then
+        command yazi "${selection[1]}"
+    elif [[ -d ${selection[1]} ]]; then
         nvim -c "Oil $selection[1]"
     else
         nvim -O -- "${selection[@]}"
@@ -322,7 +327,7 @@ run_picker() {
 
         case "$mode" in
             files|directory)
-                open_selection "${FZF_SELECTION[@]}"
+                open_selection "$mode" "${FZF_SELECTION[@]}"
                 ;;
             live)
                 open_live_selection "${FZF_SELECTION[@]}"

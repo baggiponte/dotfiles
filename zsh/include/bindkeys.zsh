@@ -39,3 +39,20 @@ zle -N fzf-file-widget
 
 bindkey -M vicmd '^f' fzf-file-widget
 bindkey -M viins '^f' fzf-file-widget
+
+# +------------------------------------------------------+
+# | Pick a directory with FZF, open it in yazi           |
+# +------------------------------------------------------+
+# Ctrl-O runs fzf-file in directory mode; hitting enter on a
+# directory opens yazi in it. The shell is left where it was
+# (no cd), so quitting yazi returns to the launch directory.
+
+fzf-dir-widget () {
+    zle -I
+    fzf-file --mode=directory
+    zle reset-prompt
+}
+zle -N fzf-dir-widget
+
+bindkey -M vicmd '^o' fzf-dir-widget
+bindkey -M viins '^o' fzf-dir-widget
