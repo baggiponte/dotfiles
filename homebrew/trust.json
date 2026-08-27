@@ -3,6 +3,7 @@
     "agavra/tap/tuicr",
     "anomalyco/tap/opencode",
     "azure/kubelogin/kubelogin",
+    "bjoernschotte/tap/atlcli",
     "databricks/tap/databricks",
     "local/openconnect/openconnect",
     "modem-dev/tap/hunk",
@@ -10,5 +11,8 @@
   ],
   "trustedcasks": [
     "ctrlspice/otel-desktop-viewer/otel-desktop-viewer"
+  ],
+  "trustedtaps": [
+    "bjoernschotte/tap"
   ]
 }
