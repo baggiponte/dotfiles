@@ -6,5 +6,6 @@
   },
   "websearch": {
     "provider": "random"
-  }
+  },
+  "skills": ["~/work/skills"]
 }
