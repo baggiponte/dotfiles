@@ -210,15 +210,25 @@ run_files_dirs_fzf() {
     # Exclude opencode runtime files that are gitignored (node_modules, package
     # files, local auth/state) without dropping --no-ignore-vcs, so other
     # gitignored local config (secrets, colima, gcloud, ...) stays browsable.
+    # Covers both the global config dir (~/.config/opencode) and the
+    # project-local .opencode dirs (e.g. ~/work/*/.opencode) that opencode
+    # creates with their own node_modules.
     local -a OPENCODE_IGNORES
     OPENCODE_IGNORES=(
         --exclude '**/opencode/node_modules'
+        --exclude '**/.opencode/node_modules'
         --exclude '**/opencode/package.json'
+        --exclude '**/.opencode/package.json'
         --exclude '**/opencode/package-lock.json'
+        --exclude '**/.opencode/package-lock.json'
         --exclude '**/opencode/bun.lock'
+        --exclude '**/.opencode/bun.lock'
         --exclude '**/opencode/cli.json'
+        --exclude '**/.opencode/cli.json'
         --exclude '**/opencode/service.json'
+        --exclude '**/.opencode/service.json'
         --exclude '**/opencode/.gitignore'
+        --exclude '**/.opencode/.gitignore'
     )
 
     case "$mode" in
