@@ -126,6 +126,7 @@ return {
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter').setup()
+      require('nvim-treesitter').install(parsers) -- no-op for already-installed parsers
       require('nvim-treesitter-textobjects').setup(textobjects)
       setup_textobject_keymaps()
       setup_treesitter_filetypes()
