@@ -1,7 +1,7 @@
 ---
 description: Reviews code for bugs, security issues, performance regressions, and style violations. Use for PR reviews, pre-commit sanity checks, or auditing a file or diff hunk. Read-only — never fixes, only reports.
 mode: subagent
-model: github-copilot/gpt-5.5
+model: github-copilot/gpt-5.6-sol
 permission:
   edit: deny
   bash: ask
