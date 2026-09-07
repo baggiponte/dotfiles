@@ -1,3 +1,18 @@
+[ai]
+enabled = true
+
+[ai.custom_providers]
+
+[ai.models]
+custom_models = []
+displayed_models = []
+
+[completion]
+activate_on_typing = true
+auto_close_pairs = true
+copilot = false
+signature_hint_on_typing = true
+
 [diagnostics]
 enabled = true
 sql_linter = true
@@ -5,6 +20,7 @@ sql_linter = true
 [display]
 cell_output = "below"
 code_editor_font_size = 14
+code_lens = true
 dataframes = "rich"
 default_table_max_columns = 50
 default_table_page_size = 50
