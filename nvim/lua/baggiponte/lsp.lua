@@ -39,34 +39,68 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+--- Sort imports via a code action filtered by KIND, not by title.
+-- Matching titles ("Ruff: Organize imports" vs "Organize Imports" vs
+-- "Ruff (I001): Organize imports") broke across ruff versions, and the
+-- I001-flavored action only shows up when the cursor sits on the diagnostic.
+-- A `source.organizeImports` kind-filtered request is what editors use for
+-- "organize imports on save" and is stable. Runs synchronously so the edit
+-- lands before the buffer is actually written.
+---@param client vim.lsp.Client
+---@param bufnr integer
+local function organize_imports(client, bufnr)
+  -- Window 0: the autocmd is buffer-scoped, so the buffer being saved is the
+  -- current one. Note this argument is a *window* id, not a buffer id.
+  local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+  params.context = { only = { 'source.organizeImports' }, diagnostics = {} }
+
+  local response = client:request_sync('textDocument/codeAction', params, 1000, bufnr)
+  ---@type lsp.CodeAction[]
+  local actions = response and response.result or {}
+
+  local action = actions[1]
+  if not action then
+    return
+  end
+
+  -- Ruff's initial response carries neither edit nor command; the edit is
+  -- filled in by codeAction/resolve (verified against `ruff server`).
+  if not action.edit then
+    local resolved = client:request_sync('codeAction/resolve', action, 1000, bufnr)
+    action = resolved and resolved.result or action
+  end
+
+  if action.edit then
+    vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+  end
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'Configure LSP keymaps on attach',
+  desc = 'Organize imports and format on save (ruff only)',
   callback = function(event)
     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-    if client == nil then
+    if client == nil or client.name ~= 'ruff' then
       return
     end
 
-    -- Format the current buffer on save
-    -- Don't do this for pyright/basedpyright, as I want to use ruff
-    if client:supports_method('textDocument/formatting') then
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        buffer = event.buf,
-        callback = function()
-          if client.name == 'ruff' then
-            vim.lsp.buf.code_action({
-              apply = true,
-              filter = function(action)
-                return action.title == 'Ruff: Organize imports'
-              end,
-            })
-          end
-
-          vim.lsp.buf.format({ bufnr = event.buf, id = client.id, async = true })
-        end,
-      })
+    -- ruff also attaches to toml/markdown, but import sorting and formatting
+    -- only make sense for python.
+    if vim.bo[event.buf].filetype ~= 'python' then
+      return
     end
+
+    -- NOTE: don't guard on client:supports_method('textDocument/formatting')
+    -- here: ruff registers formatting dynamically *after* attach, so the
+    -- check is false at this point. Check at save time instead.
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = event.buf,
+      callback = function()
+        organize_imports(client, event.buf)
+
+        vim.lsp.buf.format({ bufnr = event.buf, id = client.id, async = true })
+      end,
+    })
   end,
 })
 
