@@ -30,6 +30,12 @@ vim.g.mapleader = ' '
 
 vim.o.winborder = 'rounded'
 
+if #vim.api.nvim_list_uis() > 0 then
+  require('vim._core.ui2').enable({})
+else
+  vim.api.nvim_create_autocmd('UIEnter', { once = true, callback = require('vim._core.ui2').enable })
+end
+
 -- Check :h nvim-defaults first!
 -- [[ Sidebar ]]
 vim.opt.number = true -- Make relative line numbers default
