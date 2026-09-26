@@ -4,12 +4,12 @@ show_help() {
     cat <<'EOF'
 tmux-switcher: switch tmux sessions or create/switch from zoxide projects
 
+If no tmux server is running, one is started and the script waits briefly
+for tmux-continuum to auto-restore saved sessions before showing the picker.
+Pair with "tmux-halt" to save the snapshot before killing the server.
+
 Usage:
   tmux-switcher [--mode <sessions|projects>] [query...]
-
-Modes:
-  sessions   Switch/kill existing sessions (default)
-  projects   Pick a zoxide directory and create/switch session
 
 Keys:
   ctrl-n   toggle sessions/projects modes
@@ -17,48 +17,32 @@ Keys:
 EOF
 }
 
-normalize_mode() {
-    local mode="$1"
-    case "$mode" in
-        ""|sessions|session|s)
-            printf '%s\n' "sessions"
-            ;;
-        projects|project|p|dirs|directory|d)
-            printf '%s\n' "projects"
-            ;;
-        *)
-            return 1
-            ;;
-    esac
-}
+# Ensure a tmux server is running before showing the picker.
+# When the server is fresh (e.g. killed to reload tmux.conf), continuum
+# auto-restores saved sessions ~1s after boot; wait (bounded) for the first
+# session to appear so the picker is not empty. This is a readiness
+# heuristic: it does not guarantee the restore has fully finished.
+# Requires `exit-empty off` in tmux.conf: otherwise the server exits
+# immediately with zero sessions and nothing can be restored into it.
+ensure_server() {
+    if tmux list-sessions >/dev/null 2>&1; then
+        return 0
+    fi
 
-parse_fzf_output() {
-    local output="$1"
-    local -a lines
-    lines=("${(@f)output}")
-    typeset -g FZF_QUERY="${lines[1]:-}"
-    typeset -g FZF_KEY="${lines[2]:-}"
-    typeset -ga FZF_SELECTION=()
-    local i
-    for (( i = 3; i <= ${#lines[@]}; i++ )); do
-        FZF_SELECTION+=("${lines[i]}")
+    # server already alive but sessionless: nothing will be restored
+    if tmux info >/dev/null 2>&1; then
+        return 0
+    fi
+
+    tmux start-server || return 1
+
+    local deadline=$(( SECONDS + 5 ))
+    while (( SECONDS < deadline )); do
+        sleep 0.2
+        tmux list-sessions >/dev/null 2>&1 && return 0
     done
-}
 
-next_mode() {
-    local mode="$1"
-    local key="$2"
-    case "${mode}:${key}" in
-        sessions:ctrl-n)
-            printf '%s\n' "projects"
-            ;;
-        projects:ctrl-n)
-            printf '%s\n' "sessions"
-            ;;
-        *)
-            return 1
-            ;;
-    esac
+    return 0
 }
 
 session_preview_cmd() {
@@ -78,21 +62,15 @@ c_path="$(printf "\033[0;34m")"
 printf "%sSession:%s %s\n" "$c_title" "$c_reset" "$session"
 echo
 
-window_count="$(tmux list-windows -t "$session" 2>/dev/null | wc -l | tr -d " ")"
-window_i=0
+# fields are separated with \037 (unit separator), not "|": tmux window and
+# pane names are arbitrary text and may contain pipes; the last field keeps
+# any extra separators via read's remainder behavior
+sep="$(printf '\037')"
 
 tmux list-windows -t "$session" \
-    -F "#{window_index}|#{window_name}|#{window_panes}|#{?window_active,1,0}" 2>/dev/null |
-while IFS="|" read -r window_index window_name window_panes window_active; do
+    -F "#{window_index}${sep}#{window_panes}${sep}#{window_name}" 2>/dev/null |
+while IFS="$sep" read -r window_index window_panes window_name; do
     window_i=$((window_i + 1))
-
-    if [ "$window_i" -eq "$window_count" ]; then
-        window_branch="└──"
-        pane_prefix="    "
-    else
-        window_branch="├──"
-        pane_prefix="│   "
-    fi
 
     if [ "$window_panes" = "1" ]; then
         pane_word="pane"
@@ -100,27 +78,17 @@ while IFS="|" read -r window_index window_name window_panes window_active; do
         pane_word="panes"
     fi
 
-    printf "%s %sWindow %s%s: %s (%s %s)\n" \
-        "$window_branch" "$c_label" "$window_index" "$c_reset" "$window_name" "$window_panes" "$pane_word"
-
-    pane_count="$(tmux list-panes -t "${session}:${window_index}" 2>/dev/null | wc -l | tr -d " ")"
-    pane_i=0
+    printf "├── %sWindow %s%s: %s (%s %s)\n" \
+        "$c_label" "$window_index" "$c_reset" "$window_name" "$window_panes" "$pane_word"
 
     tmux list-panes -t "${session}:${window_index}" \
-        -F "#{pane_index}|#{?pane_active,1,0}|#{pane_current_command}|#{pane_current_path}" 2>/dev/null |
-    while IFS="|" read -r pane_index pane_active pane_command pane_path; do
-        pane_i=$((pane_i + 1))
-
-        if [ "$pane_i" -eq "$pane_count" ]; then
-            pane_branch="${pane_prefix}└──"
-        else
-            pane_branch="${pane_prefix}├──"
-        fi
+        -F "#{pane_index}${sep}#{pane_current_command}${sep}#{pane_current_path}" 2>/dev/null |
+    while IFS="$sep" read -r pane_index pane_command pane_path; do
 
         short_path="$(printf "%s" "$pane_path" | sed "s#^${HOME}#~#")"
 
-        printf "%s %sPane %s.%s%s: cmd=%s%s%s path=%s%s%s\n" \
-            "$pane_branch" "$c_label" "$window_index" "$pane_index" "$c_reset" \
+        printf "│   ├── %sPane %s.%s%s: cmd=%s%s%s path=%s%s%s\n" \
+            "$c_label" "$window_index" "$pane_index" "$c_reset" \
             "$c_title" "$pane_command" "$c_reset" \
             "$c_path" "$short_path" "$c_reset"
     done
@@ -178,10 +146,12 @@ switch_to_session() {
         return 0
     fi
 
+    # "=" forces exact session-name matching: tmux otherwise accepts unique
+    # prefixes, so -t api could silently target api-dev
     if [[ -n "$TMUX" ]]; then
-        tmux switch-client -t "$session"
+        tmux switch-client -t "=$session"
     else
-        tmux attach -t "$session"
+        tmux attach -t "=$session"
     fi
 }
 
@@ -189,28 +159,29 @@ switch_to_project() {
     local selection="$1"
     local dir session
 
-    dir="$(printf '%s\n' "$selection" | awk '{$1=""; sub(/^ +/, ""); print}')"
+    # zoxide prints "<score> <path>"; keep the remainder intact so paths
+    # with spaces survive
+    IFS=' ' read -r _ dir <<< "$selection"
     if [[ -z "$dir" ]]; then
         return 0
     fi
 
-    session="$(basename "${dir/./}")"
-    if ! tmux has-session -t "$session" 2>/dev/null; then
+    dir="${dir#./}"
+    session="$(basename "$dir")"
+    # colons are illegal in tmux -t targets (parsed as session:window)
+    session="${session//:/_}"
+    if ! tmux has-session -t "=$session" 2>/dev/null; then
         tmux new-session -d -s "$session" -c "$dir"
     fi
 
-    if [[ -n "$TMUX" ]]; then
-        tmux switch-client -t "$session"
-    else
-        tmux attach -t "$session"
-    fi
+    switch_to_session "$session"
 }
 
 run_picker() {
     local mode="$1"
     local query="$2"
-    local selection_output=""
-    local switched_mode=""
+    local selection_output
+    local -a lines
 
     while true; do
         case "$mode" in
@@ -225,34 +196,28 @@ run_picker() {
                 ;;
         esac
 
-        parse_fzf_output "$selection_output"
-        query="$FZF_QUERY"
+        lines=("${(@f)selection_output}")
+        query="${lines[1]:-}"
+        local key="${lines[2]:-}"
+        local selection="${lines[3]:-}"
 
-        switched_mode="$(next_mode "$mode" "$FZF_KEY")" || switched_mode=""
-        if [[ -n "$switched_mode" ]]; then
-            mode="$switched_mode"
+        if [[ "$key" == "ctrl-n" ]]; then
+            mode="$([[ "$mode" == sessions ]] && echo projects || echo sessions)"
             continue
         fi
 
-        if (( ${#FZF_SELECTION[@]} == 0 )); then
-            return 0
-        fi
+        [[ -z "$selection" ]] && return 0
 
-        case "$mode" in
-            sessions)
-                switch_to_session "${FZF_SELECTION[1]}"
-                ;;
-            projects)
-                switch_to_project "${FZF_SELECTION[1]}"
-                ;;
-        esac
+        if [[ "$mode" == sessions ]]; then
+            switch_to_session "$selection"
+        else
+            switch_to_project "$selection"
+        fi
         return 0
     done
 }
 
 main() {
-    requires tmux fzf zoxide eza
-
     local mode="sessions"
     local -a query_parts
 
@@ -265,16 +230,11 @@ main() {
             --mode)
                 shift
                 mode="${1:-}"
-                shift
+                (( $# )) && shift
                 ;;
             --mode=*)
                 mode="${1#--mode=}"
                 shift
-                ;;
-            --)
-                shift
-                query_parts+=("$@")
-                break
                 ;;
             *)
                 query_parts+=("$1")
@@ -283,10 +243,24 @@ main() {
         esac
     done
 
-    mode="$(normalize_mode "$mode")" || {
-        echo "Unknown --mode: $mode (expected sessions or projects)"
-        return 1
-    }
+    case "$mode" in
+        ""|sessions) mode="sessions" ;;
+        projects) ;;
+        *)
+            echo "Unknown --mode: $mode (expected sessions or projects)"
+            return 1
+            ;;
+    esac
+
+    local cmd
+    for cmd in tmux fzf zoxide eza; do
+        command -v "$cmd" >/dev/null 2>&1 || {
+            echo "tmux-switcher: missing dependency: $cmd" >&2
+            return 1
+        }
+    done
+
+    ensure_server || return 1
 
     run_picker "$mode" "${(j: :)query_parts}"
 }

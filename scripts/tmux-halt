@@ -1,0 +1,24 @@
+#! /usr/bin/env zsh
+# Save the resurrect snapshot, then kill the tmux server. Use instead of a
+# bare kill-server so the next server start auto-restores fresh state.
+
+set -e
+
+if ! tmux list-sessions >/dev/null 2>&1; then
+    exit 0  # server already down
+fi
+
+# derive the plugin path from the server's own environment instead of
+# hardcoding TPM's install location (show-environment prints "VAR=value")
+tpm_root="$(tmux show-environment -g TMUX_PLUGIN_MANAGER_PATH 2>/dev/null || true)"
+tpm_root="${tpm_root#*=}"
+resurrect_save="${tpm_root%/}/tmux-resurrect/scripts/save.sh"
+
+if [[ ! -x "$resurrect_save" ]]; then
+    echo "tmux-halt: resurrect save script not found: $resurrect_save" >&2
+    echo "tmux-halt: refusing to kill the server without saving" >&2
+    exit 1
+fi
+
+"$resurrect_save" quiet
+tmux kill-server 2>/dev/null || true
