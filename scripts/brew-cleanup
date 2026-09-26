@@ -3,7 +3,7 @@
 brew-cleanup () {
     requires brew
 
-    print -- "\n🧹 $fg_bold[white]Cellar cleanup duties coming up!$reset_color 🧼"
+    print -P "\n%B🧹 Cellar cleanup duties coming up!%b 🧼"
 
     local brew_cachedir
     brew_cachedir="$(brew --cache)"

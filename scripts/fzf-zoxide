@@ -1,7 +1,7 @@
 #! /usr/bin/env zsh
 
 main () {
-    RELOAD="reload:zoxide query --list --score --exclude "$PWD""
+    RELOAD="reload:zoxide query --list --score --exclude \"$PWD\"""
     PREVIEW="eza --all --group-directories-first --color=always --icons --oneline --level=2 --tree -- {2..}"
     fzf \
         --no-sort \

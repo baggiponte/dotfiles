@@ -3,7 +3,7 @@
 teal() {
 	requires tldr sk
 
-    local pattern="$@"
+    local pattern="$*"
 
     sk \
         --cmd="tldr --list" \

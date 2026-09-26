@@ -52,7 +52,7 @@ main() {
             --mode)
                 shift
                 mode="${1:-}"
-                shift
+                (( $# )) && shift
                 ;;
             --mode=*)
                 mode="${1#--mode=}"
