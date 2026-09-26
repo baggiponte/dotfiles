@@ -21,7 +21,6 @@ local parsers = {
   'rust',
   'sql',
   'terraform',
-  'tmux',
   'toml',
   'vimdoc',
   'yaml',
