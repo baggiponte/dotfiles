@@ -4,8 +4,6 @@ tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
 tap "bjoernschotte/tap", trusted: true
 tap "ctrlspice/otel-desktop-viewer"
 tap "databricks/tap"
-tap "modem-dev/tap"
-tap "openclaw/tap"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Library for command-line editing
@@ -74,14 +72,14 @@ brew "go"
 brew "gzip"
 # Kubernetes package manager
 brew "helm"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # Improved top (interactive process viewer)
 brew "htop"
 # Configurable static site generator
 brew "hugo"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Command-line pager for JSON data
-brew "jless"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Handy way to save and run project-specific commands
@@ -116,8 +114,6 @@ brew "sqlite"
 brew "node"
 # Open client for Cisco AnyConnect VPN
 brew "openconnect"
-# Swiss-army knife of markup format conversion
-brew "pandoc"
 # Password manager
 brew "pass"
 # AI agent toolkit
@@ -142,6 +138,8 @@ brew "stylua"
 brew "tealdeer"
 # Terminal multiplexer
 brew "tmux"
+# Official command-line interface for Todoist
+brew "todoist-cli"
 # Program that allows you to count code, quickly
 brew "tokei"
 # Parser generator tool
@@ -172,10 +170,6 @@ brew "anomalyco/tap/opencode", trusted: true
 brew "bjoernschotte/tap/atlcli", trusted: true
 # Command-line interface for the Databricks platform
 brew "databricks/tap/databricks", trusted: true
-# Desktop-inspired terminal diff viewer for agent-authored changesets
-brew "modem-dev/tap/hunk", trusted: true
-# Google CLI for Gmail, Calendar, Drive, Docs, Sheets, and more
-brew "openclaw/tap/gogcli", trusted: true
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Chromium based browser
