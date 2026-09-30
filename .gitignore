@@ -1,6 +1,7 @@
 # Authentication & local credentials
 acli/
 glab-cli/config.yml
+glab-cli/config.lock
 glab-cli/recover/
 todoist-cli/config.json
 .secrets
@@ -10,18 +11,14 @@ todoist-cli/config.json
 opencode/cli.json
 opencode/service.json
 
+# Herdr runtime state
+herdr/sessions/
+herdr/.plugins.lock
+
 # Apps & tools
-argocd/
 colima/*
 github-copilot
 gcloud
-mole/
-mlflow/
-notion/
-
-# Language runtimes
-ipython
-jupyter
 
 # Editors
 zed/**
