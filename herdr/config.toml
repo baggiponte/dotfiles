@@ -1,0 +1,79 @@
+# Herdr keybinds modeled on ~/.config/tmux/tmux.conf
+# Apply to a running server: herdr server reload-config
+# See active bindings any time: prefix+?
+
+onboarding = false
+
+[theme]
+name = "terminal" # follows your shell's ANSI palette, like tmux's bg=default status
+
+[terminal]
+new_cwd = "follow" # new panes/tabs inherit focused pane's cwd, like tmux -c '#{pane_current_path}'
+
+[keys]
+# tmux.conf: unbind C-b; set -g prefix C-s
+prefix = "ctrl+s"
+
+# ── WINDOWS AND PANES ──────────────────────────────────────────────
+
+# tmux.conf: bind v split-window -h  (Herdr's "vertical split" opens to the right)
+split_vertical = "prefix+v"
+# tmux.conf: bind b split-window -v  (your 'b' = down split)
+split_horizontal = "prefix+b"
+
+# tmux.conf: bind n new-window
+new_tab = "prefix+n"
+rename_tab = "prefix+shift+t"   # default kept
+
+# tmux.conf: bind -r ] next-window / [ previous-window
+next_tab = "prefix+]"
+previous_tab = "prefix+["
+
+# tmux.conf: bind s tmux-switcher → Herdr's workspace picker
+workspace_picker = "prefix+s"
+
+# tmux.conf: bind y copy-mode
+edit_scrollback = "prefix+y"
+
+# tmux.conf: bind -r x kill-pane
+close_pane = "prefix+x"
+
+# tmux.conf: resize-pane j/k/h/l → Herdr resize mode
+resize_mode = "prefix+r"        # then j/k/h/l; esc/enter exits
+
+# tmux.conf: bind -r m resize-pane -Z
+zoom = "prefix+m"
+
+# tmux.conf: vim-tmux-navigator (prefix-less C-h/j/k/l). Herdr's safe
+# prefix-less chords are the ctrl+alt family (per Herdr's keyboard docs);
+# plain ctrl+h is unreliable on macOS, so ctrl+alt is the equivalent.
+focus_pane_left = ["prefix+h", "ctrl+alt+h"]
+focus_pane_down = ["prefix+j", "ctrl+alt+j"]
+focus_pane_up = ["prefix+k", "ctrl+alt+k"]
+focus_pane_right = ["prefix+l", "ctrl+alt+l"]
+
+# ── WORKSPACES ─────────────────────────────────────────────────────
+
+new_workspace = "prefix+shift+n"
+rename_workspace = "prefix+shift+w"
+close_workspace = "prefix+shift+d"
+
+# ── SIDEBAR ────────────────────────────────────────────────────────
+
+toggle_sidebar = "prefix+shift+s"
+
+# ── LAZYGIT POPUP (tmux.conf: bind g display-popup -w 90% -h 95% lazygit) ──
+# prefix+g itself is Herdr's goto picker — a close cousin of tmux-switcher,
+# so lazygit moved to prefix+alt+g. Flip the two if you disagree.
+
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+description = "lazygit popup"
+width = "90%"
+height = "95%"
+
+[ui]
+tab_bar_position = "top"   # tmux.conf: status-position top
+mouse_capture = true       # tmux.conf: focus-follows-mouse equivalent
