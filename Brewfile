@@ -203,6 +203,8 @@ cask "handy"
 cask "karabiner-elements"
 # Menu bar app for running local LLMs
 cask "llama-app"
+# Presentation software
+cask "microsoft-powerpoint"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
