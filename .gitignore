@@ -7,6 +7,13 @@ todoist-cli/config.json
 .secrets
 .gitconfig.local
 
+# Codex credentials, linked resources, and runtime state
+codex/*
+!codex/config.toml
+!codex/AGENTS.md
+!codex/review-layers.md
+!codex/agents/
+
 # OpenCode runtime state (auto-generated on startup)
 opencode/cli.json
 opencode/service.json
@@ -14,6 +21,17 @@ opencode/service.json
 # Herdr runtime state
 herdr/sessions/
 herdr/.plugins.lock
+
+# Pi runtime state & credentials (config itself is PI_CODING_AGENT_DIR=pi/agent)
+pi/agent/auth.json
+pi/agent/mcp-auth.json
+pi/agent/mcp.log*
+pi/agent/models-store.json
+pi/agent/sessions/
+pi/agent/missions/
+pi/agent/npm/
+pi/agent/skills/
+pi/web-search-cache/
 
 # Apps & tools
 colima/*

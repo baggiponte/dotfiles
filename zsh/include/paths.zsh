@@ -2,6 +2,10 @@
 # | ADD TO $PATH FIRST |
 # +--------------------+
 
+# unversioned secrets (see .gitignore) — sets OTEL_EXPORTER_OTLP_HEADERS etc.
+[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/.secrets" ]] && \
+	source "${XDG_CONFIG_HOME:-$HOME/.config}/.secrets"
+
 # override PATH because path_helper screws it up
 paths=(
     "/Applications/Obsidian.app/Contents/MacOS"
