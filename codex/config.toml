@@ -128,3 +128,15 @@ config_file = "agents/explorer.toml"
 [agents.implementer]
 description = "Implement bounded changes within the agreed intent and constraints; preserve user changes and repository rules."
 config_file = "agents/implementer.toml"
+
+[otel]
+environment = "codex-dev"
+log_user_prompt = false
+
+[otel.exporter.otlp-http]
+endpoint = "https://logfire-eu.pydantic.dev/v1/logs"
+protocol = "binary"
+
+[otel.metrics_exporter.otlp-http]
+endpoint = "https://logfire-eu.pydantic.dev/v1/metrics"
+protocol = "binary"
