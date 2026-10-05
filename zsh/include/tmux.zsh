@@ -12,9 +12,10 @@ command -v tmux >/dev/null 2>&1 || return
 # Allow opt-out per shell by exporting DISABLE_AUTO_TMUX=1.
 [[ -n "${DISABLE_AUTO_TMUX:-}" ]] && return
 
-# Skip tmux auto-start in integrated terminals
+# Auto-start tmux only in Ghostty.
 case "${TERM_PROGRAM:-}" in
-	vscode|zed|*code*|*Code*) return ;;
+	ghostty) ;;
+	*) return ;;
 esac
 
 # Skip tmux auto-start inside Herdr managed panes (it sets HERDR_ENV=1).

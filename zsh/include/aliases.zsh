@@ -26,10 +26,6 @@ if hash colima 2>/dev/null; then
     alias c="colima"
 fi
 
-if hash minikube 2>/dev/null; then
-    alias mk="minikube kubectl --"
-fi
-
 if hash kubectl 2>/dev/null; then
 	alias k=kubectl
 fi
@@ -52,11 +48,6 @@ fi
 
 if hash gmake 2>/dev/null; then
 	alias make=gmake # gnu-make (installed by homebrew)
-fi
-
-if [ -x "$(brew --prefix)/bin/gzip" ]; then
-	alias zip=gzip
-	alias gzip='$(brew --prefix)/bin/gzip'
 fi
 
 if hash eza 2>/dev/null; then

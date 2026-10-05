@@ -6,9 +6,10 @@ COMPDIR="${XDG_CACHE_HOME}/zsh/zfunc"
 
 [[ -d "${COMPDIR}" ]] || mkdir -p "${COMPDIR}"
 
-# $XDG_CACHE_HOME/zsh/zcompdump and run compinit
-fpath=(${COMPDIR} $fpath) # won't work if there are quotes
+# Register generated completions before compinit runs.
+fpath=("${COMPDIR}" "${fpath[@]}")
 
+# Regenerate completions on every startup so they match the installed tools.
 # python
 command -v uv >/dev/null && uv generate-shell-completion zsh > "${COMPDIR}/_uv"
 command -v uvx >/dev/null && uvx --generate-shell-completion=zsh > "${COMPDIR}/_uvx"

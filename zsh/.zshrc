@@ -19,12 +19,13 @@ sources=(
 	"options"     # configure zsh
 	"zstyle"      # configure completion menu, etc
 	"vim"         # enable vim modes and cursor
-	"zim"         # zsh plugin manager
-    "eval"        # shell hooks and completions
-	"tmux"        # auto-start tmux on interactive shells
+	"zim-init"    # prepare plugins and completion directories
+	"eval"        # shell hooks and completions
+	"zim"         # load plugins after completion initialization
 	"functions"   # frequently used functions
 	"aliases"     # utility aliases
 	"bindkeys"    # bind functions to keymaps
+	"tmux"        # auto-start tmux after shell setup
 )
 
 for s in "${sources[@]}"; do

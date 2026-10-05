@@ -9,14 +9,11 @@
 
 histfile="${XDG_CACHE_HOME:-"$HOME/.cache"}/zsh/history"
 
-if [ -f "$histfile" ]; then
-	touch "$histfile"
-fi
+mkdir -p "${histfile:h}"
 
 export HISTFILE="$histfile"
-export HISTIZE=1000000
-export HISTFILESIZE=1000000
-export SAVEHIST=1000000
+HISTSIZE=1200000
+SAVEHIST=1000000
 
 unset histfile
 
@@ -29,7 +26,6 @@ setopt cdable_vars            # change directory to a path stored in a variable.
 setopt auto_pushd             # push the old directory onto the stack on cd.
 setopt pushd_silent           # do not print the directory stack after pushd or popd.
 setopt rm_star_silent         # rm ./* does not request confirmation.
-setopt inc_append_history     # append every new line to history.
 setopt share_history          # share history between all sessions.
 setopt extended_history       # write the history file in the ':start:elapsed;command' format.
 setopt hist_ignore_all_dups   # remove duplicate entries.
