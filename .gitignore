@@ -11,7 +11,6 @@ todoist-cli/config.json
 codex/*
 !codex/config.toml
 !codex/AGENTS.md
-!codex/review-layers.md
 !codex/agents/
 
 # OpenCode runtime state (auto-generated on startup)

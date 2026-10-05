@@ -1,0 +1,130 @@
+developer_instructions = """As root, own user intent, constraints, next step, cross-task conflicts, and final integration. Optimize for fast iteration: delegate bounded exploration and implementation to configured workers, while keeping trivial work direct. Use short feedback loops and advance useful work while workers handle longer tasks. As a worker, follow the assigned task and report to the parent."""
+
+
+notify = ["/Users/baggiponte/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = "/Users/baggiponte/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+source_type = "local"
+source = "/Users/baggiponte/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."slack@openai-curated"]
+enabled = false
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."code-review@openai-bundled"]
+enabled = true
+
+[features]
+js_repl = false
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/baggiponte/.codex:/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+CODEX_HOME = "/Users/baggiponte/.codex"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab,mcpapps"
+BROWSER_USE_TINYSKY_ENABLED = "1"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.930.51102"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/baggiponte/.codex/plugins/cache/openai-bundled/browser/26.930.51102/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+SKY_CUA_SERVICE_PATH = "/Users/baggiponte/.codex/computer-use/Codex Computer Use.app"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
+
+[mcp_servers.excalidraw]
+command = "https://mcp.excalidraw.com"
+
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
+
+[shell_environment_policy.set]
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "323bc3e687e17d7e377238d9f4c69111c4d0e6219103b6316d8c52082489533b"
+
+[desktop]
+conversationDetailMode = "STEPS_PROSE"
+ambient-suggestions-enabled = true
+appearanceTheme = "light"
+dock-icon-preference = "codex-system"
+followUpQueueMode = "queue"
+composerEnterBehavior = "cmdAlways"
+keepRemoteControlAwakeWhilePluggedIn = true
+
+[projects."/Users/baggiponte/dev/projs/steer-cli"]
+trust_level = "trusted"
+
+[projects."/Users/baggiponte/dev/projs/scikit-loop"]
+trust_level = "trusted"
+
+[projects."/Users/baggiponte/work/mvp-risparmio"]
+trust_level = "trusted"
+
+[projects."/Users/baggiponte/work/pypezzotta"]
+trust_level = "trusted"
+
+[projects."/Users/baggiponte/.config"]
+trust_level = "trusted"
+
+[projects."/Users/baggiponte/work/skills"]
+trust_level = "trusted"
+
+[projects."/Users/baggiponte/work/ml-template"]
+trust_level = "trusted"
+
+[agents]
+enabled = true
+default_subagent_model = "gpt-6-luna"
+default_subagent_reasoning_effort = "medium"
+
+[agents.explorer]
+description = "Investigate bounded questions read-only; trace behavior and report relevant files and findings."
+config_file = "agents/explorer.toml"
+
+[agents.implementer]
+description = "Implement bounded changes within the agreed intent and constraints; preserve user changes and repository rules."
+config_file = "agents/implementer.toml"

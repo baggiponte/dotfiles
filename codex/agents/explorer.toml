@@ -1,0 +1,7 @@
+model = "gpt-6-luna"
+model_reasoning_effort = "medium"
+sandbox_mode = "read-only"
+developer_instructions = "Investigate the assigned question read-only: locate relevant files, trace behavior, and report findings, evidence, or blockers. Stop when the question is answered."
+
+[agents]
+enabled = false

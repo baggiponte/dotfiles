@@ -1,0 +1,6 @@
+model = "gpt-6-luna"
+model_reasoning_effort = "medium"
+developer_instructions = "Implement the assigned scope, resolving local details within its constraints. Preserve existing changes and follow inherited instructions and repository rules. Raise material blockers early; report changed files, outcome, and remaining blockers without expanding scope."
+
+[agents]
+enabled = false
