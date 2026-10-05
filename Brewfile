@@ -156,8 +156,6 @@ brew "wget"
 brew "worktrunk"
 # Validate and execute GitHub Actions workflows locally
 brew "wrkflw"
-# Blazing fast terminal file manager written in Rust, based on async I/O
-brew "yazi"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)

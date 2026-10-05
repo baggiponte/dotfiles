@@ -20,10 +20,10 @@ Notes:
   - Common keys in all modes: enter=open, tab=select, ctrl-a=select all, ctrl-x=delete.
   - Mode switches: files(ctrl-d=dirs, ctrl-g=live), directory(ctrl-f=files, ctrl-g=live), live(ctrl-f=files, ctrl-d=dirs).
   - Selections open in Neovim (files in splits, live results in quickfix); in directory mode,
-    enter opens the chosen directory in yazi (shell stays where you launched it).
+    enter opens the chosen directory in Oil with a file preview (shell stays where you launched it).
 
 Dependencies:
-  fd, fzf, bat, nvim, rg, eza
+  fd, fzf, bat, nvim (with oil.nvim), rg, eza
 
 Examples:
   fzf-file
@@ -110,10 +110,8 @@ open_selection() {
     if (( ${#selection[@]} == 0 )) || [[ -z ${selection[1]} ]]; then
         return 0
     fi
-    if [[ $mode == directory ]] && [[ -d ${selection[1]} ]]; then
-        command yazi "${selection[1]}"
-    elif [[ -d ${selection[1]} ]]; then
-        nvim -c "Oil $selection[1]"
+    if [[ -d ${selection[1]} ]]; then
+        OIL_DIRECTORY="${selection[1]}" nvim -c 'lua require("oil").open(vim.env.OIL_DIRECTORY, { preview = { vertical = true, split = "botright" } })'
     else
         nvim -O -- "${selection[@]}"
     fi

@@ -4,11 +4,31 @@ return {
   keys = {
     {
       '<leader>o',
-      '<CMD>Oil<CR>',
-      desc = 'oil.nvim: toggle',
+      function()
+        require('oil').open(nil, { preview = { vertical = true, split = 'botright' } })
+      end,
+      desc = 'oil.nvim: open with preview',
     },
   },
   opts = {
+    keymaps = {
+      h = { 'actions.parent', mode = 'n' },
+      l = {
+        callback = function()
+          local oil = require('oil')
+          local entry = oil.get_cursor_entry()
+          local link_stat = entry and entry.meta and entry.meta.link_stat
+          if entry and (entry.type == 'directory' or (link_stat and link_stat.type == 'directory')) then
+            oil.select()
+          end
+        end,
+        desc = 'Enter directory',
+        mode = 'n',
+      },
+    },
+    preview_win = {
+      update_on_cursor_moved = true,
+    },
     view_options = {
       show_hidden = true,
       is_always_hidden = function(name, bufnr)

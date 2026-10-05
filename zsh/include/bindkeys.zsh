@@ -41,11 +41,11 @@ bindkey -M vicmd '^f' fzf-file-widget
 bindkey -M viins '^f' fzf-file-widget
 
 # +------------------------------------------------------+
-# | Pick a directory with FZF, open it in yazi           |
+# | Pick a directory with FZF, open it in Oil              |
 # +------------------------------------------------------+
 # Ctrl-O runs fzf-file in directory mode; hitting enter on a
-# directory opens yazi in it. The shell is left where it was
-# (no cd), so quitting yazi returns to the launch directory.
+# directory opens Oil with a file preview. The shell stays
+# where it was, so quitting Neovim returns to the launch directory.
 
 fzf-dir-widget () {
     zle -I
