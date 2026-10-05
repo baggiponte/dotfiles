@@ -170,6 +170,8 @@ brew "bjoernschotte/tap/atlcli", trusted: true
 brew "databricks/tap/databricks", trusted: true
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# AI notepad for meetings
+cask "anarlog"
 # Chromium based browser
 cask "arc"
 # OpenAI's official ChatGPT desktop app
@@ -193,6 +195,8 @@ cask "ghostty"
 cask "git-credential-manager"
 # Web browser
 cask "google-chrome"
+# AI-powered notepad for meetings
+cask "granola"
 # Speech to text application
 cask "handy"
 # Keyboard customiser
