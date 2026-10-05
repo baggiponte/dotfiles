@@ -199,8 +199,6 @@ cask "handy"
 cask "karabiner-elements"
 # Menu bar app for running local LLMs
 cask "llama-app"
-# Software for Logitech devices
-cask "logi-options+"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
@@ -211,6 +209,8 @@ cask "obsidian"
 cask "ctrlspice/otel-desktop-viewer/otel-desktop-viewer", trusted: true
 # Music streaming service
 cask "spotify"
+# To-do list
+cask "todoist-app"
 # Collect, organise, cite, and share research sources
 cask "zotero"
 uv "argcomplete"
@@ -220,5 +220,7 @@ uv "huggingface-hub"
 uv "llmfit"
 uv "maturin"
 uv "prek"
+uv "pyrefly"
+uv "ty"
 uv "wandb"
 npm "prime-agent"
