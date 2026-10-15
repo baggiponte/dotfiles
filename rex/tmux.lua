@@ -144,6 +144,7 @@ bind("[", "client.tab.previous")
 bind("m", "pane.zoom")
 bind("x", "tmux_close_pane")
 bind("s", "session.switch")
+bind("p", "client.palette.toggle")
 
 -- Persistent resize mode: repeat h/j/k/l without re-entering the prefix.
 rex.mode("tmux_resize", { exclusive = true })
