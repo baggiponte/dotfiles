@@ -37,3 +37,9 @@ setopt hist_reduce_blanks     # remove blank lines.
 setopt hist_no_store          # do not save `history` calls in history.
 setopt hist_no_functions      # do not save function definitions in history.
 setopt hist_verify            # do not execute immediately upon history expansion.
+
+# Disable Ctrl-D shell exit: on an empty line ^D would exit the shell,
+# closing the tmux pane. With ignore_eof, ^D is ignored at an empty
+# prompt ("use 'exit' to exit the zsh") and still deletes a char on a
+# non-empty line. `exit` closes the shell normally.
+setopt ignore_eof
