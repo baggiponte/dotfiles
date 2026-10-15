@@ -1,6 +1,5 @@
 [tools]
 bun = "latest"
-"npm:@opencode-ai/cli" = { version = "beta", bun_args = "--trust" }
 pnpm = "latest"
 
 [settings]
