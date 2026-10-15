@@ -14,3 +14,9 @@ for script in "$HOME/.config/scripts"/*(N); do
     [[ -d "$script" ]] && continue
     ln -sf "$script" "$HOME/.local/bin/$name"
 done
+
+# Rex ships its CLI inside the macOS app bundle, outside PATH.
+rex_cli="/Applications/Rex Beta.app/Contents/Helpers/Rex Server.app/Contents/MacOS/rex"
+if [[ -x "$rex_cli" ]]; then
+    ln -sfn "$rex_cli" "$HOME/.local/bin/rex"
+fi
