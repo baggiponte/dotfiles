@@ -9,6 +9,13 @@ return {
       end,
       desc = 'oil.nvim: open with preview',
     },
+    {
+      '<C-f><C-d>',
+      function()
+        require('oil').open(vim.fn.getcwd())
+      end,
+      desc = 'oil.nvim: open the file explorer in the current directory',
+    },
   },
   opts = {
     keymaps = {
