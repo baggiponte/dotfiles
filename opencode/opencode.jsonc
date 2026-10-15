@@ -8,5 +8,14 @@
   "websearch": {
     "provider": "random"
   },
-  "skills": ["~/work/skills"]
+  "skills": ["~/work/skills"],
+  "mcp": {
+    "servers": {
+      "rex-community": {
+        "type": "remote",
+        "url": "https://www.superlogical.com/rex/community-mcp",
+        "codemode": true
+      }
+    }
+  }
 }
