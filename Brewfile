@@ -4,6 +4,7 @@ tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
 tap "bjoernschotte/tap", trusted: true
 tap "ctrlspice/otel-desktop-viewer"
 tap "databricks/tap"
+tap "openai/tools"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Library for command-line editing
