@@ -2,7 +2,7 @@
 # | Code tools |
 # +------------+
 
-alias o="opencode2 --auto"
+alias o="opencode --auto"
 
 # +---------+
 # | Aliases |
