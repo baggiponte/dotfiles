@@ -162,16 +162,14 @@ brew "zoxide"
 brew "zsh"
 # Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
 brew "agavra/tap/tuicr", trusted: true
-# The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode", trusted: true
+# OpenCode V2 - the AI coding agent for the terminal
+brew "anomalyco/tap/opencode-v2", trusted: true
 # CLI for Atlassian Confluence and Jira
 brew "bjoernschotte/tap/atlcli", trusted: true
 # Command-line interface for the Databricks platform
 brew "databricks/tap/databricks", trusted: true
 # Enable Windows-like alt-tab
 cask "alt-tab"
-# AI notepad for meetings
-cask "anarlog"
 # Chromium based browser
 cask "arc"
 # OpenAI's official ChatGPT desktop app
@@ -211,6 +209,8 @@ cask "microsoft-teams"
 cask "monitorcontrol"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# The official CLI for the OpenAI API.
+cask "openai/tools/openai", trusted: true
 # otel-desktop-viewer is a CLI tool for receiving OpenTelemetry traces, metrics, and logs on your local machine.
 cask "ctrlspice/otel-desktop-viewer/otel-desktop-viewer", trusted: true
 # Music streaming service
