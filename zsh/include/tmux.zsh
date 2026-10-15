@@ -18,9 +18,6 @@ case "${TERM_PROGRAM:-}" in
 	*) return ;;
 esac
 
-# Skip tmux auto-start inside Herdr managed panes (it sets HERDR_ENV=1).
-[[ -n "${HERDR_ENV:-}" ]] && return
-
 if tmux list-sessions >/dev/null 2>&1; then
 	if command -v tmux-switcher >/dev/null 2>&1; then
 		tmux-switcher
