@@ -15,6 +15,12 @@
         "type": "remote",
         "url": "https://www.superlogical.com/rex/community-mcp",
         "codemode": true
+      },
+      "cloudflare": {
+        "type": "remote",
+        "url": "https://mcp.cloudflare.com/mcp",
+        "enabled": true,
+        "oauth": {}
       }
     }
   }
