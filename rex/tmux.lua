@@ -139,8 +139,26 @@ bind("n", "tmux_new_tab")
 bind("v", "tmux_split_horizontal")
 bind("b", "tmux_split_vertical")
 bind("g", "tmux_lazygit")
-bind("]", "client.tab.next")
-bind("[", "client.tab.previous")
+-- Repeat tab navigation without re-entering Ctrl-S. Escape leaves the mode.
+-- Rex has no tmux-style repeat timeout, so this mode stays active until exited.
+rex.mode("tmux_tabs", {})
+rex.bind("tmux_tabs/escape", "client.mode.exit")
+rex.bind("tmux_tabs/enter", "client.mode.exit")
+for key, direction in pairs({ ["]"] = "next", ["["] = "previous" }) do
+  local action = "client.tab." .. direction
+  local name = "tmux_tab_" .. direction
+  rex.action{
+    name = name,
+    title = "Show " .. direction .. " Tab and Repeat",
+    category = "Tmux",
+    run = function(ctx)
+      rex.client.queue(action)
+      rex.client.queue("client.mode.enter", { name = "tmux_tabs" })
+    end,
+  }
+  bind(key, name)
+  rex.bind("tmux_tabs/" .. key, action)
+end
 bind("m", "pane.zoom")
 bind("x", "tmux_close_pane")
 bind("s", "session.switch")
