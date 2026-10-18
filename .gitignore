@@ -7,8 +7,9 @@
 .gitconfig.local
 .secrets
 
-# Cloudflare CLI profiles contain OAuth/refresh tokens; state is device-local.
+# Cloudflare and Wrangler CLI profiles contain credentials and local state.
 /cloudflare/
+/wrangler/
 
 /gh/hosts.yml
 
