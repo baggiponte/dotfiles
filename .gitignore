@@ -1,46 +1,64 @@
-# Authentication & local credentials
-acli/
-glab-cli/config.yml
-glab-cli/config.lock
-glab-cli/recover/
-todoist-cli/config.json
-.secrets
-.gitconfig.local
+# General generated files
+.DS_Store
+*.bak
+*.sock
 
-# Codex credentials, linked resources, and runtime state
+# Local credentials and overrides
+.gitconfig.local
+.secrets
+
+# Cloudflare CLI profiles contain OAuth/refresh tokens; state is device-local.
+/cloudflare/
+
+/gh/hosts.yml
+
+glab-cli/config.lock
+glab-cli/config.yml
+glab-cli/recover/
+
+todoist-cli/config.json
+
+# AI assistants: credentials, linked resources, and runtime state
 codex/*
-!codex/config.toml
 !codex/AGENTS.md
 !codex/agents/
+!codex/config.toml
 
-# OpenCode runtime state (auto-generated on startup)
+github-copilot
+
+# OpenCode files are auto-generated on startup.
 opencode/cli.json
 opencode/service.json
 
-# Pi runtime state & credentials (config itself is PI_CODING_AGENT_DIR=pi/agent)
+# Pi config itself is PI_CODING_AGENT_DIR=pi/agent.
 pi/agent/auth.json
 pi/agent/mcp-auth.json
 pi/agent/mcp.log*
-pi/agent/models-store.json
-pi/agent/sessions/
 pi/agent/missions/
+pi/agent/models-store.json
 pi/agent/npm/
+pi/agent/sessions/
 pi/agent/skills/
 pi/web-search-cache/
 
-# Apps & tools
+# Tool runtime state, caches, and installation metadata
 colima/*
-github-copilot
-gcloud
+/helm/repositories.lock
+/notion/cache.json
+/notion/config.json
+/notion/workspaces.json
+/uv/uv-receipt.json
 
-# Editors
-zed/**
-!zed/settings.json
-!zed/snippets
-!zed/keymap.json
+# Machine-local trust and command approvals
+/homebrew/trust.json
+/homebrew/trust.json.lock
+/worktrunk/approvals.toml
+
+# Desktop and editor state: keep intentional configuration
 karabiner/*
 !karabiner/karabiner.json
 
-# Misc
-*.bak
-*.sock
+zed/**
+!zed/keymap.json
+!zed/settings.json
+!zed/snippets
