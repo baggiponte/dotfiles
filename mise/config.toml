@@ -5,3 +5,6 @@ pnpm = "latest"
 [settings]
 experimental = true
 npm.package_manager = "bun"
+
+[settings.self_update]
+auto = true
