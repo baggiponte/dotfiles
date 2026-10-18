@@ -1,5 +1,4 @@
 # Running code
-
 - **Python:** run Python code and one-off scripts with `uv` (e.g. `uv run python ...`, `uv run script.py`). Do not use bare `python`, `pip`, or `venv` directly.
 - **JS/Node:** prefer running packages with `pnpx` or `bunx` instead of installing them globally. If they are not available or discoverable, use `mise x`.
 - Use `just` instead of `make`.
@@ -17,3 +16,7 @@ Should be managed with `mise`, except for Python which is _always_ managed with 
 # Dont's
 
 Don't validate Python code with `py_compile`. It's not real validation.
+
+# Cloudflare
+
+When interacting with Cloudflare, use the cf CLI unless the project has a Wrangler configuration file.
