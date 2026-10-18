@@ -31,7 +31,6 @@ if command -v fzf >/dev/null; then
 fi
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
-if command -v but >/dev/null 2>&1; then eval "$(command but completions zsh)"; fi
 if command -v mole >/dev/null 2>&1; then eval "$(command mole completion zsh)"; fi
 if command -v mise >/dev/null 2>&1; then eval "$(command mise activate zsh)"; fi
 
