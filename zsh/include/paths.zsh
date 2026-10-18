@@ -64,11 +64,6 @@ if hash tldr 2>/dev/null; then
 	export TEALDEER_CONFIG_DIR="${XDG_CONFIG_HOME}/tealdeer"
 fi
 
-if hash R 2>/dev/null; then
-	export R_ENVIRON_USER=${XDG_CONFIG_HOME}/R/.Renviron
-	export R_PROFILE_USER=${XDG_CONFIG_HOME}/R/.Rprofile
-fi
-
 if hash npm 2>/dev/null; then
 	export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/.npmrc"
 	export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
