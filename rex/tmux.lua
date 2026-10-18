@@ -145,6 +145,8 @@ bind("m", "pane.zoom")
 bind("x", "tmux_close_pane")
 bind("s", "session.switch")
 bind("p", "client.palette.toggle")
+-- Ctrl-L stays pane navigation; prefix L sends the shell's clear-screen key.
+bind("l", "pane.send_key", { key = "ctrl+l" })
 
 -- Persistent resize mode: repeat h/j/k/l without re-entering the prefix.
 rex.mode("tmux_resize", { exclusive = true })
