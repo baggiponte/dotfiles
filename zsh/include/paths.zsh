@@ -50,12 +50,6 @@ if command -v colima >/dev/null && command -v docker >/dev/null; then
 	export DOCKER_HOST="unix://${XDG_CONFIG_HOME}/colima/default/docker.sock"
 fi
 
-# +--------+
-# | PYTHON |
-# +--------+
-
-export COOKIECUTTER_CONFIG="${XDG_CONFIG_HOME}/cookiecutter/cookiecutter.yaml"
-
 # +-------+
 # | OTHER |
 # +-------+
