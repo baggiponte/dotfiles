@@ -1,10 +1,15 @@
 [tools]
 bun = "latest"
+node = "latest"
 pnpm = "latest"
+# Cloudflare currently publishes its latest CLI as a prerelease.
+"npm:cf" = { version = "latest" }
+"npm:skills" = "latest"
 
 [settings]
 experimental = true
-npm.package_manager = "bun"
+npm.package_manager = "pnpm"
+tool_update.global_auto = true
 
 [settings.self_update]
 auto = true
