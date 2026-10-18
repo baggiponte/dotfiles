@@ -5,7 +5,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 if ! command -v mise &>/dev/null; then
 	print "🏗️ installing mise via the official installer..."
-	curl https://mise.run | sh
+	curl --fail --silent --show-error --location https://mise.run | sh
 fi
 
 if ! command -v mise &>/dev/null; then
@@ -14,3 +14,7 @@ if ! command -v mise &>/dev/null; then
 fi
 
 print "✔︎ mise installed: $(mise --version)"
+
+print "📍 installing globally configured mise tools..."
+# Use the home directory so the caller's project config cannot affect bootstrap.
+mise --cd "$HOME" install
