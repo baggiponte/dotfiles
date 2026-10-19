@@ -2,7 +2,7 @@
 # | ADD TO $PATH FIRST |
 # +--------------------+
 
-# unversioned secrets (see .gitignore) — sets OTEL_EXPORTER_OTLP_HEADERS etc.
+# unversioned secrets (see .gitignore)
 [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/.secrets" ]] && \
 	source "${XDG_CONFIG_HOME:-$HOME/.config}/.secrets"
 

@@ -1,0 +1,10 @@
+{
+  "mcp": {
+    "servers": {
+      "logfire": {
+        "type": "remote",
+        "url": "https://logfire-eu.pydantic.dev/mcp"
+      }
+    }
+  }
+}
