@@ -9,6 +9,10 @@ repos:
       - id: check-yaml
       - id: check-toml
       - id: check-added-large-files
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.5.0
     hooks:
