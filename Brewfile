@@ -173,8 +173,8 @@ cask "arc"
 cask "chatgpt"
 # Clipboard history app
 cask "clipbook"
-# Brings the power of Copilot coding agent directly to your terminal
-cask "copilot-cli"
+# Plugin-based AI agent desktop application
+cask "deepseek-harness"
 # Voice and text chat software
 cask "discord"
 cask "font-climate-crisis"
