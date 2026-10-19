@@ -8,7 +8,9 @@
 .secrets
 
 # Cloudflare and Wrangler CLI profiles contain credentials and local state.
+# Wrangler keeps its dir under $XDG_CONFIG_HOME as ".wrangler", not "wrangler".
 /cloudflare/
+/.wrangler/
 /wrangler/
 
 /gh/hosts.yml
