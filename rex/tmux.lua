@@ -1,5 +1,5 @@
 -- Port of ~/.config/tmux/tmux.conf. Ctrl-S is the tmux prefix;
--- Ctrl-H/J/K/L navigate Rex panes directly, overriding terminal handling.
+-- Ctrl-H/J/K/L navigate seamlessly through Neovim windows and Rex panes.
 local terminal = "com.superlogical.terminal"
 local shell = "com.superlogical.terminal.shell"
 -- Load the same PATH/tools as an interactive tmux shell (e.g. diff-so-fancy).
@@ -172,7 +172,6 @@ bind("r", "client.mode.enter", { name = "tmux_resize" })
 rex.bind("tmux_resize/escape", "client.mode.exit")
 
 for key, direction in pairs({ h = "left", j = "down", k = "up", l = "right" }) do
-  rex.bind("ctrl+" .. key, "pane.focus", { direction = direction })
   -- Rex measures resize steps in percent, not tmux's terminal cells.
   rex.bind("tmux_resize/" .. key, "pane.resize", { direction = direction, amount = 5 })
 end
