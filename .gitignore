@@ -22,10 +22,7 @@ glab-cli/recover/
 todoist-cli/config.json
 
 # AI assistants: credentials, linked resources, and runtime state
-codex/*
-!codex/AGENTS.md
-!codex/agents/
-!codex/config.toml
+/codex/
 
 github-copilot
 
