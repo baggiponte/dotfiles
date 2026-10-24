@@ -1,7 +1,8 @@
 # This is Git per-user configuration file.
 [user]
-  name = baggiponte
-  email = 57922983+baggiponte@users.noreply.github.com
+	name = baggiponte
+	email = 57922983+baggiponte@users.noreply.github.com
+	signingkey = /Users/baggiponte/.ssh/git-signing-ed25519
 
 [github]
   user = baggiponte
@@ -34,3 +35,7 @@
 
 [includeIf "gitdir:~/work/"]
 	path = ~/work/.gitconfig
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
