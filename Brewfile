@@ -1,4 +1,5 @@
 tap "agavra/tap"
+tap "ampcode/tap"
 tap "anomalyco/tap"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
 tap "bjoernschotte/tap", trusted: true
@@ -159,6 +160,8 @@ brew "zoxide"
 brew "zsh"
 # Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
 brew "agavra/tap/tuicr", trusted: true
+# CLI for Amp, the frontier coding agent
+brew "ampcode/tap/ampcode", trusted: true
 # OpenCode V2 - the AI coding agent for the terminal
 brew "anomalyco/tap/opencode-v2", trusted: true
 # CLI for Atlassian Confluence and Jira
@@ -167,6 +170,8 @@ brew "bjoernschotte/tap/atlcli", trusted: true
 brew "databricks/tap/databricks", trusted: true
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Coding agent and development environment
+cask "amp-app"
 # Chromium based browser
 cask "arc"
 # OpenAI's official ChatGPT desktop app
