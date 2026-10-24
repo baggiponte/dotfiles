@@ -2,7 +2,7 @@ tap "agavra/tap"
 tap "ampcode/tap"
 tap "anomalyco/tap"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
-tap "bjoernschotte/tap", trusted: true
+tap "bjoernschotte/tap"
 tap "ctrlspice/otel-desktop-viewer"
 tap "databricks/tap"
 tap "openai/tools"
@@ -176,6 +176,8 @@ cask "amp-app"
 cask "arc"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Anthropic's official Claude AI desktop app
+cask "claude"
 # Clipboard history app
 cask "clipbook"
 # Plugin-based AI agent desktop application
@@ -209,6 +211,8 @@ cask "microsoft-powerpoint"
 cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
+# Local-first dictation and meeting transcription
+cask "muesli"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # The official CLI for the OpenAI API.
