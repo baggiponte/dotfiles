@@ -36,10 +36,6 @@ brew "docker-compose"
 brew "docker-credential-helper"
 # View disk space usage and delete unwanted data, fast
 brew "dua-cli"
-# Disk Usage/Free Utility - a better 'df' alternative
-brew "duf"
-# More intuitive version of du in rust
-brew "dust"
 # Modern, maintained replacement for ls
 brew "eza"
 # Like neofetch, but much faster because written mostly in C
@@ -144,8 +140,6 @@ brew "tree-sitter-cli"
 brew "uv"
 # Vpnc-script replacement for easy and secure split-tunnel VPN setup
 brew "vpn-slice"
-# Executes a program periodically, showing output fullscreen
-brew "watch"
 # Internet file retriever
 brew "wget"
 # CLI for Git worktree management, designed for parallel AI agent workflows
@@ -228,7 +222,6 @@ uv "azure-cli"
 uv "google-colab-cli"
 uv "huggingface-hub"
 uv "llmfit"
-uv "maturin"
 uv "prek"
 uv "pyrefly"
 uv "ty"

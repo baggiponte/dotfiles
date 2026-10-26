@@ -1,6 +1,0 @@
-extends: default
-rules:
-  document-start:
-    present: false
-  comments:
-    min-spaces-from-content: 1

@@ -53,7 +53,3 @@ fi
 if hash eza 2>/dev/null; then
 	alias l="eza --all --group-directories-first --icons --oneline --ignore-glob='.DS_Store|.*cache|__pycache__'"
 fi
-
-if hash dust 2>/dev/null; then
-	alias dust="dust --reverse"
-fi
