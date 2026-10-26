@@ -10,7 +10,7 @@ curl -fsSL https://raw.githubusercontent.com/baggiponte/dotfiles/main/install.sh
 
 ## Software I use
 
-Everything is installed with [`homebrew`](https://brew.sh/).
+Everything is installed with [`homebrew`](https://brew.sh/) ([`Brewfile`](./Brewfile)) and [`mise`](https://mise.jdx.dev/) ([`mise/config.toml`](./mise/config.toml)).
 
 ## Install script
 
@@ -19,8 +19,9 @@ Everything is installed with [`homebrew`](https://brew.sh/).
 | Module | What it does |
 |---|---|
 | [`prerequisites`](./install/prerequisites.zsh) | Installs Xcode CLI tools, accepts licence, configures `ZDOTDIR` in `/etc/zshenv` |
+| [`mise`](./install/mise.zsh) | Installs mise (if missing) and the globally configured mise tools |
 | [`packages`](./install/packages.zsh) | Installs Homebrew (if missing), runs `brew bundle` from [`Brewfile`](./Brewfile), sets up Docker plugins |
-| [`config`](./install/config.zsh) | Exports `XDG_*` dirs, creates symlinks (`.gitconfig`, iCloud) |
+| [`config`](./install/config.zsh) | Exports `XDG_*` dirs, creates symlinks (`.gitconfig`, iCloud, [`scripts/`](./scripts/) and the Rex CLI into `~/.local/bin`) |
 | [`python`](./install/python.zsh) | Installs Python versions (3.10–3.13) via uv |
 | [`apply-macos-defaults`](./install/apply-macos-defaults.zsh) | Applies macOS system settings — Dock, Finder, keyboard, mouse, trackpad, Stage Manager, screenshots, text substitutions, and compiles the bat theme |
 
@@ -36,6 +37,6 @@ This is explained in detail in [zsh docs](https://zsh.sourceforge.io/Doc/Release
 
 > Commands are first read from /etc/zshenv; this cannot be overridden. [...] Commands are then read from $ZDOTDIR/.zshenv. If the shell is a login shell, commands are read from /etc/zprofile and then $ZDOTDIR/.zprofile. Then, if the shell is interactive, commands are read from /etc/zshrc and then $ZDOTDIR/.zshrc. Finally, if the shell is a login shell, /etc/zlogin and $ZDOTDIR/.zlogin are read.
 
-In other words, this is the order in which these files get read. **Keep in mind that it reads first from the system-wide file (i.e. `/etc/zshenv`) then from the file in your home directory (`~/.zshenv`):**
+In other words, this is the order in which these files get read. **Keep in mind that it reads first from the system-wide file (i.e. `/etc/zshenv`) then from the file in `$ZDOTDIR` (here `~/.config/zsh/.zshenv`, since `ZDOTDIR` is set in `/etc/zshenv`):**
 
 `.zshenv` → `.zprofile` → `.zshrc` → `.zlogin` → `.zlogout`

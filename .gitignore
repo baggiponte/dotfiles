@@ -61,3 +61,6 @@ zed/**
 !zed/keymap.json
 !zed/settings.json
 !zed/snippets
+
+# entire CLI login context and update-check state
+entire/
