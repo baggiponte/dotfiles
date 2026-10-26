@@ -29,8 +29,6 @@ setopt rm_star_silent         # rm ./* does not request confirmation.
 setopt share_history          # share history between all sessions.
 setopt extended_history       # write the history file in the ':start:elapsed;command' format.
 setopt hist_ignore_all_dups   # remove duplicate entries.
-setopt hist_expire_dups_first # expire a duplicate event first when trimming history.
-setopt hist_save_no_dups      # do not save duplicate entries.
 setopt hist_find_no_dups      # if duplicate lines have been saved, search backwards does not show them more than once.
 setopt hist_ignore_space      # do not record an event starting with a space.
 setopt hist_reduce_blanks     # remove blank lines.

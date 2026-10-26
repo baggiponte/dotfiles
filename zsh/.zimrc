@@ -1,6 +1,6 @@
-zmodule aloxaf/fzf-tab
-zmodule zdharma-continuum/fast-syntax-highlighting
-zmodule zsh-users/zsh-autosuggestions
-zmodule hlissner/zsh-autopair
-
 zmodule zsh-users/zsh-completions --fpath src
+zmodule aloxaf/fzf-tab
+zmodule hlissner/zsh-autopair
+zmodule zsh-users/zsh-autosuggestions
+# keep last: it wraps the widgets defined by the plugins above
+zmodule zdharma-continuum/fast-syntax-highlighting
