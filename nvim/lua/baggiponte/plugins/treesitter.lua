@@ -118,8 +118,6 @@ return {
     branch = 'main',
     lazy = false,
     dependencies = {
-      { 'kylechui/nvim-surround', opts = {} },
-      { 'RRethy/nvim-treesitter-endwise' },
       { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
     },
     build = ':TSUpdate',
@@ -131,5 +129,26 @@ return {
       setup_treesitter_filetypes()
       vim.treesitter.language.register('bash', 'zsh')
     end,
+  },
+  -- surround: load on its default keymaps instead of at startup
+  {
+    'kylechui/nvim-surround',
+    keys = {
+      'ys',
+      'yS',
+      'ds',
+      'cs',
+      'cS',
+      { 'S', mode = 'x' },
+      { 'gS', mode = 'x' },
+      { '<C-g>s', mode = 'i' },
+      { '<C-g>S', mode = 'i' },
+    },
+    opts = {},
+  },
+  -- endwise only does work for languages that ship endwise queries
+  {
+    'RRethy/nvim-treesitter-endwise',
+    ft = { 'lua', 'luau', 'ruby', 'vim', 'sh', 'bash', 'zsh', 'elixir', 'julia', 'fish', 'verilog' },
   },
 }
