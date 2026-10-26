@@ -45,9 +45,7 @@ AppleInterfaceStyle = "Dark"
 AppleKeyboardUIMode = 1 # keyboard navigation between controls
 AppleMiniaturizeOnDoubleClick = false
 _HIHideMenuBar = true   # auto-hide the menu bar
-# DRIFT: this machine stores 0.15000000596046448 (float32 written by System
-# Settings), so status reports a change from 0.15. Pick one before applying.
-"com.apple.mouse.doubleClickThreshold" = 0.15
+"com.apple.mouse.doubleClickThreshold" = 0.15 # may show as differs vs 0.15000000596046448: float precision only, harmless
 "com.apple.mouse.linear" = false
 "com.apple.mouse.scaling" = 3.0
 "com.apple.scrollwheel.scaling" = 1.0
@@ -150,11 +148,9 @@ StandardShowDesktopMode = 0
 # +-------------+
 
 [bootstrap.macos.defaults."com.apple.screencapture"]
-# The old script wrote "$HOME/Desktop". macOS defaults are not templated and
-# `$HOME`/`~` are not expanded (docs: "used exactly as written"), so the path
-# is spelled out, like the other /Users/baggiponte paths in this repo.
-# DRIFT: unset on this machine today (screenshots go to the clipboard).
-location = "/Users/baggiponte/Desktop"
+# Send screenshots to the clipboard instead of saving a file. `location` is
+# left unmanaged.
+target = "clipboard"
 disable-shadow = true
 
 # +-------------------------+
