@@ -64,3 +64,6 @@ zed/**
 
 # entire CLI login context and update-check state
 entire/
+
+# Raycast local extensions/state
+raycast/
