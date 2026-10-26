@@ -23,7 +23,7 @@ Everything is installed with [`homebrew`](https://brew.sh/) ([`Brewfile`](./Brew
 | [`packages`](./install/packages.zsh) | Installs Homebrew (if missing), runs `brew bundle` from [`Brewfile`](./Brewfile), sets up Docker plugins |
 | [`config`](./install/config.zsh) | Exports `XDG_*` dirs, creates symlinks (`.gitconfig`, iCloud, [`scripts/`](./scripts/) into `~/.local/bin`) |
 | [`python`](./install/python.zsh) | Installs Python versions (3.10–3.13) via uv |
-| [`apply-macos-defaults`](./install/apply-macos-defaults.zsh) | Applies macOS system settings — Dock, Finder, keyboard, mouse, trackpad, Stage Manager, screenshots, text substitutions, and compiles the bat theme |
+| [`macos-defaults`](./install/macos-defaults.zsh) | Runs `mise bootstrap --only macos-defaults` to apply the macOS settings declared in [`mise/conf.d/macos-defaults.toml`](./mise/conf.d/macos-defaults.toml) — Dock, Finder, keyboard, mouse, trackpad, Stage Manager, screenshots, text substitutions — and compiles the bat theme |
 
 ## References and links
 

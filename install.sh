@@ -36,7 +36,7 @@ steps=(
 	packages
 	config
 	python
-	apply-macos-defaults
+	macos-defaults
 )
 
 for step in "${steps[@]}"; do
