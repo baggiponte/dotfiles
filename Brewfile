@@ -5,6 +5,7 @@ tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
 tap "bjoernschotte/tap"
 tap "ctrlspice/otel-desktop-viewer"
 tap "databricks/tap"
+tap "entireio/tap"
 tap "openai/tools"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
@@ -176,6 +177,8 @@ cask "clipbook"
 cask "deepseek-harness"
 # Voice and text chat software
 cask "discord"
+# CLI for Entire
+cask "entireio/tap/entire", trusted: true
 cask "font-climate-crisis"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
@@ -211,6 +214,8 @@ cask "obsidian"
 cask "openai/tools/openai", trusted: true
 # otel-desktop-viewer is a CLI tool for receiving OpenTelemetry traces, metrics, and logs on your local machine.
 cask "ctrlspice/otel-desktop-viewer/otel-desktop-viewer", trusted: true
+# Control your tools with a few keystrokes
+cask "raycast"
 # Music streaming service
 cask "spotify"
 # To-do list
