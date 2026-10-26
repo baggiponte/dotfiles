@@ -118,18 +118,48 @@ return {
     branch = 'main',
     lazy = false,
     dependencies = {
-      { 'kylechui/nvim-surround', opts = {} },
-      { 'RRethy/nvim-treesitter-endwise' },
       { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
     },
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter').setup()
-      require('nvim-treesitter').install(parsers) -- no-op for already-installed parsers
+      -- install() is a no-op when everything is present, but still loads the
+      -- install machinery; only call it when a parser is actually missing.
+      local installed = {}
+      for _, path in ipairs(vim.api.nvim_get_runtime_file('parser/*.so', true)) do
+        installed[vim.fn.fnamemodify(path, ':t:r')] = true
+      end
+      local missing = vim.tbl_filter(function(lang)
+        return not installed[lang]
+      end, parsers)
+      if #missing > 0 then
+        require('nvim-treesitter').install(missing)
+      end
       require('nvim-treesitter-textobjects').setup(textobjects)
       setup_textobject_keymaps()
       setup_treesitter_filetypes()
       vim.treesitter.language.register('bash', 'zsh')
     end,
+  },
+  -- surround: load on its default keymaps instead of at startup
+  {
+    'kylechui/nvim-surround',
+    keys = {
+      'ys',
+      'yS',
+      'ds',
+      'cs',
+      'cS',
+      { 'S', mode = 'x' },
+      { 'gS', mode = 'x' },
+      { '<C-g>s', mode = 'i' },
+      { '<C-g>S', mode = 'i' },
+    },
+    opts = {},
+  },
+  -- endwise only does work for languages that ship endwise queries
+  {
+    'RRethy/nvim-treesitter-endwise',
+    ft = { 'lua', 'luau', 'ruby', 'vim', 'sh', 'bash', 'zsh', 'elixir', 'julia', 'fish', 'verilog' },
   },
 }
