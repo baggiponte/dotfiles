@@ -29,5 +29,5 @@ fi
 
 if command -v docker-buildx &> /dev/null; then
 	mkdir -p "$HOME/.docker/cli-plugins"
-	ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-buildx" "$HOME/.docker/cli-plugins/docker-buildx"
+	ln -sfn "$(brew --prefix)/opt/docker-buildx/bin/docker-buildx" "$HOME/.docker/cli-plugins/docker-buildx"
 fi
