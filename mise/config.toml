@@ -6,6 +6,7 @@ pnpm = "latest"
 "npm:cf" = { version = "latest" }
 "npm:skills" = "latest"
 hunk = "latest"
+go = "latest"
 
 [settings]
 experimental = true
