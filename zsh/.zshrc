@@ -20,7 +20,9 @@ sources=(
 	"zstyle"      # configure completion menu, etc
 	"vim"         # enable vim modes and cursor
 	"zim-init"    # prepare plugins and completion directories
-	"eval"        # shell hooks and completions
+	"cache"       # cache generated completion/init scripts
+	"completion"  # generated completions and compinit
+	"eval"        # shell hooks
 	"zim"         # load plugins after completion initialization
 	"functions"   # frequently used functions
 	"aliases"     # utility aliases
