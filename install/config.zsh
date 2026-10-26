@@ -16,7 +16,12 @@ for script in "$HOME/.config/scripts"/*(N); do
 done
 
 # Rex ships its CLI inside the macOS app bundle, outside PATH.
-rex_cli="/Applications/Rex Beta.app/Contents/Helpers/Rex Server.app/Contents/MacOS/rex"
-if [[ -x "$rex_cli" ]]; then
-    ln -sfn "$rex_cli" "$HOME/.local/bin/rex"
-fi
+# The helper bundle was renamed from "Rex Server.app" to "Rex Server.rex".
+for rex_cli in \
+    "/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex" \
+    "/Applications/Rex Beta.app/Contents/Helpers/Rex Server.app/Contents/MacOS/rex"; do
+    if [[ -x "$rex_cli" ]]; then
+        ln -sfn "$rex_cli" "$HOME/.local/bin/rex"
+        break
+    fi
+done
