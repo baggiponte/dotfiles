@@ -27,8 +27,7 @@ return {
   build = function()
     require('fff.download').download_or_build_binary()
   end,
-  lazy = false,
-  keys = keys,
+  keys = keys, -- lazy-loads on <leader>ff / <leader>fg / <leader>fw
   opts = {
     layout = {
       height = 0.9,
