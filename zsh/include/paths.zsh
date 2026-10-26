@@ -30,14 +30,6 @@ export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export MYVIMRC="${XDG_CONFIG_HOME}/nvim/init.lua"
 
-# +------+
-# | RUST |
-# +------+
-
-if [[ -x "${HOME}/.cargo/bin/rustup" ]]; then
-	source "${HOME}/.cargo/env"
-fi
-
 # +--------+
 # | DOCKER |
 # +--------+

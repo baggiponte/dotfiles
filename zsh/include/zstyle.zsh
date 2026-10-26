@@ -27,8 +27,6 @@ zstyle ':fzf-tab:complete:j:*' fzf-preview 'eza --color=always --tree --level=2 
 # use cache for tab completion
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
-# use only if you use zmodule completion in your .zimrc: https://github.com/zimfw/completion#settings
-# zstyle ':zim:completion' dumpfile "$XDG_CACHE_HOME/zsh/zcompdump"
 
 # descriptors and corrections
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'

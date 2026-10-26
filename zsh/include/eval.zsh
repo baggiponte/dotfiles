@@ -13,11 +13,6 @@ fpath=("${COMPDIR}" "${fpath[@]}")
 # python
 command -v uv >/dev/null && uv generate-shell-completion zsh > "${COMPDIR}/_uv"
 command -v uvx >/dev/null && uvx --generate-shell-completion=zsh > "${COMPDIR}/_uvx"
-command -v ruff >/dev/null && ruff generate-shell-completion zsh > "${COMPDIR}/_ruff"
-
-# rust
-command -v rustup >/dev/null && rustup completions zsh > "${COMPDIR}/_rustup"
-command -v cargo >/dev/null && rustup completions zsh cargo > "${COMPDIR}/_cargo"
 
 # misc
 command -v az >/dev/null && register-python-argcomplete az > "${COMPDIR}/_az"
