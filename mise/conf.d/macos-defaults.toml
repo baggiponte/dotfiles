@@ -1,0 +1,174 @@
+# macOS defaults, applied with `mise bootstrap --only macos-defaults`.
+# Preview first: `mise bootstrap --only macos-defaults --dry-run`.
+# Docs: https://mise.jdx.dev/bootstrap/macos-defaults.html
+#
+# Values are typed: TOML bool/int/float/string map to plist
+# boolean/integer/real/string, and a value only counts as set when its type
+# matches too. mise writes only what differs and never deletes a preference.
+#
+# Named `[bootstrap.macos.*]` keys are used where they write exactly the same
+# preference as `defaults write`. Everything else is a raw domain/key under
+# `[bootstrap.macos.defaults]`. The named trackpad keys are deliberately not
+# used: they also write the Bluetooth trackpad domain, which the old script
+# never touched.
+
+# +------+
+# | Dock |
+# +------+
+
+[bootstrap.macos.dock]
+autohide = true      # com.apple.dock autohide -bool true
+tilesize = 50        # com.apple.dock tilesize -int 50
+magnification = true # com.apple.dock magnification -bool true
+largesize = 70       # com.apple.dock largesize -int 70
+orientation = "left" # com.apple.dock orientation -string left
+
+[bootstrap.macos.defaults."com.apple.dock"]
+# Hot corner, bottom right: 14 = Quick Note, with no modifier key.
+wvous-br-corner = 14
+wvous-br-modifier = 0
+
+# +-----------------------------------------------------+
+# | Menu bar, appearance, keyboard, mouse, and trackpad |
+# +-----------------------------------------------------+
+
+[bootstrap.macos.keyboard]
+press_and_hold = false # ApplePressAndHoldEnabled: repeat held keys, no accent popup
+initial_key_repeat = 15 # InitialKeyRepeat
+key_repeat = 2          # KeyRepeat
+fn_state = true         # com.apple.keyboard.fnState: F1-F12 act as function keys
+# Text substitutions and spelling behavior.
+automatic_capitalization = true # NSAutomaticCapitalizationEnabled
+
+[bootstrap.macos.defaults.NSGlobalDomain]
+AppleInterfaceStyle = "Dark"
+AppleKeyboardUIMode = 1 # keyboard navigation between controls
+AppleMiniaturizeOnDoubleClick = false
+_HIHideMenuBar = true   # auto-hide the menu bar
+# DRIFT: this machine stores 0.15000000596046448 (float32 written by System
+# Settings), so status reports a change from 0.15. Pick one before applying.
+"com.apple.mouse.doubleClickThreshold" = 0.15
+"com.apple.mouse.linear" = false
+"com.apple.mouse.scaling" = 3.0
+"com.apple.scrollwheel.scaling" = 1.0
+"com.apple.springing.delay" = 0.0
+"com.apple.springing.enabled" = true
+"com.apple.trackpad.forceClick" = true
+"com.apple.trackpad.scaling" = 3.0
+"com.apple.trackpad.scrolling" = true
+# Text substitutions and spelling behavior.
+NSAutomaticPeriodSubstitutionEnabled = true
+NSUserDictionaryReplacementItems = [
+  { on = 1, replace = "omw", with = "On my way!" },
+  { on = 1, replace = "btw", with = "by the way," },
+  { on = 1, replace = "afa", with = "as far as" },
+  { on = 1, replace = "tbh", with = "to be honest" },
+  { on = 1, replace = "iow", with = "in other words" },
+  { on = 1, replace = "otoh", with = "on the other hand" },
+  { on = 1, replace = "wrt", with = "with respect to" },
+]
+
+# +-------------------+
+# | Trackpad gestures |
+# +-------------------+
+
+[bootstrap.macos.defaults."com.apple.AppleMultitouchTrackpad"]
+ActuateDetents = true
+Clicking = true # tap to click
+DragLock = false
+Dragging = false
+FirstClickThreshold = 1
+ForceSuppressed = false
+SecondClickThreshold = 1
+TrackpadCornerSecondaryClick = 0
+TrackpadFiveFingerPinchGesture = 2
+TrackpadFourFingerHorizSwipeGesture = 2
+TrackpadFourFingerPinchGesture = 2
+TrackpadFourFingerVertSwipeGesture = 2
+TrackpadHandResting = true
+TrackpadHorizScroll = true
+TrackpadMomentumScroll = true
+TrackpadPinch = true
+TrackpadRightClick = true
+TrackpadRotate = true
+TrackpadScroll = true
+TrackpadThreeFingerDrag = false
+TrackpadThreeFingerHorizSwipeGesture = 2
+TrackpadThreeFingerTapGesture = 0
+TrackpadThreeFingerVertSwipeGesture = 2
+TrackpadTwoFingerDoubleTapGesture = 1
+TrackpadTwoFingerFromRightEdgeSwipeGesture = 3
+USBMouseStopsTrackpad = false
+UserPreferences = true
+
+# +-------------+
+# | Magic Mouse |
+# +-------------+
+
+[bootstrap.macos.defaults."com.apple.driver.AppleBluetoothMultitouch.mouse"]
+MouseButtonDivision = 55
+MouseButtonMode = "OneButton"
+MouseHorizontalScroll = true
+MouseMomentumScroll = true
+MouseOneFingerDoubleTapGesture = 0
+MouseTwoFingerDoubleTapGesture = 3
+MouseTwoFingerHorizSwipeGesture = 2
+MouseVerticalScroll = true
+UserPreferences = true
+
+# +--------+
+# | Finder |
+# +--------+
+
+[bootstrap.macos.finder]
+preferred_view_style = "list" # FXPreferredViewStyle -string Nlsv
+
+[bootstrap.macos.defaults."com.apple.finder"]
+ShowExternalHardDrivesOnDesktop = true
+ShowHardDrivesOnDesktop = false
+ShowRemovableMediaOnDesktop = true
+ShowSidebar = true
+SidebarDevicesSectionDisclosedState = true
+SidebarPlacesSectionDisclosedState = true
+SidebarShowingiCloudDesktop = false
+SidebariCloudDriveSectionDisclosedState = true
+SidebarWidth = 148
+
+# +---------------+
+# | Stage Manager |
+# +---------------+
+
+[bootstrap.macos.defaults."com.apple.WindowManager"]
+GloballyEnabled = true
+AutoHide = true
+ShowDesktopEnabled = false
+StageManagerWidgetGrouping = 0
+StandardShowDesktopMode = 0
+
+# +-------------+
+# | Screenshots |
+# +-------------+
+
+[bootstrap.macos.defaults."com.apple.screencapture"]
+# The old script wrote "$HOME/Desktop". macOS defaults are not templated and
+# `$HOME`/`~` are not expanded (docs: "used exactly as written"), so the path
+# is spelled out, like the other /Users/baggiponte paths in this repo.
+# DRIFT: unset on this machine today (screenshots go to the clipboard).
+location = "/Users/baggiponte/Desktop"
+disable-shadow = true
+
+# +-------------------------+
+# | Restart affected apps   |
+# +-------------------------+
+# Dock, Finder, Stage Manager, and the menu bar read many preferences only at
+# launch, and mise does not restart them. The documented way is a
+# post-defaults hook. It runs whenever the macos-defaults part runs, even when
+# nothing changed, so each command must be safe to repeat.
+
+[bootstrap.hooks]
+post-defaults = [
+  "killall Dock 2>/dev/null || true",
+  "killall Finder 2>/dev/null || true",
+  "killall WindowManager 2>/dev/null || true",
+  "killall SystemUIServer 2>/dev/null || true",
+]
