@@ -105,8 +105,21 @@ return {
     'mfussenegger/nvim-dap-python',
     'theHamsta/nvim-dap-virtual-text',
   },
+  -- Load on the debug keymaps/commands rather than on every Python buffer.
+  -- require('dap') from elsewhere (e.g. neotest's dap strategy) also loads it.
   keys = keys,
-  ft = { 'python' },
+  cmd = {
+    'DapContinue',
+    'DapNew',
+    'DapToggleBreakpoint',
+    'DapClearBreakpoints',
+    'DapToggleRepl',
+    'DapEval',
+    'DapShowLog',
+    'DapViewOpen',
+    'DapViewToggle',
+    'DapViewWatch',
+  },
   config = function()
     local dap = require('dap')
     local dap_view = require('dap-view')
