@@ -17,7 +17,6 @@
 # Not wrapped in an anonymous function on purpose: `typeset` in sourced
 # files would then create locals that vanish when the function returns.
 sources=(
-	"paths"      # set path env variables
 	"options"    # configure zsh
 	"zstyle"     # configure completion menu, etc
 	"vim"        # enable vim modes and cursor

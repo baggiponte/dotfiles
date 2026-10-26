@@ -15,9 +15,9 @@ else
 	_zgen "$COMPDIR/_ruff" uv uvx ruff generate-shell-completion zsh
 fi
 
-# Register generated completions before compinit runs. Homebrew's
-# site-functions is already on fpath via `brew shellenv` (paths.zsh).
-fpath=("$COMPDIR" $fpath)
+# Register completion dirs before compinit runs. Homebrew's is also added by
+# `brew shellenv`, but only in the shell that built PATH (see .zshenv).
+fpath=("$COMPDIR" /opt/homebrew/share/zsh/site-functions $fpath)
 
 # compinit audits fpath for insecure dirs and rescans it on every start.
 # `compinit -C` trusts the existing dump instead. Use -C unless the dump is
