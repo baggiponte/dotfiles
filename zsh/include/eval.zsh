@@ -2,37 +2,37 @@
 # | COMPLETIONS |
 # +-------------+
 
-COMPDIR="${XDG_CACHE_HOME}/zsh/zfunc"
+source "$ZDOTDIR/include/cache.zsh"
 
-[[ -d "${COMPDIR}" ]] || mkdir -p "${COMPDIR}"
+# Completion files, autoloaded from fpath. Regenerated only when the tool's
+# binary changes (upgrade), not on every startup.
+_zgen "$COMPDIR/_uv"  uv  uv generate-shell-completion zsh
+_zgen "$COMPDIR/_uvx" uvx uvx --generate-shell-completion=zsh
+_zgen "$COMPDIR/_az"  az  register-python-argcomplete az
+# ruff runs through uv: use an installed `uv tool` binary if there is one,
+# otherwise `uvx ruff` (keyed on uv, so it refreshes when uv is upgraded).
+if (( $+commands[ruff] )); then
+	_zgen "$COMPDIR/_ruff" ruff ruff generate-shell-completion zsh
+else
+	_zgen "$COMPDIR/_ruff" uv uvx ruff generate-shell-completion zsh
+fi
 
 # Register generated completions before compinit runs.
 fpath=("${COMPDIR}" "${fpath[@]}")
 
-# Regenerate completions on every startup so they match the installed tools.
-# python
-command -v uv >/dev/null && uv generate-shell-completion zsh > "${COMPDIR}/_uv"
-command -v uvx >/dev/null && uvx --generate-shell-completion=zsh > "${COMPDIR}/_uvx"
-
-# misc
-command -v az >/dev/null && register-python-argcomplete az > "${COMPDIR}/_az"
-
 autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
 autoload -Uz bashcompinit && bashcompinit
 
-if command -v fzf >/dev/null; then
-    eval "$(fzf --zsh)"
-    compdef _gnu_generic fzf
-fi
+# +-------+
+# | HOOKS |
+# +-------+
 
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
-if command -v mole >/dev/null 2>&1; then eval "$(command mole completion zsh)"; fi
-if command -v mise >/dev/null 2>&1; then eval "$(command mise activate zsh)"; fi
-
-# hook binaries into zsh
-command -v zoxide >/dev/null && eval "$(zoxide init zsh --cmd=j)" # autojump with j
-
-if command -v starship >/dev/null; then
-	export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-	eval "$(starship init zsh)"
-fi
+# Init scripts: cached under $XDG_CACHE_HOME/zsh/gen, then sourced.
+# `command` bypasses shell functions these scripts define (e.g. `wt`).
+_zsource fzf      fzf      fzf --zsh && compdef _gnu_generic fzf
+_zsource wt       wt       command wt config shell init zsh
+_zsource mole     mole     command mole completion zsh
+_zsource mise     mise     command mise activate zsh
+_zsource zoxide   zoxide   zoxide init zsh --cmd=j # autojump with j
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+_zsource starship starship starship init zsh --print-full-init
