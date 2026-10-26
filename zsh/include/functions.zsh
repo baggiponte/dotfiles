@@ -2,9 +2,9 @@
 # | Utils |
 # +-------+
 
-path () { print "${PATH//:/\\n}" }
+path () { print -l -- $path }
 
-fpath () { print "${fpath}" | tr " " "\n" }
+fpath () { print -l -- $fpath }
 
 take () { command mkdir -p "$1" && cd "$1"; }
 

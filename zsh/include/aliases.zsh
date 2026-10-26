@@ -21,35 +21,13 @@ alias ...="cd ../.."
 # +-----------+
 # | Optionals |
 # +-----------+
+# $+commands[x] is 1 when x is on PATH (a hash lookup, no subprocess).
 
-if hash colima 2>/dev/null; then
-    alias c="colima"
-fi
-
-if hash kubectl 2>/dev/null; then
-	alias k=kubectl
-fi
-
-if hash gh 2>/dev/null; then
-	alias ghw='gh repo view --web'
-fi
-
-if hash lazygit 2>/dev/null; then
-	alias lg=lazygit
-fi
-
-if hash gsed 2>/dev/null; then
-	alias sed=gsed # gnu-sed (installed by homebrew)
-fi
-
-if hash gawk 2>/dev/null; then
-	alias awk=gawk # gnu-awk (installed by homebrew)
-fi
-
-if hash gmake 2>/dev/null; then
-	alias make=gmake # gnu-make (installed by homebrew)
-fi
-
-if hash eza 2>/dev/null; then
-	alias l="eza --all --group-directories-first --icons --oneline --ignore-glob='.DS_Store|.*cache|__pycache__'"
-fi
+(( $+commands[colima] ))  && alias c=colima
+(( $+commands[kubectl] )) && alias k=kubectl
+(( $+commands[gh] ))      && alias ghw='gh repo view --web'
+(( $+commands[lazygit] )) && alias lg=lazygit
+(( $+commands[gsed] ))    && alias sed=gsed   # gnu-sed (installed by homebrew)
+(( $+commands[gawk] ))    && alias awk=gawk   # gnu-awk (installed by homebrew)
+(( $+commands[gmake] ))   && alias make=gmake # gnu-make (installed by homebrew)
+(( $+commands[eza] ))     && alias l="eza --all --group-directories-first --icons --oneline --ignore-glob='.DS_Store|.*cache|__pycache__'"

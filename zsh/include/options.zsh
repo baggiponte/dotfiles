@@ -7,15 +7,11 @@
 # | * history: https://zsh.sourceforge.io/Guide/zshguide02.html#l17 |
 # +-----------------------------------------------------------------+
 
-histfile="${XDG_CACHE_HOME:-"$HOME/.cache"}/zsh/history"
-
-mkdir -p "${histfile:h}"
-
-export HISTFILE="$histfile"
+# Not exported: child bash shells would otherwise write into this file.
+HISTFILE="$XDG_CACHE_HOME/zsh/history"
+[[ -d ${HISTFILE:h} ]] || mkdir -p "${HISTFILE:h}" # :h = dirname
 HISTSIZE=1200000
 SAVEHIST=1000000
-
-unset histfile
 
 setopt complete_in_word       # tab completion works from both sides.
 setopt extended_glob          # use extended globbing syntax.
