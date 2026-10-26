@@ -36,7 +36,8 @@ brew-cleanup () {
     local bundlefile="${HOMEBREW_BUNDLE_FILE:-"$HOME/.config/Brewfile"}"
     print -x 2 "\t* Dump formulae and casks to $(basename "${bundlefile}")..."
     [ -s "${bundlefile}" ] && mv "${bundlefile}" "${bundlefile}.bak"
-    brew bundle dump --file="${bundlefile}"
+    # Go is project-scoped via mise, never global
+    brew bundle dump --no-go --file="${bundlefile}"
 }
 
 brew-cleanup
