@@ -7,15 +7,11 @@
 # | * history: https://zsh.sourceforge.io/Guide/zshguide02.html#l17 |
 # +-----------------------------------------------------------------+
 
-histfile="${XDG_CACHE_HOME:-"$HOME/.cache"}/zsh/history"
-
-mkdir -p "${histfile:h}"
-
-export HISTFILE="$histfile"
+# Not exported: child bash shells would otherwise write into this file.
+HISTFILE="$XDG_CACHE_HOME/zsh/history"
+[[ -d ${HISTFILE:h} ]] || mkdir -p "${HISTFILE:h}" # :h = dirname
 HISTSIZE=1200000
 SAVEHIST=1000000
-
-unset histfile
 
 setopt complete_in_word       # tab completion works from both sides.
 setopt extended_glob          # use extended globbing syntax.
@@ -29,8 +25,6 @@ setopt rm_star_silent         # rm ./* does not request confirmation.
 setopt share_history          # share history between all sessions.
 setopt extended_history       # write the history file in the ':start:elapsed;command' format.
 setopt hist_ignore_all_dups   # remove duplicate entries.
-setopt hist_expire_dups_first # expire a duplicate event first when trimming history.
-setopt hist_save_no_dups      # do not save duplicate entries.
 setopt hist_find_no_dups      # if duplicate lines have been saved, search backwards does not show them more than once.
 setopt hist_ignore_space      # do not record an event starting with a space.
 setopt hist_reduce_blanks     # remove blank lines.
