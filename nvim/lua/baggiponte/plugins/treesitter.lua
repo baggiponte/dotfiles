@@ -11,7 +11,6 @@ local parsers = {
   'markdown',
   'markdown_inline',
   'python',
-  'r',
   'regex',
   'requirements',
   'rust',
