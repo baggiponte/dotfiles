@@ -30,10 +30,20 @@ vim.g.mapleader = ' '
 
 vim.o.winborder = 'rounded'
 
+-- neat's cmdline is a popup and ui2 shows messages in a float, so a cmdline
+-- row would only be an empty line under the statusline.
+vim.o.cmdheight = 0
+-- 'cmd' would expand the hidden cmdline over the statusline for each message
+local ui2_opts = { msg = { targets = 'msg' } }
 if #vim.api.nvim_list_uis() > 0 then
-  require('vim._core.ui2').enable({})
+  require('vim._core.ui2').enable(ui2_opts)
 else
-  vim.api.nvim_create_autocmd('UIEnter', { once = true, callback = require('vim._core.ui2').enable })
+  vim.api.nvim_create_autocmd('UIEnter', {
+    once = true,
+    callback = function()
+      require('vim._core.ui2').enable(ui2_opts)
+    end,
+  })
 end
 
 -- Check :h nvim-defaults first!
