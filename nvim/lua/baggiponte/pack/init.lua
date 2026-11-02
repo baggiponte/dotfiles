@@ -4,22 +4,6 @@
 -- design are loaded and configured eagerly. Plugins marked `opt` below are
 -- kept off the runtimepath and packadd-ed on demand via baggiponte.defer.
 
--- Skip built-in runtime plugins (lazy.nvim's performance.rtp.disabled_plugins).
--- Their plugin/ files bail out when these are set.
-for _, plugin in ipairs({
-  'gzip',
-  'matchit',
-  'matchparen',
-  'netrw',
-  'netrwPlugin',
-  'shada_plugin',
-  'tarPlugin',
-  'tutor_mode_plugin',
-  'zipPlugin',
-}) do
-  vim.g['loaded_' .. plugin] = 1
-end
-
 local function gh(repo)
   return 'https://github.com/' .. repo
 end
@@ -53,9 +37,10 @@ vim.api.nvim_create_autocmd('PackChanged', {
 -- `data = OPT`: install, but load on demand (see baggiponte.defer)
 local OPT = { opt = true }
 
--- Paths of the `opt` plugins, by name, filled in by `load` below. The require
--- hook further down reads this instead of vim.pack.get(): that one waits on
--- async work, which is not allowed in every context (E565 from the statusline).
+-- Paths of the `opt` plugins, by name, filled in by `load` below for
+-- defer.load_on_require(). It can't call vim.pack.get() instead: that waits
+-- on async work, which is not allowed in every context (E565 from the
+-- statusline).
 local opt_paths = {} ---@type table<string, string>
 
 vim.pack.add({
@@ -129,37 +114,7 @@ vim.pack.add({
   end,
 })
 
--- Like lazy.nvim: requiring a module of an `opt` plugin that is not loaded yet
--- packadds it, so optional integrations (e.g. fff -> devicons) keep working.
--- Hard dependencies are still listed in each defer.loader() call: :packadd is
--- not allowed in every context (e.g. inside UI event callbacks).
--- Several plugins can share a top-level module (telescope.nvim and
--- telescope-fzf-native.nvim both ship lua/telescope/), so each maps to a list.
-local opt_plugins ---@type table<string, string[]>? lua top-level module -> plugin names
-table.insert(package.loaders, function(modname)
-  if not opt_plugins then
-    opt_plugins = {}
-    for name, path in pairs(opt_paths) do
-      for entry in vim.fs.dir(path .. '/lua') do
-        local top = entry:gsub('%.lua$', '')
-        opt_plugins[top] = opt_plugins[top] or {}
-        table.insert(opt_plugins[top], name)
-      end
-    end
-  end
-
-  local names = opt_plugins[modname:match('^[^.]+')]
-  if not names then
-    return
-  end
-  opt_plugins[modname:match('^[^.]+')] = nil
-  for _, name in ipairs(names) do
-    require('baggiponte.defer').packadd(name)
-  end
-  local path = vim.api.nvim_get_runtime_file('lua/' .. modname:gsub('%.', '/') .. '.lua', false)[1]
-    or vim.api.nvim_get_runtime_file('lua/' .. modname:gsub('%.', '/') .. '/init.lua', false)[1]
-  return path and loadfile(path) or nil
-end)
+require('baggiponte.defer').load_on_require(opt_paths)
 
 -- Local, unmanaged plugin (lazy.nvim's `dir = ...`).
 local rex = vim.fn.expand('~/dev/projs/rex-navigator.nvim')
@@ -167,93 +122,4 @@ if vim.uv.fs_stat(rex) then
   vim.opt.rtp:append(rex)
 end
 
-for _, module in ipairs({
-  -- colorscheme first, like lazy.nvim's `priority = 1000`
-  'ui.colorscheme',
-  'ui.neat',
-  'treesitter',
-  'blink',
-  'conform',
-  'dadbod',
-  'dap',
-  'fff',
-  'gitsigns',
-  'lazydev',
-  'lint',
-  'lsp-signature',
-  'markview',
-  'mini',
-  'namu',
-  'neo-tree',
-  'neogit',
-  'neotest',
-  'oil',
-  'quicker',
-  'refactoring',
-  'rex-navigator',
-  'sayonara',
-  'supermaven',
-  'symbol-usage',
-  'telescope',
-  'vim-visual-multi',
-  'ui.nvim-highlight-colors',
-}) do
-  require('baggiponte.plugins.' .. module)
-end
-
--- Plugin management commands (what :Lazy used to provide). vim.pack.update()
--- opens a review buffer: `:w` applies the changes, `:q` cancels.
-local function plugin_names()
-  return vim.tbl_map(function(plugin)
-    return plugin.spec.name
-  end, vim.pack.get())
-end
-
----@param args vim.api.keyset.create_user_command.command_args
-local function names_or_all(args)
-  return #args.fargs > 0 and args.fargs or nil
-end
-
-vim.api.nvim_create_user_command('PackUpdate', function(args)
-  vim.pack.update(names_or_all(args), { force = args.bang })
-end, {
-  nargs = '*',
-  bang = true,
-  complete = plugin_names,
-  desc = 'Fetch and review plugin updates (all, or the given plugins); ! applies without review',
-})
-
-vim.api.nvim_create_user_command('PackStatus', function(args)
-  vim.pack.update(names_or_all(args), { offline = true })
-end, {
-  nargs = '*',
-  complete = plugin_names,
-  desc = 'Show installed plugins and already-fetched pending changes, without downloading',
-})
-
-vim.api.nvim_create_user_command('PackRestore', function(args)
-  vim.pack.update(names_or_all(args), { target = 'lockfile', force = args.bang })
-end, {
-  nargs = '*',
-  bang = true,
-  complete = plugin_names,
-  desc = 'Check out the revisions in nvim-pack-lock.json (e.g. after pulling the dotfiles)',
-})
-
-vim.api.nvim_create_user_command('PackClean', function()
-  local unused = vim.tbl_map(
-    function(plugin)
-      return plugin.spec.name
-    end,
-    vim.tbl_filter(function(plugin)
-      return not plugin.active
-    end, vim.pack.get())
-  )
-  if #unused == 0 then
-    vim.notify('vim.pack: no unused plugins')
-    return
-  end
-  if vim.fn.confirm('Delete unused plugins?\n' .. table.concat(unused, '\n'), '&Yes\n&No', 2) == 1 then
-    vim.pack.del(unused)
-  end
-end, { desc = 'Delete installed plugins that are no longer in the config' })
+require('baggiponte.pack.commands')

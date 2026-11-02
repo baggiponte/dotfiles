@@ -23,6 +23,22 @@ for _, lang in ipairs(disabled_providers) do
   vim.api.nvim_set_var('loaded_' .. lang .. '_provider', 0)
 end
 
+-- Built-in plugins this config doesn't use: their plugin/ files bail out
+-- early when these are set, which saves startup time.
+for _, plugin in ipairs({
+  'gzip',
+  'matchit',
+  'matchparen',
+  'netrw',
+  'netrwPlugin',
+  'shada_plugin',
+  'tarPlugin',
+  'tutor_mode_plugin',
+  'zipPlugin',
+}) do
+  vim.g['loaded_' .. plugin] = 1
+end
+
 -- [[ Leader ]]
 -- It's a good idea to set this early in your config, because otherwise if you have
 -- any mappings you set BEFORE doing this, they will be set to the OLD leader.
