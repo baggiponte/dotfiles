@@ -185,10 +185,6 @@
       "rev": "75c73f3cf3e96f8c09db5291970243699aadc02c",
       "src": "https://github.com/mhinz/vim-sayonara"
     },
-    "vim-tmux-navigator": {
-      "rev": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432",
-      "src": "https://github.com/christoomey/vim-tmux-navigator"
-    },
     "vim-visual-multi": {
       "rev": "a6975e7c1ee157615bbc80fc25e4392f71c344d4",
       "src": "https://github.com/mg979/vim-visual-multi"

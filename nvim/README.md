@@ -24,7 +24,7 @@ To add a plugin, add it to the `vim.pack.add()` list in `lua/baggiponte/pack.lua
 
 ## Benchmarks
 
-Run `scripts/bench.sh [NVIM_APPNAME...]` (needs `hyperfine` and `tmux`); it compares `nvim -u NONE` with each config (default: `nvim`). TUI runs happen inside a detached tmux session, so the times include tmux's own overhead (see the `-u NONE` row).
+Run `scripts/bench.sh [NVIM_APPNAME...]` (needs `hyperfine`); it compares headless startup of `nvim -u NONE` with each config (default: `nvim`), with and without opening a file. The TUI rows below were measured inside a detached tmux session, so they include tmux's own overhead (see the `-u NONE` row).
 
 Results from the migration, against the previous lazy.nvim config (Nvim 0.12.6, Apple Silicon, mean of 40+ runs; differences under ~3 ms are within run-to-run noise):
 
@@ -43,7 +43,7 @@ Loaded eagerly (lazy by design, or cheap):
 
 - `gitsigns.nvim`: its `plugin/` already calls `setup()` and attaches to buffers lazily.
 - `conform.nvim`, `nvim-lint`, `quicker.nvim`, `fff.nvim`, `mini.splitjoin`: under 1 ms; they only do work on write, read, quickfix or keypress.
-- `vim-sayonara`, `vim-tmux-navigator`: Vimscript, `plugin/` only defines commands and mappings.
+- `vim-sayonara`: Vimscript, `plugin/` only defines commands and mappings.
 - `gruvbox-material`, `snacks.nvim`, `nvim-treesitter` (+ textobjects, endwise, surround): needed for the first screen anyway.
 
 Deferred by hand (`opt`):

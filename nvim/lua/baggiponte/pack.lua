@@ -96,7 +96,6 @@ vim.pack.add({
   { src = gh('nvim-neo-tree/neo-tree.nvim'), version = 'v3.x', data = OPT },
   gh('stevearc/quicker.nvim'),
   gh('mhinz/vim-sayonara'),
-  gh('christoomey/vim-tmux-navigator'),
 
   -- git
   gh('lewis6991/gitsigns.nvim'),
@@ -185,7 +184,6 @@ for _, module in ipairs({
   'supermaven',
   'symbol-usage',
   'telescope',
-  'vim-tmux-navigator',
   'vim-visual-multi',
   'ui.dressing',
   'ui.lualine',
