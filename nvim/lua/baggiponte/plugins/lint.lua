@@ -2,31 +2,40 @@ local runner = require('baggiponte.lsp.runner')
 
 local linters_by_filetype = {
   sh = { 'shellcheck' },
-  docker = { 'hadolint' },
-  ['yaml.ghaction'] = { 'actionlint' },
+  dockerfile = { 'hadolint' },
 }
+
+-- actionlint only makes sense for GitHub Actions workflows, which are plain
+-- `yaml` buffers, so it is picked by path rather than by filetype.
+---@param bufnr integer
+---@return boolean
+local function is_workflow(bufnr)
+  return vim.api.nvim_buf_get_name(bufnr):match('/%.github/workflows/[^/]+%.ya?ml$') ~= nil
+end
 
 -- Cheap enough to set up eagerly: linting only runs from the autocmd below.
 do
   local lint = require('lint')
 
-  local configured_linters = {}
+  local names = { actionlint = true }
   for _, ft_linters in pairs(linters_by_filetype) do
-    for _, linter_name in ipairs(ft_linters) do
-      configured_linters[linter_name] = true
+    for _, name in ipairs(ft_linters) do
+      names[name] = true
     end
   end
-
-  for linter_name, _ in pairs(configured_linters) do
-    lint.linters[linter_name] = runner.linter(lint.linters[linter_name], 'mise')
+  for name in pairs(names) do
+    lint.linters[name] = runner.linter(lint.linters[name], 'mise')
   end
 
   lint.linters_by_ft = linters_by_filetype
 
   vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufReadPost', 'InsertLeave' }, {
     group = vim.api.nvim_create_augroup('nvim-lint', { clear = true }),
-    callback = function()
+    callback = function(args)
       lint.try_lint()
+      if is_workflow(args.buf) then
+        lint.try_lint('actionlint')
+      end
     end,
   })
 end

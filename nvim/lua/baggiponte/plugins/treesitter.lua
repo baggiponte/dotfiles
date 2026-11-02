@@ -1,15 +1,11 @@
 local parsers = {
-  -- 'arduino',
   'bash',
   'dockerfile',
   'gitattributes',
   'gitignore',
   'ini',
   'json',
-  -- 'jsonc', -- unsupported on nvim-treesitter main
-  -- 'julia',
   'just',
-  -- 'kdl',
   'lua',
   'make',
   'markdown',
