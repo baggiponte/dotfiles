@@ -1,15 +1,13 @@
--- Plugins are managed by the built-in vim.pack (Nvim 0.12+). They live in
--- stdpath('data')/site/pack/core/opt and are pinned in nvim-pack-lock.json.
--- vim.pack has no lazy-loading of its own. Plugins that are cheap or lazy by
--- design are loaded and configured eagerly. Plugins marked `opt` below are
--- kept off the runtimepath and packadd-ed on demand via baggiponte.defer.
+-- Plugins are pinned in nvim-pack-lock.json. vim.pack has no lazy-loading:
+-- plugins that are cheap or lazy by design load at startup, and those marked
+-- `opt` stay off the runtimepath until baggiponte.defer packadds them.
 
 local function gh(repo)
   return 'https://github.com/' .. repo
 end
 
--- Build hooks (lazy.nvim's `build`). Must be defined before vim.pack.add() so
--- they also run on the very first install.
+-- Build steps. Defined before vim.pack.add() so they also run on the very
+-- first install.
 vim.api.nvim_create_autocmd('PackChanged', {
   group = vim.api.nvim_create_augroup('baggiponte-pack-hooks', { clear = true }),
   callback = function(ev)
@@ -34,7 +32,6 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end,
 })
 
--- `data = OPT`: install, but load on demand (see baggiponte.defer)
 local OPT = { opt = true }
 
 -- Paths of the `opt` plugins, by name, filled in by `load` below for
@@ -116,7 +113,7 @@ vim.pack.add({
 
 require('baggiponte.defer').load_on_require(opt_paths)
 
--- Local, unmanaged plugin (lazy.nvim's `dir = ...`).
+-- Local, unmanaged plugin.
 local rex = vim.fn.expand('~/dev/projs/rex-navigator.nvim')
 if vim.uv.fs_stat(rex) then
   vim.opt.rtp:append(rex)

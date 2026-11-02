@@ -1,5 +1,4 @@
--- Plugin management commands (what :Lazy used to provide). vim.pack.update()
--- opens a review buffer: `:w` applies the changes, `:q` cancels.
+-- vim.pack.update() opens a review buffer: `:w` applies the changes, `:q` cancels.
 local function plugin_names()
   return vim.tbl_map(function(plugin)
     return plugin.spec.name

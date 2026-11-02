@@ -1,6 +1,5 @@
--- Small helpers to defer plugin loading, standing in for lazy.nvim's
--- `event`/`ft`/`keys`/`cmd` handlers. Plugins marked `opt` in baggiponte.pack
--- stay off the runtimepath until `M.loader()` packadds them.
+-- Load `opt` plugins (see baggiponte.pack) on an event, filetype, key or
+-- command. They stay off the runtimepath until `M.loader()` packadds them.
 local M = {}
 
 --- Wrap `fn` so it runs at most once, however many triggers fire.
@@ -93,8 +92,8 @@ function M.loader(plugins, fn)
 end
 
 --- Run `fn` on the first of `events` (optionally restricted to `pattern`).
---- Like lazy.nvim, the triggering event is then re-fired for the autocmds that
---- `fn` created, so the plugin also sees the event that loaded it.
+--- The triggering event is then re-fired for the autocmds that `fn` created,
+--- so the plugin also sees the event that loaded it.
 ---@param events string|string[]
 ---@param fn fun()
 ---@param pattern? string|string[]
@@ -113,15 +112,15 @@ function M.on_event(events, fn, pattern)
   })
 end
 
---- Run `fn` on the first FileType in `filetypes` (lazy.nvim's `ft`).
+--- Run `fn` on the first FileType in `filetypes`.
 ---@param filetypes string|string[]
 ---@param fn fun()
 function M.on_ft(filetypes, fn)
   M.on_event('FileType', fn, filetypes)
 end
 
---- Equivalent of lazy.nvim's `VeryLazy`: after the UI attached and the first
---- screen was drawn. Never fires in headless sessions (same as lazy.nvim).
+--- Run `fn` once the UI is attached and the first screen is drawn. Never
+--- fires in headless sessions.
 ---@param fn fun()
 function M.very_lazy(fn)
   vim.api.nvim_create_autocmd('UIEnter', {
