@@ -59,7 +59,7 @@ local setup = defer.loader(
   end
 )
 
-defer.keys(keys, setup)
+defer.on_keys(keys, setup)
 defer.on_cmd({ 'Telescope' }, setup)
 
 return { load = setup }

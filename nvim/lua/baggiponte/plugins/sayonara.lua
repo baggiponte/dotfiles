@@ -1,5 +1,5 @@
 -- Vimscript plugin: plugin/ only defines the command
-require('baggiponte.defer').keys({
+require('baggiponte.defer').on_keys({
   {
     'q',
     '<cmd>Sayonara<CR>',

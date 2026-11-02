@@ -65,7 +65,7 @@ local setup = defer.loader({ 'nvim-dap', 'nvim-dap-view', 'nvim-dap-python', 'nv
   end
 end)
 
-defer.keys(keys, setup)
+defer.on_keys(keys, setup)
 -- nvim-dap's plugin/ defines the real commands, replacing these stubs
 defer.on_cmd({
   'DapClearBreakpoints',

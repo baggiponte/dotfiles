@@ -6,7 +6,7 @@ local keys = {
   { '<leader>dS', defer.call('neotest', 'summary.toggle'), desc = 'neotest: debug summary' },
 }
 
-defer.keys(
+defer.on_keys(
   keys,
   defer.loader({ 'nvim-nio', 'plenary.nvim', 'neotest', 'neotest-python' }, function()
     -- the dap strategy needs nvim-dap (a lazy.nvim dependency before)

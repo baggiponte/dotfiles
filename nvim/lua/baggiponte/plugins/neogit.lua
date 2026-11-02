@@ -8,7 +8,7 @@ local setup = defer.loader({ 'plenary.nvim', 'diffview.nvim', 'neogit' }, functi
 end)
 
 defer.on_cmd({ 'Neogit' }, setup)
-defer.keys({
+defer.on_keys({
   {
     '<leader>g',
     '<cmd>Neogit<CR>',

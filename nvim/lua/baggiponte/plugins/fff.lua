@@ -30,7 +30,7 @@ local setup = defer.loader({ 'fff.nvim' }, function()
   })
 end)
 
-defer.keys(keys, setup)
+defer.on_keys(keys, setup)
 -- fff's plugin/ defines the real commands, replacing these stubs
 defer.on_cmd({
   'FFFClearCache',

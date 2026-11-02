@@ -15,5 +15,5 @@ local setup = defer.loader({ 'markview.nvim' }, function()
   })
 end)
 
-defer.keys(keys, setup)
+defer.on_keys(keys, setup)
 defer.on_ft({ 'markdown', 'rmd', 'quarto', 'mdx', 'pandoc' }, setup)

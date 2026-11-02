@@ -15,7 +15,7 @@ local setup = defer.loader({ 'plenary.nvim', 'nvim-web-devicons', 'neo-tree.nvim
   })
 end)
 
-defer.keys({
+defer.on_keys({
   {
     '<leader>N',
     '<cmd>Neotree toggle<CR>',

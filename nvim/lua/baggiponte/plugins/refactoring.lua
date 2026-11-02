@@ -9,5 +9,5 @@ local setup = defer.loader({ 'plenary.nvim', 'refactoring.nvim' }, function()
   require('refactoring').setup({})
 end)
 
-defer.keys(keys, setup)
+defer.on_keys(keys, setup)
 defer.on_cmd({ 'Refactor' }, setup)
