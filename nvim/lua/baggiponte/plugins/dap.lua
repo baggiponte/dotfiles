@@ -20,19 +20,17 @@ local keys = {
 }
 
 local dap_views_opt = {
-  -- Moves the main debug pane (terminal/repl) to the right side
   windows = {
     terminal = {
-      position = 'right', -- Swaps from default 'left'
-      size = 50, -- Adjust this percentage as needed
+      position = 'right',
+      size = 50,
     },
   },
-  -- Reorders the tabs in the winbar
   winbar = {
     show = true,
     sections = {
-      'repl', -- REPL is now first
-      'watches', -- Watches is now second
+      'repl',
+      'watches',
       'scopes',
       'exceptions',
       'breakpoints',
@@ -50,23 +48,18 @@ local setup = defer.loader({ 'nvim-dap', 'nvim-dap-view', 'nvim-dap-python', 'nv
   local dap_view = require('dap-view')
   local dap_python = require('dap-python')
 
-  -- 1. Setup the UI
   dap_view.setup(dap_views_opt)
 
-  -- 2. Setup Python with uv
   dap_python.setup('uv')
   dap_python.test_runner = 'pytest'
 
-  -- 3. (Optional) Auto-open/close the view
-  -- Note: dap-view users often prefer manual toggling,
-  -- but you can automate it like this:
-  dap.listeners.after.event_initialized['dapui_config'] = function()
+  dap.listeners.after.event_initialized['baggiponte'] = function()
     dap_view.open()
   end
 end)
 
 defer.on_keys(keys, setup)
--- nvim-dap's plugin/ defines the real commands, replacing these stubs
+-- nvim-dap's plugin/ defines the real commands, replacing these stubs.
 defer.on_cmd({
   'DapClearBreakpoints',
   'DapContinue',

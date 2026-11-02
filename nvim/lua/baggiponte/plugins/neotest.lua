@@ -9,7 +9,7 @@ local keys = {
 defer.on_keys(
   keys,
   defer.loader({ 'nvim-nio', 'plenary.nvim', 'neotest', 'neotest-python' }, function()
-    -- the dap strategy needs nvim-dap (a lazy.nvim dependency before)
+    -- the dap strategy needs nvim-dap
     require('baggiponte.plugins.dap').load()
     require('neotest').setup({
       adapters = {

@@ -1,3 +1,15 @@
+vim.diagnostic.config({
+  virtual_text = { prefix = '' },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = ' ',
+      [vim.diagnostic.severity.WARN] = ' ',
+      [vim.diagnostic.severity.HINT] = ' ',
+      [vim.diagnostic.severity.INFO] = ' ',
+    },
+  },
+})
+
 -- Python type-checker is a coin flip between `ty` and `pyrefly`: swap them in
 -- this list, or live with `:lsp disable pyrefly | lsp enable ty`.
 vim.lsp.enable({

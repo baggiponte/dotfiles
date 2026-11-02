@@ -1,26 +1,10 @@
--- Configure diagnostics
-vim.diagnostic.config({
-  virtual_text = { prefix = '' },
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = ' ',
-      [vim.diagnostic.severity.WARN] = ' ',
-      [vim.diagnostic.severity.HINT] = ' ',
-      [vim.diagnostic.severity.INFO] = ' ',
-    },
-  },
-})
+-- Set before any mapping is defined: a mapping captures <leader> when it's created.
+vim.g.mapleader = ' '
 
--- disable currently unused providers (see :h provider)
-local disabled_providers = {
-  'python3',
-  'perl',
-  'node',
-  'ruby',
-}
-
-for _, lang in ipairs(disabled_providers) do
-  vim.api.nvim_set_var('loaded_' .. lang .. '_provider', 0)
+-- Providers this config doesn't use (see :h provider): skips searching for
+-- python3, node, ... at startup.
+for _, provider in ipairs({ 'python3', 'perl', 'node', 'ruby' }) do
+  vim.g['loaded_' .. provider .. '_provider'] = 0
 end
 
 -- Built-in plugins this config doesn't use: their plugin/ files bail out
@@ -39,54 +23,43 @@ for _, plugin in ipairs({
   vim.g['loaded_' .. plugin] = 1
 end
 
--- [[ Leader ]]
--- It's a good idea to set this early in your config, because otherwise if you have
--- any mappings you set BEFORE doing this, they will be set to the OLD leader.
-vim.g.mapleader = ' '
-
-vim.o.winborder = 'rounded'
-
+-- ui2 can only be enabled once a UI is attached, which may happen after this
+-- file runs.
 if #vim.api.nvim_list_uis() > 0 then
   require('vim._core.ui2').enable({})
 else
   vim.api.nvim_create_autocmd('UIEnter', { once = true, callback = require('vim._core.ui2').enable })
 end
 
--- Check :h nvim-defaults first!
--- [[ Sidebar ]]
-vim.opt.number = true -- Make relative line numbers default
-vim.opt.relativenumber = true
-vim.opt.signcolumn = 'yes' -- Side column to display signs, e.g. git added/changed lines
+-- Only options that differ from Neovim's defaults (see :h nvim-defaults).
+vim.o.winborder = 'rounded'
 
--- [[ Tabs]]
--- smarttab enabled by default
-vim.opt.expandtab = true
-vim.opt.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
-vim.opt.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.signcolumn = 'yes'
+vim.o.cursorline = true
+vim.o.showmatch = true
+vim.o.scrolloff = 8
 
--- [[ Context ]]
-vim.opt.cursorline = true -- Highlight line where the cursor is
-vim.opt.showmatch = true -- Highlight matching parentheses
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 
-vim.opt.linebreak = true -- Wrap lines
-vim.opt.breakindent = true -- Indent wrapped lines
+-- Wrap long lines at word boundaries, keeping their indent.
+vim.o.linebreak = true
+vim.o.breakindent = true
 
--- [[ Search ]]
-vim.opt.hlsearch = false -- Highlight all matching patterns
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.o.hlsearch = false
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
-vim.opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below the cursor.
+vim.o.splitright = true
+vim.o.splitbelow = true
 
--- [[ Internals ]]
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = vim.fn.stdpath('cache') .. '/undodir'
-vim.opt.undofile = true
+-- Persistent undo instead of swap files. The undo history lives in the cache
+-- folder rather than the default state folder.
+vim.o.swapfile = false
+vim.o.undofile = true
+vim.o.undodir = vim.fn.stdpath('cache') .. '/undodir'
 
-vim.opt.updatetime = 50 -- Decrease update time.
-
-
--- [[ Splits ]]
-vim.opt.splitright = true -- bool: Place new window to right of current one
-vim.opt.splitbelow = true -- bool: Place new window below the current one
+vim.o.updatetime = 50

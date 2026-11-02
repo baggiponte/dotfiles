@@ -2,9 +2,7 @@
 return {
   cmd = { 'uvx', '--from=zizmor', '--', 'zizmor', '--lsp' },
   filetypes = { 'yaml' },
-  -- Only attach to GitHub Actions workflow files (.github/workflows/*.yaml).
-  -- In Neovim 0.11+, root_dir receives (bufnr, on_dir) and must call on_dir(path)
-  -- to activate LSP. Not calling on_dir skips activation for this buffer.
+  -- Only GitHub Actions workflows: not calling on_dir() skips the buffer.
   single_file_support = false,
   root_dir = function(bufnr, on_dir)
     local fname = vim.api.nvim_buf_get_name(bufnr)
