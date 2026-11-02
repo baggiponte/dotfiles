@@ -13,10 +13,6 @@
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
       "src": "https://github.com/sindrets/diffview.nvim"
     },
-    "dressing.nvim": {
-      "rev": "2d7c2db2507fa3c4956142ee607431ddb2828639",
-      "src": "https://github.com/stevearc/dressing.nvim"
-    },
     "fff.nvim": {
       "rev": "d84c0a10cd5ea23285cb5575fa90179f51710f99",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
@@ -37,10 +33,6 @@
       "rev": "1997451c4c9956a1380d8bea4b0e33ebdf07976e",
       "src": "https://github.com/ray-x/lsp_signature.nvim"
     },
-    "lualine.nvim": {
-      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
-      "src": "https://github.com/nvim-lualine/lualine.nvim"
-    },
     "markview.nvim": {
       "rev": "5d9fc2aa6dd1c2fbdc7a68bc79b300e9967b21ff",
       "src": "https://github.com/OXY2DEV/markview.nvim"
@@ -52,6 +44,10 @@
     "namu.nvim": {
       "rev": "e7afbdf63a75ace6ccc6202d58a4f6f9ac09db92",
       "src": "https://github.com/bassamsdata/namu.nvim"
+    },
+    "neat.nvim": {
+      "rev": "a391250a9b6fae6dd68890e6c4b071db893ebe6d",
+      "src": "https://github.com/baggiponte/neat.nvim"
     },
     "neo-tree.nvim": {
       "rev": "1a14083046d96e88e361d1da00761c40d45012f3",
@@ -69,10 +65,6 @@
     "neotest-python": {
       "rev": "1b56ca4ba51c6014f986d6548ee629bdc95589d1",
       "src": "https://github.com/nvim-neotest/neotest-python"
-    },
-    "noice.nvim": {
-      "rev": "7bfd942445fb63089b59f97ca487d605e715f155",
-      "src": "https://github.com/folke/noice.nvim"
     },
     "nui.nvim": {
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
@@ -147,11 +139,6 @@
     "refactoring.nvim": {
       "rev": "64e10d782ae5b9653558482910213b8946651456",
       "src": "https://github.com/ThePrimeagen/refactoring.nvim"
-    },
-    "snacks.nvim": {
-      "rev": "5eac729fa290248acfe10916d92a5ed5e5c0f9ed",
-      "src": "https://github.com/folke/snacks.nvim",
-      "version": "'v2.22.0'"
     },
     "supermaven-nvim": {
       "rev": "07d20fce48a5629686aefb0a7cd4b25e33947d50",

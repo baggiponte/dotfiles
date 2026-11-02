@@ -56,11 +56,11 @@ local OPT = { opt = true }
 vim.pack.add({
   -- UI
   gh('sainnhe/gruvbox-material'),
-  { src = gh('folke/snacks.nvim'), version = 'v2.22.0' },
-  { src = gh('nvim-lualine/lualine.nvim'), data = OPT },
-  { src = gh('folke/noice.nvim'), data = OPT },
-  { src = gh('MunifTanjim/nui.nvim'), data = OPT },
-  { src = gh('stevearc/dressing.nvim'), data = OPT },
+  -- cmdline popup, statusline, vim.ui.select/input, notifier, indent guides
+  gh('baggiponte/neat.nvim'),
+  -- neat's cmdline needs nui on the runtimepath when its popup opens (from a
+  -- UI event, where :packadd is not allowed). It has no plugin/, so it is free.
+  gh('MunifTanjim/nui.nvim'),
   { src = gh('brenoprata10/nvim-highlight-colors'), data = OPT },
 
   -- libraries
@@ -126,25 +126,31 @@ vim.pack.add({
 -- packadds it, so optional integrations (e.g. fff -> devicons) keep working.
 -- Hard dependencies are still listed in each defer.loader() call: :packadd is
 -- not allowed in every context (e.g. inside UI event callbacks).
-local opt_plugins ---@type table<string, string>? lua top-level module -> plugin name
+-- Several plugins can share a top-level module (telescope.nvim and
+-- telescope-fzf-native.nvim both ship lua/telescope/), so each maps to a list.
+local opt_plugins ---@type table<string, string[]>? lua top-level module -> plugin names
 table.insert(package.loaders, function(modname)
   if not opt_plugins then
     opt_plugins = {}
     for _, plugin in ipairs(vim.pack.get()) do
       if plugin.spec.data and plugin.spec.data.opt then
         for entry in vim.fs.dir(plugin.path .. '/lua') do
-          opt_plugins[entry:gsub('%.lua$', '')] = plugin.spec.name
+          local top = entry:gsub('%.lua$', '')
+          opt_plugins[top] = opt_plugins[top] or {}
+          table.insert(opt_plugins[top], plugin.spec.name)
         end
       end
     end
   end
 
-  local name = opt_plugins[modname:match('^[^.]+')]
-  if not name then
+  local names = opt_plugins[modname:match('^[^.]+')]
+  if not names then
     return
   end
   opt_plugins[modname:match('^[^.]+')] = nil
-  require('baggiponte.defer').packadd(name)
+  for _, name in ipairs(names) do
+    require('baggiponte.defer').packadd(name)
+  end
   local path = vim.api.nvim_get_runtime_file('lua/' .. modname:gsub('%.', '/') .. '.lua', false)[1]
     or vim.api.nvim_get_runtime_file('lua/' .. modname:gsub('%.', '/') .. '/init.lua', false)[1]
   return path and loadfile(path) or nil
@@ -159,7 +165,7 @@ end
 for _, module in ipairs({
   -- colorscheme first, like lazy.nvim's `priority = 1000`
   'ui.colorscheme',
-  'ui.snacks',
+  'ui.neat',
   'treesitter',
   'blink',
   'conform',
@@ -185,9 +191,6 @@ for _, module in ipairs({
   'symbol-usage',
   'telescope',
   'vim-visual-multi',
-  'ui.dressing',
-  'ui.lualine',
-  'ui.noice',
   'ui.nvim-highlight-colors',
 }) do
   require('baggiponte.plugins.' .. module)
