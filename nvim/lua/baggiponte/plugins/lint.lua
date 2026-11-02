@@ -1,4 +1,4 @@
-local runner = require('baggiponte.lsp.runner')
+local runner = require('baggiponte.runner')
 
 local linters_by_filetype = {
   sh = { 'shellcheck' },

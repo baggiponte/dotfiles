@@ -1,4 +1,4 @@
-local runner = require('baggiponte.lsp.runner')
+local runner = require('baggiponte.runner')
 
 local formatters_by_ft = {
   just = { 'just' },
