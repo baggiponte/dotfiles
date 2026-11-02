@@ -1,7 +1,5 @@
-return {
-  dir = vim.fn.expand('~/dev/projs/rex-navigator.nvim'),
-  name = 'rex-navigator.nvim',
-  main = 'rex-navigator',
-  lazy = false,
-  opts = {},
-}
+-- local plugin, put on the runtimepath by baggiponte.pack
+local ok, rex = pcall(require, 'rex-navigator')
+if ok then
+  rex.setup({})
+end

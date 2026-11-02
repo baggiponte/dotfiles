@@ -1,5 +1,5 @@
 require('baggiponte.options')
 require('baggiponte.autocmds')
 require('baggiponte.keymaps')
-require('baggiponte.lazy')
+require('baggiponte.pack')
 require('baggiponte.lsp')

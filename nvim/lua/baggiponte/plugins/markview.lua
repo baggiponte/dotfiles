@@ -5,13 +5,15 @@ local keys = {
     desc = 'Markview: toggle markview',
   },
 }
-return {
-  'OXY2DEV/markview.nvim',
-  ft = { 'markdown', 'rmd', 'quarto', 'mdx', 'pandoc' },
-  keys = keys,
-  opts = {
+local defer = require('baggiponte.defer')
+
+local setup = defer.loader({ 'markview.nvim' }, function()
+  require('markview').setup({
     preview = {
       enable = false,
     },
-  },
-}
+  })
+end)
+
+defer.keys(keys, setup)
+defer.on_ft({ 'markdown', 'rmd', 'quarto', 'mdx', 'pandoc' }, setup)

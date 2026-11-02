@@ -22,25 +22,19 @@ local keys = {
   },
 }
 
-return {
-  'dmtrKovalenko/fff.nvim',
-  build = function()
-    require('fff.download').download_or_build_binary()
-  end,
-  lazy = false,
-  keys = keys,
-  opts = {
-    layout = {
-      height = 0.9,
-      width = 0.9,
-    },
-    keymaps = {
-      select_vsplit = '<C-v>',
-      move_up = { '<Up>', '<C-p>', '<C-k>' },
-      move_down = { '<Down>', '<C-n>', '<C-j>' },
-      preview_scroll_up = '<C-u>',
-      preview_scroll_down = '<C-d>',
-      send_to_quickfix = '<C-q>',
-    },
+require('fff').setup({
+  layout = {
+    height = 0.9,
+    width = 0.9,
   },
-}
+  keymaps = {
+    select_vsplit = '<C-v>',
+    move_up = { '<Up>', '<C-p>', '<C-k>' },
+    move_down = { '<Down>', '<C-n>', '<C-j>' },
+    preview_scroll_up = '<C-u>',
+    preview_scroll_down = '<C-d>',
+    send_to_quickfix = '<C-q>',
+  },
+})
+
+require('baggiponte.defer').keys(keys)

@@ -1,5 +1,8 @@
-return {
-  'Wansmer/symbol-usage.nvim',
-  event = 'LspAttach', -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
-  opts = {},
-}
+local defer = require('baggiponte.defer')
+
+defer.on_event(
+  'LspAttach',
+  defer.loader({ 'symbol-usage.nvim' }, function()
+    require('symbol-usage').setup({})
+  end)
+)

@@ -1,7 +1,6 @@
-return {
-  'stevearc/quicker.nvim',
-  event = 'FileType qf',
-  ---@module "quicker"
-  ---@type quicker.SetupOptions
-  opts = {},
-}
+---@module "quicker"
+---@type quicker.SetupOptions
+local opts = {}
+
+-- Cheap enough to set up eagerly: it only acts on quickfix buffers.
+require('quicker').setup(opts)

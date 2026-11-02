@@ -11,8 +11,11 @@ local keys = {
   },
 }
 
-return {
-  'bassamsdata/namu.nvim',
-  opts = {},
-  keys = keys,
-}
+local defer = require('baggiponte.defer')
+
+defer.keys(
+  keys,
+  defer.loader({ 'namu.nvim' }, function()
+    require('namu').setup({})
+  end)
+)

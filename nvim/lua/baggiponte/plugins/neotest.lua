@@ -21,16 +21,13 @@ local keys = {
     desc = 'neotest: debug summary',
   },
 }
-return {
-  'nvim-neotest/neotest',
-  keys = keys,
-  dependencies = {
-    'nvim-neotest/nvim-nio',
-    'nvim-lua/plenary.nvim',
-    'nvim-treesitter/nvim-treesitter',
-    'nvim-neotest/neotest-python',
-  },
-  config = function()
+local defer = require('baggiponte.defer')
+
+defer.keys(
+  keys,
+  defer.loader({ 'nvim-nio', 'plenary.nvim', 'neotest', 'neotest-python' }, function()
+    -- the dap strategy needs nvim-dap (a lazy.nvim dependency before)
+    require('baggiponte.plugins.dap')()
     require('neotest').setup({
       adapters = {
         require('neotest-python')({
@@ -42,5 +39,5 @@ return {
         }),
       },
     })
-  end,
-}
+  end)
+)

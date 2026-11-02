@@ -98,32 +98,29 @@ local dap_views_opt = {
   },
 }
 
-return {
-  'mfussenegger/nvim-dap',
-  dependencies = {
-    'igorlfs/nvim-dap-view',
-    'mfussenegger/nvim-dap-python',
-    'theHamsta/nvim-dap-virtual-text',
-  },
-  keys = keys,
-  ft = { 'python' },
-  config = function()
-    local dap = require('dap')
-    local dap_view = require('dap-view')
-    local dap_python = require('dap-python')
+local defer = require('baggiponte.defer')
 
-    -- 1. Setup the UI
-    dap_view.setup(dap_views_opt)
+local setup = defer.loader({ 'nvim-dap', 'nvim-dap-view', 'nvim-dap-python', 'nvim-dap-virtual-text' }, function()
+  local dap = require('dap')
+  local dap_view = require('dap-view')
+  local dap_python = require('dap-python')
 
-    -- 2. Setup Python with uv
-    dap_python.setup('uv')
-    dap_python.test_runner = 'pytest'
+  -- 1. Setup the UI
+  dap_view.setup(dap_views_opt)
 
-    -- 3. (Optional) Auto-open/close the view
-    -- Note: dap-view users often prefer manual toggling,
-    -- but you can automate it like this:
-    dap.listeners.after.event_initialized['dapui_config'] = function()
-      dap_view.open()
-    end
-  end,
-}
+  -- 2. Setup Python with uv
+  dap_python.setup('uv')
+  dap_python.test_runner = 'pytest'
+
+  -- 3. (Optional) Auto-open/close the view
+  -- Note: dap-view users often prefer manual toggling,
+  -- but you can automate it like this:
+  dap.listeners.after.event_initialized['dapui_config'] = function()
+    dap_view.open()
+  end
+end)
+
+defer.keys(keys, setup)
+defer.on_ft('python', setup)
+
+return setup

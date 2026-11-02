@@ -49,24 +49,21 @@ local sections = {
   lualine_z = { 'location', 'progress' },
 }
 
-return {
-  {
-    'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
-    opts = {
-      sections = sections,
-      options = {
-        theme = theme,
-        component_separators = '',
-        section_separators = '',
-      },
-      extensions = {
-        'lazy',
-        'man',
-        'neo-tree',
-        'oil',
-        'quickfix',
-      },
+local defer = require('baggiponte.defer')
+
+defer.very_lazy(defer.loader({ 'nvim-web-devicons', 'lualine.nvim' }, function()
+  require('lualine').setup({
+    sections = sections,
+    options = {
+      theme = theme,
+      component_separators = '',
+      section_separators = '',
     },
-  },
-}
+    extensions = {
+      'man',
+      'neo-tree',
+      'oil',
+      'quickfix',
+    },
+  })
+end))

@@ -1,8 +1,7 @@
-return {
-  'folke/noice.nvim',
-  event = 'VeryLazy',
-  dependencies = { 'MunifTanjim/nui.nvim' },
-  opts = {
+local defer = require('baggiponte.defer')
+
+defer.very_lazy(defer.loader({ 'nui.nvim', 'noice.nvim' }, function()
+  require('noice').setup({
     cmdline = { enabled = true },
     notify = { enabled = false },
     lsp = {
@@ -10,8 +9,5 @@ return {
       hover = { enabled = false },
       signature = { enabled = false },
     },
-  },
-  presets = {
-    lsp_doc_border = false, -- add a border to hover docs and signature help
-  },
-}
+  })
+end))

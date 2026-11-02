@@ -105,31 +105,19 @@ local function setup_treesitter_filetypes()
   })
 end
 
-return {
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = function()
-      require('nvim-autopairs').setup({})
-    end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter',
-    branch = 'main',
-    lazy = false,
-    dependencies = {
-      { 'kylechui/nvim-surround', opts = {} },
-      { 'RRethy/nvim-treesitter-endwise' },
-      { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
-    },
-    build = ':TSUpdate',
-    config = function()
-      require('nvim-treesitter').setup()
-      require('nvim-treesitter').install(parsers) -- no-op for already-installed parsers
-      require('nvim-treesitter-textobjects').setup(textobjects)
-      setup_textobject_keymaps()
-      setup_treesitter_filetypes()
-      vim.treesitter.language.register('bash', 'zsh')
-    end,
-  },
-}
+local defer = require('baggiponte.defer')
+
+defer.on_event(
+  'InsertEnter',
+  defer.loader({ 'nvim-autopairs' }, function()
+    require('nvim-autopairs').setup({})
+  end)
+)
+
+require('nvim-surround').setup({})
+require('nvim-treesitter').setup()
+require('nvim-treesitter').install(parsers) -- no-op for already-installed parsers
+require('nvim-treesitter-textobjects').setup(textobjects)
+setup_textobject_keymaps()
+setup_treesitter_filetypes()
+vim.treesitter.language.register('bash', 'zsh')
