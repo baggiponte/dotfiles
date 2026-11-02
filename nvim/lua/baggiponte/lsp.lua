@@ -1,7 +1,5 @@
--- Enable LSP servers.
--- Python type-checker is a coin flip between `ty` and `pyrefly`: uncomment the
--- entry below to switch. You can also switch live without editing config:
---   :lsp disable pyrefly | :lsp enable ty   (see :lsp for all subcommands)
+-- Python type-checker is a coin flip between `ty` and `pyrefly`: swap them in
+-- this list, or live with `:lsp disable pyrefly | lsp enable ty`.
 vim.lsp.enable({
   'docker',
   'docker-compose',
@@ -16,58 +14,25 @@ vim.lsp.enable({
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'Configure LSP keymaps on attach',
-  callback = function(event)
-    -- |grn| in Normal mode maps to |vim.lsp.buf.rename()|
-    -- |grr| in Normal mode maps to |vim.lsp.buf.references()|
-    -- |gri| in Normal mode maps to |vim.lsp.buf.implementation()|
-    -- |gO| in Normal mode maps to |vim.lsp.buf.document_symbol()|
-    -- |gra| in Normal and Visual mode maps to |vim.lsp.buf.code_action()|
-    -- CTRL-S in Insert and Select mode maps to |vim.lsp.buf.signature_help()|
-    local keymaps = {
-      { 'gh', vim.diagnostic.open_float },
-      { 'K', vim.lsp.buf.signature_help },
-      { 'gd', vim.lsp.buf.definition },
-    }
-
-    local opts = { buffer = event.buf }
-
-    for _, mapping in pairs(keymaps) do
-      local mapopts = mapping.opts or {}
-      vim.keymap.set(mapopts.mode or 'n', mapping[1], mapping[2], mapopts.opts or opts)
-    end
-  end,
-})
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'Enable inlay hints',
+  group = vim.api.nvim_create_augroup('baggiponte-lsp', { clear = true }),
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-    if client == nil then
+    if not client then
       return
     end
+    local buf = args.buf
+
+    -- Neovim maps the other LSP actions by default (grn, grr, gri, gra, gO, ...).
+    vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { buffer = buf, desc = 'Show diagnostics under the cursor' })
+    vim.keymap.set('n', 'K', vim.lsp.buf.signature_help, { buffer = buf, desc = 'Show the signature' })
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = buf, desc = 'Go to definition' })
 
     if client:supports_method('textDocument/inlayHint') then
-      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+      vim.lsp.inlay_hint.enable(true, { bufnr = buf })
     end
-  end,
-})
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'Enable code lenses only when the server advertises them',
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-    if client == nil then
-      return
-    end
-
-    -- Few of the configured servers support textDocument/codeLens, so guard
-    -- the enable on the provider capability. Run one at the cursor with the
-    -- built-in `grx` mapping (vim.lsp.codelens.run()).
-    if client.server_capabilities.codeLensProvider then
-      vim.lsp.codelens.enable(true, { bufnr = args.buf })
+    -- Run a lens at the cursor with the built-in `grx`.
+    if client:supports_method('textDocument/codeLens') then
+      vim.lsp.codelens.enable(true, { bufnr = buf })
     end
   end,
 })
