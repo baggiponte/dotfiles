@@ -53,6 +53,11 @@ vim.api.nvim_create_autocmd('PackChanged', {
 -- `data = OPT`: install, but load on demand (see baggiponte.defer)
 local OPT = { opt = true }
 
+-- Paths of the `opt` plugins, by name, filled in by `load` below. The require
+-- hook further down reads this instead of vim.pack.get(): that one waits on
+-- async work, which is not allowed in every context (E565 from the statusline).
+local opt_paths = {} ---@type table<string, string>
+
 vim.pack.add({
   -- UI
   gh('sainnhe/gruvbox-material'),
@@ -116,7 +121,9 @@ vim.pack.add({
 }, {
   confirm = false,
   load = function(plugin)
-    if not (plugin.spec.data and plugin.spec.data.opt) then
+    if plugin.spec.data and plugin.spec.data.opt then
+      opt_paths[plugin.spec.name] = plugin.path
+    else
       vim.cmd.packadd({ plugin.spec.name, bang = true })
     end
   end,
@@ -132,13 +139,11 @@ local opt_plugins ---@type table<string, string[]>? lua top-level module -> plug
 table.insert(package.loaders, function(modname)
   if not opt_plugins then
     opt_plugins = {}
-    for _, plugin in ipairs(vim.pack.get()) do
-      if plugin.spec.data and plugin.spec.data.opt then
-        for entry in vim.fs.dir(plugin.path .. '/lua') do
-          local top = entry:gsub('%.lua$', '')
-          opt_plugins[top] = opt_plugins[top] or {}
-          table.insert(opt_plugins[top], plugin.spec.name)
-        end
+    for name, path in pairs(opt_paths) do
+      for entry in vim.fs.dir(path .. '/lua') do
+        local top = entry:gsub('%.lua$', '')
+        opt_plugins[top] = opt_plugins[top] or {}
+        table.insert(opt_plugins[top], name)
       end
     end
   end
