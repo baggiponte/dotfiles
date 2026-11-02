@@ -1,4 +1,4 @@
--- the plugin sets its own `gss` mapping in setup(), which is cheap
+-- Eager: setup() only creates the `gss` mapping.
 require('mini.splitjoin').setup({
   mappings = {
     toggle = 'gss',

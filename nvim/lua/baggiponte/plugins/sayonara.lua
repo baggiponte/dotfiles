@@ -1,4 +1,4 @@
--- Vimscript plugin: plugin/ only defines the command
+-- Eager: its plugin/ only defines the command.
 
 -- vim-sayonara asks about unsaved changes with `echo` + `getchar()`, which
 -- never reaches the UI as a prompt, so neat's confirm popup can't show it and
@@ -27,7 +27,7 @@ local function sayonara(bang)
   vim.cmd(cmd)
 end
 
-require('baggiponte.defer').keys({
+require('baggiponte.defer').on_keys({
   {
     'q',
     function()

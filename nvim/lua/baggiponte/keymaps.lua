@@ -1,49 +1,37 @@
--- see: https://github.com/nanotee/nvim-lua-guide#api-functions
+---@param mode string|string[]
+---@param lhs string
+---@param rhs string|function
+---@param desc string
+local function map(mode, lhs, rhs, desc)
+  vim.keymap.set(mode, lhs, rhs, { desc = desc, silent = true })
+end
 
--- [[ Registers (") ]]
+-- Registers
+map({ 'n', 'v' }, 'x', '"_x', 'Delete a character without copying it')
+map('x', '<leader>p', [["_dP]], 'Paste over a selection without copying it')
+map({ 'n', 'v', 'o' }, 'gy', '"+y', 'Yank to the system clipboard')
 
--- J appends the line after to the current one
--- vim.keymap.set("n", "J", "mzJ`z") -- this remap makes the cursor stay in place
+-- Treesitter node selection is built in since 0.12 (Visual mode): an/in
+-- select the parent/child node, ]n/[n move between nodes.
 
-vim.keymap.set({ 'n', 'v' }, 'x', '"_x', { desc = 'Delete a character without copying into register' })
-vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'do not override register when pasting over an object' })
+-- Inside the buffer: keep the cursor centred while jumping around.
+map('', 'H', '^', 'Go to the beginning of the line')
+map('', 'L', '$', 'Go to the end of the line')
+map('n', 'n', 'nzz', 'Next match, centred')
+map('n', 'N', 'Nzz', 'Previous match, centred')
+map('n', '<C-u>', '<C-u>zz', 'Half a page up, centred')
+map('n', '<C-d>', '<C-d>zz', 'Half a page down, centred')
 
--- copy from system clipboard
-vim.keymap.set({ 'n', 'v', 'o' }, 'gy', '"+y', { desc = 'Yank and send to the system clipboard' })
--- not needed: you can cmd+V
--- vim.keymap.set({ 'n', 'v', 'o' }, 'gp', '"+p', { desc = 'Paste from the system clipboard' })
+-- Windows
+map('n', '<C-h>', '<C-w>h', 'Focus the window to the left')
+map('n', '<C-j>', '<C-w>j', 'Focus the window below')
+map('n', '<C-k>', '<C-w>k', 'Focus the window above')
+map('n', '<C-l>', '<C-w>l', 'Focus the window to the right')
 
--- [[ Movements ]]
---
--- Note: since Nvim 0.12 you do NOT need a plugin for treesitter selection —
--- it's built in and already mapped (in Visual mode, no config):
---   an / in   select parent / child node
---   ]n / [n   next / previous node
---   ]N / [N   expand to next / previous node
---   (falls back to LSP textDocument/selectionRange when no parser is attached)
+-- Files
+map('n', '<leader>q', '<cmd>q<CR>', 'Quit the window')
+map('n', '<leader>w', '<cmd>w<CR>', 'Write the buffer')
 
--- inside the buffer
-vim.keymap.set('', 'H', '^', { desc = 'Go to the beginning of the line' })
-vim.keymap.set('', 'L', '$', { desc = 'Go to the end of the line' })
-vim.keymap.set('n', 'n', 'nzz', { desc = 'Search and center screen', silent = true, noremap = true })
-vim.keymap.set('n', 'N', 'Nzz', { desc = 'Search and center screen', silent = true, noremap = true })
-vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Go up half a page and center screen', silent = true, noremap = true })
-vim.keymap.set(
-  'n',
-  '<C-d>',
-  '<C-d>zz',
-  { desc = 'go down half a page and center screen', silent = true, noremap = true }
-)
-
--- across buffers
-vim.keymap.set('n', '<c-h>', '<c-w>h', { desc = 'Move focus to the left window', silent = true, noremap = true })
-vim.keymap.set('n', '<c-j>', '<c-w>j', { desc = 'Move focus to the window above', silent = true, noremap = true })
-vim.keymap.set('n', '<c-k>', '<c-w>k', { desc = 'Move focus to the window below', silent = true, noremap = true })
-vim.keymap.set('n', '<c-l>', '<c-w>l', { desc = 'Move focus to the right window', silent = true, noremap = true })
-
--- [[ Save and exit files ]]
-vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = 'quit current buffer', silent = true, noremap = true })
-vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = 'write current buffer', silent = true, noremap = true })
-
--- [[ Undo tree ]]
-vim.keymap.set('n', '<leader>u', '<cmd>Undotree<CR>', { desc = 'Undotree: toggle' })
+-- :Undotree ships as an optional built-in plugin since 0.12.
+vim.cmd.packadd('nvim.undotree')
+map('n', '<leader>u', '<cmd>Undotree<CR>', 'Undotree: toggle')

@@ -4,7 +4,7 @@ Using the built-in [`vim.pack`](https://neovim.io/doc/user/pack.html#vim.pack) (
 
 ## How loading works
 
-- `lua/baggiponte/pack.lua` installs every plugin with `vim.pack.add()`; revisions are pinned in `nvim-pack-lock.json`.
+- `lua/baggiponte/pack/init.lua` installs every plugin with `vim.pack.add()`; revisions are pinned in `nvim-pack-lock.json`.
 - Plugins that are cheap or lazy by design are loaded at startup and configured eagerly.
 - Plugins marked `data = OPT` stay off the runtimepath. `lua/baggiponte/defer.lua` packadds them on an event, filetype, key or command, standing in for lazy.nvim's `event`/`ft`/`keys`/`cmd`.
 - Requiring a module of a not-yet-loaded `opt` plugin packadds it, like lazy.nvim's module loader.
@@ -18,9 +18,9 @@ Using the built-in [`vim.pack`](https://neovim.io/doc/user/pack.html#vim.pack) (
 | `:PackUpdate [plugin...]` | `:Lazy update` | Fetch updates and open a review buffer: `:w` applies, `:q` cancels. `!` applies without review. |
 | `:PackStatus [plugin...]` | `:Lazy` | Show installed plugins and already-fetched changes, without downloading. |
 | `:PackRestore [plugin...]` | `:Lazy restore` | Check out the revisions in `nvim-pack-lock.json`, e.g. after pulling the dotfiles on another machine. |
-| `:PackClean` | `:Lazy clean` | Delete installed plugins that are no longer in `pack.lua`. |
+| `:PackClean` | `:Lazy clean` | Delete installed plugins that are no longer in `pack/init.lua`. |
 
-To add a plugin, add it to the `vim.pack.add()` list in `lua/baggiponte/pack.lua` (with `data = OPT` if it should load on demand), add its config module to the list at the bottom, and restart. Commit `nvim-pack-lock.json` after installs and updates.
+To add a plugin, add it to the `vim.pack.add()` list in `lua/baggiponte/pack/init.lua` (with `data = OPT` if it should load on demand), put its config in a new file under `lua/baggiponte/plugins/` (every file there is loaded), and restart. Commit `nvim-pack-lock.json` after installs and updates.
 
 ## Benchmarks
 

@@ -7,6 +7,7 @@ local setup = defer.loader({ 'nvim-web-devicons', 'oil.nvim' }, function()
       h = { 'actions.parent', mode = 'n' },
       l = {
         callback = function()
+          -- Like `actions.select`, but never opens files: `l` only descends.
           local oil = require('oil')
           local entry = oil.get_cursor_entry()
           local link_stat = entry and entry.meta and entry.meta.link_stat
@@ -23,21 +24,15 @@ local setup = defer.loader({ 'nvim-web-devicons', 'oil.nvim' }, function()
     },
     view_options = {
       show_hidden = true,
-      is_always_hidden = function(name, bufnr)
-        local must_hide = { '.git' }
-
-        for _, v in pairs(must_hide) do
-          if name == v then
-            return true
-          end
-        end
+      is_always_hidden = function(name)
+        return name == '.git'
       end,
     },
   })
 end)
 
 defer.on_cmd({ 'Oil' }, setup)
-defer.keys({
+defer.on_keys({
   {
     '<leader>o',
     function()

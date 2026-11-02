@@ -17,8 +17,8 @@ repos:
     rev: v1.5.0
     hooks:
       - id: detect-secrets
-        # plugin lockfiles pin git commit hashes, which look like hex secrets
-        exclude: '^nvim[^/]*/(lazy-lock|nvim-pack-lock)\.json$'
+        # the plugin lockfile pins git commit hashes, which look like hex secrets
+        exclude: '^nvim/nvim-pack-lock\.json$'
   - repo: https://github.com/JohnnyMorganz/StyLua
     rev: v2.4.0
     hooks:

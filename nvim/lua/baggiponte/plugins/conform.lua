@@ -1,69 +1,58 @@
-local runner = require('baggiponte.lsp.runner')
+local runner = require('baggiponte.runner')
 
-local formatters_by_filetype = {
-  lua = { 'stylua' },
+local formatters_by_ft = {
   just = { 'just' },
+  lua = { 'stylua' },
+  python = { 'ruff_organize_imports', 'ruff_format' },
   sh = { 'shfmt' },
   toml = { 'taplo' },
 }
 
--- Declarative override per formatter. `runner` is a key in M.runners; `tool`
--- optionally overrides the binary (e.g. bunx needs the npm package name).
--- Formatters not listed here run through `mise`.
-local formatter_overrides = {
-  taplo = {
-    runner = 'bunx',
-    tool = '@taplo/cli',
-    args = {
-      'format',
-      '--option',
-      'compact_arrays=false',
-      '--option',
-      'compact_inline_tables=false',
-      '--option',
-      'array_auto_collapse=false',
-      '--option',
-      'array_auto_expand=false',
-      '--stdin-filepath',
-      '$FILENAME',
-      '-',
-    },
+-- Formatters run through a runtime manager rather than whatever is on PATH
+-- (uvx first, then mise, then bunx; see AGENTS.md). Unlisted ones use mise.
+local runner_by_formatter = {
+  ruff_format = 'uvx',
+  ruff_organize_imports = 'uvx',
+}
+
+-- taplo is only published to npm as @taplo/cli, and its defaults collapse
+-- arrays and inline tables, so it gets a full spec instead of the built-in.
+local taplo = {
+  command = 'bunx',
+  args = {
+    '--yes',
+    '@taplo/cli',
+    'format',
+    '--option',
+    'compact_arrays=false',
+    '--option',
+    'compact_inline_tables=false',
+    '--option',
+    'array_auto_collapse=false',
+    '--option',
+    'array_auto_expand=false',
+    '--stdin-filepath',
+    '$FILENAME',
+    '-',
   },
 }
 
 -- Cheap enough to set up eagerly: conform only does work on BufWritePre.
 do
-  local formatters = {}
+  local formatters = { taplo = taplo }
 
-  for _, ft_formatters in pairs(formatters_by_filetype) do
-    for _, name in ipairs(ft_formatters) do
+  for _, names in pairs(formatters_by_ft) do
+    for _, name in ipairs(names) do
       local ok, builtin = pcall(require, 'conform.formatters.' .. name)
-      if not ok then
-        return
-      end
-
-      local override = formatter_overrides[name]
-      if override then
-        -- Fully replace the built-in formatter with a declarative spec.
-        local config = {
-          command = runner.runners[override.runner].bin,
-          args = function()
-            local node = runner.prefix(override.runner)
-            table.insert(node, override.tool or name)
-            vim.list_extend(node, override.args)
-            return node
-          end,
-        }
-        formatters[name] = config
-      else
-        formatters[name] = runner.formatter(builtin, 'mise')
+      if ok and not formatters[name] then
+        formatters[name] = runner.formatter(builtin, runner_by_formatter[name] or 'mise')
       end
     end
   end
 
   require('conform').setup({
-    formatters_by_ft = formatters_by_filetype,
+    formatters_by_ft = formatters_by_ft,
     formatters = formatters,
-    format_on_save = { timeout_ms = 500, lsp_fallback = true },
+    format_on_save = { timeout_ms = 500, lsp_format = 'fallback' },
   })
 end
