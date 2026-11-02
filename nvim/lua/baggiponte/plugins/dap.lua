@@ -26,7 +26,6 @@ local dap_views_opt = {
       size = 50,
     },
   },
-  -- REPL and watches first: they're what a debugging session starts with.
   winbar = {
     show = true,
     sections = {
