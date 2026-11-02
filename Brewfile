@@ -165,16 +165,10 @@ brew "databricks/tap/databricks", trusted: true
 cask "alt-tab"
 # Coding agent and development environment
 cask "amp-app"
-# Chromium based browser
-cask "arc"
-# OpenAI's official ChatGPT desktop app
-cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Clipboard history app
 cask "clipbook"
-# Plugin-based AI agent desktop application
-cask "deepseek-harness"
 # Voice and text chat software
 cask "discord"
 # CLI for Entire
@@ -194,8 +188,8 @@ cask "git-credential-manager"
 cask "google-chrome"
 # AI-powered notepad for meetings
 cask "granola"
-# Speech to text application
-cask "handy"
+# Local voice dictation
+cask "anomalyco/tap/hex", trusted: true
 # Keyboard customiser
 cask "karabiner-elements"
 # Menu bar app for running local LLMs
@@ -206,16 +200,12 @@ cask "microsoft-powerpoint"
 cask "microsoft-teams"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
-# Local-first dictation and meeting transcription
-cask "muesli"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # The official CLI for the OpenAI API.
 cask "openai/tools/openai", trusted: true
 # otel-desktop-viewer is a CLI tool for receiving OpenTelemetry traces, metrics, and logs on your local machine.
 cask "ctrlspice/otel-desktop-viewer/otel-desktop-viewer", trusted: true
-# Control your tools with a few keystrokes
-cask "raycast"
 # Music streaming service
 cask "spotify"
 # To-do list
