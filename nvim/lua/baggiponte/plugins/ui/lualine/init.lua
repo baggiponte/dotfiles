@@ -44,7 +44,7 @@ local sections = {
     { 'filetype', icon_only = true, padding = { left = 1, right = 0 } },
     widgets.filepath,
   },
-  lualine_x = { 'diagnostics' },
+  lualine_x = { widgets.lsp_progress, 'diagnostics' },
   lualine_y = { widgets.lsp_clients },
   lualine_z = { 'location', 'progress' },
 }
