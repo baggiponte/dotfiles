@@ -1,35 +1,11 @@
-local keys = {
-  {
-    '<leader>fb',
-    function()
-      require('telescope.builtin').buffers()
-    end,
-    desc = 'Telescope: find buffer',
-  },
-  {
-    '<leader>fd',
-    function()
-      require('telescope.builtin').diagnostics()
-    end,
-    desc = 'Telescope: find in workspace diagnostics',
-  },
-  {
-    '<leader>fh',
-    function()
-      require('telescope.builtin').help_tags()
-    end,
-    desc = 'Telescope: help tags',
-  },
-  {
-    '<leader>fk',
-    function()
-      require('telescope.builtin').keymaps()
-    end,
-    desc = 'Telescope: keymaps',
-  },
-}
-
 local defer = require('baggiponte.defer')
+
+local keys = {
+  { '<leader>fb', defer.call('telescope.builtin', 'buffers'), desc = 'Telescope: find buffer' },
+  { '<leader>fd', defer.call('telescope.builtin', 'diagnostics'), desc = 'Telescope: find in workspace diagnostics' },
+  { '<leader>fh', defer.call('telescope.builtin', 'help_tags'), desc = 'Telescope: help tags' },
+  { '<leader>fk', defer.call('telescope.builtin', 'keymaps'), desc = 'Telescope: keymaps' },
+}
 
 -- telescope's plugin/ defines :Telescope, replacing the stub on load
 local setup = defer.loader(
@@ -83,7 +59,7 @@ local setup = defer.loader(
   end
 )
 
-defer.keys(keys, setup)
+defer.on_keys(keys, setup)
 defer.on_cmd({ 'Telescope' }, setup)
 
-return setup
+return { load = setup }

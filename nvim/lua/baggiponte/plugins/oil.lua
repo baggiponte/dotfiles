@@ -37,7 +37,7 @@ local setup = defer.loader({ 'nvim-web-devicons', 'oil.nvim' }, function()
 end)
 
 defer.on_cmd({ 'Oil' }, setup)
-defer.keys({
+defer.on_keys({
   {
     '<leader>o',
     function()

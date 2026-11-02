@@ -153,51 +153,65 @@ function M.on_cmd(names, setup)
   end
 end
 
---- Stub keys that the plugin maps itself (lazy.nvim's `keys = { 'ys' }`): the
---- first press removes the stubs, runs `setup` and replays the keys, so the
---- plugin's own mappings handle them.
----@param keys {[1]: string, mode?: string|string[]}[]
----@param setup fun()
+--- Set up a plugin's keys; `setup` (optional) runs on the first press of any
+--- of them. Each key is { lhs, rhs?, mode?, desc?, expr? }:
+---   - with `rhs`, `lhs` is mapped to it;
+---   - without, the plugin maps `lhs` itself in `setup`, so a stub stands in
+---     until then and the first press is replayed to the plugin's mapping.
+---@param keys {[1]: string, [2]?: string|function, mode?: string|string[], desc?: string, expr?: boolean}[]
+---@param setup? fun()
 function M.on_keys(keys, setup)
-  local function unmap_all()
+  local load = M.once(function()
     for _, key in ipairs(keys) do
-      pcall(vim.keymap.del, key.mode or 'n', key[1])
+      if key[2] == nil then
+        pcall(vim.keymap.del, key.mode or 'n', key[1])
+      end
     end
-  end
-  for _, key in ipairs(keys) do
-    vim.keymap.set(key.mode or 'n', key[1], function()
-      unmap_all()
+    if setup then
       setup()
-      local count = vim.v.count > 0 and tostring(vim.v.count) or ''
-      vim.api.nvim_feedkeys(count .. vim.keycode(key[1]), 'im', false)
-    end, { desc = 'Load plugin and run ' .. key[1] })
+    end
+  end)
+
+  for _, key in ipairs(keys) do
+    local lhs, rhs, mode = key[1], key[2], key.mode or 'n'
+    local opts = { desc = key.desc, expr = key.expr, silent = true }
+
+    if rhs == nil then
+      vim.keymap.set(mode, lhs, function()
+        load()
+        local count = vim.v.count > 0 and tostring(vim.v.count) or ''
+        vim.api.nvim_feedkeys(count .. vim.keycode(lhs), 'im', false)
+      end, { desc = 'Load plugin and run ' .. lhs })
+    elseif not setup then
+      vim.keymap.set(mode, lhs, rhs, opts)
+    elseif type(rhs) == 'function' then
+      vim.keymap.set(mode, lhs, function()
+        load()
+        return rhs()
+      end, opts)
+    else
+      opts.expr = true
+      vim.keymap.set(mode, lhs, function()
+        load()
+        return rhs
+      end, opts)
+    end
   end
 end
 
---- Set keymaps from lazy.nvim-style key specs; `setup` runs before the first
---- use of any of them.
----@param keys table[]
----@param setup? fun()
-function M.keys(keys, setup)
-  for _, key in ipairs(keys) do
-    local lhs, rhs = key[1], key[2]
-    local opts = { desc = key.desc, expr = key.expr, silent = true }
-    local mapped = rhs
-    if setup then
-      if type(rhs) == 'function' then
-        mapped = function()
-          setup()
-          return rhs()
-        end
-      else
-        mapped = function()
-          setup()
-          return rhs
-        end
-        opts.expr = true
-      end
-    end
-    vim.keymap.set(key.mode or 'n', lhs, mapped, opts)
+--- A function that requires `module` and calls the function at `path` in it,
+--- for keymaps that shouldn't load the plugin until they're pressed.
+---   call('dap', 'continue')     -> require('dap').continue()
+---   call('neotest', 'run.run')  -> require('neotest').run.run()
+---@param module string
+---@param path string dotted path to the function inside the module
+---@param ... any arguments for the call
+---@return fun(): any
+function M.call(module, path, ...)
+  local args = vim.F.pack_len(...)
+  return function()
+    local fn = vim.tbl_get(require(module), unpack(vim.split(path, '.', { plain = true })))
+    return fn(vim.F.unpack_len(args))
   end
 end
 
