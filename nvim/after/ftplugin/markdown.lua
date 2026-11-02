@@ -1,3 +1,4 @@
+-- The runtime ftplugin sets 4 (markdown_recommended_style).
 vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
 vim.opt_local.wrap = true
