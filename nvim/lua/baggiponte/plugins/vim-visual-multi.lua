@@ -1,5 +1,5 @@
 local defer = require('baggiponte.defer')
 
--- Vimscript plugin: its plugin/ sets up the mappings and the rest is
--- autoloaded, but sourcing it still costs ~1ms, so keep lazy.nvim's VeryLazy.
+-- Its plugin/ only sets up the mappings, but sourcing it still costs ~1 ms,
+-- so it loads after the first screen is drawn.
 defer.very_lazy(defer.loader({ 'vim-visual-multi' }))

@@ -13,7 +13,7 @@ local keys = {
 
 local defer = require('baggiponte.defer')
 
-defer.keys(
+defer.on_keys(
   keys,
   defer.loader({ 'namu.nvim' }, function()
     require('namu').setup({})

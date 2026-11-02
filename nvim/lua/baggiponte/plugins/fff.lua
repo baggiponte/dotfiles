@@ -1,18 +1,8 @@
+local defer = require('baggiponte.defer')
+
 local keys = {
-  {
-    '<leader>ff',
-    function()
-      require('fff').find_files()
-    end,
-    desc = 'FFF: find files',
-  },
-  {
-    '<leader>fg',
-    function()
-      require('fff').live_grep()
-    end,
-    desc = 'FFF: live grep',
-  },
+  { '<leader>ff', defer.call('fff', 'find_files'), desc = 'FFF: find files' },
+  { '<leader>fg', defer.call('fff', 'live_grep'), desc = 'FFF: live grep' },
   {
     '<leader>fw',
     function()
@@ -21,8 +11,6 @@ local keys = {
     desc = 'FFF: grep current word',
   },
 }
-
-local defer = require('baggiponte.defer')
 
 -- Loading fff starts its Rust core and file indexer; do that on first use.
 local setup = defer.loader({ 'fff.nvim' }, function()
@@ -42,7 +30,7 @@ local setup = defer.loader({ 'fff.nvim' }, function()
   })
 end)
 
-defer.keys(keys, setup)
+defer.on_keys(keys, setup)
 -- fff's plugin/ defines the real commands, replacing these stubs
 defer.on_cmd({
   'FFFClearCache',

@@ -68,4 +68,4 @@ local defer = require('baggiponte.defer')
 require('gitsigns').setup({
   current_line_blame = false,
 })
-defer.keys(keys)
+defer.on_keys(keys)
