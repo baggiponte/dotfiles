@@ -71,8 +71,8 @@ vim.pack.add({
   -- treesitter
   { src = gh('nvim-treesitter/nvim-treesitter'), version = 'main' },
   { src = gh('nvim-treesitter/nvim-treesitter-textobjects'), version = 'main' },
-  gh('RRethy/nvim-treesitter-endwise'),
-  gh('kylechui/nvim-surround'),
+  { src = gh('RRethy/nvim-treesitter-endwise'), data = OPT },
+  { src = gh('kylechui/nvim-surround'), data = OPT },
   { src = gh('windwp/nvim-autopairs'), data = OPT },
 
   -- editing
@@ -88,7 +88,7 @@ vim.pack.add({
   { src = gh('Wansmer/symbol-usage.nvim'), data = OPT },
 
   -- navigation
-  gh('dmtrKovalenko/fff.nvim'),
+  { src = gh('dmtrKovalenko/fff.nvim'), data = OPT },
   { src = gh('nvim-telescope/telescope.nvim'), data = OPT },
   { src = gh('nvim-telescope/telescope-fzf-native.nvim'), data = OPT },
   { src = gh('bassamsdata/namu.nvim'), data = OPT },

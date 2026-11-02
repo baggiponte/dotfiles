@@ -121,6 +121,34 @@ local setup = defer.loader({ 'nvim-dap', 'nvim-dap-view', 'nvim-dap-python', 'nv
 end)
 
 defer.keys(keys, setup)
-defer.on_ft('python', setup)
+-- nvim-dap's plugin/ defines the real commands, replacing these stubs
+defer.on_cmd({
+  'DapClearBreakpoints',
+  'DapContinue',
+  'DapDisconnect',
+  'DapEval',
+  'DapNew',
+  'DapPause',
+  'DapRestartFrame',
+  'DapSetLogLevel',
+  'DapShowLog',
+  'DapStepInto',
+  'DapStepOut',
+  'DapStepOver',
+  'DapTerminate',
+  'DapToggleBreakpoint',
+  'DapToggleRepl',
+  'DapViewClose',
+  'DapViewHover',
+  'DapViewJump',
+  'DapViewNavigate',
+  'DapViewOpen',
+  'DapViewShow',
+  'DapViewToggle',
+  'DapViewVirtualTextDisable',
+  'DapViewVirtualTextEnable',
+  'DapViewVirtualTextToggle',
+  'DapViewWatch',
+}, setup)
 
 return setup
