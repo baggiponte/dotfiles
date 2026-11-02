@@ -18,15 +18,50 @@ function M.once(fn)
 end
 
 ---@param event string
----@return table<integer, true>
-local function autocmd_groups(event)
-  local groups = {}
+---@return table<any, vim.api.keyset.get_autocmds.ret> autocmds by id
+local function autocmds_by_id(event)
+  local autocmds = {}
   for _, autocmd in ipairs(vim.api.nvim_get_autocmds({ event = event })) do
+    -- autocmds defined from Vimscript have no id
+    autocmds[autocmd.id or autocmd] = autocmd
+  end
+  return autocmds
+end
+
+--- Re-fire `args.event` for the autocmds created since `before`, in the
+--- triggering buffer so <abuf>/args.buf match the original event.
+---@param args vim.api.keyset.create_autocmd.callback_args
+---@param before table<any, vim.api.keyset.get_autocmds.ret>
+local function refire(args, before)
+  local groups = {} ---@type table<integer, true>
+  local before_groups = {} ---@type table<integer, true>
+  for _, autocmd in pairs(before) do
     if autocmd.group then
-      groups[autocmd.group] = true
+      before_groups[autocmd.group] = true
     end
   end
-  return groups
+  for id, autocmd in pairs(autocmds_by_id(args.event)) do
+    if autocmd.group then
+      if not before_groups[autocmd.group] then
+        groups[autocmd.group] = true
+      end
+    elseif type(id) == 'number' and not before[id] and autocmd.callback then
+      -- no group to target with nvim_exec_autocmds: call it directly
+      vim.api.nvim_buf_call(args.buf, function()
+        pcall(autocmd.callback, vim.tbl_extend('force', args, { id = id }))
+      end)
+    end
+  end
+  for group in pairs(groups) do
+    vim.api.nvim_buf_call(args.buf, function()
+      pcall(vim.api.nvim_exec_autocmds, args.event, {
+        group = group,
+        pattern = args.match,
+        data = args.data,
+        modeline = false,
+      })
+    end)
+  end
 end
 
 local loaded = {} ---@type table<string, true>
@@ -58,8 +93,8 @@ function M.loader(plugins, fn)
 end
 
 --- Run `fn` on the first of `events` (optionally restricted to `pattern`).
---- Like lazy.nvim, the triggering event is then re-fired for the autocmd
---- groups that `fn` created, so the plugin also sees the event that loaded it.
+--- Like lazy.nvim, the triggering event is then re-fired for the autocmds that
+--- `fn` created, so the plugin also sees the event that loaded it.
 ---@param events string|string[]
 ---@param fn fun()
 ---@param pattern? string|string[]
@@ -71,21 +106,9 @@ function M.on_event(events, fn, pattern)
     pattern = pattern,
     callback = function(args)
       vim.api.nvim_del_augroup_by_id(group)
-      local before = autocmd_groups(args.event)
+      local before = autocmds_by_id(args.event)
       run()
-      for new_group in pairs(autocmd_groups(args.event)) do
-        if not before[new_group] then
-          -- run in the triggering buffer so <abuf>/args.buf match the original
-          vim.api.nvim_buf_call(args.buf, function()
-            pcall(vim.api.nvim_exec_autocmds, args.event, {
-              group = new_group,
-              pattern = args.match,
-              data = args.data,
-              modeline = false,
-            })
-          end)
-        end
-      end
+      refire(args, before)
     end,
   })
 end
@@ -127,6 +150,27 @@ function M.on_cmd(names, setup)
         range = args.range > 0 and { args.line1, args.line2 } or nil,
       })
     end, { nargs = '*', bang = true, range = true })
+  end
+end
+
+--- Stub keys that the plugin maps itself (lazy.nvim's `keys = { 'ys' }`): the
+--- first press removes the stubs, runs `setup` and replays the keys, so the
+--- plugin's own mappings handle them.
+---@param keys {[1]: string, mode?: string|string[]}[]
+---@param setup fun()
+function M.on_keys(keys, setup)
+  local function unmap_all()
+    for _, key in ipairs(keys) do
+      pcall(vim.keymap.del, key.mode or 'n', key[1])
+    end
+  end
+  for _, key in ipairs(keys) do
+    vim.keymap.set(key.mode or 'n', key[1], function()
+      unmap_all()
+      setup()
+      local count = vim.v.count > 0 and tostring(vim.v.count) or ''
+      vim.api.nvim_feedkeys(count .. vim.keycode(key[1]), 'im', false)
+    end, { desc = 'Load plugin and run ' .. key[1] })
   end
 end
 

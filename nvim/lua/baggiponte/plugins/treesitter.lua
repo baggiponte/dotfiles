@@ -114,9 +114,45 @@ defer.on_event(
   end)
 )
 
-require('nvim-surround').setup({})
+-- surround: load on its default keymaps instead of at startup
+defer.on_keys(
+  {
+    { 'ys' },
+    { 'yS' },
+    { 'ds' },
+    { 'cs' },
+    { 'cS' },
+    { 'S', mode = 'x' },
+    { 'gS', mode = 'x' },
+    { '<C-g>s', mode = 'i' },
+    { '<C-g>S', mode = 'i' },
+  },
+  defer.loader({ 'nvim-surround' }, function()
+    require('nvim-surround').setup({})
+  end)
+)
+
+-- endwise compiles its query on every FileType (~3 ms on a Python buffer), but
+-- only these languages ship endwise queries
+defer.on_ft(
+  { 'lua', 'luau', 'ruby', 'vim', 'sh', 'bash', 'zsh', 'elixir', 'julia', 'fish', 'verilog' },
+  defer.loader({ 'nvim-treesitter-endwise' })
+)
+
 require('nvim-treesitter').setup()
-require('nvim-treesitter').install(parsers) -- no-op for already-installed parsers
+
+-- install() is a no-op when everything is present, but still loads the
+-- install machinery; only call it when a parser is actually missing.
+local installed = {}
+for _, path in ipairs(vim.api.nvim_get_runtime_file('parser/*.so', true)) do
+  installed[vim.fn.fnamemodify(path, ':t:r')] = true
+end
+local missing = vim.tbl_filter(function(lang)
+  return not installed[lang]
+end, parsers)
+if #missing > 0 then
+  require('nvim-treesitter').install(missing)
+end
 require('nvim-treesitter-textobjects').setup(textobjects)
 setup_textobject_keymaps()
 setup_treesitter_filetypes()
