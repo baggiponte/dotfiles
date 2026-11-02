@@ -1,0 +1,7 @@
+{
+  "annotations": {
+    "prefix": "annotations",
+    "body": "from __future__ import annotations",
+    "description": "Add `from __future__ import annotations`"
+  }
+}

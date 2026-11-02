@@ -1,0 +1,8 @@
+{
+  "name": "baggiponte-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "python", "path": "./python.json" }
+    ]
+  }
+}

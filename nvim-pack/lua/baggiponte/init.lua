@@ -1,0 +1,5 @@
+require('baggiponte.options')
+require('baggiponte.autocmds')
+require('baggiponte.keymaps')
+require('baggiponte.pack')
+require('baggiponte.lsp')
