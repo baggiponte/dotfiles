@@ -44,15 +44,16 @@ Loaded eagerly (lazy by design, or cheap):
 - `gitsigns.nvim`: its `plugin/` already calls `setup()` and attaches to buffers lazily.
 - `conform.nvim`, `nvim-lint`, `quicker.nvim`, `mini.splitjoin`: under 1 ms; they only do work on write, read, quickfix or keypress.
 - `vim-sayonara`: Vimscript, `plugin/` only defines commands and mappings.
-- `gruvbox-material`, `snacks.nvim`, `nvim-treesitter` (+ textobjects): needed for the first screen anyway.
+- `gruvbox-material`, `neat.nvim`, `nvim-treesitter` (+ textobjects): needed for the first screen anyway. `neat.nvim` loads its own heavy parts on first use (`:h neat`).
+- `nui.nvim`: no `plugin/`, so free on the runtimepath; neat's cmdline popup needs it from a UI event, where `:packadd` is not allowed.
 
 Deferred by hand (`opt`):
 
-- Expensive `setup()` or `plugin/` (1.5 to 6 ms each): `blink.cmp`, `lualine.nvim`, `lsp_signature.nvim`, `nvim-dap-view`, `supermaven-nvim`, `nvim-highlight-colors`, `telescope.nvim`, `namu.nvim`, `symbol-usage.nvim`, `oil.nvim`, `lazydev.nvim`, `diffview.nvim`, `nvim-web-devicons`.
-- Around 1 ms and only needed later: `noice.nvim`, `dressing.nvim`, `nvim-autopairs`, `vim-visual-multi`, `markview.nvim`, `refactoring.nvim`.
+- Expensive `setup()` or `plugin/` (1.5 to 6 ms each): `blink.cmp`, `lsp_signature.nvim`, `nvim-dap-view`, `supermaven-nvim`, `nvim-highlight-colors`, `telescope.nvim`, `namu.nvim`, `symbol-usage.nvim`, `oil.nvim`, `lazydev.nvim`, `diffview.nvim`, `nvim-web-devicons`.
+- Around 1 ms and only needed later: `nvim-autopairs`, `vim-visual-multi`, `markview.nvim`, `refactoring.nvim`.
 - Lazy by design but kept on `cmd` to save ~0.6 ms: `vim-dadbod`, `vim-dadbod-ui`, `vim-dadbod-completion`.
 - Cheap, but `neo-tree.nvim` would hijack directory buffers at startup, so it loads on `:Neotree` or its key.
-- Only used through their own keys or commands: `neogit`, `neotest`, `nvim-dap` (no longer on every Python buffer), `nvim-surround` and their libraries (`plenary.nvim`, `nui.nvim`, `nvim-nio`).
+- Only used through their own keys or commands: `neogit`, `neotest`, `nvim-dap` (no longer on every Python buffer), `nvim-surround` and their libraries (`plenary.nvim`, `nvim-nio`).
 - `fff.nvim`: setup is cheap, but loading it starts its Rust core and file indexer, so it loads on its keys or `:FFF*` commands.
 - `nvim-treesitter-endwise`: compiles its query on every FileType (~3 ms on a Python buffer), so it loads only for filetypes that ship endwise queries.
 

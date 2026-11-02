@@ -4,7 +4,7 @@ local defer = require('baggiponte.defer')
 -- directory buffers at startup, so it stays unloaded until first use.
 local setup = defer.loader({ 'plenary.nvim', 'nui.nvim', 'nvim-web-devicons', 'neo-tree.nvim' }, function()
   local function on_move(data)
-    Snacks.rename.on_rename_file(data.source, data.destination)
+    require('neat.rename').on_rename_file(data.source, data.destination)
   end
   local events = require('neo-tree.events')
   require('neo-tree').setup({
