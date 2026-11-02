@@ -1,7 +1,7 @@
 -- neat.nvim replaces lualine (statusline), noice (cmdline), dressing (select)
--- and snacks (input, notifier, indent, rename). The `snacks` backends are
--- snacks.nvim code vendored into neat: snacks.nvim itself is not installed.
--- LSP progress is shown by the statusline's `lsp_progress` component.
+-- and snacks (input, notifier, indent, rename). The `builtin` notify and
+-- indent backends are snacks.nvim code that ships inside neat, so snacks.nvim
+-- is not installed. LSP progress is shown by the statusline's `lsp_progress`.
 require('neat').setup({
   statusline = { enabled = true },
   cmdline = { enabled = true },
@@ -9,13 +9,13 @@ require('neat').setup({
   input = { enabled = true },
   notify = {
     enabled = true,
-    backend = 'snacks',
-    snacks = { top_down = false },
+    backend = 'builtin',
+    builtin = { top_down = false },
   },
   indent = {
     enabled = true,
-    backend = 'snacks',
-    snacks = {
+    backend = 'builtin',
+    builtin = {
       indent = { char = '┊' },
       scope = { char = '┊' },
     },
