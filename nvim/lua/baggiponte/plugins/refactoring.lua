@@ -9,13 +9,12 @@ local keys = {
   },
 }
 
-return {
-  'ThePrimeagen/refactoring.nvim',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-treesitter/nvim-treesitter',
-  },
-  keys = keys,
-  cmd = { 'Refactor' },
-  opts = {},
-}
+local defer = require('baggiponte.defer')
+
+-- refactoring's plugin/ defines :Refactor, replacing the stub on load
+local setup = defer.loader({ 'plenary.nvim', 'refactoring.nvim' }, function()
+  require('refactoring').setup({})
+end)
+
+defer.keys(keys, setup)
+defer.on_cmd({ 'Refactor' }, setup)

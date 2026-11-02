@@ -29,19 +29,12 @@ local keys = {
   },
 }
 
-return {
-  'nvim-telescope/telescope.nvim',
-  cmd = { 'Telescope' },
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons',
-    {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make',
-    },
-  },
-  keys = keys,
-  config = function()
+local defer = require('baggiponte.defer')
+
+-- telescope's plugin/ defines :Telescope, replacing the stub on load
+local setup = defer.loader(
+  { 'plenary.nvim', 'nvim-web-devicons', 'telescope.nvim', 'telescope-fzf-native.nvim' },
+  function()
     local actions = require('telescope.actions')
 
     require('telescope').load_extension('fzf')
@@ -87,5 +80,10 @@ return {
         },
       },
     })
-  end,
-}
+  end
+)
+
+defer.keys(keys, setup)
+defer.on_cmd({ 'Telescope' }, setup)
+
+return setup

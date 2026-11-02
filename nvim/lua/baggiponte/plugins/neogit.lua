@@ -1,28 +1,24 @@
-return {
-  'NeogitOrg/neogit',
-  dependencies = {
-    'nvim-lua/plenary.nvim', -- required
-    'sindrets/diffview.nvim', -- optional - Diff integration
+local defer = require('baggiponte.defer')
 
-    -- Only one of these is needed.
-    'nvim-telescope/telescope.nvim', -- optional
-    -- 'ibhagwan/fzf-lua',              -- optional
-    -- 'echasnovski/mini.pick',         -- optional
-    -- 'folke/snacks.nvim',             -- optional
+-- Neogit needs no setup() call (the lazy.nvim spec had neither `opts` nor
+-- `config`); its plugin/ defines the commands, replacing the stubs on load.
+-- diffview and telescope are its optional integrations.
+local setup = defer.loader({ 'plenary.nvim', 'diffview.nvim', 'neogit' }, function()
+  require('baggiponte.plugins.telescope')()
+end)
+
+defer.on_cmd({ 'Neogit' }, setup)
+defer.keys({
+  {
+    '<leader>g',
+    '<cmd>Neogit<CR>',
+    mode = { 'n', 'v' },
+    desc = 'Neogit: toggle git status window',
   },
-  cmd = 'Neogit',
-  keys = {
-    {
-      '<leader>g',
-      '<cmd>Neogit<CR>',
-      mode = { 'n', 'v' },
-      desc = 'Neogit: toggle git status window',
-    },
-    {
-      '<leader>gc',
-      '<cmd>Neogit commit<CR>',
-      mode = { 'n', 'v' },
-      desc = 'Neogit: git commit',
-    },
+  {
+    '<leader>gc',
+    '<cmd>Neogit commit<CR>',
+    mode = { 'n', 'v' },
+    desc = 'Neogit: git commit',
   },
-}
+}, setup)

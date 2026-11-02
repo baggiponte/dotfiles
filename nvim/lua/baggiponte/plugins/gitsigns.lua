@@ -61,12 +61,11 @@ local keys = {
   },
 }
 
-return {
-  'lewis6991/gitsigns.nvim',
-  event = 'VeryLazy',
-  dependencies = 'nvim-lua/plenary.nvim',
-  keys = keys,
-  opts = {
-    current_line_blame = false,
-  },
-}
+local defer = require('baggiponte.defer')
+
+-- gitsigns' plugin/ file already calls setup() itself and attaches to buffers
+-- lazily, so configuring it eagerly costs nothing extra.
+require('gitsigns').setup({
+  current_line_blame = false,
+})
+defer.keys(keys)

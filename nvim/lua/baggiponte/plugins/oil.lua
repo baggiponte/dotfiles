@@ -1,23 +1,8 @@
-return {
-  'stevearc/oil.nvim',
-  cmd = 'Oil',
-  keys = {
-    {
-      '<leader>o',
-      function()
-        require('oil').open(nil, { preview = { vertical = true, split = 'botright' } })
-      end,
-      desc = 'oil.nvim: open with preview',
-    },
-    {
-      '<C-f><C-d>',
-      function()
-        require('oil').open(vim.fn.getcwd())
-      end,
-      desc = 'oil.nvim: open the file explorer in the current directory',
-    },
-  },
-  opts = {
+local defer = require('baggiponte.defer')
+
+-- oil has no plugin/ file: `:Oil` only exists after setup().
+local setup = defer.loader({ 'nvim-web-devicons', 'oil.nvim' }, function()
+  require('oil').setup({
     keymaps = {
       h = { 'actions.parent', mode = 'n' },
       l = {
@@ -48,7 +33,23 @@ return {
         end
       end,
     },
+  })
+end)
+
+defer.on_cmd({ 'Oil' }, setup)
+defer.keys({
+  {
+    '<leader>o',
+    function()
+      require('oil').open(nil, { preview = { vertical = true, split = 'botright' } })
+    end,
+    desc = 'oil.nvim: open with preview',
   },
-  -- Optional dependencies
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-}
+  {
+    '<C-f><C-d>',
+    function()
+      require('oil').open(vim.fn.getcwd())
+    end,
+    desc = 'oil.nvim: open the file explorer in the current directory',
+  },
+}, setup)
