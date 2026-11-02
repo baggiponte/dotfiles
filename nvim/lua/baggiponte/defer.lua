@@ -201,6 +201,22 @@ function M.keys(keys, setup)
   end
 end
 
+--- A function that requires `module` and calls the function at `path` in it,
+--- for keymaps that shouldn't load the plugin until they're pressed.
+---   call('dap', 'continue')     -> require('dap').continue()
+---   call('neotest', 'run.run')  -> require('neotest').run.run()
+---@param module string
+---@param path string dotted path to the function inside the module
+---@param ... any arguments for the call
+---@return fun(): any
+function M.call(module, path, ...)
+  local args = vim.F.pack_len(...)
+  return function()
+    local fn = vim.tbl_get(require(module), unpack(vim.split(path, '.', { plain = true })))
+    return fn(vim.F.unpack_len(args))
+  end
+end
+
 --- Make `require()` of a module from a not-yet-loaded `opt` plugin packadd
 --- that plugin first, so optional integrations (e.g. fff -> devicons) work.
 --- Hard dependencies are still listed in each M.loader() call: :packadd is

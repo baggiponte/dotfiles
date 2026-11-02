@@ -1,19 +1,8 @@
+local defer = require('baggiponte.defer')
+
 local keys = {
-  -- Session Control
-  {
-    '<leader>ds',
-    function()
-      require('dap').continue()
-    end,
-    desc = 'DAP: Start/Continue',
-  },
-  {
-    '<leader>dr',
-    function()
-      require('dap').restart()
-    end,
-    desc = 'DAP: Restart Session',
-  },
+  { '<leader>ds', defer.call('dap', 'continue'), desc = 'DAP: Start/Continue' },
+  { '<leader>dr', defer.call('dap', 'restart'), desc = 'DAP: Restart Session' },
   {
     '<leader>dq',
     function()
@@ -22,54 +11,12 @@ local keys = {
     end,
     desc = 'DAP: Terminate Session',
   },
-
-  -- Stepping
-  {
-    '<leader>dn',
-    function()
-      require('dap').step_over()
-    end,
-    desc = 'DAP: Step Over (Next)',
-  },
-  {
-    '<leader>di',
-    function()
-      require('dap').step_into()
-    end,
-    desc = 'DAP: Step Into',
-  },
-  {
-    '<leader>do',
-    function()
-      require('dap').step_out()
-    end,
-    desc = 'DAP: Step Out',
-  },
-
-  -- Breakpoints
-  {
-    '<leader>db',
-    function()
-      require('dap').toggle_breakpoint()
-    end,
-    desc = 'DAP: Toggle Breakpoint',
-  },
-
-  -- UI & Inspection
-  {
-    '<leader>dv',
-    function()
-      require('dap-view').toggle()
-    end,
-    desc = 'DAP: Toggle View',
-  },
-  {
-    '<leader>dk',
-    function()
-      require('dap.ui.widgets').hover()
-    end,
-    desc = 'DAP: Hover Variables',
-  },
+  { '<leader>dn', defer.call('dap', 'step_over'), desc = 'DAP: Step Over (Next)' },
+  { '<leader>di', defer.call('dap', 'step_into'), desc = 'DAP: Step Into' },
+  { '<leader>do', defer.call('dap', 'step_out'), desc = 'DAP: Step Out' },
+  { '<leader>db', defer.call('dap', 'toggle_breakpoint'), desc = 'DAP: Toggle Breakpoint' },
+  { '<leader>dv', defer.call('dap-view', 'toggle'), desc = 'DAP: Toggle View' },
+  { '<leader>dk', defer.call('dap.ui.widgets', 'hover'), desc = 'DAP: Hover Variables' },
 }
 
 local dap_views_opt = {
@@ -97,8 +44,6 @@ local dap_views_opt = {
     },
   },
 }
-
-local defer = require('baggiponte.defer')
 
 local setup = defer.loader({ 'nvim-dap', 'nvim-dap-view', 'nvim-dap-python', 'nvim-dap-virtual-text' }, function()
   local dap = require('dap')
@@ -151,4 +96,4 @@ defer.on_cmd({
   'DapViewWatch',
 }, setup)
 
-return setup
+return { load = setup }

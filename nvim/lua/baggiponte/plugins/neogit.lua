@@ -4,7 +4,7 @@ local defer = require('baggiponte.defer')
 -- `config`); its plugin/ defines the commands, replacing the stubs on load.
 -- diffview and telescope are its optional integrations.
 local setup = defer.loader({ 'plenary.nvim', 'diffview.nvim', 'neogit' }, function()
-  require('baggiponte.plugins.telescope')()
+  require('baggiponte.plugins.telescope').load()
 end)
 
 defer.on_cmd({ 'Neogit' }, setup)
