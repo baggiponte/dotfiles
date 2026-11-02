@@ -201,4 +201,42 @@ function M.keys(keys, setup)
   end
 end
 
+--- Make `require()` of a module from a not-yet-loaded `opt` plugin packadd
+--- that plugin first, so optional integrations (e.g. fff -> devicons) work.
+--- Hard dependencies are still listed in each M.loader() call: :packadd is
+--- not allowed in every context (e.g. inside UI event callbacks).
+---@param opt_paths table<string, string> `opt` plugin name -> install path
+function M.load_on_require(opt_paths)
+  -- lua top-level module -> plugin names. Several plugins can share one
+  -- (telescope.nvim and telescope-fzf-native.nvim both ship lua/telescope/).
+  local opt_plugins ---@type table<string, string[]>?
+
+  table.insert(package.loaders, function(modname)
+    if not opt_plugins then
+      opt_plugins = {}
+      for name, path in pairs(opt_paths) do
+        for entry in vim.fs.dir(path .. '/lua') do
+          local top = entry:gsub('%.lua$', '')
+          opt_plugins[top] = opt_plugins[top] or {}
+          table.insert(opt_plugins[top], name)
+        end
+      end
+    end
+
+    local top = modname:match('^[^.]+')
+    local names = opt_plugins[top]
+    if not names then
+      return
+    end
+    opt_plugins[top] = nil
+    for _, name in ipairs(names) do
+      M.packadd(name)
+    end
+    local path = modname:gsub('%.', '/')
+    local file = vim.api.nvim_get_runtime_file('lua/' .. path .. '.lua', false)[1]
+      or vim.api.nvim_get_runtime_file('lua/' .. path .. '/init.lua', false)[1]
+    return file and loadfile(file) or nil
+  end)
+end
+
 return M

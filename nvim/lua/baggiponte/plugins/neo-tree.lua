@@ -2,7 +2,7 @@ local defer = require('baggiponte.defer')
 
 -- neo-tree's plugin/ defines :Neotree (replacing the stub) and would hijack
 -- directory buffers at startup, so it stays unloaded until first use.
-local setup = defer.loader({ 'plenary.nvim', 'nui.nvim', 'nvim-web-devicons', 'neo-tree.nvim' }, function()
+local setup = defer.loader({ 'plenary.nvim', 'nvim-web-devicons', 'neo-tree.nvim' }, function()
   local function on_move(data)
     require('neat.rename').on_rename_file(data.source, data.destination)
   end
