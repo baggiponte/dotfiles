@@ -92,22 +92,6 @@ function M.node(runner_name, tool, args, ...)
   return node
 end
 
--- Convenience: the full argv = { bin, ...node }, for tools that expect one argv.
----@param runner_name string|baggiponte.lsp.runner.Runner
----@param tool string|fun(...):string
----@param args string|table|fun(...):(string|table)|nil
----@param ... any
----@return string[]|string
-function M.argv(runner_name, tool, args, ...)
-  local node = M.node(runner_name, tool, args, ...)
-  if type(node) == 'string' then
-    return get_runner(runner_name).bin .. ' ' .. node
-  end
-  local argv = { get_runner(runner_name).bin }
-  vim.list_extend(argv, node)
-  return argv
-end
-
 -- Patch a single nvim-lint linter so it runs through a runner.
 -- `linter` may be a table (with .cmd / .args) or a factory function returning
 -- such a table (nvim-lint supports both). Returns a value of the same shape.
