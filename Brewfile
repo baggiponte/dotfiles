@@ -7,6 +7,10 @@ tap "ctrlspice/otel-desktop-viewer"
 tap "databricks/tap"
 tap "entireio/tap"
 tap "openai/tools"
+# Asciicast to GIF converter
+brew "agg"
+# Record and share terminal sessions
+brew "asciinema"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # Library for command-line editing
@@ -139,6 +143,8 @@ brew "tokei"
 brew "tree-sitter-cli"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Your CLI home video recorder
+brew "vhs"
 # Vpnc-script replacement for easy and secure split-tunnel VPN setup
 brew "vpn-slice"
 # Internet file retriever
