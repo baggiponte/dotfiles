@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "granola": {
+      "url": "https://mcp.granola.ai/mcp",
+      "description": "Granola meeting notes and transcripts",
+      "paths": ["~/work"]
+    }
+  }
+}

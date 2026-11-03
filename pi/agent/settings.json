@@ -4,6 +4,8 @@
   "defaultModel": "claude-opus-5.5",
   "deviceId": "d30053af-cd04-437a-b323-479f385dfbb2",
   "packages": [
-    "npm:@tintinweb/pi-subagents"
+    "npm:@tintinweb/pi-subagents",
+    "npm:@plannotator/pi-extension",
+    "git:github.com/baggiponte/pi-scoped-mcp"
   ]
 }
