@@ -23,23 +23,7 @@ for _, plugin in ipairs({
   vim.g['loaded_' .. plugin] = 1
 end
 
--- neat's cmdline is a popup and ui2 shows messages in a float, so a cmdline
--- row would only be an empty line under the statusline.
-vim.o.cmdheight = 0
--- 'cmd' would expand the hidden cmdline over the statusline for each message
-local ui2_opts = { msg = { targets = 'msg' } }
--- ui2 can only be enabled once a UI is attached, which may happen after this
--- file runs.
-if #vim.api.nvim_list_uis() > 0 then
-  require('vim._core.ui2').enable(ui2_opts)
-else
-  vim.api.nvim_create_autocmd('UIEnter', {
-    once = true,
-    callback = function()
-      require('vim._core.ui2').enable(ui2_opts)
-    end,
-  })
-end
+-- 'cmdheight' and ui2 are set up by neat's cmdline module (plugins/neat.lua).
 
 -- Only options that differ from Neovim's defaults (see :h nvim-defaults).
 vim.o.winborder = 'rounded'

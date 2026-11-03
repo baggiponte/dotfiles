@@ -6,6 +6,8 @@ require('neat').setup({
   statusline = { enabled = true },
   cmdline = { enabled = true },
   select = { enabled = true },
+  -- z= through vim.ui.select, so in the telescope picker above
+  spell = { enabled = true },
   input = { enabled = true },
   notify = {
     enabled = true,

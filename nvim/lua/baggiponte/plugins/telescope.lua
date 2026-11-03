@@ -62,4 +62,20 @@ local setup = defer.loader(
 defer.on_keys(keys, setup)
 defer.on_cmd({ 'Telescope' }, setup)
 
+-- neat's vim.ui.select (code actions, z=) requires telescope directly: load
+-- it on that first require instead of falling back to the builtin menu.
+local function loader(name)
+  if name == 'telescope' or name:find('^telescope%.') then
+    for i, l in ipairs(package.loaders) do
+      if l == loader then
+        table.remove(package.loaders, i)
+        break
+      end
+    end
+    setup()
+  end
+  -- nil: require goes on to the runtimepath loader, which now finds it
+end
+table.insert(package.loaders, 2, loader)
+
 return { load = setup }
