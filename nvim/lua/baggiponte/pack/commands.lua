@@ -49,7 +49,13 @@ vim.api.nvim_create_user_command('PackClean', function()
     vim.notify('vim.pack: no unused plugins')
     return
   end
-  if vim.fn.confirm('Delete unused plugins?\n' .. table.concat(unused, '\n'), '&Yes\n&No', 2) == 1 then
-    vim.pack.del(unused)
-  end
+  -- a picker (telescope via neat's vim.ui.select): all of them, or one at a
+  -- time; picking is the confirmation and <Esc> cancels
+  local all = ('All %d unused plugins'):format(#unused)
+  local items = #unused > 1 and vim.list_extend({ all }, unused) or unused
+  vim.ui.select(items, { prompt = 'Delete unused plugin' }, function(choice)
+    if choice then
+      vim.pack.del(choice == all and unused or { choice })
+    end
+  end)
 end, { desc = 'Delete installed plugins that are no longer in the config' })
