@@ -15,7 +15,7 @@ Using the built-in [`vim.pack`](https://neovim.io/doc/user/pack.html#vim.pack) (
 
 | Command | lazy.nvim equivalent | What it does |
 |:---|:---|:---|
-| `:PackUpdate [plugin...]` | `:Lazy update` | Fetch updates and open a review buffer: `:w` applies, `:q` cancels. `!` applies without review. |
+| `:PackUpdate [plugin...]` | `:Lazy update` | Fetch updates and open a review buffer (its winbar says it): `:w` applies, `:q` cancels. `!` applies without review. Then `:restart`, which a toast reminds you of. |
 | `:PackStatus [plugin...]` | `:Lazy` | Show installed plugins and already-fetched changes, without downloading. |
 | `:PackRestore [plugin...]` | `:Lazy restore` | Check out the revisions in `nvim-pack-lock.json`, e.g. after pulling the dotfiles on another machine. |
 | `:PackClean` | `:Lazy clean` | Delete installed plugins that are no longer in `pack/init.lua`. |

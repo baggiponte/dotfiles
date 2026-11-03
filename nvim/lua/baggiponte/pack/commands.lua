@@ -1,4 +1,34 @@
 -- vim.pack.update() opens a review buffer: `:w` applies the changes, `:q` cancels.
+-- Nothing in that buffer says so, so spell it out in its winbar.
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('baggiponte.pack.review', { clear = true }),
+  pattern = 'nvim-pack',
+  callback = function()
+    vim.wo[0][0].winbar = '%#DiagnosticWarn# Nothing is applied yet: '
+      .. '%#DiagnosticOk#:w%#DiagnosticWarn# applies the updates, '
+      .. '%#DiagnosticError#:q%#DiagnosticWarn# cancels '
+      .. '%#Comment# ]] [[ jump between plugins %*'
+  end,
+})
+
+-- Updated plugins only take effect after a restart: say so once per update.
+local updated = {}
+vim.api.nvim_create_autocmd('PackChanged', {
+  group = vim.api.nvim_create_augroup('baggiponte.pack.restart', { clear = true }),
+  callback = function(ev)
+    if ev.data.kind ~= 'update' then
+      return
+    end
+    if #updated == 0 then
+      -- after vim.pack's own "Applying updates" progress message
+      vim.defer_fn(function()
+        vim.notify(('vim.pack: updated %s. Run :restart to load the new code.'):format(table.concat(updated, ', ')))
+        updated = {}
+      end, 200)
+    end
+    updated[#updated + 1] = ev.data.spec.name
+  end,
+})
 local function plugin_names()
   return vim.tbl_map(function(plugin)
     return plugin.spec.name
