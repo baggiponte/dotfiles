@@ -46,7 +46,7 @@
       "src": "https://github.com/bassamsdata/namu.nvim"
     },
     "neat.nvim": {
-      "rev": "e680d8f1153f3bd6fac9da9cdf656a8bb6e44975",
+      "rev": "b6833d77ef32747c1b0f177087ff0ee86ac95d6b",
       "src": "https://github.com/baggiponte/neat.nvim"
     },
     "neo-tree.nvim": {
