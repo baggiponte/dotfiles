@@ -23,7 +23,12 @@ for _, plugin in ipairs({
   vim.g['loaded_' .. plugin] = 1
 end
 
--- 'cmdheight' and ui2 are set up by neat's cmdline module (plugins/neat.lua).
+-- No cmdline row: neat's cmdline popup (plugins/neat.lua) draws the cmdline and
+-- the statusline shows mode, recording, showcmd and the search count. ui2
+-- (experimental) shows messages; with 'cmdheight' 0 its "msg" window floats
+-- above the statusline instead of expanding over it.
+vim.o.cmdheight = 0
+require('vim._core.ui2').enable({ msg = { targets = 'msg' } })
 
 -- Only options that differ from Neovim's defaults (see :h nvim-defaults).
 vim.o.winborder = 'rounded'
