@@ -7,3 +7,7 @@ adjust-cell-height = -5%
 
 background-opacity = 0.85
 background = #1d1f21
+
+# Neovim draws its statusline on the last row ('cmdheight' 0), so give the
+# grid a little room at the bottom to clear the window's rounded corners.
+window-padding-y = 2,10
