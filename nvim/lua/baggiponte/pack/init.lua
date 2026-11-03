@@ -83,6 +83,10 @@ vim.pack.add({
   { src = gh('nvim-neo-tree/neo-tree.nvim'), version = 'v3.x', data = OPT },
   gh('stevearc/quicker.nvim'),
   gh('mhinz/vim-sayonara'),
+  -- Ctrl-h/j/k/l across Neovim windows and Rex panes. Eager: its plugin/ only
+  -- defines commands and <Plug> maps. rex/init.lua loads its Rex companion
+  -- from this same install.
+  gh('baggiponte/rex-navigator.nvim'),
 
   -- git
   gh('lewis6991/gitsigns.nvim'),
@@ -112,11 +116,5 @@ vim.pack.add({
 })
 
 require('baggiponte.defer').load_on_require(opt_paths)
-
--- Local, unmanaged plugin.
-local rex = vim.fn.expand('~/dev/projs/rex-navigator.nvim')
-if vim.uv.fs_stat(rex) then
-  vim.opt.rtp:append(rex)
-end
 
 require('baggiponte.pack.commands')

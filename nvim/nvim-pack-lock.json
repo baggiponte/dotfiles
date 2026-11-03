@@ -140,6 +140,10 @@
       "rev": "64e10d782ae5b9653558482910213b8946651456",
       "src": "https://github.com/ThePrimeagen/refactoring.nvim"
     },
+    "rex-navigator.nvim": {
+      "rev": "69c035110dd47423b1a672db943216de28da5784",
+      "src": "https://github.com/baggiponte/rex-navigator.nvim"
+    },
     "supermaven-nvim": {
       "rev": "07d20fce48a5629686aefb0a7cd4b25e33947d50",
       "src": "https://github.com/supermaven-inc/supermaven-nvim"
