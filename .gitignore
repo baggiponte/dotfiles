@@ -29,16 +29,7 @@ github-copilot
 opencode/cli.json
 opencode/service.json
 
-# Pi config itself is PI_CODING_AGENT_DIR=pi/agent.
-pi/agent/auth.json
-pi/agent/mcp-auth.json
-pi/agent/mcp.log*
-pi/agent/missions/
-pi/agent/models-store.json
-pi/agent/npm/
-pi/agent/sessions/
-pi/agent/skills/
-pi/web-search-cache/
+# Pi runtime state and credentials are ignored in pi/.gitignore.
 
 # Tool runtime state, caches, and installation metadata
 colima/*

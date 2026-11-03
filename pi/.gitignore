@@ -1,0 +1,32 @@
+# Pi runs with PI_CODING_AGENT_DIR=pi/agent. Track the config you edit by hand
+# (settings.json, keybindings.json, AGENTS.md, mcp.json, scoped-mcp.json) and
+# ignore everything pi writes on its own.
+
+# Credentials: provider logins and MCP OAuth tokens
+/agent/auth.json
+/agent/mcp-auth.json
+
+# Machine-local trust decisions
+/agent/trust.json
+
+# Session history, logs, and missions
+/agent/sessions/
+/agent/missions/
+/agent/mcp.log*
+
+# Caches: downloaded model catalog, web search results
+/agent/models-store.json
+/web-search-cache/
+
+# Installed packages: npm installs, git clones, extension temp dirs
+/agent/npm/
+/agent/git/
+/agent/tmp/
+/agent/local-packages/
+/agent/disabled-extensions/
+/agent/backups/
+/agent/tests/
+**/node_modules/
+
+# Symlinks into ~/.agents/skills, managed by the skills CLI
+/agent/skills/
