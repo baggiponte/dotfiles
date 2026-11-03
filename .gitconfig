@@ -30,6 +30,8 @@
   required = true
 
 [credential]
+	# clear the osxkeychain helper from Homebrew's system gitconfig so it isn't run twice
+	helper =
 	helper = osxkeychain
 	helper = /usr/local/share/gcm-core/git-credential-manager
 
