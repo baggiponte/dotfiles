@@ -53,6 +53,23 @@ do
   require('conform').setup({
     formatters_by_ft = formatters_by_ft,
     formatters = formatters,
-    format_on_save = { timeout_ms = 500, lsp_format = 'fallback' },
+    format_on_save = function(bufnr)
+      if not vim.g.disable_autoformat and not vim.b[bufnr].disable_autoformat then
+        return { timeout_ms = 500, lsp_format = 'fallback' }
+      end
+    end,
   })
 end
+
+-- Save an agent's file without reformatting lines it didn't touch. Also turns
+-- off the trailing-whitespace strip (autocmds.lua).
+vim.api.nvim_create_user_command('FormatToggle', function(args)
+  local scope = args.bang and vim.g or vim.b
+  scope.disable_autoformat = not scope.disable_autoformat
+  vim.notify(
+    ('Format on save %s %s'):format(
+      scope.disable_autoformat and 'off' or 'on',
+      args.bang and 'everywhere' or 'for this buffer'
+    )
+  )
+end, { bang = true, desc = 'Toggle format on save for this buffer (! for every buffer)' })

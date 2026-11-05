@@ -10,7 +10,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = group,
   desc = 'Strip trailing whitespace',
-  command = [[%s/\s\+$//e]],
+  callback = function(args)
+    if not vim.g.disable_autoformat and not vim.b[args.buf].disable_autoformat then
+      local view = vim.fn.winsaveview()
+      vim.cmd([[keeppatterns %s/\s\+$//e]])
+      vim.fn.winrestview(view)
+    end
+  end,
 })
 
 -- Shell scripts use 4 spaces; everything else keeps the global 2 or what its
