@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.4.0",
+  "lastChangelogVersion": "1.5.0",
   "defaultProvider": "github-copilot",
   "defaultModel": "claude-opus-5.5",
   "deviceId": "d30053af-cd04-437a-b323-479f385dfbb2",
@@ -7,5 +7,8 @@
     "npm:@tintinweb/pi-subagents",
     "npm:@plannotator/pi-extension",
     "git:github.com/baggiponte/pi-scoped-mcp"
-  ]
+  ],
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:@tintinweb/pi-subagents\",\"scope\":\"user\"}": "0.23.1"
+  }
 }
