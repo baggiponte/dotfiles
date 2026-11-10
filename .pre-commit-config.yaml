@@ -20,8 +20,8 @@ repos:
         # the plugin lockfile pins git commit hashes, which look like hex secrets
         exclude: '^nvim/nvim-pack-lock\.json$'
   - repo: https://github.com/JohnnyMorganz/StyLua
-    rev: v2.4.0
+    rev: v2.6.0
     hooks:
-      # options: stylua (from cargo) or stylua-github (from GitHub)
-      - id: stylua-system
+      # stylua-github downloads the release binary, so nothing needs to be on PATH
+      - id: stylua-github
         args: ["--config-path", "nvim/.stylua.toml"]

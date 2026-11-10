@@ -1,4 +1,3 @@
-tap "agavra/tap"
 tap "ampcode/tap"
 tap "anomalyco/tap"
 tap "azure/kubelogin", trusted: { formulae: ["kubelogin"] }
@@ -129,8 +128,6 @@ brew "snitch"
 brew "sshs"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Opinionated Lua code formatter
-brew "stylua"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Terminal multiplexer
@@ -157,8 +154,6 @@ brew "wrkflw"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
-brew "agavra/tap/tuicr", trusted: true
 # CLI for Amp, the frontier coding agent
 brew "ampcode/tap/ampcode", trusted: true
 # OpenCode V2 - the AI coding agent for the terminal
@@ -175,17 +170,9 @@ cask "amp-app"
 cask "claude"
 # Clipboard history app
 cask "clipbook"
-# Voice and text chat software
-cask "discord"
 # CLI for Entire
 cask "entireio/tap/entire", trusted: true
-cask "font-climate-crisis"
-cask "font-dejavu-sans-mono-nerd-font"
 cask "font-hack-nerd-font"
-cask "font-jetbrains-mono"
-cask "font-yanone-kaffeesatz"
-# Set of tools to manage resources and applications hosted on Google Cloud
-cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Web browser
@@ -196,8 +183,6 @@ cask "granola"
 cask "anomalyco/tap/hex", trusted: true
 # Keyboard customiser
 cask "karabiner-elements"
-# Menu bar app for running local LLMs
-cask "llama-app"
 # Presentation software
 cask "microsoft-powerpoint"
 # Meet, chat, call, and collaborate in just one place
@@ -214,14 +199,7 @@ cask "ctrlspice/otel-desktop-viewer/otel-desktop-viewer", trusted: true
 cask "spotify"
 # To-do list
 cask "todoist-app"
-# Collect, organise, cite, and share research sources
-cask "zotero"
-uv "argcomplete"
-uv "azure-cli"
-uv "google-colab-cli"
 uv "huggingface-hub"
-uv "llmfit"
 uv "prek"
 uv "pyrefly"
 uv "ty"
-uv "wandb"
