@@ -193,10 +193,14 @@ cask "monitorcontrol"
 cask "obsidian"
 # The official CLI for the OpenAI API.
 cask "openai/tools/openai", trusted: true
+# AI coding agent desktop client
+cask "opencode-desktop"
 # otel-desktop-viewer is a CLI tool for receiving OpenTelemetry traces, metrics, and logs on your local machine.
 cask "ctrlspice/otel-desktop-viewer/otel-desktop-viewer", trusted: true
 # Music streaming service
 cask "spotify"
+# Minimal GUI for AI code agents
+cask "t3-code"
 # To-do list
 cask "todoist-app"
 uv "huggingface-hub"
