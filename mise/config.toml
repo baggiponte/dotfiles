@@ -5,6 +5,7 @@ pnpm = "latest"
 # Cloudflare currently publishes its latest CLI as a prerelease.
 "npm:cf" = { version = "latest" }
 "npm:skills" = "latest"
+"npm:playwright" = "latest"
 
 [settings]
 experimental = true
