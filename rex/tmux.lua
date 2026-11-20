@@ -1,5 +1,4 @@
--- Port of ~/.config/tmux/tmux.conf. Ctrl-S is the tmux prefix;
--- Ctrl-H/J/K/L navigate seamlessly through Neovim windows and Rex panes.
+-- Port of ~/.config/tmux/tmux.conf.
 local terminal = 'com.superlogical.terminal'
 local shell = 'com.superlogical.terminal.shell'
 -- Load the same PATH/tools as an interactive tmux shell (e.g. diff-so-fancy).
@@ -64,7 +63,6 @@ end
 local function new_focused_tab(ctx, options)
   options.focus = true
   local window = checked(rex.session.new_window(options))
-  -- Server focus alone doesn't necessarily select the tab in the macOS client.
   rex.client.queue('session.select', {
     session_id = ctx.session_id,
     window_id = window.window_id,
@@ -147,8 +145,6 @@ bind('n', 'tmux_new_tab')
 bind('v', 'tmux_split_horizontal')
 bind('b', 'tmux_split_vertical')
 bind('g', 'tmux_lazygit_popup')
--- Repeat tab navigation without re-entering Ctrl-S. Escape leaves the mode.
--- Rex has no tmux-style repeat timeout, so this mode stays active until exited.
 rex.mode('tmux_tabs', {})
 rex.bind('tmux_tabs/escape', 'client.mode.exit')
 rex.bind('tmux_tabs/enter', 'client.mode.exit')
@@ -174,7 +170,6 @@ bind('p', 'client.palette.toggle')
 -- Match tmux: prefix Ctrl-L clears the screen; standalone Ctrl-L navigates panes.
 bind('ctrl+l', 'pane.send_key', { key = 'ctrl+l' })
 
--- Persistent resize mode: repeat h/j/k/l without re-entering the prefix.
 rex.mode('tmux_resize', { exclusive = true })
 bind('r', 'client.mode.enter', { name = 'tmux_resize' })
 rex.bind('tmux_resize/escape', 'client.mode.exit')
