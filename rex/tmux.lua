@@ -14,15 +14,21 @@ local function checked(result, err)
   return result
 end
 
-local function current_directory()
-  local pwd = rex.block.call(terminal, 'pwd', {})
-  if pwd and pwd.pwd and pwd.pwd ~= '' then
-    return pwd.pwd
+-- pwd reports a file:// URL when the shell uses OSC 7, or a plain path otherwise.
+local function path_from_pwd(pwd)
+  local path = pwd:match('^file://[^/]*(/.*)$')
+  if not path then
+    return pwd
   end
+  return (path:gsub('%%(%x%x)', function(hex)
+    return string.char(tonumber(hex, 16))
+  end))
+end
 
-  -- OSC 7 isn't reported by every shell. Rex can also inspect process cwds.
-  local process, err = rex.block.call(terminal, 'process', {})
-  checked(process, err)
+-- Like tmux's pane_current_path: where the foreground program actually is.
+-- Rex recommends process over pwd for this; pwd is only what a shell last reported.
+local function current_directory()
+  local process = rex.block.call(terminal, 'process', {})
   if process then
     if process.foreground and process.foreground.cwd then
       return process.foreground.cwd
@@ -35,6 +41,11 @@ local function current_directory()
     if process.child and process.child.cwd then
       return process.child.cwd
     end
+  end
+
+  local pwd = rex.block.call(terminal, 'pwd', {})
+  if pwd and pwd.pwd and pwd.pwd ~= '' then
+    return path_from_pwd(pwd.pwd)
   end
   error("Cannot determine the focused terminal's directory", 0)
 end
@@ -78,7 +89,7 @@ for _, direction in ipairs({ 'horizontal', 'vertical' }) do
     category = 'Tmux',
     run = function(ctx)
       return checked(rex.session.new_split({
-        anchor_block_id = ctx.block_id,
+        anchor_id = ctx.block_id,
         direction = split_direction,
         side = 'after',
         focus = true,
