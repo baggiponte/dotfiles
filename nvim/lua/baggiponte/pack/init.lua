@@ -83,9 +83,8 @@ vim.pack.add({
   { src = gh('nvim-neo-tree/neo-tree.nvim'), version = 'v3.x', data = OPT },
   gh('stevearc/quicker.nvim'),
   gh('mhinz/vim-sayonara'),
-  -- Ctrl-h/j/k/l across Neovim windows and Rex panes. Eager: its plugin/ only
-  -- defines commands and <Plug> maps. rex/init.lua loads its Rex companion
-  -- from this same install.
+  -- Eager: its plugin/ only defines commands and <Plug> maps. rex/init.lua
+  -- loads its Rex companion from this same install.
   gh('baggiponte/rex-navigator.nvim'),
 
   -- git
