@@ -17,6 +17,7 @@ vim.lsp.enable({
   'docker-compose',
   'luals',
   'ruff',
+  'rust-analyzer',
   'sqruff',
   -- 'ty',
   'zizmor',
