@@ -154,8 +154,6 @@ brew "wrkflw"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# CLI for Amp, the frontier coding agent
-brew "ampcode/tap/ampcode", trusted: true
 # OpenCode V2 - the AI coding agent for the terminal
 brew "anomalyco/tap/opencode-v2", trusted: true
 # CLI for Atlassian Confluence and Jira
@@ -164,12 +162,16 @@ brew "bjoernschotte/tap/atlcli", trusted: true
 brew "databricks/tap/databricks", trusted: true
 # Enable Windows-like alt-tab
 cask "alt-tab"
-# Coding agent and development environment
-cask "amp-app"
+# Terminal interface for Antigravity agents
+cask "antigravity-cli"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Clipboard history app
 cask "clipbook"
+# Voice and text chat software
+cask "discord"
 # CLI for Entire
 cask "entireio/tap/entire", trusted: true
 cask "font-hack-nerd-font"
@@ -197,6 +199,10 @@ cask "openai/tools/openai", trusted: true
 cask "opencode-desktop"
 # otel-desktop-viewer is a CLI tool for receiving OpenTelemetry traces, metrics, and logs on your local machine.
 cask "ctrlspice/otel-desktop-viewer/otel-desktop-viewer", trusted: true
+# Team communication and collaboration software
+cask "slack"
+# Tiling window manager with stable logical windows
+cask "anomalyco/tap/spaceman", trusted: true
 # Music streaming service
 cask "spotify"
 # Minimal GUI for AI code agents
