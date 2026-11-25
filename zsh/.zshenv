@@ -14,6 +14,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi/agent"
 
 export DISABLE_TELEMETRY=1
+export DO_NOT_TRACK=1
+export T3CODE_OTEL_SDK_DISABLED=true
 
 # +------+
 # | PATH |
