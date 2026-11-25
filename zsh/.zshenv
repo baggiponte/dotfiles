@@ -33,6 +33,7 @@ zsh_path=(
 	/opt/homebrew/sbin
 	/Applications/Obsidian.app/Contents/MacOS
 	"$HOME/.local/bin"
+	"$HOME/.cargo/bin"
 	/usr/local/bin
 	/usr/bin
 	/bin

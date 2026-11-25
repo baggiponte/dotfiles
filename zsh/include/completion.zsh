@@ -6,7 +6,9 @@
 # binary changes (upgrade), not on every startup. _zgen is in cache.zsh.
 _zgen "$COMPDIR/_uv"  uv  uv generate-shell-completion zsh
 _zgen "$COMPDIR/_uvx" uvx uvx --generate-shell-completion=zsh
-_zgen "$COMPDIR/_rex" rex rex completion zsh
+_zgen "$COMPDIR/_rex"    rex    rex completion zsh
+_zgen "$COMPDIR/_rustup" rustup rustup completions zsh
+_zgen "$COMPDIR/_cargo"  rustup rustup completions zsh cargo
 # ruff runs through uv: use an installed `uv tool` binary if there is one,
 # otherwise `uvx ruff` (keyed on uv, so it refreshes when uv is upgraded).
 if (( $+commands[ruff] )); then
