@@ -28,6 +28,7 @@ github-copilot
 # OpenCode files are auto-generated on startup.
 opencode/cli.json
 opencode/service.json
+opencode/commands/plannotator-*.md
 
 # Pi runtime state and credentials are ignored in pi/.gitignore.
 
@@ -58,3 +59,6 @@ entire/
 
 # Raycast local extensions/state
 raycast/
+
+# Hex app-owned files and default config
+/hex/
